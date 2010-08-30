@@ -1,0 +1,156 @@
+/*
+ *		RPDB::Database::DatabaseSettingsController::DatabaseSettingsEncryptionController
+ *
+ *
+ */
+
+/*******************************************************************************************************************************************************************************************
+********************************************************************************************************************************************************************************************
+																		Headers
+********************************************************************************************************************************************************************************************
+*******************************************************************************************************************************************************************************************/
+
+#include <rpdb/RPDB_Environment.h>
+#include <rpdb/RPDB_Database.h>
+
+#include <rpdb/RPDB_DatabaseEncryptionSettingsController.h>
+#include "rb_RPDB_DatabaseEncryptionSettingsController.h"
+
+/*******************************************************************************************************************************************************************************************
+																		Ruby Definitions
+*******************************************************************************************************************************************************************************************/
+
+extern	VALUE	rb_RPDB_Environment;
+extern	VALUE	rb_RPDB_Database;
+extern	VALUE	rb_RPDB_DatabaseSettingsController;
+extern	VALUE	rb_RPDB_DatabaseEncryptionSettingsController;
+
+void Init_RPDB_DatabaseEncryptionSettingsController()	{
+
+	rb_RPDB_DatabaseEncryptionSettingsController			=	rb_define_class_under(	rb_RPDB_DatabaseSettingsController, 
+																																							"Encryption",	
+																																							rb_cObject );
+
+	rb_define_singleton_method(	rb_RPDB_DatabaseEncryptionSettingsController, 	"new",											rb_RPDB_DatabaseEncryptionSettingsController_new,											1 	);
+	rb_define_method(						rb_RPDB_DatabaseEncryptionSettingsController, 	"initialize",								rb_RPDB_DatabaseEncryptionSettingsController_init,										1 	);
+                    					
+	rb_define_method(						rb_RPDB_DatabaseEncryptionSettingsController, 	"parent_environment",				rb_RPDB_DatabaseEncryptionSettingsController_parentEnvironment,				0 	);
+	rb_define_alias(						rb_RPDB_DatabaseEncryptionSettingsController, 	"environment",							"parent_environment"	);
+	rb_define_method(						rb_RPDB_DatabaseEncryptionSettingsController, 	"parent_database",					rb_RPDB_DatabaseEncryptionSettingsController_parentDatabase,					0 	);
+	rb_define_alias(						rb_RPDB_DatabaseEncryptionSettingsController, 	"database",									"parent_database"	);
+                    					
+	rb_define_method(						rb_RPDB_DatabaseEncryptionSettingsController, 	"encrypted?",								rb_RPDB_DatabaseEncryptionSettingsController_encrypted,								0 	);
+	rb_define_alias(						rb_RPDB_DatabaseEncryptionSettingsController, 	"encryption?",							"encrypted?" 	);
+	rb_define_method(						rb_RPDB_DatabaseEncryptionSettingsController, 	"turn_encryption_on",				rb_RPDB_DatabaseEncryptionSettingsController_turnEncryptionOn,				0 	);
+	rb_define_method(						rb_RPDB_DatabaseEncryptionSettingsController, 	"turn_encryption_off",			rb_RPDB_DatabaseEncryptionSettingsController_turnEncryptionOff,				0 	);
+}
+	
+/*******************************************************************************************************************************************************************************************
+********************************************************************************************************************************************************************************************
+																		Public Methods
+********************************************************************************************************************************************************************************************
+*******************************************************************************************************************************************************************************************/
+
+/*************
+*  new  *
+*************/
+
+VALUE rb_RPDB_DatabaseEncryptionSettingsController_new(	VALUE	klass __attribute__ ((unused )),
+																												VALUE	rb_parent_database_settings_controller )	{
+	
+	RPDB_DatabaseSettingsController*	c_parent_database_settings_controller;
+	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_parent_database_settings_controller );
+	
+	VALUE	rb_database_encryption_settings_controller	= RUBY_RPDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( RPDB_DatabaseEncryptionSettingsController_new( c_parent_database_settings_controller ) );
+	
+	VALUE	argv[ 1 ];
+	
+	argv[ 0 ]	=	rb_parent_database_settings_controller;
+	
+	rb_obj_call_init(	rb_database_encryption_settings_controller,
+					 1, 
+					 argv );
+	
+	return rb_database_encryption_settings_controller;		
+}
+
+/*************
+*  new  *
+*************/
+	
+VALUE rb_RPDB_DatabaseEncryptionSettingsController_init(	VALUE	rb_database_encryption_settings_controller,
+																													VALUE	rb_parent_database_settings_controller __attribute__ ((unused )) )	{
+
+	return rb_database_encryption_settings_controller;
+}
+
+/***************************************
+*  environment  *
+***************************************/
+VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentEnvironment(	VALUE	rb_database_encryption_settings_controller )	{
+
+	RPDB_DatabaseEncryptionSettingsController*	c_database_encryption_settings_controller;
+	C_RPDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( rb_database_encryption_settings_controller, c_database_encryption_settings_controller );
+
+	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseEncryptionSettingsController_parentEnvironment( c_database_encryption_settings_controller ) );
+}
+
+/***************************************
+*  Database  *
+***************************************/
+VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentDatabase(	VALUE	rb_database_encryption_settings_controller )	{
+
+	RPDB_DatabaseEncryptionSettingsController*	c_database_encryption_settings_controller;
+	C_RPDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( rb_database_encryption_settings_controller, c_database_encryption_settings_controller );
+
+	return RUBY_RPDB_DATABASE( RPDB_DatabaseEncryptionSettingsController_parentDatabase( c_database_encryption_settings_controller ) );
+}
+
+/*****************
+*  encrypted  *
+*****************/
+
+//	DB_ENCRYPT		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_fileid_reset.html
+//	DB_ENCRYPT		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
+VALUE rb_RPDB_DatabaseEncryptionSettingsController_encrypted( VALUE	rb_database_encryption_settings_controller )	{
+
+	RPDB_DatabaseEncryptionSettingsController*	c_database_encryption_settings_controller;
+	C_RPDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( rb_database_encryption_settings_controller, c_database_encryption_settings_controller );
+												
+	return ( RPDB_DatabaseEncryptionSettingsController_encrypted( c_database_encryption_settings_controller )	?	Qtrue
+																												:	Qfalse	);
+}
+
+	/*************************
+	*  turnEncryptionOn  *
+	*************************/
+
+	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_encrypt.html
+	VALUE rb_RPDB_DatabaseEncryptionSettingsController_turnEncryptionOn(	VALUE	rb_database_encryption_settings_controller,
+																			VALUE	rb_encryption_password )	{
+
+		RPDB_DatabaseEncryptionSettingsController*	c_database_encryption_settings_controller;
+		C_RPDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( rb_database_encryption_settings_controller, c_database_encryption_settings_controller );
+
+		RPDB_DatabaseEncryptionSettingsController_turnEncryptionOn(	c_database_encryption_settings_controller,
+		 																StringValuePtr( rb_encryption_password ) );
+
+		return rb_database_encryption_settings_controller;
+	}
+
+	/*************************
+	*  turnEncryptionOff  *
+	*************************/
+
+	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_encrypt.html
+	VALUE rb_RPDB_DatabaseEncryptionSettingsController_turnEncryptionOff(	VALUE	rb_database_encryption_settings_controller, 
+																			VALUE	rb_encryption_password )	{
+
+		RPDB_DatabaseEncryptionSettingsController*	c_database_encryption_settings_controller;
+		C_RPDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( rb_database_encryption_settings_controller, c_database_encryption_settings_controller );
+
+		RPDB_DatabaseEncryptionSettingsController_turnEncryptionOff(	c_database_encryption_settings_controller,
+		 																StringValuePtr( rb_encryption_password ) );
+		
+		return rb_database_encryption_settings_controller;
+	}

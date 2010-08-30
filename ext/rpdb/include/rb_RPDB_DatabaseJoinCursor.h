@@ -1,0 +1,23 @@
+#ifndef RB_RPDB_JOIN_CURSOR
+	#define RB_RPDB_JOIN_CURSOR
+
+	#include "rb_RPDB_BaseStandardIncludes.h"
+	#include <rpdb/RPDB_Types.h>
+
+void Init_RPDB_DatabaseJoinCursor();
+VALUE rb_RPDB_DatabaseJoinCursor_new(	VALUE	klass,
+							  VALUE	rb_parent_join_controller );
+VALUE rb_RPDB_DatabaseJoinCursor_init(	VALUE	rb_join_cursor,
+	VALUE	rb_parent_join_controller );
+	VALUE rb_RPDB_DatabaseJoinCursor_settingsController(	VALUE	rb_join_cursor );
+	VALUE rb_RPDB_DatabaseJoinCursor_parentEnvironment(	VALUE	rb_join_cursor );
+	VALUE rb_RPDB_DatabaseJoinCursor_parentDatabase(	VALUE	rb_join_cursor );
+VALUE rb_RPDB_DatabaseJoinCursor_parentDatabaseJoinController(	VALUE	rb_join_cursor );
+	VALUE rb_RPDB_DatabaseJoinCursor_close( VALUE	rb_join_cursor );
+	VALUE rb_RPDB_DatabaseJoinCursor_retrieveKey(	VALUE	rb_join_cursor,
+	 										VALUE	rb_key	);
+VALUE rb_RPDB_DatabaseJoinCursor_iterate(	int	argc,
+											  VALUE*	args,
+											  VALUE	rb_join_cursor );
+	
+#endif

@@ -1,0 +1,36 @@
+* atomic updates for parts of records (one var)
+
+* capped collections (limit by size, record number, etc.)
+	* loop around at end
+	* refuse write at end
+	
+
+Other stuff
+* insert/weave
+* AbstractObjectSpace
+
+Weaving
+* define module of methods
+* methods can depend on variables
+* methods correspond to init methods (if defined) which are called in the init method
+* thus properties can be created that weave in one or more methods, allowing interfaces to be defined
+
+weaving allows class and instance methods to be mixed in as appropriate
+that way not all methods must belong to either
+
+
+* anonymous object storage - keep index of objects without keeping reference that is live to gc
+
+* meta-class controller modularization with DB delegates
+	grab values from DB and write as necessary
+	DB keeps values in sync so that if one object using value changes its properties all other objects using value also find that property changed
+	then it either has a hook to notify objects of their copy being out of date, or keeps a common ref that all instances share
+	probably a stored ref by default then optionally a notification system
+
+
+Garbage Collection:
+
+* immediate collection when variables move out of scope
+* immediate finalization
+* concurrent processing
+

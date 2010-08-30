@@ -1,0 +1,3 @@
+=== 0.1.0 2010-07-22
+
+Initial Gem-i-fication

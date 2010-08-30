@@ -1,0 +1,220 @@
+/*
+ *		RPDB::LogController
+ *
+ *		BDB logging implementation for applications described here: 
+ *      http://www.oracle.com/technology/documentation/berkeley-db/db/ref/apprec/def.html
+ *
+ *		Description of process for full backup with BDB:
+ *      http://www.oracle.com/technology/documentation/berkeley-db/db/ref/transapp/archival.html
+ *	
+ */
+
+/*******************************************************************************************************************************************************************************************
+********************************************************************************************************************************************************************************************
+																		Headers
+********************************************************************************************************************************************************************************************
+*******************************************************************************************************************************************************************************************/
+
+#include "rb_RPDB_LogController.h"
+#include "rb_RPDB_LogSequenceNumber.h"
+
+#include "rb_RPDB_Record.h"
+
+#include <rpdb/RPDB_Environment.h>
+
+#include <rpdb/RPDB_LogController.h>
+
+#include <rpdb/RPDB_LogSettingsController.h>
+
+/*******************************************************************************************************************************************************************************************
+																		Ruby Definitions
+*******************************************************************************************************************************************************************************************/
+
+extern	VALUE	rb_RPDB_Environment;
+extern	VALUE	rb_RPDB_Record;
+extern	VALUE	rb_RPDB_LogController;
+extern	VALUE	rb_RPDB_LogSettingsController;
+extern	VALUE	rb_RPDB_LogSequenceNumber;;
+
+void Init_RPDB_LogController()	{
+
+	rb_RPDB_LogController	=	rb_define_class_under(	rb_RPDB_Environment, 
+																									"LogController",			
+																									rb_cObject );
+
+	rb_define_singleton_method(	rb_RPDB_LogController, 	"new",																													rb_RPDB_LogController_new,										-1 	);
+	rb_define_method(						rb_RPDB_LogController, 	"initialize",																										rb_RPDB_LogController_init,									-1 	);
+                                                                                          		                                                                        
+	rb_define_method(						rb_RPDB_LogController, 	"settings_controller",																					rb_RPDB_LogController_settingsController,		0 	);
+	rb_define_alias(						rb_RPDB_LogController, 	"settings",																											"settings_controller"	);                      
+	rb_define_alias(						rb_RPDB_LogController, 	"set",																													"settings_controller"	);                      
+	rb_define_alias(						rb_RPDB_LogController, 	"set_to",																												"settings_controller"	);                      
+	rb_define_alias(						rb_RPDB_LogController, 	"is_set_to",																										"settings_controller"	);                      
+	rb_define_method(						rb_RPDB_LogController, 	"parent_environment",																						rb_RPDB_LogController_parentEnvironment,			0 	);
+	rb_define_alias(						rb_RPDB_LogController, 	"environment",																									"parent_environment"	);
+
+	//	FIX - make append deal transparently with whatever needs to be written, string or record, etc.
+	rb_define_method(						rb_RPDB_LogController, 	"append_string",																								rb_RPDB_LogController_appendStringToCurrentLog,						0 	);
+	rb_define_alias(						rb_RPDB_LogController, 	"puts",																													"append_string"	);                            
+	rb_define_method(						rb_RPDB_LogController, 	"flush_logs_to_disk",																						rb_RPDB_LogController_flushLogsToDisk,				0 	);
+	rb_define_alias(						rb_RPDB_LogController, 	"flush_logs",																										"flush_logs_to_disk"	);                      
+	rb_define_alias(						rb_RPDB_LogController, 	"flush",																												"flush_logs_to_disk"	);                      
+	rb_define_method(						rb_RPDB_LogController, 	"append_log_record",																						rb_RPDB_LogController_appendLogRecord,				0 	);
+	rb_define_alias(						rb_RPDB_LogController, 	"append_record",																								"append_log_record"	);                              
+	rb_define_alias(						rb_RPDB_LogController, 	"put_record",																										"append_log_record"	);                              
+	rb_define_alias(						rb_RPDB_LogController, 	"write_record",																									"append_log_record"	);                              
+	rb_define_alias(						rb_RPDB_LogController, 	"write",																												"append_log_record"	);                              
+	rb_define_method(						rb_RPDB_LogController, 	"cursor_controller",																						rb_RPDB_LogController_cursorController,				0 	);
+	rb_define_alias(						rb_RPDB_LogController, 	"cursors",																											"cursor_controller"	);
+
+}
+
+/*******************************************************************************************************************************************************************************************
+********************************************************************************************************************************************************************************************
+																		Public Methods
+********************************************************************************************************************************************************************************************
+*******************************************************************************************************************************************************************************************/
+
+/*************
+*  new  *
+*************/
+
+VALUE rb_RPDB_LogController_new(	VALUE	klass __attribute__ ((unused)),
+																	VALUE	rb_parent_environment )	{
+	
+	RPDB_Environment*	c_parent_environment;
+	C_RPDB_ENVIRONMENT( rb_parent_environment, c_parent_environment );
+	
+	VALUE	rb_log_controller	=	RUBY_RPDB_LOG_CONTROLLER( RPDB_LogController_new( c_parent_environment ) );
+	
+	VALUE	argv[ 1 ];
+	
+	argv[ 0 ]	=	rb_parent_environment;
+	
+	rb_obj_call_init(	rb_log_controller,
+					 1, 
+					 argv );
+	
+	return rb_log_controller;	
+}
+
+
+/*************
+*  new  *
+*************/
+
+VALUE rb_RPDB_LogController_init(	VALUE	rb_log_controller,
+																	VALUE	rb_parent_environment __attribute__ ((unused)) )	{
+
+	return rb_log_controller;
+}
+
+/***************************
+*  settingsController  *
+***************************/
+VALUE rb_RPDB_LogController_settingsController(	VALUE	rb_log_controller )	{
+
+	RPDB_LogController*	c_log_controller;
+	C_RPDB_LOG_CONTROLLER( rb_log_controller, c_log_controller );
+
+	return RUBY_RPDB_LOG_SETTINGS_CONTROLLER( RPDB_LogController_settingsController( c_log_controller ) );
+}
+
+/***************************************
+*  environment  *
+***************************************/
+VALUE rb_RPDB_LogController_parentEnvironment(	VALUE	rb_log_controller )	{
+
+	RPDB_LogController*	c_log_controller;
+	C_RPDB_LOG_CONTROLLER( rb_log_controller, c_log_controller );
+
+	return RUBY_RPDB_ENVIRONMENT( RPDB_LogController_parentEnvironment( c_log_controller ) );
+
+}
+
+/*********************
+*  appendString  *
+*********************/
+
+//	FIX
+	
+//	The DB_ENV->log_printf method appends an informational message to the Berkeley DB database environment log files.
+//	The DB_ENV->log_printf method allows applications to include information in the database environment log files, 
+//	for later review using the db_printlog utility. This method is intended for debugging and performance tuning.
+//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/log_printf.html
+VALUE rb_RPDB_LogController_appendStringToCurrentLog(	int			argc __attribute__ ((unused)),
+																											VALUE*	args __attribute__ ((unused)),
+																											VALUE	rb_log_controller )	{
+
+	RPDB_LogController*	c_log_controller;
+	C_RPDB_LOG_CONTROLLER( rb_log_controller, c_log_controller );
+
+	//	FIX - not implemented
+	char*	c_log_string	=	NULL;
+
+	RPDB_LogController_appendStringToCurrentLog(	c_log_controller,
+																								c_log_string );
+
+	return rb_log_controller;
+}
+
+/*************************
+*  flushLogsToDisk  *
+*************************/
+
+//	All log records with DB_LSN values less than or equal to the lsn parameter are written to disk. If lsn is NULL, all records in the log are flushed.
+//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/log_flush.html	
+VALUE rb_RPDB_LogController_flushLogsToDisk(	VALUE	rb_log_controller,
+ 												VALUE	rb_log_sequence_number )	{
+
+	RPDB_LogController*	c_log_controller;
+	C_RPDB_LOG_CONTROLLER( rb_log_controller, c_log_controller );
+
+	RPDB_LogSequenceNumber*	c_log_sequence_number;
+	C_RPDB_LOG_SEQUENCE_NUMBER( rb_log_sequence_number, c_log_sequence_number );
+
+	RPDB_LogController_flushLogsToDisk(	c_log_controller,
+											c_log_sequence_number	);
+
+	return rb_log_controller;	
+}
+
+/*********************
+*  appendRecord  *
+*********************/
+
+//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/log_put.html
+VALUE rb_RPDB_LogController_appendLogRecord(	VALUE	rb_log_controller,
+ 												VALUE	rb_log_record )	{
+
+	RPDB_LogController*	c_log_controller;
+	C_RPDB_LOG_CONTROLLER( rb_log_controller, c_log_controller );
+
+	RPDB_Record*		c_log_record;
+	C_RPDB_RECORD( rb_log_record, c_log_record );
+
+	RPDB_LogController_appendLogRecord(	c_log_controller,
+											c_log_record	);
+	
+	return rb_log_controller;
+}
+
+/*************************
+*  cursorController  *
+*************************/
+
+VALUE rb_RPDB_LogController_cursorController( VALUE	rb_log_controller )	{
+
+	RPDB_LogController*	c_log_controller;
+	C_RPDB_LOG_CONTROLLER( rb_log_controller, c_log_controller );
+
+	RPDB_LogController_cursorController( c_log_controller );
+
+	return rb_log_controller;
+}
+
+
+
+
+
+
