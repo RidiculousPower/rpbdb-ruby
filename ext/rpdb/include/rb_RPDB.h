@@ -22,9 +22,6 @@
 							 VALUE	rb_module_self );
 
 	VALUE rb_RPDB_defaultEnvironment( VALUE rb_module_self );
-	VALUE rb_RPDB_environmentWithName(	VALUE	rb_module_self,
-																				VALUE rb_environment_name );
-
 	VALUE rb_RPDB_version( VALUE rb_module_self );
 	VALUE rb_RPDB_versionMajor( VALUE rb_module_self );
 	VALUE rb_RPDB_versionMinor( VALUE rb_module_self );

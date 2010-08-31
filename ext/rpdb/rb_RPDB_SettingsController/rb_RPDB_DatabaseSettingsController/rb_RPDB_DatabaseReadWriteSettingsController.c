@@ -58,10 +58,6 @@ void Init_RPDB_DatabaseReadWriteSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"turn_return_multiple_on",											rb_RPDB_DatabaseReadWriteSettingsController_turnReturnMultipleOn,									0 	);
 	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"turn_return_multiple_off",											rb_RPDB_DatabaseReadWriteSettingsController_turnReturnMultipleOff,								0 	);
                     					                                                                                            	                                                                          				
-	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"append_data?",																	rb_RPDB_DatabaseReadWriteSettingsController_appendData,														0 	);
-	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"turn_append_data_on",													rb_RPDB_DatabaseReadWriteSettingsController_turnAppendDataOn,											0 	);
-	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"turn_append_data_off",													rb_RPDB_DatabaseReadWriteSettingsController_turnAppendDataOff,										0 	);
-                    					                                                                                        			                                                                          				
 	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"prohibit_duplicate_data?",											rb_RPDB_DatabaseReadWriteSettingsController_prohibitDuplicateData,								0 	);
 	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"turn_prohibit_duplicate_data_on",							rb_RPDB_DatabaseReadWriteSettingsController_turnProhibitDuplicateDataOn,					0 	);
 	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"turn_prohibit_duplicate_data_off",							rb_RPDB_DatabaseReadWriteSettingsController_turnProhibitDuplicateDataOff,					0 	);
@@ -332,50 +328,6 @@ VALUE rb_RPDB_DatabaseReadWriteSettingsController_returnMultiple( VALUE	rb_datab
 		C_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( rb_database_read_write_settings_controller, c_database_read_write_settings_controller );
 
 		RPDB_DatabaseReadWriteSettingsController_turnReturnMultipleOff( c_database_read_write_settings_controller );
-
-		return rb_database_read_write_settings_controller;
-	}
-
-/******************
-*  appendData  *
-******************/
-
-//	DB_APPEND				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_put.html
-VALUE rb_RPDB_DatabaseReadWriteSettingsController_appendData( VALUE	rb_database_read_write_settings_controller )	{
-
-	RPDB_DatabaseReadWriteSettingsController*	c_database_read_write_settings_controller;
-	C_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( rb_database_read_write_settings_controller, c_database_read_write_settings_controller );
-
-	return ( RPDB_DatabaseReadWriteSettingsController_appendData( c_database_read_write_settings_controller )	?	Qtrue
-																												:	Qfalse );
-}
-
-	/**************************
-	*  turnAppendDataOn  *
-	**************************/
-
-	//	DB_APPEND				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_put.html
-	VALUE rb_RPDB_DatabaseReadWriteSettingsController_turnAppendDataOn( VALUE	rb_database_read_write_settings_controller )	{
-
-		RPDB_DatabaseReadWriteSettingsController*	c_database_read_write_settings_controller;
-		C_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( rb_database_read_write_settings_controller, c_database_read_write_settings_controller );
-
-		RPDB_DatabaseReadWriteSettingsController_turnAppendDataOn( c_database_read_write_settings_controller );
-
-		return rb_database_read_write_settings_controller;
-	}
-
-	/**************************
-	*  turnAppendDataOff  *
-	**************************/
-
-	//	DB_APPEND				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_put.html
-	VALUE rb_RPDB_DatabaseReadWriteSettingsController_turnAppendDataOff( VALUE	rb_database_read_write_settings_controller )	{
-
-		RPDB_DatabaseReadWriteSettingsController*	c_database_read_write_settings_controller;
-		C_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( rb_database_read_write_settings_controller, c_database_read_write_settings_controller );
-
-		RPDB_DatabaseReadWriteSettingsController_turnAppendDataOff( c_database_read_write_settings_controller );
 
 		return rb_database_read_write_settings_controller;
 	}

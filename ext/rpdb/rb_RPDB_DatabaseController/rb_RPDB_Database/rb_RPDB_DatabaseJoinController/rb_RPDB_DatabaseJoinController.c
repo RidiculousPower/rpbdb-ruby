@@ -51,12 +51,6 @@ void Init_RPDB_DatabaseJoinController()	{
 	rb_define_alias(						rb_RPDB_DatabaseJoinController, 	"database",											"parent_database"	);
 	                  					
 	rb_define_method(						rb_RPDB_DatabaseJoinController, 	"join",													rb_RPDB_DatabaseJoinController_join,										0 	);
-	rb_define_method(						rb_RPDB_DatabaseJoinController, 	"cursor_for_name",						rb_RPDB_DatabaseJoinController_cursorForName,					0 	);
-	rb_define_alias(						rb_RPDB_DatabaseJoinController, 	"cursor",												"cursor_for_name"	);
-	rb_define_alias(						rb_RPDB_DatabaseJoinController, 	"for_name",										"cursor_for_name"	);
-	rb_define_alias(						rb_RPDB_DatabaseJoinController, 	"[]",														"cursor_for_name"	);
-	rb_define_method(						rb_RPDB_DatabaseJoinController, 	"close_cursor_for_name",			rb_RPDB_DatabaseJoinController_closeCursorForName,		-1 	);
-	rb_define_method(						rb_RPDB_DatabaseJoinController, 	"all_cursors",									rb_RPDB_DatabaseJoinController_allCursors,							-1 	);
 	rb_define_method(						rb_RPDB_DatabaseJoinController, 	"close_all_cursors",						rb_RPDB_DatabaseJoinController_closeAllCursors,					-1 	);
 
 }
@@ -154,8 +148,8 @@ VALUE rb_RPDB_DatabaseJoinController_parentDatabase(	VALUE	rb_join_controller )	
 //
 //	Join cursors have the same name as the Database database_cursor that was used to initalize them
 VALUE rb_RPDB_DatabaseJoinController_join(	VALUE	rb_join_controller,
-																VALUE	rb_join_cursor_name,
-																VALUE	rb_cursor_list )	{
+																						VALUE	rb_join_cursor_name,
+																						VALUE	rb_cursor_list )	{
 
 	RPDB_DatabaseJoinController*	c_join_controller;
 	C_RPDB_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller );
@@ -178,56 +172,10 @@ VALUE rb_RPDB_DatabaseJoinController_join(	VALUE	rb_join_controller,
 	
 	
 	RPDB_DatabaseJoinCursor*	c_join_cursor	=	RPDB_DatabaseJoinController_join(	c_join_controller,
-																						c_join_cursor_name,
-																						c_cursor_list );
+																																							c_cursor_list );
 							
 	return RUBY_RPDB_DATABASE_JOIN_CURSOR( c_join_cursor );
 	
-}
-
-/*************************
-*  cursorForName  *
-*************************/
-
-VALUE rb_RPDB_DatabaseJoinController_cursorForName(	VALUE	rb_join_controller,
- 														VALUE	rb_join_cursor_name )	{
-
-	RPDB_DatabaseJoinController*	c_join_controller;
-	C_RPDB_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller );
-							
-	return RUBY_RPDB_DATABASE_CURSOR( RPDB_DatabaseJoinController_cursorForName(	c_join_controller,
-																						StringValuePtr( rb_join_cursor_name ) ) );
-}
-
-/*****************************
-*  closeCursorForName  *
-*****************************/
-
-VALUE rb_RPDB_DatabaseJoinController_closeCursorForName(	VALUE	rb_join_controller,
- 																VALUE	rb_join_cursor_name )	{
-	
-	RPDB_DatabaseJoinController*	c_join_controller;
-	C_RPDB_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller );
-							
-	RPDB_DatabaseJoinController_closeCursorForName(	c_join_controller,
-												StringValuePtr( rb_join_cursor_name )	);
-
-	return rb_join_controller;
-}
-
-/*****************
-*  allCursors  *
-*****************/
-
-//	Return a list of database names that have been created and stored in this controller
-VALUE rb_RPDB_DatabaseJoinController_allCursors( VALUE	rb_join_controller )	{
-
-	RPDB_DatabaseJoinController*	c_join_controller;
-	C_RPDB_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller );
-							
-	RPDB_DatabaseJoinController_allCursors( c_join_controller );
-
-	return rb_join_controller;
 }
 
 /*************************

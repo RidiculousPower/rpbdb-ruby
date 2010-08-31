@@ -50,12 +50,7 @@ void Init_RPDB_LogCursorController()	{
 	rb_define_method(						rb_RPDB_LogCursorController, 	"parent_environment",																						rb_RPDB_LogCursorController_parentEnvironment,																0 	);
 	rb_define_alias(						rb_RPDB_LogCursorController, 	"environment",																									"parent_environment"	);
 
-	//	FIX - rename cursorForName to cursorWithName
-	rb_define_method(						rb_RPDB_LogCursorController, 	"cursor_with_name",																						rb_RPDB_LogCursorController_cursorForName,																				0 	);
-	rb_define_alias(						rb_RPDB_LogCursorController, 	"cursors",																											"cursor_with_name"	);
-	rb_define_alias(						rb_RPDB_LogCursorController, 	"cursor",																												"cursor_with_name"	);
-	rb_define_method(						rb_RPDB_LogCursorController, 	"all_cursors",																									rb_RPDB_LogCursorController_allCursors,																			0 	);
-	rb_define_alias(						rb_RPDB_LogCursorController, 	"all",																													"all"	);
+//	rb_define_method(						rb_RPDB_LogCursorController, 	"cursor",																												rb_RPDB_LogCursorController_cursor,																				0 	);
 	rb_define_method(						rb_RPDB_LogCursorController, 	"close_all_cursors",																						rb_RPDB_LogCursorController_closeAllCursors,																				0 	);
 	rb_define_alias(						rb_RPDB_LogCursorController, 	"close_all",																										"close_all_cursors"	);
 
@@ -121,37 +116,6 @@ VALUE rb_RPDB_LogCursorController_parentEnvironment(	VALUE	rb_log_cursor_control
 	C_RPDB_LOG_CURSOR_CONTROLLER( rb_log_cursor_controller, c_log_cursor_controller  );
 
 	return RUBY_RPDB_ENVIRONMENT( RPDB_LogCursorController_parentEnvironment( c_log_cursor_controller ) );
-}
-
-/*************************
-*  cursorForName  *
-*************************/
-
-VALUE rb_RPDB_LogCursorController_cursorForName(	VALUE	rb_log_cursor_controller,
- 																VALUE	rb_cursor_name )	{
-
-	RPDB_LogCursorController*		c_log_cursor_controller;
-	C_RPDB_LOG_CURSOR_CONTROLLER( rb_log_cursor_controller, c_log_cursor_controller  );
-
-	return RUBY_RPDB_LOG_CURSOR( RPDB_LogCursorController_cursorForName(	c_log_cursor_controller,
-																				StringValuePtr( rb_cursor_name )  ) );
-}
-
-/*****************
-*  allCursors  *
-*****************/
-
-//	Return a list of database names that have been created and stored in this controller
-VALUE rb_RPDB_LogCursorController_allCursors( VALUE	rb_log_cursor_controller )	{
-
-	RPDB_LogCursorController*		c_log_cursor_controller;
-	C_RPDB_LOG_CURSOR_CONTROLLER( rb_log_cursor_controller, c_log_cursor_controller  );
-
-	//	FIX - return array
-
-	RPDB_LogCursorController_allCursors( c_log_cursor_controller );
-	
-	return rb_log_cursor_controller;
 }
 
 /*************************

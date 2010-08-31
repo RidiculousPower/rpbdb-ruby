@@ -10,11 +10,6 @@ VALUE rb_RPDB_LogCursorController_init(	VALUE	rb_log_cursor_controller,
 	VALUE	rb_parent_log_controller );
 	VALUE rb_RPDB_LogCursorController_settingsController(	VALUE	rb_log_cursor_controller );
 	VALUE rb_RPDB_LogCursorController_parentEnvironment(	VALUE	rb_log_cursor_controller );
-	VALUE rb_RPDB_LogCursorController_cursorForName(	VALUE	rb_log_cursor_controller,
-	 																VALUE	rb_cursor_name );
-	VALUE rb_RPDB_LogCursorController_closeCursorForName(	VALUE	rb_log_cursor_controller,
-	 																	VALUE	rb_cursor_name );
-	VALUE rb_RPDB_LogCursorController_closeAllCursors( VALUE	rb_log_cursor_controller );
-VALUE rb_RPDB_LogCursorController_allCursors( VALUE	rb_log_cursor_controller );
+VALUE rb_RPDB_LogCursorController_closeAllCursors( VALUE	rb_log_cursor_controller );
 
 #endif

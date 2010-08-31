@@ -36,18 +36,16 @@ Hoe.spec define_gem do
   end
 end
 
-task :make do
-  Rake::Task[:compile].invoke
-end
-
 task :cultivate do
   system "touch Manifest.txt; rake check_manifest | grep -v \"(in \" | patch"
   system "rake debug_gem | grep -v \"(in \" > " + define_gem + ".gemspec"
 end
 
 # clear default task and set default to :compile
-Rake::Task[ :default ].clear
-task :default => :compile
+if has_c_source
+  Rake::Task[ :default ].clear
+  task :default => :compile
+end
 
 # allow spec task to be turned off from command line
 if  has_c_source and 

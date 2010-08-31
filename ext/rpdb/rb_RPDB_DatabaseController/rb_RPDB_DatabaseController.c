@@ -56,7 +56,7 @@ void Init_RPDB_DatabaseController()	{
 	rb_define_method(						rb_RPDB_DatabaseController, 	"parent_environment",							rb_RPDB_DatabaseController_parentEnvironment,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseController, 	"environment",										"parent_environment"	);
                     					
-	rb_define_method(						rb_RPDB_DatabaseController, 	"database_with_name",							rb_RPDB_DatabaseController_databaseWithName,				1 	);
+	rb_define_method(						rb_RPDB_DatabaseController, 	"database_with_name",							rb_RPDB_DatabaseController_database,				1 	);
 	rb_define_alias(						rb_RPDB_DatabaseController, 	"database",												"database_with_name"	);
 	rb_define_alias(						rb_RPDB_DatabaseController, 	"for_name",												"database_with_name"	);
 	rb_define_alias(						rb_RPDB_DatabaseController, 	"[]",															"database_with_name"	);
@@ -96,8 +96,6 @@ VALUE rb_RPDB_DatabaseController_new(	int			argc,
 			||	TYPE( rb_parent_environment_or_name_string_or_symbol ) == T_SYMBOL )	{
 
 		rb_parent_environment_name		=	rb_parent_environment_or_name_string_or_symbol;
-		rb_parent_environment					=	rb_RPDB_environmentWithName(	rb_mRPDB,
-																																	rb_parent_environment_name );
 	}
 	//	or if we have an environment
 	else if ( rb_parent_environment_or_name_string_or_symbol != Qnil ) {
@@ -174,13 +172,15 @@ VALUE rb_RPDB_DatabaseController_parentEnvironment(	VALUE rb_database_controller
 ***********************/
 
 //	Return a name that has been created or creates it if necessary
-VALUE rb_RPDB_DatabaseController_databaseWithName(	VALUE		rb_database_controller,
+VALUE rb_RPDB_DatabaseController_database(	VALUE		rb_database_controller,
 																										VALUE		rb_database_name )	{
 
 	VALUE	rb_databases_hash	=	rb_RPDB_DatabaseController_databasesHash( rb_database_controller );
 	
-	VALUE	rb_database				=	rb_RPDB_internal_objectFromIDHashWithName(	rb_databases_hash,
-																																				rb_database_name );
+	VALUE	rb_database				=	rb_funcall(	rb_databases_hash,
+																						rb_intern( "[]" ),
+																						1,
+																						rb_database_name );
 
 	return rb_database;
 }
@@ -233,15 +233,20 @@ VALUE rb_RPDB_DatabaseController_closeAllDatabases( VALUE rb_database_controller
 
 VALUE rb_RPDB_DatabaseController_databasesHash( VALUE rb_database_controller )	{
 	
-	VALUE	rb_databases_hash	=	rb_iv_get(	rb_database_controller,
-																				RPDB_RUBY_CLASS_DATABASE_CONTROLLER_VARIABLE_DATABASES_HASH );
+	rb_require( "weakhash" );
 	
+	VALUE	rb_databases_hash		=	rb_iv_get(	rb_database_controller,
+																					RPDB_RUBY_CLASS_DATABASE_CONTROLLER_VARIABLE_DATABASES_HASH );
 	if ( rb_databases_hash == Qnil )	{
-		rb_databases_hash	=	rb_hash_new();
+		VALUE	rb_cWeakhash	=	RUBY_CLASS( "Hash::Weak" );
+		rb_databases_hash = rb_funcall(	rb_cWeakhash,
+																		rb_intern( "new" ),
+																		0 );
 		rb_iv_set(	rb_database_controller,
 								RPDB_RUBY_CLASS_DATABASE_CONTROLLER_VARIABLE_DATABASES_HASH,
 								rb_databases_hash );
 	}
 	
 	return rb_databases_hash;
+
 }

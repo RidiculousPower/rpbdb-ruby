@@ -14,14 +14,6 @@ VALUE rb_RPDB_DatabaseCursorController_init( 	VALUE	rb_database_cursor_controlle
 	VALUE rb_RPDB_DatabaseCursorController_parentEnvironment(	VALUE	rb_database_cursor_controller );
 	VALUE rb_RPDB_DatabaseCursorController_cursor(	VALUE	rb_database_cursor_controller );
 	VALUE rb_RPDB_DatabaseCursorController_objectCursor(	VALUE	rb_database_cursor_controller );
-	VALUE rb_RPDB_DatabaseCursorController_cursorForName(	int	argc,
-															VALUE*	args,
-															VALUE	rb_database_cursor_controller );
-VALUE rb_RPDB_DatabaseCursorController_objectCursorForName(	int	argc,
-															  VALUE*	args,
-															  VALUE	rb_database_cursor_controller );
-	VALUE rb_RPDB_DatabaseCursorController_closeCursorForName(	VALUE	rb_database_cursor_controller,
-	 																VALUE	cursor_name );
 	VALUE rb_RPDB_DatabaseCursorController_closeAllCursors( VALUE	rb_database_cursor_controller );
 
 #endif

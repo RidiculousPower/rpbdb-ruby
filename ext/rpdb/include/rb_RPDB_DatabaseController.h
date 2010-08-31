@@ -15,7 +15,7 @@ void Init_RPDB_DatabaseController();
 
 	VALUE rb_RPDB_DatabaseController_settingsController(	VALUE rb_database_controller );
 	VALUE rb_RPDB_DatabaseController_parentEnvironment(	VALUE rb_database_controller );
-	VALUE rb_RPDB_DatabaseController_databaseWithName(	VALUE		rb_database_controller,
+	VALUE rb_RPDB_DatabaseController_database(	VALUE		rb_database_controller,
 																											VALUE		rb_database_name );
 	VALUE rb_RPDB_DatabaseController_newDatabase(	VALUE		rb_database_controller,
 																								VALUE		rb_database_name );

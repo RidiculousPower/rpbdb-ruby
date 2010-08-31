@@ -328,32 +328,13 @@ VALUE rb_RPDB_DatabaseObject_pathsafeClassname( VALUE	rb_self )	{
 *******************/
 
 VALUE rb_RPDB_DatabaseObject_setEnvironment(	VALUE	rb_self,
-												VALUE	rb_environment_or_name )	{
+																							VALUE	rb_environment )	{
 
-	VALUE	rb_environment				= Qnil;
+	VALUE	rb_klass	=	( ( TYPE( rb_self ) == T_CLASS ) ? rb_self : rb_funcall( rb_self, rb_intern( "class" ), 0 ) );
 
-	//	get the environment from runtime storage
-	if (	rb_environment_or_name != Qnil
-		&&	(	TYPE( rb_environment_or_name ) == T_STRING
-			 ||	TYPE( rb_environment_or_name ) == T_SYMBOL ) )	{
-		
-		VALUE	rb_environment_name	=	rb_obj_as_string( rb_environment_or_name );
-		
-		RPDB_Environment*	c_environment	=	RPDB_RuntimeStorageController_environmentWithName(	RPDB_RuntimeStorageController_sharedInstance(),
-																										StringValuePtr( rb_environment_name ) );
-		rb_environment	=	RUBY_RPDB_ENVIRONMENT( c_environment );
-		
-	}
-	//	otherwise we have an object - do parity checks for methods we require (none here)
-	else {
-		
-		rb_environment	=	rb_environment_or_name;
-		rb_RPDB_DatabaseObject_internal_requireObjectVerifyAsEnvironment( rb_environment );
-	}
-	
-	//	assuming we got here we can store our environment
-	rb_RPDB_DatabaseObject_internal_storeEnvironment(	rb_self,
-														rb_environment );
+	rb_iv_set(	rb_klass,
+							RPDB_RUBY_CLASS_VARIABLE_ENVIRONMENT_STORAGE,
+							rb_environment );
 	
 	return rb_self;
 }
@@ -401,7 +382,7 @@ VALUE rb_RPDB_DatabaseObject_database(	VALUE	rb_self )	{
 	
 	//	If we get here, we don't have a database set, so we're going to set one using our class name
 	rb_RPDB_DatabaseObject_setDatabase(	rb_self, 
-											rb_pathsafe_class_name );
+																			rb_pathsafe_class_name );
 	
 	//	Now we've set a database, we can return it normally
 	return rb_RPDB_DatabaseObject_database( rb_self );
@@ -456,7 +437,7 @@ VALUE rb_RPDB_DatabaseObject_databaseForIndex(	VALUE	rb_self,
 
 //	Sets default database for this class - defaults to classname.to_s if not set
 VALUE rb_RPDB_DatabaseObject_setDatabase(	VALUE	rb_self,
- 											VALUE	rb_database_or_name )	{
+																					VALUE	rb_database_or_name )	{
 
 	//	Args
 	//		1 Arg:
@@ -479,8 +460,8 @@ VALUE rb_RPDB_DatabaseObject_setDatabase(	VALUE	rb_self,
 		RPDB_Environment*	c_environment	=	NULL;
 		C_RPDB_ENVIRONMENT( rb_RPDB_DatabaseObject_environment( rb_self ), c_environment );
 		char*	c_database_name	=	StringValuePtr( rb_database_name_string );
-		RPDB_Database*	c_database	=	RPDB_DatabaseController_databaseWithName(	RPDB_Environment_databaseController( c_environment ),
-																					c_database_name );
+		RPDB_Database*	c_database	=	RPDB_DatabaseController_newDatabase(	RPDB_Environment_databaseController( c_environment ),
+																																				c_database_name );
 		
 		rb_database	=	RUBY_RPDB_DATABASE_OBJECT_DATABASE( c_database );
 	}
@@ -504,17 +485,17 @@ VALUE rb_RPDB_DatabaseObject_setDatabase(	VALUE	rb_self,
 	return rb_self;
 }
 
-/****************
-*  setDatabase  *
-****************/
+/*******************
+*  store_as_class  *
+*******************/
 
 //	Sets default database for this class - defaults to classname.to_s if not set
 VALUE rb_RPDB_DatabaseObject_setStoreAsClass(	VALUE	rb_self,
-												VALUE	rb_store_as_class	)	{
+																							VALUE	rb_store_as_class	)	{
 	
 	//	Set database to pathsafe version of superclass
 	rb_RPDB_DatabaseObject_setDatabase(	rb_self,
-											rb_RPDB_DatabaseObject_pathsafeClassname(	rb_store_as_class ) );
+																			rb_RPDB_DatabaseObject_pathsafeClassname(	rb_store_as_class ) );
 	return rb_self;
 }
 
@@ -1914,21 +1895,6 @@ VALUE rb_RPDB_DatabaseObject_internal_cursorObjectContextStorageHash(	VALUE	rb_c
 														Internal Storage Methods
 *******************************************************************************************************************************************************************************************/
 
-/************************
-*  storeEnvironment  *
-***********************/
-
-//	Environments are stored in the class EnvironmentObject they belong to
-void rb_RPDB_DatabaseObject_internal_storeEnvironment(	VALUE	rb_self,
-														VALUE	rb_environment	)	{
-	
-	VALUE	rb_klass	=	( ( TYPE( rb_self ) == T_CLASS ) ? rb_self : rb_funcall( rb_self, rb_intern( "class" ), 0 ) );
-
-	rb_iv_set(	rb_klass,
-				RPDB_RUBY_CLASS_VARIABLE_ENVIRONMENT_STORAGE,
-				rb_environment );
-}
-
 /********************
 *  getEnvironment  *
 *******************/
@@ -2527,8 +2493,7 @@ VALUE rb_RPDB_DatabaseObject_internal_retrieveCursorForParameterDescription(	VAL
 	RPDB_Database*	c_secondary_database	=	NULL;
 	C_RPDB_DATABASE_OBJECT_DATABASE( rb_secondary_database, c_secondary_database );
 	
-	RPDB_DatabaseCursor*	c_cursor	=	RPDB_DatabaseCursorController_cursorForName(	RPDB_Database_cursorController( c_secondary_database ),
-																							StringValuePtr( rb_cursor_name ) );
+	RPDB_DatabaseCursor*	c_cursor	=	RPDB_DatabaseCursorController_cursor(	RPDB_Database_cursorController( c_secondary_database ) );
 	//	We get the C cursor so we can wrap it as an rb_RPDB_DatabaseObjectCursor
 	VALUE	rb_cursor	=	RUBY_RPDB_DATABASE_OBJECT_CURSOR( c_cursor );
 	

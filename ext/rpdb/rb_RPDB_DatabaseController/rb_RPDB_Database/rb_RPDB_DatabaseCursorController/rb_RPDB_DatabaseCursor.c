@@ -467,9 +467,9 @@ VALUE rb_RPDB_DatabaseCursor_retrieve(	int	argc,
  										VALUE*	args,
 										VALUE	rb_database_cursor )	{
 
-	RPDB_Record*	c_record	=	rb_RPDB_DatabaseCursor_internal_retrieveRecord(	rb_database_cursor,
-																						argc,
-																						args );
+	RPDB_Record*	c_record	=	rb_RPDB_DatabaseCursor_internal_retrieveRecord(	argc,
+																																						args,
+																																						rb_database_cursor );
 
 	return rb_str_new(	(char*) RPDB_Record_rawData( c_record ),
 						RPDB_Record_dataSize( c_record ) );
@@ -483,9 +483,9 @@ VALUE rb_RPDB_DatabaseCursor_retrieveKey(	int	argc,
 											VALUE*	args,
 											VALUE	rb_database_cursor )	{
 	
-	RPDB_Record*	c_record	=	rb_RPDB_DatabaseCursor_internal_retrieveRecord(	rb_database_cursor,
-																						argc,
-																						args );
+	RPDB_Record*	c_record	=	rb_RPDB_DatabaseCursor_internal_retrieveRecord(	argc,
+																																						args,
+																																						rb_database_cursor );
 	
 	return rb_str_new(	(char*) RPDB_Record_rawKey( c_record ),
 					  RPDB_Record_keySize( c_record ) );
@@ -832,15 +832,15 @@ VALUE rb_RPDB_DatabaseCursor_iterateInSegments( VALUE	rb_database_cursor,
 *  iterate  *
 ****************************/
 
-VALUE rb_RPDB_DatabaseCursor_iterate( int	argc,
-									  VALUE*	args,
-									  VALUE	rb_database_cursor	)	{
+VALUE rb_RPDB_DatabaseCursor_iterate( int			argc,
+																			VALUE*	args,
+																			VALUE		rb_database_cursor	)	{
 	
 	VALUE	rb_items_per_segment	=	Qnil;
 	rb_scan_args(	argc,
-					args,
-					"01",
-					& rb_items_per_segment );
+								args,
+								"01",
+								& rb_items_per_segment );
 	/*
 	int	c_items_per_segment = ( rb_items_per_segment == Qnil ? 0 : FIX2INT( rb_items_per_segment ) );
 	if ( c_items_per_segment > 0 )	{
@@ -854,15 +854,15 @@ VALUE rb_RPDB_DatabaseCursor_iterate( int	argc,
 	//	Get our next record for the iteration
 	RPDB_Record*	c_record	=	NULL;
 	
-	while ( ( c_record = RPDB_DatabaseCursor_iterate( c_database_cursor ) ) != NULL )	{
+	while ( RPDB_DatabaseCursor_iterate( c_database_cursor, c_record ) )	{
 	
 		VALUE	rb_record_data	=	rb_str_new(	(char*) RPDB_Record_rawData( c_record ),
-												RPDB_Record_dataSize( c_record ) );
+																				RPDB_Record_dataSize( c_record ) );
 
 		//	If we don't have a block, we return an enumerator
 		RETURN_ENUMERATOR(	rb_database_cursor,
-							1, 
-							& rb_items_per_segment );
+												1, 
+												& rb_items_per_segment );
 		//	Otherwise we iterate the block
 		rb_yield( rb_record_data );
 	}
@@ -910,9 +910,9 @@ VALUE rb_RPDB_DatabaseCursor_iterateDuplicates(	int	argc,
 	
 	VALUE	rb_items_per_segment	=	Qnil;
 	rb_scan_args(	argc,
-					args,
-					"01",
-					& rb_items_per_segment );
+								args,
+								"01",
+								& rb_items_per_segment );
 	/*
 	int	c_items_per_segment = FIX2INT( ( rb_items_per_segment == Qnil ? 0 : rb_items_per_segment ) );
 	if ( c_items_per_segment > 0 )	{
@@ -925,15 +925,15 @@ VALUE rb_RPDB_DatabaseCursor_iterateDuplicates(	int	argc,
 		
 	RPDB_Record*	c_record	=	NULL;
 
-	while ( ( c_record = RPDB_DatabaseCursor_iterateDuplicates( c_database_cursor ) ) != NULL )	{
+	while ( RPDB_DatabaseCursor_iterateDuplicates( c_database_cursor, c_record ) )	{
 		
 		VALUE	rb_record_data	=	rb_str_new(	(char*) RPDB_Record_rawData( c_record ),
-												RPDB_Record_dataSize( c_record ) );
+																				RPDB_Record_dataSize( c_record ) );
 		
 		//	If we don't have a block, we return an enumerator
 		RETURN_ENUMERATOR(	rb_database_cursor,
-							1, 
-							& rb_items_per_segment );
+												1, 
+												& rb_items_per_segment );
 		//	Otherwise we iterate the block
 		rb_yield( rb_record_data );
 	}
@@ -981,9 +981,9 @@ VALUE rb_RPDB_DatabaseCursor_iterateKeys(	int	argc,
 
 	VALUE	rb_items_per_segment	=	Qnil;
 	rb_scan_args(	argc,
-					args,
-					"01",
-					& rb_items_per_segment );
+								args,
+								"01",
+								& rb_items_per_segment );
 	/*
 	int	c_items_per_segment = ( rb_items_per_segment == Qnil ? INT2FIX( 0 ) : rb_items_per_segment );
 	if ( c_items_per_segment > 0 )	{
@@ -996,10 +996,10 @@ VALUE rb_RPDB_DatabaseCursor_iterateKeys(	int	argc,
 	
 	RPDB_Record*	c_record	=	NULL;
 
-	while ( ( c_record = RPDB_DatabaseCursor_iterateKeys( c_database_cursor ) ) != NULL )	{
+	while ( RPDB_DatabaseCursor_iterateKeys( c_database_cursor, c_record ) )	{
 		
 		VALUE	rb_record_key	=	rb_str_new(	(char*) RPDB_Record_rawKey( c_record ),
-												RPDB_Record_keySize( c_record ) );
+																			RPDB_Record_keySize( c_record ) );
 		
 		//	If we don't have a block, we return an enumerator
 		RETURN_ENUMERATOR(	rb_database_cursor,
@@ -1023,13 +1023,13 @@ VALUE rb_RPDB_DatabaseCursor_toArray( VALUE rb_database_cursor )	{
 	VALUE	rb_key_enum		=	Qnil;
 	VALUE	rb_return_array	=	rb_ary_new();
 	while ( ( rb_key_enum = rb_funcall(	rb_database_cursor,
-										rb_intern( "each" ),
-										0 ) ) )	{
+																			rb_intern( "each" ),
+																			0 ) ) )	{
 		
 		rb_ary_push(	rb_return_array,
-						rb_funcall(	rb_key_enum,
-									rb_intern( "next" ),
-									0 ) );
+									rb_funcall(	rb_key_enum,
+															rb_intern( "next" ),
+															0 ) );
 	}
 	
 	if ( RARRAY_LEN( rb_return_array ) == 0 )	{
@@ -1049,9 +1049,9 @@ VALUE rb_RPDB_DatabaseCursor_toArray( VALUE rb_database_cursor )	{
 
 //	Deletes key/pair to which database_cursor refers
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_del.html
-VALUE rb_RPDB_DatabaseCursor_delete(	int	argc,
- 										VALUE*	args,
-										VALUE	rb_database_cursor )	{
+VALUE rb_RPDB_DatabaseCursor_delete(	int			argc,
+																			VALUE*	args,
+																			VALUE		rb_database_cursor )	{
 
 	RPDB_DatabaseCursor*	c_database_cursor;
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
@@ -1065,12 +1065,12 @@ VALUE rb_RPDB_DatabaseCursor_delete(	int	argc,
 	else	{
 	
 		rb_RPDB_Database_internal_serializeRubyObject(	args[ 0 ],
-														c_record->key->wrapped_bdb_dbt );
+																										c_record->key->wrapped_bdb_dbt );
 		
 		//	1 arg - key, record, raw, or record number (if recno)
 		if ( argc == 1 )	{
 			RPDB_DatabaseCursor_deleteRecord(	c_database_cursor,
-												c_record	);
+																				c_record	);
 			//	FIX - for recno
 			//	record	=	RPDB_DatabaseCursor_deleteRecordWithNumber();
 		}
@@ -1079,11 +1079,11 @@ VALUE rb_RPDB_DatabaseCursor_delete(	int	argc,
 		if ( argc == 2 )	{
 			
 			rb_RPDB_Database_internal_serializeRubyObject(	args[ 1 ],
-															c_record->data->wrapped_bdb_dbt );
+																											c_record->data->wrapped_bdb_dbt );
 			
 			//	FIX - make sure deleteRecord supports exact pair deletion
 			RPDB_DatabaseCursor_deleteRecord(	c_database_cursor,
-												c_record );
+																				c_record );
 		}
 	}
 	
@@ -1096,9 +1096,9 @@ VALUE rb_RPDB_DatabaseCursor_delete(	int	argc,
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-RPDB_Record* rb_RPDB_DatabaseCursor_internal_retrieveRecord(	VALUE	rb_database_cursor,
-																int		argc,
-																VALUE*	args )	{
+RPDB_Record* rb_RPDB_DatabaseCursor_internal_retrieveRecord(	int			argc,
+																															VALUE*	args,
+																															VALUE		rb_database_cursor )	{
 	RPDB_DatabaseCursor*	c_database_cursor;
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 	

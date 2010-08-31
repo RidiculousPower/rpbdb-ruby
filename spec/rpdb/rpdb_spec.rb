@@ -1,4 +1,4 @@
-require_relative '../../lib/rpdb/rpdb'
+require_relative '../../lib/rpdb.rb'
 
 describe RPDB do
 
@@ -54,9 +54,12 @@ describe RPDB do
   end
 
   it "can provide access to an existing environment by name" do
-    @environment = RPDB::Environment.new( $environment_name, $environment_path )
-    environment = RPDB.environment( $environment_name )
-    environment.should == @environment
+    environment = RPDB::Environment.new( $environment_name, $environment_path )
+    same_environment = RPDB.environment( $environment_name )
+    same_environment.should == environment
+    # make sure we don't get an environment that doesn't exist - as much as possible
+    non_existant = RPDB.environment( :non_existant_name )
+    non_existant.should == nil
   end
   
 end

@@ -45,11 +45,7 @@ void Init_RPDB_MutexController()	{
 	rb_define_method(						rb_RPDB_MutexController, 	"parent_environment",																						rb_RPDB_MutexController_parentEnvironment,																0 	);
 	rb_define_alias(						rb_RPDB_MutexController, 	"environment",																									"parent_environment"	);
 
-	//	FIX - change to mutexWithName
-	rb_define_method(						rb_RPDB_MutexController, 	"mutex_with_name",																						rb_RPDB_MutexController_mutexForName,																				0 	);
-	rb_define_alias(						rb_RPDB_MutexController, 	"mutex",																												"mutex_with_name"	);
-	rb_define_alias(						rb_RPDB_MutexController, 	"[]",																														"mutex_with_name"	);
-	rb_define_method(						rb_RPDB_MutexController, 	"all",																													rb_RPDB_MutexController_allMutexes,																			0 	);
+//	rb_define_method(						rb_RPDB_MutexController, 	"mutex",																						rb_RPDB_MutexController_mutex,																				0 	);
 	rb_define_method(						rb_RPDB_MutexController, 	"close_all",																										rb_RPDB_MutexController_closeAllMutexes,																				0 	);
 
 }
@@ -113,36 +109,6 @@ VALUE	rb_RPDB_MutexController_parentEnvironment(	VALUE	rb_mutex_controller )	{
 	C_RPDB_MUTEX_CONTROLLER( rb_mutex_controller, c_mutex_controller );
 
 	return RUBY_RPDB_ENVIRONMENT( RPDB_MutexController_parentEnvironment( c_mutex_controller ) );
-}
-
-/*********************
-*  mutexForName  *
-*********************/
-
-VALUE	rb_RPDB_MutexController_mutexForName(	VALUE	rb_mutex_controller,
- 													VALUE	rb_mutex_name )	{
-
-	RPDB_MutexController*		c_mutex_controller;
-	C_RPDB_MUTEX_CONTROLLER( rb_mutex_controller, c_mutex_controller );
-
-	return RUBY_RPDB_MUTEX( RPDB_MutexController_mutexForName(	c_mutex_controller,
-																		StringValuePtr( rb_mutex_name ) ) );
-}
-
-/*****************
-*  allMutexes  *
-*****************/
-
-//	FIX - return array
-//	Return a list of database names that have been created and stored in this controller
-VALUE	rb_RPDB_MutexController_allMutexes( VALUE	rb_mutex_controller )	{
-
-	RPDB_MutexController*		c_mutex_controller;
-	C_RPDB_MUTEX_CONTROLLER( rb_mutex_controller, c_mutex_controller );
-
-	RPDB_MutexController_allMutexes( c_mutex_controller );
-	
-	return rb_mutex_controller;
 }
 
 /*************************

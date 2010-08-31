@@ -137,16 +137,8 @@ VALUE rb_RPDB_Database_new(	int			argc,
 								& rb_database_name,
 								& rb_parent_environment_or_name_string_or_symbol_or_database_controller );
 	
-	//	if we have an environment identifier, get the environment
-	if (		TYPE( rb_parent_environment_or_name_string_or_symbol_or_database_controller ) == T_STRING
-			||	TYPE( rb_parent_environment_or_name_string_or_symbol_or_database_controller ) == T_SYMBOL )	{
-		
-		VALUE	rb_parent_environment_name	=	rb_parent_environment_or_name_string_or_symbol_or_database_controller;
-		rb_parent_environment							=	rb_RPDB_environmentWithName(	rb_mRPDB,
-																																			rb_parent_environment_name );
-	}
 	//	if we have an environment or database controller, figure out which
-	else if ( rb_parent_environment_or_name_string_or_symbol_or_database_controller != Qnil ) {
+	if ( rb_parent_environment_or_name_string_or_symbol_or_database_controller != Qnil ) {
 		
 		VALUE	rb_arg_klass			=	rb_class_of( rb_parent_environment_or_name_string_or_symbol_or_database_controller );
 		VALUE	rb_arg_ancestors	=	rb_mod_ancestors( rb_arg_klass );

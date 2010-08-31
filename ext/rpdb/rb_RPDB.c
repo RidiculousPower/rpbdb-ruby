@@ -252,9 +252,6 @@ void Init_rpdb()	{
 	rb_define_singleton_method(	rb_mRPDB,		"extends?",									rb_RPDB_extends,								-1 );
 
 	rb_define_singleton_method(	rb_mRPDB, 	"default_environment",			rb_RPDB_defaultEnvironment,			0 );
-	rb_define_singleton_method(	rb_mRPDB, 	"environment_with_name",		rb_RPDB_environmentWithName,		1 );
-	rb_define_singleton_method(	rb_mRPDB, 	"environment_with_handle",	rb_RPDB_environmentWithName,		1 );
-	rb_define_singleton_method(	rb_mRPDB, 	"environment",							rb_RPDB_environmentWithName,		1 );
 	rb_define_singleton_method(	rb_mRPDB, 	"environments",							rb_RPDB_internal_environmentsHash,				0 );
 	
 	rb_define_singleton_method(	rb_mRPDB, 	"version",									rb_RPDB_version,								0 );
@@ -512,21 +509,6 @@ VALUE rb_RPDB_defaultEnvironment( VALUE rb_module_self __attribute__ ((unused ))
 	return rb_environment;	
 }
 
-/**************************
-*  environment_with_name  *
-**************************/
-
-VALUE rb_RPDB_environmentWithName(	VALUE	rb_module_self,
-																		VALUE rb_environment_name )	{
-	
-	VALUE	rb_environments_hash	=	rb_RPDB_internal_environmentsHash( rb_module_self );
-		
-	VALUE	rb_environment				=	rb_RPDB_internal_objectFromIDHashWithName(	rb_environments_hash,
-																																						rb_environment_name );
-
-	return rb_environment;
-}
-
 /*******************************************************************************************************************************************************************************************
  																																				Version Info
 *******************************************************************************************************************************************************************************************/
@@ -769,69 +751,16 @@ VALUE rb_RPDB_internal_environmentsHash(	VALUE rb_module_self )	{
 	VALUE	rb_environment_storage_hash		=	rb_iv_get(	rb_module_self,
 																										RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENTS_HASH );
 	if ( rb_environment_storage_hash == Qnil )	{
-		rb_environment_storage_hash = rb_hash_new();
+		VALUE	rb_weakhash_class	=	rb_const_get( rb_cHash,
+																						rb_intern( "Weak" ) );
+		rb_environment_storage_hash = rb_funcall(	rb_weakhash_class,
+																							rb_intern( "new" ),
+																							0 );
 		rb_iv_set(	rb_module_self,
 								RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENTS_HASH,
 								rb_environment_storage_hash );
 	}
 	
 	return rb_environment_storage_hash;
-}
-
-/*****************************
-*  objectFromIDHashWithName  *
-*****************************/
-
-//	A convenience function to return an object for ID in hash for key,
-//	checking to make sure that the ID is not a zombie
-VALUE rb_RPDB_internal_objectFromIDHashWithName(	VALUE	rb_hash,
-																									VALUE	rb_hash_key )	{
-
-	if ( TYPE( rb_hash_key ) == T_STRING )	{
-		rb_hash_key	=	ID2SYM( rb_to_id( rb_hash_key ) );
-	}
-
-	VALUE	rb_obj_id				=	rb_hash_aref(	rb_hash,
-																				rb_hash_key );	
-	
-	VALUE	rb_obj		=	Qnil;
-	if ( rb_obj_id != Qnil )	{
-		VALUE	rb_object_space		=	RUBY_CLASS( "ObjectSpace" );
-//		rb_funcall(	rb_object_space,
-//								rb_intern( "garbage_collect" ),
-//								0 );
-		rb_obj					=	rb_funcall(	rb_object_space,
-																	rb_intern( "_id2ref" ),
-																	1,
-																	rb_obj_id );
-		
-			RVALUE*	rb_obj_rv_value	=	(RVALUE*) rb_obj;
-			struct RBasic*	rb_basic				=	RBASIC(rb_obj);
-			struct RData*		rb_data					=	RDATA(rb_obj);
-
-		//	Check for zombie objects that are finished and waiting to be garbage collected
-//		if ( ! ( RBASIC(rb_obj)->flags & FL_MARK ) )	{			
-
-			int deferred;
-			rb_vm_t*	vm	=	GET_VM();
-			struct rb_objspace* objspace_struct	=	vm->objspace;
-			rb_objspace_t* objspace	=	objspace_struct;
-			//	if we have flags
-			if (		RBASIC(rb_obj)->flags 
-				//	and either should be deferred
-				&&	(		( deferred = obj_free( objspace, (VALUE) rb_obj ) ) 
-						//	or have a finalizer
-						||	( 	(FL_TEST( rb_obj, FL_FINALIZE ) ) ) ) ) {
-								
-				//	if we find a zombie, remove its id and return nil
-				rb_hash_delete(	rb_hash,
-												rb_hash_key );
-				rb_obj	= Qnil;
-			}
-		}
-//	}
-
-	return rb_obj;
-	
 }
 

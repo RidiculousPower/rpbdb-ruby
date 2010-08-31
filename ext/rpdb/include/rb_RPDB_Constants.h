@@ -366,5 +366,7 @@
 	#define RPDB_RUBY_ERROR_MESSAGE_DUPLICATES_AND_KEY_OR_BLOCK_REQUIRED			"Duplicates must be enabled and key must be set or must be inside iterate block to iterate duplicates."
 	#define RPDB_RUBY_ERROR_MESSAGE_ENVIRONMENT_NOT_FOUND											"Requested Environment was missing."
 	#define RPDB_RUBY_ERROR_MESSAGE_DATABASE_CONTROLLER_NOT_FOUND							"Requested Environment was missing."
+	#define RPDB_RUBY_ERROR_ENVIRONMENT_WITH_NAME_ALREADY_EXISTS							"Environment with requested name already exists."
+	
 
 #endif

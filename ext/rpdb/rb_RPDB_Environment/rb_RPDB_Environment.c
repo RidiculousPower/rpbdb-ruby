@@ -144,17 +144,6 @@ VALUE rb_RPDB_Environment_new(	int			argc,
 	
 	VALUE	rb_environment	=	Qnil;
 	
-	//	get environments hash
-	VALUE	rb_environments_hash	=	rb_RPDB_internal_environmentsHash( rb_mRPDB );
-
-	if ( rb_environment_name != Qnil )	{
-
-		//	look to see if our environment is already stored		
-		rb_environment		=	rb_RPDB_environmentWithName(	rb_mRPDB,
-																											rb_environment_name );
-		
-	}
-	
 	//	if we don't have a stored environment, create a new one
 	if ( rb_environment == Qnil )	{
 	
@@ -167,20 +156,19 @@ VALUE rb_RPDB_Environment_new(	int			argc,
 		if ( rb_environment_home_directory != Qnil )	{
 			c_environment_home_directory	=	strdup( StringValuePtr( rb_environment_home_directory ) );
 		}
-		RPDB_Environment*	c_environment			=	RPDB_Environment_new(	c_environment_name,
-																																c_environment_home_directory );
+		RPDB_Environment*	c_environment			=	RPDB_Environment_new(	c_environment_home_directory );
 		
 		rb_environment	=	RUBY_RPDB_ENVIRONMENT_WITH_FREE( c_environment );
-		rb_gc_mark( rb_environment );
 
 		VALUE	rb_handle	=	rb_RPDB_Environment_handle( rb_environment );
 
-		VALUE	rb_environment_id	=	rb_obj_id( rb_environment );
-
 		//	store environment in hash
-		rb_hash_aset(	rb_environments_hash,
-									rb_handle,
-									rb_environment_id );
+		VALUE	rb_environments_hash	=	rb_RPDB_internal_environmentsHash( rb_mRPDB );
+		rb_funcall(	rb_environments_hash,
+								rb_intern( "[]=" ),
+								2,
+								rb_handle,
+								rb_environment );
 
 		VALUE	argv[ 2 ];
 		argv[ 0 ]	=	rb_environment_name;

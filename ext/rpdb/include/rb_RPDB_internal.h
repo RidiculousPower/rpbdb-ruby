@@ -9,7 +9,5 @@ VALUE rb_RPDB_internal_classesWaitingForDefaultEnvironment();
 VALUE rb_RPDB_internal_classesWaitingForIdentification();
 VALUE rb_RPDB_internal_classesWaitingForInitialization();
 VALUE rb_RPDB_internal_environmentsHash(	VALUE rb_module_self );
-VALUE rb_RPDB_internal_objectFromIDHashWithName(	VALUE	rb_hash,
-																									VALUE	rb_hash_key );
 	
 #endif
