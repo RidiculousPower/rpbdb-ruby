@@ -130,33 +130,28 @@ VALUE rb_RPDB_Database_new(	int			argc,
 	
 	/*------------------------------------------------------*/
 
-	VALUE	rb_parent_environment_or_name_string_or_symbol_or_database_controller	=	Qnil;
+	VALUE	rb_parent_environment_or_directory_or_database_controller	=	Qnil;
 	rb_scan_args(	argc,
 								args,
 								"11",
 								& rb_database_name,
-								& rb_parent_environment_or_name_string_or_symbol_or_database_controller );
+								& rb_parent_environment_or_directory_or_database_controller );
 	
 	//	if we have an environment or database controller, figure out which
-	if ( rb_parent_environment_or_name_string_or_symbol_or_database_controller != Qnil ) {
+	if ( rb_parent_environment_or_directory_or_database_controller != Qnil ) {
 		
-		VALUE	rb_arg_klass			=	rb_class_of( rb_parent_environment_or_name_string_or_symbol_or_database_controller );
+		VALUE	rb_arg_klass			=	rb_class_of( rb_parent_environment_or_directory_or_database_controller );
 		VALUE	rb_arg_ancestors	=	rb_mod_ancestors( rb_arg_klass );
 		if ( rb_ary_includes(	rb_arg_ancestors,
 													rb_RPDB_DatabaseController ) == Qtrue )	{
 
-			rb_parent_database_controller	=	rb_parent_environment_or_name_string_or_symbol_or_database_controller;
+			rb_parent_database_controller	=	rb_parent_environment_or_directory_or_database_controller;
 		}
 		else if ( rb_ary_includes(	rb_arg_ancestors,
 																rb_RPDB_Environment ) == Qtrue )	{
 			
-			rb_parent_environment					=	rb_parent_environment_or_name_string_or_symbol_or_database_controller;
+			rb_parent_environment					=	rb_parent_environment_or_directory_or_database_controller;
 		}
-	}
-	//	if we have only a name, try to get a default environment
-	else {
-		
-		rb_parent_environment					=	rb_RPDB_defaultEnvironment( rb_mRPDB );
 	}
 	
 	//	Raise exceptions if we can't find a parent database controller

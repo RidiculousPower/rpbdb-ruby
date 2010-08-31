@@ -43,23 +43,4 @@ describe RPDB do
     
   end
   
-  ##################
-  #  environments  #
-  ##################
-  
-  it "can provide references to existing environments" do
-    environments_hash = RPDB.environments
-    environments_hash.should_not == nil
-    environments_hash.is_a?( Hash ).should == true
-  end
-
-  it "can provide access to an existing environment by name" do
-    environment = RPDB::Environment.new( $environment_name, $environment_path )
-    same_environment = RPDB.environment( $environment_name )
-    same_environment.should == environment
-    # make sure we don't get an environment that doesn't exist - as much as possible
-    non_existant = RPDB.environment( :non_existant_name )
-    non_existant.should == nil
-  end
-  
 end

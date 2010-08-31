@@ -552,8 +552,8 @@ VALUE rb_RPDB_DatabaseCursor_retrievePartialKeyDataPair(	VALUE	rb_database_curso
 
 VALUE rb_RPDB_DatabaseCursor_current(	VALUE	rb_database_cursor )	{
 	return rb_RPDB_DatabaseCursor_retrieve(	0,
-												NULL,
-												rb_database_cursor );
+																					NULL,
+																					rb_database_cursor );
 }
 
 /*************************
@@ -562,8 +562,8 @@ VALUE rb_RPDB_DatabaseCursor_current(	VALUE	rb_database_cursor )	{
 
 VALUE rb_RPDB_DatabaseCursor_currentKey(	VALUE	rb_database_cursor )	{
 	return rb_RPDB_DatabaseCursor_retrieveKey(	0,
-												NULL,
-												rb_database_cursor );
+																							NULL,
+																							rb_database_cursor );
 }
 
 /****************
@@ -579,7 +579,9 @@ VALUE rb_RPDB_DatabaseCursor_retrieveFirst( VALUE	rb_database_cursor )	{
 	RPDB_Record*	record	=	RPDB_DatabaseCursor_retrieveFirst(	c_database_cursor );
 	
 	VALUE	rb_return_string	=	rb_str_new(	(char*) RPDB_Record_rawData( record ),
-												RPDB_Record_dataSize( record ) );
+																				RPDB_Record_dataSize( record ) );
+	
+	RPDB_Record_free( & record );
 	
 	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
 }

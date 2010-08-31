@@ -2,12 +2,7 @@ require_relative '../../../lib/rpdb.rb'
 
 describe RPDB::Environment do
 
-  $environment_name           = :spec_environment
   $environment_path             = '/tmp/rpdb_spec_environment_home'
-
-#  after( :each ) do
-#    environment = nil
-#  end
   
   ################
   #  self.new    #
@@ -21,36 +16,8 @@ describe RPDB::Environment do
   # RPDB::Environment.new( './directory' )
   # RPDB::Environment.new
   
-  it "can be created with a name symbol and home directory string" do
-    environment = RPDB::Environment.new( $environment_name, $environment_path )
-    environment.should_not == nil
-    environment.is_a?( RPDB::Environment ).should == true
-    environment.directory.should == $environment_path
-  end
-  
-  it "can be created with a name string and home directory string" do
-    environment = RPDB::Environment.new( $environment_name.to_s, $environment_path )
-    environment.should_not == nil
-    environment.is_a?( RPDB::Environment ).should == true
-    environment.directory.should == $environment_path
-  end
-
   # environment without directory specified will be created in ./
   # this environment will be deleted by the :erase test
-
-  it "can be created with a name symbol" do
-    environment = RPDB::Environment.new( $environment_name )
-    environment.should_not == nil
-    environment.is_a?( RPDB::Environment ).should == true
-    environment.directory.should == './'
-  end
-
-  it "can be created with a name string" do
-    environment = RPDB::Environment.new( $environment_name.to_s )
-    environment.should_not == nil
-    environment.is_a?( RPDB::Environment ).should == true
-    environment.directory.should == './'
-  end
 
   it "can be created with home directory string" do
     environment = RPDB::Environment.new( $environment_path )
@@ -73,7 +40,7 @@ describe RPDB::Environment do
   # environment.init_for_storage_in_memory
 
   it "can be initialized for storage in memory" do
-    environment = RPDB::Environment.new( $environment_name, $environment_path )
+    environment = RPDB::Environment.new( $environment_path )
     environment.init_for_storage_in_memory
     
     # now we have to check settings to verify
@@ -97,7 +64,7 @@ describe RPDB::Environment do
   # environment.identify_for_rpdb_as
   
   it "can identify as any number or type of arbitrary objects" do
-    environment  = RPDB::Environment.new( $environment_name, $environment_path )
+    environment  = RPDB::Environment.new( $environment_path )
     identifiers   = [ :a_symbol, 
                       'a_string', 
                       :another_symbol, 
@@ -118,7 +85,7 @@ describe RPDB::Environment do
   # environment.open
 
   it "can open" do
-    environment = RPDB::Environment.new( $environment_name, $environment_path )
+    environment = RPDB::Environment.new( $environment_path )
     environment.is_open?.should == false
     environment.open
     environment.is_open?.should == true
@@ -132,22 +99,11 @@ describe RPDB::Environment do
   # environment.close
 
   it "can close" do
-    environment = RPDB::Environment.new( $environment_name, $environment_path )
+    environment = RPDB::Environment.new( $environment_path )
     environment.open
     environment.is_open?.should == true
     environment.close
     environment.is_open?.should == false    
-  end
-
-  ##########
-  #  name  #
-  ##########
-
-  # environment.name
-  
-  it "can report its name" do
-    environment = RPDB::Environment.new( $environment_name, $environment_path )
-    environment.name.should_not == nil
   end
 
   ###########
@@ -171,7 +127,7 @@ describe RPDB::Environment do
   # environment.database_controller
 
   it "has a database controller" do
-    environment = RPDB::Environment.new( $environment_name, $environment_path )
+    environment = RPDB::Environment.new( $environment_path )
     environment.open
     database_controller = environment.database_controller
     database_controller.should_not == nil
@@ -186,7 +142,7 @@ describe RPDB::Environment do
   # environment.transaction_controller
 
   it "has a transaction controller" do
-    environment = RPDB::Environment.new( $environment_name, $environment_path )
+    environment = RPDB::Environment.new( $environment_path )
     environment.open
     transaction_controller = environment.transaction_controller
     transaction_controller.should_not == nil
@@ -201,7 +157,7 @@ describe RPDB::Environment do
   # environment.settings_controller
   
   it "has a settings controller" do
-    environment = RPDB::Environment.new( $environment_name, $environment_path )
+    environment = RPDB::Environment.new( $environment_path )
     environment.open
     settings_controller = environment.settings_controller
     settings_controller.should_not == nil

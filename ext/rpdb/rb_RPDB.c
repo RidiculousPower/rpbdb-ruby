@@ -252,7 +252,6 @@ void Init_rpdb()	{
 	rb_define_singleton_method(	rb_mRPDB,		"extends?",									rb_RPDB_extends,								-1 );
 
 	rb_define_singleton_method(	rb_mRPDB, 	"default_environment",			rb_RPDB_defaultEnvironment,			0 );
-	rb_define_singleton_method(	rb_mRPDB, 	"environments",							rb_RPDB_internal_environmentsHash,				0 );
 	
 	rb_define_singleton_method(	rb_mRPDB, 	"version",									rb_RPDB_version,								0 );
 	rb_define_singleton_method(	rb_mRPDB, 	"version_major",						rb_RPDB_versionMajor,						0 );
@@ -741,26 +740,3 @@ VALUE rb_RPDB_internal_classesWaitingForInitialization()	{
 	
 	return rb_init_classes_wait_list_array;
 }
-
-/*****************
-*  environments  *
-*****************/
-
-VALUE rb_RPDB_internal_environmentsHash(	VALUE rb_module_self )	{
-	
-	VALUE	rb_environment_storage_hash		=	rb_iv_get(	rb_module_self,
-																										RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENTS_HASH );
-	if ( rb_environment_storage_hash == Qnil )	{
-		VALUE	rb_weakhash_class	=	rb_const_get( rb_cHash,
-																						rb_intern( "Weak" ) );
-		rb_environment_storage_hash = rb_funcall(	rb_weakhash_class,
-																							rb_intern( "new" ),
-																							0 );
-		rb_iv_set(	rb_module_self,
-								RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENTS_HASH,
-								rb_environment_storage_hash );
-	}
-	
-	return rb_environment_storage_hash;
-}
-

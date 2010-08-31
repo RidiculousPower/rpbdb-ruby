@@ -108,75 +108,30 @@ VALUE rb_RPDB_Environment_new(	int			argc,
 																VALUE*	args,
 																VALUE		rb_klass_self __attribute__ ((unused)) )	{
 
-	VALUE	rb_environment_name							=	Qnil;
 	VALUE	rb_environment_home_directory		=	Qnil;
 
 	/*------------------------------------------------------*/
 
-	VALUE	rb_environment_name_or_directory	=	Qnil;
 	rb_scan_args(	argc,
 								args,
-								"02",
-								& rb_environment_name_or_directory,
+								"01",
 								& rb_environment_home_directory );
-
-	//	if rb_environment_home_directory is not nil then rb_environment_name_or_directory is the handle
-	if ( rb_environment_home_directory != Qnil )	{
-		rb_environment_name	=	rb_environment_name_or_directory;
-	}
-	//	otherwise if rb_environment_name_or_directory is a string with '/' we have a home directory
-	else if (			TYPE( rb_environment_name_or_directory ) == T_STRING
-						&&	rb_funcall(	rb_environment_name_or_directory,
-														rb_intern( "include?" ),
-														1,
-														rb_str_new( "/", 1 ) ) == Qtrue )	{
-		
-		rb_environment_home_directory	=	rb_environment_name_or_directory;
-	}
-	//	if no '/', or if it's a symbol, we have a handle (which we turn into a name)
-	else if ( rb_environment_name_or_directory != Qnil )	{
-		
-		rb_environment_name	=	rb_environment_name_or_directory;
-	}
-	//	otherwise we have nil/nil and do nothing, C instance manages
 
 	/*------------------------------------------------------*/
 	
-	VALUE	rb_environment	=	Qnil;
-	
-	//	if we don't have a stored environment, create a new one
-	if ( rb_environment == Qnil )	{
-	
-		char*	c_environment_name	=	NULL;
-		if ( rb_environment_name != Qnil )	{
-			rb_environment_name	=	rb_obj_as_string( rb_environment_name );
-			c_environment_name						=	strdup( StringValuePtr( rb_environment_name ) );
-		}
-		char*	c_environment_home_directory	=	NULL;
-		if ( rb_environment_home_directory != Qnil )	{
-			c_environment_home_directory	=	strdup( StringValuePtr( rb_environment_home_directory ) );
-		}
-		RPDB_Environment*	c_environment			=	RPDB_Environment_new(	c_environment_home_directory );
-		
-		rb_environment	=	RUBY_RPDB_ENVIRONMENT_WITH_FREE( c_environment );
-
-		VALUE	rb_handle	=	rb_RPDB_Environment_handle( rb_environment );
-
-		//	store environment in hash
-		VALUE	rb_environments_hash	=	rb_RPDB_internal_environmentsHash( rb_mRPDB );
-		rb_funcall(	rb_environments_hash,
-								rb_intern( "[]=" ),
-								2,
-								rb_handle,
-								rb_environment );
-
-		VALUE	argv[ 2 ];
-		argv[ 0 ]	=	rb_environment_name;
-		argv[ 1 ]	=	rb_environment_home_directory;
-		rb_obj_call_init(	rb_environment,
-											2, 
-											argv );
+	char*	c_environment_home_directory	=	NULL;
+	if ( rb_environment_home_directory != Qnil )	{
+		c_environment_home_directory	=	strdup( StringValuePtr( rb_environment_home_directory ) );
 	}
+	RPDB_Environment*	c_environment			=	RPDB_Environment_new(	c_environment_home_directory );
+	
+	VALUE	rb_environment	=	RUBY_RPDB_ENVIRONMENT_WITH_FREE( c_environment );
+
+	VALUE	argv[ 2 ];
+	argv[ 0 ]	=	rb_environment_home_directory;
+	rb_obj_call_init(	rb_environment,
+										1, 
+										argv );
 	
 	return rb_environment;
 }
@@ -259,8 +214,8 @@ VALUE rb_RPDB_Environment_identifiesAs(	int			argc,
 //	sets identifiers for class
 //	resets identifiers if called multiple times
 VALUE rb_RPDB_Environment_setIdentifiesAs(	int	argc,
-											VALUE*	args,
-											VALUE	rb_environment )	{
+																						VALUE*	args,
+																						VALUE	rb_environment )	{
 
 	VALUE	rb_environment_identifiers_array	=	rb_RPDB_Environment_identifiers( rb_environment );
 	
