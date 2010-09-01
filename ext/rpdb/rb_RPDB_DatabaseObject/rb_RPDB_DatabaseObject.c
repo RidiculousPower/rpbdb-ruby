@@ -2339,8 +2339,8 @@ VALUE rb_RPDB_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataHash(	VALUE
 		
 		//	foreach item (once): 
 		rb_hash_foreach(	rb_unique_key_parameter, 
-							& rb_RPDB_DatabaseObject_internal_retrieveCursorsForEachParameterDescriptionForJoinCursor,
-							rb_passed_args );
+											& rb_RPDB_DatabaseObject_internal_retrieveCursorsForEachParameterDescriptionForJoinCursor,
+											rb_passed_args );
 		
 		//	rb_passed_args should end up with 1 element (rb_klass_self) + rb_self
 		
@@ -2355,12 +2355,9 @@ VALUE rb_RPDB_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataHash(	VALUE
 			//	rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CURSOR_FOR_JOIN_REPORTED_NO_RECORD );
 		}
 		
-		VALUE	rb_index_name	=	rb_ary_shift( rb_cursor_array );
-		
 		//	now we have to create the join cursor - we name the name primary_name__join__idx-idx-idx
 		rb_return_object	=	rb_RPDB_DatabaseJoinController_join(	rb_RPDB_Database_joinController( rb_RPDB_DatabaseObject_database( rb_klass_self ) ),
-																		rb_index_name,
-																		rb_cursor_array );
+																															rb_cursor_array );
 	}
 	
 	return rb_return_object;
@@ -2471,24 +2468,7 @@ VALUE rb_RPDB_DatabaseObject_internal_retrieveCursorForParameterDescription(	VAL
 																					VALUE	rb_key_value  )	{
 		
 	VALUE	rb_secondary_database	=	rb_RPDB_DatabaseObject_requireDatabaseForIndex(	rb_self,
-																							rb_key_method_symbol );
-
-	unsigned long	c_obj_id				=	(unsigned long) rb_obj_id( rb_self );
-	char			c_obj_id_string[ 20 ];
-	sprintf( c_obj_id_string, "%lu", c_obj_id );
-	
-	VALUE	rb_obj_id_string	=	rb_str_new2( c_obj_id_string );
-
-	//	to prevent conflict in threaded environment, use key_method_symbol-key_value-obj_id
-	//	this permits any object to have one thread per key method symbol/value request
-	//	presumably there is no reason that the same object would be explicitly requesting a cursor for the same key/value pair more than once at the same time
-	VALUE	rb_key_value_string	=	rb_str_concat( rb_str_concat( rb_str_concat(	rb_str_concat(	rb_sym_to_s( rb_key_method_symbol ), 
-																									rb_str_new( "-", 1 ) ),
-																									rb_obj_as_string( rb_key_value ) ),
-																									rb_str_new( "-", 1 ) ),
-																									rb_obj_id_string );
-	
-	VALUE	rb_cursor_name		=	rb_key_value_string;
+																																								rb_key_method_symbol );
 	
 	RPDB_Database*	c_secondary_database	=	NULL;
 	C_RPDB_DATABASE_OBJECT_DATABASE( rb_secondary_database, c_secondary_database );

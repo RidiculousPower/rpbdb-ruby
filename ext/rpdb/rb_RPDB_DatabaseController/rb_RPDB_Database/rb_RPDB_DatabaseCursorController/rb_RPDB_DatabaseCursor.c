@@ -856,7 +856,7 @@ VALUE rb_RPDB_DatabaseCursor_iterate( int			argc,
 	//	Get our next record for the iteration
 	RPDB_Record*	c_record	=	NULL;
 	
-	while ( RPDB_DatabaseCursor_iterate( c_database_cursor, c_record ) )	{
+	while ( ( c_record = RPDB_DatabaseCursor_iterate( c_database_cursor, c_record ) ) )	{
 	
 		VALUE	rb_record_data	=	rb_str_new(	(char*) RPDB_Record_rawData( c_record ),
 																				RPDB_Record_dataSize( c_record ) );
@@ -927,7 +927,7 @@ VALUE rb_RPDB_DatabaseCursor_iterateDuplicates(	int	argc,
 		
 	RPDB_Record*	c_record	=	NULL;
 
-	while ( RPDB_DatabaseCursor_iterateDuplicates( c_database_cursor, c_record ) )	{
+	while ( ( c_record = RPDB_DatabaseCursor_iterateDuplicates( c_database_cursor, c_record ) ) )	{
 		
 		VALUE	rb_record_data	=	rb_str_new(	(char*) RPDB_Record_rawData( c_record ),
 																				RPDB_Record_dataSize( c_record ) );
@@ -998,7 +998,7 @@ VALUE rb_RPDB_DatabaseCursor_iterateKeys(	int	argc,
 	
 	RPDB_Record*	c_record	=	NULL;
 
-	while ( RPDB_DatabaseCursor_iterateKeys( c_database_cursor, c_record ) )	{
+	while ( ( c_record = RPDB_DatabaseCursor_iterateKeys( c_database_cursor, c_record ) ) )	{
 		
 		VALUE	rb_record_key	=	rb_str_new(	(char*) RPDB_Record_rawKey( c_record ),
 																			RPDB_Record_keySize( c_record ) );

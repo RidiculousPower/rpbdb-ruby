@@ -14,7 +14,6 @@ VALUE rb_RPDB_DatabaseJoinController_parentDatabase(	VALUE	rb_join_controller );
 	
 	VALUE rb_RPDB_DatabaseJoinController_parentEnvironment(	VALUE	rb_join_controller );
 	VALUE rb_RPDB_DatabaseJoinController_join(	VALUE	rb_join_controller,
-																	VALUE	rb_join_cursor_name,
 																	VALUE	rb_cursor_list );
 	VALUE rb_RPDB_DatabaseJoinController_closeAllCursors( VALUE	rb_join_controller );
 

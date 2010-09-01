@@ -137,20 +137,33 @@ VALUE rb_RPDB_Database_new(	int			argc,
 								& rb_database_name,
 								& rb_parent_environment_or_directory_or_database_controller );
 	
-	//	if we have an environment or database controller, figure out which
+	//	if we have a second parameter, figure out what it is
 	if ( rb_parent_environment_or_directory_or_database_controller != Qnil ) {
 		
-		VALUE	rb_arg_klass			=	rb_class_of( rb_parent_environment_or_directory_or_database_controller );
-		VALUE	rb_arg_ancestors	=	rb_mod_ancestors( rb_arg_klass );
-		if ( rb_ary_includes(	rb_arg_ancestors,
-													rb_RPDB_DatabaseController ) == Qtrue )	{
-
-			rb_parent_database_controller	=	rb_parent_environment_or_directory_or_database_controller;
+		//	if we have a path, initialize environment
+		if ( TYPE( rb_parent_environment_or_directory_or_database_controller ) == T_STRING )	{
+			rb_parent_environment	=	rb_RPDB_Environment_new(	1,
+																												& rb_parent_environment_or_directory_or_database_controller,
+																												rb_RPDB_Environment );
+			rb_parent_database_controller	=	rb_RPDB_Environment_databaseController( rb_parent_environment );
 		}
-		else if ( rb_ary_includes(	rb_arg_ancestors,
-																rb_RPDB_Environment ) == Qtrue )	{
+		//	otherwise see if we have an environment or database controller
+		else {
 			
-			rb_parent_environment					=	rb_parent_environment_or_directory_or_database_controller;
+			VALUE	rb_arg_klass			=	rb_class_of( rb_parent_environment_or_directory_or_database_controller );
+			VALUE	rb_arg_ancestors	=	rb_mod_ancestors( rb_arg_klass );
+			//	database controller
+			if ( rb_ary_includes(	rb_arg_ancestors,
+														rb_RPDB_DatabaseController ) == Qtrue )	{
+
+				rb_parent_database_controller	=	rb_parent_environment_or_directory_or_database_controller;
+			}
+			//	environment
+			else if ( rb_ary_includes(	rb_arg_ancestors,
+																	rb_RPDB_Environment ) == Qtrue )	{
+				
+				rb_parent_environment					=	rb_parent_environment_or_directory_or_database_controller;
+			}
 		}
 	}
 	

@@ -9,16 +9,9 @@ describe RPDB::Environment do
   #  initialize  #
   ################
 
-  # RPDB::Environment.new( :name, './directory' )
-  # RPDB::Environment.new( 'name', './directory' )
-  # RPDB::Environment.new( :name )
-  # RPDB::Environment.new( 'name' )
   # RPDB::Environment.new( './directory' )
   # RPDB::Environment.new
   
-  # environment without directory specified will be created in ./
-  # this environment will be deleted by the :erase test
-
   it "can be created with home directory string" do
     environment = RPDB::Environment.new( $environment_path )
     environment.should_not == nil
@@ -30,6 +23,8 @@ describe RPDB::Environment do
     environment = RPDB::Environment.new
     environment.should_not == nil
     environment.is_a?( RPDB::Environment ).should == true
+    # environment without directory specified will be created in ./
+    # this environment will be deleted by the :erase test
     environment.directory.should == './'
   end
 

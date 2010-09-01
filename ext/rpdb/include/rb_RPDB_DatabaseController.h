@@ -20,6 +20,5 @@ void Init_RPDB_DatabaseController();
 	VALUE rb_RPDB_DatabaseController_newDatabase(	VALUE		rb_database_controller,
 																								VALUE		rb_database_name );
 	VALUE rb_RPDB_DatabaseController_closeAllDatabases( VALUE rb_database_controller );
-	VALUE rb_RPDB_DatabaseController_databasesHash( VALUE rb_database_controller );
 
 #endif

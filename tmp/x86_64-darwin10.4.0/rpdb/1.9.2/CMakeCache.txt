@@ -28,7 +28,7 @@ CMAKE_COLOR_MAKEFILE:BOOL=ON
 CMAKE_C_COMPILER:FILEPATH=/usr/bin/clang
 
 //Flags used by the compiler during all build types.
-CMAKE_C_FLAGS:STRING='-march=x86-64 -gfull -fcatch-undefined-behavior -fno-common -fsigned-char -pipe '
+CMAKE_C_FLAGS:STRING='-march=x86-64 -gfull -fcatch-undefined-behavior -fno-common -fsigned-char -pipe -Wall -Wextra '
 
 //Flags used by the compiler during debug builds.
 CMAKE_C_FLAGS_DEBUG:STRING=-g

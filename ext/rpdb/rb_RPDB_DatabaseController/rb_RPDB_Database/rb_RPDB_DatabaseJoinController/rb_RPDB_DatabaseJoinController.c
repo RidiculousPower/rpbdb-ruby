@@ -148,7 +148,6 @@ VALUE rb_RPDB_DatabaseJoinController_parentDatabase(	VALUE	rb_join_controller )	
 //
 //	Join cursors have the same name as the Database database_cursor that was used to initalize them
 VALUE rb_RPDB_DatabaseJoinController_join(	VALUE	rb_join_controller,
-																						VALUE	rb_join_cursor_name,
 																						VALUE	rb_cursor_list )	{
 
 	RPDB_DatabaseJoinController*	c_join_controller;
@@ -167,10 +166,7 @@ VALUE rb_RPDB_DatabaseJoinController_join(	VALUE	rb_join_controller,
 	
 	//	cap off list with a NULL pointer
 	c_cursor_list[ which_cursor_index++ ]	=	NULL;
-	
-	char*	c_join_cursor_name	=	StringValuePtr( rb_join_cursor_name );
-	
-	
+		
 	RPDB_DatabaseJoinCursor*	c_join_cursor	=	RPDB_DatabaseJoinController_join(	c_join_controller,
 																																							c_cursor_list );
 							

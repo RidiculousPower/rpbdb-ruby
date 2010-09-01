@@ -646,7 +646,7 @@ VALUE rb_RPDB_DatabaseObjectCursor_iterate( int	argc,
 	//	Get our next record for the iteration
 	RPDB_Record*	c_record	=	NULL;
 	
-	while ( RPDB_DatabaseCursor_iterate( c_database_cursor, c_record ) )	{
+	while ( ( c_record = RPDB_DatabaseCursor_iterate( c_database_cursor, c_record ) ) )	{
 		
 		VALUE	rb_record_data	=	rb_RPDB_DatabaseObject_internal_extractRetrievalData( c_record );
 		
@@ -726,7 +726,7 @@ VALUE rb_RPDB_DatabaseObjectCursor_iterateAll( int	argc,
 	
 	RPDB_Record*	c_record	=	NULL;
 	
-	while ( RPDB_DatabaseCursor_iterate( c_database_cursor, c_record ) )	{
+	while ( ( c_record = RPDB_DatabaseCursor_iterate( c_database_cursor, c_record ) ) )	{
 		
 		VALUE	rb_record_data	=	rb_RPDB_DatabaseObject_internal_extractRetrievalData( c_record );
 		
@@ -807,7 +807,7 @@ VALUE rb_RPDB_DatabaseObjectCursor_iterateDuplicates( int	argc,
 	
 	RPDB_Record*	c_record	=	NULL;
 	
-	while ( RPDB_DatabaseCursor_iterateDuplicates( c_database_cursor, c_record ) )	{
+	while ( ( c_record = RPDB_DatabaseCursor_iterateDuplicates( c_database_cursor, c_record ) ) )	{
 		
 		VALUE	rb_record_data	=	rb_RPDB_DatabaseObject_internal_extractRetrievalData( c_record );
 		
@@ -888,7 +888,7 @@ VALUE rb_RPDB_DatabaseObjectCursor_iterateKeys( int	argc,
 	
 	RPDB_Record*	c_record	=	NULL;
 	
-	while ( RPDB_DatabaseCursor_iterateKeys( c_database_cursor, c_record ) )	{
+	while ( ( c_record = RPDB_DatabaseCursor_iterateKeys( c_database_cursor, c_record ) ) )	{
 		
 		VALUE	rb_key	=	rb_RPDB_DatabaseObject_internal_extractRetrievalKey( c_record );
 		
