@@ -2464,8 +2464,8 @@ VALUE rb_RPDB_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataMethodValue
 ************************************************/
 
 VALUE rb_RPDB_DatabaseObject_internal_retrieveCursorForParameterDescription(	VALUE	rb_self,
-																					VALUE	rb_key_method_symbol,
-																					VALUE	rb_key_value  )	{
+																																							VALUE	rb_key_method_symbol,
+																																							VALUE	rb_key_value  )	{
 		
 	VALUE	rb_secondary_database	=	rb_RPDB_DatabaseObject_requireDatabaseForIndex(	rb_self,
 																																								rb_key_method_symbol );
@@ -2484,13 +2484,13 @@ VALUE rb_RPDB_DatabaseObject_internal_retrieveCursorForParameterDescription(	VAL
 	//	set cursor to first record
 	//	we call via rb_funcall so that the class determines whether or not to use RPDB_DatabaseCursor or RPDB_DatabaseObjectCursor
 	VALUE	rb_current	=	rb_funcall(	rb_cursor,
-										rb_intern( "retrieve" ),
-										1,
-										rb_key_value );
+																	rb_intern( "retrieve" ),
+																	1,
+																	rb_key_value );
 
-    if ( rb_current == Qnil )   {
+	if ( rb_current == Qnil )   {
 		return Qnil;
-    }
+	}
 	
 	return rb_cursor;
 }

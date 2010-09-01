@@ -88,7 +88,7 @@ void Init_RPDB_Database()	{
 	rb_define_method(						rb_RPDB_Database, 	"is_open?",																			rb_RPDB_Database_isOpen,																		0 	);
 	rb_define_alias(						rb_RPDB_Database, 	"open?",																				"is_open?"	);                                        				
 	rb_define_method(						rb_RPDB_Database, 	"close",																				rb_RPDB_Database_close,																			0 	);
-	rb_define_method(						rb_RPDB_Database, 	"empty",																				rb_RPDB_Database_empty,																			0 	);
+	rb_define_method(						rb_RPDB_Database, 	"empty!",																				rb_RPDB_Database_empty,																			0 	);
 	rb_define_method(						rb_RPDB_Database, 	"erase",																				rb_RPDB_Database_erase,																			0 	);
 	rb_define_method(						rb_RPDB_Database, 	"sync",																					rb_RPDB_Database_sync,																			0 	);
                     					                                                                                                                        				
@@ -166,6 +166,11 @@ VALUE rb_RPDB_Database_new(	int			argc,
 			}
 		}
 	}
+	else {
+		rb_parent_environment	=	rb_RPDB_defaultEnvironment( rb_mRPDB );
+		rb_parent_database_controller	=	rb_RPDB_Environment_databaseController( rb_parent_environment );
+	}
+
 	
 	//	Raise exceptions if we can't find a parent database controller
 	if (		rb_parent_database_controller == Qnil )	{
@@ -369,20 +374,6 @@ VALUE rb_RPDB_Database_close( VALUE	rb_database )	{
 	return rb_database;
 }
 
-/**********
-*  empty  *
-**********/
-
-//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_truncate.html
-VALUE rb_RPDB_Database_empty( VALUE	rb_database )	{
-
-	RPDB_Database*		c_database;
-	C_RPDB_DATABASE( rb_database, c_database );
-
-	RPDB_Database_empty( c_database );
-
-	return rb_database;
-}
 
 /**********
 *  erase  *
