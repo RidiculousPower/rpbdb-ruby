@@ -37,8 +37,9 @@ VALUE rb_RPDB_DatabaseObject_internal_cursorObjectContextStorageHash( VALUE	rb_c
 VALUE rb_RPDB_DatabaseObject_mergedInitializeArguments(	int		argc,
 														VALUE*	args,
 														VALUE	rb_self );
-void rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	VALUE	rb_key,
-																	   DBT*	c_key_dbt	);
+void rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	VALUE		rb_key,
+																																				DBT*		c_key_dbt,
+																																				BOOL		c_convert_string_encoding );
 	VALUE rb_RPDB_DatabaseObject_internal_unpackRubyObjectFromDatabaseStorage( VALUE		rb_message_packed_string );
 	RPDB_Record* rb_RPDB_DatabaseObject_internal_compactRetrievalObject( VALUE	rb_self );
 VALUE rb_RPDB_DatabaseObject_internal_extractRetrievalKey( RPDB_Record* c_retrieval_record );

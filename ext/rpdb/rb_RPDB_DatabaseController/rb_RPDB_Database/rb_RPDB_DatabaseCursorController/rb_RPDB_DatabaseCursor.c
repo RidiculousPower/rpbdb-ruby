@@ -10,19 +10,22 @@
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-#include <rpdb/RPDB_Environment.h>
-#include <rpdb/RPDB_Database.h>
-#include <rpdb/RPDB_DatabaseCursor.h>
-
-#include <rpdb/RPDB_Record.h>
 
 #include "rb_RPDB_DatabaseCursor.h"
 #include "rb_RPDB_DatabaseCursor_internal.h"
 #include "rb_RPDB_Database_internal.h"
 
+#include "rb_RPDB_DatabaseObject_internal.h"
+
 #include <rpdb/RPDB_DatabaseCursor.h>
 #include <rpdb/RPDB_DatabaseCursorController.h>
 #include <rpdb/RPDB_DatabaseCursorSettingsController.h>
+
+#include <rpdb/RPDB_Environment.h>
+#include <rpdb/RPDB_Database.h>
+#include <rpdb/RPDB_DatabaseCursor.h>
+
+#include <rpdb/RPDB_Record.h>
 
 #include <rpdb/RPDB_DatabaseSettingsController.h>
 #include <rpdb/RPDB_DatabaseReadWriteSettingsController.h>
@@ -164,8 +167,8 @@ VALUE rb_RPDB_DatabaseCursor_new( VALUE	klass __attribute__((unused)),
 	argv[ 0 ]	=	rb_parent_database_cursor_controller;
 	
 	rb_obj_call_init(	rb_database_cursor,
-						1, 
-						argv );
+										1, 
+										argv );
 	
 	return rb_database_cursor;
 }
@@ -291,18 +294,22 @@ VALUE rb_RPDB_DatabaseCursor_duplicateCursor( VALUE	rb_database_cursor )	{
 
 //	DB_CURRENT				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
 VALUE rb_RPDB_DatabaseCursor_writeAsCurrent(	VALUE	rb_database_cursor, 
-												VALUE	rb_data )	{
+																							VALUE	rb_data )	{
 
 	RPDB_DatabaseCursor*	c_database_cursor;
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 
-	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
+	RPDB_Database*	c_parent_database	=	c_database_cursor->parent_database_cursor_controller->parent_database;
+	RPDB_Record*	c_record	=	RPDB_Record_new( c_parent_database );
+	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
 
-	rb_RPDB_Database_internal_serializeRubyObject(	rb_data,
-													c_record->data->wrapped_bdb_dbt );
+	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																						rb_data,
+																																						c_record->data->wrapped_bdb_dbt,
+																																						FALSE );
 
 	RPDB_DatabaseCursor_writeRecordAsCurrentData(	c_database_cursor,
-													c_record	);
+																								c_record	);
 	
 	return rb_database_cursor;
 }
@@ -319,9 +326,12 @@ VALUE rb_RPDB_DatabaseCursor_writeAsDuplicateAfterCurrent(	VALUE	rb_database_cur
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
-	
-	rb_RPDB_Database_internal_serializeRubyObject(	rb_data,
-													c_record->data->wrapped_bdb_dbt );
+	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
+
+	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																						rb_data,
+																																						c_record->data->wrapped_bdb_dbt,
+																																						FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordAsDuplicateDataAfterCurrent(	c_database_cursor,
 																	c_record	);
@@ -342,8 +352,12 @@ VALUE rb_RPDB_DatabaseCursor_writeAsDuplicateBeforeCurrent(	VALUE	rb_database_cu
 
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
-	rb_RPDB_Database_internal_serializeRubyObject(	rb_data,
-													c_record->data->wrapped_bdb_dbt );
+	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
+
+	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																						rb_data,
+																																						c_record->data->wrapped_bdb_dbt,
+																																						FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordAsDuplicateBeforeCurrent(	c_database_cursor,
 	 															c_record	);
@@ -368,11 +382,16 @@ VALUE rb_RPDB_DatabaseCursor_writeBeforeAnyDuplicates(	VALUE	rb_database_cursor,
 
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 
-	rb_RPDB_Database_internal_serializeRubyObject(	rb_data,
-													c_record->key->wrapped_bdb_dbt );
+	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
+	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																						rb_data,
+																																						c_record->key->wrapped_bdb_dbt,
+																																						TRUE );
 	
-	rb_RPDB_Database_internal_serializeRubyObject(	rb_data,
-													c_record->data->wrapped_bdb_dbt );
+	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																						rb_data,
+																																						c_record->data->wrapped_bdb_dbt,
+																																						FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordBeforeAnyDuplicates(	c_database_cursor,
 															c_record	);
@@ -397,14 +416,19 @@ VALUE rb_RPDB_DatabaseCursor_writeAfterAnyDuplicates(	VALUE	rb_database_cursor,
 
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
-	rb_RPDB_Database_internal_serializeRubyObject(	rb_data,
-												   c_record->key->wrapped_bdb_dbt );
+	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
+	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																						rb_data,
+																																						c_record->key->wrapped_bdb_dbt,
+																																						TRUE );
 	
-	rb_RPDB_Database_internal_serializeRubyObject(	rb_data,
-												   c_record->data->wrapped_bdb_dbt );
+	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																						rb_data,
+																																						c_record->data->wrapped_bdb_dbt,
+																																						FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordAfterAnyDuplicates(		c_database_cursor,
-															c_record	);
+																												c_record	);
 
 	return rb_database_cursor;
 }
@@ -423,11 +447,16 @@ VALUE rb_RPDB_DatabaseCursor_writeOnlyIfNotInDatabase(	VALUE	rb_database_cursor,
 
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
-	rb_RPDB_Database_internal_serializeRubyObject(	rb_key,
-												   c_record->key->wrapped_bdb_dbt );
+	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
+	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																						rb_key,
+																																						c_record->key->wrapped_bdb_dbt,
+																																						TRUE );
 	
-	rb_RPDB_Database_internal_serializeRubyObject(	rb_data,
-												   c_record->data->wrapped_bdb_dbt );
+	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																						rb_data,
+																																						c_record->data->wrapped_bdb_dbt,
+																																						FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordOnlyIfNotInDatabase(	c_database_cursor,
 															c_record	);
@@ -444,15 +473,18 @@ VALUE rb_RPDB_DatabaseCursor_writeOnlyIfNotInDatabase(	VALUE	rb_database_cursor,
 *****************************/
 
 VALUE rb_RPDB_DatabaseCursor_keyExists(	VALUE	rb_database_cursor, 
-											VALUE	rb_key )	{
+																				VALUE	rb_key )	{
 
 	RPDB_DatabaseCursor*	c_database_cursor;
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
-	rb_RPDB_Database_internal_serializeRubyObject(	rb_key,
-													c_record->key->wrapped_bdb_dbt );
+	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
+	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																						rb_key,
+																																						c_record->key->wrapped_bdb_dbt,
+																																						TRUE );
 		
 	return ( RPDB_DatabaseCursor_keyExists(	c_database_cursor,
 	 											c_record->key	)	?	Qtrue
@@ -1066,8 +1098,11 @@ VALUE rb_RPDB_DatabaseCursor_delete(	int			argc,
 	}
 	else	{
 	
-		rb_RPDB_Database_internal_serializeRubyObject(	args[ 0 ],
-																										c_record->key->wrapped_bdb_dbt );
+		VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
+		rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																							args[ 0 ],
+																																							c_record->key->wrapped_bdb_dbt,
+																																							TRUE );
 		
 		//	1 arg - key, record, raw, or record number (if recno)
 		if ( argc == 1 )	{
@@ -1080,8 +1115,10 @@ VALUE rb_RPDB_DatabaseCursor_delete(	int			argc,
 		//	2 args - match entire set
 		if ( argc == 2 )	{
 			
-			rb_RPDB_Database_internal_serializeRubyObject(	args[ 1 ],
-																											c_record->data->wrapped_bdb_dbt );
+			rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																								args[ 1 ],
+																																								c_record->data->wrapped_bdb_dbt,
+																																								FALSE );
 			
 			//	FIX - make sure deleteRecord supports exact pair deletion
 			RPDB_DatabaseCursor_deleteRecord(	c_database_cursor,
@@ -1113,8 +1150,11 @@ RPDB_Record* rb_RPDB_DatabaseCursor_internal_retrieveRecord(	int			argc,
 	}
 	else	{
 		
-		rb_RPDB_Database_internal_serializeRubyObject(	args[ 0 ],
-													   c_record->key->wrapped_bdb_dbt );
+		VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
+		rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																							args[ 0 ],
+																																							c_record->key->wrapped_bdb_dbt,
+																																							TRUE );
 		
 		//	1 arg - record, key, raw or record number (if recno)
 		if ( argc == 1 )	{
@@ -1130,8 +1170,10 @@ RPDB_Record* rb_RPDB_DatabaseCursor_internal_retrieveRecord(	int			argc,
 		//	2 args - key/data pair
 		else if ( argc == 2 )	{
 			
-			rb_RPDB_Database_internal_serializeRubyObject(	args[ 1 ],
-														   c_record->data->wrapped_bdb_dbt );
+			rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																								args[ 1 ],
+																																								c_record->data->wrapped_bdb_dbt,
+																																								FALSE );
 			
 			//	FIX - make sure that retrieveRecord supports exact key/data retrieval
 		}

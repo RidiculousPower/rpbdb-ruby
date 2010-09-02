@@ -96,68 +96,159 @@ describe RPDB::Environment::DatabaseController::Database do
     File.delete( $environment_path + '/' + new_filename )
   end
 
-  ###########
-  #  empty  #
-  ###########
+  ############
+  #  empty!  #
+  ############
 
   it "can empty itself of records" do
-    
+    database = @environment.database.new( $database_name )
+    10.times do |this_time|
+      database.write( this_time.to_s => 'some data' )
+    end
+    database.empty!
+    10.times do |this_time|
+      database.retrieve( this_time.to_s ).should == nil
+    end
   end
 
+  ############
+  #  erase!  #
+  ############
+  
+  it "can erase itself" do
+    database = @environment.database.new( $database_name ).open
+    database_name = database.name
+    database.erase!
+    File.exists?( $environment_path + '/' + database_name + $database_extension ).should == false
+  end
+  
   ###########
-  #  erase  #
+  #  sync!  #
   ###########
 
-  ##########
-  #  sync  #
-  ##########
+  it "can synchronize" do
+    database = @environment.database.new( $database_name ).open
+    10.times do |this_time|
+      database.write( this_time.to_s => 'some data' )
+    end
+    database.sync!
+  end
 
   #################
   #  key_exists?  #
   #################
 
-  ########################
+  it "can report whether a key exists" do
+    database = @environment.database.new( $database_name ).open
+    database.write( "key" => 'some data' )
+    database.key_exists?( "key" ).should == true
+  end
+
+  ###########
   #  write  #
-  ########################
+  ###########
 
-  ########################
+  it "can write using a string key and a string data item" do
+    database = @environment.database.new( $database_name ).open
+    database.write( "key", 'some data' )
+    database.key_exists?( "key" ).should == true    
+  end
+  
+  it "can write using a hash argument string key => string data" do
+    database = @environment.database.new( $database_name ).open
+    database.write( "key" => 'some data' )
+    database.key_exists?( "key" ).should == true    
+  end
+
+  ##############
   #  retrieve  #
-  ########################
+  ##############
 
-  ########################
+  it "can retrieve using a string key" do
+    database = @environment.database.new( $database_name ).open
+    database.write( "key" => 'some data' )
+    database.retrieve( "key" ).should == 'some data'    
+  end
+
+  ############
   #  delete  #
-  ########################
+  ############
 
-  ########################
-  #  associate_secondary_database  #
-  ########################
+  it "can delete using a string key" do
+    database = @environment.database.new( $database_name ).open
+    database.write( "key" => 'some data' )
+    database.delete( "key" )
+    database.retrieve( "key" ).should == nil        
+  end
 
-  ########################
-  #  is_secondary_database  #
-  ########################
-
-  ########################
+  #############################################
+  #  associate_secondary_database             #
+  #  secondary_key_creation_callback_method=  #
   #  secondary_key_creation_callback_method  #
-  ########################
+  #  is_secondary_database?                   #
+  #############################################
 
-  ########################
-  #  secondary_key_creation_callback_method  #
-  ########################
+  it "can have a secondary database associated with it as an index and report whether it is a secondary database" do
+    database      = @environment.database.new( $database_name ).open
+    database_two  = @environment.database.new( $database_name.to_s + '_index' ).open
+    class << database_two
+      def callback_method( key, data )
+        return 'secondary key: ' + key
+      end
+    end
+    database_two.secondary_key_creation_callback_method = :callback_method
+    database_two.secondary_key_creation_callback_method[ :object ].should == database_two
+    database_two.secondary_key_creation_callback_method[ :method ].should == :callback_method
+    database.associate_secondary_database( database_two )
+    database_two.is_secondary_database?.should == true
+    primary_key = 'primary key'
+    database.write( primary_key, 'some data' )
+    database_two.retrieve( 'secondary key: ' + primary_key ).should == 'some data'
+  end
 
-  ########################
+  ############################
   #  create_secondary_index  #
-  ########################
+  ############################
 
-  ########################
-  #  cursor_controller  #
-  ########################
-
-  ########################
-  #  cursor  #
-  ########################
-
-  ########################
-  #  object_cursor  #
-  ########################
+  it "can create a secondary index with a callback method, automatically associating the secondary database with the primary" do
+    database      = @environment.database.new( $database_name ).open
+    class << database
+      def callback_method( key, data )
+        return 'secondary key: ' + key
+      end
+    end
+    database_two = database.create_secondary_index( :index,
+                                                    :callback_method )
+    database_two.secondary_key_creation_callback_method[ :object ].should == database
+    database_two.secondary_key_creation_callback_method[ :method ].should == :callback_method
+    database_two.is_secondary_database?.should == true    
+    primary_key = 'primary key'
+    database.write( primary_key, 'some data' )
+    database_two.retrieve( 'secondary key: ' + primary_key ).should == 'some data'
+  end
+#
+#  #######################
+#  #  cursor_controller  #
+#  #######################
+#
+#  it "has a cursor controller" do
+#    database = @environment.database.new( $database_name ).cursor_controller
+#  end
+#
+#  ############
+#  #  cursor  #
+#  ############
+#
+#  it "can return a cursor from its cursor controller" do
+#    database = @environment.database.new( $database_name ).cursor
+#  end
+#
+#  ###################
+#  #  object_cursor  #
+#  ###################
+#
+#  it "can return an object cursor (which automatically handles serialization) from its cursor controller" do
+#    database = @environment.database.new( $database_name ).object_cursor    
+#  end
 
 end

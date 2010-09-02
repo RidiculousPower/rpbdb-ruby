@@ -127,6 +127,9 @@
 
 #include <rpdb/RPDB_main.h>
 #include <rpdb/RPDB_Environment.h>
+#include <rpdb/RPDB_Database_internal.h>
+#include <rpdb/RPDB_DatabaseSettingsController.h>
+#include <rpdb/RPDB_DatabaseTypeSettingsController.h>
 #include <rpdb/RPDB_RuntimeStorageController.h>
 #include <rpdb/RPDB_RuntimeStorage.h>
 
@@ -290,7 +293,7 @@ void Init_rpdb()	{
 
 		//	Settings
 		Init_RPDB_SettingsController();
-		
+
 		//	Database Settings
 		Init_RPDB_DatabaseSettingsController();
 		Init_RPDB_DatabaseAssociationSettingsController();
@@ -322,27 +325,8 @@ void Init_rpdb()	{
 		Init_RPDB_LogSettingsController();
 		Init_RPDB_MemoryPoolSettingsController();
 
-}
+		rb_RPDB_internal_initRuntimeStorages( rb_mRPDB );
 
-/***************************
-*  configure_if_necessary  *
-***************************/
-
-VALUE rb_RPDB_internal_configureIfNecessary(	VALUE	rb_module_self,
-																							VALUE	rb_klass )	{
-		
-	//	check if we've initialized
-	if ( rb_RPDB_DatabaseObject_hasConfigured( rb_klass ) == Qfalse )	{
-		
-		//	activate class
-		//	if identifiers are empty, uses default environment
-		rb_RPDB_DatabaseObject_internal_activateClass(	rb_klass );
-		
-		//	note that we've configured
-		rb_RPDB_DatabaseObject_internal_setHasConfigured(	rb_klass,
-																											Qtrue );
-	}
-	return rb_module_self;
 }
 
 /***********
@@ -597,6 +581,62 @@ VALUE rb_RPDB_versionData(	VALUE	rb_module_self __attribute__ ((unused )) )	{
 																		Internal Methods
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
+
+/************************
+*  initRuntimeStorages  *
+************************/
+
+void rb_RPDB_internal_initRuntimeStorages( VALUE rb_module_self )	{
+
+	//	Now init ruby runtime storage
+	RPDB_RuntimeStorageController*		c_runtime_storage_controller	=	RPDB_RuntimeStorageController_sharedInstance();
+	RPDB_DatabaseController*					c_database_controller					=	RPDB_Environment_databaseController(	c_runtime_storage_controller->runtime_environment );
+	RPDB_Database*										c_runtime_storage_database		=	RPDB_Database_new(	c_database_controller,
+																																												"ruby_databases_by_c_reference" );
+	RPDB_DatabaseSettingsController*			c_database_settings_controller			=	RPDB_Database_settingsController( c_runtime_storage_database );
+	RPDB_DatabaseTypeSettingsController*	c_database_type_settings_controller	=	RPDB_DatabaseSettingsController_typeSettingsController( c_database_settings_controller );
+
+	RPDB_DatabaseTypeSettingsController_setTypeToBTree( c_database_type_settings_controller );
+	
+	VALUE	rb_runtime_storage_database	=	RUBY_RPDB_DATABASE( c_runtime_storage_database );
+
+	rb_iv_set(	rb_module_self,
+							RPDB_RUBY_MODULE_VARIABLE_DATABASE_RUNTIME_STORAGE,
+							rb_runtime_storage_database );
+}
+
+/************************
+*  rubyRuntimeDatabase  *
+************************/
+
+VALUE rb_RPDB_internal_rubyRuntimeDatabase(	VALUE rb_module_self )	{
+
+	VALUE	rb_runtime_storage_database	=	rb_iv_get(	rb_module_self,
+																									RPDB_RUBY_MODULE_VARIABLE_DATABASE_RUNTIME_STORAGE );
+	return rb_runtime_storage_database;
+}
+
+/***************************
+*  configure_if_necessary  *
+***************************/
+
+VALUE rb_RPDB_internal_configureIfNecessary(	VALUE	rb_module_self,
+																							VALUE	rb_klass )	{
+		
+	//	check if we've initialized
+	if ( rb_RPDB_DatabaseObject_hasConfigured( rb_klass ) == Qfalse )	{
+		
+		//	activate class
+		//	if identifiers are empty, uses default environment
+		rb_RPDB_DatabaseObject_internal_activateClass(	rb_klass );
+		
+		//	note that we've configured
+		rb_RPDB_DatabaseObject_internal_setHasConfigured(	rb_klass,
+																											Qtrue );
+	}
+	return rb_module_self;
+}
+
 
 /*********************************
 *  environmentToIdentifiersHash  *

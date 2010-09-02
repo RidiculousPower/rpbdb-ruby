@@ -179,12 +179,7 @@ VALUE rb_RPDB_DatabaseSequence_openSequence(	VALUE	rb_database_sequence,
 	
 	//	we need to create a record from rb_stored_at_key
 	RPDB_Record*	record	=	RPDB_Record_new( c_database_sequence->parent_database_sequence_controller->parent_database );
-/*
-	//	easiest way to do this is to use internal prep function from rb_RPDB_Database
-	rb_RPDB_Database_internal_serializeRubyObject(	rb_st,
-																& ( record->data->wrapped_bdb_dbt->data ),
-																& ( record->data->wrapped_bdb_dbt->size ) );
-*/								
+
 	RPDB_DatabaseSequence_openSequence(	c_database_sequence,
 	 										record );
 	

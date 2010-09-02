@@ -18,7 +18,6 @@ require 'rake/extensiontask'
 
 require 'pp'
 
-
 Hoe.spec gem_target do
   self.developer( developer_name, email )
   self.rubyforge_name     = rubyforge_username
@@ -28,11 +27,12 @@ Hoe.spec gem_target do
   self.extra_rdoc_files	  = FileList['*.rdoc']
   if has_c_source
     self.spec_extras			= { :extensions => ["ext/rpdb/extconf.rb"] }
-    self.extra_dev_deps << ['rake-compiler', '>= 0']  
+    self.extra_dev_deps << ['rake-compiler', '>= 0']
     Rake::ExtensionTask.new( gem_target, spec ) do |ext|
-      ext.lib_dir = File.join( 'lib', gem_target )
+      ext.lib_dir         = File.join('lib', gem_target)
+      ext.source_pattern  = "**/*.{c,cpp}"
     end
-    Rake::Task[ :spec ].prerequisites << :compile
+    task :spec => :compile
   end
 end
 

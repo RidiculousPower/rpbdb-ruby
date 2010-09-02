@@ -41,6 +41,10 @@ void Init_RPDB_DatabaseReadWriteSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"parent_database",										rb_RPDB_DatabaseReadWriteSettingsController_parentDatabase,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseReadWriteSettingsController, 	"database",														"parent_database"	);
 
+	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"storage_type",												rb_RPDB_DatabaseReadWriteSettingsController_storageType,															0 	);
+	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"storage_type=",											rb_RPDB_DatabaseReadWriteSettingsController_setStorageType,														1 	);
+	rb_define_alias(						rb_RPDB_DatabaseReadWriteSettingsController, 	"set_storage_type",										"storage_type=" 	);                                                          				
+
 	//	FIX - this should take a file or a file name
 	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"filename",																			rb_RPDB_DatabaseReadWriteSettingsController_filename,															0 	);
 	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"filename=",																		rb_RPDB_DatabaseReadWriteSettingsController_setFilename,													1 	);
@@ -119,8 +123,8 @@ VALUE rb_RPDB_DatabaseReadWriteSettingsController_new(	VALUE	klass __attribute__
 	argv[ 0 ]	=	rb_parent_database_settings_controller;
 	
 	rb_obj_call_init(	rb_database_read_write_settings_controller,
-					 1, 
-					 argv );
+										1, 
+										argv );
 	
 	return rb_database_read_write_settings_controller;		
 }
@@ -733,3 +737,75 @@ VALUE rb_RPDB_DatabaseReadWriteSettingsController_sortedDuplicates( VALUE	rb_dat
 		
 		return rb_database_read_write_settings_controller;
 	}
+
+/**********************
+*  serializeData  *
+**********************/
+
+VALUE rb_RPDB_DatabaseReadWriteSettingsController_serializeData( VALUE	rb_database_read_write_settings_controller )	{
+	
+	RPDB_DatabaseReadWriteSettingsController*	c_database_read_write_settings_controller;
+	C_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( rb_database_read_write_settings_controller, c_database_read_write_settings_controller );
+	
+	return rb_iv_get(	rb_database_read_write_settings_controller,
+										RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA ) == Qtrue ? Qtrue
+																																																												:	Qfalse;
+}
+
+	/******************************
+	 *  turnSerializeDataOn  *
+	 ******************************/
+
+	VALUE rb_RPDB_DatabaseReadWriteSettingsController_turnSerializeDataOn( VALUE	rb_database_read_write_settings_controller )	{
+		
+		RPDB_DatabaseReadWriteSettingsController*	c_database_read_write_settings_controller;
+		C_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( rb_database_read_write_settings_controller, c_database_read_write_settings_controller );
+		
+		rb_iv_set(	rb_database_read_write_settings_controller,
+								RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA,
+								Qtrue );
+		
+		return rb_database_read_write_settings_controller;
+	}
+
+	/******************************
+	 *  turnSerializeDataOff  *
+	 ******************************/
+
+	VALUE rb_RPDB_DatabaseReadWriteSettingsController_turnSerializeDataOff( VALUE	rb_database_read_write_settings_controller )	{
+		
+		RPDB_DatabaseReadWriteSettingsController*	c_database_read_write_settings_controller;
+		C_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( rb_database_read_write_settings_controller, c_database_read_write_settings_controller );
+		
+		rb_iv_set(	rb_database_read_write_settings_controller,
+								RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA,
+								Qfalse );
+		
+		return rb_database_read_write_settings_controller;
+	}
+
+/****************
+*  storageType  *
+****************/
+
+VALUE rb_RPDB_DatabaseReadWriteSettingsController_storageType( VALUE rb_database_read_write_settings_controller )	{
+	
+	VALUE		rb_class_to_specify_type	=	rb_iv_get(	rb_database_read_write_settings_controller,
+																									RPDB_RUBY_CLASS_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE );
+	
+	return rb_class_to_specify_type;
+}
+
+/*******************
+*  setStorageType  *
+*******************/
+
+VALUE rb_RPDB_DatabaseReadWriteSettingsController_setStorageType(	VALUE rb_database_read_write_settings_controller,
+																																	VALUE	rb_class_to_specify_type )	{
+	
+	rb_iv_set(	rb_database_read_write_settings_controller,
+							RPDB_RUBY_CLASS_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE,
+							rb_class_to_specify_type );
+	
+	return rb_database_read_write_settings_controller;
+}

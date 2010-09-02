@@ -30,6 +30,7 @@ VALUE rb_RPDB_Database_init(	int			argc,
 	VALUE rb_RPDB_Database_associateSecondaryDatabase(	VALUE		rb_primary_database, 
 														VALUE		rb_secondary_database );
 	VALUE rb_RPDB_Database_isSecondary(	VALUE	rb_database );
+	VALUE rb_RPDB_Database_primaryDatabase(	VALUE	rb_secondary_database );
 	VALUE rb_RPDB_Database_setSecondaryKeyCreationCallbackMethod(	int	argc, 
 																	VALUE*	args,
 																	VALUE	rb_database	);
@@ -46,9 +47,9 @@ VALUE rb_RPDB_Database_createSecondaryIndexWithDatabase(	int	argc,
 	VALUE rb_RPDB_Database_joinController( VALUE	rb_database );
 	VALUE rb_RPDB_Database_verificationController( VALUE	rb_database );
 	VALUE rb_RPDB_Database_databaseSequenceController( VALUE	rb_database );
-	VALUE rb_RPDB_Database_write(	VALUE	rb_database, 
-									VALUE	rb_key, 
-									VALUE	rb_data );
+VALUE rb_RPDB_Database_write(	int			argc, 
+															VALUE*	args, 
+															VALUE		rb_database );
 	VALUE rb_RPDB_Database_keyExists(	VALUE	rb_database,
 															VALUE	rb_key );
 	VALUE rb_RPDB_Database_retrieve(	int	argc, 
@@ -77,5 +78,5 @@ VALUE rb_RPDB_Database_iterateKeysInSegments(	VALUE rb_database,
 VALUE rb_RPDB_Database_iterateKeys(	int	argc,
 									VALUE*	args,
 									VALUE	rb_database );
-	
+
 #endif

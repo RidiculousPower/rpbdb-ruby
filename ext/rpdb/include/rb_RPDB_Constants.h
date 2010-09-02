@@ -332,6 +332,7 @@
 	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENT_AUTO_COUNT									"@rpdb__environment_auto_count"	
 	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENTS_HASH												"@rpdb__environments_hash"
 	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENT_COUNT												"@rpdb__environment_count"
+	#define RPDB_RUBY_MODULE_VARIABLE_DATABASE_RUNTIME_STORAGE								"@rpdb__database_runtime_storage"
 	
 	//	Class Variables
 	
@@ -346,6 +347,8 @@
 
 	//	Database
 	#define RPDB_RUBY_CLASS_DATABASE_VARIABLE_DATABASE_CONTROLLER							"@database_controller"
+	#define RPDB_RUBY_CLASS_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE										"@storage_type"
+
 
 
 	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT										"@parent_environment"
@@ -357,6 +360,8 @@
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER		"@database_settings_controller"
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DIRECTORY_SETTINGS_CONTROLLER		"@directory_settings_controller"
 
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA		"@serialize_data"
+
 	#define RPDB_FUNCTION_INIT																								"init_rpdb"
 	#define RPDB_FUNCTION_CONFIGURE																						"configure_rpdb"
 	#define RPDB_FUNCTION_IDENTIFY_AS																					"identify_for_rpdb_as"
@@ -367,6 +372,8 @@
 	#define RPDB_RUBY_ERROR_MESSAGE_ENVIRONMENT_NOT_FOUND											"Requested Environment was missing."
 	#define RPDB_RUBY_ERROR_MESSAGE_DATABASE_CONTROLLER_NOT_FOUND							"Requested Environment was missing."
 	#define RPDB_RUBY_ERROR_ENVIRONMENT_WITH_NAME_ALREADY_EXISTS							"Environment with requested name already exists."
-	
+
+	#define RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_KEY													"Cannot write to database without key."
+	#define RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_DATA													"Cannot write to database without data."
 
 #endif

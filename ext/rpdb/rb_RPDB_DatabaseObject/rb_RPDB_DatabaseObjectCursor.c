@@ -131,7 +131,8 @@ VALUE rb_RPDB_DatabaseObjectCursor_writeAsCurrent(	VALUE	rb_database_cursor,
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
 	rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	rb_data,
-																		c_record->data->wrapped_bdb_dbt );
+																																		c_record->data->wrapped_bdb_dbt,
+																																		FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordAsCurrentData(	c_database_cursor,
 													c_record	);
@@ -153,7 +154,8 @@ VALUE rb_RPDB_DatabaseObjectCursor_writeAsDuplicateAfterCurrent(	VALUE	rb_databa
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
 	rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	rb_data,
-																		c_record->data->wrapped_bdb_dbt );
+																																		c_record->data->wrapped_bdb_dbt,
+																																		FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordAsDuplicateDataAfterCurrent(	c_database_cursor,
 																	c_record	);
@@ -175,7 +177,8 @@ VALUE rb_RPDB_DatabaseObjectCursor_writeAsDuplicateBeforeCurrent(	VALUE	rb_datab
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
 	rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	rb_data,
-																		c_record->data->wrapped_bdb_dbt );
+																																		c_record->data->wrapped_bdb_dbt,
+																																		FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordAsDuplicateBeforeCurrent(	c_database_cursor,
 																c_record );
@@ -201,13 +204,15 @@ VALUE rb_RPDB_DatabaseObjectCursor_writeBeforeAnyDuplicates(	VALUE	rb_database_c
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
 	rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	rb_key,
-																		c_record->key->wrapped_bdb_dbt );
+																																		c_record->key->wrapped_bdb_dbt,
+																																		TRUE );
 		
 	rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	rb_data,
-																		c_record->data->wrapped_bdb_dbt );
+																																		c_record->data->wrapped_bdb_dbt,
+																																		FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordBeforeAnyDuplicates(	c_database_cursor,
-															c_record );
+																											c_record );
 	
 	return rb_database_cursor;
 }
@@ -230,10 +235,12 @@ VALUE rb_RPDB_DatabaseObjectCursor_writeAfterAnyDuplicates(	VALUE	rb_database_cu
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
 	rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	rb_key,
-																		c_record->key->wrapped_bdb_dbt );
+																																		c_record->key->wrapped_bdb_dbt,
+																																		TRUE );
 	
 	rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	rb_data,
-																		c_record->data->wrapped_bdb_dbt );
+																																		c_record->data->wrapped_bdb_dbt,
+																																		FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordAfterAnyDuplicates(		c_database_cursor,
 															c_record );
@@ -256,13 +263,15 @@ VALUE rb_RPDB_DatabaseObjectCursor_writeOnlyIfNotInDatabase(	VALUE	rb_database_c
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
 	rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	rb_key,
-																		c_record->key->wrapped_bdb_dbt );
+																																		c_record->key->wrapped_bdb_dbt,
+																																		TRUE );
 	
 	rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	rb_data,
-																		c_record->data->wrapped_bdb_dbt );
+																																		c_record->data->wrapped_bdb_dbt,
+																																		FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordOnlyIfNotInDatabase(	c_database_cursor,
-															c_record );
+																											c_record );
 	
 	return rb_database_cursor;
 }
@@ -284,7 +293,8 @@ VALUE rb_RPDB_DatabaseObjectCursor_keyExists(	VALUE	rb_database_cursor,
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
 	rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	rb_key,
-																		c_record->data->wrapped_bdb_dbt );
+																																		c_record->key->wrapped_bdb_dbt,
+																																		TRUE );
 
 	return ( RPDB_DatabaseCursor_keyExists(	c_database_cursor,
 												c_record->key )	?	Qtrue
@@ -928,7 +938,8 @@ VALUE rb_RPDB_DatabaseObjectCursor_delete(	int	argc,
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
 	rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	args[ 0 ],
-																		c_record->key->wrapped_bdb_dbt );
+																																		c_record->key->wrapped_bdb_dbt,
+																																		TRUE );
 	
 	//	no args: delete current
 	if ( argc == 0 )	{
@@ -947,7 +958,8 @@ VALUE rb_RPDB_DatabaseObjectCursor_delete(	int	argc,
 	if ( argc == 2 )	{
 		
 		rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	args[ 1 ],
-																			c_record->data->wrapped_bdb_dbt );
+																																			c_record->data->wrapped_bdb_dbt,
+																																			FALSE );
 		
 		RPDB_DatabaseCursor_deleteRecord(	c_database_cursor,
 											c_record );
@@ -979,7 +991,8 @@ RPDB_Record* rb_RPDB_DatabaseObjectCursor_internal_retrieveRecord(	VALUE	rb_data
 	else	{
 		
 		rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	args[ 0 ],
-																			c_record->key->wrapped_bdb_dbt );
+																																			c_record->key->wrapped_bdb_dbt,
+																																			TRUE );
 		
 		//	1 arg - record, key, raw or record number (if recno)
 		if ( argc == 1 )	{
@@ -996,7 +1009,8 @@ RPDB_Record* rb_RPDB_DatabaseObjectCursor_internal_retrieveRecord(	VALUE	rb_data
 		else if ( argc == 2 )	{
 			
 			rb_RPDB_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	args[ 1 ],
-																				c_record->data->wrapped_bdb_dbt );
+																																				c_record->data->wrapped_bdb_dbt,
+																																				FALSE );
 			
 			//	FIX - make sure that retrieveRecord supports exact key/data retrieval
 		}

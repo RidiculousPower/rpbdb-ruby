@@ -5,7 +5,6 @@
 	#include <rpdb/RPDB_Types.h>
 
 	VALUE rb_RPDB_Database_internal_iterationCursor( VALUE rb_database );
-	VALUE	rb_RPDB_Database_internal_secondaryKeyCreationCallbackMethodInfoHash(	VALUE	rb_secondary_database_name );
 
 	VALUE	rb_RPDB_Database_internal_setSecondaryKeyCreationCallbackMethodInfoHash(	VALUE	rb_secondary_database_name,
 	 																					VALUE	rb_callback_object,
@@ -15,7 +14,20 @@
 																										RPDB_Record*			c_record, 
 																										RPDB_SecondaryKeys*	c_return_data );
 
-void rb_RPDB_Database_internal_serializeRubyObject(	VALUE				rb_key_or_data,
-														DBT*			c_key_or_data );
+	enum ruby_value_type rb_RPDB_Database_internal_storageType( VALUE rb_database );
+	RPDB_SECONDARY_KEY_CREATION_RETURN rb_RPDB_Database_internal_processSecondaryKeyReturn(	VALUE									rb_secondary_database,
+																																													VALUE									rb_secondary_keys,
+																																													RPDB_SecondaryKeys*		c_secondary_keys );
+	void rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	VALUE		rb_database,
+																																					VALUE		rb_key_or_data,
+																																					DBT*		c_key_dbt,
+																																					BOOL		c_convert_string_encoding );
+	void rb_RPDB_Database_internal_packRubyValueForDatabaseStorage(	VALUE		rb_database,
+																																	VALUE		rb_key_or_data,
+																																	DBT*		c_key_or_data );
+
+	VALUE rb_RPDB_Database_internal_initRubyRuntimeStorage(	VALUE rb_ruby_runtime_storage_database );
+	VALUE rb_RPDB_Database_internal_storeRubyRuntimeInstanceForCInstance(	VALUE rb_database );
+	VALUE rb_RPDB_Database_internal_rubyRuntimeInstanceForCInstance(	RPDB_Database* c_database );
 
 #endif

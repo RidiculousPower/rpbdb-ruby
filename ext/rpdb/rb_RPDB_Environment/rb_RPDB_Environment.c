@@ -80,7 +80,7 @@ void Init_RPDB_Environment()	{
 	rb_define_method(						rb_RPDB_Environment, 	"is_open?",													rb_RPDB_Environment_isOpen,												0 );
 	rb_define_alias(						rb_RPDB_Environment, 	"open?",														"is_open?" );
 	rb_define_method(						rb_RPDB_Environment, 	"close",														rb_RPDB_Environment_close,												0 );
-	rb_define_method(						rb_RPDB_Environment, 	"erase",														rb_RPDB_Environment_erase,												0 );
+	rb_define_method(						rb_RPDB_Environment, 	"erase!",														rb_RPDB_Environment_erase,												0 );
 
 	rb_define_method(						rb_RPDB_Environment, 	"name",															rb_RPDB_Environment_name,													0 );
 	rb_define_method(						rb_RPDB_Environment, 	"handle",														rb_RPDB_Environment_handle,												0 );

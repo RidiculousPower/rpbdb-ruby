@@ -109,11 +109,11 @@ describe RPDB::Environment::DatabaseController do
     database2.is_open?.should == false
     database3.is_open?.should == false
     database4.is_open?.should == false
-    database1.erase
-    database2.erase
-    database3.erase
-    database4.erase
-    @environment.erase
+    database1.erase!
+    database2.erase!
+    database3.erase!
+    database4.erase!
+    @environment.erase!
   end
 
 end

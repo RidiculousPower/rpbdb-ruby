@@ -130,6 +130,14 @@ rb_RPDB_BaseStandardIncludes.h
 rpdb/RPDB_Types.h
 -
 
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseObject_internal.h
+
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseReadWriteSettingsController.h
+rb_RPDB_BaseStandardIncludes.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
+rpdb/RPDB_Types.h
+-
+
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
 rb_RPDB_BaseStandardIncludes.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
@@ -154,11 +162,17 @@ rb_RPDB_BaseStandardIncludes.h
 rpdb/RPDB_Types.h
 -
 
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_internal.h
+
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.c
 rb_RPDB.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB.h
+rb_RPDB_internal.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_internal.h
 rb_RPDB_Database.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.h
+rb_RPDB_DatabaseObject_internal.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseObject_internal.h
 rb_RPDB_Database_internal.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database_internal.h
 rb_RPDB_DatabaseController.h
@@ -175,6 +189,8 @@ rb_RPDB_SettingsController.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_SettingsController.h
 rb_RPDB_DatabaseSettingsController.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSettingsController.h
+rb_RPDB_DatabaseReadWriteSettingsController.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseReadWriteSettingsController.h
 rpdb/RPDB_Environment.h
 -
 rpdb/RPDB_Database.h
@@ -200,5 +216,7 @@ rpdb/RPDB_SecondaryKeys.h
 rpdb/RPDB_SettingsController.h
 -
 rpdb/RPDB_DatabaseSettingsController.h
+-
+rpdb/RPDB_DatabaseTypeSettingsController.h
 -
 

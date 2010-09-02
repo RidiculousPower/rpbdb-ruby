@@ -52,4 +52,12 @@ VALUE rb_RPDB_DatabaseReadWriteSettingsController_init(	VALUE	rb_database_read_w
 		VALUE rb_RPDB_DatabaseReadWriteSettingsController_turnSortedDuplicatesOn( VALUE	rb_database_read_write_settings_controller );
 		VALUE rb_RPDB_DatabaseReadWriteSettingsController_turnSortedDuplicatesOff( VALUE	rb_database_read_write_settings_controller );
 	
+	VALUE rb_RPDB_DatabaseReadWriteSettingsController_serializeData( VALUE	rb_database_read_write_settings_controller );
+		VALUE rb_RPDB_DatabaseReadWriteSettingsController_turnSerializeDataOn( VALUE	rb_database_read_write_settings_controller );
+		VALUE rb_RPDB_DatabaseReadWriteSettingsController_turnSerializeDataOff( VALUE	rb_database_read_write_settings_controller );
+
+	VALUE rb_RPDB_DatabaseReadWriteSettingsController_storageType( VALUE rb_database_read_write_settings_controller );
+	VALUE rb_RPDB_DatabaseReadWriteSettingsController_setStorageType(	VALUE rb_database_read_write_settings_controller,
+																																		VALUE	rb_class_to_specify_type );
+	
 #endif
