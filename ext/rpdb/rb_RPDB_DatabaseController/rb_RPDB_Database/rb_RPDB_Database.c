@@ -69,10 +69,10 @@ extern VALUE rb_cFloat;
 extern VALUE rb_cTrueClass;
 extern VALUE rb_cFalseClass;
 
+extern VALUE rb_block_lambda( void );
+
 
 #define RPDB_RUBY_ERROR_INVALID_DATABASE_DATA			"Provided data was invalid. Database requires object that can be automatically converted to string."
-
-#define RPDB_GVAR_SECONDARY_KEY_CALLBACK_METHODS	"$rpdb_secondary_key_callback_methods"
 
 /*******************************************************************************************************************************************************************************************
 ********************************************************************************************************************************************************************************************
@@ -620,13 +620,15 @@ VALUE rb_RPDB_Database_setSecondaryKeyCreationCallbackMethod(	int			argc,
 VALUE rb_RPDB_Database_secondaryKeyCreationCallbackMethod(	VALUE	rb_secondary_database )	{
 	
 	//	Get global variable 'callbacks', which stores secondary key creation callback methods
-	VALUE	rb_callbacks_hash	=	rb_gv_get( RPDB_GVAR_SECONDARY_KEY_CALLBACK_METHODS );
+	VALUE	rb_callbacks_hash	=	rb_iv_get(	rb_mRPDB,
+																				RPDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS );
 	
 	//	Make sure it's a hash - if it's not, instantiate it as a new hash
 	if ( TYPE( rb_callbacks_hash ) != T_HASH )	{
 		
 		rb_callbacks_hash	=	rb_hash_new();
-		rb_gv_set(	RPDB_GVAR_SECONDARY_KEY_CALLBACK_METHODS,
+		rb_iv_set(	rb_mRPDB,
+								RPDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS,
 								rb_callbacks_hash );
 	}
 
@@ -653,27 +655,39 @@ VALUE rb_RPDB_Database_createSecondaryIndex(	int			argc,
 
 	/*------------------------------------------------------*/
 
-	VALUE	rb_callback_object_or_method						=	Qnil;
-	rb_scan_args(	argc,
-								args,
-								"21",
-								& rb_index_name,
-								& rb_callback_object_or_method,
-								& rb_callback_method );
+	if ( rb_block_given_p() )	{
+	
+		rb_scan_args(	argc,
+									args,
+									"1",
+									& rb_index_name );
+		rb_callback_method	=	rb_block_lambda();
+	}
+	else {
+		
+		VALUE	rb_callback_object_or_method						=	Qnil;
+		rb_scan_args(	argc,
+									args,
+									"21",
+									& rb_index_name,
+									& rb_callback_object_or_method,
+									& rb_callback_method );
+
+		//	if we don't have a callback method, rb_callback_object_or_method is our method in self
+		if ( rb_callback_method == Qnil )	{
+			rb_callback_method	=	rb_callback_object_or_method;
+			rb_callback_object	=	rb_primary_database_self;
+		}
+		else {
+			rb_callback_object	=	rb_callback_object_or_method;
+		}
+	}
 
 	//	change symbol to string b/c C function needs char*
 	if ( TYPE( rb_index_name ) == T_SYMBOL )	{
 		rb_index_name	=	rb_obj_as_string( rb_index_name );
 	}
-	//	if we don't have a callback method, rb_callback_object_or_method is our method in self
-	if ( rb_callback_method == Qnil )	{
-		rb_callback_method	=	rb_callback_object_or_method;
-		rb_callback_object	=	rb_primary_database_self;
-	}
-	else {
-		rb_callback_object	=	rb_callback_object_or_method;
-	}
-
+	
 	/*------------------------------------------------------*/
 	
 	char*	c_index_name	=	StringValuePtr( rb_index_name );
@@ -725,28 +739,43 @@ VALUE rb_RPDB_Database_createSecondaryIndexWithDatabase(	int	argc,
 
 	/*------------------------------------------------------*/
 
-	VALUE	rb_callback_object_or_method						=	Qnil;
-	rb_scan_args(	argc,
-								args,
-								"31",
-								& rb_secondary_database,
-								& rb_index_name,
-								& rb_callback_object_or_method,
-								& rb_callback_method );
+	//	if we have a block we use that as our priority for definition
+	if ( rb_block_given_p() )	{
+		
+		rb_scan_args(	argc,
+									args,
+									"2",
+									& rb_secondary_database,
+									& rb_index_name );
+		rb_callback_method	=	rb_block_lambda();
+	}
+	else {
+		
+		VALUE	rb_callback_object_or_method						=	Qnil;
+		rb_scan_args(	argc,
+									args,
+									"31",
+									& rb_secondary_database,
+									& rb_index_name,
+									& rb_callback_object_or_method,
+									& rb_callback_method );
+
+		//	if we don't have a callback method, rb_callback_object_or_method is our method in self
+		if ( rb_callback_method == Qnil )	{
+			rb_callback_method	=	rb_callback_object_or_method;
+			rb_callback_object	=	rb_database_self;
+		}
+		//	otherwise we already have our callback method and just need to set our object
+		else {
+			rb_callback_object	=	rb_callback_object_or_method;
+		}
+	}
 
 	//	change symbol to string b/c C function needs char*
 	if ( TYPE( rb_index_name ) == T_SYMBOL )	{
 		rb_index_name	=	rb_obj_as_string( rb_index_name );
 	}
-	//	if we don't have a callback method, rb_callback_object_or_method is our method in self
-	if ( rb_callback_method == Qnil )	{
-		rb_callback_method	=	rb_callback_object_or_method;
-		rb_callback_object	=	rb_database_self;
-	}
-	else {
-		rb_callback_object	=	rb_callback_object_or_method;
-	}
-
+	
 	/*------------------------------------------------------*/
 
 	RPDB_Database*		c_primary_database;
@@ -1282,12 +1311,14 @@ VALUE	rb_RPDB_Database_internal_setSecondaryKeyCreationCallbackMethodInfoHash(	V
 																																								VALUE	rb_callback_method )	{
 
 	//	Get global variable 'callbacks', which stores secondary key creation callback methods
-	VALUE	rb_callbacks_hash	=	rb_gv_get( RPDB_GVAR_SECONDARY_KEY_CALLBACK_METHODS );
+	VALUE	rb_callbacks_hash	=	rb_iv_get(	rb_mRPDB,
+																				RPDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS );
 	
 	//	Make sure it's a hash - if it's not, instantiate it as a new hash
 	if ( TYPE( rb_callbacks_hash ) != T_HASH )	{
 		rb_callbacks_hash	=	rb_hash_new();
-		rb_gv_set(	RPDB_GVAR_SECONDARY_KEY_CALLBACK_METHODS,
+		rb_iv_set(	rb_mRPDB,
+								RPDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS,
 								rb_callbacks_hash);
 	}
 	
@@ -1423,8 +1454,32 @@ RPDB_SECONDARY_KEY_CREATION_RETURN rb_RPDB_Database_internal_secondaryKeyCreatio
 
 	VALUE	rb_primary_database	=	rb_RPDB_Database_primaryDatabase( rb_secondary_database );
 
+	//	if we have a proc
+	if ( TYPE( rb_callback_method ) != T_SYMBOL )	{
+
+		VALUE	rb_args	=	rb_ary_new();
+		rb_ary_push(	rb_args,
+									rb_data );
+
+		switch ( rb_proc_arity( rb_callback_method ) )	{
+			
+			//	* 1 arg gets data
+			case 1:
+				rb_proc_call(	rb_callback_method,
+											rb_args );
+				break;
+			
+			//	* 2 args gets key, data
+			case 2:
+				rb_ary_unshift( rb_args,
+												rb_key );
+				rb_proc_call(	rb_callback_method,
+											rb_args );				
+				break;
+		}
+	}
 	//	if our callback is in the secondary database (object and secondary are the same) we pass key, data
-	if ( rb_callback_object == rb_secondary_database )	{
+	else if ( rb_callback_object == rb_secondary_database )	{
 	
 		rb_secondary_keys	=	rb_funcall(	rb_secondary_database,
 																		SYM2ID( rb_callback_method ),
@@ -1540,13 +1595,15 @@ RPDB_SECONDARY_KEY_CREATION_RETURN rb_RPDB_Database_internal_processSecondaryKey
 VALUE rb_RPDB_Database_internal_removeCallbackInfoFromHash(	VALUE	rb_secondary_database )	{
 	
 	//	Get global variable 'callbacks', which stores secondary key creation callback methods
-	VALUE	rb_callbacks_hash	=	rb_gv_get( RPDB_GVAR_SECONDARY_KEY_CALLBACK_METHODS );
+	VALUE	rb_callbacks_hash	=	rb_iv_get(	rb_mRPDB,
+																				RPDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS );
 	
 	//	Make sure it's a hash - if it's not, instantiate it as a new hash
 	if ( TYPE( rb_callbacks_hash ) != T_HASH )	{
 		
 		rb_callbacks_hash	=	rb_hash_new();
-		rb_gv_set(	RPDB_GVAR_SECONDARY_KEY_CALLBACK_METHODS,
+		rb_iv_set(	rb_mRPDB,
+								RPDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS,
 								rb_callbacks_hash );
 	}
 

@@ -134,7 +134,7 @@ VALUE rb_RPDB_DatabaseObjectCursor_writeAsCurrent(	VALUE	rb_database_cursor,
 																																		c_record->data->wrapped_bdb_dbt,
 																																		FALSE );
 	
-	RPDB_DatabaseCursor_writeRecordAsCurrentData(	c_database_cursor,
+	RPDB_DatabaseCursor_overwriteCurrentDataWithRecord(	c_database_cursor,
 													c_record	);
 	
 	return rb_database_cursor;

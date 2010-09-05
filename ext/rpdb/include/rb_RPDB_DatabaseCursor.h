@@ -20,21 +20,21 @@ VALUE rb_RPDB_DatabaseCursor_init(	int			argc,
 VALUE rb_RPDB_DatabaseCursor_isOpen( VALUE	rb_database_cursor );
 	VALUE rb_RPDB_DatabaseCursor_close( VALUE	rb_database_cursor );
 	VALUE rb_RPDB_DatabaseCursor_duplicateCursor( VALUE	rb_database_cursor );
-	VALUE rb_RPDB_DatabaseCursor_writeAsCurrent(	VALUE	rb_database_cursor, 
+	VALUE rb_RPDB_DatabaseCursor_overwriteCurrent(	VALUE	rb_database_cursor, 
 													VALUE	rb_data );
 	VALUE rb_RPDB_DatabaseCursor_writeAsDuplicateAfterCurrent(	VALUE	rb_database_cursor, 
 																VALUE	rb_data );
 	VALUE rb_RPDB_DatabaseCursor_writeAsDuplicateBeforeCurrent(	VALUE	rb_database_cursor, 
 																	VALUE	rb_data );
-	VALUE rb_RPDB_DatabaseCursor_writeBeforeAnyDuplicates(	VALUE	rb_database_cursor, 
-															VALUE	rb_key,
-															VALUE	rb_data );
-	VALUE rb_RPDB_DatabaseCursor_writeAfterAnyDuplicates(	VALUE	rb_database_cursor, 
-															VALUE	rb_key,
-															VALUE	rb_data );
-	VALUE rb_RPDB_DatabaseCursor_writeOnlyIfNotInDatabase(	VALUE	rb_database_cursor, 
-																	VALUE	rb_key,
-																	VALUE	rb_data );
+	VALUE rb_RPDB_DatabaseCursor_writeBeforeAnyDuplicates(	int			argc,
+																												VALUE*	args,
+																												VALUE		rb_database_cursor );
+	VALUE rb_RPDB_DatabaseCursor_writeAfterAnyDuplicates(	int			argc,
+																												VALUE*	args,
+																												VALUE		rb_database_cursor );
+	VALUE rb_RPDB_DatabaseCursor_writeOnlyIfNotInDatabase(	int			argc,
+																												VALUE*	args,
+																												VALUE		rb_database_cursor );
 
 	VALUE rb_RPDB_DatabaseCursor_keyExists(	VALUE	rb_database_cursor, 
 																VALUE		key );
@@ -84,6 +84,6 @@ VALUE rb_RPDB_DatabaseCursor_iterateKeys( int	argc,
 	VALUE rb_RPDB_DatabaseCursor_delete(	int	argc,
 	 										VALUE*	args,
 											VALUE	rb_database_cursor );
-VALUE rb_RPDB_DatabaseCursor_internal_insideIterateKeysBlock();
+VALUE rb_RPDB_DatabaseCursor_startingWithFirst( VALUE	rb_database_cursor );
 
 #endif

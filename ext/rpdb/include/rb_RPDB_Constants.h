@@ -332,7 +332,8 @@
 	#define RPDB_RUBY_MODULE_VARIABLE_CURRENT_WORKING_ENVIRONMENT_STACK				"@current_working_environment_stack"
 	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENT_COUNT												"@rpdb__environment_count"
 	#define RPDB_RUBY_MODULE_VARIABLE_DATABASE_RUNTIME_STORAGE								"@rpdb__database_runtime_storage"
-	
+	#define RPDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS	"$rpdb_secondary_key_callback_methods"
+
 	//	Class Variables
 	
 	//	Environment

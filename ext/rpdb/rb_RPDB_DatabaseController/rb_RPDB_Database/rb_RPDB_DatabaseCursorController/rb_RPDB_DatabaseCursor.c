@@ -79,20 +79,20 @@ void Init_RPDB_DatabaseCursor()	{
 	rb_define_method(						rb_RPDB_DatabaseCursor, 	"duplicate",														rb_RPDB_DatabaseCursor_duplicateCursor,									0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCursor, 	"delete",																rb_RPDB_DatabaseCursor_delete,													-1 	);
-	rb_define_method(						rb_RPDB_DatabaseCursor, 	"overwrite_current",										rb_RPDB_DatabaseCursor_writeAsCurrent,									1 	);
+	rb_define_method(						rb_RPDB_DatabaseCursor, 	"overwrite_current",										rb_RPDB_DatabaseCursor_overwriteCurrent,									1 	);
 	rb_define_method(						rb_RPDB_DatabaseCursor, 	"write_as_duplicate_after_current",			rb_RPDB_DatabaseCursor_writeAsDuplicateAfterCurrent,		1 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"write_after_current",									"write_as_duplicate_after_current"	);
 	rb_define_method(						rb_RPDB_DatabaseCursor, 	"write_as_duplicate_before_current",		rb_RPDB_DatabaseCursor_writeAsDuplicateBeforeCurrent,		1 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"write_before_current",									"write_as_duplicate_before_current"	);
-	rb_define_method(						rb_RPDB_DatabaseCursor, 	"write_before_any_duplicates",					rb_RPDB_DatabaseCursor_writeBeforeAnyDuplicates,				2 	);
+	rb_define_method(						rb_RPDB_DatabaseCursor, 	"write_before_any_duplicates",					rb_RPDB_DatabaseCursor_writeBeforeAnyDuplicates,				-1 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"write_before_duplicates",							"write_before_any_duplicates"	);
-	rb_define_method(						rb_RPDB_DatabaseCursor, 	"write_after_any_duplicates",						rb_RPDB_DatabaseCursor_writeAfterAnyDuplicates,					2 	);
+	rb_define_method(						rb_RPDB_DatabaseCursor, 	"write_after_any_duplicates",						rb_RPDB_DatabaseCursor_writeAfterAnyDuplicates,					-1 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"write_after_duplicates",								"write_after_any_duplicates"	);
 
 	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"write",																"write_after_any_duplicates"	);
 
 	//	FIX - shouldn't there be a corresponding function for the database?
-	rb_define_method(						rb_RPDB_DatabaseCursor, 	"write_only_if_not_in_database",				rb_RPDB_DatabaseCursor_writeOnlyIfNotInDatabase,						1 	);
+	rb_define_method(						rb_RPDB_DatabaseCursor, 	"write_only_if_not_in_database",				rb_RPDB_DatabaseCursor_writeOnlyIfNotInDatabase,						-1 	);
                     					                                                              		
 	rb_define_method(						rb_RPDB_DatabaseCursor, 	"key_exists?",													rb_RPDB_DatabaseCursor_keyExists,														1 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"exists?",															"key_exists?"	);
@@ -103,6 +103,8 @@ void Init_RPDB_DatabaseCursor()	{
 	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"current_key",													"retrieve_current_key"	);                            				
 	rb_define_method(						rb_RPDB_DatabaseCursor, 	"retrieve_first",												rb_RPDB_DatabaseCursor_retrieveFirst,												0 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"first",																"retrieve_first"	);
+	rb_define_method(						rb_RPDB_DatabaseCursor, 	"starting_with_first",									rb_RPDB_DatabaseCursor_startingWithFirst,										0 	);
+	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"from_first",														"starting_with_first"	);
 	rb_define_method(						rb_RPDB_DatabaseCursor, 	"retrieve_first_key",										rb_RPDB_DatabaseCursor_retrieveFirstKey,										0 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"first_key",														"retrieve_first_key"	);
 	rb_define_method(						rb_RPDB_DatabaseCursor, 	"retrieve_last",												rb_RPDB_DatabaseCursor_retrieveLast,												0 	);
@@ -145,7 +147,6 @@ void Init_RPDB_DatabaseCursor()	{
 	rb_define_method(						rb_RPDB_DatabaseCursor, 	"iterate_keys",													rb_RPDB_DatabaseCursor_iterateKeys,													-1 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"each_key",															"iterate_keys"	);
                     					                                                          				
-	rb_define_method(						rb_RPDB_DatabaseCursor, 	"to_array",															rb_RPDB_DatabaseCursor_toArray,															0 	);
 }
 
 /*******************************************************************************************************************************************************************************************
@@ -154,9 +155,9 @@ void Init_RPDB_DatabaseCursor()	{
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-/************
+/********
 *  new  *
-************/
+********/
 
 VALUE rb_RPDB_DatabaseCursor_new( int			argc,
 																	VALUE*	args,
@@ -244,21 +245,21 @@ VALUE rb_RPDB_DatabaseCursor_new( int			argc,
 	return rb_database_cursor;
 }
 
-/************
-*  new  *
-************/
+/*********
+*  init  *
+*********/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_cursor.html
-VALUE rb_RPDB_DatabaseCursor_init( int			argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseCursor_init(	int			argc __attribute__ ((unused)),
 																		VALUE*	args __attribute__ ((unused)),
 																		VALUE		rb_database_cursor )	{
 
 	return rb_database_cursor;
 }
 
-/***************************
+/************************
 *  settings_controller  *
-***************************/
+************************/
 VALUE rb_RPDB_DatabaseCursor_settingsController(	VALUE	rb_database_cursor )	{
 
 	VALUE	rb_local_database_cursor_settings_controller	=	Qnil;
@@ -281,9 +282,9 @@ VALUE rb_RPDB_DatabaseCursor_settingsController(	VALUE	rb_database_cursor )	{
 	return rb_local_database_cursor_settings_controller;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 VALUE rb_RPDB_DatabaseCursor_parentEnvironment(	VALUE	rb_database_cursor )	{
 
 	VALUE	rb_parent_database		=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
@@ -292,9 +293,9 @@ VALUE rb_RPDB_DatabaseCursor_parentEnvironment(	VALUE	rb_database_cursor )	{
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 VALUE rb_RPDB_DatabaseCursor_parentDatabase(	VALUE	rb_database_cursor )	{
 
 	VALUE	rb_parent_cursor_controller	=	rb_RPDB_DatabaseCursor_parentDatabaseCursorController( rb_database_cursor );
@@ -303,9 +304,9 @@ VALUE rb_RPDB_DatabaseCursor_parentDatabase(	VALUE	rb_database_cursor )	{
 	return rb_parent_database;
 }
 
-/***************************************
+/**************************************
 *  parent_database_cursor_controller  *
-***************************************/
+**************************************/
 VALUE rb_RPDB_DatabaseCursor_parentDatabaseCursorController(	VALUE	rb_database_cursor )	{
 
 	VALUE	rb_parent_cursor_controller		=	rb_iv_get(	rb_database_cursor,
@@ -313,9 +314,9 @@ VALUE rb_RPDB_DatabaseCursor_parentDatabaseCursorController(	VALUE	rb_database_c
 	return rb_parent_cursor_controller;
 }
 
-/************
+/*********
 *  open  *
-************/
+*********/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_cursor.html
 VALUE rb_RPDB_DatabaseCursor_open( VALUE	rb_database_cursor )	{
@@ -328,9 +329,9 @@ VALUE rb_RPDB_DatabaseCursor_open( VALUE	rb_database_cursor )	{
 	return rb_database_cursor;
 }
 
-/************
-*  is_open  *
-************/
+/*************
+*  is_open?  *
+*************/
 
 VALUE rb_RPDB_DatabaseCursor_isOpen( VALUE	rb_database_cursor )	{
 
@@ -338,12 +339,12 @@ VALUE rb_RPDB_DatabaseCursor_isOpen( VALUE	rb_database_cursor )	{
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 
 	return RPDB_DatabaseCursor_isOpen( c_database_cursor )	?	Qtrue
-															:	Qfalse;
+																													:	Qfalse;
 }
 	
-/*************
+/**********
 *  close  *
-*************/
+**********/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_close.html
 VALUE rb_RPDB_DatabaseCursor_close( VALUE	rb_database_cursor )	{
@@ -356,9 +357,9 @@ VALUE rb_RPDB_DatabaseCursor_close( VALUE	rb_database_cursor )	{
 	return rb_database_cursor;
 }
 
-/*************************
+/*********************
 *  duplicate_cursor  *
-*************************/
+*********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_dup.html
 VALUE rb_RPDB_DatabaseCursor_duplicateCursor( VALUE	rb_database_cursor )	{
@@ -366,19 +367,23 @@ VALUE rb_RPDB_DatabaseCursor_duplicateCursor( VALUE	rb_database_cursor )	{
 	RPDB_DatabaseCursor*		c_database_cursor;
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 
- 	return RUBY_RPDB_DATABASE_CURSOR( RPDB_DatabaseCursor_duplicateCursor( c_database_cursor ) );
+	RPDB_DatabaseCursor*		c_duplicate_cursor	=	RPDB_DatabaseCursor_duplicateCursor( c_database_cursor );
+
+	VALUE	rb_duplicate_cursor	=	RUBY_RPDB_DATABASE_CURSOR( c_duplicate_cursor );
+
+ 	return rb_duplicate_cursor;
 }
 
 /*******************************************************************************************************************************************************************************************
 																	Writing Data
 *******************************************************************************************************************************************************************************************/
 
-/**********************************************
-*  write_as_current  *
-**********************************************/
+/**********************
+*  overwrite_current  *
+**********************/
 
 //	DB_CURRENT				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
-VALUE rb_RPDB_DatabaseCursor_writeAsCurrent(	VALUE	rb_database_cursor, 
+VALUE rb_RPDB_DatabaseCursor_overwriteCurrent(	VALUE	rb_database_cursor, 
 																							VALUE	rb_data )	{
 
 	RPDB_DatabaseCursor*	c_database_cursor;
@@ -389,23 +394,23 @@ VALUE rb_RPDB_DatabaseCursor_writeAsCurrent(	VALUE	rb_database_cursor,
 	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
 
 	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																						rb_data,
-																																						c_record->data->wrapped_bdb_dbt,
-																																						FALSE );
+																																			rb_data,
+																																			c_record->data->wrapped_bdb_dbt,
+																																			FALSE );
 
-	RPDB_DatabaseCursor_writeRecordAsCurrentData(	c_database_cursor,
+	RPDB_DatabaseCursor_overwriteCurrentDataWithRecord(	c_database_cursor,
 																								c_record	);
 	
 	return rb_database_cursor;
 }
 
-/****************************************
+/*************************************
 *  write_as_duplicate_after_current  *
-****************************************/
+*************************************/
 
 //	DB_AFTER				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
 VALUE rb_RPDB_DatabaseCursor_writeAsDuplicateAfterCurrent(	VALUE	rb_database_cursor, 
-															VALUE	rb_data )	{
+																														VALUE	rb_data )	{
 
 	RPDB_DatabaseCursor*	c_database_cursor;
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
@@ -414,23 +419,23 @@ VALUE rb_RPDB_DatabaseCursor_writeAsDuplicateAfterCurrent(	VALUE	rb_database_cur
 	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
 
 	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																						rb_data,
-																																						c_record->data->wrapped_bdb_dbt,
-																																						FALSE );
+																																			rb_data,
+																																			c_record->data->wrapped_bdb_dbt,
+																																			FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordAsDuplicateDataAfterCurrent(	c_database_cursor,
-																	c_record	);
+																															c_record	);
 
 	return rb_database_cursor;
 }
 
-/************************************************
+/**************************************
 *  write_as_duplicate_before_current  *
-************************************************/
+**************************************/
 
 //	DB_BEFORE				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
 VALUE rb_RPDB_DatabaseCursor_writeAsDuplicateBeforeCurrent(	VALUE	rb_database_cursor, 
-																VALUE	rb_data )	{
+																														VALUE	rb_data )	{
 
 	RPDB_DatabaseCursor*	c_database_cursor;
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
@@ -440,61 +445,131 @@ VALUE rb_RPDB_DatabaseCursor_writeAsDuplicateBeforeCurrent(	VALUE	rb_database_cu
 	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
 
 	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																						rb_data,
-																																						c_record->data->wrapped_bdb_dbt,
-																																						FALSE );
+																																			rb_data,
+																																			c_record->data->wrapped_bdb_dbt,
+																																			FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordAsDuplicateBeforeCurrent(	c_database_cursor,
-	 															c_record	);
-
-	return rb_database_cursor;
-}
-
-/*********************************
-*  write_before_any_duplicates  *
-*********************************/
-
-//	If the key already exists in the database and no duplicate sort function has been specified, 
-//	the inserted data item is added as the first of the data items for that key.
-//	If duplicate sort function has been specified, it will be used rather than inserting before duplicates. 
-//	DB_KEYFIRST				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
-VALUE rb_RPDB_DatabaseCursor_writeBeforeAnyDuplicates(	VALUE	rb_database_cursor, 
-														VALUE	rb_key __attribute__((unused)),
-														VALUE	rb_data )	{
-
-	RPDB_DatabaseCursor*	c_database_cursor;
-	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
-
-	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
-
-	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
-	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																						rb_data,
-																																						c_record->key->wrapped_bdb_dbt,
-																																						TRUE );
-	
-	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																						rb_data,
-																																						c_record->data->wrapped_bdb_dbt,
-																																						FALSE );
-	
-	RPDB_DatabaseCursor_writeRecordBeforeAnyDuplicates(	c_database_cursor,
-															c_record	);
+																														c_record	);
 
 	return rb_database_cursor;
 }
 
 /********************************
-*  write_after_any_duplicates  *
+*  write_before_any_duplicates  *
 ********************************/
+
+//	If the key already exists in the database and no duplicate sort function has been specified, 
+//	the inserted data item is added as the first of the data items for that key.
+//	If duplicate sort function has been specified, it will be used rather than inserting before duplicates. 
+//	DB_KEYFIRST				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
+VALUE rb_RPDB_DatabaseCursor_writeBeforeAnyDuplicates(	int			argc,
+																												VALUE*	args,
+																												VALUE		rb_database_cursor )	{
+
+	VALUE	rb_key	=	Qnil;
+	VALUE	rb_data	=	Qnil;
+
+	/*------------------------------------------------------*/
+
+	VALUE	rb_key_or_key_data_hash	=	Qnil;
+	rb_scan_args(	argc,
+								args,
+								"11",
+								& rb_key_or_key_data_hash,
+								& rb_data );
+
+	//	if we have a hash we expect key => data
+	if ( TYPE( rb_key_or_key_data_hash ) == T_HASH )	{
+		VALUE	rb_key_data_array	=	Qnil;
+		rb_key_data_array	=	rb_funcall( rb_key_or_key_data_hash,
+																		rb_intern( "first" ),
+																		0 );
+		rb_key						=	rb_ary_shift( rb_key_data_array );
+		rb_data						=	rb_ary_shift( rb_key_data_array );
+	}
+	//	otherwise we have key, data
+	else {
+		rb_key						=	rb_key_or_key_data_hash;
+	}
+
+	if ( rb_key == Qnil )	{
+		rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_KEY );	
+	}
+	else if ( rb_data == Qnil )	{		
+		rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_DATA );
+	}
+
+	/*------------------------------------------------------*/
+
+	RPDB_DatabaseCursor*	c_database_cursor;
+	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+
+	RPDB_Record*	c_record	=	RPDB_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
+
+	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
+	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																			rb_key,
+																																			c_record->key->wrapped_bdb_dbt,
+																																			TRUE );
+	
+	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
+																																			rb_data,
+																																			c_record->data->wrapped_bdb_dbt,
+																																			FALSE );
+	
+	RPDB_DatabaseCursor_writeRecordBeforeAnyDuplicates(	c_database_cursor,
+																											c_record	);
+
+	return rb_database_cursor;
+}
+
+/*******************************
+*  write_after_any_duplicates  *
+*******************************/
 
 //	If the key already exists in the database and no duplicate sort function has been specified, 
 //	the inserted data item is added as the first of the data items for that key.
 //	If duplicate sort function has been specified, it will be used rather than inserting after duplicates. 
 //	DB_KEYLAST				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
-VALUE rb_RPDB_DatabaseCursor_writeAfterAnyDuplicates(	VALUE	rb_database_cursor, 
-														VALUE	rb_key __attribute__((unused)),
-														VALUE	rb_data )	{
+VALUE rb_RPDB_DatabaseCursor_writeAfterAnyDuplicates(	int			argc,
+																												VALUE*	args,
+																												VALUE		rb_database_cursor )	{
+
+	VALUE	rb_key	=	Qnil;
+	VALUE	rb_data	=	Qnil;
+
+	/*------------------------------------------------------*/
+
+	VALUE	rb_key_or_key_data_hash	=	Qnil;
+	rb_scan_args(	argc,
+								args,
+								"11",
+								& rb_key_or_key_data_hash,
+								& rb_data );
+
+	//	if we have a hash we expect key => data
+	if ( TYPE( rb_key_or_key_data_hash ) == T_HASH )	{
+		VALUE	rb_key_data_array	=	Qnil;
+		rb_key_data_array	=	rb_funcall( rb_key_or_key_data_hash,
+																		rb_intern( "first" ),
+																		0 );
+		rb_key						=	rb_ary_shift( rb_key_data_array );
+		rb_data						=	rb_ary_shift( rb_key_data_array );
+	}
+	//	otherwise we have key, data
+	else {
+		rb_key						=	rb_key_or_key_data_hash;
+	}
+
+	if ( rb_key == Qnil )	{
+		rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_KEY );	
+	}
+	else if ( rb_data == Qnil )	{		
+		rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_DATA );
+	}
+
+	/*------------------------------------------------------*/
 
 	RPDB_DatabaseCursor*	c_database_cursor;
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
@@ -503,14 +578,14 @@ VALUE rb_RPDB_DatabaseCursor_writeAfterAnyDuplicates(	VALUE	rb_database_cursor,
 	
 	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
 	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																						rb_data,
-																																						c_record->key->wrapped_bdb_dbt,
-																																						TRUE );
+																																			rb_key,
+																																			c_record->key->wrapped_bdb_dbt,
+																																			TRUE );
 	
 	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																						rb_data,
-																																						c_record->data->wrapped_bdb_dbt,
-																																						FALSE );
+																																			rb_data,
+																																			c_record->data->wrapped_bdb_dbt,
+																																			FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordAfterAnyDuplicates(		c_database_cursor,
 																												c_record	);
@@ -518,14 +593,49 @@ VALUE rb_RPDB_DatabaseCursor_writeAfterAnyDuplicates(	VALUE	rb_database_cursor,
 	return rb_database_cursor;
 }
 
-/**************************************
+/**********************************
 *  write_only_if_not_in_database  *
-**************************************/
+**********************************/
 
 //	DB_NODUPDATA			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
-VALUE rb_RPDB_DatabaseCursor_writeOnlyIfNotInDatabase(	VALUE	rb_database_cursor, 
-																VALUE	rb_key,
-																VALUE	rb_data )	{
+VALUE rb_RPDB_DatabaseCursor_writeOnlyIfNotInDatabase(	int			argc,
+																												VALUE*	args,
+																												VALUE		rb_database_cursor )	{
+
+	VALUE	rb_key	=	Qnil;
+	VALUE	rb_data	=	Qnil;
+
+	/*------------------------------------------------------*/
+
+	VALUE	rb_key_or_key_data_hash	=	Qnil;
+	rb_scan_args(	argc,
+								args,
+								"11",
+								& rb_key_or_key_data_hash,
+								& rb_data );
+
+	//	if we have a hash we expect key => data
+	if ( TYPE( rb_key_or_key_data_hash ) == T_HASH )	{
+		VALUE	rb_key_data_array	=	Qnil;
+		rb_key_data_array	=	rb_funcall( rb_key_or_key_data_hash,
+																		rb_intern( "first" ),
+																		0 );
+		rb_key						=	rb_ary_shift( rb_key_data_array );
+		rb_data						=	rb_ary_shift( rb_key_data_array );
+	}
+	//	otherwise we have key, data
+	else {
+		rb_key						=	rb_key_or_key_data_hash;
+	}
+
+	if ( rb_key == Qnil )	{
+		rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_KEY );	
+	}
+	else if ( rb_data == Qnil )	{		
+		rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_DATA );
+	}
+
+	/*------------------------------------------------------*/
 
 	RPDB_DatabaseCursor*	c_database_cursor;
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
@@ -534,17 +644,17 @@ VALUE rb_RPDB_DatabaseCursor_writeOnlyIfNotInDatabase(	VALUE	rb_database_cursor,
 	
 	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
 	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																						rb_key,
-																																						c_record->key->wrapped_bdb_dbt,
-																																						TRUE );
+																																			rb_key,
+																																			c_record->key->wrapped_bdb_dbt,
+																																			TRUE );
 	
 	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																						rb_data,
-																																						c_record->data->wrapped_bdb_dbt,
-																																						FALSE );
+																																			rb_data,
+																																			c_record->data->wrapped_bdb_dbt,
+																																			FALSE );
 	
 	RPDB_DatabaseCursor_writeRecordOnlyIfNotInDatabase(	c_database_cursor,
-															c_record	);
+																											c_record	);
 																	
 	return rb_database_cursor;
 }
@@ -553,9 +663,9 @@ VALUE rb_RPDB_DatabaseCursor_writeOnlyIfNotInDatabase(	VALUE	rb_database_cursor,
 																	Retrieval
 *******************************************************************************************************************************************************************************************/
 
-/*****************************
+/***************
 *  key_exists  *
-*****************************/
+***************/
 
 VALUE rb_RPDB_DatabaseCursor_keyExists(	VALUE	rb_database_cursor, 
 																				VALUE	rb_key )	{
@@ -567,50 +677,52 @@ VALUE rb_RPDB_DatabaseCursor_keyExists(	VALUE	rb_database_cursor,
 	
 	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
 	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																						rb_key,
-																																						c_record->key->wrapped_bdb_dbt,
-																																						TRUE );
+																																			rb_key,
+																																			c_record->key->wrapped_bdb_dbt,
+																																			TRUE );
 		
 	return ( RPDB_DatabaseCursor_keyExists(	c_database_cursor,
-	 											c_record->key	)	?	Qtrue
-																			:	Qfalse );
+																					c_record->key	)	?	Qtrue
+																												:	Qfalse );
 }
 
-/*************************
+/*************
 *  retrieve  *
-*************************/
+*************/
 
 VALUE rb_RPDB_DatabaseCursor_retrieve(	int	argc,
- 										VALUE*	args,
-										VALUE	rb_database_cursor )	{
+																				VALUE*	args,
+																				VALUE	rb_database_cursor )	{
 
 	RPDB_Record*	c_record	=	rb_RPDB_DatabaseCursor_internal_retrieveRecord(	argc,
 																																						args,
 																																						rb_database_cursor );
 
 	return rb_str_new(	(char*) RPDB_Record_rawData( c_record ),
-						RPDB_Record_dataSize( c_record ) );
+											RPDB_Record_dataSize( c_record ) );
 }
 
-/*************************
+/*****************
 *  retrieve_key  *
-*************************/
+*****************/
 
 VALUE rb_RPDB_DatabaseCursor_retrieveKey(	int	argc,
-											VALUE*	args,
-											VALUE	rb_database_cursor )	{
+																					VALUE*	args,
+																					VALUE	rb_database_cursor )	{
 	
 	RPDB_Record*	c_record	=	rb_RPDB_DatabaseCursor_internal_retrieveRecord(	argc,
 																																						args,
 																																						rb_database_cursor );
 	
 	return rb_str_new(	(char*) RPDB_Record_rawKey( c_record ),
-					  RPDB_Record_keySize( c_record ) );
+											RPDB_Record_keySize( c_record ) );
 }
 
-/*****************************************
+/*************************
 *  retrieve_partial_key  *
-*****************************************/
+*  partial_key           *
+*  retrieve_partial      *
+*************************/
 
 VALUE rb_RPDB_DatabaseCursor_retrievePartialKey(	VALUE	rb_database_cursor,
 																									VALUE	rb_key __attribute__((unused)) )	{
@@ -623,9 +735,10 @@ VALUE rb_RPDB_DatabaseCursor_retrievePartialKey(	VALUE	rb_database_cursor,
 	return Qnil;
 }
 
-/****************************************
+/**************************
 *  retrieve_partial_data  *
-****************************************/
+*  partial_data           *
+**************************/
 
 //	DB_SET_RANGE			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 //	Must be Btree and it must have been created with the DB_RECNUM flag.
@@ -641,31 +754,14 @@ VALUE rb_RPDB_DatabaseCursor_retrievePartialData(	VALUE	rb_database_cursor,
 	return Qnil;
 }
 
-/**************************************
-*  retrieve_partial_data  *
-**************************************/
-
-//	DB_GET_BOTH_RANGE		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
-//	Permits partial data matches and range searches by returning the smallest item matching or including the data
-VALUE rb_RPDB_DatabaseCursor_retrievePartialKeyDataPair(	VALUE	rb_database_cursor,
-																													VALUE	partial_key __attribute__((unused)),
-																													VALUE	partial_data __attribute__((unused)) )	{
-
-	RPDB_DatabaseCursor*	c_database_cursor;
-	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
-
-//	RPDB_DatabaseCursor_retrievePartialKeyDataPair( c_database_cursor );
-
-	return Qnil;
-}
-
 /*******************************************************************************************************************************************************************************************
 																Relative to Current Key
 *******************************************************************************************************************************************************************************************/
 
-/*************************
-*  current  *
-*************************/
+/*********************
+*  retrieve_current  *
+*  current           *
+*********************/
 
 VALUE rb_RPDB_DatabaseCursor_current(	VALUE	rb_database_cursor )	{
 	return rb_RPDB_DatabaseCursor_retrieve(	0,
@@ -674,7 +770,8 @@ VALUE rb_RPDB_DatabaseCursor_current(	VALUE	rb_database_cursor )	{
 }
 
 /*************************
-*  currentKey  *
+*  retrieve_current_key  *
+*  current_key           *
 *************************/
 
 VALUE rb_RPDB_DatabaseCursor_currentKey(	VALUE	rb_database_cursor )	{
@@ -683,9 +780,21 @@ VALUE rb_RPDB_DatabaseCursor_currentKey(	VALUE	rb_database_cursor )	{
 																							rb_database_cursor );
 }
 
-/****************
-*  first  *
-****************/
+/************************
+*  starting_with_first  *
+*  from_first           *
+************************/
+
+//	DB_FIRST				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
+VALUE rb_RPDB_DatabaseCursor_startingWithFirst( VALUE	rb_database_cursor )	{
+	rb_RPDB_DatabaseCursor_retrieveFirst( rb_database_cursor );
+	return rb_database_cursor;
+}
+
+/*******************
+*  retrieve_first  *
+*  first           *
+*******************/
 
 //	DB_FIRST				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursor_retrieveFirst( VALUE	rb_database_cursor )	{
@@ -703,9 +812,10 @@ VALUE rb_RPDB_DatabaseCursor_retrieveFirst( VALUE	rb_database_cursor )	{
 	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
 }
 
-/****************
-*  firstKey  *
-****************/
+/***********************
+*  retrieve_first_key  *
+*  first_key           *
+***********************/
 
 //	DB_FIRST				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursor_retrieveFirstKey( VALUE	rb_database_cursor )	{
@@ -716,14 +826,15 @@ VALUE rb_RPDB_DatabaseCursor_retrieveFirstKey( VALUE	rb_database_cursor )	{
 	RPDB_Record*	record	=	RPDB_DatabaseCursor_retrieveFirst(	c_database_cursor );
 	
 	VALUE	rb_return_string	=	rb_str_new(	(char*) RPDB_Record_rawKey( record ),
-											   RPDB_Record_keySize( record ) );
+																				RPDB_Record_keySize( record ) );
 	
 	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
 }
 
-/**************
-*  last  *
-**************/
+/******************
+*  retrieve_last  *
+*  last           *
+******************/
 
 //	DB_LAST				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursor_retrieveLast( VALUE	rb_database_cursor )	{
@@ -739,9 +850,10 @@ VALUE rb_RPDB_DatabaseCursor_retrieveLast( VALUE	rb_database_cursor )	{
 	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
 }
 
-/**************
-*  lastKey  *
-**************/
+/**********************
+*  retrieve_last_key  *
+*  last_key           *
+**********************/
 
 //	DB_LAST				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursor_retrieveLastKey( VALUE	rb_database_cursor )	{
@@ -757,9 +869,10 @@ VALUE rb_RPDB_DatabaseCursor_retrieveLastKey( VALUE	rb_database_cursor )	{
 	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
 }
 
-/**************
-*  next  *
-**************/
+/******************
+*  retrieve_next  *
+*  next           *
+******************/
 
 //	DB_NEXT				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursor_retrieveNext( VALUE	rb_database_cursor )	{
@@ -777,9 +890,10 @@ VALUE rb_RPDB_DatabaseCursor_retrieveNext( VALUE	rb_database_cursor )	{
 	return return_value;
 }		
 
-/**************
-*  nextKey  *
-**************/
+/**********************
+*  retrieve_next_key  *
+*  next_key           *
+**********************/
 
 //	DB_NEXT				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursor_retrieveNextKey( VALUE	rb_database_cursor )	{
@@ -797,9 +911,10 @@ VALUE rb_RPDB_DatabaseCursor_retrieveNextKey( VALUE	rb_database_cursor )	{
 	return return_value;
 }		
 
-/******************
-*  previous  *
-******************/
+/**********************
+*  retrieve_previous  *
+*  previous           *
+**********************/
 
 //	DB_PREV				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursor_retrievePrevious( VALUE	rb_database_cursor )	{
@@ -815,9 +930,10 @@ VALUE rb_RPDB_DatabaseCursor_retrievePrevious( VALUE	rb_database_cursor )	{
 	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
 }
 
-/******************
-*  previousKey  *
-******************/
+/**************************
+*  retrieve_previous_key  *
+*  previous_key           *
+**************************/
 
 //	DB_PREV				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursor_retrievePreviousKey( VALUE	rb_database_cursor )	{
@@ -833,9 +949,9 @@ VALUE rb_RPDB_DatabaseCursor_retrievePreviousKey( VALUE	rb_database_cursor )	{
 	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
 }
 
-/*********************************
-*  countDuplicatesForCurrentKey  *
-*********************************/
+/*************************************
+*  count_duplicates_for_current_key  *
+*************************************/
 
 //	Count data items for current key
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_count.html
@@ -847,9 +963,10 @@ VALUE rb_RPDB_DatabaseCursor_countDuplicatesForCurrentKey( VALUE	rb_database_cur
 	return	INT2FIX( RPDB_DatabaseCursor_countDuplicatesForCurrentKey(	c_database_cursor ) );
 }
 
-/************************
-*  nextDuplicate  *
-************************/
+/****************************
+*  retrieve_next_duplicate  *
+*  next_duplicate           *
+****************************/
 
 //	DB_NEXT_DUP			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursor_retrieveNextDuplicate( VALUE	rb_database_cursor )	{
@@ -865,9 +982,10 @@ VALUE rb_RPDB_DatabaseCursor_retrieveNextDuplicate( VALUE	rb_database_cursor )	{
 	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
 }
 
-/****************************
-*  previousDuplicate  *
-****************************/
+/********************************
+*  retrieve_previous_duplicate  *
+*  previous_duplicate           *
+********************************/
 
 //	DB_PREV_DUP				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursor_retrievePreviousDuplicate( VALUE	rb_database_cursor )	{
@@ -883,9 +1001,10 @@ VALUE rb_RPDB_DatabaseCursor_retrievePreviousDuplicate( VALUE	rb_database_cursor
 	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
 }
 
-/*************************
-*  nextNonDuplicate  *
-*************************/
+/********************************
+*  retrieve_next_non_duplicate  *
+*  next_non_duplicate           *
+********************************/
 
 //	DB_NEXT_NODUP		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursor_retrieveNextNonDuplicate( VALUE	rb_database_cursor )	{
@@ -901,9 +1020,10 @@ VALUE rb_RPDB_DatabaseCursor_retrieveNextNonDuplicate( VALUE	rb_database_cursor 
 	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
 }
 
-/******************************
-*  previousNonDuplicate  *
-******************************/
+/************************************
+*  retrieve_previous_non_duplicate  *
+*  previous_non_duplicate           *
+************************************/
 
 //	DB_PREV_NODUP				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursor_retrievePreviousNonDuplicate( VALUE	rb_database_cursor )	{
@@ -919,8 +1039,50 @@ VALUE rb_RPDB_DatabaseCursor_retrievePreviousNonDuplicate( VALUE	rb_database_cur
 	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
 }
 
+/************
+*  each  *
+************/
+
+VALUE rb_RPDB_DatabaseCursor_iterate( int			argc,
+																			VALUE*	args,
+																			VALUE		rb_database_cursor	)	{
+	
+	VALUE	rb_items_per_segment	=	Qnil;
+	rb_scan_args(	argc,
+								args,
+								"01",
+								& rb_items_per_segment );
+	/*
+	int	c_items_per_segment = ( rb_items_per_segment == Qnil ? 0 : FIX2INT( rb_items_per_segment ) );
+	if ( c_items_per_segment > 0 )	{
+		return rb_RPDB_DatabaseCursor_iterateInSegments(	rb_database_cursor,
+															rb_items_per_segment );
+	}	
+	*/
+	RPDB_DatabaseCursor*	c_database_cursor;
+	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+	
+	//	Get our next record for the iteration
+	RPDB_Record*	c_record	=	NULL;
+	
+	while ( ( c_record = RPDB_DatabaseCursor_iterate( c_database_cursor, c_record ) ) != NULL )	{
+	
+		VALUE	rb_record_data	=	rb_str_new(	(char*) RPDB_Record_rawData( c_record ),
+																				RPDB_Record_dataSize( c_record ) );
+
+		//	If we don't have a block, we return an enumerator
+		RETURN_ENUMERATOR(	rb_database_cursor,
+												1, 
+												& rb_items_per_segment );
+		//	Otherwise we iterate the block
+		rb_yield( rb_record_data );
+	}
+	//	If we got here we return nothing
+	return Qnil;
+}
+
 /****************************
-*  list  *
+*  each_slice  *
 ****************************/
 /*(
 VALUE rb_RPDB_DatabaseCursor_iterateInSegments( VALUE	rb_database_cursor,
@@ -947,13 +1109,15 @@ VALUE rb_RPDB_DatabaseCursor_iterateInSegments( VALUE	rb_database_cursor,
 	return Qnil;
 }
 	*/
-/****************************
-*  iterate  *
-****************************/
 
-VALUE rb_RPDB_DatabaseCursor_iterate( int			argc,
-																			VALUE*	args,
-																			VALUE		rb_database_cursor	)	{
+/**********************
+*  each_duplicate  *
+**********************/
+
+//	iterates all records with one or more duplicates
+VALUE rb_RPDB_DatabaseCursor_iterateDuplicates(	int			argc,
+																								VALUE*	args,
+																								VALUE		rb_database_cursor )	{
 	
 	VALUE	rb_items_per_segment	=	Qnil;
 	rb_scan_args(	argc,
@@ -961,7 +1125,7 @@ VALUE rb_RPDB_DatabaseCursor_iterate( int			argc,
 								"01",
 								& rb_items_per_segment );
 	/*
-	int	c_items_per_segment = ( rb_items_per_segment == Qnil ? 0 : FIX2INT( rb_items_per_segment ) );
+	int	c_items_per_segment = FIX2INT( ( rb_items_per_segment == Qnil ? 0 : rb_items_per_segment ) );
 	if ( c_items_per_segment > 0 )	{
 		return rb_RPDB_DatabaseCursor_iterateInSegments(	rb_database_cursor,
 															rb_items_per_segment );
@@ -969,15 +1133,14 @@ VALUE rb_RPDB_DatabaseCursor_iterate( int			argc,
 	*/
 	RPDB_DatabaseCursor*	c_database_cursor;
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
-	
-	//	Get our next record for the iteration
+		
 	RPDB_Record*	c_record	=	NULL;
-	
-	while ( ( c_record = RPDB_DatabaseCursor_iterate( c_database_cursor, c_record ) ) )	{
-	
+
+	while ( ( c_record = RPDB_DatabaseCursor_iterateDuplicates( c_database_cursor, c_record ) ) != NULL )	{
+		
 		VALUE	rb_record_data	=	rb_str_new(	(char*) RPDB_Record_rawData( c_record ),
 																				RPDB_Record_dataSize( c_record ) );
-
+		
 		//	If we don't have a block, we return an enumerator
 		RETURN_ENUMERATOR(	rb_database_cursor,
 												1, 
@@ -985,12 +1148,13 @@ VALUE rb_RPDB_DatabaseCursor_iterate( int			argc,
 		//	Otherwise we iterate the block
 		rb_yield( rb_record_data );
 	}
+	
 	//	If we got here we return nothing
 	return Qnil;
 }
 
 /****************************
-*  listDuplicates  *
+*  each_duplicate_slice  *
 ****************************/
 /*
 //	iterates all records with one or more duplicates
@@ -1018,52 +1182,53 @@ VALUE rb_RPDB_DatabaseCursor_iterateDuplicatesInSegments(	VALUE	rb_database_curs
 	return Qnil;
 }
 	*/
-/****************************
-*  iterateDuplicates  *
-****************************/
 
-//	iterates all records with one or more duplicates
-VALUE rb_RPDB_DatabaseCursor_iterateDuplicates(	int	argc,
-													VALUE*	args,
-													VALUE	rb_database_cursor )	{
-	
+/****************
+*  each_key  *
+****************/
+
+//	iterates all keys without iterating duplicate records
+VALUE rb_RPDB_DatabaseCursor_iterateKeys(	int			argc,
+																					VALUE*	args,
+																					VALUE		rb_database_cursor )	{
+
 	VALUE	rb_items_per_segment	=	Qnil;
 	rb_scan_args(	argc,
 								args,
 								"01",
 								& rb_items_per_segment );
 	/*
-	int	c_items_per_segment = FIX2INT( ( rb_items_per_segment == Qnil ? 0 : rb_items_per_segment ) );
+	int	c_items_per_segment = ( rb_items_per_segment == Qnil ? INT2FIX( 0 ) : rb_items_per_segment );
 	if ( c_items_per_segment > 0 )	{
 		return rb_RPDB_DatabaseCursor_iterateInSegments(	rb_database_cursor,
 															rb_items_per_segment );
 	}	
-	*/
+*/
 	RPDB_DatabaseCursor*	c_database_cursor;
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
-		
+	
 	RPDB_Record*	c_record	=	NULL;
 
-	while ( ( c_record = RPDB_DatabaseCursor_iterateDuplicates( c_database_cursor, c_record ) ) )	{
+	while ( ( c_record = RPDB_DatabaseCursor_iterateKeys( c_database_cursor, c_record ) ) != NULL )	{
 		
-		VALUE	rb_record_data	=	rb_str_new(	(char*) RPDB_Record_rawData( c_record ),
-																				RPDB_Record_dataSize( c_record ) );
+		VALUE	rb_record_key	=	rb_str_new(	(char*) RPDB_Record_rawKey( c_record ),
+																			RPDB_Record_keySize( c_record ) );
 		
 		//	If we don't have a block, we return an enumerator
 		RETURN_ENUMERATOR(	rb_database_cursor,
 												1, 
 												& rb_items_per_segment );
 		//	Otherwise we iterate the block
-		rb_yield( rb_record_data );
+		rb_yield( rb_record_key );
 	}
 	
 	//	If we got here we return nothing
 	return Qnil;
 }
-
-/*************
-*  listKeys  *
-*************/
+	
+/*******************
+*  each_key_slice  *
+*******************/
 /*
 //	iterates all keys without iterating duplicate records
 VALUE rb_RPDB_DatabaseCursor_iterateKeysInSegments( VALUE rb_database_cursor,
@@ -1089,82 +1254,14 @@ VALUE rb_RPDB_DatabaseCursor_iterateKeysInSegments( VALUE rb_database_cursor,
 	return Qnil;
 }
 */
-/****************************
-*  iterateKeys  *
-****************************/
-
-//	iterates all keys without iterating duplicate records
-VALUE rb_RPDB_DatabaseCursor_iterateKeys(	int	argc,
-											VALUE*	args,
-											VALUE	rb_database_cursor )	{
-
-	VALUE	rb_items_per_segment	=	Qnil;
-	rb_scan_args(	argc,
-								args,
-								"01",
-								& rb_items_per_segment );
-	/*
-	int	c_items_per_segment = ( rb_items_per_segment == Qnil ? INT2FIX( 0 ) : rb_items_per_segment );
-	if ( c_items_per_segment > 0 )	{
-		return rb_RPDB_DatabaseCursor_iterateInSegments(	rb_database_cursor,
-															rb_items_per_segment );
-	}	
-*/
-	RPDB_DatabaseCursor*	c_database_cursor;
-	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
-	
-	RPDB_Record*	c_record	=	NULL;
-
-	while ( ( c_record = RPDB_DatabaseCursor_iterateKeys( c_database_cursor, c_record ) ) )	{
-		
-		VALUE	rb_record_key	=	rb_str_new(	(char*) RPDB_Record_rawKey( c_record ),
-																			RPDB_Record_keySize( c_record ) );
-		
-		//	If we don't have a block, we return an enumerator
-		RETURN_ENUMERATOR(	rb_database_cursor,
-												1, 
-												& rb_items_per_segment );
-		//	Otherwise we iterate the block
-		rb_yield( rb_record_key );
-	}
-	
-	//	If we got here we return nothing
-	return Qnil;
-}
-
-/****************************
-*  toArray  *
-****************************/
-
-//	iterates all keys without iterating duplicate records
-VALUE rb_RPDB_DatabaseCursor_toArray( VALUE rb_database_cursor )	{
-
-	VALUE	rb_key_enum		=	Qnil;
-	VALUE	rb_return_array	=	rb_ary_new();
-	while ( ( rb_key_enum = rb_funcall(	rb_database_cursor,
-																			rb_intern( "each" ),
-																			0 ) ) )	{
-		
-		rb_ary_push(	rb_return_array,
-									rb_funcall(	rb_key_enum,
-															rb_intern( "next" ),
-															0 ) );
-	}
-	
-	if ( RARRAY_LEN( rb_return_array ) == 0 )	{
-		return Qnil;
-	}
-	
-	return rb_return_array;
-}
 	
 /*******************************************************************************************************************************************************************************************
 																	Deleting Data
 *******************************************************************************************************************************************************************************************/
 
-/*****************************
-*  deleteCurrentRecord  *
-*****************************/
+/***********
+*  delete  *
+***********/
 
 //	Deletes key/pair to which database_cursor refers
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_del.html
@@ -1185,9 +1282,9 @@ VALUE rb_RPDB_DatabaseCursor_delete(	int			argc,
 	
 		VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
 		rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																							args[ 0 ],
-																																							c_record->key->wrapped_bdb_dbt,
-																																							TRUE );
+																																				args[ 0 ],
+																																				c_record->key->wrapped_bdb_dbt,
+																																				TRUE );
 		
 		//	1 arg - key, record, raw, or record number (if recno)
 		if ( argc == 1 )	{
@@ -1201,9 +1298,9 @@ VALUE rb_RPDB_DatabaseCursor_delete(	int			argc,
 		if ( argc == 2 )	{
 			
 			rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																								args[ 1 ],
-																																								c_record->data->wrapped_bdb_dbt,
-																																								FALSE );
+																																					args[ 1 ],
+																																					c_record->data->wrapped_bdb_dbt,
+																																					FALSE );
 			
 			//	FIX - make sure deleteRecord supports exact pair deletion
 			RPDB_DatabaseCursor_deleteRecord(	c_database_cursor,
@@ -1219,6 +1316,10 @@ VALUE rb_RPDB_DatabaseCursor_delete(	int			argc,
 															Internal Methods
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
+
+/*******************
+*  retrieveRecord  *
+*******************/
 
 RPDB_Record* rb_RPDB_DatabaseCursor_internal_retrieveRecord(	int			argc,
 																															VALUE*	args,

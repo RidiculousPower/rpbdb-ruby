@@ -257,6 +257,16 @@ describe RPDB::Environment::DatabaseController::Database do
     database_two.retrieve( 'secondary key: ' + primary_key ).should == 'some data'
   end
 
+  it "can create a secondary index with a block, automatically associating the secondary database with the primary" do
+    database      = @environment.database.new( $database_name ).open
+    database_two  = database.create_secondary_index( :index ) do |key, data|
+      return 'secondary key: ' + key
+    end
+    primary_key = 'primary key'
+    database.write( primary_key, 'some data' )
+    database_two.retrieve( 'secondary key: ' + primary_key ).should == 'some data'
+  end
+
   #######################
   #  cursor_controller  #
   #######################
