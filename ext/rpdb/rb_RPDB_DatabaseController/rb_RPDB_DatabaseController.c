@@ -58,6 +58,7 @@ void Init_RPDB_DatabaseController()	{
                     					
 	rb_define_method(						rb_RPDB_DatabaseController, 	"new_database",										rb_RPDB_DatabaseController_newDatabase,							1 	);
 	rb_define_alias(						rb_RPDB_DatabaseController, 	"new",														"new_database"	);
+	rb_define_alias(						rb_RPDB_DatabaseController, 	"database",												"new_database"	);
 	rb_define_method(						rb_RPDB_DatabaseController, 	"close_all_databases",						rb_RPDB_DatabaseController_closeAllDatabases,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseController, 	"close_all",											"close_all_databases"	);
 }
@@ -101,7 +102,7 @@ VALUE rb_RPDB_DatabaseController_new(	int			argc,
 	
 	//	or no argument; default environment
 	if ( rb_parent_environment == Qnil )	{	
-		rb_parent_environment	=	rb_RPDB_defaultEnvironment( rb_mRPDB );
+		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
 	}
 	
 	if ( rb_parent_environment == Qnil )	{

@@ -247,20 +247,25 @@ void Init_rpdb()	{
 	rb_mRPDB 	=	rb_define_module( "RPDB" );
 
 	//	override of extend so we can auto-extend both ways for RPDB
-	rb_define_singleton_method(	rb_cObject,	"extend",										rb_RPDB_extend,									1 );
+	rb_define_singleton_method(	rb_cObject,	"extend",															rb_RPDB_extend,												1 );
 
-	rb_define_singleton_method(	rb_mRPDB,		"included",									rb_RPDB_included,								1 );
-	rb_define_singleton_method(	rb_mRPDB,		"extended",									rb_RPDB_extended,								1 );
-	rb_define_singleton_method(	rb_mRPDB,		"included_for?",						rb_RPDB_includedFor,						-1 );
-	rb_define_singleton_method(	rb_mRPDB,		"extends?",									rb_RPDB_extends,								-1 );
+	rb_define_singleton_method(	rb_mRPDB,		"included",														rb_RPDB_included,											1 );
+	rb_define_singleton_method(	rb_mRPDB,		"extended",														rb_RPDB_extended,											1 );
+	rb_define_singleton_method(	rb_mRPDB,		"included_for?",											rb_RPDB_includedFor,									-1 );
+	rb_define_singleton_method(	rb_mRPDB,		"extends?",														rb_RPDB_extends,											-1 );
 
-	rb_define_singleton_method(	rb_mRPDB, 	"default_environment",			rb_RPDB_defaultEnvironment,			0 );
+	rb_define_singleton_method(	rb_mRPDB, 	"current_working_environment",				rb_RPDB_currentWorkingEnvironment,		0 );
+	rb_define_singleton_method(	rb_mRPDB, 	"current_environment",								rb_RPDB_currentWorkingEnvironment,		0 );
+	rb_define_singleton_method(	rb_mRPDB, 	"current_working_environment=",				rb_RPDB_setCurrentWorkingEnvironment,	1 );
+	rb_define_singleton_method(	rb_mRPDB, 	"set_current_working_environment",		rb_RPDB_setCurrentWorkingEnvironment,	1 );
+	rb_define_singleton_method(	rb_mRPDB, 	"current_environment=",								rb_RPDB_setCurrentWorkingEnvironment,	1 );
+	rb_define_singleton_method(	rb_mRPDB, 	"set_current_environment",						rb_RPDB_setCurrentWorkingEnvironment,	1 );
 	
-	rb_define_singleton_method(	rb_mRPDB, 	"version",									rb_RPDB_version,								0 );
-	rb_define_singleton_method(	rb_mRPDB, 	"version_major",						rb_RPDB_versionMajor,						0 );
-	rb_define_singleton_method(	rb_mRPDB, 	"version_minor",						rb_RPDB_versionMinor,						0 );
-	rb_define_singleton_method(	rb_mRPDB, 	"version_patch",						rb_RPDB_versionPatch,						0 );
-	rb_define_singleton_method(	rb_mRPDB, 	"version_parts",						rb_RPDB_versionData,						0 );
+	rb_define_singleton_method(	rb_mRPDB, 	"version",														rb_RPDB_version,											0 );
+	rb_define_singleton_method(	rb_mRPDB, 	"version_major",											rb_RPDB_versionMajor,									0 );
+	rb_define_singleton_method(	rb_mRPDB, 	"version_minor",											rb_RPDB_versionMinor,									0 );
+	rb_define_singleton_method(	rb_mRPDB, 	"version_patch",											rb_RPDB_versionPatch,									0 );
+	rb_define_singleton_method(	rb_mRPDB, 	"version_parts",											rb_RPDB_versionData,									0 );
 		
 	Init_RPDB_Module();
 
@@ -476,20 +481,45 @@ VALUE rb_RPDB_extends(	int			argc,
  																																				Environment Storage
 *******************************************************************************************************************************************************************************************/
 
-/************************
-*  default_environment  *
-************************/
+/********************************
+*  current_working_environment  *
+********************************/
 
-VALUE rb_RPDB_defaultEnvironment( VALUE rb_module_self __attribute__ ((unused )) )	{
+VALUE rb_RPDB_currentWorkingEnvironment( VALUE rb_module_self __attribute__ ((unused )) )	{
 	
-	RPDB_Environment*	c_environment	=	RPDB_RuntimeStorageController_defaultEnvironment( RPDB_RuntimeStorageController_sharedInstance() );
+	//	change default environment to current working environment
+	//	when a new environment is opened, the current working environment is set to it
+	//	it can also be changed by specifying new cwe	
+	//	when the environment closes if it is the cwe then it is removed
+	//	only open environments can be the cwe
+	//	additionally, cwe can stack, but any time one is closed it is removed from the stack, even if not current
 	
-	VALUE	rb_environment	=	Qnil;
-	if ( c_environment != NULL )	{
-		rb_environment	=	RUBY_RPDB_ENVIRONMENT( c_environment );
-	}
+	VALUE	rb_current_working_environment_stack	=	rb_RPDB_internal_currentWorkingEnvironmentStack( rb_module_self );
+	VALUE	rb_current_working_environment				=	rb_ary_entry(	rb_current_working_environment_stack, 0 );
 	
-	return rb_environment;	
+	return rb_current_working_environment;	
+}
+
+/*********************************
+*  current_working_environment=  *
+*********************************/
+
+VALUE rb_RPDB_setCurrentWorkingEnvironment(	VALUE	rb_module_self,
+																						VALUE	rb_environment )	{
+
+	RPDB_Environment*	c_environment	=	NULL;
+	C_RPDB_ENVIRONMENT( rb_environment, c_environment );
+
+	RPDB_RuntimeStorageController_setCurrentWorkingEnvironment( RPDB_RuntimeStorageController_sharedInstance(),
+																															c_environment );
+	
+	VALUE	rb_current_working_environment_stack	=	rb_RPDB_internal_currentWorkingEnvironmentStack( rb_module_self );
+	
+	//	stick new environment at top of stack
+	rb_ary_unshift(	rb_current_working_environment_stack,
+									rb_environment );
+	
+	return rb_module_self;
 }
 
 /*******************************************************************************************************************************************************************************************
@@ -730,17 +760,17 @@ VALUE rb_RPDB_internal_initializeWaitingClasses()	{
 //	array tracks classes that will configure when the next environment opens
 VALUE rb_RPDB_internal_classesWaitingForDefaultEnvironment()	{
 	
-	VALUE	rb_default_environment_wait_list_array	=	rb_iv_get(	rb_mRPDB,
+	VALUE	rb_current_working_environment_wait_list_array	=	rb_iv_get(	rb_mRPDB,
 																															RPDB_RUBY_MODULE_VARIABLE_DEFAULT_ENVIRONMENT_WAIT_LIST_ARRAY );
 	
-	if ( rb_default_environment_wait_list_array == Qnil )	{
-		rb_default_environment_wait_list_array = rb_ary_new();
+	if ( rb_current_working_environment_wait_list_array == Qnil )	{
+		rb_current_working_environment_wait_list_array = rb_ary_new();
 		rb_iv_set(	rb_mRPDB,
 								RPDB_RUBY_MODULE_VARIABLE_DEFAULT_ENVIRONMENT_WAIT_LIST_ARRAY,
-								rb_default_environment_wait_list_array );
+								rb_current_working_environment_wait_list_array );
 	}
 	
-	return rb_default_environment_wait_list_array;
+	return rb_current_working_environment_wait_list_array;
 }
 
 /************************************
@@ -780,3 +810,44 @@ VALUE rb_RPDB_internal_classesWaitingForInitialization()	{
 	
 	return rb_init_classes_wait_list_array;
 }
+
+/*********************************************
+*  deleteFromCurrentWorkingEnvironmentStack  *
+*********************************************/
+
+VALUE rb_RPDB_internal_deleteFromCurrentWorkingEnvironmentStack(	VALUE	rb_module_self,
+																																	VALUE	rb_environment )	{
+
+	VALUE	rb_current_working_environment_stack	=	rb_RPDB_internal_currentWorkingEnvironmentStack( rb_module_self );
+	
+	VALUE	rb_environment_index	=	rb_funcall(		rb_current_working_environment_stack,
+																							rb_intern( "index" ),
+																							1,
+																							& rb_environment,
+																							rb_current_working_environment_stack );
+
+	if ( rb_environment_index != Qnil )	{
+		rb_ary_delete( rb_current_working_environment_stack, rb_environment_index );
+	}
+	
+	return rb_module_self;
+}
+
+/***********************************
+*  currentWorkingEnvironmentStack  *
+***********************************/
+
+VALUE rb_RPDB_internal_currentWorkingEnvironmentStack(	VALUE	rb_module_self )	{
+	
+	VALUE	rb_stack_array	=	rb_iv_get(	rb_module_self,
+																			RPDB_RUBY_MODULE_VARIABLE_CURRENT_WORKING_ENVIRONMENT_STACK );
+
+	if ( rb_stack_array == Qnil )	{
+		rb_stack_array	=	rb_ary_new();
+		rb_iv_set(	rb_module_self,
+								RPDB_RUBY_MODULE_VARIABLE_CURRENT_WORKING_ENVIRONMENT_STACK,
+								rb_stack_array );
+	}
+	return rb_stack_array;
+}
+

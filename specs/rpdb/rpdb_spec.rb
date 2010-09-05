@@ -3,7 +3,7 @@ require_relative '../../lib/rpdb.rb'
 describe RPDB do
 
   $environment_name           = :spec_environment
-  $environment_path             = '/tmp/rpdb_spec_environment_home'
+  $environment_path             = '/tmp/rpdb_spec_environment_home/'
 
   #############
   #  version  #

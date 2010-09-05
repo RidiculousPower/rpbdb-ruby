@@ -6,10 +6,12 @@
 
 void Init_RPDB_DatabaseCursor();
 
-VALUE rb_RPDB_DatabaseCursor_new( VALUE	klass,
-								  VALUE	rb_parent_database_cursor_controller );
-VALUE rb_RPDB_DatabaseCursor_init( VALUE	rb_database_cursor,
-	VALUE	rb_parent_database_cursor_controller );
+VALUE rb_RPDB_DatabaseCursor_new( int			argc,
+																	VALUE*	args,
+																	VALUE		rb_database_cursor_class );
+VALUE rb_RPDB_DatabaseCursor_init(	int			argc,
+																		VALUE*	args,
+																		VALUE		rb_database_cursor );
 	VALUE rb_RPDB_DatabaseCursor_settingsController(	VALUE	rb_database_cursor );
 	VALUE rb_RPDB_DatabaseCursor_parentEnvironment(	VALUE	rb_database_cursor );
 	VALUE rb_RPDB_DatabaseCursor_parentDatabase(	VALUE	rb_database_cursor );

@@ -2,7 +2,7 @@ require_relative '../../../lib/rpdb.rb'
 
 describe RPDB::Environment::DatabaseController do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home'
+  $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
   $database_name              = :spec_database
 
@@ -70,6 +70,7 @@ describe RPDB::Environment::DatabaseController do
   ##################
   #  new_database  #
   #  new           #
+  #  database      #
   ##################
 
   it "can create a new database corresponding to a string name" do

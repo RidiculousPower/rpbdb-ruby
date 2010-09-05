@@ -142,16 +142,6 @@ VALUE rb_RPDB_Environment_new(	int			argc,
 
 void rb_RPDB_Environment_free(	RPDB_Environment* c_environment )	{
 	
-	//	if we have "environment_#" 
-	if ( rb_reg_nth_match( 0, rb_reg_match(	rb_reg_new( "/environment_auto_name_[0-9]+/", 27, 0 ),
-											rb_str_new( c_environment->name, 12 ) ) ) != Qnil )	{
-
-		VALUE	rb_environment_count	=	rb_iv_get(	rb_mRPDB,
-														RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENT_AUTO_COUNT );
-
-		rb_environment_count	=	INT2FIX( FIX2INT( rb_environment_count ) - 1 );
-	}
-
 	RPDB_Environment_free( & c_environment );
 }
 
@@ -274,13 +264,16 @@ VALUE rb_RPDB_Environment_open( VALUE	rb_environment )	{
 
 	RPDB_Environment*	c_environment	=	NULL;
 	C_RPDB_ENVIRONMENT( rb_environment, c_environment );
-
+	
 	if ( ! RPDB_Environment_isOpen( c_environment ) )	{
 		
 		RPDB_Environment_open( c_environment );
 
 		rb_RPDB_Environment_internal_configureWaitingClassesForEnvironment( rb_environment );
 	}
+
+	rb_RPDB_setCurrentWorkingEnvironment( rb_mRPDB,
+																				rb_environment );
 	
 	return rb_environment;
 }
@@ -494,12 +487,12 @@ VALUE rb_RPDB_Environment_internal_configureWaitingClassesForEnvironment( VALUE 
 	//	iterate default environment wait list
 	//	if anything is on this wait list then this environment opening now will be the default
 	//	so we can initialize any classes on the default environment wait list with this environment
-	VALUE	rb_default_environment_wait_list	=	rb_RPDB_internal_classesWaitingForDefaultEnvironment();
+	VALUE	rb_current_working_environment_wait_list	=	rb_RPDB_internal_classesWaitingForDefaultEnvironment();
 	
 	int	which_klass;
-	for ( which_klass = 0 ; which_klass < RARRAY_LEN( rb_default_environment_wait_list ) ; which_klass++ )	{
+	for ( which_klass = 0 ; which_klass < RARRAY_LEN( rb_current_working_environment_wait_list ) ; which_klass++ )	{
 		
-		VALUE	rb_klass_self	=	RARRAY_PTR( rb_default_environment_wait_list )[ which_klass ];
+		VALUE	rb_klass_self	=	RARRAY_PTR( rb_current_working_environment_wait_list )[ which_klass ];
 		
 		//	configure
 		rb_RPDB_DatabaseObject_internal_configureWithEnvironment(	rb_klass_self,

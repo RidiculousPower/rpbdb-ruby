@@ -1098,11 +1098,11 @@ VALUE rb_RPDB_DatabaseObject_requireEnvironment( VALUE rb_self )	{
 VALUE rb_RPDB_DatabaseObject_requireDefaultEnvironment( VALUE rb_self __attribute__((unused)) )	{
 	
 	//	Ask runtime storage if a default environment exists
-	RPDB_Environment*	c_default_environment	=	RPDB_RuntimeStorageController_defaultEnvironment( RPDB_RuntimeStorageController_sharedInstance() );
-	if ( c_default_environment == NULL )	{
+	RPDB_Environment*	c_current_working_environment	=	RPDB_RuntimeStorageController_currentWorkingEnvironment( RPDB_RuntimeStorageController_sharedInstance() );
+	if ( c_current_working_environment == NULL )	{
 		rb_raise( rb_eArgError, RPDB_RUBY_ERROR_ENVIRONMENT_NULL );
 	}
-	return RUBY_RPDB_ENVIRONMENT( c_default_environment );
+	return RUBY_RPDB_ENVIRONMENT( c_current_working_environment );
 }
 
 /****************************
@@ -2823,12 +2823,12 @@ VALUE rb_RPDB_DatabaseObject_internal_initWithDefaultEnvironment(	VALUE	rb_klass
 	if ( rb_RPDB_DatabaseObject_internal_identifiersAllowDefaultEnvironment( rb_klass_self ) )	{
 	
 		//	if it is, get the default environment and return a ruby-wrapped version
-		RPDB_Environment*	c_default_environment	=	RPDB_RuntimeStorageController_defaultEnvironment( RPDB_RuntimeStorageController_sharedInstance() );
+		RPDB_Environment*	c_current_working_environment	=	RPDB_RuntimeStorageController_currentWorkingEnvironment( RPDB_RuntimeStorageController_sharedInstance() );
 		
-		VALUE	rb_default_environment	=	RUBY_RPDB_ENVIRONMENT( c_default_environment );
+		VALUE	rb_current_working_environment	=	RUBY_RPDB_ENVIRONMENT( c_current_working_environment );
 		
 		rb_RPDB_DatabaseObject_internal_configureWithEnvironment(	rb_klass_self,
-																															rb_default_environment );
+																															rb_current_working_environment );
 		
 		return Qtrue;
 	}
@@ -3041,9 +3041,9 @@ VALUE rb_RPDB_DatabaseObject_internal_setHasInitialized(	VALUE	rb_klass_self,
 //	config class with next environment that loads
 VALUE rb_RPDB_DatabaseObject_internal_markForDefaultEnvironment( VALUE rb_klass_self )	{
 	
-	VALUE	rb_default_environment_wait_list	=	rb_RPDB_internal_classesWaitingForDefaultEnvironment();
+	VALUE	rb_current_working_environment_wait_list	=	rb_RPDB_internal_classesWaitingForDefaultEnvironment();
 		
-	rb_ary_push(	rb_default_environment_wait_list,
+	rb_ary_push(	rb_current_working_environment_wait_list,
 								rb_klass_self );
 
 	return rb_klass_self;

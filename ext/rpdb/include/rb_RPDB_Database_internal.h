@@ -14,6 +14,7 @@
 																										RPDB_Record*			c_record, 
 																										RPDB_SecondaryKeys*	c_return_data );
 
+	VALUE rb_RPDB_Database_internal_removeCallbackInfoFromHash(	VALUE	rb_secondary_database );
 	enum ruby_value_type rb_RPDB_Database_internal_storageType( VALUE rb_database );
 	RPDB_SECONDARY_KEY_CREATION_RETURN rb_RPDB_Database_internal_processSecondaryKeyReturn(	VALUE									rb_secondary_database,
 																																													VALUE									rb_secondary_keys,
@@ -28,6 +29,6 @@
 
 	VALUE rb_RPDB_Database_internal_initRubyRuntimeStorage(	VALUE rb_ruby_runtime_storage_database );
 	VALUE rb_RPDB_Database_internal_storeRubyRuntimeInstanceForCInstance(	VALUE rb_database );
-	VALUE rb_RPDB_Database_internal_rubyRuntimeInstanceForCInstance(	RPDB_Database* c_database );
+	VALUE rb_RPDB_Database_internal_rubyRuntimeInstanceForCInstance(	void* c_rpdb_instance );
 
 #endif

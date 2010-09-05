@@ -327,10 +327,9 @@
 
 	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENTS														"@rpdb__environments"
 	#define RPDB_RUBY_MODULE_VARIABLE_IDENTIFICATION_WAIT_LIST_ARRAY					"@rpdb__identification_wait_list"
-	#define RPDB_RUBY_MODULE_VARIABLE_DEFAULT_ENVIRONMENT_WAIT_LIST_ARRAY			"@rpdb__default_environment_wait_list"
+	#define RPDB_RUBY_MODULE_VARIABLE_DEFAULT_ENVIRONMENT_WAIT_LIST_ARRAY			"@rpdb__current_working_environment_wait_list"
 	#define RPDB_RUBY_MODULE_VARIABLE_INITIALIZATION_WAIT_LIST_ARRAY					"@rpdb__initialization_wait_list_array"
-	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENT_AUTO_COUNT									"@rpdb__environment_auto_count"	
-	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENTS_HASH												"@rpdb__environments_hash"
+	#define RPDB_RUBY_MODULE_VARIABLE_CURRENT_WORKING_ENVIRONMENT_STACK				"@current_working_environment_stack"
 	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENT_COUNT												"@rpdb__environment_count"
 	#define RPDB_RUBY_MODULE_VARIABLE_DATABASE_RUNTIME_STORAGE								"@rpdb__database_runtime_storage"
 	
@@ -349,17 +348,22 @@
 	#define RPDB_RUBY_CLASS_DATABASE_VARIABLE_DATABASE_CONTROLLER							"@database_controller"
 	#define RPDB_RUBY_CLASS_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE										"@storage_type"
 
-
+	//	Database Cursor
+	#define RPDB_RUBY_CLASS_DATABASE_CURSOR_CONTROLLER												"@database_cursor_controller"
+	#define RPDB_RUBY_CLASS_DATABASE_JOIN_CONTROLLER													"@database_join_controller"
 
 	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT										"@parent_environment"
+	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE											"@parent_database"
+	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE_CURSOR_CONTROLLER		"@parent_database_cursor_controller"
 
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_FILE_SETTINGS_CONTROLLER				"@file_settings_controller"
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_ERROR_SETTINGS_CONTROLLER				"@error_settings_controller"
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER					"@log_settings_controller"
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_MEMORY_SETTINGS_CONTROLLER			"@memory_settings_controller"
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER		"@database_settings_controller"
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER		"@database_cursor_settings_controller"
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DIRECTORY_SETTINGS_CONTROLLER		"@directory_settings_controller"
-
+	
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA		"@serialize_data"
 
 	#define RPDB_FUNCTION_INIT																								"init_rpdb"

@@ -100,6 +100,7 @@ void Init_RPDB_DatabaseSettingsController()	{
                     					                                                                        		
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"cursor_settings_controller",					rb_RPDB_DatabaseSettingsController_cursorSettingsController,			0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"cursors",														"cursor_settings_controller"	);
+	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"cursor",															"cursor_settings_controller"	);
                                                                                                       		
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"sequence_settingsController",				rb_RPDB_DatabaseSettingsController_sequenceSettingsController,		0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"sequences",													"sequence_settingsController"	);

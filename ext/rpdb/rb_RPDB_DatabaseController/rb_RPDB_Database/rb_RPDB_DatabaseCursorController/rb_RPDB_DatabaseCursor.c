@@ -13,6 +13,9 @@
 
 #include "rb_RPDB_DatabaseCursor.h"
 #include "rb_RPDB_DatabaseCursor_internal.h"
+#include "rb_RPDB_DatabaseCursorController.h"
+#include "rb_RPDB_Database.h"
+#include "rb_RPDB_DatabaseController.h"
 #include "rb_RPDB_Database_internal.h"
 
 #include "rb_RPDB_DatabaseObject_internal.h"
@@ -41,6 +44,7 @@ extern	VALUE	rb_RPDB_Database;
 extern	VALUE	rb_RPDB_DatabaseCursor;
 extern	VALUE	rb_RPDB_DatabaseCursorController;
 extern	VALUE	rb_RPDB_DatabaseCursorSettingsController;
+extern	VALUE	rb_RPDB_DatabaseController;
 
 void Init_RPDB_DatabaseCursor()	{
 
@@ -48,8 +52,8 @@ void Init_RPDB_DatabaseCursor()	{
 																											"Cursor",				
 																											rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_DatabaseCursor, 	"new",																	rb_RPDB_DatabaseCursor_new,															1 	);
-	rb_define_method(						rb_RPDB_DatabaseCursor, 	"initialize",														rb_RPDB_DatabaseCursor_init,														1 	);
+	rb_define_singleton_method(	rb_RPDB_DatabaseCursor, 	"new",																	rb_RPDB_DatabaseCursor_new,															-1 	);
+	rb_define_method(						rb_RPDB_DatabaseCursor, 	"initialize",														rb_RPDB_DatabaseCursor_init,														-1 	);
 
 	rb_define_method(						rb_RPDB_DatabaseCursor, 	"settings_controller",									rb_RPDB_DatabaseCursor_settingsController,							0 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"settings",															"settings_controller"	);
@@ -61,9 +65,9 @@ void Init_RPDB_DatabaseCursor()	{
 	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"environment",													"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseCursor, 	"parent_database",											rb_RPDB_DatabaseCursor_parentDatabase,									0 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"database",															"parent_database"	);
-	rb_define_method(						rb_RPDB_DatabaseCursor, 	"parent_databae_cursor_controller",			rb_RPDB_DatabaseCursor_parentDatabaseCursorController,	0 	);
-	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"parent_cursor_controller",							"parent_databae_cursor_controller"	);
-	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"cursor_controller",										"parent_databae_cursor_controller"	);
+	rb_define_method(						rb_RPDB_DatabaseCursor, 	"parent_database_cursor_controller",		rb_RPDB_DatabaseCursor_parentDatabaseCursorController,	0 	);
+	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"parent_cursor_controller",							"parent_database_cursor_controller"	);
+	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"cursor_controller",										"parent_database_cursor_controller"	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCursor, 	"open",																	rb_RPDB_DatabaseCursor_open,														0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursor, 	"is_open?",															rb_RPDB_DatabaseCursor_isOpen,													0 	);
@@ -154,18 +158,85 @@ void Init_RPDB_DatabaseCursor()	{
 *  new  *
 ************/
 
-VALUE rb_RPDB_DatabaseCursor_new( VALUE	klass __attribute__((unused)),
-																	VALUE	rb_parent_database_cursor_controller )	{
+VALUE rb_RPDB_DatabaseCursor_new( int			argc,
+																	VALUE*	args,
+																	VALUE		rb_database_cursor_class __attribute__ ((unused)) )	{
 	
-	RPDB_DatabaseCursorController*		c_parent_database_cursor_controller;
-	C_RPDB_DATABASE_CURSOR_CONTROLLER( rb_parent_database_cursor_controller, c_parent_database_cursor_controller );
+	VALUE	rb_parent_cursor_controller	=	Qnil;
 	
-	VALUE	rb_database_cursor		=	RUBY_RPDB_DATABASE_CURSOR(	RPDB_DatabaseCursor_new( c_parent_database_cursor_controller ) );
+	/*------------------------------------------------------*/
 
-	VALUE	argv[ 1 ];
+	VALUE	rb_database_cursor_controller_or_database_or_database_controller_or_environment	=	Qnil;
+	VALUE	rb_database_name	=	Qnil;
+	rb_scan_args(	argc,
+								args,
+								"11",
+								& rb_database_cursor_controller_or_database_or_database_controller_or_environment,
+								& rb_database_name );
 	
-	argv[ 0 ]	=	rb_parent_database_cursor_controller;
+	VALUE	rb_parent_environment						=	Qnil;
+	VALUE	rb_parent_database							=	Qnil;
+	VALUE	rb_parent_database_controller		=	Qnil;
+
+	//	figure out what our first arg is
+	VALUE	rb_first_arg_klass	=	rb_obj_class( rb_database_cursor_controller_or_database_or_database_controller_or_environment );
+	VALUE	rb_ancestors	=	rb_mod_ancestors( rb_first_arg_klass );
+	if ( rb_ary_includes(	rb_ancestors,
+												rb_RPDB_DatabaseCursorController ) == Qtrue )	{
+		
+		rb_parent_cursor_controller	=	rb_database_cursor_controller_or_database_or_database_controller_or_environment;
+	}
+	else if ( rb_ary_includes(	rb_ancestors,
+															rb_RPDB_Database ) == Qtrue )	{
+		
+		rb_parent_database					=	rb_database_cursor_controller_or_database_or_database_controller_or_environment;
+		rb_parent_cursor_controller	=	rb_RPDB_Database_cursorController( rb_parent_database );
+	}
+	else if ( rb_ary_includes(	rb_ancestors,
+															rb_RPDB_DatabaseController ) == Qtrue )	{
+		
+		rb_parent_database_controller	=	rb_database_cursor_controller_or_database_or_database_controller_or_environment;
+		rb_parent_database						=	rb_RPDB_DatabaseController_newDatabase(	rb_parent_database_controller,
+																																						rb_database_name );
+		rb_parent_cursor_controller		=	rb_RPDB_Database_cursorController( rb_parent_database );
+	}
+	else if ( rb_ary_includes(	rb_ancestors,
+															rb_RPDB_Environment ) == Qtrue )	{
+		
+		rb_parent_environment					=	rb_database_cursor_controller_or_database_or_database_controller_or_environment;
+		rb_parent_database_controller	=	rb_RPDB_Environment_databaseController( rb_parent_environment );
+		rb_parent_database						=	rb_RPDB_DatabaseController_newDatabase(	rb_parent_database_controller,
+																																						rb_database_name );
+		rb_parent_cursor_controller		=	rb_RPDB_Database_cursorController( rb_parent_database );
+	}
+	else if ( TYPE( rb_database_cursor_controller_or_database_or_database_controller_or_environment ) == T_STRING )	{
+
+		VALUE	rb_parent_environment_directory	=	rb_database_cursor_controller_or_database_or_database_controller_or_environment;
+		
+		rb_parent_environment	=	rb_RPDB_Environment_new(	1,
+																											& rb_parent_environment_directory,
+																											rb_RPDB_Environment );
+		rb_parent_database_controller	=	rb_RPDB_Environment_databaseController( rb_parent_environment );
+		rb_parent_database	=	rb_RPDB_DatabaseController_newDatabase( rb_parent_environment,
+																																	rb_database_name );
+		rb_parent_cursor_controller	=	rb_RPDB_Database_cursorController( rb_parent_database );
+	}
 	
+	/*------------------------------------------------------*/
+	
+	
+	RPDB_DatabaseCursorController*		c_parent_cursor_controller;
+	C_RPDB_DATABASE_CURSOR_CONTROLLER( rb_parent_cursor_controller, c_parent_cursor_controller );
+
+	RPDB_DatabaseCursor*	c_database_cursor		=	RPDB_DatabaseCursorController_cursor( c_parent_cursor_controller );
+	VALUE									rb_database_cursor	=	RUBY_RPDB_DATABASE_CURSOR( c_database_cursor );
+
+	rb_iv_set(	rb_database_cursor,
+							RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE_CURSOR_CONTROLLER,
+							rb_parent_cursor_controller );
+																					
+	VALUE	argv[ 1 ];	
+	argv[ 0 ]	=	rb_parent_cursor_controller;
 	rb_obj_call_init(	rb_database_cursor,
 										1, 
 										argv );
@@ -178,54 +249,68 @@ VALUE rb_RPDB_DatabaseCursor_new( VALUE	klass __attribute__((unused)),
 ************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_cursor.html
-VALUE rb_RPDB_DatabaseCursor_init( VALUE	rb_database_cursor,
-																		VALUE	rb_parent_database_cursor_controller __attribute__((unused)) )	{
+VALUE rb_RPDB_DatabaseCursor_init( int			argc __attribute__ ((unused)),
+																		VALUE*	args __attribute__ ((unused)),
+																		VALUE		rb_database_cursor )	{
 
 	return rb_database_cursor;
 }
 
 /***************************
-*  settingsController  *
+*  settings_controller  *
 ***************************/
 VALUE rb_RPDB_DatabaseCursor_settingsController(	VALUE	rb_database_cursor )	{
 
+	VALUE	rb_local_database_cursor_settings_controller	=	Qnil;
+	
+	if ( ( rb_local_database_cursor_settings_controller = rb_iv_get(	rb_database_cursor,
+																																		RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER ) ) == Qnil )	{
+		
 	RPDB_DatabaseCursor*		c_database_cursor;
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+	
+		RPDB_DatabaseCursorSettingsController*	c_local_database_cursor_settings_controller	=	RPDB_DatabaseCursor_settingsController( c_database_cursor );
 
-	return RUBY_RPDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( RPDB_DatabaseCursor_settingsController( c_database_cursor ) );
+		rb_local_database_cursor_settings_controller	=	RUBY_RPDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( c_local_database_cursor_settings_controller );
+
+		rb_iv_set(	rb_database_cursor,
+								RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER,
+								rb_local_database_cursor_settings_controller );
+	}
+
+	return rb_local_database_cursor_settings_controller;
 }
 
 /***************************************
-*  parentEnvironment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_DatabaseCursor_parentEnvironment(	VALUE	rb_database_cursor )	{
 
-	RPDB_DatabaseCursor*		c_database_cursor;
-	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseCursor_parentEnvironment( c_database_cursor ) );
+	VALUE	rb_parent_database		=	rb_RPDB_DatabaseCursor_parentDatabase( rb_database_cursor );
+	VALUE	rb_parent_environment	=	rb_RPDB_Database_parentEnvironment( rb_parent_database );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
-*  parentDatabase  *
+*  parent_database  *
 ***************************************/
 VALUE rb_RPDB_DatabaseCursor_parentDatabase(	VALUE	rb_database_cursor )	{
 
-	RPDB_DatabaseCursor*		c_database_cursor;
-	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
-
- 	return RUBY_RPDB_DATABASE( RPDB_DatabaseCursor_parentDatabase( c_database_cursor ) );
+	VALUE	rb_parent_cursor_controller	=	rb_RPDB_DatabaseCursor_parentDatabaseCursorController( rb_database_cursor );
+	VALUE	rb_parent_database	=	rb_RPDB_DatabaseCursorController_parentDatabase( rb_parent_cursor_controller );
+	
+	return rb_parent_database;
 }
 
 /***************************************
-*  parentDatabaseCursorController  *
+*  parent_database_cursor_controller  *
 ***************************************/
 VALUE rb_RPDB_DatabaseCursor_parentDatabaseCursorController(	VALUE	rb_database_cursor )	{
 
-	RPDB_DatabaseCursor*		c_database_cursor;
-	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
-
- 	return RUBY_RPDB_DATABASE_CURSOR_CONTROLLER( RPDB_DatabaseCursor_parentDatabaseCursorController( c_database_cursor ) );
+	VALUE	rb_parent_cursor_controller		=	rb_iv_get(	rb_database_cursor,
+																										RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE_CURSOR_CONTROLLER );
+	return rb_parent_cursor_controller;
 }
 
 /************
@@ -244,7 +329,7 @@ VALUE rb_RPDB_DatabaseCursor_open( VALUE	rb_database_cursor )	{
 }
 
 /************
-*  isOpen  *
+*  is_open  *
 ************/
 
 VALUE rb_RPDB_DatabaseCursor_isOpen( VALUE	rb_database_cursor )	{
@@ -272,7 +357,7 @@ VALUE rb_RPDB_DatabaseCursor_close( VALUE	rb_database_cursor )	{
 }
 
 /*************************
-*  duplicateCursor  *
+*  duplicate_cursor  *
 *************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_dup.html
@@ -288,9 +373,9 @@ VALUE rb_RPDB_DatabaseCursor_duplicateCursor( VALUE	rb_database_cursor )	{
 																	Writing Data
 *******************************************************************************************************************************************************************************************/
 
-/********************************************
-*  writeRawKeyDataPairAsCurrentRecord  *
-********************************************/
+/**********************************************
+*  write_as_current  *
+**********************************************/
 
 //	DB_CURRENT				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
 VALUE rb_RPDB_DatabaseCursor_writeAsCurrent(	VALUE	rb_database_cursor, 
@@ -315,7 +400,7 @@ VALUE rb_RPDB_DatabaseCursor_writeAsCurrent(	VALUE	rb_database_cursor,
 }
 
 /****************************************
-*  writeAfterCurrentRecord  *
+*  write_as_duplicate_after_current  *
 ****************************************/
 
 //	DB_AFTER				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
@@ -340,7 +425,7 @@ VALUE rb_RPDB_DatabaseCursor_writeAsDuplicateAfterCurrent(	VALUE	rb_database_cur
 }
 
 /************************************************
-*  writeRawKeyDataPairBeforeCurrentRecord  *
+*  write_as_duplicate_before_current  *
 ************************************************/
 
 //	DB_BEFORE				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
@@ -366,7 +451,7 @@ VALUE rb_RPDB_DatabaseCursor_writeAsDuplicateBeforeCurrent(	VALUE	rb_database_cu
 }
 
 /*********************************
-*  writeAsFirstRecord  *
+*  write_before_any_duplicates  *
 *********************************/
 
 //	If the key already exists in the database and no duplicate sort function has been specified, 
@@ -400,7 +485,7 @@ VALUE rb_RPDB_DatabaseCursor_writeBeforeAnyDuplicates(	VALUE	rb_database_cursor,
 }
 
 /********************************
-*  writeDataAsLastRecord  *
+*  write_after_any_duplicates  *
 ********************************/
 
 //	If the key already exists in the database and no duplicate sort function has been specified, 
@@ -434,7 +519,7 @@ VALUE rb_RPDB_DatabaseCursor_writeAfterAnyDuplicates(	VALUE	rb_database_cursor,
 }
 
 /**************************************
-*  writeOnlyIfNonExisting  *
+*  write_only_if_not_in_database  *
 **************************************/
 
 //	DB_NODUPDATA			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
@@ -469,7 +554,7 @@ VALUE rb_RPDB_DatabaseCursor_writeOnlyIfNotInDatabase(	VALUE	rb_database_cursor,
 *******************************************************************************************************************************************************************************************/
 
 /*****************************
-*  recordExistsForKey  *
+*  key_exists  *
 *****************************/
 
 VALUE rb_RPDB_DatabaseCursor_keyExists(	VALUE	rb_database_cursor, 
@@ -492,7 +577,7 @@ VALUE rb_RPDB_DatabaseCursor_keyExists(	VALUE	rb_database_cursor,
 }
 
 /*************************
-*  retrieveRecord  *
+*  retrieve  *
 *************************/
 
 VALUE rb_RPDB_DatabaseCursor_retrieve(	int	argc,
@@ -508,7 +593,7 @@ VALUE rb_RPDB_DatabaseCursor_retrieve(	int	argc,
 }
 
 /*************************
-*  retrieveKey  *
+*  retrieve_key  *
 *************************/
 
 VALUE rb_RPDB_DatabaseCursor_retrieveKey(	int	argc,
@@ -524,7 +609,7 @@ VALUE rb_RPDB_DatabaseCursor_retrieveKey(	int	argc,
 }
 
 /*****************************************
-*  retrievePartialRawKey  *
+*  retrieve_partial_key  *
 *****************************************/
 
 VALUE rb_RPDB_DatabaseCursor_retrievePartialKey(	VALUE	rb_database_cursor,
@@ -539,7 +624,7 @@ VALUE rb_RPDB_DatabaseCursor_retrievePartialKey(	VALUE	rb_database_cursor,
 }
 
 /****************************************
-*  retrievePartialObject  *
+*  retrieve_partial_data  *
 ****************************************/
 
 //	DB_SET_RANGE			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
@@ -557,7 +642,7 @@ VALUE rb_RPDB_DatabaseCursor_retrievePartialData(	VALUE	rb_database_cursor,
 }
 
 /**************************************
-*  retrievePartialData  *
+*  retrieve_partial_data  *
 **************************************/
 
 //	DB_GET_BOTH_RANGE		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html

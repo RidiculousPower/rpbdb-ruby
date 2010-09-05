@@ -2,7 +2,7 @@ require_relative '../../../lib/rpdb.rb'
 
 describe RPDB::Environment do
 
-  $environment_path             = '/tmp/rpdb_spec_environment_home'
+  $environment_path             = '/tmp/rpdb_spec_environment_home/'
   
   ################
   #  self.new    #
@@ -77,8 +77,6 @@ describe RPDB::Environment do
   #  open  #
   ##########
 
-  # environment.open
-
   it "can open" do
     environment = RPDB::Environment.new( $environment_path )
     environment.is_open?.should == false
@@ -91,8 +89,6 @@ describe RPDB::Environment do
   #  close  #
   ###########
 
-  # environment.close
-
   it "can close" do
     environment = RPDB::Environment.new( $environment_path )
     environment.open
@@ -101,18 +97,27 @@ describe RPDB::Environment do
     environment.is_open?.should == false    
   end
 
-  ###########
-  #  erase  #
-  ###########
-
-  # environment.erase
+  ############
+  #  erase!  #
+  ############
 
   it "can erase itself" do
     # create an environment
     environment = RPDB::Environment.new
     # won't create files until it's opened
     environment.open
-    environment.erase
+    environment.erase!
+  end
+  
+  ####################
+  #  home_directory  #
+  #  directory       #
+  ####################
+  
+  it "can report its directory" do
+    environment = RPDB::Environment.new( $environment_path )
+    environment.directory.should == $environment_path
+    environment.home_directory.should == $environment_path
   end
   
   #########################

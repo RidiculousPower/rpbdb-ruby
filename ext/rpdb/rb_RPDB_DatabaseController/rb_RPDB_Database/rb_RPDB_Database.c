@@ -121,6 +121,7 @@ void Init_RPDB_Database()	{
 	rb_define_alias(						rb_RPDB_Database, 	"associate_secondary",													"associate_secondary_database"	);                  				
 	rb_define_method(						rb_RPDB_Database, 	"is_secondary_database?",												rb_RPDB_Database_isSecondary,																0 	);
 	rb_define_alias(						rb_RPDB_Database, 	"is_secondary?",																"is_secondary_database?"	);
+	rb_define_method(						rb_RPDB_Database, 	"primary_database",															rb_RPDB_Database_primaryDatabase,																0 	);
 	rb_define_method(						rb_RPDB_Database, 	"secondary_key_creation_callback_method",				rb_RPDB_Database_secondaryKeyCreationCallbackMethod,				0 	);
 	rb_define_method(						rb_RPDB_Database, 	"secondary_key_creation_callback_method=",			rb_RPDB_Database_setSecondaryKeyCreationCallbackMethod,			-1 	);
 	rb_define_alias(						rb_RPDB_Database, 	"secondary_key_creation_callback_method=",			"secondary_key_creation_callback_method="	);
@@ -132,6 +133,8 @@ void Init_RPDB_Database()	{
 	rb_define_method(						rb_RPDB_Database, 	"cursor",																				rb_RPDB_Database_cursor,																		0 	);
 	rb_define_method(						rb_RPDB_Database, 	"object_cursor",																rb_RPDB_Database_objectCursor,															0 	);
 
+	rb_define_method(						rb_RPDB_Database, 	"join_controller",															rb_RPDB_Database_joinController,													0 	);
+	rb_define_alias(						rb_RPDB_Database, 	"join",																					"join_controller"	);
 }
 
 /*************
@@ -186,7 +189,7 @@ VALUE rb_RPDB_Database_new(	int			argc,
 		}
 	}
 	else {
-		rb_parent_environment	=	rb_RPDB_defaultEnvironment( rb_mRPDB );
+		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
 		rb_parent_database_controller	=	rb_RPDB_Environment_databaseController( rb_parent_environment );
 	}
 
@@ -260,6 +263,10 @@ VALUE rb_RPDB_Database_settingsController( VALUE	rb_database )	{
 		RPDB_DatabaseSettingsController*	c_local_database_settings_controller	=	RPDB_Database_settingsController( c_database );
 
 		rb_local_database_settings_controller	=	RUBY_RPDB_DATABASE_SETTINGS_CONTROLLER( c_local_database_settings_controller );
+
+		rb_iv_set(	rb_database,
+								RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER,
+								rb_local_database_settings_controller );
 	}
 
 	return rb_local_database_settings_controller;
@@ -350,9 +357,9 @@ VALUE rb_RPDB_Database_handle( VALUE	rb_database )	{
 	return ID2SYM( rb_intern( RPDB_Database_name( c_database ) ) );	
 }
 
-/************
+/*********
 *  open  *
-************/
+*********/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_open.html
 VALUE rb_RPDB_Database_open( VALUE	rb_database )	{
@@ -391,14 +398,16 @@ VALUE rb_RPDB_Database_close( VALUE	rb_database )	{
 	RPDB_Database*		c_database;
 	C_RPDB_DATABASE( rb_database, c_database );
 
+	rb_RPDB_Database_internal_removeCallbackInfoFromHash( rb_database );
+	
 	RPDB_Database_close( c_database );
 
 	return rb_database;
 }
 
-/**********
-*  empty  *
-**********/
+/***********
+*  empty!  *
+***********/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_truncate.html
 VALUE rb_RPDB_Database_empty( VALUE	rb_database )	{
@@ -411,9 +420,9 @@ VALUE rb_RPDB_Database_empty( VALUE	rb_database )	{
 	return rb_database;
 }
 
-/**********
-*  erase  *
-**********/
+/***********
+*  erase!  *
+***********/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_remove.html
 VALUE rb_RPDB_Database_erase( VALUE	rb_database )	{
@@ -622,8 +631,10 @@ VALUE rb_RPDB_Database_secondaryKeyCreationCallbackMethod(	VALUE	rb_secondary_da
 	}
 
 	//	return the array of callback info (callback object, callback method in object)
+	VALUE	rb_secondary_database_id	=	rb_obj_id( rb_secondary_database );
+	
 	return rb_hash_aref(	rb_callbacks_hash,
-												rb_secondary_database );
+												rb_secondary_database_id );
 }
 
 /***************************
@@ -664,18 +675,17 @@ VALUE rb_RPDB_Database_createSecondaryIndex(	int			argc,
 	}
 
 	/*------------------------------------------------------*/
-
-	RPDB_Database*		c_primary_database;
-	C_RPDB_DATABASE( rb_primary_database_self, c_primary_database );
 	
 	char*	c_index_name	=	StringValuePtr( rb_index_name );
 	
-	VALUE	rb_nil	=	Qnil;
 	VALUE	rb_parent_database_controller	=	rb_RPDB_Database_parentDatabaseController( rb_primary_database_self );
 	
 	VALUE	rb_secondary_database	=	rb_RPDB_Database_new(	1,
-																											& rb_nil,
+																											& rb_index_name,
 																											rb_parent_database_controller );
+
+	RPDB_Database*		c_primary_database;
+	C_RPDB_DATABASE( rb_primary_database_self, c_primary_database );
 	RPDB_Database*		c_secondary_database;
 	C_RPDB_DATABASE( rb_secondary_database, c_secondary_database );
 	
@@ -814,7 +824,11 @@ VALUE rb_RPDB_Database_prepareDatabaseForFileTransfer( VALUE	rb_database )	{
 ***********/
 
 VALUE rb_RPDB_Database_cursor( VALUE	rb_database )	{
-	return rb_RPDB_DatabaseCursorController_cursor( rb_RPDB_Database_cursorController( rb_database ) );
+	
+	VALUE	rb_database_cursor_controller	=	rb_RPDB_Database_cursorController( rb_database );	
+	VALUE	rb_database_cusor							=	rb_RPDB_DatabaseCursorController_cursor( rb_database_cursor_controller );
+		
+	return rb_database_cusor;
 }	
 
 /*************
@@ -822,7 +836,11 @@ VALUE rb_RPDB_Database_cursor( VALUE	rb_database )	{
 ************/
 
 VALUE rb_RPDB_Database_objectCursor( VALUE	rb_database )	{
-	return rb_RPDB_DatabaseCursorController_objectCursor( rb_RPDB_Database_cursorController( rb_database ) );
+
+	VALUE	rb_database_cursor_controller	=	rb_RPDB_Database_cursorController( rb_database );	
+	VALUE	rb_database_cusor							=	rb_RPDB_DatabaseCursorController_objectCursor( rb_database_cursor_controller );
+
+	return rb_database_cusor;
 }	
 
 /*******************************************************************************************************************************************************************************************
@@ -835,22 +853,50 @@ VALUE rb_RPDB_Database_objectCursor( VALUE	rb_database )	{
 
 VALUE rb_RPDB_Database_cursorController( VALUE	rb_database )	{
 
-	RPDB_Database*		c_database;
-	C_RPDB_DATABASE( rb_database, c_database );
+	VALUE	rb_cursor_controller	=	Qnil;
+	
+	if ( ( rb_cursor_controller = rb_iv_get(	rb_database,
+																						RPDB_RUBY_CLASS_DATABASE_CURSOR_CONTROLLER ) ) == Qnil )	{
+		
+		RPDB_Database*		c_database;
+		C_RPDB_DATABASE( rb_database, c_database );
 
-	return RUBY_RPDB_DATABASE_CURSOR_CONTROLLER( RPDB_Database_cursorController( c_database ) );
+		rb_cursor_controller	=	rb_RPDB_DatabaseCursorController_new(	1,
+																																	& rb_database,
+																																	rb_RPDB_DatabaseCursorController );
+
+		rb_iv_set(	rb_database,
+								RPDB_RUBY_CLASS_DATABASE_CURSOR_CONTROLLER,
+								rb_cursor_controller );
+	}
+
+	return rb_cursor_controller;
 }
 
-/*************************
+/*******************
 *  joinController  *
-*************************/
+*******************/
 
 VALUE rb_RPDB_Database_joinController( VALUE	rb_database )	{
 	
-	RPDB_Database*		c_database;
-	C_RPDB_DATABASE( rb_database, c_database );
+	VALUE	rb_join_controller	=	Qnil;
 	
-	return RUBY_RPDB_DATABASE_JOIN_CONTROLLER( RPDB_Database_joinController( c_database ) );
+	if ( ( rb_join_controller = rb_iv_get(	rb_database,
+																					RPDB_RUBY_CLASS_DATABASE_JOIN_CONTROLLER ) ) == Qnil )	{
+		
+		RPDB_Database*		c_database;
+		C_RPDB_DATABASE( rb_database, c_database );
+	
+		rb_join_controller	=	rb_RPDB_DatabaseCursorController_new(	1,
+																																& rb_database,
+																																rb_RPDB_DatabaseCursorController );
+
+		rb_iv_set(	rb_database,
+								RPDB_RUBY_CLASS_DATABASE_JOIN_CONTROLLER,
+								rb_join_controller );
+	}
+
+	return rb_join_controller;
 }
 
 /*******************************************************************************************************************************************************************************************
@@ -1114,7 +1160,7 @@ VALUE rb_RPDB_Database_retrieveMultipleObjectCursorForPartialKey(	VALUE	rb_datab
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_key_range.html
 //	Requires Btree
 RPDB_KeyRange* RPDB_Database_relativePositionOfKey(	VALUE	rb_database,
- 																		VALUE	rb_key )	{
+																										VALUE	rb_key )	{
 
 
 }
@@ -1257,11 +1303,13 @@ VALUE	rb_RPDB_Database_internal_setSecondaryKeyCreationCallbackMethodInfoHash(	V
 								ID2SYM( rb_intern( "method" ) ),
 								rb_callback_method );
 
+	VALUE	rb_secondary_database_id	=	rb_obj_id( rb_secondary_database );
+
 	//	Put the callback info array in the hash by database
 	rb_hash_aset(	rb_callbacks_hash,
-								rb_secondary_database,
+								rb_secondary_database_id,
 								rb_new_callback_info );
-	
+
 	return Qnil;
 }
 
@@ -1314,19 +1362,19 @@ VALUE rb_RPDB_Database_internal_storeRubyRuntimeInstanceForCInstance(	VALUE rb_d
 *  RubyInstanceForCInstance  *
 *****************************/
 
-VALUE rb_RPDB_Database_internal_rubyRuntimeInstanceForCInstance(	RPDB_Database* c_database )	{
+VALUE rb_RPDB_Database_internal_rubyRuntimeInstanceForCInstance(	void* c_rpdb_instance )	{
 	//	we store a reference to our Ruby instance so that we can return the same object to the callback
 	//	this is necessary to ensure extended methods, etc, remain
 	VALUE						rb_ruby_runtime_database	=	rb_RPDB_internal_rubyRuntimeDatabase( rb_mRPDB );
 	RPDB_Database*	c_ruby_runtime_database;
 	C_RPDB_DATABASE( rb_ruby_runtime_database, c_ruby_runtime_database );
 	
-	uintptr_t	c_database_address	=	(uintptr_t) c_database;
+	uintptr_t	c_rpdb_instance_address	=	(uintptr_t) c_rpdb_instance;
 	
 	RPDB_Record*	c_record	=	NULL;
 	//	get address of corresponding VALUE
 	c_record	=	RPDB_Database_retrieveRawKey(	c_ruby_runtime_database,
-																						& c_database_address,
+																						& c_rpdb_instance_address,
 																						sizeof( uintptr_t ) );
 	uintptr_t*	rb_database_address	=	RPDB_Record_rawData( c_record );
 	VALUE	rb_database	=	(VALUE) *rb_database_address;
@@ -1483,6 +1531,30 @@ RPDB_SECONDARY_KEY_CREATION_RETURN rb_RPDB_Database_internal_processSecondaryKey
 	}
 
 	return FALSE;
+}
+
+/*******************************
+*  removeCallbackInfoFromHash  *
+*******************************/
+
+VALUE rb_RPDB_Database_internal_removeCallbackInfoFromHash(	VALUE	rb_secondary_database )	{
+	
+	//	Get global variable 'callbacks', which stores secondary key creation callback methods
+	VALUE	rb_callbacks_hash	=	rb_gv_get( RPDB_GVAR_SECONDARY_KEY_CALLBACK_METHODS );
+	
+	//	Make sure it's a hash - if it's not, instantiate it as a new hash
+	if ( TYPE( rb_callbacks_hash ) != T_HASH )	{
+		
+		rb_callbacks_hash	=	rb_hash_new();
+		rb_gv_set(	RPDB_GVAR_SECONDARY_KEY_CALLBACK_METHODS,
+								rb_callbacks_hash );
+	}
+
+	//	return the array of callback info (callback object, callback method in object)
+	VALUE	rb_secondary_database_id	=	rb_obj_id( rb_secondary_database );
+	
+	return rb_hash_delete(	rb_callbacks_hash,
+													rb_secondary_database_id );
 }
 
 /****************

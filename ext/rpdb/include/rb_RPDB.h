@@ -21,11 +21,14 @@
 							 VALUE*	args,
 							 VALUE	rb_module_self );
 
-	VALUE rb_RPDB_defaultEnvironment( VALUE rb_module_self );
 	VALUE rb_RPDB_version( VALUE rb_module_self );
 	VALUE rb_RPDB_versionMajor( VALUE rb_module_self );
 	VALUE rb_RPDB_versionMinor( VALUE rb_module_self );
 	VALUE rb_RPDB_versionPatch( VALUE rb_module_self );
 	VALUE rb_RPDB_versionData(	VALUE	rb_module_self );
+
+	VALUE rb_RPDB_currentWorkingEnvironment( VALUE rb_module_self __attribute__ ((unused )) );
+	VALUE rb_RPDB_setCurrentWorkingEnvironment(	VALUE	rb_module_self,
+																							VALUE	rb_environment );
 	
 #endif

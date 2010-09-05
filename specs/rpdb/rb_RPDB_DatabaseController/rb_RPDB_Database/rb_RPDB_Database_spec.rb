@@ -2,7 +2,7 @@ require_relative '../../../../lib/rpdb/rpdb'
 
 describe RPDB::Environment::DatabaseController::Database do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home'
+  $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $database_new_name          = :spec_database_renamed
@@ -75,6 +75,34 @@ describe RPDB::Environment::DatabaseController::Database do
     database.is_open?.should == true
     database.close
     database.is_open?.should == false
+  end
+
+  ##########
+  #  name  #
+  ##########
+  
+  it "can report its name, by which it is uniquely identified" do
+    database = @environment.database.new( $database_name )
+    database.name.should == $database_name.to_s
+  end
+
+  ############
+  #  handle  #
+  ############
+  
+  it "can report its handle, which is the symbol version of its name" do
+    database = @environment.database.new( $database_name )
+    database.handle.should == $database_name
+  end
+  
+  ##############
+  #  filename  #
+  ##############
+
+  it "can report its filename, which is based on its name" do
+    database = @environment.database.new( $database_name )
+    # FIX - import constants from configuration and use here
+    database.filename.should == $database_name.to_s + $database_extension
   end
 
   ############
@@ -184,12 +212,13 @@ describe RPDB::Environment::DatabaseController::Database do
   #############################################
   #  associate_secondary_database             #
   #  secondary_key_creation_callback_method=  #
-  #  secondary_key_creation_callback_method  #
+  #  secondary_key_creation_callback_method   #
   #  is_secondary_database?                   #
+  #  primary_database                         #
   #############################################
 
-  it "can have a secondary database associated with it as an index and report whether it is a secondary database" do
-    database      = @environment.database.new( $database_name ).open
+  it "can have a secondary database associated with it as an index and report whether it is a secondary database, as well as return its primary database" do
+    database_one      = @environment.database.new( $database_name ).open
     database_two  = @environment.database.new( $database_name.to_s + '_index' ).open
     class << database_two
       def callback_method( key, data )
@@ -199,11 +228,12 @@ describe RPDB::Environment::DatabaseController::Database do
     database_two.secondary_key_creation_callback_method = :callback_method
     database_two.secondary_key_creation_callback_method[ :object ].should == database_two
     database_two.secondary_key_creation_callback_method[ :method ].should == :callback_method
-    database.associate_secondary_database( database_two )
+    database_one.associate_secondary_database( database_two )
     database_two.is_secondary_database?.should == true
     primary_key = 'primary key'
-    database.write( primary_key, 'some data' )
+    database_one.write( primary_key, 'some data' )
     database_two.retrieve( 'secondary key: ' + primary_key ).should == 'some data'
+    database_two.primary_database.should == database_one
   end
 
   ############################
@@ -226,29 +256,37 @@ describe RPDB::Environment::DatabaseController::Database do
     database.write( primary_key, 'some data' )
     database_two.retrieve( 'secondary key: ' + primary_key ).should == 'some data'
   end
-#
-#  #######################
-#  #  cursor_controller  #
-#  #######################
-#
-#  it "has a cursor controller" do
-#    database = @environment.database.new( $database_name ).cursor_controller
-#  end
-#
-#  ############
-#  #  cursor  #
-#  ############
-#
-#  it "can return a cursor from its cursor controller" do
-#    database = @environment.database.new( $database_name ).cursor
-#  end
-#
-#  ###################
-#  #  object_cursor  #
-#  ###################
-#
-#  it "can return an object cursor (which automatically handles serialization) from its cursor controller" do
-#    database = @environment.database.new( $database_name ).object_cursor    
-#  end
+
+  #######################
+  #  cursor_controller  #
+  #######################
+
+  it "has a cursor controller" do
+    database = @environment.database.new( $database_name ).cursor_controller
+  end
+
+  ############
+  #  cursor  #
+  ############
+
+  it "can return a cursor from its cursor controller" do
+    database = @environment.database.new( $database_name ).cursor
+  end
+
+  ###################
+  #  object_cursor  #
+  ###################
+
+  it "can return an object cursor (which automatically handles serialization) from its cursor controller" do
+    database = @environment.database.new( $database_name ).object_cursor    
+  end
+
+  #####################
+  #  join_controller  #
+  #####################
+
+  it "has a join controller" do
+    database = @environment.database.new( $database_name ).join_controller
+  end
 
 end

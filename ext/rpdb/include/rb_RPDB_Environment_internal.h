@@ -5,5 +5,6 @@
 	VALUE rb_RPDB_Environment_internal_markClassConfigured(	VALUE	rb_enviroment,
 																VALUE	rb_klass );
 		VALUE rb_RPDB_Environment_internal_unmarkClassesConfigured( VALUE rb_enviroment );
+
 	
 #endif
