@@ -205,7 +205,7 @@ VALUE rb_RPDB_DatabaseJoinCursor_iterate(	int	argc,
 				&&	( rb_record_data = rb_RPDB_DatabaseObject_internal_extractRetrievalData( c_record ) ) )	{
 		
 		//	If we don't have a block, we return an enumerator
-		RETURN_ENUMERATOR(	rb_join_cursor,
+		RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_join_cursor,
 							1,
 							& rb_record_data );
 		

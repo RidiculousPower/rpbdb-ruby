@@ -69,9 +69,6 @@ extern VALUE rb_cFloat;
 extern VALUE rb_cTrueClass;
 extern VALUE rb_cFalseClass;
 
-extern VALUE rb_block_lambda( void );
-
-
 #define RPDB_RUBY_ERROR_INVALID_DATABASE_DATA			"Provided data was invalid. Database requires object that can be automatically converted to string."
 
 /*******************************************************************************************************************************************************************************************
@@ -109,6 +106,7 @@ void Init_RPDB_Database()	{
 	rb_define_method(						rb_RPDB_Database, 	"close",																				rb_RPDB_Database_close,																			0 	);
 	rb_define_method(						rb_RPDB_Database, 	"empty!",																				rb_RPDB_Database_empty,																			0 	);
 	rb_define_method(						rb_RPDB_Database, 	"erase!",																				rb_RPDB_Database_erase,																			0 	);
+	rb_define_alias(						rb_RPDB_Database, 	"delete!",																			"erase!"	);                            				
 	rb_define_method(						rb_RPDB_Database, 	"sync!",																				rb_RPDB_Database_sync,																			0 	);
 
 	rb_define_method(						rb_RPDB_Database, 	"key_exists?",																	rb_RPDB_Database_keyExists,																	1 	);
@@ -943,41 +941,7 @@ VALUE rb_RPDB_Database_write(	int			argc,
 															VALUE*	args, 
 															VALUE		rb_database )	{
 
-	VALUE	rb_key	=	Qnil;
-	VALUE	rb_data	=	Qnil;
-
-	/*------------------------------------------------------*/
-
-	VALUE	rb_key_or_key_data_hash	=	Qnil;
-	rb_scan_args(	argc,
-								args,
-								"11",
-								& rb_key_or_key_data_hash,
-								& rb_data );
-
-	//	if we have a hash we expect key => data
-	if ( TYPE( rb_key_or_key_data_hash ) == T_HASH )	{
-		VALUE	rb_key_data_array	=	Qnil;
-		rb_key_data_array	=	rb_funcall( rb_key_or_key_data_hash,
-																		rb_intern( "first" ),
-																		0 );
-		rb_key						=	rb_ary_shift( rb_key_data_array );
-		rb_data						=	rb_ary_shift( rb_key_data_array );
-	}
-	//	otherwise we have key, data
-	else {
-		rb_key						=	rb_key_or_key_data_hash;
-	}
-
-	if ( rb_key == Qnil )	{
-		rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_KEY );	
-	}
-	else if ( rb_data == Qnil )	{		
-		rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_DATA );
-	}
-
-	/*------------------------------------------------------*/
-
+	PARSE_RUBY_ARGS_FOR_KEY_DATA_HASH( argc, args, rb_database, rb_RPDB_Database_write, FALSE );
 
 	RPDB_Database*		c_database;
 	C_RPDB_DATABASE( rb_database, c_database );
@@ -985,14 +949,14 @@ VALUE rb_RPDB_Database_write(	int			argc,
 	RPDB_Record*	c_record	=	RPDB_Record_new( c_database );
 
 	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_database,
-																																						rb_key,
-																																						c_record->key->wrapped_bdb_dbt,
-																																						TRUE );
+																																			rb_key,
+																																			c_record->key->wrapped_bdb_dbt,
+																																			TRUE );
 
 	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_database,
-																																						rb_data,
-																																						c_record->data->wrapped_bdb_dbt,
-																																						FALSE );
+																																			rb_data,
+																																			c_record->data->wrapped_bdb_dbt,
+																																			FALSE );
 	
 	RPDB_Database_write(	c_database,
 												c_record	);
@@ -1439,8 +1403,8 @@ RPDB_SECONDARY_KEY_CREATION_RETURN rb_RPDB_Database_internal_secondaryKeyCreatio
 	//	if serialization is on, unserialize the key and object
 	if ( rb_should_serialize_data == Qtrue )	{
 	
-		rb_key									=	rb_RPDB_DatabaseObject_internal_unpackRubyObjectFromDatabaseStorage( rb_key );
-		rb_data									=	rb_RPDB_DatabaseObject_internal_unpackRubyObjectFromDatabaseStorage( rb_data );
+		rb_key		=	rb_RPDB_DatabaseObject_internal_unpackRubyObjectFromDatabaseStorage( rb_key );
+		rb_data		=	rb_RPDB_DatabaseObject_internal_unpackRubyObjectFromDatabaseStorage( rb_data );
 	}
 
 	VALUE	rb_callback_info_hash	=	rb_RPDB_Database_secondaryKeyCreationCallbackMethod(	rb_secondary_database );	

@@ -311,7 +311,137 @@
 		}																												\
 		return rb_return_array;
 	
-	#define STRING2SYM( rb_string )	ID2SYM( rb_to_id( rb_string ) );
+	
+	#define RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record )									\
+		void*	raw_key	=	RPDB_Record_rawKey( c_record );												\
+		VALUE	rb_record_key	=	Qnil;																						\
+		if ( raw_key != NULL )	{																							\
+			rb_record_key		=	rb_str_new(	(char*) raw_key,											\
+																		RPDB_Record_keySize( c_record ) );		\
+		}
+
+	#define RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record )									\
+		void*	raw_data	=	RPDB_Record_rawData( c_record );										\
+		VALUE	rb_record_data	=	Qnil;																					\
+		if ( raw_data != NULL )	{																							\
+			rb_record_data		=	rb_str_new(	(char*) raw_data,										\
+																			RPDB_Record_dataSize( c_record ) );	\
+		}
+
+	#define FINISH_RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record )						\
+		RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record )												\
+		RPDB_Record_free( & c_record );
+
+	#define FINISH_RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record )					\
+		RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record )												\
+		RPDB_Record_free( & c_record );
+
+	#define RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( c_record )				\
+		RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record );												\
+		RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record );		
+
+	#define FINISH_RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( c_record )	\
+		RUBY_STRINGS_FOR_DATA_IN_RPDB_RECORD( c_record )											\
+		RPDB_Record_free( & c_record );
+	
+	#define RETURN_RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record )						\
+		FINISH_RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record );								\
+		return rb_record_key;
+
+	#define RETURN_RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record )					\
+		FINISH_RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record );								\
+		return rb_record_data;
+
+	
+	//	parses args for rb_key, rb_data, or an array
+	//	if an array, each member is processed for key and data
+	//		if returns, returns the return values from each call for each array member
+	//		otherwise returns self
+	#define PARSE_RUBY_ARGS_FOR_KEY_DATA_HASH( argc, args, rb_self, function, returns )					\
+		VALUE	rb_key	=	Qnil;																																			\
+		VALUE	rb_data	=	Qnil;																																			\
+		VALUE	rb_key_or_key_data_hash	=	Qnil;																											\
+		rb_scan_args(	argc,																																				\
+									args,																																				\
+									"11",																																				\
+									& rb_key_or_key_data_hash,																									\
+									& rb_data );																																\
+		if ( TYPE( rb_key_or_key_data_hash ) == T_HASH )	{																				\
+			VALUE	rb_key_data_array	=	Qnil;																													\
+			rb_key_data_array	=	rb_funcall( rb_key_or_key_data_hash,																\
+																			rb_intern( "first" ),																		\
+																			0 );																										\
+			rb_key						=	rb_ary_shift( rb_key_data_array );																	\
+			rb_data						=	rb_ary_shift( rb_key_data_array );																	\
+		}																																													\
+		else if ( TYPE( rb_key_or_key_data_hash ) == T_ARRAY )	{																	\
+			ITERATE_RUBY_ARRAY_AND_CALL_ON_EACH_MEMBER( rb_self, rb_key_or_key_data_hash, function )\
+			if ( returns )	{																																				\
+				return rb_return_values;																															\
+			}																																												\
+			else	{																																									\
+				return rb_self;																																				\
+			}																																												\
+		}																																													\
+		else {																																										\
+			rb_key =	rb_key_or_key_data_hash;																											\
+		}																																													\
+		if ( rb_key == Qnil )	{																																		\
+			rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_KEY );											\
+		}																																													\
+		else if ( rb_data == Qnil )	{																															\
+			rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_DATA );										\
+		}
+	
+	#define ITERATE_RUBY_ARRAY_AND_CALL_ON_EACH_MEMBER( rb_self, array, function )							\
+		int	c_which_array_member	=	0;																														\
+		VALUE rb_return_values	=	rb_ary_new();																										\
+		for (	c_which_array_member = 0 ;																													\
+					c_which_array_member < RARRAY_LEN( rb_key_or_key_data_hash ) ;											\
+					c_which_array_member++ )	{																													\
+			VALUE rb_member = RARRAY_PTR( rb_key_or_key_data_hash )[ c_which_array_member ];				\
+				rb_ary_push(	rb_return_values,																												\
+											function(	1,																														\
+																& rb_member,																									\
+																rb_self ) );																									\
+		}
+		
+	#define YIELD_BLOCK_FOR_KEY_DATA_INDEX( rb_record_key, rb_record_data, c_index )	\
+		switch ( rb_proc_arity( rb_block_lambda() ) )	{																	\
+			case 1:																																				\
+				rb_yield( rb_record_data );																									\
+				break;																																			\
+			case 2:																																				\
+				rb_yield_values(	2,																												\
+													rb_record_key,																						\
+													rb_record_data );																					\
+				break;																																			\
+			case 3:																																				\
+				rb_yield_values(	3,																												\
+													rb_record_key,																						\
+													rb_record_data,																						\
+													INT2FIX( c_index ) );																			\
+				break;																																			\
+		}
+
+	#define YIELD_BLOCK_FOR_DATA_INDEX( rb_record_key, rb_record_data, c_index )			\
+		switch ( rb_proc_arity( rb_block_lambda() ) )	{																	\
+			case 1:																																				\
+				rb_yield( rb_record_data );																									\
+				break;																																			\
+			case 2:																																				\
+				rb_yield_values(	2,																												\
+													rb_record_data,																						\
+													INT2FIX( c_index ) );																			\
+				break;																																			\
+		}
+
+	
+	#define RETURN_ENUMERATOR_IF_NO_BLOCK( obj, argc, argv ) \
+		RETURN_ENUMERATOR( obj, argc, argv );
+	
+	#define STRING2SYM( rb_string )				\
+		ID2SYM( rb_to_id( rb_string ) );
 
 	#define RPDB_RUBY_MODULE_VARIABLE_EXTENDED_CLASSES_HASH										"@rpdb__extended_classes_hash"
 	#define RPDB_RUBY_MODULE_VARIABLE_INCLUDED_FOR_CLASSES_HASH								"@rpdb__included_for_classes_hash"

@@ -6,5 +6,6 @@
 	
 	#include "rb_RPDB_Environment.h"
 
+	extern VALUE rb_block_lambda( void );
 
 #endif

@@ -126,14 +126,6 @@ rpdb/RPDB_Types.h
 
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseCursor_internal.h
 
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseObjectCursor.h
-rb_RPDB_BaseStandardIncludes.h
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
-rpdb/RPDB_Types.h
--
-
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseObjectCursor_internal.h
-
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseObject_internal.h
 
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database_internal.h
@@ -180,21 +172,5 @@ rpdb/RPDB_Record.h
 rpdb/RPDB_DatabaseSettingsController.h
 -
 rpdb/RPDB_DatabaseReadWriteSettingsController.h
--
-
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.c
-rb_RPDB_DatabaseCursor.h
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseCursor.h
-rb_RPDB_DatabaseCursor_internal.h
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseCursor_internal.h
-rb_RPDB_DatabaseObjectCursor.h
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.h
-rb_RPDB_DatabaseObjectCursor_internal.h
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor_internal.h
-rb_RPDB_DatabaseObject_internal.h
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject_internal.h
-rpdb/RPDB_Record.h
--
-rpdb/RPDB_DatabaseCursor.h
 -
 

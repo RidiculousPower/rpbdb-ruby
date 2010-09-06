@@ -90,13 +90,17 @@ void Init_RPDB_DatabaseReadWriteSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"turn_write_locks_instead_of_read_locks_on",		rb_RPDB_DatabaseReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOn,		0 	);
 	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"turn_write_locks_instead_of_read_locks_off",		rb_RPDB_DatabaseReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOff,	0 	);
                     					
-	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"duplicates?",																	rb_RPDB_DatabaseReadWriteSettingsController_duplicates,														0 	);
-	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"turn_duplicates_on",														rb_RPDB_DatabaseReadWriteSettingsController_turnDuplicatesOn,											0 	);
-	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"turn_duplicates_off",													rb_RPDB_DatabaseReadWriteSettingsController_turnDuplicatesOff,										0 	);
+	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"unsorted_duplicates?",													rb_RPDB_DatabaseReadWriteSettingsController_unsortedDuplicates,														0 	);
+	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"turn_unsorted_duplicates_on",									rb_RPDB_DatabaseReadWriteSettingsController_turnUnsortedDuplicatesOn,											0 	);
+	rb_define_alias(						rb_RPDB_DatabaseReadWriteSettingsController, 	"unsorted_duplicates_on",												"turn_unsorted_duplicates_on" 	);                                                          				
+	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"turn_unsorted_duplicates_off",									rb_RPDB_DatabaseReadWriteSettingsController_turnUnsortedDuplicatesOff,										0 	);
+	rb_define_alias(						rb_RPDB_DatabaseReadWriteSettingsController, 	"unsorted_duplicates_off",											"turn_unsorted_duplicates_off" 	);                                                          				
 	                  					
 	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"sorted_duplicates?",														rb_RPDB_DatabaseReadWriteSettingsController_sortedDuplicates,											0 	);
 	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"turn_sorted_duplicates_on",										rb_RPDB_DatabaseReadWriteSettingsController_turnSortedDuplicatesOn,								0 	);
+	rb_define_alias(						rb_RPDB_DatabaseReadWriteSettingsController, 	"sorted_duplicates_on",													"turn_sorted_duplicates_on" 	);                                                          				
 	rb_define_method(						rb_RPDB_DatabaseReadWriteSettingsController, 	"turn_sorted_duplicates_off",										rb_RPDB_DatabaseReadWriteSettingsController_turnSortedDuplicatesOff,							0 	);
+	rb_define_alias(						rb_RPDB_DatabaseReadWriteSettingsController, 	"sorted_duplicates_off",												"turn_sorted_duplicates_off" 	);                                                          				
 	
 }
 
@@ -659,12 +663,12 @@ VALUE rb_RPDB_DatabaseReadWriteSettingsController_writeLocksInsteadOfReadLocks( 
 *************************/
 
 //	DB_DUP				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
-VALUE rb_RPDB_DatabaseReadWriteSettingsController_duplicates( VALUE	rb_database_read_write_settings_controller )	{
+VALUE rb_RPDB_DatabaseReadWriteSettingsController_unsortedDuplicates( VALUE	rb_database_read_write_settings_controller )	{
 	
 	RPDB_DatabaseReadWriteSettingsController*	c_database_read_write_settings_controller;
 	C_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( rb_database_read_write_settings_controller, c_database_read_write_settings_controller );
 	
-	return ( RPDB_DatabaseReadWriteSettingsController_duplicates( c_database_read_write_settings_controller )	?	Qtrue
+	return ( RPDB_DatabaseReadWriteSettingsController_unsortedDuplicates( c_database_read_write_settings_controller )	?	Qtrue
 																												:	Qfalse );
 }
 
@@ -672,12 +676,12 @@ VALUE rb_RPDB_DatabaseReadWriteSettingsController_duplicates( VALUE	rb_database_
 	 *  turnPermitDuplicatesOn  *
 	 *****************************/
 
-	VALUE rb_RPDB_DatabaseReadWriteSettingsController_turnDuplicatesOn( VALUE	rb_database_read_write_settings_controller )	{
+	VALUE rb_RPDB_DatabaseReadWriteSettingsController_turnUnsortedDuplicatesOn( VALUE	rb_database_read_write_settings_controller )	{
 		
 		RPDB_DatabaseReadWriteSettingsController*	c_database_read_write_settings_controller;
 		C_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( rb_database_read_write_settings_controller, c_database_read_write_settings_controller );
 		
-		RPDB_DatabaseReadWriteSettingsController_turnDuplicatesOn( c_database_read_write_settings_controller );
+		RPDB_DatabaseReadWriteSettingsController_turnUnsortedDuplicatesOn( c_database_read_write_settings_controller );
 		
 		return rb_database_read_write_settings_controller;
 	}
@@ -686,12 +690,12 @@ VALUE rb_RPDB_DatabaseReadWriteSettingsController_duplicates( VALUE	rb_database_
 	 *  turnPermitDuplicatesOff  *
 	 *********************************/
 
-	VALUE rb_RPDB_DatabaseReadWriteSettingsController_turnDuplicatesOff( VALUE	rb_database_read_write_settings_controller )	{
+	VALUE rb_RPDB_DatabaseReadWriteSettingsController_turnUnsortedDuplicatesOff( VALUE	rb_database_read_write_settings_controller )	{
 		
 		RPDB_DatabaseReadWriteSettingsController*	c_database_read_write_settings_controller;
 		C_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( rb_database_read_write_settings_controller, c_database_read_write_settings_controller );
 		
-		RPDB_DatabaseReadWriteSettingsController_turnDuplicatesOff( c_database_read_write_settings_controller );
+		RPDB_DatabaseReadWriteSettingsController_turnUnsortedDuplicatesOff( c_database_read_write_settings_controller );
 		
 		return rb_database_read_write_settings_controller;
 	}

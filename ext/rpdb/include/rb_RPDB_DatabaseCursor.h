@@ -45,6 +45,14 @@ VALUE rb_RPDB_DatabaseCursor_current(	VALUE	rb_database_cursor );
 VALUE rb_RPDB_DatabaseCursor_retrieveKey(	int	argc,
 										  VALUE*	args,
 										  VALUE	rb_database_cursor );
+											
+VALUE rb_RPDB_DatabaseCursor_retrievePartialKey(	VALUE	rb_database_cursor,
+																									VALUE	rb_key );
+VALUE rb_RPDB_DatabaseCursor_retrieveDuplicateMatchingPartialData(	int			argc,
+																																		VALUE*	args,
+																																		VALUE		rb_database_cursor );
+
+											
 	VALUE rb_RPDB_DatabaseCursor_currentKey(	VALUE	rb_database_cursor );
 VALUE rb_RPDB_DatabaseCursor_retrieveFirst( VALUE	rb_database_cursor );
 VALUE rb_RPDB_DatabaseCursor_retrieveFirstKey( VALUE	rb_database_cursor );
@@ -59,26 +67,25 @@ VALUE rb_RPDB_DatabaseCursor_retrievePreviousKey( VALUE	rb_database_cursor );
 	VALUE rb_RPDB_DatabaseCursor_retrievePreviousDuplicate( VALUE	rb_database_cursor );
 	VALUE rb_RPDB_DatabaseCursor_retrieveNextNonDuplicate( VALUE	rb_database_cursor );
 	VALUE rb_RPDB_DatabaseCursor_retrievePreviousNonDuplicate( VALUE	rb_database_cursor );
-VALUE rb_RPDB_DatabaseCursor_iterateInSegments( VALUE	rb_database_cursor,
-								   VALUE	rb_items_per_segment	);
+
 VALUE rb_RPDB_DatabaseCursor_iterate( int	argc,
 									  VALUE*	args,
 									  VALUE	rb_database_cursor	);
-VALUE rb_RPDB_DatabaseCursor_iterateAllInSegments(	VALUE rb_database_cursor,
-									  VALUE	rb_items_per_segment	);
-VALUE rb_RPDB_DatabaseCursor_iterateAll( int	argc,
-										 VALUE*	args,
-										 VALUE	rb_database_cursor	);
-VALUE rb_RPDB_DatabaseCursor_iterateDuplicatesInSegments(	VALUE	rb_database_cursor,
-											 VALUE	rb_items_per_segment );
 VALUE rb_RPDB_DatabaseCursor_iterateDuplicates( int	argc,
 												VALUE*	args,
 												VALUE	rb_database_cursor );
-VALUE rb_RPDB_DatabaseCursor_iterateKeysInSegments( VALUE rb_database_cursor,
-									   VALUE rb_items_per_segment );
 VALUE rb_RPDB_DatabaseCursor_iterateKeys( int	argc,
 										  VALUE*	args,
 										  VALUE	rb_database_cursor );
+VALUE rb_RPDB_DatabaseCursor_slice( int			argc,
+																		VALUE*	args,
+																		VALUE		rb_database_cursor	);
+VALUE rb_RPDB_DatabaseCursor_sliceKeys(	int			argc,
+																				VALUE*	args,
+																				VALUE		rb_database_cursor );
+VALUE rb_RPDB_DatabaseCursor_sliceDuplicates(	int			argc,
+																							VALUE*	args,
+																							VALUE		rb_database_cursor );
 	
 	VALUE rb_RPDB_DatabaseCursor_toArray( VALUE rb_database_cursor );
 	VALUE rb_RPDB_DatabaseCursor_delete(	int	argc,

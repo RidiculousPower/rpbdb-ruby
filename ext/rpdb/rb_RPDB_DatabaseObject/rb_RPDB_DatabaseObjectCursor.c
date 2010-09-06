@@ -661,7 +661,7 @@ VALUE rb_RPDB_DatabaseObjectCursor_iterate( int	argc,
 		VALUE	rb_record_data	=	rb_RPDB_DatabaseObject_internal_extractRetrievalData( c_record );
 		
 		//	If we don't have a block, we return an enumerator
-		RETURN_ENUMERATOR(	rb_database_cursor,
+		RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_database_cursor,
 							0,
 							NULL );
 		//	Otherwise we iterate the block
@@ -741,7 +741,7 @@ VALUE rb_RPDB_DatabaseObjectCursor_iterateAll( int	argc,
 		VALUE	rb_record_data	=	rb_RPDB_DatabaseObject_internal_extractRetrievalData( c_record );
 		
 		//	If we don't have a block, we return an enumerator
-		RETURN_ENUMERATOR(	rb_database_cursor,
+		RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_database_cursor,
 							0,
 							NULL );
 		//	Otherwise we iterate the block
@@ -822,7 +822,7 @@ VALUE rb_RPDB_DatabaseObjectCursor_iterateDuplicates( int	argc,
 		VALUE	rb_record_data	=	rb_RPDB_DatabaseObject_internal_extractRetrievalData( c_record );
 		
 		//	If we don't have a block, we return an enumerator
-		RETURN_ENUMERATOR(	rb_database_cursor,
+		RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_database_cursor,
 							0,
 							NULL );
 		//	Otherwise we iterate the block
@@ -907,7 +907,7 @@ VALUE rb_RPDB_DatabaseObjectCursor_iterateKeys( int	argc,
 		enumerator_args[ 1 ]	=	rb_database_cursor;
 		
 		//	If we don't have a block, we return an enumerator
-		RETURN_ENUMERATOR(	rb_database_cursor,
+		RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_database_cursor,
 												2, 
 												enumerator_args );
 		//	Otherwise we iterate the block
