@@ -48,7 +48,6 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB.c.o
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseTypeSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseVariableRecordSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseVerbositySettingsController.h
- /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseVerificationController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseVerificationSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DebugSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DebugVerbositySettingsController.h
@@ -211,19 +210,6 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSequenceController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c
-rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.c.o
- /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
- /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/defines.h
- /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/intern.h
- /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/missing.h
- /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
- /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
- /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
- /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
- /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
- /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseVerificationController.h
- /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
- /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.c
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/defines.h

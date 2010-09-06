@@ -46,7 +46,6 @@ extern	VALUE	rb_RPDB_Database;
 extern	VALUE	rb_RPDB_DatabaseCursor;
 extern	VALUE	rb_RPDB_DatabaseObjectCursor;
 extern	VALUE	rb_RPDB_DatabaseCursorController;
-extern	VALUE	rb_RPDB_DatabaseVerificationController;
 extern	VALUE	rb_RPDB_DatabaseJoinController;
 extern	VALUE	rb_RPDB_DatabaseSequenceController;
 
@@ -1185,6 +1184,23 @@ VALUE rb_RPDB_Database_shiftQueueOrWait( VALUE	rb_database )	{
 }
 
 */
+
+/***********
+*  verify  *
+***********/
+
+//	FIX - flesh out functions
+
+//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_verify.html
+VALUE rb_RPDB_Database_verifyDatabase( VALUE	rb_database )	{
+
+	RPDB_Database*		c_database;
+	C_RPDB_DATABASE( rb_database, c_database );
+
+	RPDB_Database_verifyDatabase( c_database );
+
+	return rb_database;
+}
 
 /*******************************************************************************************************************************************************************************************
 																		Data Deletion

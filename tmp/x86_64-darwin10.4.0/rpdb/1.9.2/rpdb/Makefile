@@ -304,30 +304,6 @@ rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/r
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.s
 .PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.s
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.o: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.o
-
-# target to build an object file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.c.o
-
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.i: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.i
-
-# target to preprocess a source file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.c.i
-
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.s: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.s
-
-# target to generate assembly for a file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.c.s
-
 rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.o: rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.c.o
 .PHONY : rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.o
 
@@ -2185,9 +2161,6 @@ help:
 	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.o"
 	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.i"
 	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.s"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.o"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.i"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseVerificationController.s"
 	@echo "... rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.o"
 	@echo "... rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.i"
 	@echo "... rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.s"

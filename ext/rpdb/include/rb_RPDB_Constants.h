@@ -43,9 +43,6 @@
 	#define RUBY_RPDB_DATABASE_SEQUENCE( c_database_sequence )																		RUBY_RPDB_OBJECT(	c_database_sequence, rb_RPDB_DatabaseSequence, NULL, NULL )
 	#define C_RPDB_DATABASE_SEQUENCE( rb_database_sequence, c_database_sequence )													C_RPDB_STRUCT(		rb_database_sequence, c_database_sequence, RPDB_DatabaseSequence )
 
-	#define RUBY_RPDB_DATABASE_VERIFICATION_CONTROLLER( c_database_verification_controller )										RUBY_RPDB_OBJECT(	c_database_verification_controller, rb_RPDB_DatabaseVerificationController, NULL, NULL )
-	#define C_RPDB_DATABASE_VERIFICATION_CONTROLLER( rb_database_verification_controller, c_database_verification_controller )		C_RPDB_STRUCT(		rb_database_verification_controller, c_database_verification_controller, RPDB_DatabaseVerificationController )
-
 	#define RUBY_RPDB_ERROR_CONTROLLER( c_error_controller )																		RUBY_RPDB_OBJECT(	c_error_controller, rb_RPDB_ErrorController, NULL, NULL )
 	#define C_RPDB_ERROR_CONTROLLER( rb_error_controller, c_error_controller )														C_RPDB_STRUCT(		rb_error_controller, c_error_controller, RPDB_ErrorController )
 

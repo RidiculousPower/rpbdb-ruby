@@ -25,7 +25,6 @@
 #include "rb_RPDB_DatabaseSequence.h"
 #include "rb_RPDB_DatabaseJoinController.h"
 #include "rb_RPDB_DatabaseJoinCursor.h"
-#include "rb_RPDB_DatabaseVerificationController.h"
 
 #include "rb_RPDB_Lock.h"
 #include "rb_RPDB_LockController.h"
@@ -150,7 +149,6 @@ VALUE	rb_RPDB_Environment;
 				VALUE	rb_RPDB_DatabaseObjectCursor;
 VALUE	rb_RPDB_DatabaseSequenceController;
 VALUE	rb_RPDB_DatabaseSequence;
-VALUE	rb_RPDB_DatabaseVerificationController;
 
 	VALUE	rb_RPDB_Error;
 	VALUE	rb_RPDB_ErrorController;
@@ -281,7 +279,6 @@ void Init_rpdb()	{
 		Init_RPDB_DatabaseObjectCursor();
 		Init_RPDB_DatabaseSequenceController();
 		Init_RPDB_DatabaseSequence();
-		Init_RPDB_DatabaseVerificationController();
 
 		//	Record/Key/Data
 		Init_RPDB_Record();
