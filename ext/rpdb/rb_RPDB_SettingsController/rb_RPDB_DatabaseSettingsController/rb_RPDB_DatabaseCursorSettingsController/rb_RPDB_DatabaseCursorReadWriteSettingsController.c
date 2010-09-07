@@ -76,49 +76,49 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_new(	VALUE	klass __attri
 	RPDB_DatabaseCursorSettingsController*	c_parent_database_cursor_settings_controller;
 	C_RPDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_parent_database_cursor_settings_controller, c_parent_database_cursor_settings_controller );
 	
-	VALUE	rb_database_cursor_read_write_settings_controller	=	RUBY_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( RPDB_DatabaseCursorReadWriteSettingsController_new( c_parent_database_cursor_settings_controller ) );
+	VALUE	rb_database_cursor_record_read_write_settings_controller	=	RUBY_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( RPDB_DatabaseCursorReadWriteSettingsController_new( c_parent_database_cursor_settings_controller ) );
 
 	VALUE	argv[ 1 ];
 	
 	argv[ 0 ]	=	rb_parent_database_cursor_settings_controller;
 	
-	rb_obj_call_init(	rb_database_cursor_read_write_settings_controller,
+	rb_obj_call_init(	rb_database_cursor_record_read_write_settings_controller,
 					 1, 
 					 argv );
 	
-	return rb_database_cursor_read_write_settings_controller;		
+	return rb_database_cursor_record_read_write_settings_controller;		
 }
 
 /************
 *  new  *
 ************/
 
-VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_init(	VALUE	rb_database_cursor_read_write_settings_controller,
+VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_init(	VALUE	rb_database_cursor_record_read_write_settings_controller,
 																															VALUE	rb_parent_database_cursor_settings_controller __attribute__ ((unused )) )	{
 
-	return rb_database_cursor_read_write_settings_controller;
+	return rb_database_cursor_record_read_write_settings_controller;
 }
 
 /***************************************
 *  environment  *
 ***************************************/
-VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentEnvironment(	VALUE	rb_database_cursor_read_write_settings_controller )	{
+VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentEnvironment(	VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseCursorReadWriteSettingsController_parentEnvironment( c_database_cursor_read_write_settings_controller ) );
+	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseCursorReadWriteSettingsController_parentEnvironment( c_database_cursor_record_read_write_settings_controller ) );
 }
 
 /***************************************
 *  Database  *
 ***************************************/
-VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabase(	VALUE	rb_database_cursor_read_write_settings_controller )	{
+VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabase(	VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-	return RUBY_RPDB_DATABASE( RPDB_DatabaseCursorReadWriteSettingsController_parentDatabase( c_database_cursor_read_write_settings_controller ) );
+	return RUBY_RPDB_DATABASE( RPDB_DatabaseCursorReadWriteSettingsController_parentDatabase( c_database_cursor_record_read_write_settings_controller ) );
 }
 
 /*******************************************************************************************************************************************************************************************
@@ -130,12 +130,12 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabase(	VALUE	rb
 ********************/
 
 //	DB_WRITECURSOR			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_cursor.html
-VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_permitWrite( VALUE	rb_database_cursor_read_write_settings_controller )	{
+VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_permitWrite( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-	return ( RPDB_DatabaseCursorReadWriteSettingsController_permitWrite( c_database_cursor_read_write_settings_controller )	?	Qtrue
+	return ( RPDB_DatabaseCursorReadWriteSettingsController_permitWrite( c_database_cursor_record_read_write_settings_controller )	?	Qtrue
 																																:	Qfalse );
 }
 
@@ -143,28 +143,28 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_permitWrite( VALUE	rb_da
 	*  permitWriteOn  *
 	************************/
 
-	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnPermitWriteOn( VALUE	rb_database_cursor_read_write_settings_controller )	{
+	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnPermitWriteOn( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-		RPDB_DatabaseCursorReadWriteSettingsController_turnPermitWriteOn( c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController_turnPermitWriteOn( c_database_cursor_record_read_write_settings_controller );
 		
-		return rb_database_cursor_read_write_settings_controller;
+		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
 	/************************
 	*  permitWriteOff  *
 	************************/
 
-	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnPermitWriteOff( VALUE	rb_database_cursor_read_write_settings_controller )	{
+	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnPermitWriteOff( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-		RPDB_DatabaseCursorReadWriteSettingsController_turnPermitWriteOff( c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController_turnPermitWriteOff( c_database_cursor_record_read_write_settings_controller );
 
-		return rb_database_cursor_read_write_settings_controller;
+		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
 /********************
@@ -172,12 +172,12 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_permitWrite( VALUE	rb_da
 ********************/
 
 //	DB_IGNORE_LEASE				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
-VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_ignoreLease( VALUE	rb_database_cursor_read_write_settings_controller )	{
+VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_ignoreLease( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-	return ( RPDB_DatabaseCursorReadWriteSettingsController_ignoreLease( c_database_cursor_read_write_settings_controller )	?	Qtrue
+	return ( RPDB_DatabaseCursorReadWriteSettingsController_ignoreLease( c_database_cursor_record_read_write_settings_controller )	?	Qtrue
 																																:	Qfalse );
 }
 
@@ -185,28 +185,28 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_ignoreLease( VALUE	rb_da
 	*  ignoreLeaseOn  *
 	************************/
 
-	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_ignoreLeaseOn( VALUE	rb_database_cursor_read_write_settings_controller )	{
+	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_ignoreLeaseOn( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-		RPDB_DatabaseCursorReadWriteSettingsController_ignoreLeaseOn( c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController_ignoreLeaseOn( c_database_cursor_record_read_write_settings_controller );
 
-		return rb_database_cursor_read_write_settings_controller;
+		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
 	/************************
 	*  ignoreLeaseOff  *
 	************************/
 
-	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_ignoreLeaseOff( VALUE	rb_database_cursor_read_write_settings_controller )	{
+	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_ignoreLeaseOff( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-		RPDB_DatabaseCursorReadWriteSettingsController_ignoreLeaseOff( c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController_ignoreLeaseOff( c_database_cursor_record_read_write_settings_controller );
 
-		return rb_database_cursor_read_write_settings_controller;
+		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
 /************************************
@@ -214,12 +214,12 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_ignoreLease( VALUE	rb_da
 ************************************/
 
 //	DB_RMW					http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
-VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadLocks( VALUE	rb_database_cursor_read_write_settings_controller )	{
+VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadLocks( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-	return ( RPDB_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadLocks( c_database_cursor_read_write_settings_controller )	?	Qtrue
+	return ( RPDB_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadLocks( c_database_cursor_record_read_write_settings_controller )	?	Qtrue
 																																				:	Qfalse );
 }
 
@@ -227,28 +227,28 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadL
 	*  turnWriteLocksInsteadOfReadLocksOn  *
 	****************************************/
 
-	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOn( VALUE	rb_database_cursor_read_write_settings_controller )	{
+	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOn( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-		RPDB_DatabaseCursorReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOn( c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOn( c_database_cursor_record_read_write_settings_controller );
 
-		return rb_database_cursor_read_write_settings_controller;
+		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
 	/****************************************
 	*  turnWriteLocksInsteadOfReadLocksOff  *
 	****************************************/
 
-	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOff( VALUE	rb_database_cursor_read_write_settings_controller )	{
+	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOff( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-		RPDB_DatabaseCursorReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOff( c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOff( c_database_cursor_record_read_write_settings_controller );
 
-		return rb_database_cursor_read_write_settings_controller;
+		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
 /********************************
@@ -256,12 +256,12 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadL
 ********************************/
 
 //	DB_MULTIPLE				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
-VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleDataItems( VALUE	rb_database_cursor_read_write_settings_controller )	{
+VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleDataItems( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-	return ( RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleDataItems( c_database_cursor_read_write_settings_controller )	?	Qtrue
+	return ( RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleDataItems( c_database_cursor_record_read_write_settings_controller )	?	Qtrue
 																																	:	Qfalse );
 }
 
@@ -269,28 +269,28 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleDataItems(
 	*  returnMultipleDataItemsOn  *
 	************************************/
 
-	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleDataItemsOn( VALUE	rb_database_cursor_read_write_settings_controller )	{
+	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleDataItemsOn( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-		RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleDataItemsOn( c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleDataItemsOn( c_database_cursor_record_read_write_settings_controller );
 
-		return rb_database_cursor_read_write_settings_controller;
+		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
 	/************************************
 	*  returnMultipleDataItemsOff  *
 	************************************/
 
-	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleDataItemsOff( VALUE	rb_database_cursor_read_write_settings_controller )	{
+	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleDataItemsOff( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 	
-		RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleDataItemsOff( c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleDataItemsOff( c_database_cursor_record_read_write_settings_controller );
 
-		return rb_database_cursor_read_write_settings_controller;
+		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
 /***********************************
@@ -303,12 +303,12 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleDataItems(
 //	In the case of Btree or Hash databases, the multiple key and data pairs can be iterated over using the DB_MULTIPLE_KEY_NEXT macro.
 //	In the case of Queue or Recno databases, the multiple record number and data pairs can be iterated over using the DB_MULTIPLE_RECNO_NEXT macro.
 //	DB_MULTIPLE_KEY			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
-VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleKeyDataPairs( VALUE	rb_database_cursor_read_write_settings_controller )	{
+VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleKeyDataPairs( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-	return ( RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleKeyDataPairs( c_database_cursor_read_write_settings_controller )	?	Qtrue
+	return ( RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleKeyDataPairs( c_database_cursor_record_read_write_settings_controller )	?	Qtrue
 																																			:	Qfalse );
 }
 
@@ -316,27 +316,27 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleKeyDataPai
 	*  returnMultipleKeyDataPairsOn  *
 	***************************************/
 
-	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleKeyDataPairsOn( VALUE	rb_database_cursor_read_write_settings_controller )	{
+	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleKeyDataPairsOn( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
-		RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleKeyDataPairsOn( c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleKeyDataPairsOn( c_database_cursor_record_read_write_settings_controller );
 				
-		return rb_database_cursor_read_write_settings_controller;
+		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
 	/***************************************
 	*  returnMultipleKeyDataPairsOff  *
 	***************************************/
 
-	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleKeyDataPairsOff( VALUE	rb_database_cursor_read_write_settings_controller )	{
+	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleKeyDataPairsOff( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 	
-		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller;
-		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
+		C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 	
-		RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleKeyDataPairsOff( c_database_cursor_read_write_settings_controller );
+		RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleKeyDataPairsOff( c_database_cursor_record_read_write_settings_controller );
 
-		return rb_database_cursor_read_write_settings_controller;
+		return rb_database_cursor_record_read_write_settings_controller;
 	}
 

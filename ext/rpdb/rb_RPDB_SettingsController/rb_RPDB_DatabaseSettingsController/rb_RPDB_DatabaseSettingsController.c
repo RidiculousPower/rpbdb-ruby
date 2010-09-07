@@ -25,7 +25,7 @@
 #include <rpdb/RPDB_DatabaseAssociationSettingsController.h>
 #include <rpdb/RPDB_DatabaseCursorSettingsController.h>
 #include <rpdb/RPDB_DatabaseTypeSettingsController.h>
-#include <rpdb/RPDB_DatabaseReadWriteSettingsController.h>
+#include <rpdb/RPDB_DatabaseRecordReadWriteSettingsController.h>
 #include <rpdb/RPDB_DatabaseRecordSettingsController.h>
 
 /*******************************************************************************************************************************************************************************************
@@ -36,12 +36,13 @@ extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_Database;
 extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_DatabaseSettingsController;
+extern	VALUE	rb_RPDB_DatabaseJoinSettingsController;
 extern	VALUE	rb_RPDB_DatabaseErrorSettingsController;
 
 extern	VALUE	rb_RPDB_DatabaseAssociationSettingsController;
 extern	VALUE	rb_RPDB_DatabaseCursorSettingsController;
 extern	VALUE	rb_RPDB_DatabaseTypeSettingsController;
-extern	VALUE	rb_RPDB_DatabaseReadWriteSettingsController;
+extern	VALUE	rb_RPDB_DatabaseRecordReadWriteSettingsController;
 extern	VALUE	rb_RPDB_DatabaseRecordSettingsController;
 extern	VALUE	rb_RPDB_DatabaseSequenceSettingsController;
 
@@ -101,18 +102,23 @@ void Init_RPDB_DatabaseSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"cursor_settings_controller",					rb_RPDB_DatabaseSettingsController_cursorSettingsController,			0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"cursors",														"cursor_settings_controller"	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"cursor",															"cursor_settings_controller"	);
-                                                                                                      		
-	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"sequence_settingsController",				rb_RPDB_DatabaseSettingsController_sequenceSettingsController,		0 	);
-	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"sequences",													"sequence_settingsController"	);
-	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"sequence",														"sequence_settingsController"	);
+
+	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"sequence_settings_controller",				rb_RPDB_DatabaseSettingsController_sequenceSettingsController,		0 	);
+	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"sequences",													"sequence_settings_controller"	);
+	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"sequence",														"sequence_settings_controller"	);
+
+	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"join_settings_controller",						rb_RPDB_DatabaseSettingsController_joinSettingsController,		0 	);
+	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"join_settings",											"join_settings_controller"	);
+	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"joins",															"join_settings_controller"	);
+	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"join",																"join_settings_controller"	);
                                                                                                       		
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"type_settings_controller",						rb_RPDB_DatabaseSettingsController_typeSettingsController,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"types",															"type_settings_controller"	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"type",																"type_settings_controller"	);
                     					                                                                        		
-	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"read_write_settings_controller",			rb_RPDB_DatabaseSettingsController_readWriteSettingsController,		0 	);
-	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"read_write",													"read_write_settings_controller"	);
-	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"readwrite",													"read_write_settings_controller"	);
+	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"record_read_write_settings_controller",			rb_RPDB_DatabaseRecordSettingsController_readWriteSettingsController,		0 	);
+	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"read_write",													"record_read_write_settings_controller"	);
+	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"readwrite",													"record_read_write_settings_controller"	);
                     					                                                                        		
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"record_settings_controller",					rb_RPDB_DatabaseSettingsController_recordSettingsController,			0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"records",														"record_settings_controller"	);
@@ -428,6 +434,17 @@ VALUE rb_RPDB_DatabaseSettingsController_associationSettingsController( VALUE	rb
 	return RUBY_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_associationSettingsController( c_database_settings_controller ) );
 }
 
+/****************************
+*  joinController  *
+****************************/
+
+VALUE rb_RPDB_DatabaseSettingsController_joinSettingsController( VALUE	rb_database_settings_controller )	{
+
+	RPDB_DatabaseSettingsController*	c_database_settings_controller;
+	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+
+	return RUBY_RPDB_DATABASE_JOIN_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_joinSettingsController( c_database_settings_controller ) );
+}
 
 /*****************************
 *  cursorController  *
@@ -469,12 +486,12 @@ VALUE rb_RPDB_DatabaseSettingsController_typeSettingsController( VALUE	rb_databa
 *  readWriteSettingsController  *
 *************************************/
 
-VALUE		rb_RPDB_DatabaseSettingsController_readWriteSettingsController( VALUE	rb_database_settings_controller )	{
+VALUE		rb_RPDB_DatabaseRecordSettingsController_readWriteSettingsController( VALUE	rb_database_record_settings_controller )	{
 
-	RPDB_DatabaseSettingsController*	c_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	RPDB_DatabaseRecordSettingsController*	c_database_record_settings_controller;
+	C_RPDB_DATABASE_RECORD_SETTINGS_CONTROLLER( rb_database_record_settings_controller, c_database_record_settings_controller );
 
-	return RUBY_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_readWriteSettingsController( c_database_settings_controller ) );
+	return RUBY_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( RPDB_DatabaseRecordSettingsController_readWriteSettingsController( c_database_record_settings_controller ) );
 }
 
 /*************************************

@@ -6,7 +6,7 @@
 
 	void Init_RPDB();
 	VALUE rb_RPDB_registerModuleClass(	VALUE	rb_module_self,
-										VALUE	rb_klass );
+																			VALUE	rb_klass );
 
 	VALUE rb_RPDB_extend(	VALUE	rb_klass_self,
 							 VALUE	rb_module );

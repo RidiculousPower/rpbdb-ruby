@@ -51,8 +51,8 @@ void Init_RPDB_DatabaseCursorSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseCursorSettingsController, 	"cache_settings_controller",							rb_RPDB_DatabaseCursorSettingsController_cacheSettingsController,							0 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursorSettingsController, 	"cache",																	"cache_settings_controller"	);
                     					
-	rb_define_method(						rb_RPDB_DatabaseCursorSettingsController, 	"read_write_settings_controller",					rb_RPDB_DatabaseCursorSettingsController_readWriteSettingsController,					0 	);
-	rb_define_alias(						rb_RPDB_DatabaseCursorSettingsController, 	"read_write",															"read_write_settings_controller"	);
+	rb_define_method(						rb_RPDB_DatabaseCursorSettingsController, 	"record_read_write_settings_controller",					rb_RPDB_DatabaseCursorSettingsController_readWriteSettingsController,					0 	);
+	rb_define_alias(						rb_RPDB_DatabaseCursorSettingsController, 	"read_write",															"record_read_write_settings_controller"	);
 }
 
 /*******************************************************************************************************************************************************************************************

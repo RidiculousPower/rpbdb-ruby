@@ -33,7 +33,7 @@
 #include "rb_RPDB_DatabaseSettingsController.h"
 #include "rb_RPDB_DatabaseCursorSettingsController.h"
 #include "rb_RPDB_DatabaseCursorReadWriteSettingsController.h"
-#include "rb_RPDB_DatabaseReadWriteSettingsController.h"
+#include "rb_RPDB_DatabaseRecordReadWriteSettingsController.h"
 
 #include <rpdb/RPDB_Environment.h>
 
@@ -50,7 +50,7 @@
 #include <rpdb/RPDB_DatabaseSettingsController.h>
 #include <rpdb/RPDB_DatabaseCursorSettingsController.h>
 #include <rpdb/RPDB_DatabaseCursorReadWriteSettingsController.h>
-#include <rpdb/RPDB_DatabaseReadWriteSettingsController.h>
+#include <rpdb/RPDB_DatabaseRecordReadWriteSettingsController.h>
 #include <rpdb/RPDB_DatabaseTypeSettingsController.h>
 #include <rpdb/RPDB_DatabaseTypeBtreeSettingsController.h>
 
@@ -2321,8 +2321,9 @@ VALUE rb_RPDB_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataHash(	VALUE
 		}
 		
 		//	now we have to create the join cursor - we name the name primary_name__join__idx-idx-idx
-		rb_return_object	=	rb_RPDB_DatabaseJoinController_join(	rb_RPDB_Database_joinController( rb_RPDB_DatabaseObject_database( rb_klass_self ) ),
-																															rb_cursor_array );
+		RPDB_DatabaseJoinController*	rb_database_join_controller	=	rb_RPDB_Database_joinController( rb_RPDB_DatabaseObject_database( rb_klass_self ) );
+		rb_return_object	=	rb_RPDB_DatabaseJoinController_joinCursorList(	rb_database_join_controller,
+																																				rb_cursor_array );
 	}
 	
 	return rb_return_object;

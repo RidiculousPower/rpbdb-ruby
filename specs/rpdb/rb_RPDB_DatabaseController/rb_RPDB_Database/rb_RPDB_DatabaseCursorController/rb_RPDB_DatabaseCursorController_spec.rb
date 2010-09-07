@@ -57,6 +57,14 @@ describe RPDB::Environment::DatabaseController::Database::CursorController do
     @database.cursors.parent_environment.should == @environment
   end
 
+  #####################
+  #  parent_database  #
+  #####################
+
+  it "can refer to its parent database" do
+    @database.cursors.parent_database.should == @database
+  end
+
   ############
   #  cursor  #
   ############

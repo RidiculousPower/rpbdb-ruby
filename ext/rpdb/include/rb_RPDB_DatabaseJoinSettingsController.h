@@ -4,7 +4,7 @@
 	#include "rb_RPDB_BaseStandardIncludes.h"
 	#include <rpdb/RPDB_Types.h>
 
-void Init_RPDB_JoinSettingsController();
+void Init_RPDB_DatabaseJoinSettingsController();
 
 VALUE rb_RPDB_DatabaseJoinSettingsController_new(	VALUE	klass,
 										  VALUE	rb_parent_settings_controller );

@@ -10,16 +10,21 @@
 #include "rb_RPDB_DatabaseObject_internal.h"
 #include "rb_RPDB_Database_internal.h"
 #include "rb_RPDB_DatabaseController.h"
-#include "rb_RPDB_DatabaseCursorController.h"
-#include "rb_RPDB_DatabaseCursor.h"
 
 #include "rb_RPDB_DatabaseController.h"
 #include "rb_RPDB_Environment.h"
 
+#include "rb_RPDB_DatabaseCursorController.h"
+#include "rb_RPDB_DatabaseCursor.h"
+#include "rb_RPDB_DatabaseJoinController.h"
+#include "rb_RPDB_DatabaseJoinCursor.h"
+#include "rb_RPDB_DatabaseSequenceController.h"
+#include "rb_RPDB_DatabaseSequence.h"
+
 #include "rb_RPDB_SettingsController.h"
 #include "rb_RPDB_DatabaseSettingsController.h"
 
-#include "rb_RPDB_DatabaseReadWriteSettingsController.h"
+#include "rb_RPDB_DatabaseRecordReadWriteSettingsController.h"
 
 #include <rpdb/RPDB_Environment.h>
 
@@ -130,7 +135,12 @@ void Init_RPDB_Database()	{
 	rb_define_method(						rb_RPDB_Database, 	"cursor",																				rb_RPDB_Database_cursor,																		0 	);
 	rb_define_method(						rb_RPDB_Database, 	"object_cursor",																rb_RPDB_Database_objectCursor,															0 	);
 
+	rb_define_method(						rb_RPDB_Database, 	"sequence_controller",													rb_RPDB_Database_sequenceController,													0 	);
+	rb_define_alias(						rb_RPDB_Database, 	"sequences",																		"sequence_controller"	);
+	rb_define_alias(						rb_RPDB_Database, 	"sequence",																			"sequence_controller"	);
+
 	rb_define_method(						rb_RPDB_Database, 	"join_controller",															rb_RPDB_Database_joinController,													0 	);
+	rb_define_alias(						rb_RPDB_Database, 	"joins",																				"join_controller"	);
 	rb_define_alias(						rb_RPDB_Database, 	"join",																					"join_controller"	);
 }
 
@@ -913,9 +923,9 @@ VALUE rb_RPDB_Database_joinController( VALUE	rb_database )	{
 		RPDB_Database*		c_database;
 		C_RPDB_DATABASE( rb_database, c_database );
 	
-		rb_join_controller	=	rb_RPDB_DatabaseCursorController_new(	1,
-																																& rb_database,
-																																rb_RPDB_DatabaseCursorController );
+		rb_join_controller	=	rb_RPDB_DatabaseJoinController_new(	1,
+																															& rb_database,
+																															rb_RPDB_DatabaseJoinController );
 
 		rb_iv_set(	rb_database,
 								RPDB_RUBY_CLASS_DATABASE_JOIN_CONTROLLER,
@@ -923,6 +933,32 @@ VALUE rb_RPDB_Database_joinController( VALUE	rb_database )	{
 	}
 
 	return rb_join_controller;
+}
+
+/***********************
+*  sequenceController  *
+***********************/
+
+VALUE rb_RPDB_Database_sequenceController( VALUE	rb_database )	{
+	
+	VALUE	rb_sequence_controller	=	Qnil;
+	
+	if ( ( rb_sequence_controller = rb_iv_get(	rb_database,
+																							RPDB_RUBY_CLASS_DATABASE_SEQUENCE_CONTROLLER ) ) == Qnil )	{
+		
+		RPDB_Database*		c_database;
+		C_RPDB_DATABASE( rb_database, c_database );
+	
+		rb_sequence_controller	=	rb_RPDB_DatabaseSequenceController_new(	1,
+																																			& rb_database,
+																																			rb_RPDB_DatabaseSequenceController );
+
+		rb_iv_set(	rb_database,
+								RPDB_RUBY_CLASS_DATABASE_SEQUENCE_CONTROLLER,
+								rb_sequence_controller );
+	}
+
+	return rb_sequence_controller;
 }
 
 /*******************************************************************************************************************************************************************************************
@@ -1192,12 +1228,12 @@ VALUE rb_RPDB_Database_shiftQueueOrWait( VALUE	rb_database )	{
 //	FIX - flesh out functions
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_verify.html
-VALUE rb_RPDB_Database_verifyDatabase( VALUE	rb_database )	{
+VALUE rb_RPDB_Database_verify( VALUE	rb_database )	{
 
 	RPDB_Database*		c_database;
 	C_RPDB_DATABASE( rb_database, c_database );
 
-	RPDB_Database_verifyDatabase( c_database );
+	RPDB_Database_verify( c_database );
 
 	return rb_database;
 }
@@ -1413,8 +1449,8 @@ RPDB_SECONDARY_KEY_CREATION_RETURN rb_RPDB_Database_internal_secondaryKeyCreatio
 															c_record->key->wrapped_bdb_dbt->size );
 	
 	VALUE	rb_database_settings_controller							=	rb_RPDB_Database_settingsController( rb_secondary_database );
-	VALUE	rb_database_read_write_settings_controller	=	rb_RPDB_DatabaseSettingsController_readWriteSettingsController( rb_database_settings_controller );	
-	VALUE	rb_should_serialize_data										=	rb_RPDB_DatabaseReadWriteSettingsController_serializeData( rb_database_read_write_settings_controller );
+	VALUE	rb_database_record_read_write_settings_controller	=	rb_RPDB_DatabaseRecordSettingsController_readWriteSettingsController( rb_database_settings_controller );	
+	VALUE	rb_should_serialize_data										=	rb_RPDB_DatabaseRecordReadWriteSettingsController_serializeData( rb_database_record_read_write_settings_controller );
 	
 	//	if serialization is on, unserialize the key and object
 	if ( rb_should_serialize_data == Qtrue )	{
@@ -1601,8 +1637,8 @@ VALUE rb_RPDB_Database_internal_removeCallbackInfoFromHash(	VALUE	rb_secondary_d
 enum ruby_value_type rb_RPDB_Database_internal_storageType( VALUE rb_database )	{
 	
 	VALUE	rb_database_settings_controller							=	rb_RPDB_Database_settingsController( rb_database );
-	VALUE	rb_database_read_write_settings_controller	=	rb_RPDB_DatabaseSettingsController_readWriteSettingsController( rb_database_settings_controller );	
-	VALUE	rb_class_to_specify_type										=	rb_RPDB_DatabaseReadWriteSettingsController_storageType( rb_database_read_write_settings_controller );
+	VALUE	rb_database_record_read_write_settings_controller	=	rb_RPDB_DatabaseRecordSettingsController_readWriteSettingsController( rb_database_settings_controller );	
+	VALUE	rb_class_to_specify_type										=	rb_RPDB_DatabaseRecordReadWriteSettingsController_storageType( rb_database_record_read_write_settings_controller );
 
 	if ( rb_class_to_specify_type == rb_cArray ) {
 		return T_ARRAY;
@@ -1655,8 +1691,8 @@ void rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	VALUE		r
 																																				BOOL		c_convert_string_encoding )	{
 	
 	VALUE	rb_database_settings_controller							=	rb_RPDB_Database_settingsController( rb_database );
-	VALUE	rb_database_read_write_settings_controller	=	rb_RPDB_DatabaseSettingsController_readWriteSettingsController( rb_database_settings_controller );	
-	VALUE	rb_should_serialize_data										=	rb_RPDB_DatabaseReadWriteSettingsController_serializeData( rb_database_read_write_settings_controller );
+	VALUE	rb_database_record_read_write_settings_controller	=	rb_RPDB_DatabaseRecordSettingsController_readWriteSettingsController( rb_database_settings_controller );	
+	VALUE	rb_should_serialize_data										=	rb_RPDB_DatabaseRecordReadWriteSettingsController_serializeData( rb_database_record_read_write_settings_controller );
 	
 	//	if serialization is on, unserialize the key and object
 	if ( rb_should_serialize_data == Qtrue )	{

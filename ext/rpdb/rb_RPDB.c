@@ -68,8 +68,9 @@
 #include "rb_RPDB_DatabaseCursorCachePrioritySettingsController.h"
 #include "rb_RPDB_DatabaseEncryptionSettingsController.h"
 #include "rb_RPDB_DatabaseErrorSettingsController.h"
-#include "rb_RPDB_DatabaseFixedRecordSettingsController.h"
-#include "rb_RPDB_DatabaseReadWriteSettingsController.h"
+#include "rb_RPDB_DatabaseJoinSettingsController.h"
+#include "rb_RPDB_DatabaseRecordFixedLengthSettingsController.h"
+#include "rb_RPDB_DatabaseRecordReadWriteSettingsController.h"
 #include "rb_RPDB_DatabaseRecordSettingsController.h"
 #include "rb_RPDB_DatabaseSequenceSettingsController.h"
 #include "rb_RPDB_DatabaseTypeSettingsController.h"
@@ -78,7 +79,7 @@
 #include "rb_RPDB_DatabaseTypeQueueSettingsController.h"
 #include "rb_RPDB_DatabaseTypeRecnoSettingsController.h"
 #include "rb_RPDB_DatabaseRecordSettingsController.h"
-#include "rb_RPDB_DatabaseVariableRecordSettingsController.h"
+#include "rb_RPDB_DatabaseRecordVariableLengthSettingsController.h"
 #include "rb_RPDB_DatabaseVerbositySettingsController.h"
 #include "rb_RPDB_DatabaseVerificationSettingsController.h"
 
@@ -193,8 +194,8 @@ VALUE	rb_RPDB_SettingsController;
 		VALUE	rb_RPDB_DatabaseCursorCachePrioritySettingsController;
 		VALUE	rb_RPDB_DatabaseEncryptionSettingsController;
 		VALUE	rb_RPDB_DatabaseErrorSettingsController;
-		VALUE	rb_RPDB_DatabaseFixedRecordSettingsController;
-		VALUE	rb_RPDB_DatabaseReadWriteSettingsController;
+		VALUE	rb_RPDB_DatabaseRecordFixedLengthSettingsController;
+		VALUE	rb_RPDB_DatabaseRecordReadWriteSettingsController;
 		VALUE	rb_RPDB_DatabaseRecordSettingsController;
 		VALUE	rb_RPDB_DatabaseSequenceSettingsController;
 		VALUE	rb_RPDB_DatabaseTypeSettingsController;
@@ -203,7 +204,7 @@ VALUE	rb_RPDB_SettingsController;
 		VALUE	rb_RPDB_DatabaseTypeQueueSettingsController;
 		VALUE	rb_RPDB_DatabaseTypeRecnoSettingsController;
 		VALUE	rb_RPDB_DatabaseRecordSettingsController;
-		VALUE	rb_RPDB_DatabaseVariableRecordSettingsController;
+		VALUE	rb_RPDB_DatabaseRecordVariableLengthSettingsController;
 		VALUE	rb_RPDB_DatabaseVerbositySettingsController;
 		VALUE	rb_RPDB_DatabaseVerificationSettingsController;
 	VALUE	rb_RPDB_DebugSettingsController;
@@ -309,16 +310,17 @@ void Init_rpdb()	{
 		Init_RPDB_DatabaseCursorCachePrioritySettingsController();
 		Init_RPDB_DatabaseEncryptionSettingsController();
 		Init_RPDB_DatabaseErrorSettingsController();
-		Init_RPDB_DatabaseReadWriteSettingsController();
+		Init_RPDB_DatabaseJoinSettingsController();
+		Init_RPDB_DatabaseRecordReadWriteSettingsController();
 		Init_RPDB_DatabaseRecordSettingsController();
-		Init_RPDB_DatabaseFixedRecordSettingsController();
+		Init_RPDB_DatabaseRecordFixedLengthSettingsController();
 		Init_RPDB_DatabaseSequenceSettingsController();
 		Init_RPDB_DatabaseTypeSettingsController();
 		Init_RPDB_DatabaseTypeBtreeSettingsController();
 		Init_RPDB_DatabaseTypeHashSettingsController();
 		Init_RPDB_DatabaseTypeQueueSettingsController();
 		Init_RPDB_DatabaseTypeRecnoSettingsController();
-		Init_RPDB_DatabaseVariableRecordSettingsController();
+		Init_RPDB_DatabaseRecordVariableLengthSettingsController();
 		Init_RPDB_DatabaseVerificationSettingsController();
 
 		Init_RPDB_DebugSettingsController();

@@ -25,9 +25,9 @@ extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_DatabaseSettingsController;
 extern	VALUE	rb_RPDB_DatabaseJoinSettingsController;
 
-void Init_RPDB_JoinSettingsController()	{
+void Init_RPDB_DatabaseJoinSettingsController()	{
 
-	rb_RPDB_DatabaseJoinSettingsController		=	rb_define_class_under(	rb_RPDB_DatabaseJoinSettingsController, 
+	rb_RPDB_DatabaseJoinSettingsController		=	rb_define_class_under(	rb_RPDB_DatabaseSettingsController, 
 																																			"Join",	
 																																			rb_cObject );
 

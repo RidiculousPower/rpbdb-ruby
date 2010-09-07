@@ -46,7 +46,7 @@ VALUE rb_RPDB_Database_createSecondaryIndexWithDatabase(	int	argc,
 	VALUE rb_RPDB_Database_cursorController( VALUE	rb_database );
 	VALUE rb_RPDB_Database_joinController( VALUE	rb_database );
 	VALUE rb_RPDB_Database_verificationController( VALUE	rb_database );
-	VALUE rb_RPDB_Database_databaseSequenceController( VALUE	rb_database );
+VALUE rb_RPDB_Database_sequenceController( VALUE	rb_database );
 VALUE rb_RPDB_Database_write(	int			argc, 
 															VALUE*	args, 
 															VALUE		rb_database );
@@ -78,5 +78,6 @@ VALUE rb_RPDB_Database_iterateKeysInSegments(	VALUE rb_database,
 VALUE rb_RPDB_Database_iterateKeys(	int	argc,
 									VALUE*	args,
 									VALUE	rb_database );
+VALUE rb_RPDB_Database_verify( VALUE	rb_database );
 
 #endif

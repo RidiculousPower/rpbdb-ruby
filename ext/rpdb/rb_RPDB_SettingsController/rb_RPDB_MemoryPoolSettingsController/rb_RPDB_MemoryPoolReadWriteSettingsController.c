@@ -50,6 +50,84 @@ void Init_RPDB_MemoryPoolReadWriteSettingsController()	{
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOn,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOff,													0 	);
 
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"do_not_write_to_temporary_backing_file?",					rb_RPDB_MemoryPoolReadWriteSettingsController_doNotWriteToTemporaryBackingFile,							0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"no_temporary_backing_file?",												"do_not_write_to_temporary_backing_file?"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"no_temp_backing_file?",														"do_not_write_to_temporary_backing_file?"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"no_backing_file?",																	"do_not_write_to_temporary_backing_file?"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"no_temp_file?",																		"do_not_write_to_temporary_backing_file?"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_do_not_write_to_temporary_backing_file_on",		rb_RPDB_MemoryPoolReadWriteSettingsController_turnDoNotWriteToTemporaryBackingFileOn,										0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_no_temporary_backing_file_on",								"turn_do_not_write_to_temporary_backing_file_on"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_no_temp_backing_file_on",											"turn_do_not_write_to_temporary_backing_file_on"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_no_backing_file_on",													"turn_do_not_write_to_temporary_backing_file_on"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_no_temp_file_on",															"turn_do_not_write_to_temporary_backing_file_on"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_do_not_write_to_temporary_backing_file_off",	rb_RPDB_MemoryPoolReadWriteSettingsController_turnDoNotWriteToTemporaryBackingFileOff,				0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_no_temporary_backing_file_off",								"turn_do_not_write_to_temporary_backing_file_off"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_no_temp_backing_file_off",										"turn_do_not_write_to_temporary_backing_file_off"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_no_backing_file_off",													"turn_do_not_write_to_temporary_backing_file_off"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_no_temp_file_off",														"turn_do_not_write_to_temporary_backing_file_off"	);
+
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"use_system_memory_for_storage?",										rb_RPDB_MemoryPoolReadWriteSettingsController_useSystemMemoryForStorage,											0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"use_system_memory?",																"use_system_memory_for_storage?"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"system_memory?",																		"use_system_memory_for_storage?"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_use_system_memory_for_storage_on",						rb_RPDB_MemoryPoolReadWriteSettingsController_turnUseSystemMemoryForStorageOn,								0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_use_system_memory_on",												"turn_use_system_memory_for_storage_on"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_system_memory_on",														"turn_use_system_memory_for_storage_on"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_use_system_memory_for_storage_off",						rb_RPDB_MemoryPoolReadWriteSettingsController_turnUseSystemMemoryForStorageOff,							0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_use_system_memory_off",												"turn_use_system_memory_for_storage_off"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_system_memory_off",														"turn_use_system_memory_for_storage_off"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"application_has_exclusive_access?",								rb_RPDB_MemoryPoolReadWriteSettingsController_applicationHasExclusiveAccess,									0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"exclusive_access?",																"application_has_exclusive_access?"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"exclusive?",																				"application_has_exclusive_access?"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"private_access?",																	"application_has_exclusive_access?"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"private?",																					"application_has_exclusive_access?"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_application_has_exclusive_access_on",					rb_RPDB_MemoryPoolReadWriteSettingsController_turnApplicationHasExclusiveAccessOn,						0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_exclusive_access_on",													"turn_application_has_exclusive_access_on"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_exclusive_on",																"turn_application_has_exclusive_access_on"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_private_access_on",														"turn_application_has_exclusive_access_on"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_private_on",																	"turn_application_has_exclusive_access_on"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_application_has_exclusive_access_off",				rb_RPDB_MemoryPoolReadWriteSettingsController_turnApplicationHasExclusiveAccessOff,					0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_exclusive_access_off",												"turn_application_has_exclusive_access_off"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_exclusive_off",																"turn_application_has_exclusive_access_off"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_private_access_off",													"turn_application_has_exclusive_access_off"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_private_off",																	"turn_application_has_exclusive_access_off"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"database_allocates_memory_using_malloc?",					rb_RPDB_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsingMalloc,						0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"database_uses_malloc?",														"database_allocates_memory_using_malloc?"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"database_malloc?",																	"database_allocates_memory_using_malloc?"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"malloc?",																					"database_allocates_memory_using_malloc?"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_database_allocates_memory_using_malloc_on",		rb_RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOn,			0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_database_uses_malloc_on",											"turn_database_allocates_memory_using_malloc_on"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_database_malloc_on",													"turn_database_allocates_memory_using_malloc_on"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_malloc_on",																		"turn_database_allocates_memory_using_malloc_on"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_database_allocates_memory_using_malloc_off",	rb_RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOff,			0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_database_uses_malloc_off",										"turn_database_allocates_memory_using_malloc_off"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_database_malloc_off",													"turn_database_allocates_memory_using_malloc_off"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_malloc_off",																	"turn_database_allocates_memory_using_malloc_off"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"database_allocates_memory_using_realloc?",					rb_RPDB_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsingRealloc,						0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"database_uses_realloc?",														"database_allocates_memory_using_realloc?"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"database_realloc?",																"database_allocates_memory_using_realloc?"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"realloc?",																					"database_allocates_memory_using_realloc?"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_database_allocates_memory_using_realloc_on",	rb_RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOn,			0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_database_uses_realloc_on",										"turn_database_allocates_memory_using_realloc_on"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_database_realloc_on",													"turn_database_allocates_memory_using_realloc_on"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_realloc_on",																	"turn_database_allocates_memory_using_realloc_on"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_database_allocates_memory_using_realloc_off",	rb_RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOff,		0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_database_uses_realloc_off",										"turn_database_allocates_memory_using_realloc_off"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_database_realloc_off",												"turn_database_allocates_memory_using_realloc_off"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_realloc_off",																	"turn_database_allocates_memory_using_realloc_off"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"application_allocates_memory?",										rb_RPDB_MemoryPoolReadWriteSettingsController_applicationAllocatesMemory,										0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"application_allocates?",														"application_allocates_memory?"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"application?",																			"application_allocates_memory?"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_application_allocates_memory_on",							rb_RPDB_MemoryPoolReadWriteSettingsController_turnApplicationAllocatesMemoryOn,							0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_application_allocates_on",										"turn_application_allocates_memory_on"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_application_on",															"turn_application_allocates_memory_on"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_application_allocates_memory_off",						rb_RPDB_MemoryPoolReadWriteSettingsController_turnApplicationAllocatesMemoryOff,							0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_application_allocates_off",										"turn_application_allocates_memory_off"	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_application_off",															"turn_application_allocates_memory_off"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"database_frees_memory?",														rb_RPDB_MemoryPoolReadWriteSettingsController_databaseFreesMemory,														0 	);
+	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"database_frees?",																	"database_frees_memory?"	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_database_frees_memory_on",										rb_RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseFreesMemoryOn,											0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_database_frees_memory_off",										rb_RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseFreesMemoryOff,										0 	);
+
 }
 
 /*******************************************************************************************************************************************************************************************
@@ -96,10 +174,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_init(	VALUE	rb_memory_pool_r
 ***************************************/
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_parentEnvironment(	VALUE	rb_memory_pool_read_write_settings_controller )	{
 
-	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_MemoryPoolReadWriteSettingsController_parentEnvironment( c_memory_pool_read_write_settings_controller ) );
+	return RUBY_RPDB_ENVIRONMENT( RPDB_MemoryPoolReadWriteSettingsController_parentEnvironment( c_memory_pool_record_read_write_settings_controller ) );
 }
 
 /*********************
@@ -109,10 +187,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_parentEnvironment(	VALUE	rb_
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_openfd.html
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_maxOpenFiles( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
-	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-	return INT2FIX( RPDB_MemoryPoolReadWriteSettingsController_maxOpenFiles( c_memory_pool_read_write_settings_controller ) );
+	return INT2FIX( RPDB_MemoryPoolReadWriteSettingsController_maxOpenFiles( c_memory_pool_record_read_write_settings_controller ) );
 }
 
 	/*************************
@@ -122,10 +200,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_maxOpenFiles( VALUE	rb_memor
 	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxOpenFiles(	VALUE	rb_memory_pool_read_write_settings_controller, 
 																			VALUE	rb_max_open_files )	{
 
-		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-		RPDB_MemoryPoolReadWriteSettingsController_setMaxOpenFiles(	c_memory_pool_read_write_settings_controller,
+		RPDB_MemoryPoolReadWriteSettingsController_setMaxOpenFiles(	c_memory_pool_record_read_write_settings_controller,
 																		FIX2INT( rb_max_open_files ) );
 
 		return rb_memory_pool_read_write_settings_controller;
@@ -138,10 +216,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_maxOpenFiles( VALUE	rb_memor
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_maxwrite.html
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_maxSequentialWrites( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
-	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-	return INT2FIX( RPDB_MemoryPoolReadWriteSettingsController_maxSequentialWrites( c_memory_pool_read_write_settings_controller ) );
+	return INT2FIX( RPDB_MemoryPoolReadWriteSettingsController_maxSequentialWrites( c_memory_pool_record_read_write_settings_controller ) );
 }
 
 	/*****************************
@@ -151,10 +229,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_maxSequentialWrites( VALUE	r
 	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxSequentialWrites(	VALUE	rb_memory_pool_read_write_settings_controller,
 																					VALUE	rb_max_sequential_writes )	{
 
-		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-		RPDB_MemoryPoolReadWriteSettingsController_setMaxSequentialWrites(	c_memory_pool_read_write_settings_controller,
+		RPDB_MemoryPoolReadWriteSettingsController_setMaxSequentialWrites(	c_memory_pool_record_read_write_settings_controller,
 																			FIX2INT( rb_max_sequential_writes ) );
 
 		return rb_memory_pool_read_write_settings_controller;
@@ -166,10 +244,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_maxSequentialWrites( VALUE	r
 
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_timeToSleepBeforeNextWrite( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
-	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-	return INT2FIX( RPDB_MemoryPoolReadWriteSettingsController_timeToSleepBeforeNextWrite( c_memory_pool_read_write_settings_controller ) );
+	return INT2FIX( RPDB_MemoryPoolReadWriteSettingsController_timeToSleepBeforeNextWrite( c_memory_pool_record_read_write_settings_controller ) );
 }
 
 	/****************************************
@@ -179,10 +257,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_timeToSleepBeforeNextWrite( 
 	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_setTimeToSleepBeforeNextWrite(	VALUE	rb_memory_pool_read_write_settings_controller, 
 																						VALUE	rb_time_to_sleep_before_next_write )	{
 
-		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-		RPDB_MemoryPoolReadWriteSettingsController_setTimeToSleepBeforeNextWrite(	c_memory_pool_read_write_settings_controller,
+		RPDB_MemoryPoolReadWriteSettingsController_setTimeToSleepBeforeNextWrite(	c_memory_pool_record_read_write_settings_controller,
 																					FIX2INT( rb_time_to_sleep_before_next_write ) );
 
 		return rb_memory_pool_read_write_settings_controller;
@@ -195,10 +273,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_timeToSleepBeforeNextWrite( 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_mp_mmapsize.html
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_maxMappedDBSize( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
-	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-	return INT2FIX( RPDB_MemoryPoolReadWriteSettingsController_maxMappedDBSize( c_memory_pool_read_write_settings_controller ) );
+	return INT2FIX( RPDB_MemoryPoolReadWriteSettingsController_maxMappedDBSize( c_memory_pool_record_read_write_settings_controller ) );
 }
 
 	/****************************
@@ -208,10 +286,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_maxMappedDBSize( VALUE	rb_me
 	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxMappedDBSize(	VALUE	rb_memory_pool_read_write_settings_controller, 
 																				VALUE	rb_max_mapped_db_size )	{
 
-		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-		RPDB_MemoryPoolReadWriteSettingsController_setMaxMappedDBSize(	c_memory_pool_read_write_settings_controller,
+		RPDB_MemoryPoolReadWriteSettingsController_setMaxMappedDBSize(	c_memory_pool_record_read_write_settings_controller,
 																		FIX2INT( rb_max_mapped_db_size ) );
 
 		return rb_memory_pool_read_write_settings_controller;
@@ -224,10 +302,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_maxMappedDBSize( VALUE	rb_me
 //	DB_REGION_INIT          http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
-	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-	return INT2FIX( RPDB_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions(	c_memory_pool_read_write_settings_controller ) );
+	return INT2FIX( RPDB_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions(	c_memory_pool_record_read_write_settings_controller ) );
 }
 
 	/*************************************
@@ -237,10 +315,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions( VALU
 	//	DB_REGION_INIT          http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
-		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-		RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOn( c_memory_pool_read_write_settings_controller );
+		RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOn( c_memory_pool_record_read_write_settings_controller );
 
 		return rb_memory_pool_read_write_settings_controller;
 	}
@@ -252,10 +330,322 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions( VALU
 	//	DB_REGION_INIT          http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
-		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-		RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOff( c_memory_pool_read_write_settings_controller );
+		RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOff( c_memory_pool_record_read_write_settings_controller );
 
 		return rb_memory_pool_read_write_settings_controller;
 	}
+
+
+/*****************************************
+*  doNotWriteToTemporaryBackingFile  *
+*****************************************/
+
+//	DB_MPOOL_NOFILE			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_set_flags.html
+VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_doNotWriteToTemporaryBackingFile( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+
+	return ( RPDB_MemoryPoolReadWriteSettingsController_doNotWriteToTemporaryBackingFile( c_memory_pool_record_read_write_settings_controller )	?	Qtrue
+																																																																							:	Qfalse );
+}
+
+	/*********************************************
+	*  turnDoNotWriteToTemporaryBackingFileOn  *
+	*********************************************/
+
+	//	DB_MPOOL_NOFILE			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_set_flags.html
+	//	Note: method default inverts flag default
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnDoNotWriteToTemporaryBackingFileOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+
+		RPDB_MemoryPoolReadWriteSettingsController_turnDoNotWriteToTemporaryBackingFileOn( c_memory_pool_record_read_write_settings_controller );
+
+		return rb_memory_pool_read_write_settings_controller;
+	}
+
+	/*************************************************
+	*  turnDoNotWriteToTemporaryBackingFileOff  *
+	*************************************************/
+
+	//	DB_MPOOL_NOFILE			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_set_flags.html
+	//	Note: method default inverts flag default
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnDoNotWriteToTemporaryBackingFileOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+
+		RPDB_MemoryPoolReadWriteSettingsController_turnDoNotWriteToTemporaryBackingFileOff( c_memory_pool_record_read_write_settings_controller );
+
+		return rb_memory_pool_read_write_settings_controller;
+	}
+	
+/*********************************
+*  useSystemMemoryForStorage  *
+*********************************/
+
+//	DB_SYSTEM_MEM			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
+VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_useSystemMemoryForStorage( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+	return ( RPDB_MemoryPoolReadWriteSettingsController_useSystemMemoryForStorage( c_memory_pool_read_write_settings_controller )	?	Qtrue
+																																																																:	Qfalse );
+}
+
+	/*****************************************
+	*  turnUseSystemMemoryForStorageOn  *
+	*****************************************/
+
+	//	DB_SYSTEM_MEM			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnUseSystemMemoryForStorageOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+		RPDB_MemoryPoolReadWriteSettingsController_turnUseSystemMemoryForStorageOn( c_memory_pool_read_write_settings_controller );
+
+		return rb_memory_pool_read_write_settings_controller;
+	}
+
+	/*****************************************
+	*  turnUseSystemMemoryForStorageOff  *
+	*****************************************/
+
+	//	DB_SYSTEM_MEM			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnUseSystemMemoryForStorageOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+		RPDB_MemoryPoolReadWriteSettingsController_turnUseSystemMemoryForStorageOff( c_memory_pool_read_write_settings_controller );
+
+		return rb_memory_pool_read_write_settings_controller;
+	}
+
+/*************************************
+*  applicationHasExclusiveAccess  *
+*************************************/
+
+//	DB_PRIVATE				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
+VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_applicationHasExclusiveAccess( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+	return ( RPDB_MemoryPoolReadWriteSettingsController_applicationHasExclusiveAccess( c_memory_pool_read_write_settings_controller )	?	Qtrue
+																																																								:	Qfalse );
+}
+
+	/*********************************************
+	*  turnApplicationHasExclusiveAccessOn  *
+	*********************************************/
+
+	//	DB_PRIVATE				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnApplicationHasExclusiveAccessOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+		RPDB_MemoryPoolReadWriteSettingsController_turnApplicationHasExclusiveAccessOn( c_memory_pool_read_write_settings_controller );
+
+		return rb_memory_pool_read_write_settings_controller;
+	}
+
+	/*********************************************
+	*  turnApplicationHasExclusiveAccessOff  *
+	*********************************************/
+
+	//	DB_PRIVATE				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnApplicationHasExclusiveAccessOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+		RPDB_MemoryPoolReadWriteSettingsController_turnApplicationHasExclusiveAccessOff( c_memory_pool_read_write_settings_controller );
+
+		return rb_memory_pool_read_write_settings_controller;
+	}
+	
+/*****************************************
+*  databaseAllocatesMemoryUsingMalloc  *
+*****************************************/
+
+//	DB_DBT_MALLOC		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
+VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsingMalloc( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+	return ( RPDB_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsingMalloc( c_memory_pool_read_write_settings_controller )	?	Qtrue
+																														:	Qfalse );
+}
+
+	/*************************************************
+	*  turnDatabaseAllocatesMemoryUsingMallocOn  *
+	*************************************************/
+
+	//	DB_DBT_MALLOC		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+		RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOn( c_memory_pool_read_write_settings_controller );
+
+		return rb_memory_pool_read_write_settings_controller;
+	}
+
+	/*************************************************
+	*  turnDatabaseAllocatesMemoryUsingMallocOff  *
+	*************************************************/
+
+	//	DB_DBT_MALLOC		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+		RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOff( c_memory_pool_read_write_settings_controller );
+
+		return rb_memory_pool_read_write_settings_controller;
+	}
+
+/********************************************
+*  databaseAllocatesMemoryUsingRealloc  *
+********************************************/
+
+//	DB_DBT_REALLOC		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
+VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsingRealloc( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+	return ( RPDB_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsingRealloc( c_memory_pool_read_write_settings_controller )	?	Qtrue
+																															:	Qfalse );
+}
+
+	/****************************************************
+	*  turnDatabaseAllocatesMemoryUsingReallocOn  *
+	****************************************************/
+
+	//	DB_DBT_REALLOC		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+		RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOn( c_memory_pool_read_write_settings_controller );
+
+		return rb_memory_pool_read_write_settings_controller;
+	}
+
+	/****************************************************
+	*  turnDatabaseAllocatesMemoryUsingReallocOff  *
+	****************************************************/
+
+	//	DB_DBT_REALLOC		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+		RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOff( c_memory_pool_read_write_settings_controller );
+
+		return rb_memory_pool_read_write_settings_controller;
+	}
+
+/************************************
+*  applicationAllocatesMemory  *
+************************************/
+
+//	DB_DBT_USERMEM		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
+VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_applicationAllocatesMemory( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+	return ( RPDB_MemoryPoolReadWriteSettingsController_applicationAllocatesMemory( c_memory_pool_read_write_settings_controller )	?	Qtrue
+																												:	Qfalse );
+}
+
+	/****************************************
+	*  turnApplicationAllocatesMemoryOn  *
+	****************************************/
+
+	//	DB_DBT_USERMEM		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnApplicationAllocatesMemoryOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+		RPDB_MemoryPoolReadWriteSettingsController_turnApplicationAllocatesMemoryOn( c_memory_pool_read_write_settings_controller );
+
+		return rb_memory_pool_read_write_settings_controller;
+	}
+
+	/****************************************
+	*  turnApplicationAllocatesMemoryOff  *
+	****************************************/
+
+	//	DB_DBT_USERMEM		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnApplicationAllocatesMemoryOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+		RPDB_MemoryPoolReadWriteSettingsController_turnApplicationAllocatesMemoryOff( c_memory_pool_read_write_settings_controller );
+
+		return rb_memory_pool_read_write_settings_controller;
+	}
+
+/******************************
+*  databaseFreesMemory  *
+******************************/
+
+//	DB_DBT_APPMALLOC	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
+VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_databaseFreesMemory( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+	return ( RPDB_MemoryPoolReadWriteSettingsController_databaseFreesMemory( c_memory_pool_read_write_settings_controller )	?	Qtrue
+																																																													:	Qfalse );
+}
+
+	/**********************************
+	*  turnDatabaseFreesMemoryOn  *
+	**********************************/
+
+	//	DB_DBT_APPMALLOC	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseFreesMemoryOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+		RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseFreesMemoryOn( c_memory_pool_read_write_settings_controller );
+
+		return rb_memory_pool_read_write_settings_controller;
+	}
+
+	/**************************************
+	*  turnDatabaseFreesMemoryOff  *
+	**************************************/
+
+	//	DB_DBT_APPMALLOC	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseFreesMemoryOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
+		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+
+		RPDB_MemoryPoolReadWriteSettingsController_turnDatabaseFreesMemoryOff( c_memory_pool_read_write_settings_controller );
+
+		return rb_memory_pool_read_write_settings_controller;
+	}
+

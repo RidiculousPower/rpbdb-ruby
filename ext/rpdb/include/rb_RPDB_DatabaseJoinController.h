@@ -5,10 +5,12 @@
 	#include <rpdb/RPDB_Types.h>
 
 void Init_RPDB_DatabaseJoinController();
-VALUE rb_RPDB_DatabaseJoinController_new(	VALUE	klass,
-								  VALUE	rb_parent_environment );
-VALUE rb_RPDB_DatabaseJoinController_init(	VALUE	rb_join_controller,
-	VALUE	rb_parent_environment );
+VALUE rb_RPDB_DatabaseJoinController_new(	int			argc,
+																					VALUE*	args,
+																					VALUE		rb_database_join_controller_class );
+VALUE rb_RPDB_DatabaseJoinController_init(	int			argc,
+																						VALUE*	args,
+																						VALUE		rb_join_controller );
 	VALUE rb_RPDB_DatabaseJoinController_settingsController(	VALUE	rb_join_controller );
 VALUE rb_RPDB_DatabaseJoinController_parentDatabase(	VALUE	rb_join_controller );
 	

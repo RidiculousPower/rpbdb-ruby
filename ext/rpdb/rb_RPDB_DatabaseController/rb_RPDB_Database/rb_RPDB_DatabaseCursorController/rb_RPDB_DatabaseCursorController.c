@@ -50,7 +50,9 @@ void Init_RPDB_DatabaseCursorController()	{
 	rb_define_method(						rb_RPDB_DatabaseCursorController, 	"parent_environment",						rb_RPDB_DatabaseCursorController_parentEnvironment,					0 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursorController, 	"parent_environment",						"parent_environment"	);
 	rb_define_alias(						rb_RPDB_DatabaseCursorController, 	"environment",									"parent_environment"	);
-                    					
+	rb_define_method(						rb_RPDB_DatabaseCursorController, 	"parent_database",							rb_RPDB_DatabaseCursorController_parentDatabase,						0 	);
+	rb_define_alias(						rb_RPDB_DatabaseCursorController, 	"database",											"parent_database"	);
+
 	rb_define_method(						rb_RPDB_DatabaseCursorController, 	"cursor",												rb_RPDB_DatabaseCursorController_cursor,										0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursorController, 	"object_cursor",								rb_RPDB_DatabaseCursorController_objectCursor,							0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursorController, 	"close_all_cursors",						rb_RPDB_DatabaseCursorController_closeAllCursors,						0 	);

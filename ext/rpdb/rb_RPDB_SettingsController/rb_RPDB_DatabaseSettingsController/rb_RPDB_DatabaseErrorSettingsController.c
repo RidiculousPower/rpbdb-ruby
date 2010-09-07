@@ -16,7 +16,7 @@
 #include <rpdb/RPDB_ErrorController.h>
 #include <rpdb/RPDB_DatabaseSettingsController.h>
 #include <rpdb/RPDB_SettingsController.h>
-#include <rpdb/RPDB_DatabaseReadWriteSettingsController.h>
+#include <rpdb/RPDB_DatabaseRecordReadWriteSettingsController.h>
 
 #include <rpdb/RPDB_DatabaseErrorSettingsController.h>
 #include <rpdb/RPDB_DatabaseErrorSettingsController_internal.h>
