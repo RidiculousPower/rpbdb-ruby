@@ -27,20 +27,27 @@ VALUE rb_RPDB_Database_init(	int			argc,
 	VALUE rb_RPDB_Database_empty( VALUE	rb_database );
 	VALUE rb_RPDB_Database_erase( VALUE	rb_database );
 	VALUE rb_RPDB_Database_sync( VALUE	rb_database );
-	VALUE rb_RPDB_Database_associateSecondaryDatabase(	VALUE		rb_primary_database, 
-														VALUE		rb_secondary_database );
 	VALUE rb_RPDB_Database_isSecondary(	VALUE	rb_database );
 	VALUE rb_RPDB_Database_primaryDatabase(	VALUE	rb_secondary_database );
 	VALUE rb_RPDB_Database_setSecondaryKeyCreationCallbackMethod(	int	argc, 
 																	VALUE*	args,
 																	VALUE	rb_database	);
 	VALUE rb_RPDB_Database_secondaryKeyCreationCallbackMethod(	VALUE	rb_secondary_database );
-	VALUE rb_RPDB_Database_createSecondaryIndex(	int	argc, 
-													VALUE*	args,
-													VALUE	rb_self	);
-VALUE rb_RPDB_Database_createSecondaryIndexWithDatabase(	int	argc, 
-														 VALUE*	args,
-														 VALUE	rb_self	);
+VALUE rb_RPDB_Database_createSecondaryIndex(	int			argc, 
+																							VALUE*	args,
+																							VALUE		rb_primary_database_self	);
+VALUE rb_RPDB_Database_createSecondaryIndexWithDuplicates(	int			argc, 
+																														VALUE*	args,
+																														VALUE		rb_primary_database_self	);
+VALUE rb_RPDB_Database_createSecondaryIndexWithSortedDuplicates(	int			argc, 
+																																	VALUE*	args,
+																																	VALUE		rb_primary_database_self	);
+VALUE rb_RPDB_Database_secondaryDatabaseWithIndex(	VALUE	rb_primary_database,
+																									VALUE	rb_index_name );
+VALUE rb_RPDB_Database_requireSecondaryDatabaseWithIndex(	VALUE	rb_primary_database,
+																													VALUE	rb_index_name );
+VALUE rb_RPDB_Database_secondaryDatabaseHash( VALUE rb_primary_database );
+
 	VALUE rb_RPDB_Database_cursor( VALUE	rb_database );
 	VALUE rb_RPDB_Database_objectCursor( VALUE	rb_database );
 	VALUE rb_RPDB_Database_cursorController( VALUE	rb_database );
@@ -55,29 +62,16 @@ VALUE rb_RPDB_Database_write(	int			argc,
 	VALUE rb_RPDB_Database_retrieve(	int	argc, 
 										VALUE*	args,
 										VALUE	rb_database );
+VALUE rb_RPDB_Database_retrievePair(	int			argc, 
+																			VALUE*	args,
+																			VALUE		rb_database );
 	VALUE rb_RPDB_Database_delete(	int	argc, 
 									VALUE*	args,
 									VALUE	rb_database );
-VALUE rb_RPDB_Database_iterateInSegments(	VALUE	rb_database,
-										  VALUE	rb_items_per_segment	);
-VALUE rb_RPDB_Database_iterate(	int	argc,
-								VALUE*	args,
-								VALUE	rb_database	);
-VALUE rb_RPDB_Database_iterateAllInSegments(	VALUE	rb_database,
-											 VALUE	rb_items_per_segment	);
-VALUE rb_RPDB_Database_iterateAll(	int	argc,
-								   VALUE*	args,
-								   VALUE	rb_database	);
-VALUE rb_RPDB_Database_iterateDuplicatesInSegments(	VALUE	rb_database,
-													VALUE	rb_items_per_segment );
-VALUE rb_RPDB_Database_iterateDuplicates(	int	argc,
-											VALUE*	args,
-											VALUE	rb_database );
-VALUE rb_RPDB_Database_iterateKeysInSegments(	VALUE rb_database,
-											  VALUE rb_items_per_segment );
-VALUE rb_RPDB_Database_iterateKeys(	int	argc,
-									VALUE*	args,
-									VALUE	rb_database );
 VALUE rb_RPDB_Database_verify( VALUE	rb_database );
+
+VALUE rb_RPDB_Database_iterate( VALUE	rb_database );
+VALUE rb_RPDB_Database_iterateKeys( VALUE	rb_database );
+VALUE rb_RPDB_Database_iterateDuplicates( VALUE	rb_database );
 
 #endif

@@ -30,5 +30,10 @@
 	VALUE rb_RPDB_Database_internal_initRubyRuntimeStorage(	VALUE rb_ruby_runtime_storage_database );
 	VALUE rb_RPDB_Database_internal_storeRubyRuntimeInstanceForCInstance(	VALUE rb_database );
 	VALUE rb_RPDB_Database_internal_rubyRuntimeInstanceForCInstance(	void* c_rpdb_instance );
+VALUE rb_RPDB_Database_internal_createSecondaryIndex(	int			argc,
+																											VALUE*	args,
+																											VALUE		rb_primary_database_self,
+																											BOOL		c_with_duplicates,
+																											BOOL		c_with_sorted_duplicates );
 
 #endif

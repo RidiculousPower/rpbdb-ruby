@@ -68,15 +68,9 @@ VALUE rb_RPDB_DatabaseCursor_retrievePreviousKey( VALUE	rb_database_cursor );
 	VALUE rb_RPDB_DatabaseCursor_retrieveNextNonDuplicate( VALUE	rb_database_cursor );
 	VALUE rb_RPDB_DatabaseCursor_retrievePreviousNonDuplicate( VALUE	rb_database_cursor );
 
-VALUE rb_RPDB_DatabaseCursor_iterate( int	argc,
-									  VALUE*	args,
-									  VALUE	rb_database_cursor	);
-VALUE rb_RPDB_DatabaseCursor_iterateDuplicates( int	argc,
-												VALUE*	args,
-												VALUE	rb_database_cursor );
-VALUE rb_RPDB_DatabaseCursor_iterateKeys( int	argc,
-										  VALUE*	args,
-										  VALUE	rb_database_cursor );
+VALUE rb_RPDB_DatabaseCursor_iterate( VALUE	rb_database_cursor	);
+VALUE rb_RPDB_DatabaseCursor_iterateDuplicates( VALUE	rb_database_cursor );
+VALUE rb_RPDB_DatabaseCursor_iterateKeys( VALUE	rb_database_cursor );
 VALUE rb_RPDB_DatabaseCursor_slice( int			argc,
 																		VALUE*	args,
 																		VALUE		rb_database_cursor	);

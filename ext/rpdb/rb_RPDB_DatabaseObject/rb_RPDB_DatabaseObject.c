@@ -27,6 +27,7 @@
 #include "rb_RPDB_Database_internal.h"
 #include "rb_RPDB_DatabaseController.h"
 #include "rb_RPDB_DatabaseJoinController.h"
+#include "rb_RPDB_DatabaseJoinController_internal.h"
 #include "rb_RPDB_DatabaseCursorController.h"
 #include "rb_RPDB_DatabaseCursor.h"
 
@@ -105,18 +106,6 @@ extern	VALUE	rb_RPDB_DatabaseCursor;
 #define RPDB_RUBY_ERROR_CURSOR_SET_KEY_DID_NOT_EXIST                              "Key specified to locate cursor did not exist."
 
 
-//	These are not called from anywhere else and cause warnings if put in the _internal file, which is used elsewhere
-//	This seems to be due to the static qualification
-//	Keeping them here does no harm.
-
-static int rb_RPDB_DatabaseObject_internal_retrieveCursorsForEachParameterDescriptionForJoinCursor(	VALUE	rb_key_method_symbol,
-                                                                                                    VALUE	rb_key_value,
-                                                                                                    VALUE	rb_passed_args );
-
-static int rb_RPDB_DatabaseObject_internal_iterateEnvironments(	VALUE	rb_environment,
-                                                                VALUE	rb_identify_for_rpdb_as_array,
-                                                                VALUE	rb_passed_args );
-
 /*******************************************************************************************************************************************************************************************
 ********************************************************************************************************************************************************************************************
 														Module Definition (Ruby Init)
@@ -144,8 +133,8 @@ void Init_RPDB_Module()	{
 	//	Default database for write/retrieve/delete
 	//	Setting a default automatically adds the database to permissible list
 	rb_define_method(						rb_mRPDB,	"database",															rb_RPDB_DatabaseObject_database,											0 );
-	rb_define_method(						rb_mRPDB,	"database_for_index",										rb_RPDB_DatabaseObject_databaseForIndex,							1);
-	rb_define_alias(						rb_mRPDB,	"index",																"database_for_index" );
+	rb_define_method(						rb_mRPDB,	"database_with_index",										rb_RPDB_DatabaseObject_databaseWithIndex,							1);
+	rb_define_alias(						rb_mRPDB,	"index",																"database_with_index" );
 	rb_define_method(						rb_mRPDB,	"database=",														rb_RPDB_DatabaseObject_setDatabase,										1 );
 	rb_define_alias(						rb_mRPDB,	"set_database",													"database=" );
 	rb_define_method(						rb_mRPDB,	"databases",														rb_RPDB_DatabaseObject_databases,											0 );
@@ -409,11 +398,11 @@ VALUE rb_RPDB_DatabaseObject_databases( VALUE rb_self )	{
 }
 
 /*********************
-*  databaseForIndex  *
+*  databaseWithIndex  *
 *********************/
 
 //	Returns default database for this class - defaults to classname.to_s if not set
-VALUE rb_RPDB_DatabaseObject_databaseForIndex(	VALUE	rb_self,
+VALUE rb_RPDB_DatabaseObject_databaseWithIndex(	VALUE	rb_self,
 												VALUE	rb_index_method )	{
 
 	VALUE	rb_database	=	Qnil;
@@ -1106,13 +1095,13 @@ VALUE rb_RPDB_DatabaseObject_requireDefaultEnvironment( VALUE rb_self __attribut
 }
 
 /****************************
-*  requireDatabaseForIndex  *
+*  requireDatabaseWithIndex  *
 ***************************/
 
-VALUE rb_RPDB_DatabaseObject_requireDatabaseForIndex(	VALUE	rb_self,
+VALUE rb_RPDB_DatabaseObject_requireDatabaseWithIndex(	VALUE	rb_self,
 														VALUE	rb_index)	{
 	
-	VALUE	rb_database	=	rb_RPDB_DatabaseObject_databaseForIndex(	rb_self,
+	VALUE	rb_database	=	rb_RPDB_DatabaseObject_databaseWithIndex(	rb_self,
 																		rb_index );
 	
 	if ( rb_database == Qnil )	{
@@ -1458,7 +1447,7 @@ VALUE rb_RPDB_DatabaseObject_cursor( int	argc,
 
 	VALUE	rb_database	=	Qnil;
 	if ( rb_index != Qnil )	{
-		rb_database	=	rb_RPDB_DatabaseObject_databaseForIndex(	rb_self,
+		rb_database	=	rb_RPDB_DatabaseObject_databaseWithIndex(	rb_self,
 																	rb_index );
 	}
 	else {
@@ -1699,6 +1688,10 @@ VALUE rb_RPDB_DatabaseObject_iterateKeys(	int	argc,
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
+static int rb_RPDB_DatabaseObject_internal_iterateEnvironments(	VALUE	rb_environment,
+                                                                VALUE	rb_identify_for_rpdb_as_array,
+                                                                VALUE	rb_passed_args );
+																																
 /****************************
 *  cursorForCallingContext  *
 ***************************/
@@ -2280,7 +2273,7 @@ VALUE rb_RPDB_DatabaseObject_internal_retrieveEachOfMultipleFromParameterDataArr
 ************************************************/
 
 VALUE rb_RPDB_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataHash(	VALUE	rb_klass_self,
-																					VALUE	rb_unique_key_parameter )	{
+																																						VALUE	rb_unique_key_parameter )	{
 	
 	//	Each hash corresponds to one retrieval item or set
 	
@@ -2291,39 +2284,17 @@ VALUE rb_RPDB_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataHash(	VALUE
 	if ( RHASH_SIZE( rb_unique_key_parameter ) == 1 )	{
 		
 		rb_return_object	=	rb_RPDB_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataMethodValueKeyHash(	rb_klass_self,
-																															rb_unique_key_parameter	);
+																																																						rb_unique_key_parameter	);
 	}
 	//	if we have more than one key pair then we are returning a join cursor
 	else if ( RHASH_SIZE( rb_unique_key_parameter ) > 1 ) {
 
-		//	foreach item: 
-		VALUE	rb_passed_args	=	rb_ary_new();
-		//	push the class
-		rb_ary_push(	rb_passed_args,
-						rb_klass_self );
-		
-		//	foreach item (once): 
-		rb_hash_foreach(	rb_unique_key_parameter, 
-											& rb_RPDB_DatabaseObject_internal_retrieveCursorsForEachParameterDescriptionForJoinCursor,
-											rb_passed_args );
-		
-		//	rb_passed_args should end up with 1 element (rb_klass_self) + rb_self
-		
-		//	our cursor array is our passed args array minus the first index (rb_klass_self)
-		VALUE	rb_cursor_array	=	rb_passed_args;
-		//	chop off rb_klass_self and we have our cursor array
-		rb_ary_shift( rb_cursor_array );
+		VALUE	rb_database									=	rb_RPDB_DatabaseObject_database( rb_klass_self );
+		VALUE	rb_database_join_controller	=	rb_RPDB_Database_joinController( rb_database );
 
-		//	If the last element in our array is false, one of the cursors failed to retrieve (record didn't exist)
-		if ( RARRAY_PTR( rb_cursor_array )[ RARRAY_LEN( rb_cursor_array ) ] == Qfalse )	{
-			return Qnil;
-			//	rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CURSOR_FOR_JOIN_REPORTED_NO_RECORD );
-		}
-		
-		//	now we have to create the join cursor - we name the name primary_name__join__idx-idx-idx
-		RPDB_DatabaseJoinController*	rb_database_join_controller	=	rb_RPDB_Database_joinController( rb_RPDB_DatabaseObject_database( rb_klass_self ) );
-		rb_return_object	=	rb_RPDB_DatabaseJoinController_joinCursorList(	rb_database_join_controller,
-																																				rb_cursor_array );
+		rb_return_object	=	rb_RPDB_DatabaseJoinController_join(	1,
+																															& rb_unique_key_parameter,
+																															rb_database_join_controller );
 	}
 	
 	return rb_return_object;
@@ -2365,7 +2336,7 @@ VALUE rb_RPDB_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataPrimaryKey(
 ************************************************/
 
 VALUE rb_RPDB_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataMethodValueKeyHash(	VALUE	rb_klass_self,
-																							VALUE	rb_unique_key_parameter )	{
+																																													VALUE	rb_unique_key_parameter )	{
 	
 	//	We know here that we only ever have one element in our hash
 	//	Calling "first" on the hash gives us the first element as a 2 element array
@@ -2396,7 +2367,7 @@ VALUE rb_RPDB_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataMethodValue
 		
 		//	we don't know which database corresponds to our retrieval key, but we do know the key method
 		//	so we can ask the object's class for the corresponding database
-		VALUE	rb_database	=	rb_RPDB_DatabaseObject_databaseForIndex(	rb_klass_self,
+		VALUE	rb_database	=	rb_RPDB_DatabaseObject_databaseWithIndex(	rb_klass_self,
 																																	rb_key_method_symbol );
 		RPDB_Database*	c_database	=	NULL;
 		C_RPDB_DATABASE_OBJECT_DATABASE( rb_database, c_database );
@@ -2419,117 +2390,16 @@ VALUE rb_RPDB_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataMethodValue
 	}
 	//	if it's not, get a cursor
 	else {
-		
-		rb_return_object	=	rb_RPDB_DatabaseObject_internal_retrieveCursorForParameterDescription(	rb_klass_self, 
-																																																rb_key_method_symbol,
-																																																rb_key_value );
+	
+		VALUE	rb_database	=	rb_RPDB_DatabaseObject_databaseWithIndex(	rb_klass_self,
+																																	rb_key_method_symbol );
+		VALUE	rb_database_join_controller	=	rb_RPDB_Database_joinController( rb_database );
+		rb_return_object	=	rb_RPDB_DatabaseJoinController_internal_cursorForIndexAtKeyValue(	rb_database_join_controller, 
+																																													rb_key_method_symbol,
+																																													rb_key_value );
 	}
 	return rb_return_object;
 }	
-
-/************************************************
-*  retrieveCursorForSecondaryIndexFromParameterDescription  *
-************************************************/
-
-VALUE rb_RPDB_DatabaseObject_internal_retrieveCursorForParameterDescription(	VALUE	rb_self,
-																																							VALUE	rb_key_method_symbol,
-																																							VALUE	rb_key_value  )	{
-		
-	VALUE	rb_secondary_database	=	rb_RPDB_DatabaseObject_requireDatabaseForIndex(	rb_self,
-																																								rb_key_method_symbol );
-	
-	RPDB_Database*	c_secondary_database	=	NULL;
-	C_RPDB_DATABASE_OBJECT_DATABASE( rb_secondary_database, c_secondary_database );
-	
-	RPDB_DatabaseCursor*	c_cursor	=	RPDB_DatabaseCursorController_cursor(	RPDB_Database_cursorController( c_secondary_database ) );
-	//	We get the C cursor so we can wrap it as an rb_RPDB_DatabaseObjectCursor
-	VALUE	rb_cursor	=	RUBY_RPDB_DATABASE_OBJECT_CURSOR( c_cursor );
-	
-	//	FIX - we probably want to add a method that gets called here that can be overridden for settings, etc.
-	
-	rb_RPDB_DatabaseCursor_open( rb_cursor );
-	
-	//	set cursor to first record
-	//	we call via rb_funcall so that the class determines whether or not to use RPDB_DatabaseCursor or RPDB_DatabaseObjectCursor
-	VALUE	rb_current	=	rb_funcall(	rb_cursor,
-																	rb_intern( "retrieve" ),
-																	1,
-																	rb_key_value );
-
-	if ( rb_current == Qnil )   {
-		return Qnil;
-	}
-	
-	return rb_cursor;
-}
-	
-/****************************************************
-*  retrieveJoinCursorForEachParameterDescription  *
-***************************************************/
-
-//	rb_passed_args should end up with 1 element (rb_self) + 1 element (idx-idx string) + # of elements in hash
-static int rb_RPDB_DatabaseObject_internal_retrieveCursorsForEachParameterDescriptionForJoinCursor(	VALUE	rb_key_method_symbol,
-																							VALUE	rb_key_value,
-																							VALUE	rb_passed_args )	{
-	
-	VALUE	rb_self					=	rb_ary_entry( rb_passed_args, 0 );
-		
-	VALUE	rb_join_cursor_name	=	Qnil;
-	if ( RARRAY_LEN( rb_passed_args ) == 1 )	{
-		rb_join_cursor_name	=	rb_str_new( "", 0 );
-		//	join cursor name is passed args [ 1 ]
-		rb_ary_push(	rb_passed_args,
-						rb_join_cursor_name );
-	}
-	else {
-		rb_join_cursor_name		=	rb_ary_entry( rb_passed_args, 1 );
-	}
-
-	//	make sure we have symbols rather than strings for our key
-	if ( TYPE( rb_key_method_symbol ) == T_STRING )	{
-		rb_key_method_symbol	=	STRING2SYM( rb_key_method_symbol );
-	}
-	
-	VALUE	rb_cursor				=	rb_RPDB_DatabaseObject_internal_retrieveCursorForParameterDescription(	rb_self,
-																												rb_key_method_symbol,
-																												rb_key_value );
-	
-	//	If we get no record for setting our cursor we push false and fail
-	if ( rb_cursor == Qnil )	{
-		rb_ary_push(	rb_passed_args,
-						Qfalse );
-		return ST_STOP;		
-	}
-	
-	RPDB_DatabaseCursor*	c_cursor	=	NULL;
-	C_RPDB_DATABASE_OBJECT_CURSOR( rb_cursor, c_cursor );
-	VALUE	rb_cursor_name	=	rb_str_new2( c_cursor->name );
-	
-	if ( RSTRING_LEN( rb_join_cursor_name ) == 0 )	{
-		rb_join_cursor_name	=	rb_str_concat( rb_join_cursor_name, rb_cursor_name );
-	}
-	else {
-		rb_join_cursor_name	=	rb_str_concat( rb_str_concat(	rb_join_cursor_name, 
-																	rb_str_new( "-", 1 ) ),
-																	rb_cursor_name );
-	}
-		
-	VALUE	rb_current_record		=	rb_RPDB_DatabaseObjectCursor_current( rb_cursor );
-
-	//	If we get no record for setting our cursor we push false and fail
-	if ( rb_current_record == Qnil )	{
-		
-		rb_ary_push(	rb_passed_args,
-						Qfalse );
-		return ST_STOP;
-	}
-
-	//	push cursor for return
-	rb_ary_push(	rb_passed_args,
-					rb_cursor );
-	
-	return ST_CONTINUE;
-}
 
 /********************************************************
 *  retrievePackedDataFromPreparedParameterDescription  *
@@ -2542,9 +2412,9 @@ VALUE rb_RPDB_DatabaseObject_internal_retrieveSelfAsPrimaryPackedData(	VALUE	rb_
 	VALUE	rb_unique_key_method	=	rb_RPDB_DatabaseObject_requireUniqueKeyMethod( rb_self );
 	VALUE	rb_unique_key			=	rb_RPDB_DatabaseObject_requireUniqueKey( rb_self );
 	
-	//	We need to get the database. Since our unique key might be in a secondary, we use our method (databaseForIndex) that works 
+	//	We need to get the database. Since our unique key might be in a secondary, we use our method (databaseWithIndex) that works 
 	//	on both primary and unique secondary keys.
-	VALUE	rb_database	=	rb_RPDB_DatabaseObject_requireDatabaseForIndex(	rb_self,
+	VALUE	rb_database	=	rb_RPDB_DatabaseObject_requireDatabaseWithIndex(	rb_self,
 																				rb_unique_key_method );
 	RPDB_Database*	c_database	=	NULL;
 	C_RPDB_DATABASE_OBJECT_DATABASE( rb_database, c_database );
@@ -2709,6 +2579,7 @@ VALUE rb_RPDB_DatabaseObject_internal_createAndAssociateSecondaryDatabase(	VALUE
 		c_secondary_database	=	RPDB_Database_internal_configureDatabaseInstanceForSecondaryIndexOnPrimaryDatabase(	c_primary_database,
 																																																								c_secondary_database,
 																																																								c_index_method_string,
+																																																								TRUE,
 																																																								TRUE );
 	}
 	
@@ -2779,8 +2650,8 @@ VALUE rb_RPDB_DatabaseObject_internal_identifiesWithCurrentlyOpenEnvironment(	VA
 	
 	//	iterate RPDB.environments as environment => identify_for_rpdb_as
 	rb_hash_foreach(	rb_environments_hash, 
-						& rb_RPDB_DatabaseObject_internal_iterateEnvironments,
-						rb_passed_args );
+										& rb_RPDB_DatabaseObject_internal_iterateEnvironments,
+										rb_passed_args );
 			
 	//	check whether we succeeded - rb_passed_args should == Qnil if we're done
 	//	if we didn't succeed, see if default environment is acceptable

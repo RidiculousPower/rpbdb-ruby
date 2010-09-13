@@ -328,7 +328,9 @@ void Init_rpdb()	{
 		
 		Init_RPDB_LogSettingsController();
 		Init_RPDB_MemoryPoolSettingsController();
-
+		Init_RPDB_MemoryPoolFileSettingsController();
+		Init_RPDB_MemoryPoolReadWriteSettingsController();
+		
 		rb_RPDB_internal_initRuntimeStorages( rb_mRPDB );
 
 }

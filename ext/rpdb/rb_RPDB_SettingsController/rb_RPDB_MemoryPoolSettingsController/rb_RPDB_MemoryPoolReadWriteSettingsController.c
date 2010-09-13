@@ -28,9 +28,9 @@ extern	VALUE	rb_RPDB_MemoryPoolReadWriteSettingsController;
 
 void Init_RPDB_MemoryPoolReadWriteSettingsController()	{
 
-	rb_RPDB_MemoryPoolReadWriteSettingsController		=	rb_define_class_under(	rb_RPDB_MemoryPoolReadWriteSettingsController, 
-																																		"ReadWrite",	
-																																		rb_cObject );
+	rb_RPDB_MemoryPoolReadWriteSettingsController		=	rb_define_class_under(	rb_RPDB_MemoryPoolSettingsController, 
+																																						"ReadWrite",	
+																																						rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_MemoryPoolReadWriteSettingsController, 	"new",																rb_RPDB_MemoryPoolReadWriteSettingsController_init,														1 	);
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"initialize",													rb_RPDB_MemoryPoolReadWriteSettingsController_init,														1 	);

@@ -20,7 +20,7 @@ VALUE rb_RPDB_DatabaseObject_identifyAs(	VALUE	rb_klass_self );
 	VALUE rb_RPDB_DatabaseObject_environment(	VALUE	rb_self );
 	VALUE rb_RPDB_DatabaseObject_database(	VALUE	rb_self );
 	VALUE rb_RPDB_DatabaseObject_databases( VALUE rb_self );
-	VALUE rb_RPDB_DatabaseObject_databaseForIndex(	VALUE	rb_self,
+	VALUE rb_RPDB_DatabaseObject_databaseWithIndex(	VALUE	rb_self,
 												   VALUE	rb_index_method );
 VALUE rb_RPDB_DatabaseObject_setDatabase(	VALUE	rb_self,
 										  VALUE	rb_database_or_name );
@@ -54,7 +54,7 @@ VALUE rb_RPDB_DatabaseObject_uniqueSecondaryKey(	VALUE	rb_self );
 	VALUE rb_RPDB_DatabaseObject_keys(	VALUE	rb_self );
 VALUE rb_RPDB_DatabaseObject_requireEnvironment( VALUE rb_self );
 	VALUE rb_RPDB_DatabaseObject_requireDefaultEnvironment( VALUE rb_self );
-	VALUE rb_RPDB_DatabaseObject_requireDatabaseForIndex(	VALUE	rb_self,
+	VALUE rb_RPDB_DatabaseObject_requireDatabaseWithIndex(	VALUE	rb_self,
 															VALUE	rb_index);
 	VALUE rb_RPDB_DatabaseObject_requireUniqueKeyMethod( VALUE rb_self );
 	VALUE rb_RPDB_DatabaseObject_requireUniqueKey( VALUE rb_self );

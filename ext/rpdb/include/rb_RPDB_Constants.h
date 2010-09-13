@@ -1,13 +1,86 @@
 #ifndef RB_RPDB_CONSTANTS
 	#define RB_RPDB_CONSTANTS
 
+	#define RPDB_RUBY_MODULE_VARIABLE_EXTENDED_CLASSES_HASH										"@rpdb__extended_classes_hash"
+	#define RPDB_RUBY_MODULE_VARIABLE_INCLUDED_FOR_CLASSES_HASH								"@rpdb__included_for_classes_hash"
+
+	//	Ruby items that exist in a one => many storage relation require runtime storages 
+	//	so that garbage collection can function properly; otherwise the item stored in the hash will prevent
+	//	collection from even taking place.
+	#define	RPDB_RUBY_RUNTIME_STORAGE_ENVIRONMENT_HANDLE											"ruby_environments"
+	#define	RPDB_RUBY_RUNTIME_STORAGE_DATABASE_HANDLE													"ruby_databases"
+	#define	RPDB_RUBY_RUNTIME_STORAGE_DATABASE_CURSOR_HANDLE									"ruby_database_cursors"
+
+	//	Module Variables
+
+	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENTS														"@rpdb__environments"
+	#define RPDB_RUBY_MODULE_VARIABLE_IDENTIFICATION_WAIT_LIST_ARRAY					"@rpdb__identification_wait_list"
+	#define RPDB_RUBY_MODULE_VARIABLE_DEFAULT_ENVIRONMENT_WAIT_LIST_ARRAY			"@rpdb__current_working_environment_wait_list"
+	#define RPDB_RUBY_MODULE_VARIABLE_INITIALIZATION_WAIT_LIST_ARRAY					"@rpdb__initialization_wait_list_array"
+	#define RPDB_RUBY_MODULE_VARIABLE_CURRENT_WORKING_ENVIRONMENT_STACK				"@current_working_environment_stack"
+	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENT_COUNT												"@rpdb__environment_count"
+	#define RPDB_RUBY_MODULE_VARIABLE_DATABASE_RUNTIME_STORAGE								"@rpdb__database_runtime_storage"
+	#define RPDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS										"@rpdb_secondary_key_callback_methods"
+
+	//	Class Variables
+	
+	//	Environment
+	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_CONFIGURED_CLASSES						"@rpdb__configured_classes_array"
+	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_DATABASE_CONTROLLER					"@database_controller"
+	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER				"@transaction_controller"
+	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER					"@settings_controller"
+
+	//	Database Controller
+	#define RPDB_RUBY_CLASS_DATABASE_CONTROLLER_VARIABLE_DATABASES_HASH				"@rpdb__databases_hash"
+
+	//	Database
+	#define RPDB_RUBY_CLASS_DATABASE_VARIABLE_DATABASE_CONTROLLER							"@database_controller"
+	#define RPDB_RUBY_CLASS_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE										"@storage_type"
+
+	//	Database Cursor
+	#define RPDB_RUBY_CLASS_DATABASE_CURSOR_CONTROLLER												"@database_cursor_controller"
+	#define RPDB_RUBY_CLASS_DATABASE_JOIN_CONTROLLER													"@database_join_controller"
+	#define RPDB_RUBY_CLASS_SECONDARY_DATABASES																"@secondary_databases"
+
+	#define RPDB_RUBY_CLASS_DATABASE_SEQUENCE_CONTROLLER											"@database_sequence_controller"
+
+	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT										"@parent_environment"
+	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE											"@parent_database"
+	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE_CURSOR_CONTROLLER		"@parent_database_cursor_controller"
+
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_FILE_SETTINGS_CONTROLLER				"@file_settings_controller"
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_ERROR_SETTINGS_CONTROLLER				"@error_settings_controller"
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER					"@log_settings_controller"
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_MEMORY_SETTINGS_CONTROLLER			"@memory_settings_controller"
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER		"@database_settings_controller"
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER		"@database_cursor_settings_controller"
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DIRECTORY_SETTINGS_CONTROLLER		"@directory_settings_controller"
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER "@database_sequence_settings_controller"
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER "@database_join_settings_controller"
+	
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA		"@serialize_data"
+
+	#define RPDB_FUNCTION_INIT																								"init_rpdb"
+	#define RPDB_FUNCTION_CONFIGURE																						"configure_rpdb"
+	#define RPDB_FUNCTION_IDENTIFY_AS																					"identify_for_rpdb_as"
+
+	#define	RPDB_RUBY_CONSTANT_DEFAULT																				"Default"
+
+	#define RPDB_RUBY_ERROR_MESSAGE_DUPLICATES_AND_KEY_OR_BLOCK_REQUIRED			"Duplicates must be enabled and key must be set or must be inside iterate block to iterate duplicates."
+	#define RPDB_RUBY_ERROR_MESSAGE_ENVIRONMENT_NOT_FOUND											"Requested Environment was missing."
+	#define RPDB_RUBY_ERROR_MESSAGE_DATABASE_CONTROLLER_NOT_FOUND							"Requested Environment was missing."
+	#define RPDB_RUBY_ERROR_ENVIRONMENT_WITH_NAME_ALREADY_EXISTS							"Environment with requested name already exists."
+
+	#define RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_KEY													"Cannot write to database without key."
+	#define RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_DATA													"Cannot write to database without data."
+	#define RPDB_RUBY_ERROR_CANNOT_RETRIEVE_WITHOUT_KEY												"Cannot retrieve to database without key."
+	#define RPDB_RUBY_ERROR_CANNOT_RETRIEVE_WITHOUT_DATA											"Cannot retrieve to database without data."
+
+	#define RPDB_RUBY_ERROR_WRONG_ARITY_FOR_SECONDARY_KEY_CALLBACK						"Secondary key creation callback method/proc has unexpected arity. Expected 1, 2, 3 or -1."
+
 	/****************************
 	*	Get Ruby from C Macros	*
 	****************************/
-
-		/****************************
-		*  Objects  *
-		****************************/
 
 	#define RUBY_RPDB_ENVIRONMENT( c_environment )																																RUBY_RPDB_OBJECT(	c_environment, rb_RPDB_Environment, NULL, NULL )
 	#define RUBY_RPDB_ENVIRONMENT_WITH_FREE( c_environment )																											RUBY_RPDB_OBJECT(	c_environment, rb_RPDB_Environment, NULL, rb_RPDB_Environment_free )
@@ -272,7 +345,6 @@
 	#define RUBY_RPDB_TRANSACTION_SETTINGS_CONTROLLER( c_transaction_settings_controller )																									  RUBY_RPDB_OBJECT(	c_transaction_settings_controller, rb_RPDB_TransactionSettingsController, NULL, NULL )
 	#define C_RPDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller )																  C_RPDB_STRUCT(		rb_transaction_settings_controller, c_transaction_settings_controller, RPDB_TransactionSettingsController )
 
-
 	/****************************
 	*	Wrapping/Get Macros		*
 	****************************/
@@ -289,12 +361,19 @@
 																																																					c_object )
 
 
-	/****************************
-	*	Convenience Macros		*
-	****************************/
+	/***********************
+	*  Convenience Macros  *
+	***********************/
 
 	#define RUBY_CLASS( rb_class_constant_name )	rb_const_get(	rb_cObject,																													\
 																															rb_intern( rb_class_constant_name ) )
+
+	#define STRING2SYM( rb_string )				\
+		ID2SYM( rb_to_id( rb_string ) );
+
+	/**************
+	*  Returning  *
+	**************/
 
 	#define RETURN_SIMPLIFIED_RUBY_ARRAY( rb_return_array )		\
 		if ( rb_return_array == Qnil )	{												\
@@ -308,6 +387,10 @@
 		}																												\
 		return rb_return_array;
 	
+	#define RETURN_ENUMERATOR_IF_NO_BLOCK( obj, argc, argv ) \
+		RETURN_ENUMERATOR( obj, argc, argv );
+
+	/*-----------------------------------------------------------------*/
 	
 	#define RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record )									\
 		void*	raw_key	=	RPDB_Record_rawKey( c_record );												\
@@ -350,59 +433,122 @@
 		return rb_record_data;
 
 	
+	/*********************
+	*  Argument Parsing  *
+	*********************/
+	
 	//	parses args for rb_key, rb_data, or an array
 	//	if an array, each member is processed for key and data
-	//		if returns, returns the return values from each call for each array member
+	//		if returns_other_than_self, returns the return values from each call for each array member
 	//		otherwise returns self
-	#define PARSE_RUBY_ARGS_FOR_KEY_DATA_HASH( argc, args, rb_self, function, returns )					\
-		VALUE	rb_key	=	Qnil;																																			\
-		VALUE	rb_data	=	Qnil;																																			\
-		VALUE	rb_key_or_key_data_hash	=	Qnil;																											\
-		rb_scan_args(	argc,																																				\
-									args,																																				\
-									"11",																																				\
-									& rb_key_or_key_data_hash,																									\
-									& rb_data );																																\
-		if ( TYPE( rb_key_or_key_data_hash ) == T_HASH )	{																				\
-			VALUE	rb_key_data_array	=	Qnil;																													\
-			rb_key_data_array	=	rb_funcall( rb_key_or_key_data_hash,																\
-																			rb_intern( "first" ),																		\
-																			0 );																										\
-			rb_key						=	rb_ary_shift( rb_key_data_array );																	\
-			rb_data						=	rb_ary_shift( rb_key_data_array );																	\
-		}																																													\
-		else if ( TYPE( rb_key_or_key_data_hash ) == T_ARRAY )	{																	\
-			ITERATE_RUBY_ARRAY_AND_CALL_ON_EACH_MEMBER( rb_self, rb_key_or_key_data_hash, function )\
-			if ( returns )	{																																				\
-				return rb_return_values;																															\
-			}																																												\
-			else	{																																									\
-				return rb_self;																																				\
-			}																																												\
-		}																																													\
-		else {																																										\
-			rb_key =	rb_key_or_key_data_hash;																											\
-		}																																													\
-		if ( rb_key == Qnil )	{																																		\
-			rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_KEY );											\
-		}																																													\
-		else if ( rb_data == Qnil )	{																															\
-			rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_DATA );										\
+	#define PARSE_RUBY_ARGS_FOR_KEY_DATA_HASH_OR_ARRAY( argc, args, rb_self, function, returns_other_than_self, rb_key, rb_data )		\
+		VALUE	rb_key_or_key_data_hash	=	Qnil;																																					\
+		rb_scan_args(	argc,																																														\
+									args,																																														\
+									"11",																																														\
+									& rb_key_or_key_data_hash,																																			\
+									& rb_data );																																										\
+		PARSE_RUBY_KEY_OR_KEY_DATA_HASH( rb_key_or_key_data_hash, rb_self, function, returns_other_than_self, rb_key, rb_data );			\
+		CHECK_RUBY_ARG_RESULTS_FOR_KEY_AND_DATA_WRITE( rb_key, rb_data );
+
+	#define PARSE_RUBY_ARGS_FOR_KEY_AND_OR_INDEX_OR_HASH_OR_ARRAY( argc, args, rb_self, function, returns_other_than_self, rb_index, rb_key )		\
+		VALUE	rb_key_or_index_or_index_key_hash	=	Qnil;																																					\
+		VALUE	rb_key_or_index_key_hash	=	Qnil;																																											\
+		rb_scan_args(	argc,																																														\
+									args,																																														\
+									"11",																																														\
+									& rb_key_or_index_or_index_key_hash,																													\
+									& rb_key_or_index_key_hash );																																										\
+		if ( TYPE( rb_key_or_index_or_index_key_hash ) == T_HASH )	{																																	\
+			PARSE_RUBY_KEY_OR_KEY_DATA_HASH( rb_key_or_index_or_index_key_hash, rb_self, function, returns_other_than_self, rb_index, rb_key );	\
+		}																																																																					\
+		else if ( TYPE( rb_key_or_index_key_hash ) == T_HASH )	{																																									\
+			PARSE_RUBY_KEY_OR_KEY_DATA_HASH( rb_key_or_index_key_hash, rb_self, function, returns_other_than_self, rb_index, rb_key );							\
+		}																																																																					\
+		else if ( rb_key_or_index_key_hash != Qnil ) 	{																																														\
+			rb_index	=	rb_key_or_index_or_index_key_hash;																																												\
+			rb_key		=	rb_key_or_index_key_hash;																																																		\
+		}																																																																					\
+		else	{																																																																		\
+			rb_index	=	Qnil;																																																												\
+			rb_key		=	rb_key_or_index_or_index_key_hash;																																																		\
+		}																																																																					\
+		CHECK_RUBY_ARG_RESULTS_FOR_KEY_RETRIEVE( rb_key );
+
+	/*-----------------------------------------------------------------*/
+
+	#define PARSE_RUBY_KEY_OR_KEY_DATA_HASH( rb_key_or_key_data_hash, rb_self, function, returns_other_than_self, rb_hash_key, rb_hash_data )							\
+		if ( TYPE( rb_key_or_key_data_hash ) == T_HASH )	{																																				\
+			VALUE	rb_key_data_array	=	Qnil;																																													\
+			rb_key_data_array	=	rb_funcall( rb_key_or_key_data_hash,																																\
+																			rb_intern( "first" ),																																		\
+																			0 );																																										\
+			rb_hash_key				=	rb_ary_shift( rb_key_data_array );																																	\
+			rb_hash_data			=	rb_ary_shift( rb_key_data_array );																																	\
+		}																																																													\
+		else if ( TYPE( rb_key_or_key_data_hash ) == T_ARRAY )	{																																	\
+			ITERATE_RUBY_ARRAY_AND_CALL_ON_EACH_MEMBER( rb_self, rb_key_or_key_data_hash, function )																\
+			RETURN_SELF_OR_VALUES( returns_other_than_self, rb_return_values, rb_self );																						\
+		}																																																													\
+		else {																																																										\
+			rb_hash_key				=	rb_key_or_key_data_hash;																																						\
 		}
-	
-	#define ITERATE_RUBY_ARRAY_AND_CALL_ON_EACH_MEMBER( rb_self, array, function )							\
+
+	#define RETURN_SELF_OR_VALUES( returns_other_than_self, rb_return_values, rb_self )																					\
+			if ( returns_other_than_self )	{																																												\
+				return rb_return_values;																																															\
+			}																																																												\
+			else	{																																																									\
+				return rb_self;																																																				\
+			}
+
+	/*******************
+	*  Error Checking  *
+	*******************/
+
+	#define CHECK_RUBY_ARG_RESULTS_FOR_KEY_WRITE( rb_key )																								\
+		if ( rb_key == Qnil )	{																																							\
+			rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_KEY );																\
+		}
+
+	#define CHECK_RUBY_ARG_RESULTS_FOR_KEY_AND_DATA_WRITE( rb_key, rb_data )															\
+		CHECK_RUBY_ARG_RESULTS_FOR_KEY_WRITE( rb_key )																											\
+		else if ( rb_data == Qnil )	{																																				\
+			rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_DATA );															\
+		}
+
+	#define CHECK_RUBY_ARG_RESULTS_FOR_KEY_RETRIEVE( rb_key )																							\
+		if ( rb_key == Qnil )	{																																							\
+			rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_RETRIEVE_WITHOUT_KEY );																\
+		}
+
+	#define CHECK_RUBY_ARG_RESULTS_FOR_KEY_AND_DATA_RETRIEVE( rb_key, rb_data )														\
+		CHECK_RUBY_ARG_RESULTS_FOR_KEY( rb_key );																														\
+		else if ( rb_data == Qnil )	{																																				\
+			rb_raise( rb_eArgError, RPDB_RUBY_ERROR_CANNOT_RETRIEVE_WITHOUT_DATA );															\
+		}
+
+	/**************
+	*  Iteration  *
+	**************/
+
+	#define ITERATE_RUBY_ARRAY_AND_CALL_ON_EACH_MEMBER( rb_self, rb_array, function )						\
 		int	c_which_array_member	=	0;																														\
 		VALUE rb_return_values	=	rb_ary_new();																										\
 		for (	c_which_array_member = 0 ;																													\
-					c_which_array_member < RARRAY_LEN( rb_key_or_key_data_hash ) ;											\
+					c_which_array_member < RARRAY_LEN( rb_array ) ;																			\
 					c_which_array_member++ )	{																													\
-			VALUE rb_member = RARRAY_PTR( rb_key_or_key_data_hash )[ c_which_array_member ];				\
+			VALUE rb_member = RARRAY_PTR( rb_array )[ c_which_array_member ];												\
 				rb_ary_push(	rb_return_values,																												\
 											function(	1,																														\
 																& rb_member,																									\
 																rb_self ) );																									\
 		}
 		
+	/*************
+	*  Yielding  *
+	*************/
+
 	#define YIELD_BLOCK_FOR_KEY_DATA_INDEX( rb_record_key, rb_record_data, c_index )	\
 		switch ( rb_proc_arity( rb_block_lambda() ) )	{																	\
 			case 1:																																				\
@@ -433,83 +579,62 @@
 				break;																																			\
 		}
 
+	#define PREPARE_RECORD_FROM_KEY_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, rb_index, rb_key )						\
+		PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );												\
+		c_record	=	RPDB_Record_new( c_database );																													\
+		rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_which_database,							\
+																																				rb_key,													\
+																																				c_record->key->wrapped_bdb_dbt,	\
+																																				TRUE );
 	
-	#define RETURN_ENUMERATOR_IF_NO_BLOCK( obj, argc, argv ) \
-		RETURN_ENUMERATOR( obj, argc, argv );
+	#define PREPARE_RECORD_FROM_KEY_DATA_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, rb_index, rb_key, rb_data )		\
+		PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );																										\
+		c_record	=	RPDB_Record_new( c_database );																													\
+		PACK_KEY_DATA_FOR_STORAGE( rb_database, rb_key, rb_data, c_record );
+
+	#define PACK_KEY_DATA_FOR_STORAGE( rb_database, rb_key, rb_data, c_record )					\
+		PACK_KEY_FOR_STORAGE( rb_database, rb_key, c_record );										\
+		PACK_DATA_FOR_STORAGE( rb_database, rb_data, c_record );
+
+	#define PACK_KEY_FOR_STORAGE( rb_database, rb_key, c_record )																					\
+		rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_database,										\
+																																				rb_key,													\
+																																				c_record->key->wrapped_bdb_dbt,	\
+																																				TRUE );
+
+	#define PACK_DATA_FOR_STORAGE( rb_which_database, rb_data, c_record )																		\
+		rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_which_database,								\
+																																				rb_data,													\
+																																				c_record->data->wrapped_bdb_dbt,	\
+																																				TRUE );
+		
+	#define PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_primary_database, c_database, rb_index )					\
+		VALUE	rb_which_database	=	Qnil;																																			\
+		if ( rb_index != Qnil )	{																																						\
+			rb_which_database	=	rb_RPDB_Database_secondaryDatabaseWithIndex(	rb_primary_database,						\
+																																				rb_index );											\
+		}																																																		\
+		else {																																															\
+			rb_which_database	=	rb_primary_database;																													\
+		}																																																		\
+		C_RPDB_DATABASE( rb_which_database, c_database );
+
+	#define ARITY_FOR_CALLBACK_PROC_OR_OBJECT_METHOD( rb_arity, rb_callback_object, rb_callback_method )	\
+		VALUE	rb_callback_object_class	=	rb_class_of( rb_callback_object );																\
+		if ( rb_callback_object_class == rb_cProc )	{																												\
+			rb_arity	=	rb_funcall(	rb_callback_object,																												\
+															rb_intern( "arity" ),																											\
+															0 );																																			\
+		}																																																		\
+		else {																																															\
+			VALUE	rb_method			=	rb_funcall(	rb_callback_object,																							\
+																				rb_intern( "method" ),																					\
+																				1,																															\
+																				rb_callback_method );																						\
+			rb_arity	=	rb_funcall(	rb_method,																																\
+															rb_intern( "arity" ),																											\
+															0 );																																			\
+		}
 	
-	#define STRING2SYM( rb_string )				\
-		ID2SYM( rb_to_id( rb_string ) );
-
-	#define RPDB_RUBY_MODULE_VARIABLE_EXTENDED_CLASSES_HASH										"@rpdb__extended_classes_hash"
-	#define RPDB_RUBY_MODULE_VARIABLE_INCLUDED_FOR_CLASSES_HASH								"@rpdb__included_for_classes_hash"
-
-	//	Ruby items that exist in a one => many storage relation require runtime storages 
-	//	so that garbage collection can function properly; otherwise the item stored in the hash will prevent
-	//	collection from even taking place.
-	#define	RPDB_RUBY_RUNTIME_STORAGE_ENVIRONMENT_HANDLE											"ruby_environments"
-	#define	RPDB_RUBY_RUNTIME_STORAGE_DATABASE_HANDLE													"ruby_databases"
-	#define	RPDB_RUBY_RUNTIME_STORAGE_DATABASE_CURSOR_HANDLE									"ruby_database_cursors"
-
-	//	Module Variables
-
-	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENTS														"@rpdb__environments"
-	#define RPDB_RUBY_MODULE_VARIABLE_IDENTIFICATION_WAIT_LIST_ARRAY					"@rpdb__identification_wait_list"
-	#define RPDB_RUBY_MODULE_VARIABLE_DEFAULT_ENVIRONMENT_WAIT_LIST_ARRAY			"@rpdb__current_working_environment_wait_list"
-	#define RPDB_RUBY_MODULE_VARIABLE_INITIALIZATION_WAIT_LIST_ARRAY					"@rpdb__initialization_wait_list_array"
-	#define RPDB_RUBY_MODULE_VARIABLE_CURRENT_WORKING_ENVIRONMENT_STACK				"@current_working_environment_stack"
-	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENT_COUNT												"@rpdb__environment_count"
-	#define RPDB_RUBY_MODULE_VARIABLE_DATABASE_RUNTIME_STORAGE								"@rpdb__database_runtime_storage"
-	#define RPDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS	"$rpdb_secondary_key_callback_methods"
-
-	//	Class Variables
-	
-	//	Environment
-	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_CONFIGURED_CLASSES						"@rpdb__configured_classes_array"
-	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_DATABASE_CONTROLLER					"@database_controller"
-	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER				"@transaction_controller"
-	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER					"@settings_controller"
-
-	//	Database Controller
-	#define RPDB_RUBY_CLASS_DATABASE_CONTROLLER_VARIABLE_DATABASES_HASH				"@rpdb__databases_hash"
-
-	//	Database
-	#define RPDB_RUBY_CLASS_DATABASE_VARIABLE_DATABASE_CONTROLLER							"@database_controller"
-	#define RPDB_RUBY_CLASS_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE										"@storage_type"
-
-	//	Database Cursor
-	#define RPDB_RUBY_CLASS_DATABASE_CURSOR_CONTROLLER												"@database_cursor_controller"
-	#define RPDB_RUBY_CLASS_DATABASE_JOIN_CONTROLLER													"@database_join_controller"
-
-	#define RPDB_RUBY_CLASS_DATABASE_SEQUENCE_CONTROLLER											"@database_sequence_controller"
-
-	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT										"@parent_environment"
-	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE											"@parent_database"
-	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE_CURSOR_CONTROLLER		"@parent_database_cursor_controller"
-
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_FILE_SETTINGS_CONTROLLER				"@file_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_ERROR_SETTINGS_CONTROLLER				"@error_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER					"@log_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_MEMORY_SETTINGS_CONTROLLER			"@memory_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER		"@database_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER		"@database_cursor_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DIRECTORY_SETTINGS_CONTROLLER		"@directory_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER "@database_sequence_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER "@database_join_settings_controller"
-	
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA		"@serialize_data"
-
-	#define RPDB_FUNCTION_INIT																								"init_rpdb"
-	#define RPDB_FUNCTION_CONFIGURE																						"configure_rpdb"
-	#define RPDB_FUNCTION_IDENTIFY_AS																					"identify_for_rpdb_as"
-
-	#define	RPDB_RUBY_CONSTANT_DEFAULT																				"Default"
-
-	#define RPDB_RUBY_ERROR_MESSAGE_DUPLICATES_AND_KEY_OR_BLOCK_REQUIRED			"Duplicates must be enabled and key must be set or must be inside iterate block to iterate duplicates."
-	#define RPDB_RUBY_ERROR_MESSAGE_ENVIRONMENT_NOT_FOUND											"Requested Environment was missing."
-	#define RPDB_RUBY_ERROR_MESSAGE_DATABASE_CONTROLLER_NOT_FOUND							"Requested Environment was missing."
-	#define RPDB_RUBY_ERROR_ENVIRONMENT_WITH_NAME_ALREADY_EXISTS							"Environment with requested name already exists."
-
-	#define RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_KEY													"Cannot write to database without key."
-	#define RPDB_RUBY_ERROR_CANNOT_WRITE_WITHOUT_DATA													"Cannot write to database without data."
 
 #endif

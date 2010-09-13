@@ -73,6 +73,8 @@ extern VALUE rb_cFloat;
 extern VALUE rb_cTrueClass;
 extern VALUE rb_cFalseClass;
 
+extern VALUE rb_cProc;
+
 #define RPDB_RUBY_ERROR_INVALID_DATABASE_DATA			"Provided data was invalid. Database requires object that can be automatically converted to string."
 
 /*******************************************************************************************************************************************************************************************
@@ -119,21 +121,44 @@ void Init_RPDB_Database()	{
 	rb_define_method(						rb_RPDB_Database, 	"retrieve",																			rb_RPDB_Database_retrieve,																	-1 	);
 	rb_define_method(						rb_RPDB_Database, 	"delete",																				rb_RPDB_Database_delete,																		-1 	);
                     					                                                                                                                        				
-	rb_define_method(						rb_RPDB_Database, 	"associate_secondary_database",									rb_RPDB_Database_associateSecondaryDatabase,								1 	);
-	rb_define_alias(						rb_RPDB_Database, 	"associate_secondary",													"associate_secondary_database"	);                  				
 	rb_define_method(						rb_RPDB_Database, 	"is_secondary_database?",												rb_RPDB_Database_isSecondary,																0 	);
+	rb_define_alias(						rb_RPDB_Database, 	"is_secondary_index?",													"is_secondary_database?"	);
 	rb_define_alias(						rb_RPDB_Database, 	"is_secondary?",																"is_secondary_database?"	);
+	rb_define_alias(						rb_RPDB_Database, 	"secondary_database?",													"is_secondary_database?"	);
+	rb_define_alias(						rb_RPDB_Database, 	"secondary_index?",															"is_secondary_database?"	);
+	rb_define_alias(						rb_RPDB_Database, 	"secondary?",																		"is_secondary_database?"	);
 	rb_define_method(						rb_RPDB_Database, 	"primary_database",															rb_RPDB_Database_primaryDatabase,																0 	);
+	rb_define_alias(						rb_RPDB_Database, 	"primary",																			"primary_database"	);
 	rb_define_method(						rb_RPDB_Database, 	"secondary_key_creation_callback_method",				rb_RPDB_Database_secondaryKeyCreationCallbackMethod,				0 	);
-	rb_define_method(						rb_RPDB_Database, 	"secondary_key_creation_callback_method=",			rb_RPDB_Database_setSecondaryKeyCreationCallbackMethod,			-1 	);
-	rb_define_alias(						rb_RPDB_Database, 	"secondary_key_creation_callback_method=",			"secondary_key_creation_callback_method="	);
-	rb_define_alias(						rb_RPDB_Database, 	"set_secondary_key_creation_callback_method",		"secondary_key_creation_callback_method="	);
+	rb_define_method(						rb_RPDB_Database, 	"set_secondary_key_creation_callback_method",		rb_RPDB_Database_setSecondaryKeyCreationCallbackMethod,			-1 	);
 	rb_define_method(						rb_RPDB_Database, 	"create_secondary_index",												rb_RPDB_Database_createSecondaryIndex,											-1 	);
+	rb_define_alias(						rb_RPDB_Database, 	"create_secondary",															"create_secondary_index"	);
+	rb_define_alias(						rb_RPDB_Database, 	"new_secondary",																"create_secondary_index"	);
+	rb_define_alias(						rb_RPDB_Database, 	"new_index",																		"create_secondary_index"	);
+	rb_define_alias(						rb_RPDB_Database, 	"associate_secondary_database",									"create_secondary_index"	);
+	rb_define_alias(						rb_RPDB_Database, 	"associate_secondary",													"create_secondary_index"	);
+	rb_define_alias(						rb_RPDB_Database, 	"associate",																		"create_secondary_index"	);
+	rb_define_alias(						rb_RPDB_Database, 	"use_as_secondary_index",												"create_secondary_index"	);
+	rb_define_alias(						rb_RPDB_Database, 	"use_as_secondary",															"create_secondary_index"	);
+	rb_define_alias(						rb_RPDB_Database, 	"create_secondary_index_with_database",					"create_secondary_index"	);
+	rb_define_alias(						rb_RPDB_Database, 	"create_secondary_with_database",								"create_secondary_index"	);
+	rb_define_alias(						rb_RPDB_Database, 	"secondary_database_with_index",								"create_secondary_index"	);
+	rb_define_alias(						rb_RPDB_Database, 	"database_with_index",													"create_secondary_index"	);
+	rb_define_alias(						rb_RPDB_Database, 	"secondary_database",														"create_secondary_index"	);
+	rb_define_alias(						rb_RPDB_Database, 	"secondary",																		"create_secondary_index"	);
+	rb_define_alias(						rb_RPDB_Database, 	"index",																				"create_secondary_index"	);
                     					
 	rb_define_method(						rb_RPDB_Database, 	"cursor_controller",														rb_RPDB_Database_cursorController,													0 	);
 	rb_define_alias(						rb_RPDB_Database, 	"cursors",																			"cursor_controller"	);
 	rb_define_method(						rb_RPDB_Database, 	"cursor",																				rb_RPDB_Database_cursor,																		0 	);
 	rb_define_method(						rb_RPDB_Database, 	"object_cursor",																rb_RPDB_Database_objectCursor,															0 	);
+
+	rb_define_method(						rb_RPDB_Database, 	"iterate",																			rb_RPDB_Database_iterate,																		0 	);
+	rb_define_alias(						rb_RPDB_Database, 	"each",																					"iterate"	);
+	rb_define_method(						rb_RPDB_Database, 	"iterate_duplicates",														rb_RPDB_Database_iterateDuplicates,													0 	);
+	rb_define_alias(						rb_RPDB_Database, 	"each_duplicate",																"iterate_duplicates"	);
+	rb_define_method(						rb_RPDB_Database, 	"iterate_keys",																	rb_RPDB_Database_iterateKeys,																0 	);
+	rb_define_alias(						rb_RPDB_Database, 	"each_key",																			"iterate_keys"	);
 
 	rb_define_method(						rb_RPDB_Database, 	"sequence_controller",													rb_RPDB_Database_sequenceController,													0 	);
 	rb_define_alias(						rb_RPDB_Database, 	"sequences",																		"sequence_controller"	);
@@ -328,7 +353,10 @@ VALUE rb_RPDB_Database_name( VALUE	rb_database )	{
 	RPDB_Database*		c_database;
 	C_RPDB_DATABASE( rb_database, c_database );
 
-	return rb_str_new2( RPDB_Database_name( c_database ) );	
+	char*	c_database_name		=	RPDB_Database_name( c_database );
+	VALUE	rb_database_name	=	rb_str_new2( c_database_name );
+
+	return rb_database_name;	
 }
 
 /***********
@@ -361,7 +389,10 @@ VALUE rb_RPDB_Database_handle( VALUE	rb_database )	{
 	RPDB_Database*		c_database;
 	C_RPDB_DATABASE( rb_database, c_database );
 
-	return ID2SYM( rb_intern( RPDB_Database_name( c_database ) ) );	
+	VALUE	rb_database_name		=	rb_RPDB_Database_name( rb_database );
+	VALUE	rb_database_handle	=	STRING2SYM( rb_database_name );
+
+	return rb_database_handle;	
 }
 
 /*********
@@ -488,63 +519,20 @@ VALUE rb_RPDB_Database_sync( VALUE	rb_database )	{
 	return rb_database;	
 }
 
-/**************
-*  associate  *
-**************/
-
-//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_associate.html
-//
-//	Note that it is not safe to associate as a secondary database a name that is in use by another thread of control or has open cursors.
-//
-//	The callback parameter is a callback function that creates the set of secondary keys corresponding to a given primary key and data pair.
-//
-//	Callback can return:
-//	- DB_DBT_APPMALLOC
-//	- DB_DBT_MULTIPLE
-//	- DB_DONOTINDEX
-//
-//	Secondary indices can be created manually by the application; there is no disadvantage, other than complexity, to doing so. 
-//	However, when the secondary key can be mechanically derived from the primary key and datum that it points to, as is frequently the case, 
-//	Berkeley DB can automatically and transparently manage secondary indices.
-//
-//	After a DB->associate call is made, the secondary indices become alternate interfaces to the primary database. 
-//	All updates to the primary will be automatically reflected in each secondary index that has been associated with it.
-//
-//	It is generally unsafe, but not forbidden by Berkeley DB, to modify a database that has secondary indices without having those indices open and associated.
-//	Similarly, it is generally unsafe, but not forbidden, to modify a secondary index directly. 
-//	
-//	If a secondary index becomes outdated for any reason, it should be discarded using the DB->remove method and a new one created using the DB->associate method. 
-//	If a secondary index is no VALUEer needed, all of its names should be closed using the DB->close method, and then the database should be removed 
-//	using a new database name and the DB->remove method.
-//
-//	Closing a primary database name automatically dis-associates all secondary database names associated with it.
-VALUE rb_RPDB_Database_associateSecondaryDatabase(	VALUE		rb_primary_database, 
-																										VALUE		rb_secondary_database )	{
-
-	RPDB_Database*		c_primary_database;
-	C_RPDB_DATABASE( rb_primary_database, c_primary_database );
-
-	RPDB_Database*		c_secondary_database;
-	C_RPDB_DATABASE( rb_secondary_database, c_secondary_database );
-
-	RPDB_Database_associateSecondaryDatabase(	c_primary_database,
-	 																					c_secondary_database	);
-
-	//	Returns primary database so associations can be chained
-	return rb_primary_database;
-}
-
-/*****************
-*  is_secondary  *
-*****************/
+/******************
+*  is_secondary?  *
+******************/
 
 VALUE rb_RPDB_Database_isSecondary(	VALUE	rb_database )	{
 	
 	RPDB_Database*		c_database;
 	C_RPDB_DATABASE( rb_database, c_database );
 
-	return ( RPDB_Database_isSecondary( c_database )	?	Qtrue 
-																										:	Qfalse );
+	BOOL	c_is_secondary	=	RPDB_Database_isSecondary( c_database );
+	
+	VALUE	rb_is_secondary	=	c_is_secondary ? Qtrue : Qfalse;
+
+	return rb_is_secondary;
 }
 
 /*********************
@@ -577,21 +565,55 @@ VALUE rb_RPDB_Database_setSecondaryKeyCreationCallbackMethod(	int			argc,
 
 	VALUE	rb_callback_object	=	Qnil;
 	VALUE	rb_callback_method	=	Qnil;
+	VALUE	rb_arity	=	Qnil;
 
 	/*------------------------------------------------------*/
 
-	VALUE	rb_callback_object_or_method	=	Qnil;
-	rb_scan_args(	argc,
-								args,
-								"11",
-								& rb_callback_object_or_method,
-								& rb_callback_method );
-	//	if we only have one arg it is method in self
-	if ( rb_callback_method == Qnil )	{
-		rb_callback_method	=	rb_callback_object_or_method;
-		rb_callback_object	=	rb_secondary_database;
+	if ( rb_block_given_p() )	{
+		rb_scan_args(	argc,
+									args,
+									"00" );
+		rb_callback_object	=	rb_block_lambda();
+	}
+	else {
+		
+		VALUE	rb_callback_object_or_method_or_lambda	=	Qnil;
+		rb_scan_args(	argc,
+									args,
+									"11",
+									& rb_callback_object_or_method_or_lambda,
+									& rb_callback_method );
+		//	if we only have one arg it is method in self
+		if ( rb_callback_method == Qnil )	{
+			VALUE	rb_first_arg_class = rb_class_of( rb_callback_object_or_method_or_lambda );
+			if ( rb_first_arg_class == rb_cProc )	{
+				rb_callback_object	=	rb_callback_object_or_method_or_lambda;
+			}
+			else {			
+				rb_callback_object	=	rb_secondary_database;
+				rb_callback_method	=	rb_callback_object_or_method_or_lambda;
+			}
+		}
+		else {
+			rb_callback_object		=	rb_callback_object_or_method_or_lambda;
+		}
 	}
 
+	ARITY_FOR_CALLBACK_PROC_OR_OBJECT_METHOD( rb_arity, rb_callback_object, rb_callback_method );
+
+	int	c_arity	=	FIX2INT( rb_arity );
+	switch ( c_arity )	{
+		case 1:
+		case 2:
+		case 3:
+		case -1:
+		case -2:
+			break;
+		default:
+			rb_raise( rb_eArgError, RPDB_RUBY_ERROR_WRONG_ARITY_FOR_SECONDARY_KEY_CALLBACK );			
+			break;
+	}
+	
 	/*------------------------------------------------------*/
 
 	RPDB_Database*		c_secondary_database;
@@ -642,8 +664,10 @@ VALUE rb_RPDB_Database_secondaryKeyCreationCallbackMethod(	VALUE	rb_secondary_da
 	//	return the array of callback info (callback object, callback method in object)
 	VALUE	rb_secondary_database_id	=	rb_obj_id( rb_secondary_database );
 	
-	return rb_hash_aref(	rb_callbacks_hash,
-												rb_secondary_database_id );
+	VALUE	rb_callback_info_hash	=	rb_hash_aref(	rb_callbacks_hash,
+																							rb_secondary_database_id );
+	
+	return rb_callback_info_hash;
 }
 
 /***************************
@@ -652,157 +676,117 @@ VALUE rb_RPDB_Database_secondaryKeyCreationCallbackMethod(	VALUE	rb_secondary_da
 
 //	index name, callback method in primary database
 //	index name, callback object, callback method
+//	index name, callback lambda
+//	index name, secondary_database, callback method in primary database
+//	index name, secondary_database, callback object, callback method
+//	index name, secondary_database, callback lambda
 VALUE rb_RPDB_Database_createSecondaryIndex(	int			argc, 
 																							VALUE*	args,
 																							VALUE		rb_primary_database_self	)	{
 
-	VALUE	rb_index_name					=	Qnil;
-	VALUE	rb_callback_object		=	Qnil;
-	VALUE	rb_callback_method		=	Qnil;	
-
-	/*------------------------------------------------------*/
-
-	if ( rb_block_given_p() )	{
-	
-		rb_scan_args(	argc,
-									args,
-									"1",
-									& rb_index_name );
-		rb_callback_method	=	rb_block_lambda();
-	}
-	else {
-		
-		VALUE	rb_callback_object_or_method						=	Qnil;
-		rb_scan_args(	argc,
-									args,
-									"21",
-									& rb_index_name,
-									& rb_callback_object_or_method,
-									& rb_callback_method );
-
-		//	if we don't have a callback method, rb_callback_object_or_method is our method in self
-		if ( rb_callback_method == Qnil )	{
-			rb_callback_method	=	rb_callback_object_or_method;
-			rb_callback_object	=	rb_primary_database_self;
-		}
-		else {
-			rb_callback_object	=	rb_callback_object_or_method;
-		}
-	}
-
-	//	change symbol to string b/c C function needs char*
-	if ( TYPE( rb_index_name ) == T_SYMBOL )	{
-		rb_index_name	=	rb_obj_as_string( rb_index_name );
-	}
-	
-	/*------------------------------------------------------*/
-	
-	char*	c_index_name	=	StringValuePtr( rb_index_name );
-	
-	VALUE	rb_parent_database_controller	=	rb_RPDB_Database_parentDatabaseController( rb_primary_database_self );
-	
-	VALUE	rb_secondary_database	=	rb_RPDB_Database_new(	1,
-																											& rb_index_name,
-																											rb_parent_database_controller );
-
-	RPDB_Database*		c_primary_database;
-	C_RPDB_DATABASE( rb_primary_database_self, c_primary_database );
-	RPDB_Database*		c_secondary_database;
-	C_RPDB_DATABASE( rb_secondary_database, c_secondary_database );
-	
-	//	create secondary database
-	RPDB_Database_internal_configureDatabaseInstanceForSecondaryIndexOnPrimaryDatabase(	c_primary_database,
-																																											c_secondary_database,
-																																											c_index_name,
-																																											FALSE );
-	//	store ruby-side callback info
-	rb_RPDB_Database_internal_setSecondaryKeyCreationCallbackMethodInfoHash(	rb_secondary_database,
-																																						rb_primary_database_self,
-																																						rb_callback_method );
-
-	//	associate secondary as index to primary
-	RPDB_Database_createSecondaryIndexWithDatabase(	c_primary_database,
-																									c_secondary_database,
-																									c_index_name,
-																									& rb_RPDB_Database_internal_secondaryKeyCreationCallbackMethod );
-	
-	//	Returns the new secondary database
-	return rb_secondary_database;	
+	return rb_RPDB_Database_internal_createSecondaryIndex(	argc,
+																													args,
+																													rb_primary_database_self,
+																													FALSE,
+																													FALSE );
 }
 
-/*****************************************
-*  create_secondary_index_with_database  *
-*****************************************/
+/*******************************************
+*  create_secondary_index_with_duplicates  *
+*******************************************/
 
-//	secondary, index, callback method or object, [callback method]
-VALUE rb_RPDB_Database_createSecondaryIndexWithDatabase(	int	argc, 
-																													VALUE*	args,
-																													VALUE	rb_database_self	)	{
+//	index name, callback method in primary database
+//	index name, callback object, callback method
+//	index name, callback lambda
+//	index name, secondary_database, callback method in primary database
+//	index name, secondary_database, callback object, callback method
+//	index name, secondary_database, callback lambda
+VALUE rb_RPDB_Database_createSecondaryIndexWithDuplicates(	int			argc, 
+																														VALUE*	args,
+																														VALUE		rb_primary_database_self	)	{
+
+	return rb_RPDB_Database_internal_createSecondaryIndex(	argc,
+																													args,
+																													rb_primary_database_self,
+																													TRUE,
+																													FALSE );
+
+}
+
+/**************************************************
+*  create_secondary_index_with_sorted_duplicates  *
+**************************************************/
+
+//	index name, callback method in primary database
+//	index name, callback object, callback method
+//	index name, callback lambda
+//	index name, secondary_database, callback method in primary database
+//	index name, secondary_database, callback object, callback method
+//	index name, secondary_database, callback lambda
+VALUE rb_RPDB_Database_createSecondaryIndexWithSortedDuplicates(	int			argc, 
+																																	VALUE*	args,
+																																	VALUE		rb_primary_database_self	)	{
+
+	return rb_RPDB_Database_internal_createSecondaryIndex(	argc,
+																													args,
+																													rb_primary_database_self,
+																													TRUE,
+																													TRUE );
+
+}
+
+/******************************
+*  secondaryDatabaseWithIndex  *
+******************************/
+
+VALUE rb_RPDB_Database_secondaryDatabaseWithIndex(	VALUE	rb_primary_database,
+																									VALUE	rb_index_name )	{
 	
-	VALUE	rb_secondary_database	=	Qnil;
-	VALUE	rb_index_name					=	Qnil;
-	VALUE	rb_callback_object		=	Qnil;
-	VALUE	rb_callback_method		=	Qnil;	
-
-	/*------------------------------------------------------*/
-
-	//	if we have a block we use that as our priority for definition
-	if ( rb_block_given_p() )	{
-		
-		rb_scan_args(	argc,
-									args,
-									"2",
-									& rb_secondary_database,
-									& rb_index_name );
-		rb_callback_method	=	rb_block_lambda();
+	//	make sure that store/retrieve by symbol
+	if ( TYPE( rb_index_name ) == T_STRING )	{
+		rb_index_name	=	STRING2SYM( rb_index_name );
 	}
-	else {
-		
-		VALUE	rb_callback_object_or_method						=	Qnil;
-		rb_scan_args(	argc,
-									args,
-									"31",
-									& rb_secondary_database,
-									& rb_index_name,
-									& rb_callback_object_or_method,
-									& rb_callback_method );
+	
+	VALUE	rb_secondary_database_hash	=	rb_RPDB_Database_secondaryDatabaseHash( rb_primary_database );
+	
+	VALUE	rb_database_with_index				=	rb_hash_aref(	rb_secondary_database_hash,
+																											rb_index_name );
+																									
+	return rb_database_with_index;
+}
 
-		//	if we don't have a callback method, rb_callback_object_or_method is our method in self
-		if ( rb_callback_method == Qnil )	{
-			rb_callback_method	=	rb_callback_object_or_method;
-			rb_callback_object	=	rb_database_self;
-		}
-		//	otherwise we already have our callback method and just need to set our object
-		else {
-			rb_callback_object	=	rb_callback_object_or_method;
-		}
+/*************************************
+*  requireSecondaryDatabaseWithIndex  *
+*************************************/
+
+VALUE rb_RPDB_Database_requireSecondaryDatabaseWithIndex(	VALUE	rb_primary_database,
+																													VALUE	rb_index_name )	{
+	
+	VALUE	rb_database_with_index				=	rb_RPDB_Database_secondaryDatabaseWithIndex(	rb_primary_database,
+																																									rb_index_name );
+
+	if ( rb_database_with_index == Qnil )	{
+		rb_raise( rb_eArgError, "Requested secondary index was missing." );
 	}
+	return rb_database_with_index;
+}
 
-	//	change symbol to string b/c C function needs char*
-	if ( TYPE( rb_index_name ) == T_SYMBOL )	{
-		rb_index_name	=	rb_obj_as_string( rb_index_name );
+/**************************
+*  secondaryDatabaseHash  *
+**************************/
+
+VALUE rb_RPDB_Database_secondaryDatabaseHash( VALUE rb_primary_database )	{
+	
+	VALUE	rb_secondary_database_hash	=	rb_iv_get(	rb_primary_database,
+																									RPDB_RUBY_CLASS_SECONDARY_DATABASES );
+	if ( rb_secondary_database_hash == Qnil )	{
+		rb_secondary_database_hash = rb_hash_new();
+		rb_iv_set(	rb_primary_database,
+								RPDB_RUBY_CLASS_SECONDARY_DATABASES,
+								rb_secondary_database_hash );
 	}
-	
-	/*------------------------------------------------------*/
-
-	RPDB_Database*		c_primary_database;
-	C_RPDB_DATABASE( rb_database_self, c_primary_database );
-	
-	RPDB_Database*		c_secondary_database;
-	C_RPDB_DATABASE( rb_secondary_database, c_secondary_database );
-	
-	rb_RPDB_Database_internal_setSecondaryKeyCreationCallbackMethodInfoHash(	rb_secondary_database,
-																																						rb_callback_object,
-																																						rb_callback_method );
-		
-	char*	c_index_name	=	StringValuePtr( rb_index_name );
-	RPDB_Database_createSecondaryIndexWithDatabase(	c_primary_database,
-																									c_secondary_database,
-																									c_index_name,
-																									& rb_RPDB_Database_internal_secondaryKeyCreationCallbackMethod );
-	
-	return rb_database_self;
-}	
+	return rb_secondary_database_hash;
+}
 
 /************
 *  compact  *
@@ -862,9 +846,9 @@ VALUE rb_RPDB_Database_prepareDatabaseForFileTransfer( VALUE	rb_database )	{
 VALUE rb_RPDB_Database_cursor( VALUE	rb_database )	{
 	
 	VALUE	rb_database_cursor_controller	=	rb_RPDB_Database_cursorController( rb_database );	
-	VALUE	rb_database_cusor							=	rb_RPDB_DatabaseCursorController_cursor( rb_database_cursor_controller );
+	VALUE	rb_database_cursor						=	rb_RPDB_DatabaseCursorController_cursor( rb_database_cursor_controller );
 		
-	return rb_database_cusor;
+	return rb_database_cursor;
 }	
 
 /*************
@@ -874,10 +858,93 @@ VALUE rb_RPDB_Database_cursor( VALUE	rb_database )	{
 VALUE rb_RPDB_Database_objectCursor( VALUE	rb_database )	{
 
 	VALUE	rb_database_cursor_controller	=	rb_RPDB_Database_cursorController( rb_database );	
-	VALUE	rb_database_cusor							=	rb_RPDB_DatabaseCursorController_objectCursor( rb_database_cursor_controller );
+	VALUE	rb_database_cursor						=	rb_RPDB_DatabaseCursorController_objectCursor( rb_database_cursor_controller );
 
-	return rb_database_cusor;
+	return rb_database_cursor;
 }	
+
+/************
+*  iterate  *
+************/
+
+VALUE rb_RPDB_Database_iterate( VALUE	rb_database )	{
+	
+	VALUE	rb_database_cursor						=	rb_RPDB_Database_cursor( rb_database );
+
+	//	set the cursor position
+	/*
+	rb_funcall(	rb_database_cursor,
+							rb_intern( "first" ),
+							0 );
+*/
+	rb_RPDB_DatabaseCursor_retrieveFirst( rb_database_cursor );
+	
+	//	if we have a block we can simply let our function iterate and return self
+	if ( rb_block_given_p() )	{
+		rb_RPDB_DatabaseCursor_iterate(	rb_database_cursor	);		
+	}
+	//	otherwise we return the enumerator and let the user catch the exception to finish
+	else {
+		return rb_ensure( rb_RPDB_DatabaseCursor_iterate, rb_database_cursor,
+											rb_RPDB_DatabaseCursor_close, rb_database_cursor );
+	}
+	
+	return rb_database;
+}
+
+/*****************
+*  iterate_keys  *
+*****************/
+
+VALUE rb_RPDB_Database_iterateKeys( VALUE	rb_database )	{
+	
+	VALUE	rb_database_cursor_controller	=	rb_RPDB_Database_cursorController( rb_database );	
+	VALUE	rb_database_cursor						=	rb_RPDB_DatabaseCursorController_cursor( rb_database_cursor_controller );
+
+	//	set the cursor position
+	rb_funcall(	rb_database_cursor,
+							rb_intern( "first" ),
+							0 );
+
+	//	if we have a block we can simply let our function iterate and return self
+	if ( rb_block_given_p() )	{
+		rb_RPDB_DatabaseCursor_iterateKeys(	rb_database_cursor	);		
+	}
+	//	otherwise we return the enumerator and let the user catch the exception to finish
+	else {
+		return rb_ensure( rb_RPDB_DatabaseCursor_iterateKeys, rb_database_cursor,
+											rb_RPDB_DatabaseCursor_close, rb_database_cursor );
+	}
+
+	return rb_database;
+}
+
+/*****************
+*  iterate_keys  *
+*****************/
+
+VALUE rb_RPDB_Database_iterateDuplicates( VALUE	rb_database )	{
+	
+	VALUE	rb_database_cursor_controller	=	rb_RPDB_Database_cursorController( rb_database );	
+	VALUE	rb_database_cursor						=	rb_RPDB_DatabaseCursorController_cursor( rb_database_cursor_controller );
+
+	//	set the cursor position
+	rb_funcall(	rb_database_cursor,
+							rb_intern( "first" ),
+							0 );
+
+	//	if we have a block we can simply let our function iterate and return self
+	if ( rb_block_given_p() )	{
+		rb_RPDB_DatabaseCursor_iterateDuplicates(	rb_database_cursor	);		
+	}
+	//	otherwise we return the enumerator and let the user catch the exception to finish
+	else {
+		return rb_ensure( rb_RPDB_DatabaseCursor_iterateDuplicates, rb_database_cursor,
+											rb_RPDB_DatabaseCursor_close, rb_database_cursor );
+	}
+
+	return rb_database;
+}
 
 /*******************************************************************************************************************************************************************************************
 																		Controllers
@@ -976,7 +1043,9 @@ VALUE rb_RPDB_Database_write(	int			argc,
 															VALUE*	args, 
 															VALUE		rb_database )	{
 
-	PARSE_RUBY_ARGS_FOR_KEY_DATA_HASH( argc, args, rb_database, rb_RPDB_Database_write, FALSE );
+	VALUE	rb_key	=	Qnil;
+	VALUE	rb_data	=	Qnil;
+	PARSE_RUBY_ARGS_FOR_KEY_DATA_HASH_OR_ARRAY( argc, args, rb_database, rb_RPDB_Database_write, FALSE, rb_key, rb_data );
 
 	RPDB_Database*		c_database;
 	C_RPDB_DATABASE( rb_database, c_database );
@@ -1045,88 +1114,73 @@ VALUE rb_RPDB_Database_keyExists(	VALUE	rb_database,
 																		Data Retrieval
 *******************************************************************************************************************************************************************************************/
 
-/*****************************
-*  retrieveRecord  *
-*****************************/
+/*************
+*  retrieve  *
+*************/
 
-//	database.retrieve( key )
-//	database.retrieve( key, data )
-//	database.retrieve( key => data )
+//	database.retrieve( primary_key )
+//	database.retrieve( :index, secondary_key )
+//	database.retrieve( :index => secondary_key_in_index )
 VALUE rb_RPDB_Database_retrieve(	int			argc, 
 																	VALUE*	args,
 																	VALUE		rb_database )	{
 
+	VALUE	rb_key		=	Qnil;
+	VALUE	rb_index	=	Qnil;	
+	PARSE_RUBY_ARGS_FOR_KEY_AND_OR_INDEX_OR_HASH_OR_ARRAY( argc, args, rb_database, rb_RPDB_Database_retrieve, TRUE, rb_index, rb_key );
+
+	RPDB_Database*	c_database	=	NULL;
+	RPDB_Record*		c_record		=	NULL;
+//	PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );
+		VALUE	rb_which_database	=	Qnil;																																			\
+		if ( rb_index != Qnil )	{																																						\
+			rb_which_database	=	rb_RPDB_Database_secondaryDatabaseWithIndex(	rb_database,						\
+																																				rb_index );											\
+		}																																																		\
+		else {																																															\
+			rb_which_database	=	rb_database;																													\
+		}																																																		\
+		C_RPDB_DATABASE( rb_which_database, c_database );
+//	PREPARE_RECORD_FROM_KEY_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, rb_index, rb_key );
+		c_record	=	RPDB_Record_new( c_database );																													\
+		rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_which_database,							\
+																																				rb_key,													\
+																																				c_record->key->wrapped_bdb_dbt,	\
+																																				TRUE );
+
+	c_record	=	RPDB_Database_retrieveRecord(	c_database,
+																						c_record );
+	
+	RETURN_RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record );
+}
+
+/******************
+*  retrieve_pair  *
+******************/
+
+//	database.retrieve_pair( primary_key, data )
+//	database.retrieve_pair( primary_key => data )
+//	database.retrieve_pair( :index, secondary_key, data )
+//	database.retrieve_pair( :index, secondary_key => data )
+//	database.retrieve_pair( :index => {	secondary_key => data } )
+VALUE rb_RPDB_Database_retrievePair(	int			argc, 
+																			VALUE*	args,
+																			VALUE		rb_database )	{
+	
 	VALUE	rb_key	=	Qnil;
 	VALUE	rb_data	=	Qnil;
-	/*------------------------------------------------------*/
+	PARSE_RUBY_ARGS_FOR_KEY_DATA_HASH_OR_ARRAY( argc, args, rb_database, rb_RPDB_Database_retrievePair, TRUE, rb_key, rb_data );
 
-	VALUE	rb_key_or_key_data_hash	=	Qnil;
-	rb_scan_args(	argc,
-								args,
-								"11",
-								& rb_key_or_key_data_hash,
-								& rb_data );
+	RPDB_Database*	c_database	=	NULL;
+	RPDB_Record*		c_record		=	NULL;	
+	PREPARE_RECORD_FROM_KEY_DATA_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, Qnil, rb_key, rb_data );
 
-	if ( TYPE( rb_key_or_key_data_hash ) == T_HASH )	{
-		VALUE	rb_hash_data_array	=	rb_funcall( rb_key_or_key_data_hash,
-																						rb_intern( "first" ),
-																						0 );
-		rb_key	=	rb_ary_shift( rb_hash_data_array );
-		rb_data	=	rb_ary_shift( rb_hash_data_array );
-	}
-	else {
-		rb_key	=	rb_key_or_key_data_hash;
-	}
-	
-	/*------------------------------------------------------*/
+	c_record	=	RPDB_Database_retrieveMatchingRecord(	c_database,
+																										c_record );
 
-	//	we are always retrieving a string— even if it is a byte string
-	RPDB_Database*		c_database;
-	C_RPDB_DATABASE( rb_database, c_database );
+	RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record );
 
-	RPDB_Record*	c_record	=	RPDB_Record_new( c_database );
-
-	//	1 arg: retrieve key - key is args[ 0 ] in either case
-	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_database,
-																																						rb_key,
-																																						c_record->key->wrapped_bdb_dbt,
-																																						TRUE );
-	
-
-	if ( rb_data != Qnil )	{
-
-		rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_database,
-																																							rb_data,
-																																							c_record->data->wrapped_bdb_dbt,
-																																							FALSE );
-		
-/*
-	FIX	-	add function to support exact key/pair match for delete
-
-		RPDB_Database_deleteDataForRawKeyDataPair(	c_database,
-													c_key,
-													c_key_size,
-													c_data,
-													c_data_size );
-													*/
-	}
-	else {
-		
-		c_record	=	RPDB_Database_retrieveRecord(	c_database,
-																							c_record );
-	}
-	
-	VALUE	return_value	=	Qnil;
-	if ( RPDB_Record_dataSize( c_record ) )	{
-	
-		return_value	=	rb_str_new(	(char*) RPDB_Record_rawData( c_record ),
-																				RPDB_Record_dataSize( c_record ) );
-
-	}
-	
-	RPDB_Record_free( & c_record );
-	
-	return return_value;
+	return rb_data;
 }
 
 /************************************
@@ -1251,62 +1305,15 @@ VALUE rb_RPDB_Database_delete(	int			argc,
 																VALUE		rb_database )	{
 
 	VALUE	rb_key		=	Qnil;
-	VALUE	rb_data		=	Qnil;
+	VALUE	rb_index	=	Qnil;	
+	PARSE_RUBY_ARGS_FOR_KEY_AND_OR_INDEX_OR_HASH_OR_ARRAY( argc, args, rb_database, rb_RPDB_Database_retrieve, TRUE, rb_index, rb_key );
 
-	/*------------------------------------------------------*/
+	RPDB_Database*	c_database	=	NULL;
+	RPDB_Record*		c_record		=	NULL;
+	PREPARE_RECORD_FROM_KEY_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, rb_index, rb_key );
 
-	VALUE	rb_key_or_key_data_hash	=	Qnil;
-	rb_scan_args(	argc,
-								args,
-								"11",
-								& rb_key_or_key_data_hash,
-								& rb_data );
-
-	if ( TYPE( rb_key_or_key_data_hash ) == T_HASH )	{
-		VALUE	rb_hash_data_array	=	rb_funcall( rb_key_or_key_data_hash,
-																						rb_intern( "first" ),
-																						0 );
-		rb_key	=	rb_ary_shift( rb_hash_data_array );
-		rb_data	=	rb_ary_shift( rb_hash_data_array );
-	}
-	else {
-		rb_key	=	rb_key_or_key_data_hash;
-	}
-	
-	/*------------------------------------------------------*/
-
-
-	RPDB_Database*						c_database;
-	C_RPDB_DATABASE( rb_database, c_database );
-
-	RPDB_Record*	c_record	=	RPDB_Record_new( c_database );
-
-	//	1 arg: retrieve key - key is args[ 0 ] in either case
-	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_database,
-																																						rb_key,
-																																						c_record->key->wrapped_bdb_dbt,
-																																						TRUE );
-
-	if ( rb_data != Qnil )	{
-		
-		rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_database,
-																																							rb_data,
-																																							c_record->data->wrapped_bdb_dbt,
-																																							FALSE );
-/*
-	FIX	-	add function to support exact key/pair match for delete
-
-		RPDB_Database_deleteDataForRawKeyDataPair(	c_database,
-													c_key,
-													c_key_size,
-													c_data,
-													c_data_size );
-													*/
-	}
-	else {
-		RPDB_Database_deleteRecord(	c_database,
-																c_record );
-	}
+	RPDB_Database_deleteRecord(	c_database,
+															c_record );
 
 	
 	return rb_database;
@@ -1445,12 +1452,12 @@ RPDB_SECONDARY_KEY_CREATION_RETURN rb_RPDB_Database_internal_secondaryKeyCreatio
 	
 	VALUE	rb_key	=	rb_str_new(	c_record->key->wrapped_bdb_dbt->data,
 															c_record->key->wrapped_bdb_dbt->size );
-	VALUE	rb_data	=	rb_str_new(	c_record->key->wrapped_bdb_dbt->data,
-															c_record->key->wrapped_bdb_dbt->size );
+	VALUE	rb_data	=	rb_str_new(	c_record->data->wrapped_bdb_dbt->data,
+															c_record->data->wrapped_bdb_dbt->size );
 	
-	VALUE	rb_database_settings_controller							=	rb_RPDB_Database_settingsController( rb_secondary_database );
+	VALUE	rb_database_settings_controller										=	rb_RPDB_Database_settingsController( rb_secondary_database );
 	VALUE	rb_database_record_read_write_settings_controller	=	rb_RPDB_DatabaseRecordSettingsController_readWriteSettingsController( rb_database_settings_controller );	
-	VALUE	rb_should_serialize_data										=	rb_RPDB_DatabaseRecordReadWriteSettingsController_serializeData( rb_database_record_read_write_settings_controller );
+	VALUE	rb_should_serialize_data													=	rb_RPDB_DatabaseRecordReadWriteSettingsController_serializeData( rb_database_record_read_write_settings_controller );
 	
 	//	if serialization is on, unserialize the key and object
 	if ( rb_should_serialize_data == Qtrue )	{
@@ -1460,6 +1467,9 @@ RPDB_SECONDARY_KEY_CREATION_RETURN rb_RPDB_Database_internal_secondaryKeyCreatio
 	}
 
 	VALUE	rb_callback_info_hash	=	rb_RPDB_Database_secondaryKeyCreationCallbackMethod(	rb_secondary_database );	
+	if ( rb_callback_info_hash == Qnil )	{
+		rb_raise( rb_eRuntimeError, "Could not find callback info for secondary database." );
+	}
 	VALUE	rb_callback_object		=	rb_hash_aref(	rb_callback_info_hash,
 																							ID2SYM( rb_intern( "object" ) ) );
 	VALUE	rb_callback_method		=	rb_hash_aref(	rb_callback_info_hash,
@@ -1467,59 +1477,58 @@ RPDB_SECONDARY_KEY_CREATION_RETURN rb_RPDB_Database_internal_secondaryKeyCreatio
 
 	//	Call our ruby callback and translate returns from ruby callback to return to C function	
 	VALUE		rb_secondary_keys	=	Qnil;
-
-	VALUE	rb_primary_database	=	rb_RPDB_Database_primaryDatabase( rb_secondary_database );
-
-	//	if we have a proc
-	if ( TYPE( rb_callback_method ) != T_SYMBOL )	{
-
-		VALUE	rb_args	=	rb_ary_new();
-		rb_ary_push(	rb_args,
-									rb_data );
-
-		switch ( rb_proc_arity( rb_callback_method ) )	{
-			
-			//	* 1 arg gets data
-			case 1:
-				rb_proc_call(	rb_callback_method,
-											rb_args );
-				break;
-			
-			//	* 2 args gets key, data
-			case 2:
-				rb_ary_unshift( rb_args,
-												rb_key );
-				rb_proc_call(	rb_callback_method,
-											rb_args );				
-				break;
-		}
-	}
-	//	if our callback is in the secondary database (object and secondary are the same) we pass key, data
-	else if ( rb_callback_object == rb_secondary_database )	{
 	
-		rb_secondary_keys	=	rb_funcall(	rb_secondary_database,
-																		SYM2ID( rb_callback_method ),
-																		2,
-																		rb_key,
-																		rb_data );
+	BOOL		c_callback_is_proc	=	FALSE;
+		
+	VALUE	rb_arity	=	Qnil;
+	ARITY_FOR_CALLBACK_PROC_OR_OBJECT_METHOD( rb_arity, rb_callback_object, rb_callback_method );
+	
+	VALUE	rb_args	=	rb_ary_new();
+
+	int	c_arity	=	FIX2INT( rb_arity );
+	switch ( c_arity )	{
+		
+		//	* 3 args gets database, key, data
+		//	-1 (*args) and -2 (arg, *args) are the same as 3
+		case 3:			
+		case -1:
+		case -2:
+			rb_ary_push(	rb_args,
+										rb_secondary_database );
+			rb_ary_push(	rb_args,
+										rb_key );
+			rb_ary_push(	rb_args,
+										rb_data );
+			break;
+
+		//	* 2 args gets key, data
+		case 2:
+			rb_ary_push(	rb_args,
+										rb_key );
+			rb_ary_push(	rb_args,
+										rb_data );
+			break;
+
+		//	* 1 arg gets data
+		case 1:
+			rb_ary_push(	rb_args,
+										rb_data );
+			break;
+		
+		default:
+			rb_raise( rb_eArgError, RPDB_RUBY_ERROR_WRONG_ARITY_FOR_SECONDARY_KEY_CALLBACK );
+			break;
 	}
-	else if (	rb_callback_object == rb_primary_database )	{
-					
-		rb_secondary_keys	=	rb_funcall(	rb_primary_database,
-																		SYM2ID( rb_callback_method ),
-																		2,
-																		rb_key,
-																		rb_data );		
+
+	if ( c_callback_is_proc )	{
+		rb_secondary_keys	=	rb_proc_call(	rb_callback_method,
+																			rb_args );				
 	}
-	//	otherwise we pass secondary database, key, data
 	else {
-	
-		rb_secondary_keys	=	rb_funcall(	rb_callback_object,
-																		SYM2ID( rb_callback_method ),
-																		3,
-																		rb_secondary_database,
-																		rb_key,
-																		rb_data );		
+		rb_secondary_keys	=	rb_funcall2(	rb_callback_object,
+																			SYM2ID( rb_callback_method ),
+																			RARRAY_LEN( rb_args ),
+																			RARRAY_PTR( rb_args ) );
 	}
 
 	//	if nil, don't index
@@ -1824,3 +1833,149 @@ void rb_RPDB_Database_internal_packRubyValueForDatabaseStorage(	VALUE		rb_databa
 	}
 }
 
+/*************************
+*  createSecondaryIndex  *
+*************************/
+
+VALUE rb_RPDB_Database_internal_createSecondaryIndex(	int			argc,
+																											VALUE*	args,
+																											VALUE		rb_primary_database_self,
+																											BOOL		c_with_duplicates,
+																											BOOL		c_with_sorted_duplicates )	{
+	
+	VALUE	rb_secondary_database	=	Qnil;
+	VALUE	rb_index_name					=	Qnil;
+
+	/*------------------------------------------------------*/
+
+	VALUE	rb_secondary_database_or_callback_object_or_lambda_or_method	=	Qnil;
+	VALUE	rb_callback_object_or_lambda_or_method	=	Qnil;
+	VALUE	rb_callback_method											=	Qnil;
+	rb_scan_args(	argc,
+								args,
+								"13",
+								& rb_index_name,
+								& rb_secondary_database_or_callback_object_or_lambda_or_method,
+								& rb_callback_object_or_lambda_or_method,
+								& rb_callback_method );
+	
+	BOOL	c_call_set_method_after_creating_secondary	=	FALSE;
+	//	if we have callback info or a block (which is our callback lambda)
+	if (		rb_secondary_database_or_callback_object_or_lambda_or_method != Qnil
+			||	rb_block_given_p() )	{
+			
+		if ( rb_block_given_p() )	{
+			c_call_set_method_after_creating_secondary	=	TRUE;
+		}
+		else {
+			
+			VALUE	rb_class_of_second_arg	=	rb_class_of( rb_secondary_database_or_callback_object_or_lambda_or_method );
+			VALUE	rb_second_arg_ancestors	=	rb_mod_ancestors( rb_class_of_second_arg );
+			//	if we have a database
+			if ( rb_ary_includes(	rb_second_arg_ancestors,
+														rb_RPDB_Database ) == Qtrue )	{
+				rb_secondary_database	=	rb_secondary_database_or_callback_object_or_lambda_or_method;
+				//	if we have optional args, pass them to setSecondaryKeyCallbackMethod
+				if ( rb_callback_object_or_lambda_or_method != Qnil )	{
+					rb_RPDB_Database_setSecondaryKeyCreationCallbackMethod(	argc - 2,
+																																	args + 2,
+																																	rb_secondary_database );
+				}
+
+			}
+			//	no database but callback info - set callback in primary
+			else {
+				c_call_set_method_after_creating_secondary	=	TRUE;
+			}
+		}
+	}
+	
+	if ( TYPE( rb_index_name ) == T_SYMBOL )	{
+		rb_index_name = rb_obj_as_string( rb_index_name );
+	}
+	
+	/*------------------------------------------------------*/
+
+	RPDB_Database*		c_primary_database	=	NULL;
+	C_RPDB_DATABASE( rb_primary_database_self, c_primary_database );
+
+	RPDB_Database*		c_secondary_database;
+	
+	char*	c_index_name										=	StringValuePtr( rb_index_name );
+
+	//	if we don't have a secondary yet, get one from our primary controller
+	if ( rb_secondary_database == Qnil )	{
+		VALUE	rb_primary_database_controller	=	rb_RPDB_Database_parentDatabaseController( rb_primary_database_self );
+		char*	c_primary_database_name					=	RPDB_Database_name( c_primary_database );
+		char*	c_secondary_database_name				=	RPDB_Database_internal_secondaryDatabaseNameForIndex( c_index_name,
+																																																	c_primary_database_name );
+		VALUE	rb_secondary_database_name			=	rb_str_new2( c_secondary_database_name );
+		rb_secondary_database									=	rb_RPDB_DatabaseController_newDatabase(	rb_primary_database_controller,
+																																										rb_secondary_database_name );
+
+		C_RPDB_DATABASE( rb_secondary_database, c_secondary_database );
+
+		//	create secondary database
+		RPDB_Database_internal_configureDatabaseInstanceForSecondaryIndexOnPrimaryDatabase(	c_primary_database,
+																																												c_secondary_database,
+																																												c_index_name,
+																																												c_with_duplicates,
+																																												c_with_sorted_duplicates );
+
+		if ( c_call_set_method_after_creating_secondary == TRUE )	{
+		
+			//	if rb_callback_object_or_lambda_or_method is a method then we have no object (proc or instance),
+			//	so we use primary_database_self
+			//	we have to push this on
+			if ( rb_block_given_p() )	{
+			
+				rb_RPDB_Database_setSecondaryKeyCreationCallbackMethod(	0,
+																																NULL,
+																																rb_secondary_database );
+			}
+			else if ( TYPE( rb_callback_object_or_lambda_or_method ) == T_SYMBOL )	{
+				
+				rb_RPDB_Database_setSecondaryKeyCreationCallbackMethod(	argc - 1,
+																																args + 1,
+																																rb_secondary_database );
+			}
+			else {
+				
+				if ( TYPE( rb_secondary_database_or_callback_object_or_lambda_or_method ) == T_SYMBOL )	{
+					
+					args[ 0 ] = rb_primary_database_self;
+					rb_RPDB_Database_setSecondaryKeyCreationCallbackMethod(	argc,
+																																	args,
+																																	rb_secondary_database );
+				}
+				else {
+					
+					rb_RPDB_Database_setSecondaryKeyCreationCallbackMethod(	argc - 1,
+																																	args + 1,
+																																	rb_secondary_database );
+				}
+			}
+		}
+	}
+	
+	if ( c_secondary_database == NULL )	{	
+		C_RPDB_DATABASE( rb_secondary_database, c_secondary_database );
+	}
+
+	VALUE	rb_secondary_database_hash		=	rb_RPDB_Database_secondaryDatabaseHash( rb_primary_database_self );
+	if ( TYPE( rb_index_name ) == T_STRING )	{
+		rb_index_name = STRING2SYM( rb_index_name );
+	}	
+	rb_hash_aset(	rb_secondary_database_hash,
+								rb_index_name,
+								rb_secondary_database );
+	
+	//	associate secondary as index to primary
+	RPDB_Database_createSecondaryIndexWithDatabase(	c_primary_database,
+																									c_secondary_database,
+																									c_index_name,
+																									& rb_RPDB_Database_internal_secondaryKeyCreationCallbackMethod );
+
+	//	Returns primary database so associations can be chained
+	return rb_secondary_database;	
+}

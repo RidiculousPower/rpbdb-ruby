@@ -70,15 +70,34 @@ describe RPDB::Environment::DatabaseController::Database::JoinController do
   ##########
   
   it "can perform a join and return a join cursor" do
-    @database.join.cursor.should_not == nil
+    letters_database = @database.create_secondary_index( :letters ) do |key, data|
+      return key.chars.to_a
+    end
+    vowels_database = @database.create_secondary_index( :vowels ) do |key, data|
+      return key.chars.select { |char| 'aeiou'.chars.include?( char ) }
+    end
+    @database.write( "n vwls" => "one value" )
+    @database.write( "some vowels" => "another value" )
+    @database.write( "and every vowel but i and y" => "yet another value" )
+    require 'pp'
+    pp @database.retrieve( "n vwls" )
+    cursor = vowels_database.cursor
+pp     cursor.first
+#    cursor.each do |key, value, index|
+#      puts 'record #' + index.to_s + ' had key "' + key + '" and value "' + value + '".'
+#    end
+#    vowels_database.retrieve( 'e' ).should_not == nil
+#    join_cursor = @database.join.cursor(  :vowels   => 'e',
+#                                          :letters  => 'm' )
+#    join_cursor.should_not == nil
   end
 
-  ##################
-  #  join_cursors  #
-  ##################
+  ##########################
+  #  join_list_of_cursors  #
+  ##########################
   
   it "can perform a join and return a join cursor" do
-    @database.join.cursor.should_not == nil
+    Fail
   end
 
   #######################
@@ -87,12 +106,7 @@ describe RPDB::Environment::DatabaseController::Database::JoinController do
   #######################
 
   it "can close all join" do
-    cursor1 = @database.join.cursor.open
-    cursor2 = @database.join.cursor.open
-    cursor3 = @database.join.cursor.open
-    cursor4 = @database.join.cursor.open
-    @database.join.close_all
-    [ cursor1, cursor2, cursor3, cursor4 ].each { |cursor| cursor.is_open?.should == false }
+    Fail
   end
   
 end

@@ -41,9 +41,9 @@ describe RPDB::Environment do
     # now we have to check settings to verify
     
     # make sure app-exclusive memory access is on
-    environment.settings.memory_pool.exclusive_access?.should == true
+    environment.settings.memory_pool.read_write.exclusive_access?.should == true
     # make sure backing file is off (no flushing from memory)
-    environment.settings.memory_pool.no_temporary_backing_file?.should == true
+    environment.settings.memory_pool.read_write.no_temporary_backing_file?.should == true
     # make sure logging in memory is on or logging as a whole is off
     if environment.settings.logging.in_memory? == false
       environment.settings.logging.off?.should == true
