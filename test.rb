@@ -13,7 +13,6 @@ $duplicates_database_name   = :duplicates_db
 
 @environment = RPDB::Environment.new( $environment_path )
 @environment.open
-@database_controller = @environment.database_controller
 
 
 
@@ -21,9 +20,9 @@ $duplicates_database_name   = :duplicates_db
 
 
 database = @environment.database.new( $database_name ).open
-database.create_secondary_index( :value ) do |key, value|
-  return value
-end
+#database.write( "key" => 'some data' )
+#database.delete( :value => 'some data' )
+database.retrieve( "key" ).should == nil    
 
 
 
@@ -31,6 +30,4 @@ end
 
 
 
-@environment = RPDB::Environment.new( $environment_path )
-@environment.open
-@database_controller = @environment.database_controller
+@environment.close

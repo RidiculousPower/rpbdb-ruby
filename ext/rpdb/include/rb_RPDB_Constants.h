@@ -436,6 +436,104 @@
 	/*********************
 	*  Argument Parsing  *
 	*********************/
+		
+	//	1: array
+	//	1: index_or_key => key_or_data_or_array
+	//	1: index_or_key => [ key_or_data, ... ]
+	//	2: index_or_key, key_or_data_or_array
+	//	2: index, key => data_or_array
+	//	3: index, key, data_or_array
+	#define PARSE_RUBY_ARGS_FOR_KEY_DATA_OR_KEY_DATA_HASH_OR_KEY_ARRAY_HASH_OR_ARRAY( argc, args, rb_self, function, returns_other_than_self, rb_key, rb_data )		\
+		PARSE_RUBY_ARGS_FOR_ARRAY( argc, args, rb_self, function )																																									\
+//		else PARSE_RUBY_ARGS_FOR_INDEXORKEY_KEYORDATA_OR_INDEXORKEY_KEYORDATA_HASH_OR_KEY_ARRAY_HASH( argc, args, rb_self, rb_return_array, function )
+
+	//	check if first arg is an array; if it is, process each arg as array or throw error
+	#define PARSE_RUBY_ARGS_FOR_ARRAY( argc, args, rb_self, function )											\
+		if (		argc																																													\
+				&&	TYPE( args[ 0 ] ) == T_ARRAY )	{																															\
+			VALUE	rb_return_array	=	rb_ary_new();																																	\
+			ITERATE_ARGS_ARRAY_FOR_ARRAYS_AND_CALL_ON_EACH_MEMBER( argc, args, rb_self, rb_return_array, function )				\
+		}
+	
+	//	if we have only keys (1..2):
+	//	1: [ any arg ]
+	//	1: key_or_array
+	//	1: index => key_or_array
+	//	1: index => [ key_or_array, ... ]
+	//	2: index, key_or_array
+	//	2: index, [ key_or_array, ... ]
+//	#define PARSE_RUBY_ARGS_FOR_INDEX_KEY( argc, args, rb_self, function, returns_other_than_self )										
+
+
+	#define ITERATE_AND_CALL_SELF_ON_ARRAY_MEMBERS_AND_RETURN_RESULTS_FOR_KEY( rb_index, rb_self, rb_key_array, function, returns_other_than_self )					\
+		/*	we need to recursively pass the common prefix from our hash with the array	*/																		\
+		VALUE	rb_args_prefix	=	rb_ary_new();																																									\
+		ITERATE_AND_CALL_SELF_ON_ARRAY_MEMBERS_AND_RETURN_RESULTS( rb_args_prefix, rb_self, rb_key_array, function, returns_other_than_self )
+
+	#define ITERATE_AND_CALL_SELF_ON_ARRAY_MEMBERS_AND_RETURN_RESULTS_FOR_INDEX_KEY( rb_index, rb_self, rb_key_array, function, returns_other_than_self )					\
+		/*	we need to recursively pass the common prefix from our hash with the array	*/																		\
+		VALUE	rb_args_prefix	=	rb_ary_new();																																									\
+		rb_ary_push(	rb_args_prefix,																																													\
+									rb_index );																																															\
+		ITERATE_AND_CALL_SELF_ON_ARRAY_MEMBERS_AND_RETURN_RESULTS( rb_args_prefix, rb_self, rb_key_array, function, returns_other_than_self )
+
+	#define ITERATE_AND_CALL_SELF_ON_ARRAY_MEMBERS_AND_RETURN_RESULTS_FOR_KEY_DATA( rb_key, rb_self, rb_key_array, function, returns_other_than_self )					\
+		/*	we need to recursively pass the common prefix from our hash with the array	*/																		\
+		VALUE	rb_args_prefix	=	rb_ary_new();																																									\
+		rb_ary_push(	rb_args_prefix,																																													\
+									rb_key );																																															\
+		ITERATE_AND_CALL_SELF_ON_ARRAY_MEMBERS_AND_RETURN_RESULTS( rb_args_prefix, rb_self, rb_key_array, function, returns_other_than_self )
+
+	#define ITERATE_AND_CALL_SELF_ON_ARRAY_MEMBERS_AND_RETURN_RESULTS_FOR_INDEX_KEY_DATA( rb_index, rb_key, rb_self, rb_key_array, function, returns_other_than_self )					\
+		/*	we need to recursively pass the common prefix from our hash with the array	*/																		\
+		VALUE	rb_args_prefix	=	rb_ary_new();																																									\
+		rb_ary_push(	rb_args_prefix,																																													\
+									rb_index );																																															\
+		rb_ary_push(	rb_args_prefix,																																													\
+									rb_key );																																																\
+		ITERATE_AND_CALL_SELF_ON_ARRAY_MEMBERS_AND_RETURN_RESULTS( rb_args_prefix, rb_self, rb_key_array, function, returns_other_than_self )
+		
+
+
+
+	#define ITERATE_AND_CALL_SELF_ON_ARRAY_MEMBERS_AND_RETURN_RESULTS( rb_args_prefix, rb_self, rb_key_array, function, returns_other_than_self )							\
+		VALUE	rb_recursive_return_array	=	rb_ary_new();																																									\
+		/*	iterate each member of the array and collate return values	*/																															\
+		ITERATE_RUBY_ARRAY_AND_CALL_ON_EACH_MEMBER( rb_self, rb_key_array, rb_recursive_return_array, function )				\
+		/*	return collated values if appropriate or otherwise self	*/																																	\
+		RETURN_SELF_OR_VALUES( returns_other_than_self, rb_recursive_return_array, rb_self )
+		
+
+	
+
+	//	if we have keys and data (1..3):
+	//	1: [ any arg ]
+	//	1: key => data_or_array
+	//	1: key => [ data_or_array, ... ]
+	//	2: key, data_or_array
+	//	2: index, key => data_or_array
+	//	3: index, key, data_or_array
+	//	3: index, key, [ data_or_array, ... ]
+	#define PARSE_RUBY_ARGS_FOR_INDEX_KEY_DATA( argc, args, rb_self, function )																			\
+		int	c_remaining_args	=	argc;																																									\
+		rb_scan_args(	argc,																																														\
+									args,																																														\
+									"12",																																														\
+									& rb_key_or_index_or_key_data_hash_or_key_data_array_hash,																			\
+									& rb_key_or_data_or_data_array_or_key_data_hash_or_key_data_array_hash,													\
+									& rb_data_or_data_array );																																			\
+	
+
+
+
+	//	1: index_or_key => key_or_data_or_array
+	//	1: index_or_key => [ key_or_data_or_array, ... ]
+	//	2: index_or_key, key_or_data_or_array
+	//	2: index, key => data_or_array
+	//	3: index, key, data_or_array
+	//	3: index, key, [ data_or_array, ... ]
+	#define PARSE_RUBY_ARGS_FOR_INDEXORKEY_KEYORDATA_OR_INDEXORKEY_KEYORDATA_HASH_OR_KEY_ARRAY_HASH( argc, args, rb_self, rb_return_array, function )
+
 	
 	//	parses args for rb_key, rb_data, or an array
 	//	if an array, each member is processed for key and data
@@ -487,8 +585,9 @@
 			rb_hash_data			=	rb_ary_shift( rb_key_data_array );																																	\
 		}																																																													\
 		else if ( TYPE( rb_key_or_key_data_hash ) == T_ARRAY )	{																																	\
-			ITERATE_RUBY_ARRAY_AND_CALL_ON_EACH_MEMBER( rb_self, rb_key_or_key_data_hash, function )																\
-			RETURN_SELF_OR_VALUES( returns_other_than_self, rb_return_values, rb_self );																						\
+			VALUE	rb_return_array	=	rb_ary_new();																																												\
+			ITERATE_RUBY_ARRAY_AND_CALL_ON_EACH_MEMBER( rb_self, rb_key_or_key_data_hash, rb_return_array, function )													\
+			RETURN_SELF_OR_VALUES( returns_other_than_self, rb_return_array, rb_self );																						\
 		}																																																													\
 		else {																																																										\
 			rb_hash_key				=	rb_key_or_key_data_hash;																																						\
@@ -532,19 +631,42 @@
 	*  Iteration  *
 	**************/
 
-	#define ITERATE_RUBY_ARRAY_AND_CALL_ON_EACH_MEMBER( rb_self, rb_array, function )						\
+	#define ITERATE_RUBY_ARRAY_AND_CALL_ON_EACH_MEMBER( rb_self, rb_array, rb_return_array, function )						\
 		int	c_which_array_member	=	0;																														\
-		VALUE rb_return_values	=	rb_ary_new();																										\
 		for (	c_which_array_member = 0 ;																													\
 					c_which_array_member < RARRAY_LEN( rb_array ) ;																			\
 					c_which_array_member++ )	{																													\
 			VALUE rb_member = RARRAY_PTR( rb_array )[ c_which_array_member ];												\
-				rb_ary_push(	rb_return_values,																												\
-											function(	1,																														\
-																& rb_member,																									\
-																rb_self ) );																									\
+			CALL_ON_MEMBER( rb_self, rb_member, rb_return_array, function );																														\
 		}
-		
+
+	#define ITERATE_ARGS_ARRAY_AND_CALL_ON_EACH_MEMBER( argc, args, rb_self, rb_return_array, function )						\
+		int	c_which_array_member	=	0;																														\
+		for (	c_which_array_member = 0 ;																													\
+					c_which_array_member < argc ;																												\
+					c_which_array_member++ )	{																													\
+			VALUE rb_member = args[ c_which_array_member ];																					\
+			CALL_ON_MEMBER( rb_self, rb_member, rb_return_array, function );																														\
+		}
+
+	#define ITERATE_ARGS_ARRAY_FOR_ARRAYS_AND_CALL_ON_EACH_MEMBER( argc, args, rb_self, rb_return_array, function )						\
+		int	c_which_array_member	=	0;																														\
+		for (	c_which_array_member = 0 ;																													\
+					c_which_array_member < argc ;																												\
+					c_which_array_member++ )	{																													\
+			VALUE rb_member = args[ c_which_array_member ];																					\
+			Check_Type( rb_member, T_ARRAY );																												\
+			CALL_ON_MEMBER( rb_self, rb_member, rb_return_array, function )																														\
+		}
+	
+	#define CALL_ON_MEMBER( rb_self, rb_member, rb_return_array, function )											\
+				VALUE	rb_result	=	function(	1,																														\
+																		& rb_member,																									\
+																		rb_self );																								\
+				rb_ary_push(	rb_return_array,																												\
+											rb_result );
+	
+	
 	/*************
 	*  Yielding  *
 	*************/
@@ -619,14 +741,16 @@
 		}																																																		\
 		C_RPDB_DATABASE( rb_which_database, c_database );
 
-	#define ARITY_FOR_CALLBACK_PROC_OR_OBJECT_METHOD( rb_arity, rb_callback_object, rb_callback_method )	\
+	#define ARITY_FOR_CALLBACK_PROC_OR_OBJECT_METHOD( rb_arity, c_callback_is_proc, rb_callback_object, rb_callback_method )	\
 		VALUE	rb_callback_object_class	=	rb_class_of( rb_callback_object );																\
 		if ( rb_callback_object_class == rb_cProc )	{																												\
+			c_callback_is_proc	=	TRUE;																																				\
 			rb_arity	=	rb_funcall(	rb_callback_object,																												\
 															rb_intern( "arity" ),																											\
 															0 );																																			\
 		}																																																		\
 		else {																																															\
+			c_callback_is_proc	=	FALSE;																																			\
 			VALUE	rb_method			=	rb_funcall(	rb_callback_object,																							\
 																				rb_intern( "method" ),																					\
 																				1,																															\

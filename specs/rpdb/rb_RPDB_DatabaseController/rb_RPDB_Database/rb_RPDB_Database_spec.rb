@@ -362,35 +362,68 @@ describe RPDB::Environment::DatabaseController::Database do
     metaclass.__send__( :define_method, :callback_method, & key_from_data__lambda )
     database_two = database.create_secondary_index( :index, callback_instance, :callback_method )
 
-    database_two.secondary_key_creation_callback_method[ :object ].should == callback_instance
-    database_two.secondary_key_creation_callback_method[ :method ].should == :callback_method
-
     verify_secondary( database, database_two, callback_instance, :callback_method, 'primary key', 'some data', 'some data' )
   end
 
   # create_secondary_index( :index_name, lambda { |data| ... } ) 
   it "can create and associate a secondary index with a callback lambda or proc with one paramter (data)" do
+    database      = @database_controller.new( $database_name )
     
+    callback_lambda  = key_from_data__lambda
+    database_two = database.create_secondary_index( :index, callback_lambda )
+
+    verify_secondary( database, database_two, callback_lambda, nil, 'primary key', 'some data', 'some data' )
   end
 
   # create_secondary_index( :index_name, lambda { |key, data| ... } )
   it "can create and associate a secondary index with a callback lambda or proc with two paramters (key, data)" do
+    database      = @database_controller.new( $database_name )
     
+    callback_lambda  = key_from_key__lambda
+    database_two = database.create_secondary_index( :index, callback_lambda )
+
+    verify_secondary( database, database_two, callback_lambda, nil, 'primary key', 'some data', 'primary key' )    
   end
 
   # create_secondary_index( :index_name, lambda { |database, key, data| ... } )
   it "can create and associate a secondary index with a callback lambda or proc with three paramters (database, key, data)" do
+    database      = @database_controller.new( $database_name )
     
+    callback_lambda  = key_from_database__lambda
+    database_two = database.create_secondary_index( :index, callback_lambda )
+
+    verify_secondary( database, database_two, callback_lambda, nil, 'primary key', 'some data', database_two.name )    
   end
 
   # create_secondary_index( :index_name, & lambda { |key| ... } ) 
   it "can create a secondary index with a block, automatically associating the secondary database with the primary" do
+    database      = @database_controller.new( $database_name )
+    
+    callback_lambda  = key_from_data__lambda
+    database_two = database.create_secondary_index( :index, & callback_lambda )
 
+    verify_secondary( database, database_two, callback_lambda, nil, 'primary key', 'some data', 'some data' )
   end
 
   # create_secondary_index( :index_name, & lambda { |key, data| ... } )
+  it "can create a secondary index with a block, automatically associating the secondary database with the primary" do
+    database      = @database_controller.new( $database_name )
+    
+    callback_lambda  = key_from_key__lambda
+    database_two = database.create_secondary_index( :index, & callback_lambda )
+
+    verify_secondary( database, database_two, callback_lambda, nil, 'primary key', 'some data', 'primary key' )    
+  end
 
   # create_secondary_index( :index_name, & lambda { |database, key, data| ... } )
+  it "can create a secondary index with a block, automatically associating the secondary database with the primary" do
+    database      = @database_controller.new( $database_name )
+    
+    callback_lambda  = key_from_database__lambda
+    database_two = database.create_secondary_index( :index, & callback_lambda )
+
+    verify_secondary( database, database_two, callback_lambda, nil, 'primary key', 'some data', database_two.name )    
+  end
 
   ############################
   #  is_secondary_database?  #
@@ -419,75 +452,154 @@ describe RPDB::Environment::DatabaseController::Database do
   #######################
   
   # primary_database
-  it "" do
+  it "it can return its primary database, which is itself if it is the primary database" do
+    database      = @database_controller.new( $database_name )
     
+    callback_lambda  = key_from_data__lambda
+    database_two = database.create_secondary_index( :index, & callback_lambda )
+
+    database.primary_database.should == database
+    database_two.primary_database.should == database
   end
 
   ###########
   #  write  #
   ###########
 
-  # write( primary_key, data_value )
+  # write( primary_key, data )
   it "can write using a string key and a string data item" do
     database = @environment.database.new( $database_name ).open
     database.write( "key", 'some data' )
     database.key_exists?( "key" ).should == true    
   end
+
+  # write( primary_key, [ data, ... ] )
+  it "" do
+    Fail
+  end
   
-  # write( primary_key => data_value )
+  # write( primary_key => data )
   it "can write using a hash argument string key => string data" do
     database = @environment.database.new( $database_name ).open
     database.write( "key" => 'some data' )
     database.key_exists?( "key" ).should == true    
   end
 
-  # write( primary_key => [ data_value, ... ] )
-  it "can retrieve multiple primary key values" do
-    
+  # write( primary_key => [ data, ... ] )
+  it "can write multiple primary key values" do
+    Fail
   end
 
-  # write( :index, secondary_key => [ data_value, ... ] )
-  it "" do
+  # write( :index, secondary_key => [ data, ... ] )
+  it "can write multiple secondary key values" do
     
     # make sure that the record already exists or throws error
-    
+    Fail
+  end
+
+  # write( :index, secondary_key, data)
+  it "" do
+    Fail
+  end
+
+  # write( :index, secondary_key, [ data ] )
+  it "" do
+    Fail
   end
   
-  # write( [ any_arg_form, ... ] )
-  it "" do
+  # write( [ any_arg_form ], ... )
+  it "can use arrays to group writes of any of these argument forms" do
     
+    Fail
   end  
 
   #################
   #  key_exists?  #
-  #  keys_exist?  #
   #################
 
-  # key_exists?( primary_key )
+  # key_exists?( primary_key, ... )
   it "can report whether a key exists" do
     database = @environment.database.new( $database_name ).open
     database.write( "key" => 'some data' )
     database.key_exists?( "key" ).should == true
   end
 
-  # key_exists?( :index, secondary_key )
+  # key_exists?( :index, secondary_key, ... )
+  it "can report whether a secondary key exists" do
+    Fail
+  end
   
-  # key_exists?( :index => secondary_key )
+  # key_exists?( :index => secondary_key, ... )
+  it "can report whether a secondary key exists specified with a hash" do
+    Fail
+  end
   
   # key_exists?( :index => [ secondary_key, ... ] )
+  it "can report whether multiple secondary keys exist" do
+    duplicates_database = @environment.database.new( $database_name ).open
+    duplicates_database.set_to.read_write.sorted_duplicates
+    database.write( "key" => [ 'some data', 'other data' ] )
+    database.key_exists?( [ 'some data', 'other data' ] ).should == true
+  end
+
+  # key_exists?( [ any_arg_form ], ... )
+  it "can use arrays to group sets these argument forms" do
+    Fail
+  end
+
+  #################
+  #  keys_exist?  #
+  #################
+
+  # keys_exist?( primary key, ... )
+  it "can report whether a key exists" do
+    Fail
+    database = @environment.database.new( $database_name ).open
+    database.write( "key" => 'some data' )
+    database.key_exists?( "key" ).should == true
+  end
+
+  # keys_exist?( :index, secondary_key, ... )
+  it "can report whether a secondary key exists" do
+    Fail
+  end
+
+  # keys_exist?( :index, [ secondary_key, ... ], ... )
+  it "can report whether a secondary key exists" do
+    Fail
+  end  
+  
+  # keys_exist?( :index => secondary_key, ... )
+  it "can report whether a secondary key exists specified with a hash" do
+    Fail
+  end
+  
+  # keys_exist?( :index => [ secondary_key, ... ], ... )
+  it "can report whether multiple secondary keys exist" do
+    Fail
+    duplicates_database = @environment.database.new( $database_name ).open
+    duplicates_database.set_to.read_write.sorted_duplicates
+    database.write( "key" => [ 'some data', 'other data' ] )
+    database.key_exists?( [ 'some data', 'other data' ] ).should == true
+  end
+
+  # keys_exist?( [ any_arg_form ], ... )
+  it "can use arrays to group sets these argument forms" do
+    Fail
+  end
 
   ##############
   #  retrieve  #
   ##############
 
-  # retrieve( primary_key )
+  # retrieve( primary_key, ... )
   it "can retrieve using a primary key" do
     database = @environment.database.new( $database_name ).open
     database.write( "key" => 'some data' )
     database.retrieve( "key" ).should == 'some data'    
   end
 
-  # retrieve( :index, secondary_key )
+  # retrieve( :index, secondary_key, ... )
   it "can retrieve using an index specifying a secondary database and a secondary key" do
     database = @environment.database.new( $database_name ).open
     database.empty!
@@ -499,67 +611,36 @@ describe RPDB::Environment::DatabaseController::Database do
     database.retrieve( 'key' ).should == 'value'
     database.retrieve( :value => 'value' ).should == 'value'
   end
-
-  # retrieve( :index => secondary_key )
-  it "can retrieve using a secondary index pointing to a secondary key in a hash" do
-    
-  end
   
-  # retrieve( [ any_arg_form, ... ] )
+  # retrieve( :index, [ secondary_key, ... ] )
   it "" do
-    
+    Fail
+  end
+
+  # retrieve( :index => secondary_key, ... )
+  it "can retrieve using a secondary index pointing to a secondary key in a hash" do
+    Fail
   end
   
-  ###########
-  #  shift  #
-  ###########
-  
-  # shift
-  it "can shift the first record" do
-    
-  end
-  
-  #############
-  #  unshift  #
-  #############
-
-  # unshift
-  it "can unshift to become the first record" do
-    
-  end
-
-  #########
-  #  pop  #
-  #########
-
-  # pop
-  it "can pop the last record" do
-    
-  end
-
-  ##########
-  #  push  #
-  ##########
-
-  # push
-  it "can push to become the last record" do
-    
+  # retrieve( [ any_arg_form ], ... )
+  it "can use arrays to group sets these argument forms" do
+    Fail
   end
   
   ############
   #  delete  #
   ############
 
-  # delete( primary_key )
-  it "can delete using a string key" do
+  # delete( primary_key, ... )
+  it "can delete a record by primary key" do
     database = @environment.database.new( $database_name ).open
     database.write( "key" => 'some data' )
     database.delete( "key" )
     database.retrieve( "key" ).should == nil        
   end
   
-  # delete( :index, secondary_key )
-  it "" do
+  # delete( :index, secondary_key, ... )
+  it "can delete a record by secondary key" do
     database = @environment.database.new( $database_name ).open
     database.create_secondary_index( :value ) do |key, value|
       return value
@@ -568,15 +649,25 @@ describe RPDB::Environment::DatabaseController::Database do
     database.delete( :value => 'some data' )
     database.retrieve( "key" ).should == nil    
   end
-  
-  # delete( :index => secondary_key )
+
+  # delete( :index, [ secondary_key, ...], ... )
   it "" do
     
   end
   
-  # delete( [ any_arg_form, ... ] )
-  it "" do
-    
+  # delete( :index => secondary_key, ... )
+  it "can delete a record by secondary key specified by a hash" do
+    Fail
+  end
+
+  # delete( :index => [ secondary_key, ... ], ... )
+  it "can delete records corresponding to multiple secondary keys" do
+    Fail
+  end
+  
+  # delete( [ any_arg_form ], ... )
+  it "can use arrays to group sets these argument forms" do
+    Fail
   end
 
   #######################
@@ -585,6 +676,14 @@ describe RPDB::Environment::DatabaseController::Database do
 
   it "has a cursor controller" do
     database = @environment.database.new( $database_name ).cursor_controller
+  end
+
+  #####################
+  #  join_controller  #
+  #####################
+
+  it "has a join controller" do
+    @environment.database.new( $database_name ).join_controller
   end
 
   ############
@@ -644,8 +743,8 @@ describe RPDB::Environment::DatabaseController::Database do
     duplicates_database.write( records )
     duplicates_database.each_key do |key, data, index|
       key.should_not == nil
-      duplicates_database.each_duplicate do |data, duplicate_index|
-        data.should_not == nil
+      duplicates_database.each_duplicate do |duplicate_data, duplicate_index|
+        duplicate_data.should_not == nil
       end
     end    
   end
@@ -671,14 +770,6 @@ describe RPDB::Environment::DatabaseController::Database do
       key.should_not == nil
       data.should_not == nil
     end    
-  end
-
-  #####################
-  #  join_controller  #
-  #####################
-
-  it "has a join controller" do
-    database = @environment.database.new( $database_name ).join_controller
   end
 
 end

@@ -1,4 +1,6 @@
 FILE(REMOVE_RECURSE
+  "CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_free.c.o"
+  "CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_parser.c.o"
   "CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.c.o"
   "CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.c.o"
   "CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.c.o"

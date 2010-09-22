@@ -77,9 +77,9 @@ describe RPDB::Environment::DatabaseController::Database do
     database.create_secondary_index( :value ) do |key, value|
       return value
     end
-#    database.write( "key" => 'some data' )
-#    database.delete( :value => 'some data' )
-#    database.retrieve( "key" ).should == nil    
+    database.write( "key" => 'some data' )
+    database.delete( :value => 'some data' )
+    database.retrieve( "key" ).should == nil    
   end
 
 end
