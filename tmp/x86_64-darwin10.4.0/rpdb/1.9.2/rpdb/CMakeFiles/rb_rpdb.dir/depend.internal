@@ -125,8 +125,9 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_internal.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.c
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_define.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_free.h
- /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_parser.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_parse.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -1274,6 +1275,28 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_TransactionController.c.
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_TransactionController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Transaction/rb_RPDB_TransactionController.c
+rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_define.c.o
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/defines.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/intern.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/missing.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_define.c
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_define.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_types.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_describe.c.o
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/defines.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/intern.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/missing.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_describe.c
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_describe.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_free.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/defines.h
@@ -1285,7 +1308,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_free.c.o
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_free.c
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_free.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_types.h
-rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_parser.c.o
+rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_parse.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/defines.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/intern.h
@@ -1293,6 +1316,10 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_parser.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
- /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_parser.c
- /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_parser.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_describe.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_free.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_parse.c
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_parse.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_types.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/untitled.c.o
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/untitled.c

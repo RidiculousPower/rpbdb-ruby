@@ -375,62 +375,43 @@
 	*  Returning  *
 	**************/
 
-	#define RETURN_SIMPLIFIED_RUBY_ARRAY( rb_return_array )		\
-		if ( rb_return_array == Qnil )	{												\
-			return Qnil;																					\
-		}																												\
-		switch ( RARRAY_LEN( rb_return_array ) )	{							\
-			case 0:																								\
-				return Qnil;																				\
-			case 1:																								\
-				return rb_ary_entry( rb_return_array, 0 );					\
-		}																												\
-		return rb_return_array;
-	
+	#define SIMPLIFIED_RUBY_ARRAY( rb_return_array )																																\
+		( rb_return_array == Qnil ?																																										\
+				Qnil																																																			\
+				: ( RARRAY_LEN( rb_return_array ) == 0 ?																																	\
+					Qnil																																																		\
+					: ( RARRAY_LEN( rb_return_array ) == 1 ?																																\
+						rb_ary_entry( rb_return_array, 0 )																																		\
+						: rb_return_array ) ) )
+
 	#define RETURN_ENUMERATOR_IF_NO_BLOCK( obj, argc, argv ) \
 		RETURN_ENUMERATOR( obj, argc, argv );
 
 	/*-----------------------------------------------------------------*/
 	
-	#define RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record )									\
-		void*	raw_key	=	RPDB_Record_rawKey( c_record );												\
-		VALUE	rb_record_key	=	Qnil;																						\
-		if ( raw_key != NULL )	{																							\
-			rb_record_key		=	rb_str_new(	(char*) raw_key,											\
-																		RPDB_Record_keySize( c_record ) );		\
-		}
+	#define RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record )																						\
+		( ( RPDB_Record_rawKey( c_record ) != NULL ) ? rb_str_new(	(char*) RPDB_Record_rawKey( c_record ),						\
+																										RPDB_Record_keySize( c_record ) )															\
+																									: Qnil )
 
-	#define RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record )									\
-		void*	raw_data	=	RPDB_Record_rawData( c_record );										\
-		VALUE	rb_record_data	=	Qnil;																					\
-		if ( raw_data != NULL )	{																							\
-			rb_record_data		=	rb_str_new(	(char*) raw_data,										\
-																			RPDB_Record_dataSize( c_record ) );	\
-		}
+	#define RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record )																													\
+		( ( RPDB_Record_rawData( c_record ) != NULL ) ? rb_str_new(	(char*) RPDB_Record_rawData( c_record ),					\
+																										RPDB_Record_dataSize( c_record ) )														\
+																									: Qnil )
 
-	#define FINISH_RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record )						\
-		RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record )												\
-		RPDB_Record_free( & c_record );
+	#define RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( rb_key, rb_data, c_record )																\
+		rb_key	= RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record );																											\
+		rb_data	= RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record );		
 
-	#define FINISH_RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record )					\
-		RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record )												\
-		RPDB_Record_free( & c_record );
+	#define RETURN_RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record )																										\
+		VALUE	rb_return_value	=	RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record );																				\
+		RPDB_Record_free( & c_record );																																								\
+		return rb_return_value;
 
-	#define RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( c_record )				\
-		RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record );												\
-		RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record );		
-
-	#define FINISH_RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( c_record )	\
-		RUBY_STRINGS_FOR_DATA_IN_RPDB_RECORD( c_record )											\
-		RPDB_Record_free( & c_record );
-	
-	#define RETURN_RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record )						\
-		FINISH_RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record );								\
-		return rb_record_key;
-
-	#define RETURN_RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record )					\
-		FINISH_RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record );								\
-		return rb_record_data;
+	#define RETURN_RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record )																									\
+		VALUE	rb_return_value	=	RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record );																			\
+		RPDB_Record_free( & c_record );																																								\
+		return rb_return_value;
 
 	
 	/*********************

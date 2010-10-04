@@ -22,8 +22,11 @@ $duplicates_database_name   = :duplicates_db
 database = @environment.database.new( $database_name ).open
 #database.write( "key" => 'some data' )
 #database.delete( :value => 'some data' )
-database.retrieve( "key" ).should == nil    
 
+#database.retrieve( "data" ).should == nil    
+#database.retrieve( "key", "data" ).should == nil    
+#database.retrieve( "key" => "data" ).should == nil    
+#database.retrieve( "key" => [ "data" ] ).should == nil    
 
 
 

@@ -1,16 +1,16 @@
 #include "rb_Rargs_free.h"
 
 /*********************
-*  freeDescriptors  *
+*  freeParameterSets  *
 *********************/
 
-void RARG_freeDescriptors( int argc, VALUE* args, rarg_descriptor_t* rarg_descriptor )	{	
+void RARG_freeParameterSets( rarg_parameter_set_t* rarg_parameter_set )	{	
 
-	rarg_descriptor_t* rarg_descriptor_ptr;
-	while ( rarg_descriptor != NULL )	{
-		rarg_descriptor_ptr = rarg_descriptor;
-		rarg_descriptor	= rarg_descriptor->next;
-		free( rarg_descriptor_ptr );
+	rarg_parameter_set_t* rarg_parameter_set_ptr;
+	while ( rarg_parameter_set != NULL )	{
+		rarg_parameter_set_ptr = rarg_parameter_set;
+		rarg_parameter_set	= rarg_parameter_set->next;
+		free( rarg_parameter_set_ptr );
 	}
 }
 
@@ -18,7 +18,7 @@ void RARG_freeDescriptors( int argc, VALUE* args, rarg_descriptor_t* rarg_descri
 *  freeParameters  *
 ********************/
 
-void RARG_freeParameters( int argc, VALUE* args, rarg_parameter_t* rarg_parameter )	{
+void RARG_freeParameters( rarg_parameter_t* rarg_parameter )	{
 	
 	rarg_parameter_t* rarg_parameter_ptr	=	rarg_parameter;
 	while ( rarg_parameter != NULL )	{
@@ -28,37 +28,37 @@ void RARG_freeParameters( int argc, VALUE* args, rarg_parameter_t* rarg_paramete
 	}
 }
 
-/***********************************
-*  freeAllowedAndProhibitedTypes  *
-***********************************/
+/************************
+*  freePossibleMatches  *
+************************/
 
-void RARG_freeAllowedAndProhibitedTypes( rarg_allowed_type_t* rarg_allowed_type, VALUE rb_arg )	{
+void RARG_freePossibleMatches( rarg_possible_match_t* rarg_possible_match )	{
 
-	rarg_allowed_type_t* rarg_allowed_type_ptr;
+	rarg_possible_match_t* rarg_possible_match_ptr;
 	
-	while ( rarg_allowed_type != NULL )	{
-		rarg_allowed_type_ptr = rarg_allowed_type;
-		rarg_allowed_type = rarg_allowed_type->next;
-		free( rarg_allowed_type_ptr );
+	while ( rarg_possible_match != NULL )	{
+		rarg_possible_match_ptr = rarg_possible_match;
+		rarg_possible_match = rarg_possible_match->next;
+		free( rarg_possible_match_ptr );
 	}
 }
 
-/**************************
-*  freeAllowedHashTypes  *
-**************************/
+/****************************
+*  freePossibleHashMatches  *
+****************************/
 
-void RARG_freeAllowedHashTypes( rarg_allowed_type_t* rarg_allowed_type, VALUE rb_hash_arg )	{
-	RARG_freeAllowedHashKeyOrDataTypes( rarg_allowed_type->allowed_hash_key_types, rb_hash_arg );
-	RARG_freeAllowedHashKeyOrDataTypes( rarg_allowed_type->allowed_hash_data_types, rb_hash_arg );
+void RARG_freePossibleHashMatches( rarg_possible_match_t* rarg_possible_match )	{
+	RARG_freePossibleHashKeyOrDataMatches( rarg_possible_match->possible_hash_key_match );
+	RARG_freePossibleHashKeyOrDataMatches( rarg_possible_match->possible_hash_data_match );
 }
 
-/***********************************
-*  freeAllowedHashKeyOrDataTypes  *
-***********************************/
+/*************************************
+*  freePossibleHashKeyOrDataMatches  *
+*************************************/
 
-void RARG_freeAllowedHashKeyOrDataTypes( rarg_allowed_type_t* rarg_allowed_hash_key_type, VALUE rb_hash_arg )	{
+void RARG_freePossibleHashKeyOrDataMatches( rarg_possible_match_t* rarg_allowed_hash_key_type )	{
 
-	rarg_allowed_type_t* rarg_allowed_hash_key_type_ptr;
+	rarg_possible_match_t* rarg_allowed_hash_key_type_ptr;
 	while ( rarg_allowed_hash_key_type != NULL )	{
 		rarg_allowed_hash_key_type_ptr = rarg_allowed_hash_key_type;
 		rarg_allowed_hash_key_type = rarg_allowed_hash_key_type->next;
@@ -66,42 +66,18 @@ void RARG_freeAllowedHashKeyOrDataTypes( rarg_allowed_type_t* rarg_allowed_hash_
 	}
 }
 
-/*************************
-*  freeProhibitedTypes  *
-*************************/
+/**************************
+*  freeMatchedParameterSet  *
+**************************/
 
-void RARG_freeProhibitedTypes( rarg_prohibited_type_t* rarg_prohibited_type, VALUE rb_arg )	{
+void RARG_freeMatchedParameterSet( rarg_matched_parameter_set_t* rarg_matched_parameter_set )	{
 
-	rarg_prohibited_type_t* rarg_prohibited_type_ptr;
-	
-	while ( rarg_prohibited_type != NULL )	{		
-		rarg_prohibited_type_ptr = rarg_prohibited_type;
-		rarg_prohibited_type = rarg_prohibited_type->next;
-		free( rarg_prohibited_type_ptr );
+	rarg_matched_parameter_t* rarg_matched_parameter			=	rarg_matched_parameter_set->parameters;
+	rarg_matched_parameter_t* rarg_next_matched_parameter	=	NULL;
+	while ( rarg_matched_parameter != NULL )	{
+		rarg_next_matched_parameter = rarg_matched_parameter->next;
+		free( rarg_matched_parameter );
+		rarg_matched_parameter = rarg_next_matched_parameter;
 	}
-
-}
-
-/*****************************
-*  freeProhibitedHashTypes  *
-*****************************/
-
-void RARG_freeProhibitedHashTypes( rarg_prohibited_type_t* rarg_prohibited_type, VALUE rb_hash_arg )	{
-	RARG_freeProhibitedHashKeyOrDataTypes( rarg_prohibited_type->prohibited_hash_key_types, rb_hash_arg );
-	RARG_freeProhibitedHashKeyOrDataTypes( rarg_prohibited_type->prohibited_hash_data_types, rb_hash_arg );
-}
-
-/**************************************
-*  freeProhibitedHashKeyOrDataTypes  *
-**************************************/
-
-void RARG_freeProhibitedHashKeyOrDataTypes( rarg_prohibited_type_t* rarg_prohibited_hash_key_or_data_type, VALUE rb_hash_arg )	{
-
-	rarg_prohibited_type_t* rarg_prohibited_hash_key_or_data_type_ptr;
-
-	while ( rarg_prohibited_hash_key_or_data_type != NULL )	{
-		rarg_prohibited_hash_key_or_data_type_ptr	=	rarg_prohibited_hash_key_or_data_type;
-		rarg_prohibited_hash_key_or_data_type = rarg_prohibited_hash_key_or_data_type->next;
-		free( rarg_prohibited_hash_key_or_data_type_ptr );
-	}
+	free( rarg_matched_parameter_set );
 }

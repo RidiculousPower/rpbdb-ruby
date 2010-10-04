@@ -1074,9 +1074,11 @@ VALUE rb_RPDB_DatabaseCursor_iterate( VALUE		rb_database_cursor	)	{
 		
 	int	c_index	=	0;
 	RPDB_Record*	c_record	=	NULL;
+	VALUE	rb_record_key		=	Qnil;
+	VALUE	rb_record_data	=	Qnil;
 	while ( ( c_record = RPDB_DatabaseCursor_iterate( c_database_cursor, c_record ) ) != NULL )	{
 		
-		RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( c_record );
+		RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( rb_record_key, rb_record_data, c_record );
 		
 		YIELD_BLOCK_FOR_KEY_DATA_INDEX( rb_record_key,
 																		rb_record_data,
@@ -1104,9 +1106,11 @@ VALUE rb_RPDB_DatabaseCursor_iterateDuplicates(	VALUE		rb_database_cursor )	{
 		
 	int	c_index	=	0;
 	RPDB_Record*	c_record	=	NULL;
+	VALUE	rb_record_key		=	Qnil;
+	VALUE	rb_record_data	=	Qnil;
 	while ( ( c_record = RPDB_DatabaseCursor_iterateDuplicates( c_database_cursor, c_record ) ) != NULL )	{
 		
-		RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( c_record );
+		RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( rb_record_key, rb_record_data, c_record );
 		
 		YIELD_BLOCK_FOR_DATA_INDEX( rb_record_key,
 																rb_record_data,
@@ -1135,9 +1139,11 @@ VALUE rb_RPDB_DatabaseCursor_iterateKeys(	VALUE		rb_database_cursor )	{
 	
 	int	c_index	=	0;
 	RPDB_Record*	c_record	=	NULL;
+	VALUE	rb_record_key		=	Qnil;
+	VALUE	rb_record_data	=	Qnil;
 	while ( ( c_record = RPDB_DatabaseCursor_iterateKeys( c_database_cursor, c_record ) ) != NULL )	{
 		
-		RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( c_record );
+		RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( rb_record_key, rb_record_data, c_record );
 		
 		YIELD_BLOCK_FOR_KEY_DATA_INDEX( rb_record_key,
 																		rb_record_data,
@@ -1174,9 +1180,11 @@ VALUE rb_RPDB_DatabaseCursor_slice( int			argc,
 		
 	int	c_index	=	0;
 	RPDB_Record*	c_record	=	NULL;
+	VALUE	rb_record_key		=	Qnil;
+	VALUE	rb_record_data	=	Qnil;
 	while ( ( c_record = RPDB_DatabaseCursor_slice( c_database_cursor, FIX2INT( rb_slice_length ), c_record ) ) != NULL )	{
 		
-		RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( c_record );
+		RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( rb_record_key, rb_record_data, c_record );
 		
 		YIELD_BLOCK_FOR_KEY_DATA_INDEX( rb_record_key,
 																		rb_record_data,
@@ -1212,9 +1220,11 @@ VALUE rb_RPDB_DatabaseCursor_sliceDuplicates(	int			argc,
 		
 	int	c_index	=	0;
 	RPDB_Record*	c_record	=	NULL;
+	VALUE	rb_record_key		=	Qnil;
+	VALUE	rb_record_data	=	Qnil;
 	while ( ( c_record = RPDB_DatabaseCursor_sliceDuplicates( c_database_cursor, FIX2INT( rb_slice_length ), c_record ) ) != NULL )	{
 		
-		RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( c_record );
+		RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( rb_record_key, rb_record_data, c_record );
 		
 		YIELD_BLOCK_FOR_DATA_INDEX( rb_record_key,
 																rb_record_data,
@@ -1251,9 +1261,11 @@ VALUE rb_RPDB_DatabaseCursor_sliceKeys(	int			argc,
 	
 	int	c_index	=	0;
 	RPDB_Record*	c_record	=	NULL;
+	VALUE	rb_record_key		=	Qnil;
+	VALUE	rb_record_data	=	Qnil;
 	while ( ( c_record = RPDB_DatabaseCursor_sliceKeys( c_database_cursor, FIX2INT( rb_slice_length ), c_record ) ) != NULL )	{
 		
-		RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( c_record );
+		RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( rb_record_key, rb_record_data, c_record );
 		
 		YIELD_BLOCK_FOR_KEY_DATA_INDEX( rb_record_key,
 																		rb_record_data,

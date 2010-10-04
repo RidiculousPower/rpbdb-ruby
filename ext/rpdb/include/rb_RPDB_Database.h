@@ -57,8 +57,9 @@ VALUE rb_RPDB_Database_sequenceController( VALUE	rb_database );
 VALUE rb_RPDB_Database_write(	int			argc, 
 															VALUE*	args, 
 															VALUE		rb_database );
-	VALUE rb_RPDB_Database_keyExists(	VALUE	rb_database,
-															VALUE	rb_key );
+	VALUE rb_RPDB_Database_keyExists(	int			argc,
+																		VALUE*	args,
+																		VALUE		rb_database );
 	VALUE rb_RPDB_Database_retrieve(	int	argc, 
 										VALUE*	args,
 										VALUE	rb_database );

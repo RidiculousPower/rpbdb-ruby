@@ -4,13 +4,11 @@
 	#include <ruby.h>
 	#include "rb_Rargs_types.h"
 
-	void RARG_freeDescriptors( int argc, VALUE* args, rarg_descriptor_t* rarg_descriptor );	
-	void RARG_freeParameters( int argc, VALUE* args, rarg_parameter_t* rarg_parameter );
-	void RARG_freeAllowedAndProhibitedTypes( rarg_allowed_type_t* rarg_allowed_type, VALUE rb_arg );
-	void RARG_freeAllowedHashTypes( rarg_allowed_type_t* rarg_allowed_type, VALUE rb_hash_arg );
-	void RARG_freeAllowedHashKeyOrDataTypes( rarg_allowed_type_t* rarg_allowed_hash_key_type, VALUE rb_hash_arg );
-	void RARG_freeProhibitedTypes( rarg_prohibited_type_t* rarg_prohibited_type, VALUE rb_arg );
-	void RARG_freeProhibitedHashTypes( rarg_prohibited_type_t* rarg_prohibited_type, VALUE rb_hash_arg );
-	void RARG_freeProhibitedHashKeyOrDataTypes( rarg_prohibited_type_t* rarg_prohibited_hash_key_or_data_type, VALUE rb_hash_arg );
+void RARG_freeParameterSets( rarg_parameter_set_t* rarg_parameter_set );	
+void RARG_freeParameters( rarg_parameter_t* rarg_parameter );
+void RARG_freePossibleMatches( rarg_possible_match_t* rarg_possible_match );
+void RARG_freePossibleHashMatches( rarg_possible_match_t* rarg_possible_match );
+void RARG_freePossibleHashKeyOrDataMatches( rarg_possible_match_t* rarg_allowed_hash_key_type );
+void RARG_freeMatchedParameterSet( rarg_matched_parameter_set_t* rarg_matched_parameter_set );
 	
 #endif

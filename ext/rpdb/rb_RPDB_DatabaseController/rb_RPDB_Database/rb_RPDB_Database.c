@@ -269,9 +269,9 @@ VALUE rb_RPDB_Database_new(	int			argc,
 	return rb_database;	
 }
 
-/*********
-*  init  *
-*********/
+/***************
+*  initialize  *
+***************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_class.html
 VALUE rb_RPDB_Database_init(	int			argc __attribute__((unused)),
@@ -281,9 +281,10 @@ VALUE rb_RPDB_Database_init(	int			argc __attribute__((unused)),
 	return rb_database_self;
 }
 
-/***********************
-*  settingsController  *
-***********************/
+/************************
+*  settings_controller  *
+*  settings             *
+************************/
 VALUE rb_RPDB_Database_settingsController( VALUE	rb_database )	{
 
 	VALUE	rb_local_database_settings_controller	=	Qnil;
@@ -308,6 +309,7 @@ VALUE rb_RPDB_Database_settingsController( VALUE	rb_database )	{
 
 /***********************
 *  parent_environment  *
+*  environment         *
 ***********************/
 
 VALUE rb_RPDB_Database_parentEnvironment(	VALUE	rb_database )	{
@@ -320,6 +322,8 @@ VALUE rb_RPDB_Database_parentEnvironment(	VALUE	rb_database )	{
 
 /*******************************
 *  parent_database_controller  *
+*  database_controller         *
+*  controller                  *
 *******************************/
 
 VALUE rb_RPDB_Database_parentDatabaseController(	VALUE	rb_database )	{
@@ -569,6 +573,107 @@ VALUE rb_RPDB_Database_setSecondaryKeyCreationCallbackMethod(	int			argc,
 																															VALUE*	args,
 																															VALUE		rb_secondary_database	)	{
 
+	//	FIX - RARGS
+	
+	VALUE	rb_callback_method														=	Qnil;
+	VALUE	rb_callback_object														=	Qnil;
+	VALUE	rb_callback_proc															= Qnil;
+
+	R_MatchBlockLambda( rb_callback_object )
+	
+	#define R_MatchBlockLambda( receiver )																	\
+																																					if ( rb_block_given_p() )	{								\
+																																						receiver = rb_block_lambda();						\
+																																					}
+
+	#define R_MatchBlock( receiver )																				\
+																																					if ( rb_block_given_p() )	{								\
+																																						receiver = rb_block_proc();							\
+																																					}
+	
+	R_DefineAndParse( argc, args,
+
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchBlockLambdaWithArity(				rb_callback_proc ) ) ),
+			R_ListOrder( 1 ),
+			"& block"
+		),
+
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_Hash(	R_MatchStringSymbolForHash(	rb_callback_method ),
+																							R_MatchAnyForData(					rb_callback_object) ) ) ),
+			R_ListOrder( 5 ),
+			":callback_method  => <callback_object>",
+			"'callback_method' => <callback_object>"
+		),
+
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchProcWithArity(								rb_callback_proc, 1, 2, 3, -1, -2 ) ) ),
+			R_ListOrder( 2 ),
+			"<callback_proc>"
+		),
+
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchStringSymbol(								rb_callback_method ) ),
+												R_Parameter(	R_MatchAny(													rb_callback_object ) ) ),
+			R_ListOrder( 4 ),
+			":callback_method, <callback_object>"
+		),
+		
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchStringSymbol(								rb_callback_method ) ) ),
+			R_ListOrder( 3 ),
+			":callback_method_in_self"
+		)
+		
+		/*----------------------------------------------*/
+
+	)
+
+	if (		rb_callback_proc != Qnil )	{
+
+		BOOL c_callback_is_proc	=	FALSE;
+		ARITY_FOR_CALLBACK_PROC_OR_OBJECT_METHOD( rb_arity, c_callback_is_proc, rb_callback_object, rb_callback_method );
+
+		int	c_arity	=	FIX2INT( rb_arity );
+		switch ( c_arity )	{
+			case 1:
+			case 2:
+			case 3:
+			case -1:
+			case -2:
+				rb_callback_object = rb_callback_proc;
+				break;
+			default:
+				rb_raise( rb_eArgError, RPDB_RUBY_ERROR_WRONG_ARITY_FOR_SECONDARY_KEY_CALLBACK );			
+				break;
+		}
+		
+	}
+	
+	if (		rb_callback_object == Qnil )	{
+		rb_callback_object	=	rb_database;
+	}
+	
+	return rb_database;
+
+
+
+
+
+
+
+
 	VALUE	rb_callback_object	=	Qnil;
 	VALUE	rb_callback_method	=	Qnil;
 	VALUE	rb_arity	=	Qnil;
@@ -605,21 +710,6 @@ VALUE rb_RPDB_Database_setSecondaryKeyCreationCallbackMethod(	int			argc,
 		}
 	}
 	
-	BOOL c_callback_is_proc	=	FALSE;
-	ARITY_FOR_CALLBACK_PROC_OR_OBJECT_METHOD( rb_arity, c_callback_is_proc, rb_callback_object, rb_callback_method );
-
-	int	c_arity	=	FIX2INT( rb_arity );
-	switch ( c_arity )	{
-		case 1:
-		case 2:
-		case 3:
-		case -1:
-		case -2:
-			break;
-		default:
-			rb_raise( rb_eArgError, RPDB_RUBY_ERROR_WRONG_ARITY_FOR_SECONDARY_KEY_CALLBACK );			
-			break;
-	}
 	
 	/*------------------------------------------------------*/
 
@@ -747,7 +837,7 @@ VALUE rb_RPDB_Database_createSecondaryIndexWithSortedDuplicates(	int			argc,
 ******************************/
 
 VALUE rb_RPDB_Database_secondaryDatabaseWithIndex(	VALUE	rb_primary_database,
-																									VALUE	rb_index_name )	{
+																										VALUE	rb_index_name )	{
 	
 	//	make sure that store/retrieve by symbol
 	if ( TYPE( rb_index_name ) == T_STRING )	{
@@ -770,7 +860,7 @@ VALUE rb_RPDB_Database_requireSecondaryDatabaseWithIndex(	VALUE	rb_primary_datab
 																													VALUE	rb_index_name )	{
 	
 	VALUE	rb_database_with_index				=	rb_RPDB_Database_secondaryDatabaseWithIndex(	rb_primary_database,
-																																									rb_index_name );
+																																											rb_index_name );
 
 	if ( rb_database_with_index == Qnil )	{
 		rb_raise( rb_eArgError, "Requested secondary index was missing." );
@@ -1050,19 +1140,95 @@ VALUE rb_RPDB_Database_write(	int			argc,
 															VALUE*	args, 
 															VALUE		rb_database )	{
 
-	VALUE	rb_key	=	Qnil;
-	VALUE	rb_data	=	Qnil;
-//	PARSE_RUBY_ARGS_FOR_KEY_DATA_OR_KEY_DATA_HASH_OR_KEY_ARRAY_HASH_OR_ARRAY( argc, args, rb_database, rb_RPDB_Database_write, FALSE, rb_key, rb_data );
+	VALUE	rb_key																			=	Qnil;
+	VALUE	rb_data																			=	Qnil;
+	VALUE	rb_hash_descriptor_key_data_or_datas_array	=	Qnil;
+	VALUE	rb_args_array																= Qnil;
 
-	RPDB_Database*		c_database	=	NULL;
-	RPDB_Record*	c_record	=	NULL;
+	R_DefineAndParse( argc, args,
+
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchHash(	R_Key(	R_Type(	R_ANY ) ),
+																										R_Data(	R_Type( R_ANY ) ),
+																										rb_hash_descriptor_key_data_or_datas_array ) ) ),
+			R_ListOrder( 2 ),
+			"{ <key>   =>  <data>, ... }, ..."
+		),
+
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
+			R_ListOrder( 3 ),
+			"[ <arg> ], ..."
+		),
+		
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchAny(		rb_key ) ),
+												R_Parameter(	R_MatchAny(		rb_data ) ) ),
+			R_ListOrder( 1 ),
+			"<key>, <data, ...>"
+		)
+		
+		/*----------------------------------------------*/
+
+	)
+
+	if (		rb_hash_descriptor_key_data_or_datas_array != Qnil ) {
+
+		do {
+			
+			VALUE	rb_passed_args	=	rb_ary_new();
+			
+			//	database
+			rb_ary_push(	rb_passed_args,
+										rb_database );
+
+			rb_hash_foreach(	rb_hash_descriptor_key_data_or_datas_array, 
+												& rb_RPDB_Database_internal_writeDataForEachKey,
+												rb_passed_args );			
+
+			//	remaining args are hashes
+		} while ( R_Arg( rb_hash_descriptor_key_data_or_datas_array ) );
+		
+	}
+	else if (		rb_args_array != Qnil )	{
+		
+		VALUE	rb_return_array	=	rb_ary_new();
+		
+		do {
+			
+			rb_RPDB_Database_write(	RARRAY_LEN( rb_args_array ),
+															RARRAY_PTR( rb_args_array ),
+															rb_database );
+			
+			//	remaining args are arrays
+		} while ( R_Arg( rb_args_array ) );
+		
+		return rb_return_array;
+	}
+	//	rb_index, rb_key and rb_key
+	else if (				rb_key != Qnil )	{
+			
+		RPDB_Database*	c_database	=	NULL;
+		RPDB_Record*		c_record		=	NULL;
+
+		do {
+			
+			PREPARE_RECORD_FROM_KEY_DATA_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, Qnil, rb_key, rb_data );
+			
+			RPDB_Database_write(	c_database,
+														c_record	);
+
+			//	remaining args are data
+		} while ( R_Arg( rb_data ) );
+		
+	}
 	
-	PREPARE_RECORD_FROM_KEY_DATA_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, Qnil, rb_key, rb_data );
-	
-	RPDB_Database_write(	c_database,
-												c_record	);
-	
-	//	Returns data
 	return rb_database;
 }	
 
@@ -1073,7 +1239,7 @@ VALUE rb_RPDB_Database_write(	int			argc,
 //	DB_APPEND			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_put.html
 //	Queue or Recno only
 VALUE rb_RPDB_Database_append(	VALUE	rb_database,
-	 											VALUE	append_record	)	{
+																VALUE	append_record	)	{
 	RPDB_Database_appendRecord();
 
 }
@@ -1084,36 +1250,163 @@ VALUE rb_RPDB_Database_append(	VALUE	rb_database,
 																		Key Retrieval
 *******************************************************************************************************************************************************************************************/
 
-/*******************
-*  keyExists  *
-*******************/
+/***************
+*  key_exists  *
+*  keys_exist  *
+***************/
 
 //	returns if the specified key appears in the database
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_exists.html	
-VALUE rb_RPDB_Database_keyExists(	VALUE	rb_database,
-																	VALUE	rb_key )	{
+VALUE rb_RPDB_Database_keyExists(	int			argc,
+																	VALUE*	args,
+																	VALUE		rb_database )	{
 
-	RPDB_Database*						c_database;
-	C_RPDB_DATABASE( rb_database, c_database );
+	VALUE	rb_index																		=	Qnil;
+	VALUE	rb_key																			=	Qnil;
+	VALUE	rb_hash_descriptor_index_key_or_keys_array	=	Qnil;
+	VALUE	rb_args_array																= Qnil;
 
-	RPDB_Key*	c_key	=	RPDB_Key_new( NULL );
-	rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_database,
-																																						rb_key,
-																																						c_key->wrapped_bdb_dbt,
-																																						TRUE );
+	R_DefineAndParse( argc, args,
 
-	return ( RPDB_Database_keyExists(	c_database,
-																		c_key )	?	Qtrue
-																						:	Qfalse );
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchHash(	R_Key(	R_Type(	R_SYMBOL | R_STRING ) ),
+																										R_Data(	R_Type( R_ANY ) ),
+																										rb_hash_descriptor_index_key_or_keys_array ) ) ),
+			R_ListOrder( 3 ),
+			"{ :index   =>  <key>, ... }, ...",
+			"{ 'index'  =>  <key>, ... }, ...",
+			"{ :index   =>  [ <keys> ], ... }, ...",
+			"{ 'index'  =>  [ <keys> ], ... }, ..."
+			 
+		),
+
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchType(		R_SYMBOL | R_STRING,		
+																											rb_index ) ),
+												R_Parameter(	R_MatchAny(			rb_key ) ) ),
+			R_ListOrder( 2 ),
+			":index, <key, ...>",
+			"'index', <key, ...>"
+		),
+		
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
+			R_ListOrder( 4 ),
+			"[ <arg> ], ..."
+		),
+		
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchAny(			rb_key ) ) ),
+			R_ListOrder( 1 ),
+			"<key>, ..."
+		)
+
+		/*----------------------------------------------*/
+
+	)
+
+	VALUE	rb_return	=	Qnil;
+
+	if (		rb_hash_descriptor_index_key_or_keys_array != Qnil ) {
+
+		VALUE	rb_return_hash	=	rb_hash_new();
+		
+		do {
+			
+			VALUE	rb_passed_args	=	rb_ary_new();
+			
+			//	database
+			rb_ary_push(	rb_passed_args,
+										rb_database );
+			//	return hash
+			rb_ary_push(	rb_passed_args,
+										rb_return_hash );
+
+			rb_hash_foreach(	rb_hash_descriptor_index_key_or_keys_array, 
+												& rb_RPDB_Database_internal_keyExistsForEachIndex,
+												rb_passed_args );			
+
+			//	second arg from "passed args" is hash with return values (first arg is database)
+			VALUE	rb_partial_return_hash	=	rb_ary_entry( rb_passed_args, 1 );
+			rb_funcall(	rb_return_hash,
+									rb_intern( "merge" ),
+									1,
+									rb_partial_return_hash );
+				
+			//	remaining args are hashes
+		} while ( R_Arg( rb_hash_descriptor_index_key_or_keys_array ) );
+		
+		rb_return = rb_return_hash;
+	}
+	else if (		rb_args_array != Qnil )	{
+		
+		VALUE	rb_return_array	=	rb_ary_new();
+		
+		do {
+			
+			VALUE	rb_retrieve_data	=	rb_RPDB_Database_retrieve(	RARRAY_LEN( rb_args_array ),
+																														RARRAY_PTR( rb_args_array ),
+																														rb_database );
+			
+			rb_ary_push(	rb_return_array,
+										rb_retrieve_data );
+
+			//	remaining args are arrays
+		} while ( R_Arg( rb_args_array ) );
+		
+		rb_return = rb_return_array;
+	}
+	//	rb_index, rb_key and rb_key
+	else if (				rb_key != Qnil )	{
+			
+		RPDB_Database*		c_database;
+		PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );
+
+		RPDB_Key*	c_key	=	RPDB_Key_new( NULL );
+
+		VALUE		rb_result				=	Qnil;
+		VALUE		rb_return_array	=	rb_ary_new();
+
+		do {
+			
+			rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_database,
+																																					rb_key,
+																																					c_key->wrapped_bdb_dbt,
+																																					TRUE );
+
+			rb_result	=	( RPDB_Database_keyExists(	c_database,
+																							c_key )	?	Qtrue
+																											:	Qfalse );
+
+			rb_ary_push(	rb_return_array,
+										rb_result );
+
+			//	remaining args are keys
+		} while ( R_Arg( rb_key ) );
+		
+		rb_return = SIMPLIFIED_RUBY_ARRAY( rb_return_array );
+	}
+	
+	return rb_return;
 }
 
 /*******************************************************************************************************************************************************************************************
 																		Data Retrieval
 *******************************************************************************************************************************************************************************************/
 
-/*************
-*  retrieve  *
-*************/
+/**************************
+*  retrieve_data_for_key  *
+*  retrieve_for_key       *
+*  retrieve               *
+**************************/
 
 //	database.retrieve( primary_key )
 //	database.retrieve( :index, secondary_key )
@@ -1125,114 +1418,149 @@ VALUE rb_RPDB_Database_retrieve(	int			argc,
 																	VALUE		rb_database )	{
 
 
-	VALUE	rb_index														=	Qnil;
-	VALUE	rb_key															=	Qnil;
-	VALUE	rb_hash_descriptor_index_key				=	Qnil;
-	VALUE	rb_hash_descriptor_index_keys_array	=	Qnil;
-	VALUE	rb_args_array												= Qnil;
-	
-	RARG_Define
-	
-		RARG_Descriptor(	":index		=>	secondary_key",
-											"'index'	=>	secondary_key",
-											":index		=>	[ secondary_keys, ... ]",
-											"'index'	=>	[ secondary_keys, ... ]" );
+	VALUE	rb_index																		=	Qnil;
+	VALUE	rb_key																			=	Qnil;
+	VALUE	rb_hash_descriptor_index_key_or_keys_array	=	Qnil;
+	VALUE	rb_args_array																= Qnil;
 
-			RARG_Parameter( "hash descriptor" );
-				RARG_Allow( T_HASH );
-					RARG_HashKey( "index" );
-						RARG_AllowHashKey( T_SYMBOL );
-						RARG_AllowHashKey( T_STRING );
-					RARG_HashData( "secondary_keys_array" );
-						RARG_AllowHashData( T_ARRAY );
-						RARG_AssignTo( rb_hash_descriptor_index_keys_array );
-					RARG_HashData( "secondary_key" );
-						RARG_AllowHashData( T_ANY );
-						RARG_AssignTo( rb_hash_descriptor_index_key );
+	R_DefineAndParse( argc, args,
 
 		/*----------------------------------------------*/
 
-		RARG_Descriptor(	":index,	secondary_key",
-											"'index',	secondary_key" );
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchHash(	R_Key(	R_Type(	R_SYMBOL | R_STRING ) ),
+																										R_Data(	R_Type( R_ANY ) ),
+																										rb_hash_descriptor_index_key_or_keys_array ) ) ),
+			R_ListOrder( 3 ),
+			"{ :index   =>  <key>, ... }, ...",
+			"{ 'index'  =>  <key>, ... }, ...",
+			"{ :index   =>  [ <keys> ], ... }, ...",
+			"{ 'index'  =>  [ <keys> ], ... }, ..."
+			 
+		),
 
-			RARG_Parameter( "index" );
-				RARG_Allow( T_SYMBOL );
-				RARG_Allow( T_STRING );
-				RARG_AssignTo( rb_index );
-			RARG_Parameter( "key" );
-				RARG_Allow( T_ANY );
-				RARG_AssignTo( rb_key );
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchType(		R_SYMBOL | R_STRING,		
+																											rb_index ) ),
+												R_Parameter(	R_MatchAny(			rb_key ) ) ),
+			R_ListOrder( 2 ),
+			":index, <key, ...>",
+			"'index', <key, ...>"
+		),
+		
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
+			R_ListOrder( 4 ),
+			"[ <arg> ], ..."
+		),
+		
+		/*----------------------------------------------*/
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchAny(			rb_key ) ) ),
+			R_ListOrder( 1 ),
+			"<key>, ..."
+		)
+
+		/*----------------------------------------------*/
+
+	)
+	
+	VALUE	rb_return	=	Qnil;
+	
+	if (		rb_hash_descriptor_index_key_or_keys_array != Qnil ) {
+
+		VALUE	rb_return_hash	=	rb_hash_new();
+		
+		do {
 			
-		/*----------------------------------------------*/
+			VALUE	rb_passed_args	=	rb_ary_new();
+			
+			//	database
+			rb_ary_push(	rb_passed_args,
+										rb_database );
+			//	return hash
+			rb_ary_push(	rb_passed_args,
+										rb_return_hash );
 
-		RARG_Descriptor(	"[ any of above ]" );
+			rb_hash_foreach(	rb_hash_descriptor_index_key_or_keys_array, 
+												& rb_RPDB_Database_internal_retrieveKeysForEachIndex,
+												rb_passed_args );			
 
-			RARG_Parameter( "arg_grouping_array" );
-				RARG_Allow( T_ARRAY );
-					RARG_AssignTo( rb_args_array );
+			//	second arg from "passed args" is hash with return values (first arg is database)
+			VALUE	rb_partial_return_hash	=	rb_ary_entry( rb_passed_args, 1 );
+			rb_funcall(	rb_return_hash,
+									rb_intern( "merge" ),
+									1,
+									rb_partial_return_hash );
+				
+			//	remaining args are hashes
+		} while ( R_Arg( rb_hash_descriptor_index_key_or_keys_array ) );
+		
+		rb_return	=	rb_return_hash;
+		
+	}
+	else if (		rb_args_array != Qnil )	{
+		
+		VALUE	rb_return_array	=	rb_ary_new();
+		
+		do {
+			
+			VALUE	rb_retrieve_data	=	rb_RPDB_Database_retrieve(	RARRAY_LEN( rb_args_array ),
+																														RARRAY_PTR( rb_args_array ),
+																														rb_database );
+			
+			rb_ary_push(	rb_return_array,
+										rb_retrieve_data );
 
-		/*----------------------------------------------*/
+			//	remaining args are arrays
+		} while ( R_Arg( rb_args_array ) );
+		
+		rb_return	=	rb_return_array;
+		
+	}
+	//	rb_index, rb_key and rb_key
+	else if (				rb_key != Qnil )	{
+			
+		RPDB_Database*	c_database	=	NULL;
+		RPDB_Record*		c_record		=	NULL;
+		PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );
 
-		RARG_Descriptor( "primary_key" );
+		VALUE						rb_data			=	Qnil;
 
-			RARG_Parameter( "primary_key" );
-				RARG_Allow( T_ANY );
-				RARG_AssignTo( rb_key );
+		VALUE						rb_return_array	=	rb_ary_new();
 
-		/*----------------------------------------------*/
+		do {
+			
+			PREPARE_RECORD_FROM_KEY_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, rb_index, rb_key );
+
+			c_record	=	RPDB_Database_retrieveRecord(	c_database,
+																								c_record );
+			
+			rb_data = RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record );			
+
+			rb_ary_push(	rb_return_array,
+										rb_data );
+
+			//	remaining args are keys
+		} while ( R_Arg( rb_key ) );
+		
+		rb_return =	SIMPLIFIED_RUBY_ARRAY( rb_return_array );
+		
+	}
 	
-	RARG_Parse( argc, args );		/* ends block */
-
-
-/* reset pointers to first rargs descriptor */                                                                                               
-RARG_RESTART                                                                                                                     
-
-rarg_descriptor_t* descriptor	=	RARGS_parseDescriptors( argc, args, rb_database, RARG_VAR_DESCRIPTOR );
-
-
-	
-
-
-//	RARG_PARSE( argc, args );
-
-//	PARSE_RUBY_ARGS_FOR_KEY_AND_OR_INDEX_OR_HASH_OR_ARRAY( argc, args, rb_database, rb_RPDB_Database_retrieve, TRUE, rb_index, rb_key );
-
-	RPDB_Database*	c_database	=	NULL;
-	RPDB_Record*		c_record		=	NULL;
-//	PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );
-		VALUE	rb_which_database	=	Qnil;																																			\
-		if ( rb_index != Qnil )	{																																						\
-			rb_which_database	=	rb_RPDB_Database_secondaryDatabaseWithIndex(	rb_database,										\
-																																				rb_index );											\
-		}																																																		\
-		else {																																															\
-			rb_which_database	=	rb_database;																																	\
-		}																																																		\
-		C_RPDB_DATABASE( rb_which_database, c_database );
-//	PREPARE_RECORD_FROM_KEY_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, rb_index, rb_key );
-		c_record	=	RPDB_Record_new( c_database );																													\
-		rb_RPDB_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_which_database,							\
-																																				rb_key,													\
-																																				c_record->key->wrapped_bdb_dbt,	\
-																																				TRUE );
-
-	c_record	=	RPDB_Database_retrieveRecord(	c_database,
-																						c_record );
-	
-	RETURN_RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record );
+	return rb_return;
 }
-
-
-
-
-
-
-
-
 
 /******************
 *  retrieve_pair  *
+*  retrieve_exact *
 ******************/
+	//	FIX - RARGS
 
 //	database.retrieve_pair( primary_key, data )
 //	database.retrieve_pair( primary_key => data )
@@ -1242,6 +1570,8 @@ rarg_descriptor_t* descriptor	=	RARGS_parseDescriptors( argc, args, rb_database,
 VALUE rb_RPDB_Database_retrievePair(	int			argc, 
 																			VALUE*	args,
 																			VALUE		rb_database )	{
+
+//	FIX - RARGS
 	
 	VALUE	rb_key	=	Qnil;
 	VALUE	rb_data	=	Qnil;
@@ -1254,7 +1584,7 @@ VALUE rb_RPDB_Database_retrievePair(	int			argc,
 	c_record	=	RPDB_Database_retrieveMatchingRecord(	c_database,
 																										c_record );
 
-	RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record );
+	rb_data	=	RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record );
 
 	return rb_data;
 }
@@ -1268,6 +1598,9 @@ VALUE rb_RPDB_Database_retrievePair(	int			argc,
 //	Permits partial key matches and range searches by returning the smallest item matching or including the key
 VALUE rb_RPDB_Database_retrievePartialKey(	VALUE	rb_database,
  																			VALUE						partial_key )	{
+
+	//	FIX - RARGS
+
 	RPDB_Database_retrievePartialKey();
 	
 }
@@ -1280,6 +1613,9 @@ VALUE rb_RPDB_Database_retrievePartialKey(	VALUE	rb_database,
 //	Permits partial data matches and range searches by returning the smallest item matching or including the data
 VALUE rb_RPDB_Database_retrievePartialData(	VALUE	rb_database,
  																				VALUE						data )	{
+
+//	FIX - RARGS
+
 	RPDB_Database_retrievePartialData();
 
 }
@@ -1291,6 +1627,8 @@ VALUE rb_RPDB_Database_retrievePartialData(	VALUE	rb_database,
 /*
 VALUE rb_RPDB_Database_retrieveMultipleObjectCursor(	VALUE	rb_database,
  																							VALUE					data_object )	{
+
+//	FIX - RARGS
 	RPDB_Database_retrieveMultipleObjectCursorForKey();
 	
 }
@@ -1301,6 +1639,8 @@ VALUE rb_RPDB_Database_retrieveMultipleObjectCursor(	VALUE	rb_database,
 /*
 VALUE rb_RPDB_Database_retrieveMultipleObjectCursorForPartialKey(	VALUE	rb_database,
  																									VALUE					data_object )	{
+
+//	FIX - RARGS
 	RPDB_Database_retrieveMultipleObjectCursorForPartialKey();
 	
 }
@@ -1320,6 +1660,7 @@ VALUE rb_RPDB_Database_retrieveMultipleObjectCursorForPartialKey(	VALUE	rb_datab
 RPDB_KeyRange* RPDB_Database_relativePositionOfKey(	VALUE	rb_database,
 																										VALUE	rb_key )	{
 
+//	FIX - RARGS
 
 }
 */
@@ -1334,6 +1675,7 @@ RPDB_KeyRange* RPDB_Database_relativePositionOfKey(	VALUE	rb_database,
 //	Only relevant for Queue databases
 //	DB_CONSUME				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_get.html
 VALUE rb_RPDB_Database_shiftQueue( VALUE	rb_database )	{
+
 	RPDB_Database_shiftQueue();
 	
 }
@@ -1380,6 +1722,8 @@ VALUE rb_RPDB_Database_delete(	int			argc,
 																VALUE*	args,
 																VALUE		rb_database )	{
 
+//	FIX - RARGS
+
 	VALUE	rb_key		=	Qnil;
 	VALUE	rb_index	=	Qnil;	
 	PARSE_RUBY_ARGS_FOR_KEY_AND_OR_INDEX_OR_HASH_OR_ARRAY( argc, args, rb_database, rb_RPDB_Database_retrieve, TRUE, rb_index, rb_key );
@@ -1408,6 +1752,7 @@ VALUE rb_RPDB_Database_delete(	int			argc,
 VALUE	rb_RPDB_Database_internal_setSecondaryKeyCreationCallbackMethodInfoHash(	VALUE	rb_secondary_database,
 																																								VALUE	rb_callback_object,
 																																								VALUE	rb_callback_method )	{
+
 
 	//	Get global variable 'callbacks', which stores secondary key creation callback methods
 	VALUE	rb_callbacks_hash	=	rb_iv_get(	rb_mRPDB,
@@ -1918,6 +2263,8 @@ VALUE rb_RPDB_Database_internal_createSecondaryIndex(	int			argc,
 																											VALUE		rb_primary_database_self,
 																											BOOL		c_with_duplicates,
 																											BOOL		c_with_sorted_duplicates )	{
+
+//	FIX - RARGS
 	
 	VALUE	rb_secondary_database	=	Qnil;
 	VALUE	rb_index_name					=	Qnil;
@@ -2050,4 +2397,68 @@ VALUE rb_RPDB_Database_internal_createSecondaryIndex(	int			argc,
 
 	//	Returns primary database so associations can be chained
 	return rb_secondary_database;	
+}
+
+/*****************************
+*  retrieveKeysForEachIndex  *
+*****************************/
+
+static int rb_RPDB_Database_internal_retrieveKeysForEachIndex(	VALUE	rb_index,
+																																VALUE	rb_key_or_keys,
+																																VALUE	rb_passed_args )	{
+	
+	VALUE	rb_database			=	rb_ary_entry( rb_passed_args, 0 );
+	VALUE	rb_return_hash	=	rb_ary_entry( rb_passed_args, 1 );
+
+	VALUE	c_args[]				=	{ rb_index, rb_key_or_keys };	
+	VALUE	rb_return_data	=	rb_RPDB_Database_retrieve(	2,
+																											c_args,
+																											rb_database );
+	
+	rb_hash_aset(	rb_return_hash,
+								rb_index,
+								rb_return_data );
+	
+	return ST_CONTINUE;
+}
+
+/************************
+*  writeDataForEachKey  *
+************************/
+
+static int rb_RPDB_Database_internal_writeDataForEachKey(	VALUE	rb_key,
+																													VALUE	rb_data_or_datas,
+																													VALUE	rb_passed_args )	{
+
+	VALUE	rb_database			=	rb_ary_entry( rb_passed_args, 0 );
+
+	VALUE	c_args[]				=	{ rb_key, rb_data_or_datas };	
+	rb_RPDB_Database_write(	2,
+													c_args,
+													rb_database );
+	
+	return ST_CONTINUE;
+}
+
+/**************************
+*  keyExistsForEachIndex  *
+**************************/
+
+static int rb_RPDB_Database_internal_keyExistsForEachIndex(	VALUE	rb_index,
+																														VALUE	rb_key_or_keys,
+																														VALUE	rb_passed_args )	{
+	
+	VALUE	rb_database			=	rb_ary_entry( rb_passed_args, 0 );
+	VALUE	rb_return_hash	=	rb_ary_entry( rb_passed_args, 1 );
+
+	VALUE	c_args[]				=	{ rb_index, rb_key_or_keys };	
+	VALUE	rb_result				=	rb_RPDB_Database_keyExists(	2,
+																											c_args,
+																											rb_database );
+	
+	rb_hash_aset(	rb_return_hash,
+								rb_index,
+								rb_result );
+	
+	return ST_CONTINUE;
 }

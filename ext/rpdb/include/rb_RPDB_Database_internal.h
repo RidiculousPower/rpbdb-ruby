@@ -35,5 +35,14 @@ VALUE rb_RPDB_Database_internal_createSecondaryIndex(	int			argc,
 																											VALUE		rb_primary_database_self,
 																											BOOL		c_with_duplicates,
 																											BOOL		c_with_sorted_duplicates );
+static int rb_RPDB_Database_internal_retrieveKeysForEachIndex(	VALUE	rb_index,
+																																VALUE	rb_key_or_keys,
+																																VALUE	rb_passed_args );
+static int rb_RPDB_Database_internal_writeDataForEachKey(	VALUE	rb_key,
+																													VALUE	rb_data_or_datas,
+																													VALUE	rb_passed_args );
+static int rb_RPDB_Database_internal_keyExistsForEachIndex(	VALUE	rb_index,
+																														VALUE	rb_key_or_keys,
+																														VALUE	rb_passed_args );
 
 #endif

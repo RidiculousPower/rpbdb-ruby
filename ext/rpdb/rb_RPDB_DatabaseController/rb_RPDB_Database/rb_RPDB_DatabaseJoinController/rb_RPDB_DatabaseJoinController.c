@@ -299,7 +299,7 @@ VALUE rb_RPDB_DatabaseJoinController_join(	int			argc,
 		}
 	}
 
-	RETURN_SIMPLIFIED_RUBY_ARRAY( rb_join_cursors_return_array );
+	return SIMPLIFIED_RUBY_ARRAY( rb_join_cursors_return_array );
 }
 
 
