@@ -1,6 +1,7 @@
 FILE(REMOVE_RECURSE
   "CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_define.c.o"
   "CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_describe.c.o"
+  "CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_error.c.o"
   "CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_free.c.o"
   "CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_parse.c.o"
   "CMakeFiles/rb_rpdb.dir/rb_Rargs/untitled.c.o"

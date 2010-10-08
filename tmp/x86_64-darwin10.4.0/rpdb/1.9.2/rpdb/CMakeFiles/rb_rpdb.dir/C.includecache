@@ -2067,10 +2067,14 @@ rb_Rargs_parse.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_parse.h
 rb_Rargs_free.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_free.h
+rb_Rargs_error.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_error.h
 
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_define.c
 rb_Rargs_define.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_define.h
+rb_Rargs_error.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_error.h
 
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_define.h
 ruby.h
@@ -2083,6 +2087,18 @@ rb_Rargs_describe.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_describe.h
 
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_describe.h
+ruby.h
+-
+rb_Rargs_types.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_types.h
+
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_error.c
+rb_Rargs_error.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_error.h
+rb_Rargs_describe.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_describe.h
+
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_error.h
 ruby.h
 -
 rb_Rargs_types.h
@@ -2103,6 +2119,8 @@ rb_Rargs_parse.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_parse.h
 rb_Rargs_describe.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_describe.h
+rb_Rargs_error.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_error.h
 rb_Rargs_free.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_free.h
 

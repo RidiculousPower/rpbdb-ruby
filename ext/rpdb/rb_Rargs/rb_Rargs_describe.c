@@ -18,8 +18,8 @@ VALUE RARG_collectDescriptionsForParameterSets(	rarg_parameter_set_t*		parameter
 			VALUE	rb_parameter_description_string			=	rb_funcall(	rb_parameter_set_descriptions_array,
 																															rb_intern( "join" ),
 																															1,
-																															rb_str_new( "\n\t",
-																																					2 ) );
+																															rb_str_new( "\n * ",
+																																					4 ) );
 			rb_ary_store(	rb_format_strings_array,
 										parameter_set->description->order_ranking - 1,
 										rb_parameter_description_string );
@@ -37,6 +37,21 @@ VALUE RARG_collectDescriptionsForParameterSets(	rarg_parameter_set_t*		parameter
 										rb_parameter_descriptions_array );
 			}
 
+			possible_match = parameter->possible_match;
+			while ( possible_match != NULL )	{
+
+				if ( possible_match->description )	{					
+					VALUE	rb_possible_match_descriptions_array	=	RARG_rubyArrayForDescription( possible_match->description );
+					rb_funcall(	rb_format_strings_array,
+											rb_intern( "insert" ),
+											2,
+											INT2FIX( possible_match->description->order_ranking - 1 ),
+											rb_possible_match_descriptions_array );
+				}
+
+				possible_match = possible_match->next;
+			}
+			
 			parameter = parameter->next;
 		}
 	
@@ -50,7 +65,7 @@ VALUE RARG_collectDescriptionsForParameterSets(	rarg_parameter_set_t*		parameter
 *  rubyArrayForDescriptions  *
 *****************************/
 
-VALUE RARG_rubyArrayForDescription( rarg_describer_t* description )	{
+VALUE RARG_rubyArrayForDescription( rarg_description_t* description )	{
 
 	VALUE	rb_arg_format_array	=	rb_ary_new();
 	

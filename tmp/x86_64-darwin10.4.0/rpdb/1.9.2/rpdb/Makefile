@@ -2176,6 +2176,30 @@ rb_Rargs/rb_Rargs_describe.c.s:
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_describe.c.s
 .PHONY : rb_Rargs/rb_Rargs_describe.c.s
 
+rb_Rargs/rb_Rargs_error.o: rb_Rargs/rb_Rargs_error.c.o
+.PHONY : rb_Rargs/rb_Rargs_error.o
+
+# target to build an object file
+rb_Rargs/rb_Rargs_error.c.o:
+	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_error.c.o
+.PHONY : rb_Rargs/rb_Rargs_error.c.o
+
+rb_Rargs/rb_Rargs_error.i: rb_Rargs/rb_Rargs_error.c.i
+.PHONY : rb_Rargs/rb_Rargs_error.i
+
+# target to preprocess a source file
+rb_Rargs/rb_Rargs_error.c.i:
+	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_error.c.i
+.PHONY : rb_Rargs/rb_Rargs_error.c.i
+
+rb_Rargs/rb_Rargs_error.s: rb_Rargs/rb_Rargs_error.c.s
+.PHONY : rb_Rargs/rb_Rargs_error.s
+
+# target to generate assembly for a file
+rb_Rargs/rb_Rargs_error.c.s:
+	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_error.c.s
+.PHONY : rb_Rargs/rb_Rargs_error.c.s
+
 rb_Rargs/rb_Rargs_free.o: rb_Rargs/rb_Rargs_free.c.o
 .PHONY : rb_Rargs/rb_Rargs_free.o
 
@@ -2515,6 +2539,9 @@ help:
 	@echo "... rb_Rargs/rb_Rargs_describe.o"
 	@echo "... rb_Rargs/rb_Rargs_describe.i"
 	@echo "... rb_Rargs/rb_Rargs_describe.s"
+	@echo "... rb_Rargs/rb_Rargs_error.o"
+	@echo "... rb_Rargs/rb_Rargs_error.i"
+	@echo "... rb_Rargs/rb_Rargs_error.s"
 	@echo "... rb_Rargs/rb_Rargs_free.o"
 	@echo "... rb_Rargs/rb_Rargs_free.i"
 	@echo "... rb_Rargs/rb_Rargs_free.s"

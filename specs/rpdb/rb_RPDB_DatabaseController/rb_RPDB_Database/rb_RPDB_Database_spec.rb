@@ -203,8 +203,8 @@ describe RPDB::Environment::DatabaseController::Database do
   end
     
   def verify_callback( secondary_database, object, method )
-    secondary_database.secondary_key_creation_callback_method[ :object ].should == object
-    secondary_database.secondary_key_creation_callback_method[ :method ].should == method    
+    secondary_database.secondary_key_creation_callback_method[ :object ].should == ( method.is_a?( Proc ) ? method : object.method( method ) )
+    secondary_database.secondary_key_creation_callback_method[ :method ].should == ( method.is_a?( Proc ) ? nil : method )
 
     secondary_database.erase! if File.exists?( secondary_database.filename )
     secondary_database.primary.erase! if File.exists?( secondary_database.primary.filename )
@@ -297,7 +297,7 @@ describe RPDB::Environment::DatabaseController::Database do
     callback_lambda  = key_from_data__lambda
     database_two.set_secondary_key_creation_callback_method( & callback_lambda )
 
-    verify_callback( database_two, callback_lambda, nil )
+    verify_callback( database_two, callback_lambda, callback_lambda )
   end
 
   # secondary_key_creation_callback_method( & lambda { |key, data| ... } )
@@ -308,7 +308,7 @@ describe RPDB::Environment::DatabaseController::Database do
     callback_lambda  = key_from_key__lambda
     database_two.set_secondary_key_creation_callback_method( & callback_lambda )
 
-    verify_callback( database_two, callback_lambda, nil )
+    verify_callback( database_two, callback_lambda, callback_lambda )
   end
 
   # secondary_key_creation_callback_method( & lambda { |database, key, data| ... } )
@@ -319,7 +319,7 @@ describe RPDB::Environment::DatabaseController::Database do
     callback_lambda  = key_from_database__lambda
     database_two.set_secondary_key_creation_callback_method( & callback_lambda )
 
-    verify_callback( database_two, callback_lambda, nil )
+    verify_callback( database_two, callback_lambda, callback_lambda )
   end
 
   ############################
@@ -691,7 +691,7 @@ describe RPDB::Environment::DatabaseController::Database do
   ############
 
   it "can return a cursor from its cursor controller" do
-    database = @environment.database.new( $database_name ).cursor
+    cursor = @environment.database.new( $database_name ).cursor
   end
 
   ###################
@@ -699,7 +699,7 @@ describe RPDB::Environment::DatabaseController::Database do
   ###################
 
   it "can return an object cursor (which automatically handles serialization) from its cursor controller" do
-    database = @environment.database.new( $database_name ).object_cursor
+    cursor = @environment.database.new( $database_name ).object_cursor
   end
 
   ##########

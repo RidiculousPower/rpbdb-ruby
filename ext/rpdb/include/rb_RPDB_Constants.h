@@ -375,14 +375,16 @@
 	*  Returning  *
 	**************/
 
-	#define SIMPLIFIED_RUBY_ARRAY( rb_return_array )																																\
-		( rb_return_array == Qnil ?																																										\
+	#define SIMPLIFIED_RUBY_ARRAY( rb_return )																																\
+		( rb_return == Qnil ?																																										\
 				Qnil																																																			\
-				: ( RARRAY_LEN( rb_return_array ) == 0 ?																																	\
-					Qnil																																																		\
-					: ( RARRAY_LEN( rb_return_array ) == 1 ?																																\
-						rb_ary_entry( rb_return_array, 0 )																																		\
-						: rb_return_array ) ) )
+				: ( TYPE( rb_return ) == T_ARRAY ) ?																																	\
+						( RARRAY_LEN( rb_return ) == 0 ?																																	\
+							Qnil																																																		\
+							: ( RARRAY_LEN( rb_return ) == 1 ?																																\
+								rb_ary_entry( rb_return, 0 )																																		\
+								: rb_return ) )																																								\
+						: rb_return )
 
 	#define RETURN_ENUMERATOR_IF_NO_BLOCK( obj, argc, argv ) \
 		RETURN_ENUMERATOR( obj, argc, argv );
@@ -722,24 +724,5 @@
 		}																																																		\
 		C_RPDB_DATABASE( rb_which_database, c_database );
 
-	#define ARITY_FOR_CALLBACK_PROC_OR_OBJECT_METHOD( rb_arity, c_callback_is_proc, rb_callback_object, rb_callback_method )	\
-		VALUE	rb_callback_object_class	=	rb_class_of( rb_callback_object );																\
-		if ( rb_callback_object_class == rb_cProc )	{																												\
-			c_callback_is_proc	=	TRUE;																																				\
-			rb_arity	=	rb_funcall(	rb_callback_object,																												\
-															rb_intern( "arity" ),																											\
-															0 );																																			\
-		}																																																		\
-		else {																																															\
-			c_callback_is_proc	=	FALSE;																																			\
-			VALUE	rb_method			=	rb_funcall(	rb_callback_object,																							\
-																				rb_intern( "method" ),																					\
-																				1,																															\
-																				rb_callback_method );																						\
-			rb_arity	=	rb_funcall(	rb_method,																																\
-															rb_intern( "arity" ),																											\
-															0 );																																			\
-		}
-	
 
 #endif
