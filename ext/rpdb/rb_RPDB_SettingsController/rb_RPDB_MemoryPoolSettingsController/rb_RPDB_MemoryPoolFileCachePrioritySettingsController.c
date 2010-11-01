@@ -17,6 +17,8 @@
 
 #include "rb_RPDB_MemoryPoolFileCachePrioritySettingsController.h"
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -26,7 +28,10 @@ extern	VALUE	rb_RPDB_MemoryPoolFileCachePrioritySettingsController;
 extern	VALUE	rb_RPDB_Environment;
 //	FIX - create this
 //extern	VALUE	rb_RPDB_MemoryPoolFileCacheSettingsController;
+extern	VALUE	rb_RPDB_SettingsController;
+extern	VALUE	rb_RPDB_MemoryPoolSettingsController;
 extern	VALUE	rb_RPDB_MemoryPoolFileSettingsController;
+extern	VALUE	rb_RPDB_MemoryPoolFileCacheSettingsController;
 
 
 void Init_RPDB_MemoryPoolFileCachePrioritySettingsController()	{
@@ -35,8 +40,8 @@ void Init_RPDB_MemoryPoolFileCachePrioritySettingsController()	{
 																																										"Priority",	
 																																										rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 	"new",																rb_RPDB_MemoryPoolFileCachePrioritySettingsController_init,														1 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"initialize",													rb_RPDB_MemoryPoolFileCachePrioritySettingsController_init,														1 	);
+	rb_define_singleton_method(	rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 	"new",																rb_RPDB_MemoryPoolFileCachePrioritySettingsController_init,														-1 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"initialize",													rb_RPDB_MemoryPoolFileCachePrioritySettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"parent_environment",									rb_RPDB_MemoryPoolFileCachePrioritySettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"environment",												"parent_environment"	);
@@ -76,8 +81,30 @@ void Init_RPDB_MemoryPoolFileCachePrioritySettingsController()	{
 *  new  *
 ************/
 
-VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_new(	VALUE	klass __attribute__ ((unused )),
-																																	VALUE	rb_parent_memory_pool_file_settings_controller )	{
+VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_new(	int			argc,
+																																	VALUE*	args,
+																																	VALUE		rb_klass_self __attribute__ ((unused)) )	{
+
+	VALUE	rb_parent_environment																	=	Qnil;
+	VALUE	rb_parent_settings_controller													=	Qnil;
+	VALUE	rb_parent_memory_pool_settings_controller							=	Qnil;
+	VALUE	rb_parent_memory_pool_file_settings_controller				=	Qnil;
+//	VALUE	rb_parent_memory_pool_file_cache_settings_controller	=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
+																						R_MatchAncestorInstance( rb_parent_memory_pool_settings_controller, rb_RPDB_MemoryPoolSettingsController ),
+																						R_MatchAncestorInstance( rb_parent_memory_pool_file_settings_controller, rb_RPDB_MemoryPoolFileSettingsController )/*,
+																						R_MatchAncestorInstance( rb_parent_memory_pool_file_cache_settings_controller, rb_RPDB_MemoryPoolFileCacheSettingsController )*/ ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]",
+			"[ <parent settings controller> ]",
+			"[ <parent memory pool settings controller> ]",
+			"[ <parent memory pool file settings controller> ]",
+			"[ <parent memory pool file cache settings controller> ]"
+		)
+	);
 
 	RPDB_MemoryPoolFileSettingsController*	c_parent_memory_pool_file_settings_controller;
 	C_RPDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_parent_memory_pool_file_settings_controller, c_parent_memory_pool_file_settings_controller );
@@ -99,10 +126,11 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_new(	VALUE	klass __a
 *  init  *
 ************/
 
-VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_init(	VALUE	rb_memory_pool_file_cache_priority_settings_controller,
-																																	VALUE	rb_parent_memory_pool_file_settings_controller __attribute__ ((unused )) )	{
+VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_init(	int				argc __attribute__ ((unused)),
+																																	VALUE*		args __attribute__ ((unused)),
+																																	VALUE			rb_self )	{
 	
-	return rb_memory_pool_file_cache_priority_settings_controller;
+	return rb_self;
 }
 
 /***************************************

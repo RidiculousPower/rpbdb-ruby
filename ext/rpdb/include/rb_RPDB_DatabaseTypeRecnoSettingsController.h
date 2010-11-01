@@ -6,10 +6,12 @@
 
 void Init_RPDB_DatabaseTypeRecnoSettingsController();
 
-VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_new(	VALUE	klass,
-													   VALUE	rb_parent_database_type_settings_controller );
-VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_init(	VALUE	rb_database_type_recno_settings_controller,
-	VALUE	rb_parent_database_type_settings_controller );
+VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_new(	int			argc,
+																												VALUE*	args,
+																												VALUE		rb_klass_self );
+VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_init(	int				argc __attribute__ ((unused)),
+																												VALUE*		args __attribute__ ((unused)),
+																												VALUE			rb_self );
 	VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentEnvironment(	VALUE	rb_database_type_recno_settings_controller );
 	VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabase(	VALUE	rb_database_type_recno_settings_controller );
 	VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_recordRenumbering( VALUE	rb_database_type_recno_settings_controller );

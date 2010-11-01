@@ -20,6 +20,8 @@
 
 #include <rpdb/RPDB_ThreadSettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -30,8 +32,8 @@ extern	VALUE	rb_RPDB_ThreadSettingsController;
 	
 void Init_RPDB_ThreadSettingsController()	{
 
-	rb_define_singleton_method(	rb_RPDB_ThreadSettingsController, 	"new",																rb_RPDB_ThreadSettingsController_init,										1 	);
-	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"initialize",													rb_RPDB_ThreadSettingsController_init,										1 	);
+	rb_define_singleton_method(	rb_RPDB_ThreadSettingsController, 	"new",																rb_RPDB_ThreadSettingsController_init,										-1 	);
+	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"initialize",													rb_RPDB_ThreadSettingsController_init,										-1 	);
 
 	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"parent_environment",									rb_RPDB_ThreadSettingsController_parentEnvironment,				0 	);
 	rb_define_alias(			rb_RPDB_ThreadSettingsController, 				"environment",												"parent_environment"	);
@@ -55,9 +57,22 @@ void Init_RPDB_ThreadSettingsController()	{
 *  new  *
 ************/
 
-VALUE rb_RPDB_ThreadSettingsController_new(	VALUE	klass __attribute__ ((unused )),
-																						VALUE	rb_parent_settings_controller )	{
+VALUE rb_RPDB_ThreadSettingsController_new(	int			argc,
+																						VALUE*	args,
+																						VALUE		rb_klass_self __attribute__ ((unused)) )	{
 	
+	VALUE	rb_parent_environment																	=	Qnil;
+	VALUE	rb_parent_settings_controller													=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]",
+			"[ <parent settings controller> ]"
+		)
+	);
+
 	RPDB_SettingsController*	c_parent_settings_controller;
 	C_RPDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 	
@@ -78,10 +93,11 @@ VALUE rb_RPDB_ThreadSettingsController_new(	VALUE	klass __attribute__ ((unused )
 *  init  *
 ************/
 
-VALUE rb_RPDB_ThreadSettingsController_init(	VALUE	rb_thread_settings_controller,
-																							VALUE	rb_parent_settings_controller __attribute__ ((unused )) )	{
+VALUE rb_RPDB_ThreadSettingsController_init(	int				argc __attribute__ ((unused)),
+																							VALUE*		args __attribute__ ((unused)),
+																							VALUE			rb_self )	{
 
-	return rb_thread_settings_controller;
+	return rb_self;
 }
 
 /***************************************

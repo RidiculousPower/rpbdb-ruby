@@ -33,6 +33,8 @@
 #include <rpdb/RPDB_DatabaseSettingsController.h>
 #include <rpdb/RPDB_DatabaseRecordReadWriteSettingsController.h>
 
+#include <rargs.h>
+
 #define RPDB_RUBY_ERROR_MESSAGE_DUPLICATES_AND_KEY_OR_BLOCK_REQUIRED "Duplicates must be enabled and key must be set or must be inside iterate block to iterate duplicates."
 
 /*******************************************************************************************************************************************************************************************

@@ -18,12 +18,18 @@
 
 #include <rpdb/RPDB_DatabaseCursorCachePrioritySettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_Database;
+extern	VALUE	rb_RPDB_DatabaseController;
+extern	VALUE	rb_RPDB_DatabaseCursorController;
+extern	VALUE	rb_RPDB_DatabaseCursor;
+extern	VALUE	rb_RPDB_DatabaseSettingsController;
 extern	VALUE	rb_RPDB_DatabaseCursorSettingsController;
 extern	VALUE	rb_RPDB_DatabaseCursorCacheSettingsController;
 extern	VALUE	rb_RPDB_DatabaseCursorCachePrioritySettingsController;
@@ -34,8 +40,8 @@ void Init_RPDB_DatabaseCursorCacheSettingsController()	{
 																																							"Cache",	
 																																							rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_DatabaseCursorCacheSettingsController, 	"new",											rb_RPDB_DatabaseCursorCacheSettingsController_new,												1 	);
-	rb_define_method(						rb_RPDB_DatabaseCursorCacheSettingsController, 	"initialize",								rb_RPDB_DatabaseCursorCacheSettingsController_init,												1 	);
+	rb_define_singleton_method(	rb_RPDB_DatabaseCursorCacheSettingsController, 	"new",											rb_RPDB_DatabaseCursorCacheSettingsController_new,												-1 	);
+	rb_define_method(						rb_RPDB_DatabaseCursorCacheSettingsController, 	"initialize",								rb_RPDB_DatabaseCursorCacheSettingsController_init,												-1 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCursorCacheSettingsController, 	"parent_environment",				rb_RPDB_DatabaseCursorCacheSettingsController_parentEnvironment,					0 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursorCacheSettingsController, 	"environment",							"parent_environment"	);
@@ -56,8 +62,36 @@ void Init_RPDB_DatabaseCursorCacheSettingsController()	{
 *  new  *
 ************/
 
-VALUE rb_RPDB_DatabaseCursorCacheSettingsController_new(	VALUE	klass __attribute__ ((unused )),
-																													VALUE	rb_parent_database_cursor_settings_controller )	{
+VALUE rb_RPDB_DatabaseCursorCacheSettingsController_new(	int			argc,
+																													VALUE*	args,
+																													VALUE		rb_klass_self __attribute__ ((unused)) )	{
+
+	VALUE	rb_parent_environment																	=	Qnil;
+	VALUE	rb_parent_database_controller													=	Qnil;
+	VALUE	rb_parent_database																		=	Qnil;
+	VALUE	rb_parent_database_cursor_controller									=	Qnil;
+	VALUE	rb_parent_database_cursor															=	Qnil;
+	VALUE	rb_parent_database_settings_controller								=	Qnil;
+	VALUE	rb_parent_database_cursor_settings_controller					=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_database_controller, rb_RPDB_DatabaseController ),
+																						R_MatchAncestorInstance( rb_parent_database, rb_RPDB_Database ),
+																						R_MatchAncestorInstance( rb_parent_database_cursor_controller, rb_RPDB_DatabaseCursorController ),
+																						R_MatchAncestorInstance( rb_parent_database_cursor, rb_RPDB_DatabaseCursor ),
+																						R_MatchAncestorInstance( rb_parent_database_settings_controller, rb_RPDB_DatabaseSettingsController ),
+																						R_MatchAncestorInstance( rb_parent_database_cursor_settings_controller, rb_RPDB_DatabaseCursorSettingsController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]",
+			"[ <parent database controller> ]",
+			"[ <parent database> ]",
+			"[ <parent database cursor controller> ]",
+			"[ <parent database cursor> ]",
+			"[ <parent database settings controller> ]",
+			"[ <parent database cursor settings controller> ]"
+		)
+	);
 	
 	RPDB_DatabaseCursorSettingsController*	c_parent_database_cursor_settings_controller;
 	C_RPDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_parent_database_cursor_settings_controller, c_parent_database_cursor_settings_controller );
@@ -79,10 +113,11 @@ VALUE rb_RPDB_DatabaseCursorCacheSettingsController_new(	VALUE	klass __attribute
 *  new  *
 ************/
 
-VALUE rb_RPDB_DatabaseCursorCacheSettingsController_init(	VALUE	rb_database_cursor_cache_settings_controller,
-																													VALUE	rb_parent_database_cursor_settings_controller __attribute__ ((unused )) )	{
+VALUE rb_RPDB_DatabaseCursorCacheSettingsController_init(	int				argc __attribute__ ((unused)),
+																													VALUE*		args __attribute__ ((unused)),
+																													VALUE			rb_self )	{
 
-	return rb_database_cursor_cache_settings_controller;
+	return rb_self;
 }
 
 /***************************************

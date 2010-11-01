@@ -88,12 +88,6 @@ SET(CMAKE_DEPENDS_CHECK_C
   "/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c" "/Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.o"
   "/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Transaction/rb_RPDB_Transaction.c" "/Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o"
   "/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Transaction/rb_RPDB_TransactionController.c" "/Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_TransactionController.c.o"
-  "/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_define.c" "/Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_define.c.o"
-  "/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_describe.c" "/Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_describe.c.o"
-  "/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_error.c" "/Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_error.c.o"
-  "/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_free.c" "/Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_free.c.o"
-  "/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/rb_Rargs_parse.c" "/Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/rb_Rargs_parse.c.o"
-  "/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_Rargs/untitled.c" "/Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb/CMakeFiles/rb_rpdb.dir/rb_Rargs/untitled.c.o"
   )
 SET(CMAKE_C_COMPILER_ID "Clang")
 

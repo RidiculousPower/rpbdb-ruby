@@ -7,10 +7,12 @@
 
 void Init_RPDB_SettingsController();
 
-VALUE rb_RPDB_SettingsController_new(	VALUE	klass,
-									  VALUE	rb_parent_environment );
-VALUE rb_RPDB_SettingsController_init(	VALUE	rb_settings_controller,
-	VALUE	rb_parent_environment );
+VALUE rb_RPDB_SettingsController_new(	int				argc,
+																			VALUE*		args,
+																			VALUE			rb_klass_self );
+VALUE rb_RPDB_SettingsController_init(	int				argc,
+																				VALUE*		args,
+																				VALUE			rb_settings_controller_self );
 	VALUE rb_RPDB_SettingsController_SHMkey( VALUE	rb_settings_controller );
 	VALUE rb_RPDB_SettingsController_setSHMkey(	VALUE	rb_settings_controller, 
 													VALUE	shm_key );

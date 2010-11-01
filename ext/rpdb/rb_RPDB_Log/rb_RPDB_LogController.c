@@ -26,6 +26,8 @@
 
 #include <rpdb/RPDB_LogSettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -79,8 +81,18 @@ void Init_RPDB_LogController()	{
 *  new  *
 *************/
 
-VALUE rb_RPDB_LogController_new(	VALUE	klass __attribute__ ((unused)),
-																	VALUE	rb_parent_environment )	{
+VALUE rb_RPDB_LogController_new(	int			argc,
+																	VALUE*	args,
+																	VALUE		rb_klass_self __attribute__ ((unused)) )	{
+
+	VALUE	rb_parent_environment						=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]"
+		)
+	);
 	
 	RPDB_Environment*	c_parent_environment;
 	C_RPDB_ENVIRONMENT( rb_parent_environment, c_parent_environment );
@@ -103,10 +115,11 @@ VALUE rb_RPDB_LogController_new(	VALUE	klass __attribute__ ((unused)),
 *  new  *
 *************/
 
-VALUE rb_RPDB_LogController_init(	VALUE	rb_log_controller,
-																	VALUE	rb_parent_environment __attribute__ ((unused)) )	{
+VALUE rb_RPDB_LogController_init(	int				argc __attribute__ ((unused)),
+																	VALUE*		args __attribute__ ((unused)),
+																	VALUE			rb_self )	{
 
-	return rb_log_controller;
+	return rb_self;
 }
 
 /***************************

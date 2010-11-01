@@ -17,14 +17,19 @@
 
 #include <rpdb/RPDB_DatabaseRecordReadWriteSettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_Database;
+extern	VALUE	rb_RPDB_DatabaseController;
 extern	VALUE	rb_RPDB_DatabaseSettingsController;
 extern	VALUE	rb_RPDB_DatabaseRecordReadWriteSettingsController;
+extern	VALUE	rb_RPDB_Record;
+extern	VALUE	rb_RPDB_DatabaseRecordSettingsController;
 
 void Init_RPDB_DatabaseRecordReadWriteSettingsController()	{
 
@@ -32,8 +37,8 @@ void Init_RPDB_DatabaseRecordReadWriteSettingsController()	{
 																																								"ReadWrite",	
 																																								rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"new",																rb_RPDB_DatabaseRecordReadWriteSettingsController_new,							1 	);
-	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"initialize",													rb_RPDB_DatabaseRecordReadWriteSettingsController_init,							1 	);
+	rb_define_singleton_method(	rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"new",																rb_RPDB_DatabaseRecordReadWriteSettingsController_new,							-1 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"initialize",													rb_RPDB_DatabaseRecordReadWriteSettingsController_init,							-1 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"parent_environment",									rb_RPDB_DatabaseRecordReadWriteSettingsController_parentEnvironment,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"environment",												"parent_environment"	);
@@ -98,8 +103,10 @@ void Init_RPDB_DatabaseRecordReadWriteSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"sorted_duplicates?",														rb_RPDB_DatabaseRecordReadWriteSettingsController_sortedDuplicates,											0 	);
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_sorted_duplicates_on",										rb_RPDB_DatabaseRecordReadWriteSettingsController_turnSortedDuplicatesOn,								0 	);
 	rb_define_alias(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"sorted_duplicates_on",													"turn_sorted_duplicates_on" 	);                                                          				
+	rb_define_alias(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"with_sorted_duplicates",													"turn_sorted_duplicates_on" 	);                                                          				
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_sorted_duplicates_off",										rb_RPDB_DatabaseRecordReadWriteSettingsController_turnSortedDuplicatesOff,							0 	);
 	rb_define_alias(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"sorted_duplicates_off",												"turn_sorted_duplicates_off" 	);                                                          				
+	rb_define_alias(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"without_sorted_duplicates",												"turn_sorted_duplicates_off" 	);                                                          				
 
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"database_allocates_memory_using_malloc?",						rb_RPDB_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryUsingMalloc,						0 	);
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_database_allocates_memory_using_malloc_on",			rb_RPDB_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOn,			0 	);
@@ -150,8 +157,33 @@ void Init_RPDB_DatabaseRecordReadWriteSettingsController()	{
 *  new  *
 *************/
 
-VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_new(	VALUE	klass __attribute__ ((unused )),
-																												VALUE	rb_parent_database_record_settings_controller )	{
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_new(	int			argc,
+																															VALUE*	args,
+																															VALUE		rb_klass_self __attribute__ ((unused)) )	{
+
+	VALUE	rb_parent_environment																	=	Qnil;
+	VALUE	rb_parent_database_controller													=	Qnil;
+	VALUE	rb_parent_database																		=	Qnil;
+	VALUE	rb_parent_record																			=	Qnil;
+	VALUE	rb_parent_database_settings_controller								=	Qnil;
+	VALUE	rb_parent_database_record_settings_controller					=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_database_controller, rb_RPDB_DatabaseController ),
+																						R_MatchAncestorInstance( rb_parent_database, rb_RPDB_Database ),
+																						R_MatchAncestorInstance( rb_parent_record, rb_RPDB_Record ),
+																						R_MatchAncestorInstance( rb_parent_database_settings_controller, rb_RPDB_DatabaseSettingsController ),
+																						R_MatchAncestorInstance( rb_parent_database_record_settings_controller, rb_RPDB_DatabaseRecordSettingsController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]",
+			"[ <parent database controller> ]",
+			"[ <parent database> ]",
+			"[ <parent record> ]",
+			"[ <parent database settings controller> ]",
+			"[ <parent database record settings controller> ]"
+		)
+	);
 
 	RPDB_DatabaseRecordSettingsController*	 c_parent_database_record_settings_controller;
 	C_RPDB_DATABASE_RECORD_SETTINGS_CONTROLLER( rb_parent_database_record_settings_controller, c_parent_database_record_settings_controller );
@@ -173,10 +205,11 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_new(	VALUE	klass __attri
 *  new  *
 *************/
 
-VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_init(	VALUE	rb_database_record_read_write_settings_controller,
-																												VALUE	rb_parent_database_settings_controller __attribute__ ((unused )) )	{
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_init(	int				argc __attribute__ ((unused)),
+																															VALUE*		args __attribute__ ((unused)),
+																															VALUE			rb_self )	{
 	
-	return rb_database_record_read_write_settings_controller;
+	return rb_self;
 }
 
 /***************************************
@@ -1046,7 +1079,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_sortedDuplicates( VALUE	
 	C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 	
 	return ( RPDB_DatabaseRecordReadWriteSettingsController_sortedDuplicates( c_database_record_read_write_settings_controller )	?	Qtrue
-																														:	Qfalse );
+																																																																:	Qfalse );
 }
 
 	/******************************

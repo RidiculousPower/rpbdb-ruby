@@ -6,10 +6,12 @@
 
 void Init_RPDB_DatabaseEncryptionSettingsController();
 
-VALUE rb_RPDB_DatabaseEncryptionSettingsController_new(	VALUE	klass,
-														VALUE	rb_parent_database_settings_controller );
-VALUE rb_RPDB_DatabaseEncryptionSettingsController_init(	VALUE	rb_database_encryption_settings_controller,
-	VALUE	rb_parent_database_settings_controller );
+VALUE rb_RPDB_DatabaseEncryptionSettingsController_new(	int			argc,
+																												VALUE*	args,
+																												VALUE		rb_klass_self );
+VALUE rb_RPDB_DatabaseEncryptionSettingsController_init(	int				argc __attribute__ ((unused)),
+																													VALUE*		args __attribute__ ((unused)),
+																													VALUE			rb_self );
 	VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentEnvironment(	VALUE	rb_database_encryption_settings_controller );
 	VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentDatabase(	VALUE	rb_database_encryption_settings_controller );
 	VALUE rb_RPDB_DatabaseEncryptionSettingsController_encrypted( VALUE	rb_database_encryption_settings_controller );

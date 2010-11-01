@@ -163,6 +163,7 @@ describe RPDB::Environment::DatabaseController::Database do
       database.write( this_time.to_s => 'some data' )
     end
     database.sync!
+    database.empty!
   end
 
   ##########################################
@@ -215,14 +216,13 @@ describe RPDB::Environment::DatabaseController::Database do
     secondary_database.is_secondary?.should == true
     secondary_database.primary_database.should == primary_database
     
-    primary_database.empty!
-    
-    primary_key = primary_key
     secondary_database.primary.write( primary_key, data )
     secondary_database.retrieve( secondary_key ).should == data
     secondary_database.primary.retrieve( :index, secondary_key ).should == data    
 
     verify_callback( secondary_database, object, method )
+    
+    primary_database.empty!
   end
 
   ################################################
@@ -230,7 +230,7 @@ describe RPDB::Environment::DatabaseController::Database do
   #  secondary_key_creation_callback_method      #
   ################################################
 
-  # secondary_key_creation_callback_method( :method_in_self )
+  # set_secondary_key_creation_callback_method( :method_in_self )
   it "can set and report its secondary key creation callback information for a method with one parameter (data)." do
     database        = @database_controller.new( $database_name )
     database_two    = @database_controller.new( $secondary_database_name )
@@ -242,7 +242,7 @@ describe RPDB::Environment::DatabaseController::Database do
     verify_callback( database_two, database_two, :callback_method )
   end
 
-  # secondary_key_creation_callback_method( callback_object, :method_in_callback_object )
+  # set_secondary_key_creation_callback_method( callback_object, :method_in_callback_object )
   it "can set and report its secondary key creation callback information for a method in a callback object." do
     database        = @database_controller.new( $database_name )
     database_two    = @database_controller.new( $secondary_database_name )
@@ -256,7 +256,7 @@ describe RPDB::Environment::DatabaseController::Database do
     verify_callback( database_two, test_object, :callback_method )
   end
 
-  # secondary_key_creation_callback_method( lambda { |data| ... } )
+  # set_secondary_key_creation_callback_method( lambda { |data| ... } )
   it "can set and report its secondary key creation callback information by passing a lambda or proc with one parameter (data)." do
     database      = @database_controller.new( $database_name )
     database_two  = @database_controller.new( $secondary_database_name )
@@ -264,10 +264,10 @@ describe RPDB::Environment::DatabaseController::Database do
     callback_lambda  = key_from_data__lambda
     database_two.set_secondary_key_creation_callback_method( callback_lambda )
 
-    verify_callback( database_two, callback_lambda, nil )
+    verify_callback( database_two, callback_lambda, callback_lambda )
   end
 
-  # secondary_key_creation_callback_method( lambda { |key, data| ... } )
+  # set_secondary_key_creation_callback_method( lambda { |key, data| ... } )
   it "can set and report its secondary key creation callback information by passing a lambda or proc with two parameters (key, data)." do
     database      = @database_controller.new( $database_name )
     database_two  = @database_controller.new( $secondary_database_name )
@@ -275,10 +275,10 @@ describe RPDB::Environment::DatabaseController::Database do
     callback_lambda  = key_from_key__lambda
     database_two.set_secondary_key_creation_callback_method( callback_lambda )
 
-    verify_callback( database_two, callback_lambda, nil )
+    verify_callback( database_two, callback_lambda, callback_lambda )
   end
 
-  # secondary_key_creation_callback_method( lambda { |database, key, data| ... } )
+  # set_secondary_key_creation_callback_method( lambda { |database, key, data| ... } )
   it "can set and report its secondary key creation callback information by passing a lambda or proc with three parameters (database, key, data)." do
     database      = @database_controller.new( $database_name )
     database_two  = @database_controller.new( $secondary_database_name )
@@ -286,11 +286,11 @@ describe RPDB::Environment::DatabaseController::Database do
     callback_lambda  = key_from_database__lambda
     database_two.set_secondary_key_creation_callback_method( callback_lambda )
 
-    verify_callback( database_two, callback_lambda, nil )
+    verify_callback( database_two, callback_lambda, callback_lambda )
   end
 
-  # secondary_key_creation_callback_method( & lambda { |data| ... } )
-  it "can set and report its secondary key creation callback information by passing a block with one parameter (data)." do
+  # set_secondary_key_creation_callback_method( & lambda { |data| ... } )
+  it "can set and report its secondary key creation callback information by passing a block with one parameter (parameters: key)." do
     database      = @database_controller.new( $database_name )
     database_two  = @database_controller.new( $secondary_database_name )
     
@@ -300,8 +300,8 @@ describe RPDB::Environment::DatabaseController::Database do
     verify_callback( database_two, callback_lambda, callback_lambda )
   end
 
-  # secondary_key_creation_callback_method( & lambda { |key, data| ... } )
-  it "can set and report its secondary key creation callback information by passing a block with two parameters (key, data)." do
+  # set_secondary_key_creation_callback_method( & lambda { |key, data| ... } )
+  it "can set and report its secondary key creation callback information by passing a block with two parameters (parameters: key, data)." do
     database      = @database_controller.new( $database_name )
     database_two  = @database_controller.new( $secondary_database_name )
     
@@ -311,8 +311,8 @@ describe RPDB::Environment::DatabaseController::Database do
     verify_callback( database_two, callback_lambda, callback_lambda )
   end
 
-  # secondary_key_creation_callback_method( & lambda { |database, key, data| ... } )
-  it "can set and report its secondary key creation callback information by passing a block with three parameters (database, key, data)." do
+  # set_secondary_key_creation_callback_method( & lambda { |database, key, data| ... } )
+  it "can set and report its secondary key creation callback information by passing a block with three parameters (parameters: database, key, data)." do
     database      = @database_controller.new( $database_name )
     database_two  = @database_controller.new( $secondary_database_name )
     
@@ -366,63 +366,63 @@ describe RPDB::Environment::DatabaseController::Database do
   end
 
   # create_secondary_index( :index_name, lambda { |data| ... } ) 
-  it "can create and associate a secondary index with a callback lambda or proc with one paramter (data)" do
+  it "can create and associate a secondary index with a callback lambda or proc with one paramter (parameters: key)" do
     database      = @database_controller.new( $database_name )
     
     callback_lambda  = key_from_data__lambda
     database_two = database.create_secondary_index( :index, callback_lambda )
 
-    verify_secondary( database, database_two, callback_lambda, nil, 'primary key', 'some data', 'some data' )
+    verify_secondary( database, database_two, callback_lambda, callback_lambda, 'primary key', 'some data', 'some data' )
   end
 
   # create_secondary_index( :index_name, lambda { |key, data| ... } )
-  it "can create and associate a secondary index with a callback lambda or proc with two paramters (key, data)" do
+  it "can create and associate a secondary index with a callback lambda or proc with two paramters (parameters: key, data)" do
     database      = @database_controller.new( $database_name )
     
     callback_lambda  = key_from_key__lambda
     database_two = database.create_secondary_index( :index, callback_lambda )
 
-    verify_secondary( database, database_two, callback_lambda, nil, 'primary key', 'some data', 'primary key' )    
+    verify_secondary( database, database_two, callback_lambda, callback_lambda, 'primary key', 'some data', 'primary key' )    
   end
 
   # create_secondary_index( :index_name, lambda { |database, key, data| ... } )
-  it "can create and associate a secondary index with a callback lambda or proc with three paramters (database, key, data)" do
+  it "can create and associate a secondary index with a callback lambda or proc with three paramters (parameters: database, key, data)" do
     database      = @database_controller.new( $database_name )
     
     callback_lambda  = key_from_database__lambda
     database_two = database.create_secondary_index( :index, callback_lambda )
 
-    verify_secondary( database, database_two, callback_lambda, nil, 'primary key', 'some data', database_two.name )    
+    verify_secondary( database, database_two, callback_lambda, callback_lambda, 'primary key', 'some data', database_two.name )    
   end
 
   # create_secondary_index( :index_name, & lambda { |key| ... } ) 
-  it "can create a secondary index with a block, automatically associating the secondary database with the primary" do
+  it "can create a secondary index with a block, automatically associating the secondary database with the primary (parameters: key)" do
     database      = @database_controller.new( $database_name )
     
     callback_lambda  = key_from_data__lambda
     database_two = database.create_secondary_index( :index, & callback_lambda )
 
-    verify_secondary( database, database_two, callback_lambda, nil, 'primary key', 'some data', 'some data' )
+    verify_secondary( database, database_two, callback_lambda, callback_lambda, 'primary key', 'some data', 'some data' )
   end
 
   # create_secondary_index( :index_name, & lambda { |key, data| ... } )
-  it "can create a secondary index with a block, automatically associating the secondary database with the primary" do
+  it "can create a secondary index with a block, automatically associating the secondary database with the primary (parameters: key, data)" do
     database      = @database_controller.new( $database_name )
     
     callback_lambda  = key_from_key__lambda
     database_two = database.create_secondary_index( :index, & callback_lambda )
 
-    verify_secondary( database, database_two, callback_lambda, nil, 'primary key', 'some data', 'primary key' )    
+    verify_secondary( database, database_two, callback_lambda, callback_lambda, 'primary key', 'some data', 'primary key' )    
   end
 
   # create_secondary_index( :index_name, & lambda { |database, key, data| ... } )
-  it "can create a secondary index with a block, automatically associating the secondary database with the primary" do
+  it "can create a secondary index with a block, automatically associating the secondary database with the primary (parameters: database, key, data)" do
     database      = @database_controller.new( $database_name )
     
     callback_lambda  = key_from_database__lambda
     database_two = database.create_secondary_index( :index, & callback_lambda )
 
-    verify_secondary( database, database_two, callback_lambda, nil, 'primary key', 'some data', database_two.name )    
+    verify_secondary( database, database_two, callback_lambda, callback_lambda, 'primary key', 'some data', database_two.name )    
   end
 
   ############################
@@ -471,11 +471,15 @@ describe RPDB::Environment::DatabaseController::Database do
     database = @environment.database.new( $database_name ).open
     database.write( "key", 'some data' )
     database.key_exists?( "key" ).should == true    
+    database.empty!
   end
 
   # write( primary_key, [ data, ... ] )
-  it "" do
-    Fail
+  it "can write multiple duplicate keys for a single primary key" do
+    database = @environment.database.new( $database_name )
+    database.set_to.read_write.turn_sorted_duplicates_on
+    database.write( "key", [ 'some data', 'other data' ] )
+    database.empty!
   end
   
   # write( primary_key => data )
@@ -483,34 +487,26 @@ describe RPDB::Environment::DatabaseController::Database do
     database = @environment.database.new( $database_name ).open
     database.write( "key" => 'some data' )
     database.key_exists?( "key" ).should == true    
+    database.empty!
   end
 
   # write( primary_key => [ data, ... ] )
   it "can write multiple primary key values" do
-    Fail
+    database = @environment.database.new( $database_name )
+    database.set_to.read_write.turn_sorted_duplicates_on
+    database.write( "key" => [ 'some data', 'other data' ] )
+    database.empty!
   end
 
-  # write( :index, secondary_key => [ data, ... ] )
-  it "can write multiple secondary key values" do
-    
-    # make sure that the record already exists or throws error
-    Fail
-  end
-
-  # write( :index, secondary_key, data)
-  it "" do
-    Fail
-  end
-
-  # write( :index, secondary_key, [ data ] )
-  it "" do
-    Fail
-  end
-  
   # write( [ any_arg_form ], ... )
   it "can use arrays to group writes of any of these argument forms" do
-    
-    Fail
+    database = @environment.database.new( $database_name )
+    database.set_to.read_write.turn_sorted_duplicates_on
+    database.write( [ { "another key" => 'more data' } ], [ { "key" => [ 'some data', 'other data' ] } ] )    
+    database.key_exists?( "key" ).should == true
+    database.key_exists?( "another key" ).should == true
+    database.retrieve( 'key' ).first.should == 'some data'
+    database.empty!
   end  
 
   #################
@@ -522,6 +518,7 @@ describe RPDB::Environment::DatabaseController::Database do
     database = @environment.database.new( $database_name ).open
     database.write( "key" => 'some data' )
     database.key_exists?( "key" ).should == true
+    database.empty!
   end
 
   # key_exists?( :index, secondary_key, ... )
@@ -536,15 +533,20 @@ describe RPDB::Environment::DatabaseController::Database do
   
   # key_exists?( :index => [ secondary_key, ... ] )
   it "can report whether multiple secondary keys exist" do
-    duplicates_database = @environment.database.new( $database_name ).open
-    duplicates_database.set_to.read_write.sorted_duplicates
-    database.write( "key" => [ 'some data', 'other data' ] )
-    database.key_exists?( [ 'some data', 'other data' ] ).should == true
+    duplicates_database = @environment.database.new( $database_name )
+    duplicates_database.set_to.read_write.turn_sorted_duplicates_on
+    duplicates_database.write( "key" => [ 'some data', 'other data' ] )
+    duplicates_database.write( "another key" => [ 'some data', 'other data' ] )
+    duplicates_database.key_exists?( 'key' ).should == true
+    duplicates_database.key_exists?( 'another key' ).should == true
+    duplicates_database.key_exists?( [ 'key', 'another key' ] ).should == [ true, true ]
+    duplicates_database.empty!
   end
 
   # key_exists?( [ any_arg_form ], ... )
   it "can use arrays to group sets these argument forms" do
     Fail
+    database.empty!
   end
 
   #################
@@ -557,21 +559,25 @@ describe RPDB::Environment::DatabaseController::Database do
     database = @environment.database.new( $database_name ).open
     database.write( "key" => 'some data' )
     database.key_exists?( "key" ).should == true
+    database.empty!
   end
 
   # keys_exist?( :index, secondary_key, ... )
   it "can report whether a secondary key exists" do
     Fail
+    database.empty!
   end
 
   # keys_exist?( :index, [ secondary_key, ... ], ... )
   it "can report whether a secondary key exists" do
     Fail
+    database.empty!
   end  
   
   # keys_exist?( :index => secondary_key, ... )
   it "can report whether a secondary key exists specified with a hash" do
     Fail
+    database.empty!
   end
   
   # keys_exist?( :index => [ secondary_key, ... ], ... )
@@ -581,11 +587,13 @@ describe RPDB::Environment::DatabaseController::Database do
     duplicates_database.set_to.read_write.sorted_duplicates
     database.write( "key" => [ 'some data', 'other data' ] )
     database.key_exists?( [ 'some data', 'other data' ] ).should == true
+    database.empty!
   end
 
   # keys_exist?( [ any_arg_form ], ... )
   it "can use arrays to group sets these argument forms" do
     Fail
+    database.empty!
   end
 
   ##############
@@ -597,6 +605,7 @@ describe RPDB::Environment::DatabaseController::Database do
     database = @environment.database.new( $database_name ).open
     database.write( "key" => 'some data' )
     database.retrieve( "key" ).should == 'some data'    
+    database.empty!
   end
 
   # retrieve( :index, secondary_key, ... )
@@ -610,21 +619,25 @@ describe RPDB::Environment::DatabaseController::Database do
     database.write( 'key' => 'value' )
     database.retrieve( 'key' ).should == 'value'
     database.retrieve( :value => 'value' ).should == 'value'
+    database.empty!
   end
   
   # retrieve( :index, [ secondary_key, ... ] )
   it "" do
     Fail
+    database.empty!
   end
 
   # retrieve( :index => secondary_key, ... )
   it "can retrieve using a secondary index pointing to a secondary key in a hash" do
     Fail
+    database.empty!
   end
   
   # retrieve( [ any_arg_form ], ... )
   it "can use arrays to group sets these argument forms" do
     Fail
+    database.empty!
   end
   
   ############
@@ -683,7 +696,7 @@ describe RPDB::Environment::DatabaseController::Database do
   #####################
 
   it "has a join controller" do
-    @environment.database.new( $database_name ).join_controller
+    join_controller = @environment.database.new( $database_name ).join_controller
   end
 
   ############

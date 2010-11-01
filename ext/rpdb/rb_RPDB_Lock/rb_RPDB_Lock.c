@@ -19,6 +19,8 @@
 
 #include <rpdb/RPDB_LockSettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -80,8 +82,22 @@ void Init_RPDB_Lock()	{
 *  new  *
 ********/
 
-VALUE rb_RPDB_Lock_new(	VALUE	klass __attribute__ ((unused)),
-												VALUE	rb_parent_lock_controller )	{
+VALUE rb_RPDB_Lock_new(	int			argc,
+												VALUE*	args,
+												VALUE		rb_klass_self __attribute__ ((unused)) )	{
+
+	VALUE	rb_parent_environment						=	Qnil;
+	VALUE	rb_parent_lock_controller				=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_lock_controller, rb_RPDB_LockController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]",
+			"[ <parent lock controller> ]"
+		)
+	);
+	
 	
 	RPDB_LockController*	c_parent_lock_controller;
 	C_RPDB_LOCK_CONTROLLER( rb_parent_lock_controller, c_parent_lock_controller );
@@ -103,11 +119,12 @@ VALUE rb_RPDB_Lock_new(	VALUE	klass __attribute__ ((unused)),
 *  init  *
 *********/
 
-VALUE rb_RPDB_Lock_init(	VALUE	rb_lock,
-													VALUE	rb_parent_lock_controller __attribute__ ((unused)) )	{
+VALUE rb_RPDB_Lock_init(	int				argc __attribute__ ((unused)),
+													VALUE*		args __attribute__ ((unused)),
+													VALUE			rb_self )	{
 
 
-	return rb_lock;
+	return rb_self;
 }
 
 /************************

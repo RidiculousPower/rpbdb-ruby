@@ -11,6 +11,9 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_SettingsController.h"
+
+#include "rb_RPDB.h"
+
 #include "rb_RPDB_DatabaseSettingsController.h"
 #include "rb_RPDB_MemoryPoolSettingsController.h"
 
@@ -23,9 +26,13 @@
 #include <rpdb/RPDB_ErrorSettingsController.h>
 #include <rpdb/RPDB_MemoryPoolSettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
+
+extern	VALUE	rb_mRPDB;
 
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_SettingsController;
@@ -48,8 +55,8 @@ void Init_RPDB_SettingsController()	{
 																														"SettingsController", 
 																														rb_RPDB_SettingsController);
 
-		rb_define_singleton_method(	rb_RPDB_SettingsController, 	"new",																rb_RPDB_SettingsController_init,														1 	);
-		rb_define_method(						rb_RPDB_SettingsController, 	"initialize",													rb_RPDB_SettingsController_init,														1 	);
+		rb_define_singleton_method(	rb_RPDB_SettingsController, 	"new",																rb_RPDB_SettingsController_init,														-1 	);
+		rb_define_method(						rb_RPDB_SettingsController, 	"initialize",													rb_RPDB_SettingsController_init,														-1 	);
 
 		rb_define_method(						rb_RPDB_SettingsController, 	"parent_environment",									rb_RPDB_SettingsController_parentEnvironment,								0 	);
 		rb_define_alias(						rb_RPDB_SettingsController, 	"environment",												"parent_environment"	);
@@ -98,8 +105,22 @@ void Init_RPDB_SettingsController()	{
 *  new  *
 ********/
 
-VALUE rb_RPDB_SettingsController_new(	VALUE	rb_settings_controller_klass __attribute__ ((unused )),
-																			VALUE	rb_parent_environment )	{
+VALUE rb_RPDB_SettingsController_new(	int				argc,
+																			VALUE*		args,
+																			VALUE			rb_klass_self )	{
+
+	VALUE	rb_parent_environment	=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter( R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ) ) ),
+		R_ListOrder( 1 ),
+		"[ <parent environment> ]"
+		)
+	);
+	
+	if ( rb_parent_environment == Qnil )	{
+		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
 
 	RPDB_Environment*		c_parent_environment;
 	C_RPDB_ENVIRONMENT( rb_parent_environment, c_parent_environment );
@@ -108,8 +129,11 @@ VALUE rb_RPDB_SettingsController_new(	VALUE	rb_settings_controller_klass __attri
 
 	VALUE	rb_settings_controller	= RUBY_RPDB_SETTINGS_CONTROLLER( settings_controller );
 
-	VALUE	argv[ 1 ];
-	argv[ 0 ]	=	rb_parent_environment;
+	rb_iv_set(	rb_settings_controller,
+							RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT,
+							rb_parent_environment );
+
+	VALUE	argv[]	=	{ rb_parent_environment };
 	rb_obj_call_init(	rb_settings_controller,
 										1, 
 										argv );
@@ -121,10 +145,11 @@ VALUE rb_RPDB_SettingsController_new(	VALUE	rb_settings_controller_klass __attri
 *  init  *
 *********/
 
-VALUE rb_RPDB_SettingsController_init(	VALUE	rb_settings_controller,
-																				VALUE	rb_parent_environment __attribute__ ((unused )) )	{
+VALUE rb_RPDB_SettingsController_init(	int				argc __attribute__ ((unused)),
+																				VALUE*		args __attribute__ ((unused)),
+																				VALUE			rb_settings_controller_self )	{
 	
-	return rb_settings_controller;
+	return rb_settings_controller_self;
 }
 
 /***********************
@@ -133,10 +158,9 @@ VALUE rb_RPDB_SettingsController_init(	VALUE	rb_settings_controller,
 
 VALUE rb_RPDB_SettingsController_parentEnvironment(	VALUE	rb_settings_controller )	{
 
-	RPDB_SettingsController*	c_settings_controller;
-	C_RPDB_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_SettingsController_parentEnvironment( c_settings_controller ) );
+	VALUE	rb_parent_environment	=	rb_iv_get(	rb_settings_controller,
+																						RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT );
+	return rb_parent_environment;
 }
 
 /************
@@ -264,8 +288,9 @@ VALUE rb_RPDB_SettingsController_memoryPoolSettingsController( VALUE	rb_settings
 	if ( ( rb_memory_pool_settings_controller = rb_iv_get(	rb_settings_controller,
 																													RPDB_RUBY_CLASS_SETTINGS_VARIABLE_MEMORY_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-		rb_memory_pool_settings_controller	=	rb_RPDB_MemoryPoolSettingsController_new( rb_RPDB_MemoryPoolSettingsController,
-																																										rb_settings_controller );
+		rb_memory_pool_settings_controller	=	rb_RPDB_MemoryPoolSettingsController_new( 1,
+																																										& rb_settings_controller,
+																																										rb_RPDB_MemoryPoolSettingsController );
 		
 		rb_iv_set(	rb_settings_controller,
 								RPDB_RUBY_CLASS_SETTINGS_VARIABLE_MEMORY_SETTINGS_CONTROLLER,
@@ -286,8 +311,9 @@ VALUE rb_RPDB_SettingsController_databaseSettingsController( VALUE	rb_settings_c
 	if ( ( rb_database_settings_controller = rb_iv_get(	rb_settings_controller,
 																											RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-		rb_database_settings_controller	=	rb_RPDB_DatabaseSettingsController_new( rb_RPDB_DatabaseSettingsController,
-																																							rb_settings_controller );		
+		rb_database_settings_controller	=	rb_RPDB_DatabaseSettingsController_new( 1,
+																																							& rb_settings_controller,
+																																							rb_RPDB_DatabaseSettingsController );		
 
 		rb_iv_set(	rb_settings_controller,
 								RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER,

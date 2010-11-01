@@ -23,6 +23,8 @@
 
 #include <rpdb/RPDB_DatabaseRecordSettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -55,9 +57,19 @@ void Init_RPDB_Record()	{
 *  new  *
 *************/
 
-VALUE rb_RPDB_Record_new(	VALUE	klass __attribute__ ((unused )),
-													VALUE	rb_parent_database )	{
+VALUE rb_RPDB_Record_new(	int			argc,
+													VALUE*	args,
+													VALUE		rb_klass_self __attribute__ ((unused)) )	{
 	
+	VALUE	rb_parent_database					=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_database, rb_RPDB_Database ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent database > ]"
+		)
+	);
+
 	RPDB_Database*			c_parent_database;
 	C_RPDB_DATABASE( rb_parent_database, c_parent_database );
 	
@@ -78,10 +90,11 @@ VALUE rb_RPDB_Record_new(	VALUE	klass __attribute__ ((unused )),
 *  new  *
 *************/
 
-VALUE rb_RPDB_Record_init(	VALUE	rb_record,
-														VALUE	rb_parent_database __attribute__ ((unused )) )	{
+VALUE rb_RPDB_Record_init(	int				argc __attribute__ ((unused)),
+														VALUE*		args __attribute__ ((unused)),
+														VALUE			rb_self )	{
 
-	return rb_record;
+	return rb_self;
 }
 
 

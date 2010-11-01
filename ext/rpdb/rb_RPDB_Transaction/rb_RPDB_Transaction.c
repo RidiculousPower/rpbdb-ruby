@@ -11,6 +11,8 @@
 #include <rpdb/RPDB_TransactionSettingsController.h>
 #include "rb_RPDB_Environment.h"
 
+#include <rargs.h>
+
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_TransactionController;
 extern	VALUE	rb_RPDB_Transaction;
@@ -29,8 +31,8 @@ void Init_RPDB_Transaction()	{
 																								"Transaction",	
 																								rb_cObject );
 	
-	rb_define_singleton_method(	rb_RPDB_Transaction, 	"new",										rb_RPDB_Transaction_new,										1 	);
-	rb_define_method(						rb_RPDB_Transaction,	"initialize",							rb_RPDB_Transaction_init,										1 	);
+	rb_define_singleton_method(	rb_RPDB_Transaction, 	"new",										rb_RPDB_Transaction_new,										-1 	);
+	rb_define_method(						rb_RPDB_Transaction,	"initialize",							rb_RPDB_Transaction_init,										-1 	);
 	                  					
 	rb_define_method(						rb_RPDB_Transaction, 	"settings_controller",			rb_RPDB_Transaction_settingsController,			0 	);
 	rb_define_alias(						rb_RPDB_Transaction, 	"settings_controller",		"settings_controller"	);
@@ -54,9 +56,22 @@ void Init_RPDB_Transaction()	{
 *  new  *
 *************/
 
-VALUE rb_RPDB_Transaction_new(	VALUE	klass __attribute__ ((unused )),
-																VALUE	rb_parent_transaction_controller )	{
+VALUE rb_RPDB_Transaction_new(	int			argc,
+																VALUE*	args,
+																VALUE		rb_klass_self __attribute__ ((unused)) )	{
 	
+	VALUE	rb_parent_environment																	=	Qnil;
+	VALUE	rb_parent_transaction_controller													=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_transaction_controller, rb_RPDB_TransactionController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]",
+			"[ <parent transaction controller> ]"
+		)
+	);
+
 	RPDB_TransactionController*	c_parent_transaction_controller;
 	C_RPDB_TRANSACTION_CONTROLLER( rb_parent_transaction_controller, c_parent_transaction_controller );
 	
@@ -77,10 +92,11 @@ VALUE rb_RPDB_Transaction_new(	VALUE	klass __attribute__ ((unused )),
 *  init  *
 *************/
 
-VALUE rb_RPDB_Transaction_init(	VALUE	rb_transaction,
-																VALUE	rb_parent_transaction_controller __attribute__ ((unused )) )	{
+VALUE rb_RPDB_Transaction_init(	int				argc __attribute__ ((unused)),
+																VALUE*		args __attribute__ ((unused)),
+																VALUE			rb_self )	{
 
-	return rb_transaction;
+	return rb_self;
 }
 
 /***************************

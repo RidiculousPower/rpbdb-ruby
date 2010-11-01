@@ -18,6 +18,8 @@
 #include <rpdb/RPDB_DebugSettingsController.h>
 #include <rpdb/RPDB_DirectorySettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -32,8 +34,8 @@ void Init_RPDB_DirectorySettingsController()	{
 																																		"Directory",	
 																																		rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_DirectorySettingsController, 	"new",																rb_RPDB_DirectorySettingsController_init,														1 	);
-	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"initialize",													rb_RPDB_DirectorySettingsController_init,														1 	);
+	rb_define_singleton_method(	rb_RPDB_DirectorySettingsController, 	"new",																rb_RPDB_DirectorySettingsController_init,															-1 	);
+	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"initialize",													rb_RPDB_DirectorySettingsController_init,															-1 	);
 
 	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"parent_environment",									rb_RPDB_DirectorySettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_DirectorySettingsController, 				"environment",												"parent_environment"	);
@@ -56,21 +58,39 @@ void Init_RPDB_DirectorySettingsController()	{
 *  new  *
 *************/
 
-VALUE rb_RPDB_DirectorySettingsController_new(	VALUE	klass __attribute__ ((unused )),
-																								VALUE	rb_parent_settings_controller )	{
+VALUE rb_RPDB_DirectorySettingsController_new(	int				argc,
+																								VALUE*		args,
+																								VALUE			rb_klass_self )	{
+
+	VALUE	rb_parent_environment					=	Qnil;
+	VALUE	rb_parent_settings_controller	=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment> ]",
+			"[ <parent settings controller> ]"
+		)
+	);
+	
+	if ( rb_parent_settings_controller == Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+	}
 
 	RPDB_SettingsController*	c_parent_settings_controller;
 	C_RPDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
-	VALUE	rb_directory_settings_controller	= RUBY_RPDB_DIRECTORY_SETTINGS_CONTROLLER( RPDB_DirectorySettingsController_new( c_parent_settings_controller ) );
+	VALUE	rb_directory_settings_controller	= RUBY_RPDB_DIRECTORY_SETTINGS_CONTROLLER( RPDB_SettingsController_directorySettingsController( c_parent_settings_controller ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_settings_controller;
-	
+	rb_iv_set(	rb_directory_settings_controller,
+							RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT,
+							rb_parent_environment );
+
+	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_directory_settings_controller,
-					 1, 
-					 argv );
+										1, 
+										argv );
 	
 	return rb_directory_settings_controller;		
 }
@@ -79,21 +99,22 @@ VALUE rb_RPDB_DirectorySettingsController_new(	VALUE	klass __attribute__ ((unuse
 *  new  *
 *************/
 
-VALUE rb_RPDB_DirectorySettingsController_init(	VALUE	rb_directory_settings_controller,
-																								VALUE	rb_parent_settings_controller __attribute__ ((unused )) )	{
+VALUE rb_RPDB_DirectorySettingsController_init(	int				argc __attribute__ ((unused)),
+																								VALUE*		args __attribute__ ((unused)),
+																								VALUE			rb_self )	{
 	
-	return rb_directory_settings_controller;
+	return rb_self;
 }
 
 /***************************************
 *  environment  *
 ***************************************/
 VALUE rb_RPDB_DirectorySettingsController_parentEnvironment(	VALUE	rb_directory_settings_controller )	{
+	
+	VALUE	rb_parent_environment	=	rb_iv_get(	rb_directory_settings_controller,
+																						RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT );
 
-	RPDB_DirectorySettingsController*	c_directory_settings_controller;
-	C_RPDB_DIRECTORY_SETTINGS_CONTROLLER( rb_directory_settings_controller, c_directory_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DirectorySettingsController_parentEnvironment( c_directory_settings_controller ) );
+	return rb_parent_environment;
 }
 
 

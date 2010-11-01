@@ -4,10 +4,12 @@
 	#include "rb_RPDB_BaseStandardIncludes.h"
 	#include <rpdb/RPDB_Types.h>
 
-VALUE rb_RPDB_MemoryPoolFileController_new(	VALUE	klass,
-											VALUE	rb_parent_memory_pool_controller );
-VALUE rb_RPDB_MemoryPoolFileController_init(	VALUE	rb_memory_pool_file_controller,
-	VALUE	rb_parent_memory_pool_controller );
+VALUE rb_RPDB_MemoryPoolFileController_new(	int			argc,
+																						VALUE*	args,
+																						VALUE		rb_klass_self );
+VALUE rb_RPDB_MemoryPoolFileController_init(	int				argc __attribute__ ((unused)),
+																							VALUE*		args __attribute__ ((unused)),
+																							VALUE			rb_self );
 	VALUE rb_RPDB_MemoryPoolFileController_settingsController(	VALUE	rb_memory_pool_file_controller );
 	VALUE rb_RPDB_MemoryPoolFileController_parentEnvironment(	VALUE	rb_memory_pool_file_controller );
 	VALUE rb_RPDB_MemoryPoolFileController_createFile( VALUE	rb_memory_pool_file_controller );

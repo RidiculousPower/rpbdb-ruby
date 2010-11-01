@@ -16,11 +16,14 @@
 #include "rb_RPDB_DebugVerbositySettingsController.h"
 #include "rb_RPDB_Environment.h"
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
 extern	VALUE	rb_RPDB_Environment;
+extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_DebugSettingsController;
 extern	VALUE	rb_RPDB_DebugVerbositySettingsController;
 
@@ -30,8 +33,8 @@ void Init_RPDB_DebugVerbositySettingsController()	{
 																																				"DebugVerbositySettingsController",	
 																																				rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_DebugVerbositySettingsController, 	"new",																												rb_RPDB_DebugVerbositySettingsController_new,																									1 	);
-	rb_define_method(						rb_RPDB_DebugVerbositySettingsController, 	"initialize",																									rb_RPDB_DebugVerbositySettingsController_init,																								1 	);
+	rb_define_singleton_method(	rb_RPDB_DebugVerbositySettingsController, 	"new",																												rb_RPDB_DebugVerbositySettingsController_new,																									-1 	);
+	rb_define_method(						rb_RPDB_DebugVerbositySettingsController, 	"initialize",																									rb_RPDB_DebugVerbositySettingsController_init,																								-1 	);
                     					
 	rb_define_method(						rb_RPDB_DebugVerbositySettingsController, 	"parent_environment",																					rb_RPDB_DebugVerbositySettingsController_parentEnvironment,																		0 	);
 	rb_define_alias(						rb_RPDB_DebugVerbositySettingsController, 	"environment",																								"parent_environment"	);
@@ -51,9 +54,25 @@ void Init_RPDB_DebugVerbositySettingsController()	{
 *  new  *
 *************/
 
-VALUE rb_RPDB_DebugVerbositySettingsController_new(	VALUE	klass __attribute__ ((unused )),
-																										VALUE	rb_parent_debug_settings_controller )	{
+VALUE rb_RPDB_DebugVerbositySettingsController_new(	int			argc,
+																										VALUE*	args,
+																										VALUE		rb_klass_self __attribute__ ((unused)) )	{
 	
+	VALUE	rb_parent_environment																	=	Qnil;
+	VALUE	rb_parent_settings_controller													=	Qnil;
+	VALUE	rb_parent_debug_settings_controller										=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
+																						R_MatchAncestorInstance( rb_parent_debug_settings_controller, rb_RPDB_DebugSettingsController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]",
+			"[ <parent settings controller> ]",
+			"[ <parent debug settings controller> ]"
+		)
+	);
+
 	RPDB_DebugSettingsController*	c_parent_debug_settings_controller;
 	C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_parent_debug_settings_controller, c_parent_debug_settings_controller );
 	
@@ -74,10 +93,11 @@ VALUE rb_RPDB_DebugVerbositySettingsController_new(	VALUE	klass __attribute__ ((
 *  new  *
 *************/
 
-VALUE rb_RPDB_DebugVerbositySettingsController_init(	VALUE	rb_debug_verbosity_settings_controller,
-																											VALUE	rb_parent_debug_settings_controller __attribute__ ((unused )) )	{
+VALUE rb_RPDB_DebugVerbositySettingsController_init(	int				argc __attribute__ ((unused)),
+																											VALUE*		args __attribute__ ((unused)),
+																											VALUE			rb_self )	{
 
-	return rb_debug_verbosity_settings_controller;
+	return rb_self;
 }
 
 /***************************************

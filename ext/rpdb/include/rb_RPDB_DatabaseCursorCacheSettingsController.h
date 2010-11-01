@@ -6,10 +6,12 @@
 
 void Init_RPDB_DatabaseCursorCacheSettingsController();
 
-VALUE rb_RPDB_DatabaseCursorCacheSettingsController_new(	VALUE	klass,
-														 VALUE	rb_parent_database_cursor_settings_controller );
-VALUE rb_RPDB_DatabaseCursorCacheSettingsController_init(	VALUE	rb_database_cursor_cache_settings_controller,
-	VALUE	rb_parent_database_cursor_settings_controller );
+VALUE rb_RPDB_DatabaseCursorCacheSettingsController_new(	int			argc,
+																													VALUE*	args,
+																													VALUE		rb_klass_self );
+VALUE rb_RPDB_DatabaseCursorCacheSettingsController_init(	int				argc __attribute__ ((unused)),
+																													VALUE*		args __attribute__ ((unused)),
+																													VALUE			rb_self );
 	VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentEnvironment(	VALUE	rb_database_cursor_cache_settings_controller );
 	VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabase(	VALUE	rb_database_cursor_cache_settings_controller );
 	VALUE rb_RPDB_DatabaseCursorCacheSettingsController_priorityController( VALUE rb_database_cursor_cache_settings_controller );

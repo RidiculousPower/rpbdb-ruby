@@ -7,8 +7,8 @@
 void Init_RPDB_DatabaseController();
 
 	VALUE rb_RPDB_DatabaseController_new(	int		argc,
-										 VALUE*	args,
-										 VALUE	rb_klass );
+																				 VALUE*	args,
+																				 VALUE	rb_klass_self );
 	VALUE rb_RPDB_DatabaseController_init(	int		argc,
 										  VALUE*	args,
 										  VALUE	rb_parent_environment );

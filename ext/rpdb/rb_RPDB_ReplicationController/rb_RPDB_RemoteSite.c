@@ -17,6 +17,8 @@
 #include <rpdb/RPDB_ReplicationSettingsController.h>
 #include <rpdb/RPDB_RemoteSite.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -57,8 +59,21 @@ void Init_RPDB_RemoteSite()	{
 *  new  *
 ************/
 
-VALUE rb_RPDB_RemoteSite_new(	VALUE	klass __attribute__ ((unused )),
-															VALUE	rb_parent_replication_controller )	{
+VALUE rb_RPDB_RemoteSite_new(	int			argc,
+															VALUE*	args,
+															VALUE		rb_klass_self __attribute__ ((unused)) )	{
+
+	VALUE	rb_parent_environment										=	Qnil;
+	VALUE	rb_parent_replication_controller				=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_replication_controller, rb_RPDB_ReplicationController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]",
+			"[ <parent replication controller> ]"
+		)
+	);
 
 	RPDB_ReplicationController*	c_parent_replication_controller;
 	C_RPDB_REPLICATION_CONTROLLER( rb_parent_replication_controller, c_parent_replication_controller );
@@ -80,10 +95,11 @@ VALUE rb_RPDB_RemoteSite_new(	VALUE	klass __attribute__ ((unused )),
 *  new  *
 ************/
 
-VALUE rb_RPDB_RemoteSite_init(	VALUE	rb_remote_site,
-																VALUE	rb_parent_replication_controller __attribute__ ((unused )) )	{
+VALUE rb_RPDB_RemoteSite_init(	int				argc __attribute__ ((unused)),
+																VALUE*		args __attribute__ ((unused)),
+																VALUE			rb_self )	{
 
-	return rb_remote_site;
+	return rb_self;
 }
 
 /***************************

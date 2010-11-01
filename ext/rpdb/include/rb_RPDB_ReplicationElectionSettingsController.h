@@ -6,10 +6,12 @@
 
 void Init_RPDB_ReplicationElectionSettingsController();
 
-VALUE	rb_RPDB_ReplicationElectionSettingsController_new(	VALUE	klass,
-														   VALUE	rb_parent_replication_settings_controller );
-VALUE	rb_RPDB_ReplicationElectionSettingsController_init(	VALUE	rb_replication_election_settings_controller,
-	VALUE	rb_parent_replication_settings_controller );
+VALUE	rb_RPDB_ReplicationElectionSettingsController_new(	int			argc,
+																													VALUE*	args,
+																													VALUE		rb_klass_self );
+VALUE	rb_RPDB_ReplicationElectionSettingsController_init(	int				argc __attribute__ ((unused)),
+																													VALUE*		args __attribute__ ((unused)),
+																													VALUE			rb_self );
 	VALUE rb_RPDB_ReplicationElectionSettingsController_parentEnvironment(	VALUE	rb_replication_election_settings_controller );
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_numberOfSitesRequiredForElection( VALUE replication_elections_settings_controller );
 		VALUE	rb_RPDB_ReplicationElectionSettingsController_setNumberOfSitesRequiredForElection(	VALUE	replication_elections_settings_controller,

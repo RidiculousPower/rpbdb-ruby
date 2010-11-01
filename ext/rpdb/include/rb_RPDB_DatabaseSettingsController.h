@@ -6,10 +6,12 @@
 
 void Init_RPDB_DatabaseSettingsController();
 
-VALUE rb_RPDB_DatabaseSettingsController_new(	VALUE	klass,
-											  VALUE	rb_parent_settings_controller );
-VALUE rb_RPDB_DatabaseSettingsController_init(	VALUE	rb_database_settings_controller,
-	VALUE	rb_parent_settings_controller );
+VALUE rb_RPDB_DatabaseSettingsController_new(	int			argc,
+																							VALUE*	args,
+																							VALUE		rb_klass_self );
+VALUE rb_RPDB_DatabaseSettingsController_init(	int				argc __attribute__ ((unused)),
+																								VALUE*		args __attribute__ ((unused)),
+																								VALUE			rb_self );
 	VALUE rb_RPDB_DatabaseSettingsController_parentEnvironment(	VALUE	rb_database_settings_controller );
 	VALUE rb_RPDB_DatabaseSettingsController_parentDatabase(	VALUE	rb_database_settings_controller );
 	VALUE rb_RPDB_DatabaseSettingsController_checksum( VALUE	rb_database_settings_controller );

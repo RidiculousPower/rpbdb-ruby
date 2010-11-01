@@ -6,10 +6,12 @@
 
 void Init_RPDB_MemoryPoolFileSettingsController();
 
-VALUE rb_RPDB_MemoryPoolFileSettingsController_new(	VALUE	klass,
-													VALUE	rb_parent_memory_pool_settings_controller );
-VALUE rb_RPDB_MemoryPoolFileSettingsController_init(	VALUE	rb_memory_pool_file_settings_controller,
-	VALUE	rb_parent_memory_pool_settings_controller );
+VALUE rb_RPDB_MemoryPoolFileSettingsController_new(	int			argc,
+																										VALUE*	args,
+																										VALUE		rb_klass_self );
+VALUE rb_RPDB_MemoryPoolFileSettingsController_init(	int				argc __attribute__ ((unused)),
+																											VALUE*		args __attribute__ ((unused)),
+																											VALUE			rb_self );
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_parentEnvironment(	VALUE	rb_memory_pool_file_settings_controller );
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_createWithNumberInitialNullBytes( VALUE	rb_memory_pool_file_settings_controller );
 		VALUE rb_RPDB_MemoryPoolFileSettingsController_setReturnsCreateWithNumberInitialNullBytes( VALUE	rb_memory_pool_file_settings_controller, 

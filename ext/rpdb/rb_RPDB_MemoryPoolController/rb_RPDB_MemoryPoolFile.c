@@ -18,6 +18,8 @@
 
 #include <rpdb/RPDB_MemoryPoolFileSettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -25,6 +27,8 @@
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_MemoryPoolFile;
 extern	VALUE	rb_RPDB_MemoryPoolFileSettingsController;
+extern	VALUE	rb_RPDB_MemoryPoolController;
+extern	VALUE	rb_RPDB_MemoryPoolFileController;
 
 void Init_RPDB_MemoryPoolFile()	{
 
@@ -58,8 +62,24 @@ void Init_RPDB_MemoryPoolFile()	{
 *  new  *
 *************/
 
-VALUE rb_RPDB_MemoryPoolFile_new(	VALUE	klass __attribute__((unused)),
-																	VALUE	rb_parent_memory_pool_file_controller )	{
+VALUE rb_RPDB_MemoryPoolFile_new(	int			argc,
+																	VALUE*	args,
+																	VALUE		rb_klass_self __attribute__ ((unused)) )	{
+
+	VALUE	rb_parent_environment						=	Qnil;
+	VALUE	rb_parent_memory_pool_controller				=	Qnil;
+	VALUE	rb_parent_memory_pool_file_controller				=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_memory_pool_controller, rb_RPDB_MemoryPoolController ),
+																						R_MatchAncestorInstance( rb_parent_memory_pool_file_controller, rb_RPDB_MemoryPoolFileController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]",
+			"[ <parent memory pool controller> ]",
+			"[ <parent memory pool file controller> ]"
+		)
+	);
 	
 	RPDB_MemoryPoolFileController*	c_parent_memory_pool_file_controller;
 	C_RPDB_MEMORY_POOL_FILE_CONTROLLER( rb_parent_memory_pool_file_controller, c_parent_memory_pool_file_controller );
@@ -80,10 +100,11 @@ VALUE rb_RPDB_MemoryPoolFile_new(	VALUE	klass __attribute__((unused)),
 *  new  *
 *************/
 	
-VALUE rb_RPDB_MemoryPoolFile_init(	VALUE	rb_memory_pool_file,
-																		VALUE	rb_parent_memory_pool_file_controller __attribute__((unused)) )	{
+VALUE rb_RPDB_MemoryPoolFile_init(	int				argc __attribute__ ((unused)),
+																		VALUE*		args __attribute__ ((unused)),
+																		VALUE			rb_self )	{
 
-	return rb_memory_pool_file;
+	return rb_self;
 }
 
 /***************************

@@ -5,10 +5,12 @@
 	#include <rpdb/RPDB_Types.h>
 
 void Init_RPDB_MemoryPoolSettingsController();
-VALUE rb_RPDB_MemoryPoolSettingsController_new(	VALUE	klass,
-												VALUE	rb_parent_settings_controller );
-	VALUE rb_RPDB_MemoryPoolSettingsController_init(	VALUE	rb_memory_pool_settings_controller,
-														VALUE	rb_parent_settings_controller );
+VALUE rb_RPDB_MemoryPoolSettingsController_new(	int			argc,
+																								VALUE*	args,
+																								VALUE		rb_klass_self );
+	VALUE rb_RPDB_MemoryPoolSettingsController_init(	int				argc __attribute__ ((unused)),
+																										VALUE*		args __attribute__ ((unused)),
+																										VALUE			rb_self );
 	VALUE rb_RPDB_MemoryPoolSettingsController_parentEnvironment(	VALUE	rb_memory_pool_settings_controller );
 	VALUE rb_RPDB_MemoryPoolSettingsController_on( VALUE	rb_memory_pool_settings_controller );
 	VALUE rb_RPDB_MemoryPoolSettingsController_off( VALUE	rb_memory_pool_settings_controller );

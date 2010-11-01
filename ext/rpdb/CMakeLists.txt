@@ -4,26 +4,30 @@ set( _RUBY_DEBUG_OUTPUT ON)
 #	make sure we have libdb
 find_package( RPDB REQUIRED )
 find_package( Ruby REQUIRED )
+find_package( Rargs REQUIRED )
 
 message( STATUS "Using RPDB Lib: ${RPDB_LIBRARY}" )
 message( STATUS "Using Ruby Lib: ${RUBY_LIBRARY}" )
+message( STATUS "Using Rargs Lib: ${RARGS_LIBRARY}" )
 
 message( STATUS "Using RPDB Headers: ${RPDB_INCLUDE_DIR}" )
 message( STATUS "Using Ruby Headers: ${RUBY_INCLUDE_DIRS}" )
+message( STATUS "Using Rargs Headers: ${RARGS_INCLUDE_DIR}" )
 
-get_directory_property( cmake_current_include_dir INCLUDE_DIRECTORIES )
+get_directory_property( CMAKE_CURRENT_INCLUDE_DIR INCLUDE_DIRECTORIES )
 
-recursively_include_src( ${cmake_current_include_dir} "headers" )
+recursively_include_src( ${CMAKE_CURRENT_INCLUDE_DIR} "headers" )
 recursively_include_src( ${CMAKE_CURRENT_SOURCE_DIR} "source" )
 
 LINK_DIRECTORIES( "/usr/local/lib" )
-set( RPDB_INCLUDE_DIRS ${RPDB_INCLUDE_DIRS} include ${RUBY_INCLUDE_DIRS} ${rb_rpdb_directories} )
+set( RPDB_INCLUDE_DIRS ${RPDB_INCLUDE_DIRS} include ${RUBY_INCLUDE_DIRS} ${RPDB_INCLUDE_DIR} ${RARGS_INCLUDE_DIR} )
 include_directories( ${RPDB_INCLUDE_DIRS} )
 
 #	define shared library with sources
 add_library( rb_rpdb MODULE ${rb_rpdb_src} )
 target_link_libraries( rb_rpdb ${RPDB_LIBRARY} )
 target_link_libraries( rb_rpdb ${RUBY_LIBRARY} )
+target_link_libraries( rb_rpdb ${RARGS_LIBRARY} )
 
 # use, i.e. don't skip the full RPATH for the build tree
 set( CMAKE_SKIP_BUILD_RPATH  OFF )

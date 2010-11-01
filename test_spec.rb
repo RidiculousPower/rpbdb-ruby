@@ -21,74 +21,13 @@ describe RPDB::Environment::DatabaseController::Database do
     @environment.close
   end
 
-  ##########
-  #  each  #
-  ##########
 
-  it "can iterate each record in the current index" do
-    duplicates_database = @database_controller.new( $duplicates_database_name )
-    duplicates_database.set.readwrite.sorted_duplicates_on
-    key_one = 'key'
-    key_two = 'some other key'
-    records = [ { key_one => 'a' },
-                { key_one => 'b' },
-                { key_one => 'c' },
-                { key_one => 'd' },
-                { key_two => 'e' },
-                { key_two => 'f' },
-                { key_two => 'g' } ]
-    duplicates_database.write( records )
-    duplicates_database.each do |key, data, index|
-      key.should_not == nil
-      data.should_not == nil
-    end
+  it "can be created with no environment specified" do
+    RPDB::Environment::SettingsController.new.should_not == nil
   end
 
-  ####################
-  #  each_duplicate  #
-  ####################
 
-  it "can iterate each duplicate record for the current key" do
-    duplicates_database = @database_controller.new( $duplicates_database_name )
-    key_one = 'key'
-    key_two = 'some other key'
-    records = [ { key_one => 'a' },
-                { key_one => 'b' },
-                { key_one => 'c' },
-                { key_one => 'd' },
-                { key_two => 'e' },
-                { key_two => 'f' },
-                { key_two => 'g' } ]
-    duplicates_database.write( records )
-    duplicates_database.each_key do |key, data, index|
-      key.should_not == nil
-      duplicates_database.each_duplicate do |duplicate_data, duplicate_index|
-        duplicate_data.should_not == nil
-      end
-    end    
-  end
 
-  ##############
-  #  each_key  #
-  ##############
 
-  it "can iterate each key in the current index" do
-    duplicates_database = @database_controller.new( $duplicates_database_name )
-    cursor = duplicates_database.cursor
-    key_one = 'key'
-    key_two = 'some other key'
-    records = [ { key_one => 'a' },
-                { key_one => 'b' },
-                { key_one => 'c' },
-                { key_one => 'd' },
-                { key_two => 'e' },
-                { key_two => 'f' },
-                { key_two => 'g' } ]
-    duplicates_database.write( records )
-    duplicates_database.each_key do |key, data, index|
-      key.should_not == nil
-      data.should_not == nil
-    end    
-  end
 
 end

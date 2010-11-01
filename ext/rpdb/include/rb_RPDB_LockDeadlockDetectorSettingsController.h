@@ -6,10 +6,12 @@
 
 void Init_RPDB_LockDeadlockDetectorSettingsController();
 
-VALUE rb_RPDB_LockDeadlockDetectorSettingsController_new(	VALUE	klass,
-														  VALUE	rb_parent_lock_settings_controller );
-VALUE rb_RPDB_LockDeadlockDetectorSettingsController_init(	VALUE	rb_lock_deadlock_detector_settings_controller,
-	VALUE	rb_parent_lock_settings_controller );
+VALUE rb_RPDB_LockDeadlockDetectorSettingsController_new(	int			argc,
+																													VALUE*	args,
+																													VALUE		rb_klass_self );
+VALUE rb_RPDB_LockDeadlockDetectorSettingsController_init(	int				argc __attribute__ ((unused)),
+																														VALUE*		args __attribute__ ((unused)),
+																														VALUE			rb_self );
 	VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentEnvironment(	VALUE	rb_lock_deadlock_detector_settings_controller );
 	VALUE rb_RPDB_LockDeadlockDetectorSettingsController_isDefault( VALUE	rb_lock_deadlock_detector_settings_controller );
 		VALUE rb_RPDB_LockDeadlockDetectorSettingsController_setToDefault( VALUE	rb_lock_deadlock_detector_settings_controller );

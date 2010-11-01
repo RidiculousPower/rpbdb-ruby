@@ -6,10 +6,12 @@
 
 void Init_RPDB_DatabaseSequenceSettingsController();
 
-VALUE rb_RPDB_DatabaseSequenceSettingsController_new(	VALUE	klass,
-													  VALUE	rb_parent_database_settings_controller );
-VALUE rb_RPDB_DatabaseSequenceSettingsController_init(	VALUE	rb_database_sequence_settings_controller,
-	VALUE	rb_parent_database_settings_controller );
+VALUE rb_RPDB_DatabaseSequenceSettingsController_new(	int			argc,
+																											VALUE*	args,
+																											VALUE		rb_klass_self );
+VALUE rb_RPDB_DatabaseSequenceSettingsController_init(	int				argc __attribute__ ((unused)),
+																												VALUE*		args __attribute__ ((unused)),
+																												VALUE			rb_self );
 	VALUE rb_RPDB_DatabaseSequenceSettingsController_parentEnvironment(	VALUE database_sequence_settings_controller );
 	VALUE rb_RPDB_DatabaseSequenceSettingsController_parentDatabase(	VALUE database_sequence_settings_controller );
 	VALUE rb_RPDB_DatabaseSequenceSettingsController_increasing( VALUE	rb_sequence_settings_controller );

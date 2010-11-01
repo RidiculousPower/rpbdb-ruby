@@ -4,10 +4,12 @@
 	#include "rb_RPDB_BaseStandardIncludes.h"
 	#include <rpdb/RPDB_Types.h>
 
-VALUE rb_RPDB_LockController_new(	VALUE	klass,
-								  VALUE	rb_parent_environment );
-VALUE rb_RPDB_LockController_init(	VALUE	rb_lock_controller,
-	VALUE	rb_parent_environment );
+VALUE rb_RPDB_LockController_new(	int			argc,
+																	VALUE*	args,
+																	VALUE		rb_klass_self );
+VALUE rb_RPDB_LockController_init(	int				argc __attribute__ ((unused)),
+																		VALUE*		args __attribute__ ((unused)),
+																		VALUE			rb_self );
 	VALUE rb_RPDB_LockController_settingsController(	VALUE	rb_lock_controller );
 	VALUE rb_RPDB_LockController_parentEnvironment(	VALUE	rb_lock_controller );
 	VALUE rb_RPDB_LockController_lockerID( VALUE	rb_lock_controller );

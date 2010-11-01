@@ -6,10 +6,12 @@
 
 void Init_RPDB_DebugVerbositySettingsController();
 
-VALUE rb_RPDB_DebugVerbositySettingsController_new(	VALUE	klass,
-													VALUE	rb_parent_debug_settings_controller );
-VALUE rb_RPDB_DebugVerbositySettingsController_init(	VALUE	rb_debug_verbosity_settings_controller,
-	VALUE	rb_parent_debug_settings_controller );
+VALUE rb_RPDB_DebugVerbositySettingsController_new(	int			argc,
+																										VALUE*	args,
+																										VALUE		rb_klass_self );
+VALUE rb_RPDB_DebugVerbositySettingsController_init(	int				argc __attribute__ ((unused)),
+																											VALUE*		args __attribute__ ((unused)),
+																											VALUE			rb_self );
 	VALUE rb_RPDB_DebugVerbositySettingsController_parentEnvironment(	VALUE	rb_debug_verbosity_settings_controller );
 	VALUE rb_RPDB_DebugVerbositySettingsController_displayAdditionalInformationDuringRecovery( VALUE	rb_debug_verbosity_settings_controller );
 		VALUE rb_RPDB_DebugVerbositySettingsController_turnDisplayAdditionalInformationDuringRecoveryOn( VALUE	rb_debug_verbosity_settings_controller );

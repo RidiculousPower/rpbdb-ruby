@@ -24,6 +24,8 @@
 
 #include <rpdb/RPDB_DatabaseSequenceSettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -42,8 +44,8 @@ void Init_RPDB_DatabaseSequence()	{
 																													"Sequence",				
 																													rb_cObject );
 	
-	rb_define_singleton_method(	rb_RPDB_DatabaseSequence, 	"new",																	rb_RPDB_DatabaseSequence_new,															1 	);
-	rb_define_method(						rb_RPDB_DatabaseSequence, 	"initialize",														rb_RPDB_DatabaseSequence_init,														1 	);
+	rb_define_singleton_method(	rb_RPDB_DatabaseSequence, 	"new",																	rb_RPDB_DatabaseSequence_new,															-1 	);
+	rb_define_method(						rb_RPDB_DatabaseSequence, 	"initialize",														rb_RPDB_DatabaseSequence_init,														-1 	);
 	                                                                                          				
 	rb_define_method(						rb_RPDB_DatabaseSequence, 	"settings_controller",									rb_RPDB_DatabaseSequence_settingsController,							0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSequence, 	"settings",															"settings_controller"	);
@@ -83,8 +85,22 @@ void Init_RPDB_DatabaseSequence()	{
 ********/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/seq_class.html
-VALUE rb_RPDB_DatabaseSequence_new(	VALUE	klass __attribute__((unused)),
-																		VALUE	rb_parent_database_sequence_controller )	{
+VALUE rb_RPDB_DatabaseSequence_new(	int			argc,
+																		VALUE*	args,
+																		VALUE		rb_klass_self __attribute__ ((unused)) )	{
+
+	VALUE	rb_parent_database						=	Qnil;
+	VALUE	rb_parent_database_sequence_controller	=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_database, rb_RPDB_Database ),
+																						R_MatchAncestorInstance( rb_parent_database_sequence_controller, rb_RPDB_DatabaseSequenceController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent database > ]",
+			"[ <parent database sequence controller> ]"
+		)
+	);
+	
 	
 	RPDB_DatabaseSequenceController*	c_parent_database_sequence_controller;
 	C_RPDB_DATABASE_SEQUENCE_CONTROLLER( rb_parent_database_sequence_controller, c_parent_database_sequence_controller );
@@ -108,10 +124,11 @@ VALUE rb_RPDB_DatabaseSequence_new(	VALUE	klass __attribute__((unused)),
 *********/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/seq_class.html
-VALUE rb_RPDB_DatabaseSequence_init(	VALUE	rb_database_sequence,
-																			VALUE	rb_parent_database_sequence_controller __attribute__((unused)) )	{
+VALUE rb_RPDB_DatabaseSequence_init(	int				argc __attribute__ ((unused)),
+																			VALUE*		args __attribute__ ((unused)),
+																			VALUE			rb_self )	{
 
-	return rb_database_sequence;
+	return rb_self;
 }
 
 /***********************

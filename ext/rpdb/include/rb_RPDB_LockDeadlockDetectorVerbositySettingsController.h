@@ -6,10 +6,12 @@
 
 void Init_RPDB_LockDeadlockDetectorVerbositySettingsController();
 
-VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_new(	VALUE	klass,
-																   VALUE	rb_parent_deadlock_detector_settings_controller );
-VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_init(	VALUE	rb_lock_deadlock_detector_verbosity_settings_controller,
-	VALUE	rb_parent_deadlock_detector_settings_controller );
+VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_new(	int			argc,
+																																		VALUE*	args,
+																																		VALUE		rb_klass_self );
+VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_init(	int				argc __attribute__ ((unused)),
+																																		VALUE*		args __attribute__ ((unused)),
+																																		VALUE			rb_self );
 	VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentEnvironment(	VALUE	rb_lock_deadlock_detector_verbosity_settings_controller );
 	VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_displayAdditionalInformationDuringDeadlockDetection( VALUE	rb_lock_deadlock_detector_verbosity_settings_controller );
 		VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_turnDisplayAdditionalInformationDuringDeadlockDetectionOn( VALUE	rb_lock_deadlock_detector_verbosity_settings_controller );

@@ -5,10 +5,12 @@
 	#include <rpdb/RPDB_Types.h>
 
 void Init_RPDB_TransactionController();
-VALUE rb_RPDB_TransactionController_new(	VALUE	klass,
-										 VALUE	rb_parent_environment );
-VALUE rb_RPDB_TransactionController_init(	VALUE	rb_transaction_controller,
-	VALUE	rb_parent_environment );
+VALUE rb_RPDB_TransactionController_new(	int			argc,
+																					VALUE*	args,
+																					VALUE		rb_klass_self );
+VALUE rb_RPDB_TransactionController_init(	int				argc __attribute__ ((unused)),
+																					VALUE*		args __attribute__ ((unused)),
+																					VALUE			rb_self );
 	VALUE rb_RPDB_TransactionController_settingsController(	VALUE	rb_transaction_controller );
 	VALUE rb_RPDB_TransactionController_parentEnvironment(	VALUE	rb_transaction_controller );
 	VALUE rb_RPDB_TransactionController_beginTransaction( VALUE	rb_transaction_controller );

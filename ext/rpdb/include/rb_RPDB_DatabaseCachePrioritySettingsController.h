@@ -6,10 +6,12 @@
 
 void Init_RPDB_DatabaseCachePrioritySettingsController();
 
-VALUE rb_RPDB_DatabaseCachePrioritySettingsController_new(	VALUE	klass,
-														   VALUE	rb_parent_database_cache_settings_controller );
-VALUE rb_RPDB_DatabaseCachePrioritySettingsController_init(	VALUE	rb_database_cache_priority_settings_controller,
-	VALUE	rb_parent_database_cache_settings_controller );
+VALUE rb_RPDB_DatabaseCachePrioritySettingsController_new(	int			argc,
+																														VALUE*	args,
+																														VALUE		rb_klass_self );
+VALUE rb_RPDB_DatabaseCachePrioritySettingsController_init(	int				argc __attribute__ ((unused)),
+																														VALUE*		args __attribute__ ((unused)),
+																														VALUE			rb_self );
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentEnvironment(	VALUE database_cache_priority_settings_controller );
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabase(	VALUE database_cache_priority_settings_controller );
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_priority( VALUE database_cache_priority_settings_controller );

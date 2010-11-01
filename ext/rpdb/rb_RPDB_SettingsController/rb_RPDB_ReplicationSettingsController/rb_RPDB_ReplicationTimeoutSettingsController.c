@@ -18,17 +18,21 @@
 
 #include <rpdb/RPDB_ReplicationTimeoutSettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
 extern	VALUE	rb_RPDB_Environment;
+extern	VALUE	rb_RPDB_SettingsController;
+extern	VALUE	rb_RPDB_ReplicationSettingsController;
 extern	VALUE	rb_RPDB_ReplicationTimeoutSettingsController;
 
 void Init_RPDB_ReplicationTimeoutSettingsController()	{
 
-	rb_define_singleton_method(	rb_RPDB_ReplicationTimeoutSettingsController, 	"new",																rb_RPDB_ReplicationTimeoutSettingsController_init,														1 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"initialize",													rb_RPDB_ReplicationTimeoutSettingsController_init,														1 	);
+	rb_define_singleton_method(	rb_RPDB_ReplicationTimeoutSettingsController, 	"new",																rb_RPDB_ReplicationTimeoutSettingsController_init,														-1 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"initialize",													rb_RPDB_ReplicationTimeoutSettingsController_init,														-1 	);
                         			                                        
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"parent_environment",									rb_RPDB_ReplicationTimeoutSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(						rb_RPDB_ReplicationTimeoutSettingsController, 	"environment",												"parent_environment"	);
@@ -64,21 +68,35 @@ void Init_RPDB_ReplicationTimeoutSettingsController()	{
 *  new  *
 ************/
 
-VALUE rb_RPDB_ReplicationTimeoutSettingsController_new(	VALUE	klass __attribute__ ((unused )),
-																												VALUE	rb_parent_replication_settings_controller )	{
+VALUE rb_RPDB_ReplicationTimeoutSettingsController_new(	int			argc,
+																												VALUE*	args,
+																												VALUE		rb_klass_self __attribute__ ((unused)) )	{
+
+	VALUE	rb_parent_environment																	=	Qnil;
+	VALUE	rb_parent_settings_controller													=	Qnil;
+	VALUE	rb_parent_replication_settings_controller							=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
+																						R_MatchAncestorInstance( rb_parent_replication_settings_controller, rb_RPDB_ReplicationSettingsController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]",
+			"[ <parent settings controller> ]",
+			"[ <parent replication settings controller> ]"
+		)
+	);
 
 	RPDB_ReplicationSettingsController*	c_parent_replication_settings_controller;
 	C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_parent_replication_settings_controller, c_parent_replication_settings_controller );
 
 	VALUE	rb_replication_timeout_settings_controller	= RUBY_RPDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( RPDB_ReplicationTimeoutSettingsController_new( c_parent_replication_settings_controller ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_replication_settings_controller;
+	VALUE	argv[]	=	{ rb_parent_replication_settings_controller };
 	
 	rb_obj_call_init(	rb_replication_timeout_settings_controller,
-					 1, 
-					 argv );
+										1, 
+										argv );
 	
 	return rb_replication_timeout_settings_controller;		
 }
@@ -87,10 +105,11 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_new(	VALUE	klass __attribute_
 *  new  *
 ************/
 
-VALUE rb_RPDB_ReplicationTimeoutSettingsController_init(	VALUE	rb_replication_timeout_settings_controller,
-																													VALUE	rb_parent_replication_settings_controller __attribute__ ((unused )) )	{
+VALUE rb_RPDB_ReplicationTimeoutSettingsController_init(	int				argc __attribute__ ((unused)),
+																													VALUE*		args __attribute__ ((unused)),
+																													VALUE			rb_self )	{
 	
-	return rb_replication_timeout_settings_controller;
+	return rb_self;
 }
 
 /***************************************

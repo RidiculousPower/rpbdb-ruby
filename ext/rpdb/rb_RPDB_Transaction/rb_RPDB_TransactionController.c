@@ -12,6 +12,8 @@
 #include <rpdb/RPDB_TransactionController.h>
 #include <rpdb/RPDB_TransactionSettingsController.h>
 
+#include <rargs.h>
+
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_Database;
 
@@ -31,8 +33,8 @@ void Init_RPDB_TransactionController()	{
 																													"TransactionController",	
 																													rb_cObject );
 	
-	rb_define_singleton_method(	rb_RPDB_TransactionController, 	"new",																																rb_RPDB_TransactionController_new,																											1 	);
-	rb_define_method(						rb_RPDB_TransactionController,	"initialize",																													rb_RPDB_TransactionController_init,																											1 	);
+	rb_define_singleton_method(	rb_RPDB_TransactionController, 	"new",																																rb_RPDB_TransactionController_new,																											-1 	);
+	rb_define_method(						rb_RPDB_TransactionController,	"initialize",																													rb_RPDB_TransactionController_init,																											-1 	);
 	                                                                                                          												                                                                                        
 	rb_define_method(						rb_RPDB_TransactionController, 	"settings_controller",																								rb_RPDB_TransactionController_settingsController,																				0 	);
 	rb_define_alias(						rb_RPDB_TransactionController, 	"settings",																														"settings_controller"	);                                                                
@@ -75,8 +77,18 @@ void Init_RPDB_TransactionController()	{
 *  new  *
 *************/
 	
-VALUE rb_RPDB_TransactionController_new(	VALUE	klass __attribute__ ((unused )),
-																					VALUE	rb_parent_environment )	{
+VALUE rb_RPDB_TransactionController_new(	int			argc,
+																					VALUE*	args,
+																					VALUE		rb_klass_self __attribute__ ((unused)) )	{
+
+	VALUE	rb_parent_environment																	=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]"
+		)
+	);
 
 	RPDB_Environment*	c_parent_environment;
 	C_RPDB_ENVIRONMENT( rb_parent_environment, c_parent_environment );
@@ -98,10 +110,11 @@ VALUE rb_RPDB_TransactionController_new(	VALUE	klass __attribute__ ((unused )),
 *  new  *
 *************/
 
-VALUE rb_RPDB_TransactionController_init(	VALUE	rb_transaction_controller,
-																					VALUE	rb_parent_environment __attribute__ ((unused )) )	{
+VALUE rb_RPDB_TransactionController_init(	int				argc __attribute__ ((unused)),
+																					VALUE*		args __attribute__ ((unused)),
+																					VALUE			rb_self )	{
 	
-	return rb_transaction_controller;
+	return rb_self;
 }
 
 /***************************

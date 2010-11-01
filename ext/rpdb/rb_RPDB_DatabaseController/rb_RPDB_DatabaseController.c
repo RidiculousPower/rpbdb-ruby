@@ -29,6 +29,8 @@
 
 #include <rpdb/RPDB_DatabaseSettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -122,6 +124,11 @@ VALUE rb_RPDB_DatabaseController_new(	int			argc,
 	rb_iv_set(	rb_database_controller,
 							RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT,
 							rb_parent_environment );
+	
+	VALUE	argv[]	=	{ rb_parent_environment };
+	rb_obj_call_init(	rb_database_controller,
+										1, 
+										argv );
 	
 	return rb_database_controller;	
 }

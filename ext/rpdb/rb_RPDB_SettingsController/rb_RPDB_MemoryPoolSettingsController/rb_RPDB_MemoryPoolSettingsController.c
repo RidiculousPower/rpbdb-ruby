@@ -24,6 +24,8 @@
 #include <rpdb/RPDB_MemoryPoolReadWriteSettingsController.h>
 #include <rpdb/RPDB_MemoryPoolFileSettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -40,8 +42,8 @@ void Init_RPDB_MemoryPoolSettingsController()	{
 																																		"MemoryPool",	
 																																		rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_MemoryPoolSettingsController, 	"new",																							rb_RPDB_MemoryPoolSettingsController_new,																						1 	);
-	rb_define_method(			rb_RPDB_MemoryPoolSettingsController, 				"initialize",																				rb_RPDB_MemoryPoolSettingsController_init,																					1 	);
+	rb_define_singleton_method(	rb_RPDB_MemoryPoolSettingsController, 	"new",																							rb_RPDB_MemoryPoolSettingsController_new,																						-1 	);
+	rb_define_method(			rb_RPDB_MemoryPoolSettingsController, 				"initialize",																				rb_RPDB_MemoryPoolSettingsController_init,																					-1 	);
                             
 	rb_define_method(			rb_RPDB_MemoryPoolSettingsController, 				"parent_environment",																rb_RPDB_MemoryPoolSettingsController_parentEnvironment,															0 	);
 	rb_define_alias(			rb_RPDB_MemoryPoolSettingsController, 				"environment",																			"parent_environment"	);
@@ -83,8 +85,21 @@ void Init_RPDB_MemoryPoolSettingsController()	{
 *  self.new  *
 *************/
 
-VALUE rb_RPDB_MemoryPoolSettingsController_new(	VALUE	klass __attribute__ ((unused )),
-																								VALUE	rb_parent_settings_controller )	{
+VALUE rb_RPDB_MemoryPoolSettingsController_new(	int			argc,
+																								VALUE*	args,
+																								VALUE		rb_klass_self __attribute__ ((unused)) )	{
+
+	VALUE	rb_parent_environment																	=	Qnil;
+	VALUE	rb_parent_settings_controller													=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]",
+			"[ <parent settings controller> ]"
+		)
+	);
 
 	RPDB_SettingsController*	c_parent_settings_controller;
 	C_RPDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
@@ -106,10 +121,11 @@ VALUE rb_RPDB_MemoryPoolSettingsController_new(	VALUE	klass __attribute__ ((unus
 *  init  *
 *********/
 
-VALUE rb_RPDB_MemoryPoolSettingsController_init(	VALUE	rb_memory_pool_settings_controller,
-																									VALUE	rb_parent_settings_controller __attribute__ ((unused )) )	{
+VALUE rb_RPDB_MemoryPoolSettingsController_init(	int				argc __attribute__ ((unused)),
+																									VALUE*		args __attribute__ ((unused)),
+																									VALUE			rb_self )	{
 	
-	return rb_memory_pool_settings_controller;
+	return rb_self;
 }
 
 

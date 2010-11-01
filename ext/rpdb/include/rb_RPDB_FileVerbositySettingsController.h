@@ -6,10 +6,12 @@
 
 void Init_RPDB_FileVerbositySettingsController();
 
-VALUE rb_RPDB_FileVerbositySettingsController_new(	VALUE	klass,
-												   VALUE	rb_parent_file_settings_controller );
-VALUE rb_RPDB_FileVerbositySettingsController_init(	VALUE	rb_file_verbosity_settings_controller,
-	VALUE	rb_parent_file_settings_controller );
+VALUE rb_RPDB_FileVerbositySettingsController_new(	int			argc,
+																										VALUE*	args,
+																										VALUE		rb_klass_self );
+VALUE rb_RPDB_FileVerbositySettingsController_init(	int				argc __attribute__ ((unused)),
+																										VALUE*		args __attribute__ ((unused)),
+																										VALUE			rb_self );
 VALUE rb_RPDB_FileVerbositySettingsController_parentEnvironment(	VALUE	rb_file_verbosity_settings_controller );
 VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuringOpenCloseRenameFileOperations( VALUE	rb_file_verbosity_settings_controller );
 	VALUE rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOn( VALUE	rb_file_verbosity_settings_controller );

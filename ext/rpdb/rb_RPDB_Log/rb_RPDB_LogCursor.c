@@ -22,6 +22,8 @@
 
 #include <rpdb/RPDB_LogCursor.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -29,6 +31,7 @@
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_LogCursor;
 extern	VALUE	rb_RPDB_LogCursorController;
+extern	VALUE	rb_RPDB_LogController;
 extern	VALUE	rb_RPDB_LogSettingsController;
 extern	VALUE	rb_RPDB_LogSequenceNumber;
 extern	VALUE	rb_RPDB_Record;
@@ -78,8 +81,24 @@ void Init_RPDB_LogCursor()	{
 *  new  *
 *************/
 
-VALUE rb_RPDB_LogCursor_new(	VALUE	klass __attribute__ ((unused)),
-															VALUE	rb_parent_log_cursor_controller )	{
+VALUE rb_RPDB_LogCursor_new(	int			argc,
+															VALUE*	args,
+															VALUE		rb_klass_self __attribute__ ((unused)) )	{
+
+	VALUE	rb_parent_environment						=	Qnil;
+	VALUE	rb_parent_log_controller				=	Qnil;
+	VALUE	rb_parent_log_cursor_controller				=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_log_controller, rb_RPDB_LogController ),
+																						R_MatchAncestorInstance( rb_parent_log_cursor_controller, rb_RPDB_LogCursorController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]",
+			"[ <parent log controller> ]",
+			"[ <parent log cursor controller> ]"
+		)
+	);
 	
 	RPDB_LogCursorController*	c_parent_log_cursor_controller;
 	C_RPDB_LOG_CURSOR_CONTROLLER( rb_parent_log_cursor_controller, c_parent_log_cursor_controller );
@@ -101,11 +120,12 @@ VALUE rb_RPDB_LogCursor_new(	VALUE	klass __attribute__ ((unused)),
 *  new  *
 *************/
 
-VALUE rb_RPDB_LogCursor_init(	VALUE	rb_log_cursor,
-															VALUE	rb_parent_log_cursor_controller __attribute__ ((unused)) )	{
+VALUE rb_RPDB_LogCursor_init(	int				argc __attribute__ ((unused)),
+															VALUE*		args __attribute__ ((unused)),
+															VALUE			rb_self )	{
 	
 
-	return rb_log_cursor;
+	return rb_self;
 }
 
 /***************************

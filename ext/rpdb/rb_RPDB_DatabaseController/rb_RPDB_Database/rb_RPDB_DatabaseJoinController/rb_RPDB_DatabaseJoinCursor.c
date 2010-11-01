@@ -25,6 +25,8 @@
 #include <rpdb/RPDB_DatabaseJoinCursor.h>
 #include <rpdb/RPDB_DatabaseJoinSettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -36,6 +38,7 @@ extern	VALUE	rb_RPDB_Record;
 extern	VALUE	rb_RPDB_Key;
 extern	VALUE	rb_RPDB_DatabaseJoinController;
 extern	VALUE	rb_RPDB_Database;
+extern	VALUE	rb_RPDB_DatabaseController;
 
 void Init_RPDB_DatabaseJoinCursor()	{
 	
@@ -43,8 +46,8 @@ void Init_RPDB_DatabaseJoinCursor()	{
 																													"Cursor",				
 																													rb_cObject );
 	
-	rb_define_singleton_method(	rb_RPDB_DatabaseJoinCursor, 	"new",																	rb_RPDB_DatabaseJoinCursor_new,															1 	);
-	rb_define_method(						rb_RPDB_DatabaseJoinCursor, 	"initialize",														rb_RPDB_DatabaseJoinCursor_init,														1 	);
+	rb_define_singleton_method(	rb_RPDB_DatabaseJoinCursor, 	"new",																	rb_RPDB_DatabaseJoinCursor_new,															-1 	);
+	rb_define_method(						rb_RPDB_DatabaseJoinCursor, 	"initialize",														rb_RPDB_DatabaseJoinCursor_init,														-1 	);
 	                                                                                          				
 	rb_define_method(						rb_RPDB_DatabaseJoinCursor, 	"settings_controller",									rb_RPDB_DatabaseJoinCursor_settingsController,							0 	);
 	rb_define_alias(						rb_RPDB_DatabaseJoinCursor, 	"settings",															"settings_controller"	);
@@ -73,17 +76,30 @@ void Init_RPDB_DatabaseJoinCursor()	{
 *  new  *
 ************/
 
-VALUE rb_RPDB_DatabaseJoinCursor_new(	VALUE	klass __attribute__((unused)),
-																			VALUE	rb_parent_join_controller )	{
+VALUE rb_RPDB_DatabaseJoinCursor_new(	int			argc,
+																			VALUE*	args,
+																			VALUE		rb_klass_self __attribute__ ((unused)) )	{
+	
+	VALUE	rb_parent_database						=	Qnil;
+	VALUE	rb_parent_database_join_controller	=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_database, rb_RPDB_Database ),
+																						R_MatchAncestorInstance( rb_parent_database_join_controller, rb_RPDB_DatabaseJoinController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent database > ]",
+			"[ <parent database join controller> ]"
+		)
+	);
 	
 	RPDB_DatabaseJoinController*	c_parent_join_controller;
-	C_RPDB_DATABASE_JOIN_CONTROLLER( rb_parent_join_controller, c_parent_join_controller );
+	C_RPDB_DATABASE_JOIN_CONTROLLER( rb_parent_database_join_controller, c_parent_join_controller );
 	
 	VALUE	rb_join_cursor	=	RUBY_RPDB_DATABASE_JOIN_CURSOR( RPDB_DatabaseJoinCursor_new( c_parent_join_controller ) );
 
 	VALUE	argv[ 1 ];
 	
-	argv[ 0 ]	=	rb_parent_join_controller;
+	argv[ 0 ]	=	rb_parent_database_join_controller;
 	
 	rb_obj_call_init(	rb_join_cursor,
 						1, 
@@ -96,10 +112,11 @@ VALUE rb_RPDB_DatabaseJoinCursor_new(	VALUE	klass __attribute__((unused)),
 *  new  *
 ************/
 
-VALUE rb_RPDB_DatabaseJoinCursor_init(	VALUE	rb_join_cursor,
-																				VALUE	rb_parent_join_controller __attribute__((unused)) )	{
+VALUE rb_RPDB_DatabaseJoinCursor_init(	int				argc __attribute__ ((unused)),
+																				VALUE*		args __attribute__ ((unused)),
+																				VALUE			rb_self )	{
 
-	return rb_join_cursor;
+	return rb_self;
 }
 
 /***************************

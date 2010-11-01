@@ -6,10 +6,12 @@
 
 void Init_RPDB_DatabaseVerificationSettingsController();
 
-VALUE rb_RPDB_DatabaseVerificationSettingsController_new(	VALUE	klass,
-														  VALUE	rb_parent_database_settings_controller );
-VALUE rb_RPDB_DatabaseVerificationSettingsController_init(	VALUE	rb_database_verification_settings_controller,
-	VALUE	rb_parent_database_settings_controller );
+VALUE rb_RPDB_DatabaseVerificationSettingsController_new(	int			argc,
+																													VALUE*	args,
+																													VALUE		rb_klass_self );
+VALUE rb_RPDB_DatabaseVerificationSettingsController_init(	int				argc __attribute__ ((unused)),
+																														VALUE*		args __attribute__ ((unused)),
+																														VALUE			rb_self );
 	VALUE rb_RPDB_DatabaseVerificationSettingsController_parentEnvironment(	VALUE	rb_database_verification_settings_controller );
 	VALUE rb_RPDB_DatabaseVerificationSettingsController_parentDatabase(	VALUE	rb_database_verification_settings_controller );
 	VALUE rb_RPDB_DatabaseVerificationSettingsController_file(	VALUE	rb_database_verification_settings_controller );

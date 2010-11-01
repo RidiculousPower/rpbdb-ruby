@@ -18,12 +18,16 @@
 
 #include <rpdb/RPDB_Environment.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
 VALUE	extern	rb_RPDB_Environment;
 VALUE	extern	rb_RPDB_SettingsController;
+VALUE	extern	rb_RPDB_MemoryPoolSettingsController;
+VALUE	extern	rb_RPDB_MemoryPoolFileSettingsController;
 VALUE	extern	rb_RPDB_MemoryPoolFilePageSettingsController;
 
 void Init_RPDB_MemoryPoolFilePageSettingsController()	{
@@ -32,8 +36,8 @@ void Init_RPDB_MemoryPoolFilePageSettingsController()	{
 																																						"MemoryPool",	
 																																						rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_MemoryPoolFilePageSettingsController, 	"new",																rb_RPDB_MemoryPoolFilePageSettingsController_init,														1 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"initialize",													rb_RPDB_MemoryPoolFilePageSettingsController_init,														1 	);
+	rb_define_singleton_method(	rb_RPDB_MemoryPoolFilePageSettingsController, 	"new",																rb_RPDB_MemoryPoolFilePageSettingsController_init,														-1 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"initialize",													rb_RPDB_MemoryPoolFilePageSettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"parent_environment",									rb_RPDB_MemoryPoolFilePageSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"environment",												"parent_environment"	);
@@ -66,9 +70,28 @@ void Init_RPDB_MemoryPoolFilePageSettingsController()	{
 *  new  *
 *************/
 	
-VALUE rb_RPDB_MemoryPoolFilePageSettingsController_new(	VALUE	klass __attribute__ ((unused )),
-																												VALUE	rb_parent_memory_pool_file_settings_controller )	{
+VALUE rb_RPDB_MemoryPoolFilePageSettingsController_new(	int			argc,
+																												VALUE*	args,
+																												VALUE		rb_klass_self __attribute__ ((unused)) )	{
 	
+	VALUE	rb_parent_environment																	=	Qnil;
+	VALUE	rb_parent_settings_controller													=	Qnil;
+	VALUE	rb_parent_memory_pool_settings_controller							=	Qnil;
+	VALUE	rb_parent_memory_pool_file_settings_controller				=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
+																						R_MatchAncestorInstance( rb_parent_memory_pool_settings_controller, rb_RPDB_MemoryPoolSettingsController ),
+																						R_MatchAncestorInstance( rb_parent_memory_pool_file_settings_controller, rb_RPDB_MemoryPoolFileSettingsController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]",
+			"[ <parent settings controller> ]",
+			"[ <parent memory pool settings controller> ]",
+			"[ <parent memory pool file settings controller> ]"
+		)
+	);
+
 	RPDB_MemoryPoolFileSettingsController*	c_parent_memory_pool_file_settings_controller;
 	C_RPDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_parent_memory_pool_file_settings_controller, c_parent_memory_pool_file_settings_controller );
 
@@ -89,10 +112,11 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_new(	VALUE	klass __attribute_
 *  init  *
 *************/
 
-VALUE rb_RPDB_MemoryPoolFilePageSettingsController_init(	VALUE	rb_memory_pool_file_page_settings_controller,
-																													VALUE	rb_parent_memory_pool_file_settings_controller __attribute__ ((unused )) )	{
+VALUE rb_RPDB_MemoryPoolFilePageSettingsController_init(	int				argc __attribute__ ((unused)),
+																													VALUE*		args __attribute__ ((unused)),
+																													VALUE			rb_self )	{
 	
-	return rb_memory_pool_file_page_settings_controller;
+	return rb_self;
 }
 
 /***************************************

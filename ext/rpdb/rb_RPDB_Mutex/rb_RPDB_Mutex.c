@@ -18,6 +18,8 @@
 
 #include <rpdb/RPDB_MutexSettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -62,9 +64,22 @@ void Init_RPDB_Mutex()	{
 *************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/mutex_alloc.html
-VALUE rb_RPDB_Mutex_new(	VALUE	klass __attribute__ ((unused)),
-													VALUE	rb_parent_mutex_controller )	{
+VALUE rb_RPDB_Mutex_new(	int			argc,
+													VALUE*	args,
+													VALUE		rb_klass_self __attribute__ ((unused)) )	{
 	
+	VALUE	rb_parent_environment									=	Qnil;
+	VALUE	rb_parent_mutex_controller						=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
+																						R_MatchAncestorInstance( rb_parent_mutex_controller, rb_RPDB_MutexController ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent environment > ]",
+			"[ <parent mutex controller> ]"
+		)
+	);
+
 	RPDB_MutexController*		c_parent_mutex_controller;
 	C_RPDB_MUTEX_CONTROLLER( rb_parent_mutex_controller, c_parent_mutex_controller );
 	
@@ -87,13 +102,11 @@ VALUE rb_RPDB_Mutex_new(	VALUE	klass __attribute__ ((unused)),
 *************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/mutex_alloc.html
-VALUE rb_RPDB_Mutex_init(	VALUE	rb_mutex __attribute__ ((unused)),
-													VALUE	rb_parent_mutex_controller )	{
+VALUE rb_RPDB_Mutex_init(	int				argc __attribute__ ((unused)),
+													VALUE*		args __attribute__ ((unused)),
+													VALUE			rb_self )	{
 
-	RPDB_MutexController*		c_parent_mutex_controller;
-	C_RPDB_MUTEX_CONTROLLER( rb_parent_mutex_controller, c_parent_mutex_controller );
-
-	return RUBY_RPDB_MUTEX( RPDB_Mutex_new( c_parent_mutex_controller ) );
+	return rb_self;
 }
 
 /***************************

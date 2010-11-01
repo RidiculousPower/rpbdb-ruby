@@ -6,10 +6,12 @@
 
 void Init_RPDB_MemoryPoolFileCachePrioritySettingsController();
 
-VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_new(	VALUE	klass,
-																 VALUE	rb_parent_memory_pool_file_settings_controller );
-VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_init(	VALUE	rb_memory_pool_file_cache_priority_settings_controller,
-	VALUE	rb_parent_memory_pool_file_settings_controller );
+VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_new(	int			argc,
+																																	VALUE*	args,
+																																	VALUE		rb_klass_self );
+VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_init(	int				argc __attribute__ ((unused)),
+																																	VALUE*		args __attribute__ ((unused)),
+																																	VALUE			rb_self );
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_parentEnvironment(	VALUE	rb_memory_pool_file_cache_priority_settings_controller );
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_currentPriority( VALUE	rb_memory_pool_file_cache_priority_settings_controller );
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_veryLow( VALUE	rb_memory_pool_file_cache_priority_settings_controller );

@@ -38,6 +38,8 @@
 
 #include <rpdb/RPDB_SettingsController.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -461,8 +463,9 @@ VALUE rb_RPDB_Environment_settingsController( VALUE rb_environment )	{
 	if ( ( rb_settings_controller = rb_iv_get(	rb_environment,
 																							RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
-		rb_settings_controller	=	rb_RPDB_SettingsController_new(	rb_RPDB_SettingsController,
-																															rb_environment );
+		rb_settings_controller	=	rb_RPDB_SettingsController_new(	1,
+																															& rb_environment,
+																															rb_RPDB_SettingsController );
 
 		rb_iv_set(	rb_environment,
 								RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER,

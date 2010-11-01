@@ -6,10 +6,12 @@
 
 void Init_RPDB_Key();
 
-VALUE rb_RPDB_Key_new(	VALUE	klass,
-					   VALUE	rb_parent_record );
-VALUE rb_RPDB_Key_init(	VALUE	rb_key,
-	VALUE	rb_parent_record );
+VALUE rb_RPDB_Key_new(	int			argc,
+												VALUE*	args,
+												VALUE		rb_klass_self );
+VALUE rb_RPDB_Key_init(	int				argc __attribute__ ((unused)),
+												VALUE*		args __attribute__ ((unused)),
+												VALUE			rb_self );
 	VALUE rb_RPDB_Key_settingsController(	VALUE	rb_key );
 	VALUE rb_RPDB_Key_parentEnvironment(	VALUE	rb_key );
 

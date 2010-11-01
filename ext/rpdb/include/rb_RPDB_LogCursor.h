@@ -4,10 +4,12 @@
 	#include "rb_RPDB_BaseStandardIncludes.h"
 	#include <rpdb/RPDB_Types.h>
 
-VALUE rb_RPDB_LogCursor_new(	VALUE	klass,
-							 VALUE	rb_parent_log_cursor_controller );
-VALUE rb_RPDB_LogCursor_init(	VALUE	rb_log_cursor,
-	VALUE	rb_parent_log_cursor_controller );
+VALUE rb_RPDB_LogCursor_new(	int			argc,
+															VALUE*	args,
+															VALUE		rb_klass_self );
+VALUE rb_RPDB_LogCursor_init(	int				argc __attribute__ ((unused)),
+															VALUE*		args __attribute__ ((unused)),
+															VALUE			rb_self );
 	VALUE rb_RPDB_LogCursor_settingsController(	VALUE	rb_log_cursor );
 	VALUE rb_RPDB_LogCursor_parentEnvironment(	VALUE	rb_log_cursor );
 	VALUE rb_RPDB_LogCursor_open( VALUE	rb_log_cursor );

@@ -8,7 +8,7 @@ void Init_RPDB_DatabaseCursorController();
 
 	VALUE rb_RPDB_DatabaseCursorController_new( int			argc,
 																							VALUE*	args,
-																							VALUE		rb_database_cursor_controller );
+																							VALUE		rb_klass_self );
 	VALUE rb_RPDB_DatabaseCursorController_init( 	int			argc,
 																								VALUE*	args,
 																								VALUE		rb_database_cursor_controller );

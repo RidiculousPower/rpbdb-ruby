@@ -20,6 +20,7 @@
 #include <rpdb/RPDB_Key.h>
 #include <rpdb/RPDB_SecondaryKeys.h>
 
+#include <rargs.h>
 
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
@@ -51,9 +52,22 @@ void Init_RPDB_SecondaryKey()	{
 *  new  *
 *************/
 
-VALUE rb_RPDB_SecondaryKeys_new(	VALUE	klass __attribute__ ((unused )),
-																	VALUE	rb_parent_record )	{
+VALUE rb_RPDB_SecondaryKeys_new(	int			argc,
+																	VALUE*	args,
+																	VALUE		rb_klass_self __attribute__ ((unused)) )	{
 	
+	VALUE	rb_parent_database					=	Qnil;
+	VALUE	rb_parent_record						=	Qnil;
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_database, rb_RPDB_Database ),
+																						R_MatchAncestorInstance( rb_parent_record, rb_RPDB_Record ) ) ),
+			R_ListOrder( 1 ),
+			"[ <parent database > ]",
+			"[ <parent record> ]"
+		)
+	);
+
 	RPDB_Record*			c_parent_record;
 	C_RPDB_RECORD( rb_parent_record, c_parent_record );
 	
@@ -75,10 +89,11 @@ VALUE rb_RPDB_SecondaryKeys_new(	VALUE	klass __attribute__ ((unused )),
 *  new  *
 *************/
 
-VALUE rb_RPDB_SecondaryKeys_init(	VALUE	rb_secondary_keys,
-																	VALUE	rb_parent_record __attribute__ ((unused )) )	{
+VALUE rb_RPDB_SecondaryKeys_init(	int				argc __attribute__ ((unused)),
+																	VALUE*		args __attribute__ ((unused)),
+																	VALUE			rb_self )	{
 
-	return rb_secondary_keys;
+	return rb_self;
 }
 
 /*****************

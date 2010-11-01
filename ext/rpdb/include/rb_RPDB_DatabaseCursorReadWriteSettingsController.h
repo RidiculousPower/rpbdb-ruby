@@ -6,10 +6,12 @@
 
 void Init_RPDB_DatabaseCursorReadWriteSettingsController();
 
-VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_new(	VALUE	klass,
-															 VALUE	rb_parent_database_cursor_settings_controller );
-VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_init(	VALUE	rb_database_cursor_record_read_write_settings_controller,
-	VALUE	rb_parent_database_cursor_settings_controller );
+VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_new(	int			argc,
+																															VALUE*	args,
+																															VALUE		rb_klass_self );
+VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_init(	int				argc __attribute__ ((unused)),
+																															VALUE*		args __attribute__ ((unused)),
+																															VALUE			rb_self );
 	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentEnvironment(	VALUE	rb_database_cursor_record_read_write_settings_controller );
 	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabase(	VALUE	rb_database_cursor_record_read_write_settings_controller );
 	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_permitWrite( VALUE	rb_database_cursor_record_read_write_settings_controller );

@@ -6,10 +6,12 @@
 
 void Init_RPDB_MemoryPoolReadWriteSettingsController();
 
-VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_new(	VALUE	klass,
-														 VALUE	rb_parent_memory_pool_settings_controller );
-VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_init(	VALUE	rb_memory_pool_record_read_write_settings_controller,
-	VALUE	rb_parent_memory_pool_settings_controller );
+VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_new(	int			argc,
+																													VALUE*	args,
+																													VALUE		rb_klass_self );
+VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_init(	int				argc __attribute__ ((unused)),
+																													VALUE*		args __attribute__ ((unused)),
+																													VALUE			rb_self );
 	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_parentEnvironment(	VALUE	rb_memory_pool_record_read_write_settings_controller );
 	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_maxOpenFiles( VALUE	rb_memory_pool_record_read_write_settings_controller );
 		VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxOpenFiles(	VALUE	rb_memory_pool_record_read_write_settings_controller, 

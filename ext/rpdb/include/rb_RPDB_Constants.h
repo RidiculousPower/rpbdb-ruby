@@ -26,16 +26,22 @@
 	
 	//	Environment
 	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_CONFIGURED_CLASSES						"@rpdb__configured_classes_array"
-	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_DATABASE_CONTROLLER					"@database_controller"
-	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER				"@transaction_controller"
-	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER					"@settings_controller"
-
+	
 	//	Database Controller
 	#define RPDB_RUBY_CLASS_DATABASE_CONTROLLER_VARIABLE_DATABASES_HASH				"@rpdb__databases_hash"
 
 	//	Database
-	#define RPDB_RUBY_CLASS_DATABASE_VARIABLE_DATABASE_CONTROLLER							"@database_controller"
 	#define RPDB_RUBY_CLASS_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE										"@storage_type"
+	
+	
+	
+	//	Environment
+	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_DATABASE_CONTROLLER					"@database_controller"
+	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER				"@transaction_controller"
+	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER					"@settings_controller"
+
+	//	Database
+	#define RPDB_RUBY_CLASS_DATABASE_VARIABLE_DATABASE_CONTROLLER							"@database_controller"
 
 	//	Database Cursor
 	#define RPDB_RUBY_CLASS_DATABASE_CURSOR_CONTROLLER												"@database_cursor_controller"
@@ -44,15 +50,19 @@
 
 	#define RPDB_RUBY_CLASS_DATABASE_SEQUENCE_CONTROLLER											"@database_sequence_controller"
 
+
 	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT										"@parent_environment"
 	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE											"@parent_database"
 	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE_CURSOR_CONTROLLER		"@parent_database_cursor_controller"
 
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_SETTINGS_CONTROLLER							"@settings_controller"
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_FILE_SETTINGS_CONTROLLER				"@file_settings_controller"
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_ERROR_SETTINGS_CONTROLLER				"@error_settings_controller"
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER					"@log_settings_controller"
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_MEMORY_SETTINGS_CONTROLLER			"@memory_settings_controller"
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER		"@database_settings_controller"
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER		"@database_association_settings_controller"
+	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER		"@database_cache_settings_controller"
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER		"@database_cursor_settings_controller"
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DIRECTORY_SETTINGS_CONTROLLER		"@directory_settings_controller"
 	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER "@database_sequence_settings_controller"
@@ -383,6 +393,21 @@
 							Qnil																																																		\
 							: ( RARRAY_LEN( rb_return ) == 1 ?																																\
 								rb_ary_entry( rb_return, 0 )																																		\
+								: rb_return ) )																																								\
+						: rb_return )
+
+	#define SIMPLIFIED_RUBY_HASH( rb_return )																																\
+		( rb_return == Qnil ?																																										\
+				Qnil																																																			\
+				: ( TYPE( rb_return ) == T_HASH ) ?																																	\
+						( RHASH_SIZE( rb_return ) == 0 ?																																	\
+							Qnil																																																		\
+							: ( RHASH_SIZE( rb_return ) == 1 ?																																\
+								rb_funcall( rb_funcall(	rb_return,																													\
+																				rb_intern( "first" ),																											\
+																				0 ),																																	\
+														rb_intern( "last" ),																														\
+														0 )																																							\
 								: rb_return ) )																																								\
 						: rb_return )
 
