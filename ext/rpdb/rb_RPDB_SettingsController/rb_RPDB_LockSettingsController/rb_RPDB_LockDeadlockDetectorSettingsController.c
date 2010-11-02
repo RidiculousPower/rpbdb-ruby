@@ -37,7 +37,7 @@ void Init_RPDB_LockDeadlockDetectorSettingsController()	{
 																					"LockDeadlockDetector",	
 																					rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_LockDeadlockDetectorSettingsController, 	"new",																rb_RPDB_LockDeadlockDetectorSettingsController_init,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_LockDeadlockDetectorSettingsController, 	"new",																rb_RPDB_LockDeadlockDetectorSettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"initialize",													rb_RPDB_LockDeadlockDetectorSettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"parent_environment",									rb_RPDB_LockDeadlockDetectorSettingsController_parentEnvironment,								0 	);

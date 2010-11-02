@@ -32,7 +32,7 @@ extern	VALUE	rb_RPDB_Transaction;
 
 void Init_RPDB_TransactionSettingsController()	{
 
-	rb_define_singleton_method(	rb_RPDB_TransactionSettingsController, 	"new",																rb_RPDB_TransactionSettingsController_init,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_TransactionSettingsController, 	"new",																rb_RPDB_TransactionSettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"initialize",													rb_RPDB_TransactionSettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"parent_environment",									rb_RPDB_TransactionSettingsController_parentEnvironment,								0 	);

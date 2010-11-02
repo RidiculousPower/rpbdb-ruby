@@ -40,7 +40,7 @@ void Init_RPDB_MemoryPoolFileCachePrioritySettingsController()	{
 																																										"Priority",	
 																																										rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 	"new",																rb_RPDB_MemoryPoolFileCachePrioritySettingsController_init,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 	"new",																rb_RPDB_MemoryPoolFileCachePrioritySettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"initialize",													rb_RPDB_MemoryPoolFileCachePrioritySettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"parent_environment",									rb_RPDB_MemoryPoolFileCachePrioritySettingsController_parentEnvironment,								0 	);

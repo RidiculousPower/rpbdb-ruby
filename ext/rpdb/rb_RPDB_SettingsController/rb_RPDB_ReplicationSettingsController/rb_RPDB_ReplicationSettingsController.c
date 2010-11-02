@@ -35,7 +35,7 @@ extern	VALUE	rb_RPDB_ReplicationTimeoutSettingsController;
 
 void Init_RPDB_ReplicationSettingsController()	{
 
-	rb_define_singleton_method(	rb_RPDB_ReplicationSettingsController, 	"new",																rb_RPDB_ReplicationSettingsController_init,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_ReplicationSettingsController, 	"new",																rb_RPDB_ReplicationSettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"initialize",													rb_RPDB_ReplicationSettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"parent_environment",									rb_RPDB_ReplicationSettingsController_parentEnvironment,								0 	);

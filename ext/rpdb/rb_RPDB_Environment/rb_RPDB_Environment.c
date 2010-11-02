@@ -391,12 +391,12 @@ VALUE rb_RPDB_Environment_name( VALUE rb_environment )	{
 VALUE rb_RPDB_Environment_configuredClasses( VALUE rb_environment )	{
 	
 	VALUE	rb_configured_classes_array	=	rb_iv_get(	rb_environment,
-														RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_CONFIGURED_CLASSES );
+														RPDB_RB_ENVIRONMENT_VARIABLE_CONFIGURED_CLASSES );
 	
 	if ( rb_configured_classes_array == Qnil )	{
 		rb_configured_classes_array = rb_ary_new();
 		rb_iv_set(	rb_environment,
-					RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_CONFIGURED_CLASSES,
+					RPDB_RB_ENVIRONMENT_VARIABLE_CONFIGURED_CLASSES,
 					rb_configured_classes_array );
 	}
 	return rb_configured_classes_array;
@@ -414,14 +414,14 @@ VALUE rb_RPDB_Environment_databaseController( VALUE rb_environment )	{
 
 	VALUE	rb_database_controller	=	Qnil;
 	if ( ( rb_database_controller = rb_iv_get(	rb_environment,
-																							RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_DATABASE_CONTROLLER ) ) == Qnil )	{
+																							RPDB_RB_ENVIRONMENT_VARIABLE_DATABASE_CONTROLLER ) ) == Qnil )	{
 		
 		rb_database_controller	=	rb_RPDB_DatabaseController_new(	1,
 																															& rb_environment,
 																															rb_RPDB_DatabaseController );
 		
 		rb_iv_set(	rb_environment,
-								RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_DATABASE_CONTROLLER,
+								RPDB_RB_ENVIRONMENT_VARIABLE_DATABASE_CONTROLLER,
 								rb_database_controller );
 	}
 	
@@ -436,7 +436,7 @@ VALUE rb_RPDB_Environment_transactionController( VALUE rb_environment )	{
 	
 	VALUE	rb_transaction_controller	=	Qnil;
 	if ( ( rb_transaction_controller = rb_iv_get(	rb_environment,
-																								RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER ) ) == Qnil )	{
+																								RPDB_RB_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER ) ) == Qnil )	{
 		
 		RPDB_Environment*	c_environment;
 		C_RPDB_ENVIRONMENT( rb_environment, c_environment );
@@ -446,7 +446,7 @@ VALUE rb_RPDB_Environment_transactionController( VALUE rb_environment )	{
 		rb_transaction_controller	=	RUBY_RPDB_TRANSACTION_CONTROLLER( c_transaction_controller );
 
 		rb_iv_set(	rb_environment,
-								RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER,
+								RPDB_RB_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER,
 								rb_transaction_controller );
 	}
 	
@@ -461,14 +461,14 @@ VALUE rb_RPDB_Environment_settingsController( VALUE rb_environment )	{
 
 	VALUE	rb_settings_controller	=	Qnil;
 	if ( ( rb_settings_controller = rb_iv_get(	rb_environment,
-																							RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																							RPDB_RB_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		rb_settings_controller	=	rb_RPDB_SettingsController_new(	1,
 																															& rb_environment,
 																															rb_RPDB_SettingsController );
 
 		rb_iv_set(	rb_environment,
-								RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER,
+								RPDB_RB_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER,
 								rb_settings_controller );
 	}
 	

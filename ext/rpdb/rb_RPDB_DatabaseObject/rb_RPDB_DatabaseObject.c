@@ -72,18 +72,18 @@ extern	VALUE	rb_RPDB_DatabaseCursor;
 #define RPDB_RUBY_ENVIRONMENT_CLASS																	"RPDB::Environment"
 #define RPDB_RUBY_DATABASE_CLASS																		"RPDB::Environment::DatabaseController::Database"
 
-#define RPDB_RUBY_CLASS_VARIABLE_ENVIRONMENT_STORAGE								"@rpdb__environment"
-#define RPDB_RUBY_CLASS_VARIABLE_DATABASE_STORAGE										"@rpdb__database_storage"
-#define RPDB_RUBY_CLASS_VARIABLE_PRIMARY_KEY_METHOD									"@rpdb__primary_key_method"	
-#define RPDB_RUBY_CLASS_VARIABLE_UNIQUE_SECONDARY_KEY_METHODS				"@rpdb__unique_secondary_key_methods"	
-#define RPDB_RUBY_CLASS_VARIABLE_NONUNIQUE_SECONDARY_KEY_METHODS		"@rpdb__nonunique_secondary_key_methods"	
-#define RPDB_RUBY_CLASS_VARIABLE_STORED_INITIALIZE_ARGUMENTS				"@rpdb__stored_initialize_arguments"	
-#define RPDB_RUBY_CLASS_VARIABLE_IDENTIFY_AS_WAITLIST								"@rpdb__identify_for_rpdb_as_wait_list"
-#define RPDB_RUBY_CLASS_VARIABLE_IDENTIFY_AS												"@rpdb__identify_for_rpdb_as"
-#define RPDB_RUBY_CLASS_VARIABLE_INITIALIZED												"@rpdb__initialized"
-#define RPDB_RUBY_CLASS_VARIABLE_CONFIGURED													"@rpdb__configured"
-#define RPDB_RUBY_CLASS_VARIABLE_CURSOR_CONTEXT_STORAGE							"@rpdb__cursor_context_storage"
-#define RPDB_RUBY_CLASS_VARIABLE_UNIQUE_JOIN_DECLARATION_HASH					"@rpdb__unique_join_declaration_hash"
+#define RPDB_RB_VARIABLE_ENVIRONMENT_STORAGE								"@rpdb__environment"
+#define RPDB_RB_VARIABLE_DATABASE_STORAGE										"@rpdb__database_storage"
+#define RPDB_RB_VARIABLE_PRIMARY_KEY_METHOD									"@rpdb__primary_key_method"	
+#define RPDB_RB_VARIABLE_UNIQUE_SECONDARY_KEY_METHODS				"@rpdb__unique_secondary_key_methods"	
+#define RPDB_RB_VARIABLE_NONUNIQUE_SECONDARY_KEY_METHODS		"@rpdb__nonunique_secondary_key_methods"	
+#define RPDB_RB_VARIABLE_STORED_INITIALIZE_ARGUMENTS				"@rpdb__stored_initialize_arguments"	
+#define RPDB_RB_VARIABLE_IDENTIFY_AS_WAITLIST								"@rpdb__identify_for_rpdb_as_wait_list"
+#define RPDB_RB_VARIABLE_IDENTIFY_AS												"@rpdb__identify_for_rpdb_as"
+#define RPDB_RB_VARIABLE_INITIALIZED												"@rpdb__initialized"
+#define RPDB_RB_VARIABLE_CONFIGURED													"@rpdb__configured"
+#define RPDB_RB_VARIABLE_CURSOR_CONTEXT_STORAGE							"@rpdb__cursor_context_storage"
+#define RPDB_RB_VARIABLE_UNIQUE_JOIN_DECLARATION_HASH					"@rpdb__unique_join_declaration_hash"
 
 #define RPDB_RUBY_ERROR_PRIMARY_KEY_MISSING																				"Primary key method has not been specified."
 #define RPDB_RUBY_ERROR_MISSING_DATABASE																					"RPDB object missing database."
@@ -264,7 +264,7 @@ VALUE rb_RPDB_DatabaseObject_configureRPDB( VALUE	rb_klass_self )	{
 VALUE rb_RPDB_DatabaseObject_hasConfigured( VALUE rb_self )	{
 	
 	VALUE	rb_has_configured	=	rb_iv_get(	rb_self,
-												RPDB_RUBY_CLASS_VARIABLE_CONFIGURED );
+												RPDB_RB_VARIABLE_CONFIGURED );
 	
 	return ( rb_has_configured == Qtrue ? Qtrue : Qfalse );
 }
@@ -278,7 +278,7 @@ VALUE rb_RPDB_DatabaseObject_hasInitialized( VALUE rb_self )	{
 	VALUE	rb_klass		=	( ( TYPE( rb_self ) == T_CLASS ) ? rb_self : rb_funcall( rb_self, rb_intern( "class" ), 0 ) );
     
 	VALUE	rb_has_initialized	=	rb_iv_get(	rb_klass,
-												RPDB_RUBY_CLASS_VARIABLE_INITIALIZED );
+												RPDB_RB_VARIABLE_INITIALIZED );
 
 	return ( rb_has_initialized == Qtrue ? Qtrue : Qfalse );
 }
@@ -324,7 +324,7 @@ VALUE rb_RPDB_DatabaseObject_setEnvironment(	VALUE	rb_self,
 	VALUE	rb_klass	=	( ( TYPE( rb_self ) == T_CLASS ) ? rb_self : rb_funcall( rb_self, rb_intern( "class" ), 0 ) );
 
 	rb_iv_set(	rb_klass,
-							RPDB_RUBY_CLASS_VARIABLE_ENVIRONMENT_STORAGE,
+							RPDB_RB_VARIABLE_ENVIRONMENT_STORAGE,
 							rb_environment );
 	
 	return rb_self;
@@ -388,12 +388,12 @@ VALUE rb_RPDB_DatabaseObject_databases( VALUE rb_self )	{
 	VALUE	rb_klass		=	( ( TYPE( rb_self ) == T_CLASS ) ? rb_self : rb_funcall( rb_self, rb_intern( "class" ), 0 ) );
 
 	VALUE	rb_databases	=	rb_iv_get(	rb_klass,
-											RPDB_RUBY_CLASS_VARIABLE_DATABASE_STORAGE );
+											RPDB_RB_VARIABLE_DATABASE_STORAGE );
 											
 	if ( rb_databases == Qnil )	{
 		rb_databases = rb_hash_new();
 		rb_iv_set(	rb_klass,
-					RPDB_RUBY_CLASS_VARIABLE_DATABASE_STORAGE,
+					RPDB_RB_VARIABLE_DATABASE_STORAGE,
 					rb_databases );
 	}
 	return rb_databases;
@@ -496,7 +496,7 @@ VALUE rb_RPDB_DatabaseObject_primaryKeyMethod(	VALUE	rb_self )	{
 	VALUE	rb_klass	=	( ( TYPE( rb_self ) == T_CLASS ) ? rb_self : rb_funcall( rb_self, rb_intern( "class" ), 0 ) );
 
 	return rb_iv_get(	rb_klass,
-						RPDB_RUBY_CLASS_VARIABLE_PRIMARY_KEY_METHOD );
+						RPDB_RB_VARIABLE_PRIMARY_KEY_METHOD );
 }
 
 /************************
@@ -512,7 +512,7 @@ VALUE rb_RPDB_DatabaseObject_setPrimaryKeyMethod(	VALUE	rb_self,
 	VALUE	rb_klass	=	( ( TYPE( rb_self ) == T_CLASS ) ? rb_self : rb_funcall( rb_self, rb_intern( "class" ), 0 ) );
 
 	rb_iv_set(	rb_klass,
-				RPDB_RUBY_CLASS_VARIABLE_PRIMARY_KEY_METHOD,
+				RPDB_RB_VARIABLE_PRIMARY_KEY_METHOD,
 				rb_primary_key_method );
 
 	//	check if we have a database set for nil - if so it was set before the primary key was specified and we need to move it over
@@ -573,7 +573,7 @@ VALUE rb_RPDB_DatabaseObject_addSecondaryKeyMethod(	int	argc,
 
 	//	Args: :secondary_key_method, ...
 	rb_RPDB_DatabaseObject_internal_addSecondaryKeyMethods(	rb_self,
-																RPDB_RUBY_CLASS_VARIABLE_NONUNIQUE_SECONDARY_KEY_METHODS,
+																RPDB_RB_VARIABLE_NONUNIQUE_SECONDARY_KEY_METHODS,
 																argc,
 																args	);
 
@@ -590,7 +590,7 @@ VALUE rb_RPDB_DatabaseObject_addUniqueSecondaryKeyMethod(	int	argc,
 
 	//	Args: :unique_secondary_key_method, ...
 	rb_RPDB_DatabaseObject_internal_addSecondaryKeyMethods(	rb_self,
-																RPDB_RUBY_CLASS_VARIABLE_UNIQUE_SECONDARY_KEY_METHODS,
+																RPDB_RB_VARIABLE_UNIQUE_SECONDARY_KEY_METHODS,
 																argc,
 																args	);
 	
@@ -604,7 +604,7 @@ VALUE rb_RPDB_DatabaseObject_addUniqueSecondaryKeyMethod(	int	argc,
 VALUE rb_RPDB_DatabaseObject_uniqueSecondaryKeyMethods(	VALUE	rb_self )	{
 	
 	return rb_RPDB_DatabaseObject_internal_getClassInstanceArray(	rb_self,
-																	RPDB_RUBY_CLASS_VARIABLE_UNIQUE_SECONDARY_KEY_METHODS	);
+																	RPDB_RB_VARIABLE_UNIQUE_SECONDARY_KEY_METHODS	);
 }
 
 
@@ -615,7 +615,7 @@ VALUE rb_RPDB_DatabaseObject_uniqueSecondaryKeyMethods(	VALUE	rb_self )	{
 VALUE rb_RPDB_DatabaseObject_nonUniqueSecondaryKeyMethods(	VALUE	rb_self )	{
 	
 	return rb_RPDB_DatabaseObject_internal_getClassInstanceArray(	rb_self,
-																	RPDB_RUBY_CLASS_VARIABLE_NONUNIQUE_SECONDARY_KEY_METHODS	);
+																	RPDB_RB_VARIABLE_NONUNIQUE_SECONDARY_KEY_METHODS	);
 }
 
 /************************
@@ -1852,10 +1852,10 @@ VALUE rb_RPDB_DatabaseObject_internal_cursorContextStorageHash( VALUE rb_self )	
 	//	Create our hash if it doesn't exist yet
 	VALUE	rb_cursor_context_storage_hash	=	Qnil;
 	if ( ( rb_cursor_context_storage_hash	=	rb_iv_get(	rb_klass,
-															RPDB_RUBY_CLASS_VARIABLE_CURSOR_CONTEXT_STORAGE ) ) == Qnil )	{
+															RPDB_RB_VARIABLE_CURSOR_CONTEXT_STORAGE ) ) == Qnil )	{
 		rb_cursor_context_storage_hash	=	rb_hash_new();
 		rb_iv_set(	rb_klass,
-					RPDB_RUBY_CLASS_VARIABLE_CURSOR_CONTEXT_STORAGE,
+					RPDB_RB_VARIABLE_CURSOR_CONTEXT_STORAGE,
 					rb_cursor_context_storage_hash );
 	}
 	
@@ -1895,7 +1895,7 @@ VALUE rb_RPDB_DatabaseObject_internal_getEnvironment(	VALUE	rb_self )	{
 	VALUE	rb_klass	=	( ( TYPE( rb_self ) == T_CLASS ) ? rb_self : rb_funcall( rb_self, rb_intern( "class" ), 0 ) );
 
 	return rb_iv_get(	rb_klass,
-						RPDB_RUBY_CLASS_VARIABLE_ENVIRONMENT_STORAGE );
+						RPDB_RB_VARIABLE_ENVIRONMENT_STORAGE );
 }
 
 /****************
@@ -1906,7 +1906,7 @@ VALUE rb_RPDB_DatabaseObject_internal_getDatabase( VALUE	rb_self,
 													VALUE	rb_index_method )	{
 
 	return rb_RPDB_DatabaseObject_internal_getObjectFromClassInstanceHash(	rb_self,
-																			RPDB_RUBY_CLASS_VARIABLE_DATABASE_STORAGE,
+																			RPDB_RB_VARIABLE_DATABASE_STORAGE,
 																			rb_index_method );
 }
 
@@ -2889,7 +2889,7 @@ VALUE rb_RPDB_DatabaseObject_internal_setHasConfigured(	VALUE	rb_klass_self,
 																												VALUE	rb_true_or_false )	{
 
 	rb_iv_set(	rb_klass_self,
-							RPDB_RUBY_CLASS_VARIABLE_CONFIGURED,
+							RPDB_RB_VARIABLE_CONFIGURED,
 							rb_true_or_false );
 	//	We have Qtrue, Qfalse or Qnil and want to return Qtrue or Qfalse
 	return ( rb_klass_self == Qtrue ? Qtrue : Qfalse );
@@ -2902,7 +2902,7 @@ VALUE rb_RPDB_DatabaseObject_internal_setHasConfigured(	VALUE	rb_klass_self,
 VALUE rb_RPDB_DatabaseObject_internal_setHasInitialized(	VALUE	rb_klass_self,
 																													VALUE	rb_true_or_false  )	{
 	rb_iv_set(	rb_klass_self,
-							RPDB_RUBY_CLASS_VARIABLE_INITIALIZED,
+							RPDB_RB_VARIABLE_INITIALIZED,
 							rb_true_or_false );	
 	//	We have Qtrue, Qfalse or Qnil and want to return Qtrue or Qfalse
 	return ( rb_klass_self == Qtrue ? Qtrue : Qfalse );
@@ -2994,12 +2994,12 @@ VALUE rb_RPDB_DatabaseObject_internal_callInitRPDB( VALUE rb_self )	{
 VALUE rb_RPDB_DatabaseObject_internal_uniqueJoinDeclarationHash( VALUE rb_self )	{
 	
 	VALUE	rb_unique_join_declaration_hash	=	rb_iv_get(	rb_self,
-														  RPDB_RUBY_CLASS_VARIABLE_UNIQUE_JOIN_DECLARATION_HASH );
+														  RPDB_RB_VARIABLE_UNIQUE_JOIN_DECLARATION_HASH );
 	
 	if ( rb_unique_join_declaration_hash == Qnil )	{
 		rb_unique_join_declaration_hash = rb_hash_new();
 		rb_iv_set(	rb_self,
-								RPDB_RUBY_CLASS_VARIABLE_UNIQUE_JOIN_DECLARATION_HASH,
+								RPDB_RB_VARIABLE_UNIQUE_JOIN_DECLARATION_HASH,
 								rb_unique_join_declaration_hash );
 	}
 	

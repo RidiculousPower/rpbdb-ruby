@@ -36,7 +36,7 @@ void Init_RPDB_FileVerbositySettingsController()	{
 																			"Verbosity",	
 																			rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_FileVerbositySettingsController, 	"new",																rb_RPDB_FileVerbositySettingsController_init,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_FileVerbositySettingsController, 	"new",																rb_RPDB_FileVerbositySettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"initialize",													rb_RPDB_FileVerbositySettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"parent_environment",									rb_RPDB_FileVerbositySettingsController_parentEnvironment,								0 	);

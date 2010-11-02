@@ -35,7 +35,7 @@ void Init_RPDB_MessageSettingsController()	{
 																																		"MemoryPool",	
 																																		rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_MessageSettingsController, 	"new",																rb_RPDB_MessageSettingsController_init,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_MessageSettingsController, 	"new",																rb_RPDB_MessageSettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_MessageSettingsController, 				"initialize",													rb_RPDB_MessageSettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_MessageSettingsController, 				"parent_environment",									rb_RPDB_MessageSettingsController_parentEnvironment,								0 	);

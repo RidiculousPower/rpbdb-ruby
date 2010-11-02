@@ -35,7 +35,7 @@ void Init_RPDB_MemoryPoolReadWriteSettingsController()	{
 																																						"ReadWrite",	
 																																						rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_MemoryPoolReadWriteSettingsController, 	"new",																rb_RPDB_MemoryPoolReadWriteSettingsController_init,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_MemoryPoolReadWriteSettingsController, 	"new",																rb_RPDB_MemoryPoolReadWriteSettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"initialize",													rb_RPDB_MemoryPoolReadWriteSettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"parent_environment",									rb_RPDB_MemoryPoolReadWriteSettingsController_parentEnvironment,								0 	);

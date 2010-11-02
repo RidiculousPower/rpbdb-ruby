@@ -11,6 +11,11 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_DatabaseAssociationSettingsController.h"
+#include "rb_RPDB_DatabaseSettingsController.h"
+#include "rb_RPDB_SettingsController.h"
+#include "rb_RPDB_DatabaseController.h"
+#include "rb_RPDB_Database.h"
+#include "rb_RPDB.h"
 
 #include <rpdb/RPDB_Environment.h>
 
@@ -25,6 +30,7 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_Database;
 
@@ -91,13 +97,38 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_new(	int			argc,
 		)
 	);
 
-	RPDB_DatabaseSettingsController*	c_parent_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_parent_database_settings_controller );
+	//	if we were passed a database we want its settings controller
+	//	if we were passed an environment or database controller or settings controller we want its database settings controller
+
+	if (		rb_parent_database == Qnil
+			&&	rb_parent_environment == Qnil
+			&&	rb_parent_database_controller == Qnil
+			&&	rb_parent_settings_controller == Qnil
+			&&	rb_parent_database_settings_controller == Qnil )	{
+		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
+
+	if ( rb_parent_database_controller != Qnil ) {
+		rb_parent_environment	=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );			
+	}
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+	}
+	if ( rb_parent_settings_controller != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_SettingsController_databaseSettingsController( rb_parent_settings_controller );
+	}
+	if ( rb_parent_database != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_Database_settingsController( rb_parent_database );
+	}
 	
-	VALUE	rb_database_association_settings_controller	=	RUBY_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_associationSettingsController( c_parent_database_settings_controller ) );
+	RPDB_DatabaseSettingsController*	c_database_settings_controller;
+	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
+	RPDB_DatabaseAssociationSettingsController*	c_database_association_settings_controller	=	RPDB_DatabaseSettingsController_associationSettingsController( c_database_settings_controller );
+
+	VALUE	rb_database_association_settings_controller	=	RUBY_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( c_database_association_settings_controller );
 
 	rb_iv_set(	rb_database_association_settings_controller,
-							RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER,
+							RPDB_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };

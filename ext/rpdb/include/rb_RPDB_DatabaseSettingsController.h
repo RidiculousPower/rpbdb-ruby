@@ -36,6 +36,7 @@ VALUE rb_RPDB_DatabaseSettingsController_init(	int				argc __attribute__ ((unuse
 	VALUE rb_RPDB_DatabaseSettingsController_encryptionSettingsController( VALUE	rb_database_settings_controller );
 	VALUE rb_RPDB_DatabaseSettingsController_verbositySettingsController( VALUE	rb_database_settings_controller );
 	VALUE rb_RPDB_DatabaseSettingsController_verificationSettingsController( VALUE	rb_database_settings_controller );
+	VALUE rb_RPDB_DatabaseSettingsController_cacheSettingsController( VALUE	rb_database_settings_controller );
 	VALUE rb_RPDB_DatabaseSettingsController_cursorSettingsController( VALUE	rb_database_settings_controller );
 	VALUE rb_RPDB_DatabaseSettingsController_sequenceSettingsController( VALUE	rb_database_settings_controller );
 	VALUE rb_RPDB_DatabaseSettingsController_typeSettingsController( VALUE	rb_database_settings_controller );

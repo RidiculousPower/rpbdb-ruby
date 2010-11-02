@@ -1120,7 +1120,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_
 	C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 	
 	return rb_iv_get(	rb_database_record_read_write_settings_controller,
-										RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA ) == Qtrue ? Qtrue
+										RPDB_RB_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA ) == Qtrue ? Qtrue
 																																																												:	Qfalse;
 }
 
@@ -1134,7 +1134,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_
 		C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 		
 		rb_iv_set(	rb_database_record_read_write_settings_controller,
-								RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA,
 								Qtrue );
 		
 		return rb_database_record_read_write_settings_controller;
@@ -1150,7 +1150,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_
 		C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 		
 		rb_iv_set(	rb_database_record_read_write_settings_controller,
-								RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA,
 								Qfalse );
 		
 		return rb_database_record_read_write_settings_controller;
@@ -1163,7 +1163,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_storageType( VALUE rb_database_record_read_write_settings_controller )	{
 	
 	VALUE		rb_class_to_specify_type	=	rb_iv_get(	rb_database_record_read_write_settings_controller,
-																									RPDB_RUBY_CLASS_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE );
+																									RPDB_RB_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE );
 	
 	return rb_class_to_specify_type;
 }
@@ -1176,7 +1176,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_setStorageType(	VALUE rb
 																																	VALUE	rb_class_to_specify_type )	{
 	
 	rb_iv_set(	rb_database_record_read_write_settings_controller,
-							RPDB_RUBY_CLASS_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE,
+							RPDB_RB_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE,
 							rb_class_to_specify_type );
 	
 	return rb_database_record_read_write_settings_controller;

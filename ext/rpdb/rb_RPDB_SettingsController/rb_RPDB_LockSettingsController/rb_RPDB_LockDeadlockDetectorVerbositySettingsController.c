@@ -37,7 +37,7 @@ void Init_RPDB_LockDeadlockDetectorVerbositySettingsController()	{
 																							"LockDeadlockDetectorVerbosity",	
 																							rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 	"new",																rb_RPDB_LockDeadlockDetectorVerbositySettingsController_init,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 	"new",																rb_RPDB_LockDeadlockDetectorVerbositySettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"initialize",													rb_RPDB_LockDeadlockDetectorVerbositySettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"parent_environment",									rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentEnvironment,								0 	);

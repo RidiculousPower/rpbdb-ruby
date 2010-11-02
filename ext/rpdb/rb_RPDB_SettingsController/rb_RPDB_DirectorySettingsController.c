@@ -34,7 +34,7 @@ void Init_RPDB_DirectorySettingsController()	{
 																																		"Directory",	
 																																		rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_DirectorySettingsController, 	"new",																rb_RPDB_DirectorySettingsController_init,															-1 	);
+	rb_define_singleton_method(	rb_RPDB_DirectorySettingsController, 	"new",																rb_RPDB_DirectorySettingsController_new,															-1 	);
 	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"initialize",													rb_RPDB_DirectorySettingsController_init,															-1 	);
 
 	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"parent_environment",									rb_RPDB_DirectorySettingsController_parentEnvironment,								0 	);
@@ -84,7 +84,7 @@ VALUE rb_RPDB_DirectorySettingsController_new(	int				argc,
 	VALUE	rb_directory_settings_controller	= RUBY_RPDB_DIRECTORY_SETTINGS_CONTROLLER( RPDB_SettingsController_directorySettingsController( c_parent_settings_controller ) );
 
 	rb_iv_set(	rb_directory_settings_controller,
-							RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT,
+							RPDB_RB_ALL_VARIABLE_PARENT_ENVIRONMENT,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
@@ -112,7 +112,7 @@ VALUE rb_RPDB_DirectorySettingsController_init(	int				argc __attribute__ ((unus
 VALUE rb_RPDB_DirectorySettingsController_parentEnvironment(	VALUE	rb_directory_settings_controller )	{
 	
 	VALUE	rb_parent_environment	=	rb_iv_get(	rb_directory_settings_controller,
-																						RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT );
+																						RPDB_RB_ALL_VARIABLE_PARENT_ENVIRONMENT );
 
 	return rb_parent_environment;
 }

@@ -35,7 +35,7 @@ void Init_RPDB_MutexSettingsController()	{
 																																		"MemoryPool",	
 																																		rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_MutexSettingsController, 	"new",																rb_RPDB_MutexSettingsController_init,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_MutexSettingsController, 	"new",																rb_RPDB_MutexSettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_MutexSettingsController, 				"initialize",													rb_RPDB_MutexSettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_MutexSettingsController, 				"parent_environment",									rb_RPDB_MutexSettingsController_parentEnvironment,								0 	);

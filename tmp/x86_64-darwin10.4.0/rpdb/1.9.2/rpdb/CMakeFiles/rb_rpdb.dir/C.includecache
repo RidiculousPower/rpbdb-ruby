@@ -90,6 +90,12 @@ limits.h
 
 /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
 
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
+rb_RPDB_BaseStandardIncludes.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
+rpdb/RPDB_Types.h
+-
+
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 ruby.h
 -
@@ -100,13 +106,37 @@ rb_RPDB_Environment.h
 
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseCachePrioritySettingsController.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
 rb_RPDB_BaseStandardIncludes.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/RPDB_Types.h
 -
 
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseCacheSettingsController.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
+rb_RPDB_BaseStandardIncludes.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
+rpdb/RPDB_Types.h
+-
+
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
+rb_RPDB_BaseStandardIncludes.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
+rpdb/RPDB_Types.h
+-
+
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseTypeQueueSettingsController.h
+rb_RPDB_BaseStandardIncludes.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
+rpdb/RPDB_Types.h
+-
+
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseTypeRecnoSettingsController.h
+rb_RPDB_BaseStandardIncludes.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
+rpdb/RPDB_Types.h
+-
+
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseTypeSettingsController.h
 rb_RPDB_BaseStandardIncludes.h
 /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/RPDB_Types.h
@@ -118,28 +148,72 @@ rb_RPDB_BaseStandardIncludes.h
 rpdb/RPDB_Types.h
 -
 
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.c
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
+rb_RPDB_BaseStandardIncludes.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
+rpdb/RPDB_Types.h
+-
+
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c
+rb_RPDB_DatabaseTypeQueueSettingsController.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.h
+rb_RPDB_DatabaseTypeSettingsController.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.h
+rb_RPDB_DatabaseSettingsController.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseSettingsController.h
+rb_RPDB_SettingsController.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_SettingsController.h
+rb_RPDB_DatabaseController.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseController.h
+rb_RPDB_Database.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_Database.h
+rb_RPDB.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB.h
 rpdb/RPDB_Environment.h
 -
 rpdb/RPDB_Database.h
 -
-rpdb/RPDB_DatabaseCachePrioritySettingsController.h
+rpdb/RPDB_DatabaseTypeQueueSettingsController.h
 -
-rb_RPDB_DatabaseCachePrioritySettingsController.h
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.h
+rpdb/RPDB_DatabaseTypeSettingsController.h
+-
+rpdb/RPDB_DatabaseSettingsController.h
+-
+rpdb/RPDB_SettingsController.h
+-
+rpdb/RPDB_DatabaseController.h
+-
+rpdb/RPDB_Database.h
+-
 rargs.h
 -
 
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.c
-rb_RPDB_DatabaseCacheSettingsController.h
-/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c
+rb_RPDB_DatabaseTypeRecnoSettingsController.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.h
+rb_RPDB_DatabaseTypeSettingsController.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.h
+rb_RPDB_DatabaseSettingsController.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseSettingsController.h
+rb_RPDB_SettingsController.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_SettingsController.h
+rb_RPDB_DatabaseController.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseController.h
+rb_RPDB_Database.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_Database.h
+rb_RPDB.h
+/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB.h
 rpdb/RPDB_Environment.h
 -
 rpdb/RPDB_Database.h
 -
-rpdb/RPDB_DatabaseCacheSettingsController.h
+rpdb/RPDB_DatabaseTypeRecnoSettingsController.h
 -
-rpdb/RPDB_DatabaseCachePrioritySettingsController.h
+rpdb/RPDB_DatabaseTypeSettingsController.h
+-
+rpdb/RPDB_DatabaseSettingsController.h
+-
+rpdb/RPDB_SettingsController.h
 -
 rargs.h
 -
@@ -232,11 +306,23 @@ RPDB_BaseStandardInclude.h
 time.h
 -
 
-/usr/local/include/rpdb/RPDB_DatabaseCachePrioritySettingsController.h
+/usr/local/include/rpdb/RPDB_DatabaseController.h
 RPDB_BaseStandardInclude.h
 /usr/local/include/rpdb/RPDB_BaseStandardInclude.h
 
-/usr/local/include/rpdb/RPDB_DatabaseCacheSettingsController.h
+/usr/local/include/rpdb/RPDB_DatabaseSettingsController.h
+RPDB_BaseStandardInclude.h
+/usr/local/include/rpdb/RPDB_BaseStandardInclude.h
+
+/usr/local/include/rpdb/RPDB_DatabaseTypeQueueSettingsController.h
+RPDB_BaseStandardInclude.h
+/usr/local/include/rpdb/RPDB_BaseStandardInclude.h
+
+/usr/local/include/rpdb/RPDB_DatabaseTypeRecnoSettingsController.h
+RPDB_BaseStandardInclude.h
+/usr/local/include/rpdb/RPDB_BaseStandardInclude.h
+
+/usr/local/include/rpdb/RPDB_DatabaseTypeSettingsController.h
 RPDB_BaseStandardInclude.h
 /usr/local/include/rpdb/RPDB_BaseStandardInclude.h
 
@@ -257,6 +343,10 @@ RPDB_BaseStandardInclude.h
 /usr/local/include/rpdb/RPDB_ErrorController_internal.h
 
 /usr/local/include/rpdb/RPDB_Error_internal.h
+
+/usr/local/include/rpdb/RPDB_SettingsController.h
+RPDB_BaseStandardInclude.h
+/usr/local/include/rpdb/RPDB_BaseStandardInclude.h
 
 /usr/local/include/rpdb/RPDB_Types.h
 db.h

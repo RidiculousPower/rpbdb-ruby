@@ -36,7 +36,7 @@ void Init_RPDB_MemoryPoolFilePageSettingsController()	{
 																																						"MemoryPool",	
 																																						rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_MemoryPoolFilePageSettingsController, 	"new",																rb_RPDB_MemoryPoolFilePageSettingsController_init,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_MemoryPoolFilePageSettingsController, 	"new",																rb_RPDB_MemoryPoolFilePageSettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"initialize",													rb_RPDB_MemoryPoolFilePageSettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"parent_environment",									rb_RPDB_MemoryPoolFilePageSettingsController_parentEnvironment,								0 	);

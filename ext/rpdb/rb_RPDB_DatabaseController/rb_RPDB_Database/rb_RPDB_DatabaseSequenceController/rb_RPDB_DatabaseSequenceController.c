@@ -109,7 +109,7 @@ VALUE rb_RPDB_DatabaseSequenceController_new(	int			argc,
 	VALUE	rb_database_sequence_controller	=	RUBY_RPDB_DATABASE_SEQUENCE_CONTROLLER( c_sequence_controller );	
 	
 	rb_iv_set(	rb_database_sequence_controller,
-							RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE,
+							RPDB_RB_ALL_VARIABLE_PARENT_DATABASE,
 							rb_parent_database );
 	
 	rb_obj_call_init(	rb_database_sequence_controller,
@@ -141,7 +141,7 @@ VALUE rb_RPDB_DatabaseSequenceController_settingsController(	VALUE	rb_database_s
 	VALUE	rb_database_sequence_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_sequence_settings_controller = rb_iv_get(	rb_database_sequence_controller,
-																																RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																RPDB_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		RPDB_DatabaseSequenceController*		c_database_sequence_controller;
 		C_RPDB_DATABASE_SEQUENCE_CONTROLLER( rb_database_sequence_controller, c_database_sequence_controller );
@@ -151,7 +151,7 @@ VALUE rb_RPDB_DatabaseSequenceController_settingsController(	VALUE	rb_database_s
 		rb_database_sequence_settings_controller	=	RUBY_RPDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( c_database_sequence_settings_controller );
 
 		rb_iv_set(	rb_database_sequence_controller,
-								RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER,
 								rb_database_sequence_settings_controller );
 	}
 
@@ -178,7 +178,7 @@ VALUE rb_RPDB_DatabaseSequenceController_parentEnvironment(	VALUE	rb_database_se
 VALUE rb_RPDB_DatabaseSequenceController_parentDatabase(	VALUE	rb_database_sequence_controller )	{
 
 	VALUE	rb_parent_database	=		rb_iv_get(	rb_database_sequence_controller,
-																						RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE );
+																						RPDB_RB_ALL_VARIABLE_PARENT_DATABASE );
 	return rb_parent_database;
 }
 

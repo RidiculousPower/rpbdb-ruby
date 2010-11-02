@@ -52,7 +52,7 @@ describe RPDB::Environment::DatabaseController do
     # make sure we have a settings controller
     settings_controller = database_controller.settings_controller
     settings_controller.should_not == nil
-    settings_controller.is_a?( RPDB::Environment::SettingsController::Database ).should == true
+    settings_controller.is_a?( RPDB::Environment::Settings::Database ).should == true
     # make sure that our settings controller is the environment's database settings controller
     settings_controller.should == @environment.settings.database
   end

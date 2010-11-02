@@ -1,74 +1,322 @@
 #ifndef RB_RPDB_CONSTANTS
 	#define RB_RPDB_CONSTANTS
 
-	#define RPDB_RUBY_MODULE_VARIABLE_EXTENDED_CLASSES_HASH										"@rpdb__extended_classes_hash"
-	#define RPDB_RUBY_MODULE_VARIABLE_INCLUDED_FOR_CLASSES_HASH								"@rpdb__included_for_classes_hash"
+	#define RPDB_RUBY_MODULE_VARIABLE_EXTENDED_CLASSES_HASH															"@rpdb__extended_classes_hash"
+	#define RPDB_RUBY_MODULE_VARIABLE_INCLUDED_FOR_CLASSES_HASH													"@rpdb__included_for_classes_hash"
 
 	//	Ruby items that exist in a one => many storage relation require runtime storages 
 	//	so that garbage collection can function properly; otherwise the item stored in the hash will prevent
 	//	collection from even taking place.
-	#define	RPDB_RUBY_RUNTIME_STORAGE_ENVIRONMENT_HANDLE											"ruby_environments"
-	#define	RPDB_RUBY_RUNTIME_STORAGE_DATABASE_HANDLE													"ruby_databases"
-	#define	RPDB_RUBY_RUNTIME_STORAGE_DATABASE_CURSOR_HANDLE									"ruby_database_cursors"
+	#define	RPDB_RUBY_RUNTIME_STORAGE_ENVIRONMENT_HANDLE																"ruby_environments"
+	#define	RPDB_RUBY_RUNTIME_STORAGE_DATABASE_HANDLE																		"ruby_databases"
+	#define	RPDB_RUBY_RUNTIME_STORAGE_DATABASE_CURSOR_HANDLE														"ruby_database_cursors"
 
 	//	Module Variables
 
-	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENTS														"@rpdb__environments"
-	#define RPDB_RUBY_MODULE_VARIABLE_IDENTIFICATION_WAIT_LIST_ARRAY					"@rpdb__identification_wait_list"
-	#define RPDB_RUBY_MODULE_VARIABLE_DEFAULT_ENVIRONMENT_WAIT_LIST_ARRAY			"@rpdb__current_working_environment_wait_list"
-	#define RPDB_RUBY_MODULE_VARIABLE_INITIALIZATION_WAIT_LIST_ARRAY					"@rpdb__initialization_wait_list_array"
-	#define RPDB_RUBY_MODULE_VARIABLE_CURRENT_WORKING_ENVIRONMENT_STACK				"@current_working_environment_stack"
-	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENT_COUNT												"@rpdb__environment_count"
-	#define RPDB_RUBY_MODULE_VARIABLE_DATABASE_RUNTIME_STORAGE								"@rpdb__database_runtime_storage"
-	#define RPDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS										"@rpdb_secondary_key_callback_methods"
+	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENTS																			"@rpdb__environments"
+	#define RPDB_RUBY_MODULE_VARIABLE_IDENTIFICATION_WAIT_LIST_ARRAY										"@rpdb__identification_wait_list"
+	#define RPDB_RUBY_MODULE_VARIABLE_DEFAULT_ENVIRONMENT_WAIT_LIST_ARRAY								"@rpdb__current_working_environment_wait_list"
+	#define RPDB_RUBY_MODULE_VARIABLE_INITIALIZATION_WAIT_LIST_ARRAY										"@rpdb__initialization_wait_list_array"
+	#define RPDB_RUBY_MODULE_VARIABLE_CURRENT_WORKING_ENVIRONMENT_STACK									"@current_working_environment_stack"
+	#define RPDB_RUBY_MODULE_VARIABLE_ENVIRONMENT_COUNT																	"@rpdb__environment_count"
+	#define RPDB_RUBY_MODULE_VARIABLE_DATABASE_RUNTIME_STORAGE													"@rpdb__database_runtime_storage"
+	#define RPDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS															"@rpdb_secondary_key_callback_methods"
 
 	//	Class Variables
 	
 	//	Environment
-	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_CONFIGURED_CLASSES						"@rpdb__configured_classes_array"
+	#define RPDB_RB_ENVIRONMENT_VARIABLE_CONFIGURED_CLASSES															"@rpdb__configured_classes_array"
 	
 	//	Database Controller
-	#define RPDB_RUBY_CLASS_DATABASE_CONTROLLER_VARIABLE_DATABASES_HASH				"@rpdb__databases_hash"
+	#define RPDB_RB_DATABASE_CONTROLLER_VARIABLE_DATABASES_HASH													"@rpdb__databases_hash"
 
 	//	Database
-	#define RPDB_RUBY_CLASS_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE										"@storage_type"
+	#define RPDB_RB_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE									"@storage_type"
+	
+	
+	
+	
 	
 	
 	
 	//	Environment
-	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_DATABASE_CONTROLLER					"@database_controller"
-	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER				"@transaction_controller"
-	#define RPDB_RUBY_CLASS_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER					"@settings_controller"
+	#define RPDB_RB_ENVIRONMENT_VARIABLE_DATABASE_CONTROLLER														"@database_controller"
+	#define RPDB_RB_ENVIRONMENT_VARIABLE_LOCK_CONTROLLER																"@lock_controller"
+	#define RPDB_RB_ENVIRONMENT_VARIABLE_LOG_CONTROLLER																	"@log_controller"
+	#define RPDB_RB_ENVIRONMENT_VARIABLE_MEMORY_POOL_CONTROLLER													"@memory_pool_controller"
+	#define RPDB_RB_ENVIRONMENT_VARIABLE_MUTEX_CONTROLLER																"@mutex_controller"
+	#define RPDB_RB_ENVIRONMENT_VARIABLE_REPLICATION_CONTROLLER													"@replication_controller"
+	#define RPDB_RB_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER													"@transaction_controller"
+	#define RPDB_RB_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER														"@settings_controller"
+
+	//	Database Controller
+
+	#define RPDB_RB_DATABASE_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT											"@parent_environment"
 
 	//	Database
-	#define RPDB_RUBY_CLASS_DATABASE_VARIABLE_DATABASE_CONTROLLER							"@database_controller"
+	#define RPDB_RB_DATABASE_VARIABLE_CURSOR_CONTROLLER																	"@cursor_controller"
+	#define RPDB_RB_DATABASE_VARIABLE_JOIN_CONTROLLER																		"@join_controller"
+	#define RPDB_RB_DATABASE_VARIABLE_SEQUENCE_CONTROLLER																"@sequence_controller"
+
+	#define RPDB_RB_DATABASE_VARIABLE_PARENT_DATABASE_CONTROLLER												"@parent_database_controller"
+
+	#define RPDB_RB_DATABASE_VARIABLE_SECONDARY_DATABASES																"@secondary_databases"
+
+	//	Database Cursor Controller
+	#define RPDB_RB_CURSOR_CONTROLLER_VARIABLE_PARENT_DATABASE													"@parent_database"
 
 	//	Database Cursor
-	#define RPDB_RUBY_CLASS_DATABASE_CURSOR_CONTROLLER												"@database_cursor_controller"
-	#define RPDB_RUBY_CLASS_DATABASE_JOIN_CONTROLLER													"@database_join_controller"
-	#define RPDB_RUBY_CLASS_SECONDARY_DATABASES																"@secondary_databases"
+	#define RPDB_RB_CURSOR_VARIABLE_PARENT_CURSOR_CONTROLLER														"@parent_cursor_controller"
 
-	#define RPDB_RUBY_CLASS_DATABASE_SEQUENCE_CONTROLLER											"@database_sequence_controller"
-
-
-	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT										"@parent_environment"
-	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE											"@parent_database"
-	#define RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE_CURSOR_CONTROLLER		"@parent_database_cursor_controller"
-
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_SETTINGS_CONTROLLER							"@settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_FILE_SETTINGS_CONTROLLER				"@file_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_ERROR_SETTINGS_CONTROLLER				"@error_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER					"@log_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_MEMORY_SETTINGS_CONTROLLER			"@memory_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER		"@database_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER		"@database_association_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER		"@database_cache_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER		"@database_cursor_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DIRECTORY_SETTINGS_CONTROLLER		"@directory_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER "@database_sequence_settings_controller"
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER "@database_join_settings_controller"
+	//	Database Join Controller
+	#define RPDB_RB_JOIN_CONTROLLER_VARIABLE_PARENT_DATABASE														"@parent_database"
 	
-	#define RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA		"@serialize_data"
+	//	Database Join Cursor
+	#define RPDB_RB_JOIN_CURSOR_VARIABLE_PARENT_JOIN_CONTROLLER													"@parent_join_controller"
+	
+	//	Database Sequence Controller
+	#define RPDB_RB_SEQUENCE_CONTROLLER_VARIABLE_PARENT_DATABASE												"@parent_database"
+
+	//	Database Sequence
+	#define RPDB_RB_SEQUENCE_VARIABLE_PARENT_SEQUENCE_CONTROLLER												"@parent_sequence_controller"
+	
+	//	Lock Controller
+		#define RPDB_RB_LOCK_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT												"@parent_environment"
+
+	//	Lock
+	#define RPDB_RB_LOCK_VARIABLE_PARENT_LOCK_CONTROLLER																"@parent_lock_controller"
+	
+	//	Log Controller
+	#define RPDB_RB_LOG_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT													"@parent_environment"
+	
+	//	Log Cursor
+	#define RPDB_RB_LOG_CURSOR_VARIABLE_PARENT_LOG_CONTROLLER														"@parent_log_controller"
+	
+	//	Log
+	#define RPDB_RB_LOG_VARIABLE_PARENT_LOG_CURSOR																			"@parent_log_cursor"
+	
+	//	Log Sequence Number
+	#define RPDB_RB_LOG_SEQUENCE_NUMBER_VARIABLE_PARENT_LOG															"@parent_log"
+	
+	//	Memory Pool Controller
+	#define RPDB_RB_MEMORY_POOL_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT									"@parent_environment"
+	
+	//	Memory Pool File Controller
+	#define RPDB_RB_MEMORY_POOL_FILE_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_CONTROLLER	"@parent_memory_pool_controller"
+	
+	//	Memory Pool File
+	#define RPDB_RB_MEMORY_POOL_FILE_VARIABLE_PARENT_MEMORY_POOL_FILE_CONTROLLER				"@parent_memory_pool_file_controller"
+	
+	//	Memory Pool File Page Controller
+	#define RPDB_RB_MEMORY_POOL_FILE_PAGE_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_FILE		"@parent_memory_pool_file"
+	
+	//	Memory Pool File Page
+	#define RPDB_RB_MEMORY_POOL_FILE_PAGE_VARIABLE_PARENT_MEMORY_POOL_FILE							"@parent_memory_pool_file_page_controller"
+	
+	//	Mutex Controller
+	#define RPDB_RB_MUTEX_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT												"@parent_environment"
+	
+	//	Mutex
+	#define RPDB_RB_MUTEX_VARIABLE_PARENT_MUTEX_CONTROLLER															"@parent_mutex_controller"
+	
+	//	Record
+	#define RPDB_RB_RECORD_VARIABLE_PARENT_DATABASE																			"@parent_database"
+	
+	//	Key
+	#define RPDB_RB_KEY_VARIABLE_PARENT_RECORD																					"@parent_record"
+	
+	//	Data
+	#define RPDB_RB_DATA_VARIABLE_PARENT_RECORD																					"@parent_record"
+	
+	//	Secondary Keys
+	#define RPDB_RB_SECONDARY_KEYS_VARIABLE_PARENT_RECORD																"@parent_record"
+	
+	//	Replication Controller
+	#define RPDB_RB_REPLICATION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT									"@parent_environment"
+	
+	//	Remote Site
+	#define RPDB_RB_REMOTE_SITE_VARIABLE_PARENT_REPLICATION_CONTROLLER									"@parent_replication_controller"
+	
+	//	Transaction Controller
+	#define RPDB_RB_TRANSACTION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT									"@parent_environment"
+	
+	//	Transaction
+	#define RPDB_RB_TRANSACTION_VARIABLE_PARENT_TRANSACTION_CONTROLLER									"@parent_transaction_controller"
+	
+	//	Settings Controller
+	#define RPDB_RB_SETTINGS_CONTROLLER_VARIABLE_PARENT_ENVIRONMNT									"@parent_environment"
+	
+	//	Database Settings Controller
+	#define RPDB_RB_DATABASE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_settings_controller"
+	
+	//	Database Association Settings Controller
+	#define RPDB_RB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_settings_controller"
+	
+	//	Database Cache Settings Controller
+	#define RPDB_RB_DATABASE_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_settings_controller"
+	
+	//	Database Cache Priority Settings Controller
+	#define RPDB_RB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_cache_settings_controller"
+	
+	//	Database Cursor Settings Controller
+	#define RPDB_RB_DATABASE_CURSOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_settings_controller"
+	
+	//	Database Cursor Read Write Settings Controller
+	#define RPDB_RB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_SETTINGS_CONTROLLER									"@parent_database_cursor_settings_controller"
+	
+	//	Database Cursor Cache Settings Controller
+	#define RPDB_RB_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_SETTINGS_CONTROLLER									"@parent_database_cursor_settings_controller"
+	
+	//	Database Cursor Cache Priority Settings Controller
+	#define RPDB_RB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER									"@parent_database_cursor_cache_settings_controller"
+	
+	//	Database Compact Settings Controller
+	#define RPDB_RB_DATABASE_COMPACT_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_settings_controller"
+	
+	//	Database Encryption Settings Controller
+	#define RPDB_RB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_settings_controller"
+	
+	//	Database Error Settings Controller
+	#define RPDB_RB_DATABASE_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_settings_controller"
+	
+	//	Database Join Settings Controller
+	#define RPDB_RB_DATABASE_JOIN_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_settings_controller"
+	
+	//	Database Record Settings Controller
+	#define RPDB_RB_DATABASE_RECORD_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_settings_controller"
+	
+	//	Database Record Fixed Length Settings Controller
+	#define RPDB_RB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER									"@parent_database_record_settings_controller"
+	
+	//	Database Record Variable Length Settings Controller
+	#define RPDB_RB_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER									"@parent_database_record_settings_controller"
+	
+	//	Database Record Read Write Settings Controller
+	#define RPDB_RB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER									"@parent_database_record_settings_controller"
+	
+	//	Database Sequence Settings Controller
+	#define RPDB_RB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_settings_controller"
+	
+	//	Database Type Settings Controller
+	#define RPDB_RB_DATABASE_TYPE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_settings_controller"
+	
+	//	Database Btree Type Settings Controller
+	#define RPDB_RB_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_type_settings_controller"
+	
+	//	Database Hash Type Settings Controller
+	#define RPDB_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_type_settings_controller"
+
+	//	Database Recno Type Settings Controller
+	#define RPDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_type_settings_controller"
+
+	//	Database Queue Type Settings Controller
+	#define RPDB_RB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_type_settings_controller"
+
+	//	Database Verbosity Settings Controller
+	#define RPDB_RB_DATABASE_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_settings_controller"
+	
+	//	Database Verification Settings Controller
+	#define RPDB_RB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_settings_controller"
+	
+	//	Debug Settings Controller
+	#define RPDB_RB_DEBUG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_settings_controller"
+	
+	//	Debug Verbosity Settings Controller
+	#define RPDB_RB_DEBUG_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_debug_settings_controller"
+	
+	//	Directory Settings Controller
+	#define RPDB_RB_DIRECTORY_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_settings_controller"
+	
+	//	Environmental Cache Settings Controller
+	#define RPDB_RB_ENVIRONMENT_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_settings_controller"
+	
+	//	Error Settings Controller
+	#define RPDB_RB_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_settings_controller"
+	
+	//	File Settings Controller
+	#define RPDB_RB_FILE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_settings_controller"
+	
+	//	File Verbosity Settings Controller
+	#define RPDB_RB_FILE_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_file_settings_controller"
+	
+	//	Lock Settings Controller
+	#define RPDB_RB_LOCK_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_settings_controller"
+	
+	//	Lock Deadlock Detector Settings Controller
+	#define RPDB_RB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_lock_settings_controller"
+	
+	//	Lock Deadlock Detector Verbosity Settings Controller
+	#define RPDB_RB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_lock_deadlock_detector_settings_controller"
+	
+	//	Memory Pool Settings Controller
+	#define RPDB_RB_MEMORY_POOL_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_settings_controller"
+	
+	//	Memory Pool Read Write Settings Controller
+	#define RPDB_RB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_memory_pool_settings_controller"
+
+	//	Memory Pool File Settings Controller
+	#define RPDB_RB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_memory_pool_settings_controller"
+
+	//	Memory Pool File Page Settings Controller
+	#define RPDB_RB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_memory_pool_file_settings_controller"
+
+	//	Memory Pool File Cache Settings Controller
+	#define RPDB_RB_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_memory_pool_file_settings_controller"
+
+	//	Memory Pool File Cache Priority Settings Controller
+	#define RPDB_RB_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_memory_pool_file_cache_settings_controller"
+
+	//	Message Settings Controller
+	#define RPDB_RB_MESSAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_settings_controller"
+
+	//	Mutex Settings Controller
+	#define RPDB_RB_MUTEX_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_settings_controller"
+
+	//	Replication Settings Controller
+	#define RPDB_RB_REPLICATION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_settings_controller"
+
+	//	Replication Election Settings Controller
+	#define RPDB_RB_REPLICATION_ELECTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_replication_settings_controller"
+
+	//	Replication Timeout Settings Controller
+	#define RPDB_RB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_replication_settings_controller"
+
+	//	Replication Verbosity Settings Controller
+	#define RPDB_RB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_replication_settings_controller"
+
+	//	Thread Settings Controller
+	#define RPDB_RB_THREAD_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_settings_controller"
+	
+	//	Transaction Settings Controller
+	#define RPDB_RB_TRANSACTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER									"@parent_settings_controller"
+
+
+
+
+
+
+	
+	#define RPDB_RB_DATABASE_SEQUENCE_CONTROLLER											"@database_sequence_controller"
+
+
+	#define RPDB_RB_ALL_VARIABLE_PARENT_ENVIRONMENT										"@parent_environment"
+	#define RPDB_RB_ALL_VARIABLE_PARENT_DATABASE											"@parent_database"
+	#define RPDB_RB_ALL_VARIABLE_PARENT_DATABASE_CURSOR_CONTROLLER		"@parent_database_cursor_controller"
+
+	#define RPDB_RB_SETTINGS_VARIABLE_SETTINGS_CONTROLLER							"@settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_FILE_SETTINGS_CONTROLLER				"@file_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_ERROR_SETTINGS_CONTROLLER				"@error_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER					"@log_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_MEMORY_SETTINGS_CONTROLLER			"@memory_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER		"@database_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER		"@database_association_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER		"@database_cache_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER		"@database_cursor_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_DIRECTORY_SETTINGS_CONTROLLER		"@directory_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER "@database_sequence_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER "@database_join_settings_controller"
+	
+	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA		"@serialize_data"
 
 	#define RPDB_FUNCTION_INIT																								"init_rpdb"
 	#define RPDB_FUNCTION_CONFIGURE																						"configure_rpdb"

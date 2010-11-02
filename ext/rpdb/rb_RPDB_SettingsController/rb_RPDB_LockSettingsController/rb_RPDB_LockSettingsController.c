@@ -35,7 +35,7 @@ void Init_RPDB_LockSettingsController()	{
 																	"Lock",	
 																	rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_LockSettingsController, 	"new",																rb_RPDB_LockSettingsController_init,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_LockSettingsController, 	"new",																rb_RPDB_LockSettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_LockSettingsController, 				"initialize",													rb_RPDB_LockSettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_LockSettingsController, 				"parent_environment",									rb_RPDB_LockSettingsController_parentEnvironment,								0 	);

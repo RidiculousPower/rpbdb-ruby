@@ -22,10 +22,36 @@ describe RPDB::Environment::DatabaseController::Database do
   end
 
 
-  it "can be created with no environment specified" do
-    RPDB::Environment::SettingsController.new.should_not == nil
+  # RPDB::Environment::Settings::Database::Cache.new( environment )
+  it "can be created with an environment" do
+    RPDB::Environment::Settings::Database::Cache.new( @environment ).should_not == nil
   end
 
+  # RPDB::Environment::Settings::Database::Cache.new( database_controller )
+  it "can be created with a database controller" do
+    RPDB::Environment::Settings::Database::Cache.new( @environment.database_controller ).should_not == nil
+  end
+
+  # RPDB::Environment::Settings::Database::Cache.new( database )
+  it "can be created with a database" do
+    RPDB::Environment::Settings::Database::Cache.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+  end
+
+  # RPDB::Environment::Settings::Database::Cache.new( settings_controller )
+  it "can be created with a settings controller" do
+    RPDB::Environment::Settings::Database::Cache.new( RPDB::Environment::Settings.new ).should_not == nil
+  end
+
+  # RPDB::Environment::Settings::Database::Cache.new( database_settings_controller )
+  it "can be created with a database settings controller" do
+    RPDB::Environment::Settings::Database::Cache.new( RPDB::Environment::Settings::Database.new ).should_not == nil
+  end
+
+  # RPDB::Environment::Settings::Database::Cache.new
+  it "can be created with no argument specified" do
+    RPDB::Environment::Settings::Database::Cache.new.should_not == nil
+  end
+  
 
 
 

@@ -42,7 +42,7 @@ void Init_RPDB_MemoryPoolFileSettingsController()	{
 																																				"File",	
 																																				rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_MemoryPoolFileSettingsController, 	"new",																rb_RPDB_MemoryPoolFileSettingsController_init,																								-1 	);
+	rb_define_singleton_method(	rb_RPDB_MemoryPoolFileSettingsController, 	"new",																rb_RPDB_MemoryPoolFileSettingsController_new,																								-1 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"initialize",													rb_RPDB_MemoryPoolFileSettingsController_init,																								-1 	);
 
 	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"parent_environment",									rb_RPDB_MemoryPoolFileSettingsController_parentEnvironment,																		0 	);

@@ -32,7 +32,7 @@ extern	VALUE	rb_RPDB_ThreadSettingsController;
 	
 void Init_RPDB_ThreadSettingsController()	{
 
-	rb_define_singleton_method(	rb_RPDB_ThreadSettingsController, 	"new",																rb_RPDB_ThreadSettingsController_init,										-1 	);
+	rb_define_singleton_method(	rb_RPDB_ThreadSettingsController, 	"new",																rb_RPDB_ThreadSettingsController_new,										-1 	);
 	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"initialize",													rb_RPDB_ThreadSettingsController_init,										-1 	);
 
 	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"parent_environment",									rb_RPDB_ThreadSettingsController_parentEnvironment,				0 	);

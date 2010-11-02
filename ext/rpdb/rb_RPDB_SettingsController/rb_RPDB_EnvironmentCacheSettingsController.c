@@ -35,7 +35,7 @@ void Init_RPDB_EnvironmentCacheSettingsController()	{
 																																		"Cache",	
 																																		rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_EnvironmentCacheSettingsController, 	"new",																rb_RPDB_EnvironmentCacheSettingsController_init,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_EnvironmentCacheSettingsController, 	"new",																rb_RPDB_EnvironmentCacheSettingsController_new,														-1 	);
 	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"initialize",													rb_RPDB_EnvironmentCacheSettingsController_init,														-1 	);
                         			                                        
 	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"parent_environment",									rb_RPDB_EnvironmentCacheSettingsController_parentEnvironment,								0 	);

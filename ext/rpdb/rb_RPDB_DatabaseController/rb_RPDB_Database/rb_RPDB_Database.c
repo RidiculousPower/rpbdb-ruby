@@ -260,7 +260,7 @@ VALUE rb_RPDB_Database_new(	int			argc,
 
 	//	store reference to parent database controller
 	rb_iv_set(	rb_database,
-							RPDB_RUBY_CLASS_DATABASE_VARIABLE_DATABASE_CONTROLLER,
+							RPDB_RB_DATABASE_VARIABLE_PARENT_DATABASE_CONTROLLER,
 							rb_parent_database_controller );
 	
 	//	store reference to ruby instance by c instance
@@ -295,7 +295,7 @@ VALUE rb_RPDB_Database_settingsController( VALUE	rb_database )	{
 	VALUE	rb_local_database_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_database_settings_controller = rb_iv_get(	rb_database,
-																														RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																														RPDB_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		RPDB_Database*		c_database;
 		C_RPDB_DATABASE( rb_database, c_database );
@@ -305,7 +305,7 @@ VALUE rb_RPDB_Database_settingsController( VALUE	rb_database )	{
 		rb_local_database_settings_controller	=	RUBY_RPDB_DATABASE_SETTINGS_CONTROLLER( c_local_database_settings_controller );
 
 		rb_iv_set(	rb_database,
-								RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER,
 								rb_local_database_settings_controller );
 	}
 
@@ -334,7 +334,7 @@ VALUE rb_RPDB_Database_parentEnvironment(	VALUE	rb_database )	{
 VALUE rb_RPDB_Database_parentDatabaseController(	VALUE	rb_database )	{
 
 	VALUE	rb_parent_database_controller	=	rb_iv_get(	rb_database,
-																										RPDB_RUBY_CLASS_DATABASE_VARIABLE_DATABASE_CONTROLLER );
+																										RPDB_RB_DATABASE_VARIABLE_PARENT_DATABASE_CONTROLLER );
 
 	return rb_parent_database_controller;
 }
@@ -827,11 +827,11 @@ VALUE rb_RPDB_Database_requireSecondaryDatabaseWithIndex(	VALUE	rb_primary_datab
 VALUE rb_RPDB_Database_secondaryDatabaseHash( VALUE rb_primary_database )	{
 	
 	VALUE	rb_secondary_database_hash	=	rb_iv_get(	rb_primary_database,
-																									RPDB_RUBY_CLASS_SECONDARY_DATABASES );
+																									RPDB_RB_DATABASE_VARIABLE_SECONDARY_DATABASES );
 	if ( rb_secondary_database_hash == Qnil )	{
 		rb_secondary_database_hash = rb_hash_new();
 		rb_iv_set(	rb_primary_database,
-								RPDB_RUBY_CLASS_SECONDARY_DATABASES,
+								RPDB_RB_DATABASE_VARIABLE_SECONDARY_DATABASES,
 								rb_secondary_database_hash );
 	}
 	return rb_secondary_database_hash;
@@ -1008,7 +1008,7 @@ VALUE rb_RPDB_Database_cursorController( VALUE	rb_database )	{
 	VALUE	rb_cursor_controller	=	Qnil;
 	
 	if ( ( rb_cursor_controller = rb_iv_get(	rb_database,
-																						RPDB_RUBY_CLASS_DATABASE_CURSOR_CONTROLLER ) ) == Qnil )	{
+																						RPDB_RB_DATABASE_VARIABLE_CURSOR_CONTROLLER ) ) == Qnil )	{
 		
 		RPDB_Database*		c_database;
 		C_RPDB_DATABASE( rb_database, c_database );
@@ -1018,7 +1018,7 @@ VALUE rb_RPDB_Database_cursorController( VALUE	rb_database )	{
 																																	rb_RPDB_DatabaseCursorController );
 
 		rb_iv_set(	rb_database,
-								RPDB_RUBY_CLASS_DATABASE_CURSOR_CONTROLLER,
+								RPDB_RB_DATABASE_VARIABLE_CURSOR_CONTROLLER,
 								rb_cursor_controller );
 	}
 
@@ -1034,7 +1034,7 @@ VALUE rb_RPDB_Database_joinController( VALUE	rb_database )	{
 	VALUE	rb_join_controller	=	Qnil;
 	
 	if ( ( rb_join_controller = rb_iv_get(	rb_database,
-																					RPDB_RUBY_CLASS_DATABASE_JOIN_CONTROLLER ) ) == Qnil )	{
+																					RPDB_RB_DATABASE_VARIABLE_JOIN_CONTROLLER ) ) == Qnil )	{
 		
 		RPDB_Database*		c_database;
 		C_RPDB_DATABASE( rb_database, c_database );
@@ -1044,7 +1044,7 @@ VALUE rb_RPDB_Database_joinController( VALUE	rb_database )	{
 																															rb_RPDB_DatabaseJoinController );
 
 		rb_iv_set(	rb_database,
-								RPDB_RUBY_CLASS_DATABASE_JOIN_CONTROLLER,
+								RPDB_RB_DATABASE_VARIABLE_JOIN_CONTROLLER,
 								rb_join_controller );
 	}
 
@@ -1060,7 +1060,7 @@ VALUE rb_RPDB_Database_sequenceController( VALUE	rb_database )	{
 	VALUE	rb_sequence_controller	=	Qnil;
 	
 	if ( ( rb_sequence_controller = rb_iv_get(	rb_database,
-																							RPDB_RUBY_CLASS_DATABASE_SEQUENCE_CONTROLLER ) ) == Qnil )	{
+																							RPDB_RB_DATABASE_SEQUENCE_CONTROLLER ) ) == Qnil )	{
 		
 		RPDB_Database*		c_database;
 		C_RPDB_DATABASE( rb_database, c_database );
@@ -1070,7 +1070,7 @@ VALUE rb_RPDB_Database_sequenceController( VALUE	rb_database )	{
 																																			rb_RPDB_DatabaseSequenceController );
 
 		rb_iv_set(	rb_database,
-								RPDB_RUBY_CLASS_DATABASE_SEQUENCE_CONTROLLER,
+								RPDB_RB_DATABASE_SEQUENCE_CONTROLLER,
 								rb_sequence_controller );
 	}
 

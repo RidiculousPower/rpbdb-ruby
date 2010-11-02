@@ -11,6 +11,12 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_DatabaseCacheSettingsController.h"
+#include "rb_RPDB_DatabaseSettingsController.h"
+#include "rb_RPDB_SettingsController.h"
+#include "rb_RPDB_DatabaseController.h"
+#include "rb_RPDB_Database.h"
+
+#include "rb_RPDB.h"
 
 #include <rpdb/RPDB_Environment.h>
 
@@ -18,6 +24,8 @@
 
 #include <rpdb/RPDB_DatabaseCacheSettingsController.h>
 #include <rpdb/RPDB_DatabaseCachePrioritySettingsController.h>
+#include <rpdb/RPDB_DatabaseSettingsController.h>
+#include <rpdb/RPDB_SettingsController.h>
 
 #include <rargs.h>
 
@@ -25,6 +33,7 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_Database;
 extern	VALUE	rb_RPDB_DatabaseController;
@@ -85,11 +94,11 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_new(	int			argc,
 																										VALUE*	args,
 																										VALUE		rb_klass_self __attribute__ ((unused)) )	{
 	
-	VALUE	rb_parent_environment													=	Qnil;
-	VALUE	rb_parent_database_controller									=	Qnil;
-	VALUE	rb_parent_database														=	Qnil;
-	VALUE	rb_parent_database_settings_controller				=	Qnil;
-	VALUE	rb_parent_settings_controller				=	Qnil;
+	VALUE	rb_parent_environment																	=	Qnil;
+	VALUE	rb_parent_database_controller													=	Qnil;
+	VALUE	rb_parent_database																		=	Qnil;
+	VALUE	rb_parent_settings_controller													=	Qnil;
+	VALUE	rb_parent_database_settings_controller								=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
 			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
@@ -106,13 +115,39 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_new(	int			argc,
 		)
 	);
 
-	RPDB_DatabaseSettingsController*	c_parent_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_parent_database_settings_controller );
-	
-	VALUE	rb_database_cache_settings_controller	= RUBY_RPDB_DATABASE_CACHE_SETTINGS_CONTROLLER( RPDB_DatabaseCacheSettingsController_new( c_parent_database_settings_controller ) );
+	//	if we were passed a database we want its settings controller
+	//	if we were passed an environment or database controller or settings controller we want its database settings controller
+
+	if (		rb_parent_database == Qnil
+			&&	rb_parent_environment == Qnil
+			&&	rb_parent_database_controller == Qnil
+			&&	rb_parent_settings_controller == Qnil
+			&&	rb_parent_database_settings_controller == Qnil )	{
+		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
+
+	if ( rb_parent_database_controller != Qnil ) {
+		rb_parent_environment	=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );			
+	}
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+	}
+	if ( rb_parent_settings_controller != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_SettingsController_databaseSettingsController( rb_parent_settings_controller );
+	}
+	if ( rb_parent_database != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_Database_settingsController( rb_parent_database );
+	}
+
+	RPDB_DatabaseSettingsController*	c_database_settings_controller;
+	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
+
+	RPDB_DatabaseCacheSettingsController*	c_database_cache_settings_controller	=	RPDB_DatabaseSettingsController_cacheSettingsController( c_database_settings_controller );
+
+	VALUE	rb_database_cache_settings_controller	= RUBY_RPDB_DATABASE_CACHE_SETTINGS_CONTROLLER( c_database_cache_settings_controller );
 
 	rb_iv_set(	rb_database_cache_settings_controller,
-							RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER,
+							RPDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller);
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };

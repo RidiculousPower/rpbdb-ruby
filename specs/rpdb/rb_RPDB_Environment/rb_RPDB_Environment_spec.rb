@@ -162,7 +162,7 @@ describe RPDB::Environment do
     settings_controller = environment.settings_controller
     settings_controller.should_not == nil
     # settings controller has two names - primary class name
-    settings_controller.is_a?( RPDB::Environment::SettingsController ).should == true
+    settings_controller.is_a?( RPDB::Environment::Settings ).should == true
     # convenience name
     settings_controller.is_a?( RPDB::Environment::Settings ).should == true
     environment.close

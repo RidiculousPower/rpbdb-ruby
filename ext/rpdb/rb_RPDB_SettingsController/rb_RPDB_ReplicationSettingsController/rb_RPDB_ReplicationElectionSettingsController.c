@@ -35,7 +35,7 @@ void Init_RPDB_ReplicationElectionSettingsController()	{
 																																						"Election",	
 																																						rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_ReplicationElectionSettingsController, 	"new",																rb_RPDB_ReplicationElectionSettingsController_init,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_ReplicationElectionSettingsController, 	"new",																rb_RPDB_ReplicationElectionSettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"initialize",													rb_RPDB_ReplicationElectionSettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"parent_environment",									rb_RPDB_ReplicationElectionSettingsController_parentEnvironment,								0 	);

@@ -10,11 +10,21 @@
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
+#include "rb_RPDB_DatabaseTypeHashSettingsController.h"
+#include "rb_RPDB_DatabaseTypeSettingsController.h"
+#include "rb_RPDB_DatabaseSettingsController.h"
+#include "rb_RPDB_SettingsController.h"
+#include "rb_RPDB_DatabaseController.h"
+#include "rb_RPDB_Database.h"
+#include "rb_RPDB.h"
+
 #include <rpdb/RPDB_Environment.h>
 #include <rpdb/RPDB_Database.h>
 
 #include <rpdb/RPDB_DatabaseTypeHashSettingsController.h>
-#include "rb_RPDB_DatabaseTypeHashSettingsController.h"
+#include <rpdb/RPDB_DatabaseTypeSettingsController.h>
+#include <rpdb/RPDB_DatabaseSettingsController.h>
+#include <rpdb/RPDB_SettingsController.h>
 
 #include <rargs.h>
 
@@ -22,6 +32,7 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_Database;
 extern	VALUE	rb_RPDB_DatabaseController;
@@ -29,6 +40,7 @@ extern	VALUE	rb_RPDB_DatabaseSettingsController;
 extern	VALUE	rb_RPDB_DatabaseTypeSettingsController;
 extern	VALUE	rb_RPDB_DatabaseTypeHashSettingsController;
 extern	VALUE	rb_RPDB_DatabaseRecordSettingsController;
+extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_Record;
 
 void Init_RPDB_DatabaseTypeHashSettingsController()	{
@@ -79,9 +91,9 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_new(	int			argc,
 			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
 																						R_MatchAncestorInstance( rb_parent_database_controller, rb_RPDB_DatabaseController ),
 																						R_MatchAncestorInstance( rb_parent_database, rb_RPDB_Database ),
-																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_Record ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
 																						R_MatchAncestorInstance( rb_parent_database_settings_controller, rb_RPDB_DatabaseSettingsController ),
-																						R_MatchAncestorInstance( rb_parent_database_type_settings_controller, rb_RPDB_DatabaseRecordSettingsController ) ) ),
+																						R_MatchAncestorInstance( rb_parent_database_type_settings_controller, rb_RPDB_DatabaseTypeSettingsController ) ) ),
 			R_ListOrder( 1 ),
 			"[ <parent environment > ]",
 			"[ <parent database controller> ]",
@@ -92,18 +104,43 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_new(	int			argc,
 		)
 	);
 
-	RPDB_DatabaseTypeSettingsController*	c_parent_database_type_settings_controller;
-	C_RPDB_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_parent_database_type_settings_controller, c_parent_database_type_settings_controller );
+	if (		rb_parent_database == Qnil
+			&&	rb_parent_environment == Qnil
+			&&	rb_parent_database_controller == Qnil
+			&&	rb_parent_settings_controller == Qnil
+			&&	rb_parent_database_settings_controller == Qnil
+			&&	rb_parent_database_type_settings_controller == Qnil )	{
+		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
+
+	if ( rb_parent_database_controller != Qnil ) {
+		rb_parent_environment	=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );			
+	}
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+	}
+	if ( rb_parent_settings_controller != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_SettingsController_databaseSettingsController( rb_parent_settings_controller );
+	}
+	if ( rb_parent_database != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_Database_settingsController( rb_parent_database );
+	}
+	if ( rb_parent_database_settings_controller != Qnil )	{
+		rb_parent_database_type_settings_controller	=	rb_RPDB_DatabaseSettingsController_typeSettingsController( rb_parent_database_settings_controller );
+	}
+
+	RPDB_DatabaseTypeSettingsController*	c_database_type_settings_controller;
+	C_RPDB_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_parent_database_type_settings_controller, c_database_type_settings_controller );		
+
+	RPDB_DatabaseTypeHashSettingsController*	c_database_type_hash_settings_controller	=	RPDB_DatabaseTypeSettingsController_hashController( c_database_type_settings_controller );
+
+	VALUE	rb_database_type_hash_settings_controller	= RUBY_RPDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( c_database_type_hash_settings_controller );
 	
-	VALUE	rb_database_type_hash_settings_controller	= RUBY_RPDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( RPDB_DatabaseTypeHashSettingsController_new( c_parent_database_type_settings_controller ) );
-	
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_database_type_settings_controller;
+	VALUE	argv[]	=	{ rb_parent_database_type_settings_controller };
 	
 	rb_obj_call_init(	rb_database_type_hash_settings_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_database_type_hash_settings_controller;		
 }

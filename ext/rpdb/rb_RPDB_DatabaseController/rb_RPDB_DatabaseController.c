@@ -122,7 +122,7 @@ VALUE rb_RPDB_DatabaseController_new(	int			argc,
 
 	//	store reference to parent environment
 	rb_iv_set(	rb_database_controller,
-							RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT,
+							RPDB_RB_ALL_VARIABLE_PARENT_ENVIRONMENT,
 							rb_parent_environment );
 	
 	VALUE	argv[]	=	{ rb_parent_environment };
@@ -165,7 +165,7 @@ VALUE rb_RPDB_DatabaseController_settingsController(	VALUE rb_database_controlle
 VALUE rb_RPDB_DatabaseController_parentEnvironment(	VALUE rb_database_controller )	{
 
 	VALUE	rb_parent_environment	=	rb_iv_get(	rb_database_controller,
-																						RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_ENVIRONMENT );
+																						RPDB_RB_ALL_VARIABLE_PARENT_ENVIRONMENT );
 
 	return rb_parent_environment;
 }

@@ -106,7 +106,7 @@ VALUE rb_RPDB_DatabaseJoinController_new(	int			argc,
 	VALUE	rb_join_controller	=	RUBY_RPDB_DATABASE_JOIN_CONTROLLER( RPDB_DatabaseJoinController_new( c_parent_database ) );
 
 	rb_iv_set(	rb_join_controller,
-							RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE,
+							RPDB_RB_ALL_VARIABLE_PARENT_DATABASE,
 							rb_parent_database );
 
 	rb_obj_call_init(	rb_join_controller,
@@ -135,7 +135,7 @@ VALUE rb_RPDB_DatabaseJoinController_settingsController(	VALUE	rb_database_join_
 	VALUE	rb_database_join_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_join_settings_controller = rb_iv_get(	rb_database_join_controller,
-																														RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																														RPDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		RPDB_DatabaseJoinController*		c_database_join_controller;
 		C_RPDB_DATABASE_JOIN_CONTROLLER( rb_database_join_controller, c_database_join_controller );
@@ -145,7 +145,7 @@ VALUE rb_RPDB_DatabaseJoinController_settingsController(	VALUE	rb_database_join_
 		rb_database_join_settings_controller	=	RUBY_RPDB_DATABASE_JOIN_SETTINGS_CONTROLLER( c_database_join_settings_controller );
 
 		rb_iv_set(	rb_database_join_controller,
-								RPDB_RUBY_CLASS_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
 								rb_database_join_settings_controller );
 	}
 
@@ -171,7 +171,7 @@ VALUE rb_RPDB_DatabaseJoinController_parentEnvironment(	VALUE	rb_join_controller
 VALUE rb_RPDB_DatabaseJoinController_parentDatabase(	VALUE	rb_join_controller )	{
 	
 	VALUE	rb_parent_database	=		rb_iv_get(	rb_join_controller,
-																						RPDB_RUBY_CLASS_ALL_VARIABLE_PARENT_DATABASE );
+																						RPDB_RB_ALL_VARIABLE_PARENT_DATABASE );
 	return rb_parent_database;
 }
 

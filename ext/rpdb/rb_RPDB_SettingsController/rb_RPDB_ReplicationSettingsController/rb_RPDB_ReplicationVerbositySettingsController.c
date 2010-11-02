@@ -33,7 +33,7 @@ extern	VALUE	rb_RPDB_ReplicationVerbositySettingsController;
 
 void Init_RPDB_ReplicationVerbositySettingsController()	{
 
-	rb_define_singleton_method(	rb_RPDB_ReplicationVerbositySettingsController, 	"new",																rb_RPDB_ReplicationVerbositySettingsController_init,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_ReplicationVerbositySettingsController, 	"new",																rb_RPDB_ReplicationVerbositySettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_ReplicationVerbositySettingsController, 				"initialize",													rb_RPDB_ReplicationVerbositySettingsController_init,														-1 	);
 
 	rb_define_method(			rb_RPDB_ReplicationVerbositySettingsController, 				"parent_environment",									rb_RPDB_ReplicationVerbositySettingsController_parentEnvironment,								0 	);

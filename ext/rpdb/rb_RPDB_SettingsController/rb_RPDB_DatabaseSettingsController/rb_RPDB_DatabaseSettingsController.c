@@ -10,6 +10,9 @@
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
+#include "rb_RPDB.h"
+#include "rb_RPDB_DatabaseController.h"
+
 #include "rb_RPDB_DatabaseSettingsController.h"
 
 #include "rb_RPDB_SettingsController.h"
@@ -34,6 +37,7 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_Database;
 extern	VALUE	rb_RPDB_DatabaseController;
@@ -43,6 +47,7 @@ extern	VALUE	rb_RPDB_DatabaseJoinSettingsController;
 extern	VALUE	rb_RPDB_DatabaseErrorSettingsController;
 
 extern	VALUE	rb_RPDB_DatabaseAssociationSettingsController;
+extern	VALUE	rb_RPDB_DatabaseCacheSettingsController;
 extern	VALUE	rb_RPDB_DatabaseCursorSettingsController;
 extern	VALUE	rb_RPDB_DatabaseTypeSettingsController;
 extern	VALUE	rb_RPDB_DatabaseRecordReadWriteSettingsController;
@@ -159,16 +164,40 @@ VALUE rb_RPDB_DatabaseSettingsController_new(	int			argc,
 			"[ <parent settings controller> ]"
 		)
 	);
-
-	RPDB_SettingsController*	c_parent_settings_controller;
-	C_RPDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
-
-	RPDB_DatabaseSettingsController*	c_database_settings_controller	=	RPDB_SettingsController_databaseSettingsController( c_parent_settings_controller );
 	
+	//	if we were passed a database we want its settings controller
+	//	if we were passed an environment or database controller or settings controller we want its database settings controller
+
+	if (		rb_parent_database == Qnil
+			&&	rb_parent_environment == Qnil
+			&&	rb_parent_database_controller == Qnil
+			&&	rb_parent_settings_controller == Qnil )	{
+		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
+
+	if ( rb_parent_database_controller != Qnil ) {
+		rb_parent_environment	=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );			
+	}
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+	}
+	
+	RPDB_DatabaseSettingsController*	c_database_settings_controller	=	NULL;
+	if ( rb_parent_database != Qnil )	{
+		RPDB_Database*	c_parent_database;
+		C_RPDB_DATABASE( rb_parent_database, c_parent_database );
+		
+		c_database_settings_controller	=	RPDB_Database_settingsController( c_parent_database );
+	}
+	else if ( rb_parent_settings_controller != Qnil )	{
+		RPDB_SettingsController*	c_settings_controller;
+		C_RPDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_settings_controller );		
+		c_database_settings_controller	=	RPDB_SettingsController_databaseSettingsController( c_settings_controller );
+	}
+
 	VALUE	rb_database_settings_controller	=	RUBY_RPDB_DATABASE_SETTINGS_CONTROLLER( c_database_settings_controller );
 
-	VALUE	argv[ 1 ];	
-	argv[ 0 ]	=	rb_parent_settings_controller;
+	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_database_settings_controller,
 										1, 
 										argv );
@@ -467,6 +496,18 @@ VALUE rb_RPDB_DatabaseSettingsController_joinSettingsController( VALUE	rb_databa
 	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 	return RUBY_RPDB_DATABASE_JOIN_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_joinSettingsController( c_database_settings_controller ) );
+}
+
+/*****************************
+*  cacheController  *
+*****************************/
+
+VALUE rb_RPDB_DatabaseSettingsController_cacheSettingsController( VALUE	rb_database_settings_controller )	{
+
+	RPDB_DatabaseSettingsController*	c_database_settings_controller;
+	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+
+	return RUBY_RPDB_DATABASE_CACHE_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_cacheSettingsController( c_database_settings_controller ) );
 }
 
 /*****************************
