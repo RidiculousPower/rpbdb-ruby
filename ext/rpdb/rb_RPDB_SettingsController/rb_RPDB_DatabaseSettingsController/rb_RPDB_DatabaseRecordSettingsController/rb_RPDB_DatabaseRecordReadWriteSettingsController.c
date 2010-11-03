@@ -11,11 +11,22 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_DatabaseRecordReadWriteSettingsController.h"
+#include "rb_RPDB_DatabaseRecordSettingsController.h"
+#include "rb_RPDB_DatabaseSettingsController.h"
+#include "rb_RPDB_SettingsController.h"
+#include "rb_RPDB_DatabaseController.h"
+#include "rb_RPDB_Database.h"
+#include "rb_RPDB.h"
 
 #include <rpdb/RPDB_Environment.h>
 #include <rpdb/RPDB_Database.h>
 
 #include <rpdb/RPDB_DatabaseRecordReadWriteSettingsController.h>
+#include <rpdb/RPDB_DatabaseRecordSettingsController.h>
+#include <rpdb/RPDB_DatabaseSettingsController.h>
+#include <rpdb/RPDB_SettingsController.h>
+#include <rpdb/RPDB_DatabaseController.h>
+#include <rpdb/RPDB_Database.h>
 
 #include <rargs.h>
 
@@ -23,17 +34,19 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_Database;
 extern	VALUE	rb_RPDB_DatabaseController;
 extern	VALUE	rb_RPDB_DatabaseSettingsController;
+extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_DatabaseRecordReadWriteSettingsController;
 extern	VALUE	rb_RPDB_Record;
 extern	VALUE	rb_RPDB_DatabaseRecordSettingsController;
 
 void Init_RPDB_DatabaseRecordReadWriteSettingsController()	{
 
-	rb_RPDB_DatabaseRecordReadWriteSettingsController		=	rb_define_class_under(	rb_RPDB_DatabaseSettingsController, 
+	rb_RPDB_DatabaseRecordReadWriteSettingsController		=	rb_define_class_under(	rb_RPDB_DatabaseRecordSettingsController, 
 																																								"ReadWrite",	
 																																								rb_cObject );
 
@@ -167,6 +180,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_new(	int			argc,
 	VALUE	rb_parent_record																			=	Qnil;
 	VALUE	rb_parent_database_settings_controller								=	Qnil;
 	VALUE	rb_parent_database_record_settings_controller					=	Qnil;
+	VALUE	rb_parent_settings_controller													=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
 			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
@@ -174,25 +188,54 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_new(	int			argc,
 																						R_MatchAncestorInstance( rb_parent_database, rb_RPDB_Database ),
 																						R_MatchAncestorInstance( rb_parent_record, rb_RPDB_Record ),
 																						R_MatchAncestorInstance( rb_parent_database_settings_controller, rb_RPDB_DatabaseSettingsController ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
 																						R_MatchAncestorInstance( rb_parent_database_record_settings_controller, rb_RPDB_DatabaseRecordSettingsController ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment > ]",
+			"[ <parent environment> ]",
 			"[ <parent database controller> ]",
 			"[ <parent database> ]",
 			"[ <parent record> ]",
+			"[ <parent settings controller> ]",
 			"[ <parent database settings controller> ]",
 			"[ <parent database record settings controller> ]"
 		)
 	);
 
-	RPDB_DatabaseRecordSettingsController*	 c_parent_database_record_settings_controller;
-	C_RPDB_DATABASE_RECORD_SETTINGS_CONTROLLER( rb_parent_database_record_settings_controller, c_parent_database_record_settings_controller );
+	//	if we were passed a database we want its settings controller
+	//	if we were passed an environment or database controller or settings controller we want its database settings controller
 
-	VALUE	rb_database_record_read_write_settings_controller	= RUBY_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( RPDB_DatabaseRecordReadWriteSettingsController_new(  c_parent_database_record_settings_controller ) );
+	if (		rb_parent_database == Qnil
+			&&	rb_parent_environment == Qnil
+			&&	rb_parent_database_controller == Qnil
+			&&	rb_parent_settings_controller == Qnil
+			&&	rb_parent_database_settings_controller == Qnil )	{
+		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_database_record_settings_controller;
+	if ( rb_parent_database_controller != Qnil ) {
+		rb_parent_environment	=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );			
+	}
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+	}
+	if ( rb_parent_settings_controller != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_SettingsController_databaseSettingsController( rb_parent_settings_controller );
+	}
+	if ( rb_parent_database != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_Database_settingsController( rb_parent_database );
+	}
+	if ( rb_parent_database_settings_controller != Qnil )	{
+		rb_parent_database_record_settings_controller	=	rb_RPDB_DatabaseSettingsController_recordSettingsController( rb_parent_database_settings_controller );
+	}
+
+	RPDB_DatabaseRecordSettingsController*	c_database_record_settings_controller;
+	C_RPDB_DATABASE_RECORD_SETTINGS_CONTROLLER( rb_parent_database_record_settings_controller, c_database_record_settings_controller );		
+
+	RPDB_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller	=	RPDB_DatabaseRecordSettingsController_readWriteSettingsController( c_database_record_settings_controller );
+
+	VALUE	rb_database_record_read_write_settings_controller	= RUBY_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( c_database_record_read_write_settings_controller );
+
+	VALUE	argv[]	=	{ rb_parent_database_record_settings_controller };
 	
 	rb_obj_call_init(	rb_database_record_read_write_settings_controller,
 										1, 

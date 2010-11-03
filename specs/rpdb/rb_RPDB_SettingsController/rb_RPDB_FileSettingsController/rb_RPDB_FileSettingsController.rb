@@ -26,14 +26,19 @@ describe RPDB::Environment::DatabaseController::Database do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings.new( environment )
+  # RPDB::Environment::Settings::File.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings.new( @environment ).should_not == nil
+    RPDB::Environment::Settings::File.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings.new
+  # RPDB::Environment::Settings::File.new( settings_controller )
+  it "can be created with a settings controller" do
+    RPDB::Environment::Settings::File.new( RPDB::Environment::Settings.new ).should_not == nil
+  end
+
+  # RPDB::Environment::Settings::File.new
   it "can be created with no environment specified" do
-    RPDB::Environment::Settings.new.should_not == nil
+    RPDB::Environment::Settings::File.new.should_not == nil
   end
 
 end

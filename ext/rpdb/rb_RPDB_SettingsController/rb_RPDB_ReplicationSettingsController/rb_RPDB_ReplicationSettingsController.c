@@ -12,11 +12,13 @@
 
 #include "rb_RPDB_ReplicationSettingsController.h"
 #include "rb_RPDB_SettingsController.h"
+#include "rb_RPDB.h"
 
 #include "rb_RPDB_Environment.h"
 
 #include <rpdb/RPDB_Environment.h>
 
+#include <rpdb/RPDB_SettingsController.h>
 #include <rpdb/RPDB_ReplicationSettingsController.h>
 #include <rpdb/RPDB_ReplicationElectionSettingsController.h>
 #include <rpdb/RPDB_ReplicationTimeoutSettingsController.h>
@@ -27,6 +29,7 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_ReplicationSettingsController;
@@ -34,6 +37,10 @@ extern	VALUE	rb_RPDB_ReplicationElectionSettingsController;
 extern	VALUE	rb_RPDB_ReplicationTimeoutSettingsController;
 
 void Init_RPDB_ReplicationSettingsController()	{
+
+	rb_RPDB_ReplicationSettingsController		=	rb_define_class_under(	rb_RPDB_SettingsController, 
+																																		"Replication",	
+																																		rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_ReplicationSettingsController, 	"new",																rb_RPDB_ReplicationSettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"initialize",													rb_RPDB_ReplicationSettingsController_init,														-1 	);
@@ -111,33 +118,40 @@ VALUE rb_RPDB_ReplicationSettingsController_new(	int			argc,
 																									VALUE*	args,
 																									VALUE		rb_klass_self __attribute__ ((unused)) )	{
 
-	VALUE	rb_parent_environment																	=	Qnil;
-	VALUE	rb_parent_settings_controller													=	Qnil;
-	VALUE	rb_parent_replication_settings_controller							=	Qnil;
+	VALUE	rb_parent_environment					=	Qnil;
+	VALUE	rb_parent_settings_controller	=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
 			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
-																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
-																						R_MatchAncestorInstance( rb_parent_replication_settings_controller, rb_RPDB_ReplicationSettingsController ) ) ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment > ]",
-			"[ <parent settings controller> ]",
-			"[ <parent replication settings controller> ]"
+			"[ <no argument> ]",
+			"[ <parent environment> ]",
+			"[ <parent settings controller> ]"
 		)
 	);
+	
+	if (		rb_parent_environment == Qnil
+			&&	rb_parent_settings_controller == Qnil )	{			
+
+		rb_parent_environment = rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );	
+	}
 
 	RPDB_SettingsController*	c_parent_settings_controller;
 	C_RPDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
-	VALUE	rb_replication_settings_controller	= RUBY_RPDB_REPLICATION_SETTINGS_CONTROLLER( RPDB_ReplicationSettingsController_new( c_parent_settings_controller ) );
+	RPDB_ReplicationSettingsController*	c_replication_settings_controller	=	RPDB_SettingsController_replicationSettingsController( c_parent_settings_controller );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_settings_controller;
+	VALUE	rb_replication_settings_controller	= RUBY_RPDB_REPLICATION_SETTINGS_CONTROLLER( c_replication_settings_controller );
+
+	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	
 	rb_obj_call_init(	rb_replication_settings_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_replication_settings_controller;		
 }

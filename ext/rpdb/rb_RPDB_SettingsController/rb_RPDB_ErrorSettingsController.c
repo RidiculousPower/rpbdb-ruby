@@ -12,11 +12,13 @@
 
 #include "rb_RPDB_SettingsController.h"
 #include "rb_RPDB_ErrorSettingsController.h"
+#include "rb_RPDB.h"
 
 #include "rb_RPDB_Environment.h"
 
 #include <rpdb/RPDB_Environment.h>
 #include <rpdb/RPDB_ErrorSettingsController.h>
+#include <rpdb/RPDB_SettingsController.h>
 
 #include <rargs.h>
 
@@ -24,6 +26,7 @@
 																		Ruby Objects
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_ErrorSettingsController;
@@ -63,30 +66,37 @@ VALUE rb_RPDB_ErrorSettingsController_new(	int			argc,
 																						VALUE*	args,
 																						VALUE		rb_klass_self __attribute__ ((unused)) )	{
 
-	VALUE	rb_parent_environment																	=	Qnil;
-	VALUE	rb_parent_settings_controller													=	Qnil;
+	VALUE	rb_parent_environment					=	Qnil;
+	VALUE	rb_parent_settings_controller	=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
 			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
 																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment > ]",
+			"[ <parent environment> ]",
 			"[ <parent settings controller> ]"
 		)
 	);
+	
+	if (		rb_parent_environment == Qnil
+			&&	rb_parent_settings_controller == Qnil )	{			
+
+		rb_parent_environment = rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );	
+	}
 
 	RPDB_SettingsController*	c_parent_settings_controller;
 	C_RPDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
 	VALUE	rb_error_settings_controller	= RUBY_RPDB_ERROR_SETTINGS_CONTROLLER( RPDB_ErrorSettingsController_new( c_parent_settings_controller ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_settings_controller;
+	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	
 	rb_obj_call_init(	rb_error_settings_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_error_settings_controller;		
 }

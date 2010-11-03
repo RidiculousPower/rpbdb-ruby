@@ -1768,6 +1768,30 @@ rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPo
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.s
 .PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.s
 
+rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o
+.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.o
+
+# target to build an object file
+rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o
+.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o
+
+rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.i
+.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.i
+
+# target to preprocess a source file
+rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.i
+.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.i
+
+rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.s
+.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.s
+
+# target to generate assembly for a file
+rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.s
+.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.s
+
 rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.o
 .PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.o
 
@@ -2344,6 +2368,9 @@ help:
 	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.o"
 	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.i"
 	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.s"
+	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.o"
+	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.i"
+	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.s"
 	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.o"
 	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.i"
 	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.s"

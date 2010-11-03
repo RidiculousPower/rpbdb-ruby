@@ -1585,9 +1585,33 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSetting
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.o.provides.build: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.o
 .PHONY : rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.o.provides.build
 
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_65)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o"
+	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c
+
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.i"
+	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -E /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c > CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.i
+
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.s"
+	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -S /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.s
+
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o.requires:
+.PHONY : rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o.requires
+
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o.provides: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o.requires
+	$(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o.provides.build
+.PHONY : rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o.provides
+
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o.provides.build: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o
+.PHONY : rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o.provides.build
+
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_65)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_66)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c
 
@@ -1611,7 +1635,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSetting
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_66)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_67)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c
 
@@ -1635,7 +1659,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSetting
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_67)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_68)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c
 
@@ -1659,7 +1683,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSetting
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_68)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_69)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c
 
@@ -1683,7 +1707,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSetting
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_69)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_70)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c
 
@@ -1707,7 +1731,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettin
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_70)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_71)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c
 
@@ -1731,7 +1755,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettin
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_71)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_72)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c
 
@@ -1755,7 +1779,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettin
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_72)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_73)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c
 
@@ -1779,7 +1803,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettin
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_73)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_74)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c
 
@@ -1803,7 +1827,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettings
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_74)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_75)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c
 
@@ -1827,7 +1851,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheS
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_75)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_76)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c
 
@@ -1851,7 +1875,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsCont
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_76)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_77)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c
 
@@ -1875,7 +1899,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LogSettingsContro
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_77)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_78)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c
 
@@ -1899,7 +1923,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsCo
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_78)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_79)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c
 
@@ -1923,7 +1947,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MutexSettingsCont
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_SettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_79)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_80)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_SettingsController.c
 
@@ -1947,7 +1971,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_SettingsControlle
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_80)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_81)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c
 
@@ -1971,7 +1995,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsCon
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_81)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_82)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c
 
@@ -1995,7 +2019,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_TransactionSettin
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Transaction/rb_RPDB_Transaction.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_82)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_83)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Transaction/rb_RPDB_Transaction.c
 
@@ -2019,7 +2043,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o.provides
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_TransactionController.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_TransactionController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Transaction/rb_RPDB_TransactionController.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_83)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_84)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_TransactionController.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_TransactionController.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Transaction/rb_RPDB_TransactionController.c
 
@@ -2043,7 +2067,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_TransactionController.c.
 
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB.c.o: rpdb/CMakeFiles/rb_rpdb.dir/flags.make
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB.c
-	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_84)
+	$(CMAKE_COMMAND) -E cmake_progress_report /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles $(CMAKE_PROGRESS_85)
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Building C object rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB.c.o"
 	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb && /usr/bin/clang  $(C_DEFINES) $(C_FLAGS) -o CMakeFiles/rb_rpdb.dir/rb_RPDB.c.o   -c /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB.c
 
@@ -2131,6 +2155,7 @@ rb_rpdb_OBJECTS = \
 "CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.o" \
 "CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.o" \
 "CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.o" \
+"CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o" \
 "CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.o" \
 "CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.o" \
 "CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.o" \
@@ -2219,6 +2244,7 @@ rpdb/../rpdb.bundle: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_R
 rpdb/../rpdb.bundle: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.o
 rpdb/../rpdb.bundle: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.o
 rpdb/../rpdb.bundle: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.o
+rpdb/../rpdb.bundle: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o
 rpdb/../rpdb.bundle: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.o
 rpdb/../rpdb.bundle: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.o
 rpdb/../rpdb.bundle: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.o
@@ -2315,6 +2341,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/requires: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Settin
 rpdb/CMakeFiles/rb_rpdb.dir/requires: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.o.requires
 rpdb/CMakeFiles/rb_rpdb.dir/requires: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.o.requires
 rpdb/CMakeFiles/rb_rpdb.dir/requires: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.o.requires
+rpdb/CMakeFiles/rb_rpdb.dir/requires: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o.requires
 rpdb/CMakeFiles/rb_rpdb.dir/requires: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.o.requires
 rpdb/CMakeFiles/rb_rpdb.dir/requires: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.o.requires
 rpdb/CMakeFiles/rb_rpdb.dir/requires: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.o.requires

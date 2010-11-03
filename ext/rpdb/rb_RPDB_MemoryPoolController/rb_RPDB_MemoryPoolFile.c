@@ -75,7 +75,7 @@ VALUE rb_RPDB_MemoryPoolFile_new(	int			argc,
 																						R_MatchAncestorInstance( rb_parent_memory_pool_controller, rb_RPDB_MemoryPoolController ),
 																						R_MatchAncestorInstance( rb_parent_memory_pool_file_controller, rb_RPDB_MemoryPoolFileController ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment > ]",
+			"[ <parent environment> ]",
 			"[ <parent memory pool controller> ]",
 			"[ <parent memory pool file controller> ]"
 		)

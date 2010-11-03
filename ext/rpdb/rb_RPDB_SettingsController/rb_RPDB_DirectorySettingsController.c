@@ -11,6 +11,7 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_DirectorySettingsController.h"
+#include "rb_RPDB.h"
 
 #include <rpdb/RPDB_Environment.h>
 
@@ -24,6 +25,7 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_DirectorySettingsController;
@@ -41,10 +43,10 @@ void Init_RPDB_DirectorySettingsController()	{
 	rb_define_alias(			rb_RPDB_DirectorySettingsController, 				"environment",												"parent_environment"	);
 
 	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"home_directory",											rb_RPDB_DirectorySettingsController_homeDirectory,													0 	);
-	rb_define_alias(			rb_RPDB_DirectorySettingsController, 				"home",																"parent_database"	);
+	rb_define_alias(			rb_RPDB_DirectorySettingsController, 				"home",																"home_directory"	);
 	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"data_directories",										rb_RPDB_DirectorySettingsController_dataDirectories,													0 	);
 	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"add_data_directory",									rb_RPDB_DirectorySettingsController_addDataDirectory,													0 	);
-	rb_define_alias(			rb_RPDB_DirectorySettingsController, 				"add_data_directories",								"parent_database"	);
+	rb_define_alias(			rb_RPDB_DirectorySettingsController, 				"add_data_directories",								"add_data_directory"	);
 
 }
 
@@ -74,8 +76,13 @@ VALUE rb_RPDB_DirectorySettingsController_new(	int				argc,
 		)
 	);
 	
-	if ( rb_parent_settings_controller == Qnil )	{
-		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+	if (		rb_parent_environment == Qnil
+			&&	rb_parent_settings_controller == Qnil )	{			
+
+		rb_parent_environment = rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );	
 	}
 
 	RPDB_SettingsController*	c_parent_settings_controller;

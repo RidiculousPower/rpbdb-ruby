@@ -54,6 +54,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB.c.o
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DirectorySettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_EnvironmentCacheSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_ErrorSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_FileSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_FileVerbositySettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Key.h
@@ -71,6 +72,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB.c.o
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFile.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFileCacheSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFileController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFilePage.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFilePageController.h
@@ -1354,10 +1356,15 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseCompactSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -1371,12 +1378,14 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /usr/local/include/rpdb/RPDB_Constants.h
  /usr/local/include/rpdb/RPDB_Database.h
  /usr/local/include/rpdb/RPDB_DatabaseCompactSettingsController.h
+ /usr/local/include/rpdb/RPDB_DatabaseController.h
  /usr/local/include/rpdb/RPDB_DatabaseSettingsController.h
  /usr/local/include/rpdb/RPDB_Environment.h
  /usr/local/include/rpdb/RPDB_Error.h
  /usr/local/include/rpdb/RPDB_ErrorController.h
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -1386,10 +1395,17 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseCursorCachePrioritySettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseCursorCacheSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseCursorSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -1402,12 +1418,17 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /usr/local/include/rpdb/RPDB_BaseStandardInclude.h
  /usr/local/include/rpdb/RPDB_Constants.h
  /usr/local/include/rpdb/RPDB_Database.h
+ /usr/local/include/rpdb/RPDB_DatabaseController.h
  /usr/local/include/rpdb/RPDB_DatabaseCursorCachePrioritySettingsController.h
+ /usr/local/include/rpdb/RPDB_DatabaseCursorCacheSettingsController.h
+ /usr/local/include/rpdb/RPDB_DatabaseCursorSettingsController.h
+ /usr/local/include/rpdb/RPDB_DatabaseSettingsController.h
  /usr/local/include/rpdb/RPDB_Environment.h
  /usr/local/include/rpdb/RPDB_Error.h
  /usr/local/include/rpdb/RPDB_ErrorController.h
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -1417,10 +1438,16 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseCursorCacheSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseCursorSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -1433,13 +1460,17 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /usr/local/include/rpdb/RPDB_BaseStandardInclude.h
  /usr/local/include/rpdb/RPDB_Constants.h
  /usr/local/include/rpdb/RPDB_Database.h
+ /usr/local/include/rpdb/RPDB_DatabaseController.h
  /usr/local/include/rpdb/RPDB_DatabaseCursorCachePrioritySettingsController.h
  /usr/local/include/rpdb/RPDB_DatabaseCursorCacheSettingsController.h
+ /usr/local/include/rpdb/RPDB_DatabaseCursorSettingsController.h
+ /usr/local/include/rpdb/RPDB_DatabaseSettingsController.h
  /usr/local/include/rpdb/RPDB_Environment.h
  /usr/local/include/rpdb/RPDB_Error.h
  /usr/local/include/rpdb/RPDB_ErrorController.h
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -1449,10 +1480,16 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseCursorReadWriteSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseCursorSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -1465,8 +1502,11 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /usr/local/include/rpdb/RPDB_BaseStandardInclude.h
  /usr/local/include/rpdb/RPDB_Constants.h
  /usr/local/include/rpdb/RPDB_Database.h
+ /usr/local/include/rpdb/RPDB_DatabaseController.h
  /usr/local/include/rpdb/RPDB_DatabaseCursorReadWriteSettingsController.h
  /usr/local/include/rpdb/RPDB_DatabaseCursorReadWriteSettingsController_internal.h
+ /usr/local/include/rpdb/RPDB_DatabaseCursorSettingsController.h
+ /usr/local/include/rpdb/RPDB_DatabaseSettingsController.h
  /usr/local/include/rpdb/RPDB_Environment.h
  /usr/local/include/rpdb/RPDB_Error.h
  /usr/local/include/rpdb/RPDB_ErrorController.h
@@ -1630,10 +1670,16 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseRecordFixedLengthSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseRecordSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -1646,6 +1692,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /usr/local/include/rpdb/RPDB_BaseStandardInclude.h
  /usr/local/include/rpdb/RPDB_Constants.h
  /usr/local/include/rpdb/RPDB_Database.h
+ /usr/local/include/rpdb/RPDB_DatabaseController.h
  /usr/local/include/rpdb/RPDB_DatabaseRecordFixedLengthSettingsController.h
  /usr/local/include/rpdb/RPDB_DatabaseRecordSettingsController.h
  /usr/local/include/rpdb/RPDB_DatabaseSettingsController.h
@@ -1654,6 +1701,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /usr/local/include/rpdb/RPDB_ErrorController.h
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -1663,10 +1711,16 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseRecordReadWriteSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseRecordSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -1679,12 +1733,16 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /usr/local/include/rpdb/RPDB_BaseStandardInclude.h
  /usr/local/include/rpdb/RPDB_Constants.h
  /usr/local/include/rpdb/RPDB_Database.h
+ /usr/local/include/rpdb/RPDB_DatabaseController.h
  /usr/local/include/rpdb/RPDB_DatabaseRecordReadWriteSettingsController.h
+ /usr/local/include/rpdb/RPDB_DatabaseRecordSettingsController.h
+ /usr/local/include/rpdb/RPDB_DatabaseSettingsController.h
  /usr/local/include/rpdb/RPDB_Environment.h
  /usr/local/include/rpdb/RPDB_Error.h
  /usr/local/include/rpdb/RPDB_ErrorController.h
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -1731,10 +1789,16 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseRecordSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseRecordVariableLengthSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -1747,6 +1811,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /usr/local/include/rpdb/RPDB_BaseStandardInclude.h
  /usr/local/include/rpdb/RPDB_Constants.h
  /usr/local/include/rpdb/RPDB_Database.h
+ /usr/local/include/rpdb/RPDB_DatabaseController.h
  /usr/local/include/rpdb/RPDB_DatabaseRecordSettingsController.h
  /usr/local/include/rpdb/RPDB_DatabaseRecordVariableLengthSettingsController.h
  /usr/local/include/rpdb/RPDB_DatabaseSettingsController.h
@@ -1755,6 +1820,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
  /usr/local/include/rpdb/RPDB_ErrorController.h
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2104,10 +2170,12 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DebugSettingsCont
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DebugSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -2126,6 +2194,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DebugSettingsCont
  /usr/local/include/rpdb/RPDB_ErrorController.h
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2135,10 +2204,13 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DebugSettingsCont
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DebugSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DebugVerbositySettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -2150,12 +2222,14 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DebugSettingsCont
  /usr/local/include/rargs/rargs_types.h
  /usr/local/include/rpdb/RPDB_BaseStandardInclude.h
  /usr/local/include/rpdb/RPDB_Constants.h
+ /usr/local/include/rpdb/RPDB_DebugSettingsController.h
  /usr/local/include/rpdb/RPDB_DebugVerbositySettingsController.h
  /usr/local/include/rpdb/RPDB_Environment.h
  /usr/local/include/rpdb/RPDB_Error.h
  /usr/local/include/rpdb/RPDB_ErrorController.h
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2165,6 +2239,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettings
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DirectorySettingsController.h
@@ -2197,6 +2272,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheS
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
@@ -2219,6 +2295,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheS
  /usr/local/include/rpdb/RPDB_ErrorController.h
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2228,6 +2305,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsCont
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
@@ -2250,6 +2328,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsCont
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_ErrorSettingsController.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2259,6 +2338,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_FileSettingsContr
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
@@ -2282,6 +2362,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_FileSettingsContr
  /usr/local/include/rpdb/RPDB_Error_internal.h
  /usr/local/include/rpdb/RPDB_FileSettingsController.h
  /usr/local/include/rpdb/RPDB_FileVerbositySettingsController.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2291,11 +2372,13 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_FileSettingsContr
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_FileSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_FileVerbositySettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -2312,7 +2395,9 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_FileSettingsContr
  /usr/local/include/rpdb/RPDB_ErrorController.h
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_FileSettingsController.h
  /usr/local/include/rpdb/RPDB_FileVerbositySettingsController.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2322,11 +2407,13 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsContr
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LockDeadlockDetectorSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LockSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -2345,6 +2432,8 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsContr
  /usr/local/include/rpdb/RPDB_Error_internal.h
  /usr/local/include/rpdb/RPDB_LockDeadlockDetectorSettingsController.h
  /usr/local/include/rpdb/RPDB_LockDeadlockDetectorVerbositySettingsController.h
+ /usr/local/include/rpdb/RPDB_LockSettingsController.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2354,11 +2443,14 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsContr
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LockDeadlockDetectorSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LockSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -2375,7 +2467,10 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsContr
  /usr/local/include/rpdb/RPDB_ErrorController.h
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_LockDeadlockDetectorSettingsController.h
  /usr/local/include/rpdb/RPDB_LockDeadlockDetectorVerbositySettingsController.h
+ /usr/local/include/rpdb/RPDB_LockSettingsController.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2385,6 +2480,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsContr
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
@@ -2408,6 +2504,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsContr
  /usr/local/include/rpdb/RPDB_Error_internal.h
  /usr/local/include/rpdb/RPDB_LockDeadlockDetectorSettingsController.h
  /usr/local/include/rpdb/RPDB_LockSettingsController.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2417,6 +2514,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LogSettingsContro
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
@@ -2448,10 +2546,15 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSetting
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFileCacheSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFileSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -2469,6 +2572,47 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSetting
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
  /usr/local/include/rpdb/RPDB_MemoryPoolFileCachePrioritySettingsController.h
+ /usr/local/include/rpdb/RPDB_MemoryPoolFileCacheSettingsController.h
+ /usr/local/include/rpdb/RPDB_MemoryPoolFileSettingsController.h
+ /usr/local/include/rpdb/RPDB_MemoryPoolSettingsController.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
+ /usr/local/include/rpdb/RPDB_Types.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/defines.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/intern.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/missing.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
+ /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFileCacheSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFileSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c
+ /usr/local/include/db.h
+ /usr/local/include/rargs.h
+ /usr/local/include/rargs/rargs.h
+ /usr/local/include/rargs/rargs_define.h
+ /usr/local/include/rargs/rargs_error.h
+ /usr/local/include/rargs/rargs_free.h
+ /usr/local/include/rargs/rargs_parse.h
+ /usr/local/include/rargs/rargs_types.h
+ /usr/local/include/rpdb/RPDB_BaseStandardInclude.h
+ /usr/local/include/rpdb/RPDB_Constants.h
+ /usr/local/include/rpdb/RPDB_Environment.h
+ /usr/local/include/rpdb/RPDB_Error.h
+ /usr/local/include/rpdb/RPDB_ErrorController.h
+ /usr/local/include/rpdb/RPDB_ErrorController_internal.h
+ /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_MemoryPoolFileCacheSettingsController.h
+ /usr/local/include/rpdb/RPDB_MemoryPoolFileSettingsController.h
+ /usr/local/include/rpdb/RPDB_MemoryPoolSettingsController.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2478,10 +2622,14 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSetting
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFilePageSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFileSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -2499,6 +2647,9 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSetting
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
  /usr/local/include/rpdb/RPDB_MemoryPoolFilePageSettingsController.h
+ /usr/local/include/rpdb/RPDB_MemoryPoolFileSettingsController.h
+ /usr/local/include/rpdb/RPDB_MemoryPoolSettingsController.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2508,10 +2659,13 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSetting
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFileSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -2531,7 +2685,9 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSetting
  /usr/local/include/rpdb/RPDB_MemoryPoolFileCachePrioritySettingsController.h
  /usr/local/include/rpdb/RPDB_MemoryPoolFilePageSettingsController.h
  /usr/local/include/rpdb/RPDB_MemoryPoolFileSettingsController.h
+ /usr/local/include/rpdb/RPDB_MemoryPoolSettingsController.h
  /usr/local/include/rpdb/RPDB_Record.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2541,10 +2697,13 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSetting
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolReadWriteSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -2562,6 +2721,8 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSetting
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
  /usr/local/include/rpdb/RPDB_MemoryPoolReadWriteSettingsController.h
+ /usr/local/include/rpdb/RPDB_MemoryPoolSettingsController.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2571,6 +2732,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSetting
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
@@ -2605,6 +2767,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsCo
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
@@ -2636,6 +2799,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MutexSettingsCont
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
@@ -2658,6 +2822,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MutexSettingsCont
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
  /usr/local/include/rpdb/RPDB_MutexSettingsController.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2667,10 +2832,13 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettin
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_ReplicationElectionSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_ReplicationSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -2688,6 +2856,8 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettin
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
  /usr/local/include/rpdb/RPDB_ReplicationElectionSettingsController.h
+ /usr/local/include/rpdb/RPDB_ReplicationSettingsController.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2697,6 +2867,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettin
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
@@ -2721,6 +2892,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettin
  /usr/local/include/rpdb/RPDB_ReplicationElectionSettingsController.h
  /usr/local/include/rpdb/RPDB_ReplicationSettingsController.h
  /usr/local/include/rpdb/RPDB_ReplicationTimeoutSettingsController.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2730,10 +2902,13 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettin
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_ReplicationSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_ReplicationTimeoutSettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -2750,7 +2925,9 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettin
  /usr/local/include/rpdb/RPDB_ErrorController.h
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_ReplicationSettingsController.h
  /usr/local/include/rpdb/RPDB_ReplicationTimeoutSettingsController.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2760,10 +2937,13 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettin
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_ReplicationSettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_ReplicationVerbositySettingsController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -2780,7 +2960,9 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettin
  /usr/local/include/rpdb/RPDB_ErrorController.h
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
+ /usr/local/include/rpdb/RPDB_ReplicationSettingsController.h
  /usr/local/include/rpdb/RPDB_ReplicationVerbositySettingsController.h
+ /usr/local/include/rpdb/RPDB_SettingsController.h
  /usr/local/include/rpdb/RPDB_Types.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby.h
@@ -2828,6 +3010,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsCon
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
@@ -2859,6 +3042,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_TransactionSettin
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h

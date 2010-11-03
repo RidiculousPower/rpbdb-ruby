@@ -21,37 +21,34 @@ describe RPDB::Environment::DatabaseController::Database do
     @environment.close
   end
 
-
-  # RPDB::Environment::Settings::Database::Cache.new( environment )
+  ################
+  #  self.new    #
+  #  initialize  #
+  ################
+  # RPDB::Environment::Settings::MemoryPool::File::Cache.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::Database::Cache.new( @environment ).should_not == nil
+    RPDB::Environment::Settings::MemoryPool::File::Cache.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Cache.new( database_controller )
-  it "can be created with a database controller" do
-    RPDB::Environment::Settings::Database::Cache.new( @environment.database_controller ).should_not == nil
-  end
-
-  # RPDB::Environment::Settings::Database::Cache.new( database )
-  it "can be created with a database" do
-    RPDB::Environment::Settings::Database::Cache.new( @environment.database_controller.new( $database_name ) ).should_not == nil
-  end
-
-  # RPDB::Environment::Settings::Database::Cache.new( settings_controller )
+  # RPDB::Environment::Settings::MemoryPool::File::Cache.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::Database::Cache.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Environment::Settings::MemoryPool::File::Cache.new( RPDB::Environment::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Cache.new( database_settings_controller )
-  it "can be created with a database settings controller" do
-    RPDB::Environment::Settings::Database::Cache.new( RPDB::Environment::Settings::Database.new ).should_not == nil
+  # RPDB::Environment::Settings::MemoryPool::File::Cache.new( memory_pool_settings_controller )
+  it "can be created with a memory pool settings controller" do
+    RPDB::Environment::Settings::MemoryPool::File::Cache.new( RPDB::Environment::Settings::MemoryPool.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Cache.new
+  # RPDB::Environment::Settings::MemoryPool::File::Cache.new( memory_pool_settings_controller )
+  it "can be created with a memory pool file settings controller" do
+    RPDB::Environment::Settings::MemoryPool::File::Cache.new( RPDB::Environment::Settings::MemoryPool::File.new ).should_not == nil
+  end
+
+  # RPDB::Environment::Settings::MemoryPool::File::Cache.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::Database::Cache.new.should_not == nil
+    RPDB::Environment::Settings::MemoryPool::File::Cache.new.should_not == nil
   end
-  
 
 
 

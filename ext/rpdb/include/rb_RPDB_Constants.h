@@ -307,6 +307,8 @@
 	#define RPDB_RB_SETTINGS_VARIABLE_FILE_SETTINGS_CONTROLLER				"@file_settings_controller"
 	#define RPDB_RB_SETTINGS_VARIABLE_ERROR_SETTINGS_CONTROLLER				"@error_settings_controller"
 	#define RPDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER					"@log_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER					"@lock_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER					"@replication_settings_controller"
 	#define RPDB_RB_SETTINGS_VARIABLE_MEMORY_SETTINGS_CONTROLLER			"@memory_settings_controller"
 	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER		"@database_settings_controller"
 	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER		"@database_association_settings_controller"
@@ -570,6 +572,9 @@
 	#define RUBY_RPDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( c_memory_pool_file_settings_controller )																						  RUBY_RPDB_OBJECT(	c_memory_pool_file_settings_controller, rb_RPDB_MemoryPoolFileSettingsController, NULL, NULL )
 	#define C_RPDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller )													  C_RPDB_STRUCT(		rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller, RPDB_MemoryPoolFileSettingsController )
                                                                                                                                                                         					  
+	#define RUBY_RPDB_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER( c_memory_pool_file_cache_settings_controller )															  RUBY_RPDB_OBJECT(	c_memory_pool_file_cache_settings_controller, rb_RPDB_MemoryPoolFileCacheSettingsController, NULL, NULL )
+	#define C_RPDB_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER( rb_memory_pool_file_cache_settings_controller, c_memory_pool_file_cache_settings_controller )	  C_RPDB_STRUCT(		rb_memory_pool_file_cache_settings_controller, c_memory_pool_file_cache_settings_controller, RPDB_MemoryPoolFileCacheSettingsController )
+
 	#define RUBY_RPDB_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER( c_memory_pool_file_cache_priority_settings_controller )															  RUBY_RPDB_OBJECT(	c_memory_pool_file_cache_priority_settings_controller, rb_RPDB_MemoryPoolFileCachePrioritySettingsController, NULL, NULL )
 	#define C_RPDB_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_memory_pool_file_cache_priority_settings_controller, c_memory_pool_file_cache_priority_settings_controller )	  C_RPDB_STRUCT(		rb_memory_pool_file_cache_priority_settings_controller, c_memory_pool_file_cache_priority_settings_controller, RPDB_MemoryPoolFileCachePrioritySettingsController )
                                                                                                                                                                                               

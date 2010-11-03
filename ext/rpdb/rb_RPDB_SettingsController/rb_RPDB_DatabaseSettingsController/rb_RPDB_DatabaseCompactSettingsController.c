@@ -10,13 +10,23 @@
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
+#include "rb_RPDB_DatabaseCompactSettingsController.h"
+#include "rb_RPDB_DatabaseSettingsController.h"
+#include "rb_RPDB_SettingsController.h"
+#include "rb_RPDB_DatabaseController.h"
+#include "rb_RPDB_Database.h"
+#include "rb_RPDB.h"
+
 #include <rpdb/RPDB_Environment.h>
 #include <rpdb/RPDB_Database.h>
 
 #include <rpdb/RPDB_DatabaseSettingsController.h>
 
 #include <rpdb/RPDB_DatabaseCompactSettingsController.h>
-#include "rb_RPDB_DatabaseCompactSettingsController.h"
+#include <rpdb/RPDB_DatabaseSettingsController.h>
+#include <rpdb/RPDB_SettingsController.h>
+#include <rpdb/RPDB_DatabaseController.h>
+#include <rpdb/RPDB_Database.h>
 
 #include <rargs.h>
 
@@ -24,6 +34,7 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_Database;
 
@@ -85,7 +96,7 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_new(	int			argc,
 																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
 																						R_MatchAncestorInstance( rb_parent_database_settings_controller, rb_RPDB_DatabaseSettingsController ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment > ]",
+			"[ <parent environment> ]",
 			"[ <parent database controller> ]",
 			"[ <parent database> ]",
 			"[ <parent settings controller> ]",
@@ -93,18 +104,41 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_new(	int			argc,
 		)
 	);
 
-	RPDB_DatabaseSettingsController*	c_parent_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_parent_database_settings_controller );
+	//	if we were passed a database we want its settings controller
+	//	if we were passed an environment or database controller or settings controller we want its database settings controller
 
-	VALUE	rb_database_compact_settings_controller	= RUBY_RPDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( RPDB_DatabaseCompactSettingsController_new( c_parent_database_settings_controller ) );
+	if (		rb_parent_database == Qnil
+			&&	rb_parent_environment == Qnil
+			&&	rb_parent_database_controller == Qnil
+			&&	rb_parent_settings_controller == Qnil
+			&&	rb_parent_database_settings_controller == Qnil )	{
+		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_database_settings_controller;
+	if ( rb_parent_database_controller != Qnil ) {
+		rb_parent_environment	=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );			
+	}
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+	}
+	if ( rb_parent_settings_controller != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_SettingsController_databaseSettingsController( rb_parent_settings_controller );
+	}
+	if ( rb_parent_database != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_Database_settingsController( rb_parent_database );
+	}
+
+	RPDB_DatabaseSettingsController*	c_database_settings_controller;
+	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
+	RPDB_DatabaseCompactSettingsController*	c_database_compact_settings_controller	=	RPDB_DatabaseSettingsController_compactSettingsController( c_database_settings_controller );
+
+	VALUE	rb_database_compact_settings_controller	= RUBY_RPDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( c_database_compact_settings_controller );
+
+	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
 	
 	rb_obj_call_init(	rb_database_compact_settings_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_database_compact_settings_controller;		
 }

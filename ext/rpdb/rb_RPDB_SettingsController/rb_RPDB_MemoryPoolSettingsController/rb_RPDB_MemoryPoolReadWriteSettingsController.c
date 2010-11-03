@@ -11,12 +11,17 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_MemoryPoolReadWriteSettingsController.h"
+#include "rb_RPDB_MemoryPoolSettingsController.h"
+#include "rb_RPDB_SettingsController.h"
 
 #include "rb_RPDB_Environment.h"
+#include "rb_RPDB.h"
 
 #include <rpdb/RPDB_Environment.h>
 
 #include <rpdb/RPDB_MemoryPoolReadWriteSettingsController.h>
+#include <rpdb/RPDB_MemoryPoolSettingsController.h>
+#include <rpdb/RPDB_SettingsController.h>
 
 #include <rargs.h>
 
@@ -24,6 +29,7 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_MemoryPoolSettingsController;
@@ -147,33 +153,45 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_new(	int			argc,
 																													VALUE*	args,
 																													VALUE		rb_klass_self __attribute__ ((unused)) )	{
 
-	VALUE	rb_parent_environment																	=	Qnil;
-	VALUE	rb_parent_settings_controller													=	Qnil;
-	VALUE	rb_parent_memory_pool_settings_controller							=	Qnil;
+	VALUE	rb_parent_environment											=	Qnil;
+	VALUE	rb_parent_settings_controller							=	Qnil;
+	VALUE	rb_parent_memory_pool_settings_controller	=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
 			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
 																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
 																						R_MatchAncestorInstance( rb_parent_memory_pool_settings_controller, rb_RPDB_MemoryPoolSettingsController ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment > ]",
+			"[ <parent environment> ]",
 			"[ <parent settings controller> ]",
 			"[ <parent memory pool settings controller> ]"
 		)
 	);
+	
+	if (		rb_parent_environment == Qnil
+			&&	rb_parent_settings_controller == Qnil
+			&&	rb_parent_memory_pool_settings_controller == Qnil )	{			
+
+		rb_parent_environment = rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );	
+	}
+	if ( rb_parent_settings_controller != Qnil )	{
+		rb_parent_memory_pool_settings_controller = rb_RPDB_SettingsController_memoryPoolSettingsController( rb_parent_settings_controller );
+	}
 
 	RPDB_MemoryPoolSettingsController*	c_parent_memory_pool_settings_controller;
 	C_RPDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_parent_memory_pool_settings_controller, c_parent_memory_pool_settings_controller );
 
-	VALUE	rb_memory_pool_read_write_settings_controller	= RUBY_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( RPDB_MemoryPoolReadWriteSettingsController_new( c_parent_memory_pool_settings_controller ) );
+	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller	=	RPDB_MemoryPoolSettingsController_readWriteSettingsController( c_parent_memory_pool_settings_controller );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_memory_pool_settings_controller;
-	
+	VALUE	rb_memory_pool_read_write_settings_controller	= RUBY_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( c_memory_pool_read_write_settings_controller );
+
+	VALUE	argv[]	=	{ rb_parent_memory_pool_settings_controller };
 	rb_obj_call_init(	rb_memory_pool_read_write_settings_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_memory_pool_read_write_settings_controller;		
 }

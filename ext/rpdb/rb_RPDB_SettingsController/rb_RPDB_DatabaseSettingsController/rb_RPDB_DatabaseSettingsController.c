@@ -158,7 +158,7 @@ VALUE rb_RPDB_DatabaseSettingsController_new(	int			argc,
 																						R_MatchAncestorInstance( rb_parent_database, rb_RPDB_Database ),
 																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment > ]",
+			"[ <parent environment> ]",
 			"[ <parent database controller> ]",
 			"[ <parent database> ]",
 			"[ <parent settings controller> ]"

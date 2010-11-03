@@ -11,13 +11,17 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_FileSettingsController.h"
+#include "rb_RPDB_SettingsController.h"
 #include "rb_RPDB_FileVerbositySettingsController.h"
 
 #include "rb_RPDB_Environment.h"
+#include "rb_RPDB.h"
 
 #include <rpdb/RPDB_Environment.h>
 
 #include <rpdb/RPDB_FileVerbositySettingsController.h>
+#include <rpdb/RPDB_FileSettingsController.h>
+#include <rpdb/RPDB_SettingsController.h>
 
 #include <rargs.h>
 
@@ -25,6 +29,7 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB; 
 extern	VALUE	rb_RPDB_Environment; 
 extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_FileSettingsController;
@@ -74,20 +79,34 @@ VALUE rb_RPDB_FileVerbositySettingsController_new(	int			argc,
 																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
 																						R_MatchAncestorInstance( rb_parent_file_settings_controller, rb_RPDB_FileSettingsController ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment > ]",
+			"<no args>",
+			"[ <parent environment> ]",
 			"[ <parent settings controller> ]",
 			"[ <parent file settings controller> ]"
 		)
 	);
+	
+	if (		rb_parent_environment == Qnil
+			&&	rb_parent_settings_controller == Qnil
+			&&	rb_parent_file_settings_controller == Qnil )	{
+		rb_parent_environment = rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
+	
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+	}
+	if ( rb_parent_settings_controller != Qnil )	{
+		rb_parent_file_settings_controller = rb_RPDB_FileSettingsController_verbositySettingsController( rb_parent_settings_controller );
+	}
 
 	RPDB_FileSettingsController*	c_parent_file_settings_controller;
 	C_RPDB_FILE_SETTINGS_CONTROLLER( rb_parent_file_settings_controller, c_parent_file_settings_controller );
-
-	VALUE	rb_file_verbosity_settings_controller	= RUBY_RPDB_FILE_VERBOSITY_SETTINGS_CONTROLLER( RPDB_FileVerbositySettingsController_new( c_parent_file_settings_controller ) );
-
-	VALUE	argv[ 1 ];
 	
-	argv[ 0 ]	=	rb_parent_file_settings_controller;
+	RPDB_FileVerbositySettingsController*	c_file_verbosity_settings_controller	=	RPDB_FileSettingsController_verbositySettingsController( c_parent_file_settings_controller );
+	
+	VALUE	rb_file_verbosity_settings_controller	= RUBY_RPDB_FILE_VERBOSITY_SETTINGS_CONTROLLER( c_file_verbosity_settings_controller );
+
+	VALUE	argv[]	=	{ rb_parent_file_settings_controller };
 	
 	rb_obj_call_init(	rb_file_verbosity_settings_controller,
 					 1, 

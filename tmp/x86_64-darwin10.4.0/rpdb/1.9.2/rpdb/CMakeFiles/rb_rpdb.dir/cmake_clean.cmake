@@ -63,6 +63,7 @@ FILE(REMOVE_RECURSE
   "CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.o"
   "CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.o"
   "CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.o"
+  "CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o"
   "CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.o"
   "CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.o"
   "CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.o"

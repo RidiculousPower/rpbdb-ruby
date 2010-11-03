@@ -78,7 +78,7 @@ VALUE rb_RPDB_LogSequenceNumber_new(	int			argc,
 																						R_MatchAncestorInstance( rb_parent_log_controller, rb_RPDB_LogController ),
 																						R_MatchAncestorInstance( rb_parent_log, rb_RPDB_Log ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment > ]",
+			"[ <parent environment> ]",
 			"[ <parent log controller> ]",
 			"[ <parent log> ]"
 		)

@@ -12,10 +12,14 @@
 
 #include "rb_RPDB_LockDeadlockDetectorSettingsController.h"
 #include "rb_RPDB_LockSettingsController.h"
+#include "rb_RPDB_SettingsController.h"
+#include "rb_RPDB.h"
 
 #include "rb_RPDB_Environment.h"
 
 #include <rpdb/RPDB_Environment.h>
+#include <rpdb/RPDB_SettingsController.h>
+#include <rpdb/RPDB_LockSettingsController.h>
 #include <rpdb/RPDB_LockDeadlockDetectorSettingsController.h>
 #include <rpdb/RPDB_LockDeadlockDetectorVerbositySettingsController.h>
 
@@ -25,6 +29,7 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_LockSettingsController;
@@ -33,9 +38,9 @@ extern	VALUE	rb_RPDB_LockDeadlockDetectorVerbositySettingsController;
 
 void Init_RPDB_LockDeadlockDetectorSettingsController()	{
 
-	rb_RPDB_LockDeadlockDetectorSettingsController		=	rb_define_class_under(	rb_RPDB_SettingsController, 
-																					"LockDeadlockDetector",	
-																					rb_cObject );
+	rb_RPDB_LockDeadlockDetectorSettingsController		=	rb_define_class_under(	rb_RPDB_LockSettingsController, 
+																																							"DeadlockDetector",	
+																																							rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_LockDeadlockDetectorSettingsController, 	"new",																rb_RPDB_LockDeadlockDetectorSettingsController_new,														-1 	);
 	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"initialize",													rb_RPDB_LockDeadlockDetectorSettingsController_init,														-1 	);
@@ -88,24 +93,38 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_new(	int			argc,
 																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
 																						R_MatchAncestorInstance( rb_parent_lock_settings_controller, rb_RPDB_LockSettingsController ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment > ]",
+			"<no args>",
+			"[ <parent environment> ]",
 			"[ <parent settings controller> ]",
 			"[ <parent lock settings controller> ]"
 		)
 	);
+	
+	if (		rb_parent_environment == Qnil
+			&&	rb_parent_settings_controller == Qnil
+			&&	rb_parent_lock_settings_controller == Qnil )	{
+		rb_parent_environment = rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
+	
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+	}
+	if ( rb_parent_settings_controller != Qnil )	{
+		rb_parent_lock_settings_controller = rb_RPDB_SettingsController_lockSettingsController( rb_parent_settings_controller );
+	}
 
 	RPDB_LockSettingsController*	c_parent_lock_settings_controller;
 	C_RPDB_LOCK_SETTINGS_CONTROLLER( rb_parent_lock_settings_controller, c_parent_lock_settings_controller );
 	
-	VALUE	rb_lock_deadlock_detector_settings_controller	= RUBY_RPDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( RPDB_LockDeadlockDetectorSettingsController_new( c_parent_lock_settings_controller ) );
+	RPDB_LockDeadlockDetectorSettingsController*	c_lock_deadlock_settings_controller	=	RPDB_LockSettingsController_deadlockDetectorSettingsController( c_parent_lock_settings_controller );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_lock_settings_controller;
+	VALUE	rb_lock_deadlock_detector_settings_controller	= RUBY_RPDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( c_lock_deadlock_settings_controller );
+
+	VALUE	argv[]	=	{ rb_parent_lock_settings_controller };
 	
 	rb_obj_call_init(	rb_lock_deadlock_detector_settings_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_lock_deadlock_detector_settings_controller;		
 }

@@ -90,6 +90,8 @@
 
 #include "rb_RPDB_EnvironmentCacheSettingsController.h"
 
+#include "rb_RPDB_ErrorSettingsController.h"
+
 #include "rb_RPDB_FileSettingsController.h"
 #include "rb_RPDB_FileVerbositySettingsController.h"
 
@@ -105,6 +107,7 @@
 #include "rb_RPDB_MemoryPoolReadWriteSettingsController.h"
 #include "rb_RPDB_MemoryPoolFileSettingsController.h"
 #include "rb_RPDB_MemoryPoolFilePageSettingsController.h"
+#include "rb_RPDB_MemoryPoolFileCacheSettingsController.h"
 #include "rb_RPDB_MemoryPoolFileCachePrioritySettingsController.h"
 
 #include "rb_RPDB_MessageSettingsController.h"
@@ -223,6 +226,7 @@ VALUE	rb_RPDB_MemoryPoolSettingsController;
 VALUE	rb_RPDB_MemoryPoolReadWriteSettingsController;
 VALUE	rb_RPDB_MemoryPoolFileSettingsController;
 VALUE	rb_RPDB_MemoryPoolFilePageSettingsController;
+VALUE	rb_RPDB_MemoryPoolFileCacheSettingsController;
 VALUE	rb_RPDB_MemoryPoolFileCachePrioritySettingsController;
 VALUE	rb_RPDB_MessageSettingsController;
 VALUE	rb_RPDB_MutexSettingsController;
@@ -311,25 +315,55 @@ void Init_rpdb()	{
 		Init_RPDB_DatabaseEncryptionSettingsController();
 		Init_RPDB_DatabaseErrorSettingsController();
 		Init_RPDB_DatabaseJoinSettingsController();
-		Init_RPDB_DatabaseRecordReadWriteSettingsController();
 		Init_RPDB_DatabaseRecordSettingsController();
+		Init_RPDB_DatabaseRecordReadWriteSettingsController();
 		Init_RPDB_DatabaseRecordFixedLengthSettingsController();
+		Init_RPDB_DatabaseRecordVariableLengthSettingsController();
 		Init_RPDB_DatabaseSequenceSettingsController();
 		Init_RPDB_DatabaseTypeSettingsController();
 		Init_RPDB_DatabaseTypeBtreeSettingsController();
 		Init_RPDB_DatabaseTypeHashSettingsController();
 		Init_RPDB_DatabaseTypeQueueSettingsController();
 		Init_RPDB_DatabaseTypeRecnoSettingsController();
-		Init_RPDB_DatabaseRecordVariableLengthSettingsController();
 		Init_RPDB_DatabaseVerificationSettingsController();
 
 		Init_RPDB_DebugSettingsController();
 		Init_RPDB_DebugVerbositySettingsController();
 		
+		Init_RPDB_DirectorySettingsController();
+		
+		Init_RPDB_EnvironmentCacheSettingsController();
+		
+		Init_RPDB_ErrorSettingsController();
+		
+		Init_RPDB_FileSettingsController();
+		Init_RPDB_FileVerbositySettingsController();
+		
 		Init_RPDB_LogSettingsController();
+		
+		Init_RPDB_LockSettingsController();
+		Init_RPDB_LockDeadlockDetectorSettingsController();
+		Init_RPDB_LockDeadlockDetectorVerbositySettingsController();
+		
 		Init_RPDB_MemoryPoolSettingsController();
 		Init_RPDB_MemoryPoolFileSettingsController();
+		Init_RPDB_MemoryPoolFilePageSettingsController();
+		Init_RPDB_MemoryPoolFileCacheSettingsController();
+		Init_RPDB_MemoryPoolFileCachePrioritySettingsController();
 		Init_RPDB_MemoryPoolReadWriteSettingsController();
+		
+		Init_RPDB_MessageSettingsController();
+		
+		Init_RPDB_MutexSettingsController();
+		
+		Init_RPDB_ReplicationSettingsController();
+		Init_RPDB_ReplicationElectionSettingsController();
+		Init_RPDB_ReplicationTimeoutSettingsController();
+		Init_RPDB_ReplicationVerbositySettingsController();
+		
+		Init_RPDB_ThreadSettingsController();
+		
+		Init_RPDB_TransactionSettingsController();
 		
 		rb_RPDB_internal_initRuntimeStorages( rb_mRPDB );
 

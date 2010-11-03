@@ -40,9 +40,11 @@ extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_FileSettingsController;
 extern	VALUE	rb_RPDB_ErrorSettingsController;
 extern	VALUE	rb_RPDB_LogSettingsController;
+extern	VALUE	rb_RPDB_LockSettingsController;
 extern	VALUE	rb_RPDB_MemoryPoolSettingsController;
 extern	VALUE	rb_RPDB_DatabaseSettingsController;
 extern	VALUE	rb_RPDB_DirectorySettingsController;
+extern	VALUE	rb_RPDB_ReplicationSettingsController;
 
 void Init_RPDB_SettingsController()	{
 
@@ -275,6 +277,58 @@ VALUE rb_RPDB_SettingsController_logSettingsController( VALUE	rb_settings_contro
 	}
 
 	return rb_log_settings_controller;	
+}
+
+/****************************
+*  lock_settings_controller  *
+****************************/
+
+VALUE rb_RPDB_SettingsController_lockSettingsController( VALUE	rb_settings_controller )	{
+
+	VALUE	rb_lock_settings_controller	=	Qnil;
+
+	if ( ( rb_lock_settings_controller = rb_iv_get(	rb_settings_controller,
+																									RPDB_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER ) ) == Qnil )	{
+
+		RPDB_SettingsController*	c_settings_controller;
+		C_RPDB_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
+
+		RPDB_LockSettingsController*	c_lock_settings_controller	=	RPDB_SettingsController_lockSettingsController( c_settings_controller );
+
+		rb_lock_settings_controller	=	RUBY_RPDB_LOCK_SETTINGS_CONTROLLER( c_lock_settings_controller );
+		
+		rb_iv_set(	rb_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER,
+								rb_lock_settings_controller );
+	}
+
+	return rb_lock_settings_controller;	
+}
+
+/****************************
+*  replication_settings_controller  *
+****************************/
+
+VALUE rb_RPDB_SettingsController_replicationSettingsController( VALUE	rb_settings_controller )	{
+
+	VALUE	rb_replication_settings_controller	=	Qnil;
+
+	if ( ( rb_replication_settings_controller = rb_iv_get(	rb_settings_controller,
+																													RPDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER ) ) == Qnil )	{
+
+		RPDB_SettingsController*	c_settings_controller;
+		C_RPDB_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
+
+		RPDB_ReplicationSettingsController*	c_replication_settings_controller	=	RPDB_SettingsController_replicationSettingsController( c_settings_controller );
+
+		rb_replication_settings_controller	=	RUBY_RPDB_REPLICATION_SETTINGS_CONTROLLER( c_replication_settings_controller );
+		
+		rb_iv_set(	rb_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER,
+								rb_replication_settings_controller );
+	}
+
+	return rb_replication_settings_controller;	
 }
 
 /************************************

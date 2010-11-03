@@ -11,8 +11,11 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_MemoryPoolFileSettingsController.h"
+#include "rb_RPDB_MemoryPoolSettingsController.h"
+#include "rb_RPDB_SettingsController.h"
 
 #include "rb_RPDB_Environment.h"
+#include "rb_RPDB.h"
 
 #include <rpdb/RPDB_Environment.h>
 
@@ -21,6 +24,8 @@
 #include <rpdb/RPDB_MemoryPoolFileSettingsController.h>
 #include <rpdb/RPDB_MemoryPoolFileCachePrioritySettingsController.h>
 #include <rpdb/RPDB_MemoryPoolFilePageSettingsController.h>
+#include <rpdb/RPDB_MemoryPoolSettingsController.h>
+#include <rpdb/RPDB_SettingsController.h>
 
 #include <rargs.h>
 
@@ -28,11 +33,13 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_MemoryPoolFileSettingsController;
 extern	VALUE	rb_RPDB_Record;
 extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_MemoryPoolSettingsController;
+extern	VALUE	rb_RPDB_MemoryPoolFileCacheSettingsController;
 extern	VALUE	rb_RPDB_MemoryPoolFileCachePrioritySettingsController;
 extern	VALUE	rb_RPDB_MemoryPoolFilePageSettingsController;
 
@@ -66,7 +73,7 @@ void Init_RPDB_MemoryPoolFileSettingsController()	{
 	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_setMaxFileSizeInGBytes,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_cookie,																					0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_setCookie,																				0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_cachePrioritySettingsController,									0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_cacheSettingsController,									0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_pageSettingsController,													0 	);
 
 }
@@ -85,33 +92,46 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_new(	int			argc,
 																										VALUE*	args,
 																										VALUE		rb_klass_self __attribute__ ((unused)) )	{
 	
-	VALUE	rb_parent_environment																	=	Qnil;
-	VALUE	rb_parent_settings_controller													=	Qnil;
-	VALUE	rb_parent_memory_pool_settings_controller							=	Qnil;
+	VALUE	rb_parent_environment											=	Qnil;
+	VALUE	rb_parent_settings_controller							=	Qnil;
+	VALUE	rb_parent_memory_pool_settings_controller	=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
 			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
 																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
 																						R_MatchAncestorInstance( rb_parent_memory_pool_settings_controller, rb_RPDB_MemoryPoolSettingsController ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment > ]",
+			"[ <parent environment> ]",
 			"[ <parent settings controller> ]",
 			"[ <parent memory pool settings controller> ]"
 		)
 	);
+	
+	if (		rb_parent_environment == Qnil
+			&&	rb_parent_settings_controller == Qnil
+			&&	rb_parent_memory_pool_settings_controller == Qnil )	{			
+
+		rb_parent_environment = rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );	
+	}
+	if ( rb_parent_settings_controller != Qnil )	{
+		rb_parent_memory_pool_settings_controller = rb_RPDB_SettingsController_memoryPoolSettingsController( rb_parent_settings_controller );
+	}
 
 	RPDB_MemoryPoolSettingsController*	c_parent_memory_pool_settings_controller;
 	C_RPDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_parent_memory_pool_settings_controller, c_parent_memory_pool_settings_controller );
 
-	VALUE	rb_memory_pool_file_settings_controller	= RUBY_RPDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( RPDB_MemoryPoolFileSettingsController_new( c_parent_memory_pool_settings_controller ) );
+	RPDB_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller	=	RPDB_MemoryPoolSettingsController_fileSettingsController( c_parent_memory_pool_settings_controller );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_memory_pool_settings_controller;
+	VALUE	rb_memory_pool_file_settings_controller	= RUBY_RPDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( c_memory_pool_file_settings_controller );
+
+	VALUE	argv[]	=	{ rb_parent_memory_pool_settings_controller };
 	
 	rb_obj_call_init(	rb_memory_pool_file_settings_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_memory_pool_file_settings_controller;		
 }
@@ -414,15 +434,15 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_cookie( VALUE	rb_memory_pool_file
 *******************************************************************************************************************************************************************************************/
 
 /**************************
-*  priorityController  *
+*  cacheSettingsController  *
 **************************/
 
-VALUE rb_RPDB_MemoryPoolFileSettingsController_cachePrioritySettingsController( VALUE	rb_memory_pool_file_settings_controller )	{
+VALUE rb_RPDB_MemoryPoolFileSettingsController_cacheSettingsController( VALUE	rb_memory_pool_file_settings_controller )	{
 
 	RPDB_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
 	C_RPDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
-	return RUBY_RPDB_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER( RPDB_MemoryPoolFileSettingsController_cachePrioritySettingsController( c_memory_pool_file_settings_controller ) );
+	return RUBY_RPDB_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER( RPDB_MemoryPoolFileSettingsController_cacheSettingsController( c_memory_pool_file_settings_controller ) );
 }
 
 /**************************

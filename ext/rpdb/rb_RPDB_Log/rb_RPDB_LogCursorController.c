@@ -79,7 +79,7 @@ VALUE rb_RPDB_LogCursorController_new(	int			argc,
 			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
 																						R_MatchAncestorInstance( rb_parent_log_controller, rb_RPDB_LogController ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment > ]",
+			"[ <parent environment> ]",
 			"[ <parent log controller> ]"
 		)
 	);

@@ -13,6 +13,9 @@ VALUE rb_RPDB_SettingsController_new(	int				argc,
 VALUE rb_RPDB_SettingsController_init(	int				argc,
 																				VALUE*		args,
 																				VALUE			rb_settings_controller_self );
+
+	VALUE rb_RPDB_SettingsController_parentEnvironment(	VALUE	rb_settings_controller );
+
 	VALUE rb_RPDB_SettingsController_SHMkey( VALUE	rb_settings_controller );
 	VALUE rb_RPDB_SettingsController_setSHMkey(	VALUE	rb_settings_controller, 
 													VALUE	shm_key );
@@ -31,6 +34,6 @@ VALUE rb_RPDB_SettingsController_init(	int				argc,
 	VALUE rb_RPDB_SettingsController_databaseSettingsController( VALUE	rb_settings_controller );
 	VALUE rb_RPDB_SettingsController_mutexSettingsController( VALUE	rb_settings_controller );
 	VALUE rb_RPDB_SettingsController_directorySettingsController( VALUE	rb_settings_controller );
-	VALUE rb_RPDB_SettingsController_parentEnvironment(	VALUE	rb_settings_controller );
+VALUE rb_RPDB_SettingsController_replicationSettingsController( VALUE	rb_settings_controller );
 
 #endif

@@ -40,7 +40,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_init(	int				argc __attribute__ (
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_cookie( VALUE	rb_memory_pool_file_settings_controller );
 		VALUE rb_RPDB_MemoryPoolFileSettingsController_setCookie(	VALUE	rb_memory_pool_file_settings_controller, 
 																	VALUE	rb_cookie );
-	VALUE rb_RPDB_MemoryPoolFileSettingsController_cachePrioritySettingsController( VALUE	rb_memory_pool_file_settings_controller );
+	VALUE rb_RPDB_MemoryPoolFileSettingsController_cacheSettingsController( VALUE	rb_memory_pool_file_settings_controller );
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_pageSettingsController( VALUE	rb_memory_pool_file_settings_controller );
 
 #endif

@@ -90,7 +90,7 @@ VALUE rb_RPDB_LogController_new(	int			argc,
 		R_DescribeParameterSet(
 			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment > ]"
+			"[ <parent environment> ]"
 		)
 	);
 	

@@ -10,11 +10,23 @@
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
+#include "rb_RPDB_DatabaseCursorReadWriteSettingsController.h"
+#include "rb_RPDB_DatabaseCursorSettingsController.h"
+#include "rb_RPDB_DatabaseSettingsController.h"
+#include "rb_RPDB_SettingsController.h"
+#include "rb_RPDB_DatabaseController.h"
+#include "rb_RPDB_Database.h"
+#include "rb_RPDB.h"
+
 #include <rpdb/RPDB_Environment.h>
 #include <rpdb/RPDB_Database.h>
 
 #include <rpdb/RPDB_DatabaseCursorReadWriteSettingsController.h>
-#include "rb_RPDB_DatabaseCursorReadWriteSettingsController.h"
+#include <rpdb/RPDB_DatabaseCursorSettingsController.h>
+#include <rpdb/RPDB_DatabaseSettingsController.h>
+#include <rpdb/RPDB_SettingsController.h>
+#include <rpdb/RPDB_DatabaseController.h>
+#include <rpdb/RPDB_Database.h>
 
 #include <rargs.h>
 
@@ -22,11 +34,13 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_Database;
 extern	VALUE	rb_RPDB_DatabaseController;
 extern	VALUE	rb_RPDB_DatabaseCursorController;
 extern	VALUE	rb_RPDB_DatabaseCursor;
+extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_DatabaseSettingsController;
 extern	VALUE	rb_RPDB_DatabaseCursorSettingsController;
 extern	VALUE	rb_RPDB_DatabaseCursorReadWriteSettingsController;
@@ -85,6 +99,7 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_new(	int			argc,
 	VALUE	rb_parent_database																		=	Qnil;
 	VALUE	rb_parent_database_cursor_controller									=	Qnil;
 	VALUE	rb_parent_database_cursor															=	Qnil;
+	VALUE	rb_parent_settings_controller													=	Qnil;
 	VALUE	rb_parent_database_settings_controller								=	Qnil;
 	VALUE	rb_parent_database_cursor_settings_controller					=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
@@ -95,30 +110,59 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_new(	int			argc,
 																						R_MatchAncestorInstance( rb_parent_database_cursor_controller, rb_RPDB_DatabaseCursorController ),
 																						R_MatchAncestorInstance( rb_parent_database_cursor, rb_RPDB_DatabaseCursor ),
 																						R_MatchAncestorInstance( rb_parent_database_settings_controller, rb_RPDB_DatabaseSettingsController ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
 																						R_MatchAncestorInstance( rb_parent_database_cursor_settings_controller, rb_RPDB_DatabaseCursorSettingsController ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment > ]",
+			"[ <parent environment> ]",
 			"[ <parent database controller> ]",
 			"[ <parent database> ]",
 			"[ <parent database cursor controller> ]",
 			"[ <parent database cursor> ]",
+			"[ <parent settings controller> ]",
 			"[ <parent database settings controller> ]",
 			"[ <parent database cursor settings controller> ]"
 		)
 	);
-	
-	RPDB_DatabaseCursorSettingsController*	c_parent_database_cursor_settings_controller;
-	C_RPDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_parent_database_cursor_settings_controller, c_parent_database_cursor_settings_controller );
-	
-	VALUE	rb_database_cursor_record_read_write_settings_controller	=	RUBY_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( RPDB_DatabaseCursorReadWriteSettingsController_new( c_parent_database_cursor_settings_controller ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_database_cursor_settings_controller;
+	//	if we were passed a database we want its settings controller
+	//	if we were passed an environment or database controller or settings controller we want its database settings controller
+
+	if (		rb_parent_database == Qnil
+			&&	rb_parent_environment == Qnil
+			&&	rb_parent_database_controller == Qnil
+			&&	rb_parent_settings_controller == Qnil
+			&&	rb_parent_database_settings_controller == Qnil )	{
+		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
+
+	if ( rb_parent_database_controller != Qnil ) {
+		rb_parent_environment	=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );			
+	}
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+	}
+	if ( rb_parent_settings_controller != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_SettingsController_databaseSettingsController( rb_parent_settings_controller );
+	}
+	if ( rb_parent_database != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_Database_settingsController( rb_parent_database );
+	}
+	if ( rb_parent_database_settings_controller != Qnil )	{
+		rb_parent_database_cursor_settings_controller	=	rb_RPDB_DatabaseSettingsController_cursorSettingsController( rb_parent_database_settings_controller );
+	}
+
+	RPDB_DatabaseCursorSettingsController*	c_database_cursor_settings_controller;
+	C_RPDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_parent_database_cursor_settings_controller, c_database_cursor_settings_controller );		
+
+	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller	=	RPDB_DatabaseCursorSettingsController_readWriteSettingsController( c_database_cursor_settings_controller );
+
+	VALUE	rb_database_cursor_record_read_write_settings_controller	=	RUBY_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( c_database_cursor_read_write_settings_controller );
+
+	VALUE	argv[]	=	{ rb_parent_database_cursor_settings_controller };
 	
 	rb_obj_call_init(	rb_database_cursor_record_read_write_settings_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_database_cursor_record_read_write_settings_controller;		
 }
