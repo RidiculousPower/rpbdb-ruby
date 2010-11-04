@@ -656,11 +656,14 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
  /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Log.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LogController.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LogCursor.h
+ /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LogCursorController.h
  /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Log/rb_RPDB_Log.c
  /usr/local/include/db.h
  /usr/local/include/rargs.h
@@ -678,6 +681,8 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o
  /usr/local/include/rpdb/RPDB_ErrorController_internal.h
  /usr/local/include/rpdb/RPDB_Error_internal.h
  /usr/local/include/rpdb/RPDB_Log.h
+ /usr/local/include/rpdb/RPDB_LogCursor.h
+ /usr/local/include/rpdb/RPDB_LogCursorController.h
  /usr/local/include/rpdb/RPDB_LogSettingsController.h
  /usr/local/include/rpdb/RPDB_Record.h
  /usr/local/include/rpdb/RPDB_Types.h

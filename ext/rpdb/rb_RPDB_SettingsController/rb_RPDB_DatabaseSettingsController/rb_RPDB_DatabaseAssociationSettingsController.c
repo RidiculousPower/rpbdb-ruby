@@ -132,7 +132,6 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_new(	int			argc,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
-	
 	rb_obj_call_init(	rb_database_association_settings_controller,
 					 					1, 
 					 					argv );

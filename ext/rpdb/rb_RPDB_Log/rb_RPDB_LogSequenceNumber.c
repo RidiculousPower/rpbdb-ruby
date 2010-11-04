@@ -89,13 +89,15 @@ VALUE rb_RPDB_LogSequenceNumber_new(	int			argc,
 	
 	VALUE	rb_log_sequence_number	=	RUBY_RPDB_LOG_SEQUENCE_NUMBER( RPDB_LogSequenceNumber_new( c_parent_log ) );
 	
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_log;
-	
+	//	store reference to parent
+	rb_iv_set(	rb_log_sequence_number,
+							RPDB_RB_LOG_SEQUENCE_NUMBER_VARIABLE_PARENT_LOG,
+							rb_parent_log );
+
+	VALUE	argv[]	=	{ rb_parent_log };
 	rb_obj_call_init(	rb_log_sequence_number,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_log_sequence_number;	
 }

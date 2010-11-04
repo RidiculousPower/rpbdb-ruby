@@ -89,6 +89,10 @@ VALUE rb_RPDB_MessageSettingsController_new(	int			argc,
 
 	VALUE	rb_message_settings_controller	= RUBY_RPDB_MESSAGE_SETTINGS_CONTROLLER( RPDB_SettingsController_messageSettingsController( c_parent_settings_controller ) );
 
+	rb_iv_set(	rb_message_settings_controller,
+							RPDB_RB_MESSAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							rb_parent_environment );
+
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_message_settings_controller,
 										 1, 

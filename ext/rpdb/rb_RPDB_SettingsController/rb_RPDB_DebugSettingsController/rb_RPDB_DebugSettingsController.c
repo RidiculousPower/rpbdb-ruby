@@ -126,9 +126,13 @@ VALUE rb_RPDB_DebugSettingsController_new(	int			argc,
 	RPDB_DebugSettingsController*	c_debug_settings_controller	=	RPDB_SettingsController_debugSettingsController( c_parent_settings_controller );
 	
 	VALUE	rb_debug_settings_controller	= RUBY_RPDB_DEBUG_SETTINGS_CONTROLLER( c_debug_settings_controller );
+
+	//	store reference to parent
+	rb_iv_set(	rb_debug_settings_controller,
+							RPDB_RB_DEBUG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							rb_parent_environment );
 	
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
-	
 	rb_obj_call_init(	rb_debug_settings_controller,
 					 1, 
 					 argv );

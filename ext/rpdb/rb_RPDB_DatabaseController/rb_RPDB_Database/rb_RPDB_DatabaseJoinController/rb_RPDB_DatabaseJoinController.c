@@ -105,6 +105,7 @@ VALUE rb_RPDB_DatabaseJoinController_new(	int			argc,
 	C_RPDB_DATABASE( rb_parent_database, c_parent_database );
 	VALUE	rb_join_controller	=	RUBY_RPDB_DATABASE_JOIN_CONTROLLER( RPDB_DatabaseJoinController_new( c_parent_database ) );
 
+	//	store reference to parent
 	rb_iv_set(	rb_join_controller,
 							RPDB_RB_ALL_VARIABLE_PARENT_DATABASE,
 							rb_parent_database );

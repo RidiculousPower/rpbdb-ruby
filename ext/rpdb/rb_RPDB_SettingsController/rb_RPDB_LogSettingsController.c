@@ -134,8 +134,11 @@ VALUE rb_RPDB_LogSettingsController_new(	int			argc,
 
 	VALUE	rb_log_settings_controller	= RUBY_RPDB_LOG_SETTINGS_CONTROLLER( RPDB_LogSettingsController_new( c_parent_settings_controller ) );
 
+	rb_iv_set(	rb_log_settings_controller,
+							RPDB_RB_LOG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							rb_parent_environment );
+
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
-	
 	rb_obj_call_init(	rb_log_settings_controller,
 										 1, 
 										 argv );

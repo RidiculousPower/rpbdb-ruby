@@ -131,13 +131,15 @@ VALUE rb_RPDB_LockController_new(	int			argc,
 	
 	VALUE	rb_lock_controller	=	RUBY_RPDB_LOCK_CONTROLLER( RPDB_LockController_new( c_parent_environment ) );
 	
-	VALUE	argv[ 1 ];
+	//	store reference to parent
+	rb_iv_set(	rb_lock_controller,
+							RPDB_RB_LOCK_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
+							rb_parent_environment );
 	
-	argv[ 0 ]	=	rb_parent_environment;
-	
+	VALUE	argv[]	=	{ rb_parent_environment };
 	rb_obj_call_init(	rb_lock_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_lock_controller;	
 }

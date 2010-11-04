@@ -102,8 +102,11 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_new(	int			argc,
 
 	VALUE	rb_environment_cache_settings_controller	= RUBY_RPDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( RPDB_SettingsController_cacheSettingsController( c_parent_settings_controller ) );
 
+	rb_iv_set(	rb_environment_cache_settings_controller,
+							RPDB_RB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							rb_parent_environment );
+
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
-	
 	rb_obj_call_init(	rb_environment_cache_settings_controller,
 									 1, 
 									 argv );

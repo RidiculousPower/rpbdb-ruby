@@ -156,15 +156,19 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_new(	int			argc,
 
 	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller	=	RPDB_DatabaseCursorSettingsController_readWriteSettingsController( c_database_cursor_settings_controller );
 
-	VALUE	rb_database_cursor_record_read_write_settings_controller	=	RUBY_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( c_database_cursor_read_write_settings_controller );
+	VALUE	rb_database_cursor_read_write_settings_controller	=	RUBY_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( c_database_cursor_read_write_settings_controller );
+
+	//	store reference to parent
+	rb_iv_set(	rb_database_cursor_read_write_settings_controller,
+							RPDB_RB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_SETTINGS_CONTROLLER,
+							rb_parent_database_cursor_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_cursor_settings_controller };
-	
-	rb_obj_call_init(	rb_database_cursor_record_read_write_settings_controller,
+	rb_obj_call_init(	rb_database_cursor_read_write_settings_controller,
 										 1, 
 										 argv );
 	
-	return rb_database_cursor_record_read_write_settings_controller;		
+	return rb_database_cursor_read_write_settings_controller;		
 }
 
 /************

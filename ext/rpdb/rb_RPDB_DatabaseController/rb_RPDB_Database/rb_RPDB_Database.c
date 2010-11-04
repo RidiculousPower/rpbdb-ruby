@@ -258,7 +258,7 @@ VALUE rb_RPDB_Database_new(	int			argc,
 	
 	VALUE	rb_database	=	RUBY_RPDB_DATABASE( c_database );
 
-	//	store reference to parent database controller
+	//	store reference to parent
 	rb_iv_set(	rb_database,
 							RPDB_RB_DATABASE_VARIABLE_PARENT_DATABASE_CONTROLLER,
 							rb_parent_database_controller );

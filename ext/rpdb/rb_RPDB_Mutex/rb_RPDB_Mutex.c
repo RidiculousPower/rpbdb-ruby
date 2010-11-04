@@ -85,13 +85,15 @@ VALUE rb_RPDB_Mutex_new(	int			argc,
 	
 	VALUE	rb_mutex	=	RUBY_RPDB_MUTEX( RPDB_Mutex_new( c_parent_mutex_controller ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_mutex_controller;
-	
+	//	store reference to parent
+	rb_iv_set(	rb_mutex,
+							RPDB_RB_MUTEX_VARIABLE_PARENT_MUTEX_CONTROLLER,
+							rb_parent_mutex_controller );
+
+	VALUE	argv[]	=	{ rb_parent_mutex_controller };
 	rb_obj_call_init(	rb_mutex,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_mutex;	
 }

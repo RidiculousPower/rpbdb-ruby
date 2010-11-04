@@ -75,10 +75,12 @@ VALUE rb_RPDB_Record_new(	int			argc,
 	
 	VALUE	rb_record	=	RUBY_RPDB_RECORD( RPDB_Record_new( c_parent_database ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_database;
-	
+	//	store reference to parent
+	rb_iv_set(	rb_record,
+							RPDB_RB_RECORD_VARIABLE_PARENT_DATABASE,
+							rb_parent_database );
+
+	VALUE	argv[]	=	{ rb_parent_database };
 	rb_obj_call_init(	rb_record,
 					 1, 
 					 argv );

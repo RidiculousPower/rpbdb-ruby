@@ -120,7 +120,7 @@ VALUE rb_RPDB_DatabaseController_new(	int			argc,
 
 	VALUE	rb_database_controller	=	RUBY_RPDB_DATABASE_CONTROLLER( c_database_controller );
 
-	//	store reference to parent environment
+	//	store reference to parent
 	rb_iv_set(	rb_database_controller,
 							RPDB_RB_ALL_VARIABLE_PARENT_ENVIRONMENT,
 							rb_parent_environment );

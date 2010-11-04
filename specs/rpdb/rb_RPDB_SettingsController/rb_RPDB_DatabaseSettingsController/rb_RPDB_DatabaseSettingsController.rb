@@ -51,5 +51,197 @@ describe RPDB::Environment::Settings::Database do
     RPDB::Environment::Settings::Database.new.should_not == nil
   end
 
+  ########################
+  #  parent_environment  #
+  ########################
+
+  it "" do
+    Fail
+  end
+
+  #####################
+  #  parent_database  #
+  #####################
+
+  it "" do
+    Fail
+  end
+
+  ##############
+  #  checksum  #
+  ##############
+
+  it "" do
+    Fail
+  end
+
+  	######################
+  	#  turn_checksum_on  #
+  	######################
+
+    it "" do
+      Fail
+    end
+
+  	#######################
+  	#  turn_checksum_off  #
+  	#######################
+
+    it "" do
+      Fail
+    end
+
+  ##########
+  #  logs  #
+  ##########
+
+  it "" do
+    Fail
+  end
+
+  	##################
+  	#  turn_logs_on  #
+  	##################
+
+    it "" do
+      Fail
+    end
+
+  	###################
+  	#  turn_logs_off  #
+  	###################
+
+    it "" do
+      Fail
+    end
+
+  ##############
+  #  pagesize  #
+  ##############
+
+  it "" do
+    Fail
+  end
+
+  ##################
+  #  set_pagesize  #
+  ##################
+
+  it "" do
+    Fail
+  end
+
+  ####################
+  #  is_big_endian?  #
+  ####################
+
+  it "" do
+    Fail
+  end
+
+  ##################################
+  #  set_byte_order_to_big_endian  #
+  ##################################
+
+  it "" do
+    Fail
+  end
+
+  #######################
+  #  is_little_endian?  #
+  #######################
+
+  it "" do
+    Fail
+  end
+
+  #####################################
+  #  set_byte_order_to_little_endian  #
+  #####################################
+
+  it "" do
+    Fail
+  end
+
+  #####################
+  #  is_byteswapped?  #
+  #####################
+
+  it "" do
+    Fail
+  end
+  
+  ###############################
+  #  error_settings_controller  #
+  ###############################
+
+  it "" do
+    Fail
+  end
+
+  #####################################
+  #  association_settings_controller  #
+  #####################################
+
+  it "" do
+    Fail
+  end
+ 
+  #####################
+  #  join_controller  #
+  #####################
+
+  it "" do
+    Fail
+  end
+
+  ######################
+  #  cache_controller  #
+  ######################
+
+  it "" do
+    Fail
+  end
+
+  #######################
+  #  cursor_controller  #
+  #######################
+
+  it "" do
+    Fail
+  end
+
+  ##################################
+  #  sequence_settings_controller  #
+  ##################################
+
+  it "" do
+    Fail
+  end
+
+  ##############################
+  #  type_settings_controller  #
+  ##############################
+
+  it "" do
+    Fail
+  end
+
+  ####################################
+  #  read_write_settings_controller  #
+  ####################################
+
+  it "" do
+    Fail
+  end
+
+  ################################
+  #  record_settings_controller  #
+  ################################
+
+  it "" do
+    Fail
+  end
+
 end
 

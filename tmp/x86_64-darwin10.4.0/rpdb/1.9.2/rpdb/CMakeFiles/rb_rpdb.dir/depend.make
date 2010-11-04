@@ -655,11 +655,14 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /Users/asher/.rvm/rubie
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/ruby.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/ruby/st.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Log.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LogController.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LogCursor.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LogCursorController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Log/rb_RPDB_Log.c
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /usr/local/include/db.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /usr/local/include/rargs.h
@@ -677,6 +680,8 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /usr/local/include/rpdb
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /usr/local/include/rpdb/RPDB_ErrorController_internal.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /usr/local/include/rpdb/RPDB_Error_internal.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /usr/local/include/rpdb/RPDB_Log.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /usr/local/include/rpdb/RPDB_LogCursor.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /usr/local/include/rpdb/RPDB_LogCursorController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /usr/local/include/rpdb/RPDB_LogSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /usr/local/include/rpdb/RPDB_Record.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o: /usr/local/include/rpdb/RPDB_Types.h

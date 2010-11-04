@@ -85,10 +85,13 @@ VALUE rb_RPDB_MemoryPoolFile_new(	int			argc,
 	C_RPDB_MEMORY_POOL_FILE_CONTROLLER( rb_parent_memory_pool_file_controller, c_parent_memory_pool_file_controller );
 	
 	VALUE	rb_memory_pool_file		=	RUBY_RPDB_MEMORY_POOL_FILE( RPDB_MemoryPoolFile_new( c_parent_memory_pool_file_controller ) );	
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_memory_pool_file_controller;
-	
+
+	//	store reference to parent
+	rb_iv_set(	rb_memory_pool_file,
+							RPDB_RB_MEMORY_POOL_FILE_VARIABLE_PARENT_MEMORY_POOL_FILE_CONTROLLER,
+							rb_parent_memory_pool_file_controller );
+
+	VALUE	argv[]	=	{ rb_parent_memory_pool_file_controller };
 	rb_obj_call_init(	rb_memory_pool_file,
 					 					1, 
 					 					argv );

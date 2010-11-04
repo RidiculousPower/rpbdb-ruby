@@ -93,15 +93,20 @@ VALUE rb_RPDB_MemoryPoolFilePage_new( int			argc,
 	RPDB_MemoryPoolFilePageController*	c_memory_pool_file_page_controller;
 	C_RPDB_MEMORY_POOL_FILE_PAGE_CONTROLLER( rb_parent_memory_pool_file_page_controller, c_memory_pool_file_page_controller );
 
-	VALUE	rb_memory_pool_file_page	=	RUBY_RPDB_MEMORY_POOL_FILE_PAGE( RPDB_MemoryPoolFilePage_new( c_memory_pool_file_page_controller ) );
+	//	FIX - this is probably not correct
+	RPDB_MemoryPoolFilePage*	c_memory_pool_file_page	=	RPDB_MemoryPoolFilePage_new( c_memory_pool_file_page_controller );
+
+	VALUE	rb_memory_pool_file_page	=	RUBY_RPDB_MEMORY_POOL_FILE_PAGE( c_memory_pool_file_page );
 	
-	VALUE	argv[ 1 ];
+	//	store reference to parent
+	rb_iv_set(	rb_memory_pool_file_page,
+							RPDB_RB_MEMORY_POOL_FILE_PAGE_VARIABLE_PARENT_MEMORY_POOL_FILE_PAGE_CONTROLLER,
+							rb_parent_memory_pool_file_page_controller );
 	
-	argv[ 0 ]	=	rb_parent_memory_pool_file_page_controller;
-	
+	VALUE	argv[]	=	{ rb_parent_memory_pool_file_page_controller };
 	rb_obj_call_init(	rb_memory_pool_file_page,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_memory_pool_file_page;	
 }

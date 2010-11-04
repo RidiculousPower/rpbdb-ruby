@@ -135,9 +135,13 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_new(	int			argc,
 	RPDB_DatabaseTypeHashSettingsController*	c_database_type_hash_settings_controller	=	RPDB_DatabaseTypeSettingsController_hashController( c_database_type_settings_controller );
 
 	VALUE	rb_database_type_hash_settings_controller	= RUBY_RPDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( c_database_type_hash_settings_controller );
+
+	//	store reference to parent
+	rb_iv_set(	rb_database_type_hash_settings_controller,
+							RPDB_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER,
+							rb_parent_database_type_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_database_type_settings_controller };
-	
 	rb_obj_call_init(	rb_database_type_hash_settings_controller,
 										 1, 
 										 argv );

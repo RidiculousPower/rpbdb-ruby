@@ -98,11 +98,13 @@ VALUE rb_RPDB_LogController_new(	int			argc,
 	C_RPDB_ENVIRONMENT( rb_parent_environment, c_parent_environment );
 	
 	VALUE	rb_log_controller	=	RUBY_RPDB_LOG_CONTROLLER( RPDB_LogController_new( c_parent_environment ) );
+
+	//	store reference to parent
+	rb_iv_set(	rb_log_controller,
+							RPDB_RB_LOG_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
+							rb_parent_environment );
 	
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_environment;
-	
+	VALUE	argv[]	=	{ rb_parent_environment };
 	rb_obj_call_init(	rb_log_controller,
 					 1, 
 					 argv );

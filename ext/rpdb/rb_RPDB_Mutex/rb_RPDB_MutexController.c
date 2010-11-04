@@ -80,10 +80,12 @@ VALUE	rb_RPDB_MutexController_new(	int			argc,
 	
 	VALUE	rb_mutex_controller	=	RUBY_RPDB_MUTEX_CONTROLLER( RPDB_MutexController_new( c_parent_environment ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_environment;
-	
+	//	store reference to parent
+	rb_iv_set(	rb_mutex_controller,
+							RPDB_RB_MUTEX_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
+							rb_parent_environment );
+
+	VALUE	argv[]	=	{ rb_parent_environment };
 	rb_obj_call_init(	rb_mutex_controller,
 										 1, 
 										 argv );

@@ -132,7 +132,7 @@ VALUE rb_RPDB_SettingsController_new(	int				argc,
 	VALUE	rb_settings_controller	= RUBY_RPDB_SETTINGS_CONTROLLER( settings_controller );
 
 	rb_iv_set(	rb_settings_controller,
-							RPDB_RB_ALL_VARIABLE_PARENT_ENVIRONMENT,
+							RPDB_RB_SETTINGS_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_environment };

@@ -91,15 +91,21 @@ VALUE rb_RPDB_MemoryPoolFilePageController_new(	int			argc,
 	RPDB_MemoryPoolFile*	c_parent_memory_pool_file;
 	C_RPDB_MEMORY_POOL_FILE( rb_parent_memory_pool_file, c_parent_memory_pool_file );
 	
-	VALUE	rb_memory_pool_file_page_controller	=	RUBY_RPDB_MEMORY_POOL_FILE_PAGE_CONTROLLER( RPDB_MemoryPoolFilePageController_new( c_parent_memory_pool_file ) );
-
-	VALUE	argv[ 1 ];
+	//	FIX - should probably open page controller through file
+	RPDB_MemoryPoolFilePageController*	c_memory_pool_file_page_controller	=	RPDB_MemoryPoolFilePageController_new( c_parent_memory_pool_file );
 	
-	argv[ 0 ]	=	rb_parent_memory_pool_file;
+	VALUE	rb_memory_pool_file_page_controller	=	RUBY_RPDB_MEMORY_POOL_FILE_PAGE_CONTROLLER( c_memory_pool_file_page_controller );
+
+	//	store reference to parent
+	rb_iv_set(	rb_memory_pool_file_page_controller,
+							RPDB_RB_MEMORY_POOL_FILE_PAGE_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_FILE,
+							rb_parent_memory_pool_file );
+
+	VALUE	argv[]	=	{ rb_parent_memory_pool_file };
 	
 	rb_obj_call_init(	rb_memory_pool_file_page_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_memory_pool_file_page_controller;	
 }

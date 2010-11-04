@@ -21,7 +21,7 @@ VALUE rb_RPDB_DatabaseSettingsController_init(	int				argc __attribute__ ((unuse
 		VALUE rb_RPDB_DatabaseSettingsController_turnTransactionDurabilityOn( VALUE	rb_database_settings_controller );
 		VALUE rb_RPDB_DatabaseSettingsController_turnTransactionDurabilityOff( VALUE	rb_database_settings_controller );
 	VALUE rb_RPDB_DatabaseSettingsController_pagesize( VALUE	rb_database_settings_controller );
-	VALUE rb_RPDB_DatabaseSettingsController_setPageSize(	VALUE	rb_database_settings_controller, 
+	VALUE rb_RPDB_DatabaseSettingsController_setPagesize(	VALUE	rb_database_settings_controller, 
 															VALUE	rb_pagesize );
 	VALUE rb_RPDB_DatabaseSettingsController_isBigEndian( VALUE	rb_database_settings_controller );
 	VALUE rb_RPDB_DatabaseSettingsController_setByteOrderToBigEndian( VALUE	rb_database_settings_controller );

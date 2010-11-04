@@ -77,10 +77,11 @@ VALUE rb_RPDB_Transaction_new(	int			argc,
 	
 	VALUE	rb_transaction	=	RUBY_RPDB_TRANSACTION( RPDB_Transaction_new( c_parent_transaction_controller ) );
 	
-	VALUE	argv[ 1 ];
+	rb_iv_set(	rb_transaction,
+							RPDB_RB_TRANSACTION_VARIABLE_PARENT_TRANSACTION_CONTROLLER,
+							rb_parent_transaction_controller );
 	
-	argv[ 0 ]	=	rb_parent_transaction_controller;
-	
+	VALUE	argv[]	=	{ rb_parent_transaction_controller };
 	rb_obj_call_init(	rb_transaction,
 					 1, 
 					 argv );

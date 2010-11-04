@@ -106,8 +106,11 @@ VALUE rb_RPDB_FileVerbositySettingsController_new(	int			argc,
 	
 	VALUE	rb_file_verbosity_settings_controller	= RUBY_RPDB_FILE_VERBOSITY_SETTINGS_CONTROLLER( c_file_verbosity_settings_controller );
 
+	rb_iv_set(	rb_file_verbosity_settings_controller,
+							RPDB_RB_FILE_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_FILE_SETTINGS_CONTROLLER,
+							rb_parent_file_settings_controller );
+
 	VALUE	argv[]	=	{ rb_parent_file_settings_controller };
-	
 	rb_obj_call_init(	rb_file_verbosity_settings_controller,
 					 1, 
 					 argv );

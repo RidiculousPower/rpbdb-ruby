@@ -88,14 +88,16 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_new(	int			argc,
 	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_parent_database_settings_controller );
 	
 	VALUE	rb_database_encryption_settings_controller	= RUBY_RPDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( RPDB_DatabaseEncryptionSettingsController_new( c_parent_database_settings_controller ) );
+
+	//	store reference to parent
+	rb_iv_set(	rb_database_encryption_settings_controller,
+							RPDB_RB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+							rb_parent_database_settings_controller );
 	
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_database_settings_controller;
-	
+	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
 	rb_obj_call_init(	rb_database_encryption_settings_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_database_encryption_settings_controller;		
 }

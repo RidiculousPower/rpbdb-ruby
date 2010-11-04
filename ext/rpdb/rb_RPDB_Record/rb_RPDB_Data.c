@@ -73,14 +73,16 @@ VALUE rb_RPDB_Data_new(	int			argc,
 	C_RPDB_RECORD( rb_parent_record, c_parent_record );
 	
 	VALUE	rb_data	=	RUBY_RPDB_DATA( RPDB_Data_new( c_parent_record ) );
+	
+	//	store reference to parent
+	rb_iv_set(	rb_data,
+							RPDB_RB_DATA_VARIABLE_PARENT_RECORD,
+							rb_parent_record );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_record;
-	
+	VALUE	argv[]	=	{ rb_parent_record };
 	rb_obj_call_init(	rb_data,
-						1, 
-						argv );
+										1, 
+										argv );
 	
 	return rb_data;		
 }

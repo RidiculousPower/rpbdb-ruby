@@ -145,8 +145,12 @@ VALUE rb_RPDB_DatabaseCursorCacheSettingsController_new(	int			argc,
 
 	VALUE	rb_database_cursor_cache_settings_controller	= RUBY_RPDB_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER( c_database_cursor_cache_settings_controller );
 	
-	VALUE	argv[]	=	{ rb_parent_database_cursor_settings_controller };
+	//	store reference to parent
+	rb_iv_set(	rb_database_cursor_cache_settings_controller,
+							RPDB_RB_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_SETTINGS_CONTROLLER,
+							rb_parent_database_cursor_settings_controller );
 	
+	VALUE	argv[]	=	{ rb_parent_database_cursor_settings_controller };
 	rb_obj_call_init(	rb_database_cursor_cache_settings_controller,
 										 1, 
 										 argv );

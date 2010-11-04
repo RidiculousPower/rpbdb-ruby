@@ -140,9 +140,13 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_new(	int			argc,
 	RPDB_DatabaseTypeRecnoSettingsController*	c_database_type_recno_settings_controller	=	RPDB_DatabaseTypeSettingsController_recnoController( c_database_type_settings_controller );
 
 	VALUE	rb_database_type_recno_settings_controller	= RUBY_RPDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( c_database_type_recno_settings_controller );
+
+	//	store reference to parent
+	rb_iv_set(	rb_database_type_recno_settings_controller,
+							RPDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER,
+							rb_parent_database_type_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_database_type_settings_controller };
-	
 	rb_obj_call_init(	rb_database_type_recno_settings_controller,
 										 1, 
 										 argv );

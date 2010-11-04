@@ -73,10 +73,12 @@ VALUE rb_RPDB_Key_new(	int			argc,
 	
 	VALUE	rb_key	=	RUBY_RPDB_KEY( RPDB_Key_new( c_parent_record ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_record;
-	
+	//	store reference to parent
+	rb_iv_set(	rb_key,
+							RPDB_RB_KEY_VARIABLE_PARENT_RECORD,
+							rb_parent_record );
+
+	VALUE	argv[]	=	{ rb_parent_record };
 	rb_obj_call_init(	rb_key,
 					 1, 
 					 argv );

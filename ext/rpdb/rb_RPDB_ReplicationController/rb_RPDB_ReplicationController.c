@@ -89,13 +89,15 @@ VALUE rb_RPDB_ReplicationController_new(	int			argc,
 	
 	VALUE	rb_replication_controller	=	RUBY_RPDB_REPLICATION_CONTROLLER( RPDB_ReplicationController_new( c_parent_environment ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_environment;
-	
+	//	store reference to parent
+	rb_iv_set(	rb_replication_controller,
+							RPDB_RB_REPLICATION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
+							rb_parent_environment );
+
+	VALUE	argv[]	=	{ rb_parent_environment };
 	rb_obj_call_init(	rb_replication_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_replication_controller;		
 }

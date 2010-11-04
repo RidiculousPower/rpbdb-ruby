@@ -89,10 +89,12 @@ VALUE rb_RPDB_LogCursorController_new(	int			argc,
 	
 	VALUE	rb_log_cursor_controller	=	RUBY_RPDB_LOG_CURSOR_CONTROLLER( RPDB_LogCursorController_new( c_parent_log_controller ) );	
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_log_controller;
-	
+	//	store reference to parent
+	rb_iv_set(	rb_log_cursor_controller,
+							RPDB_RB_LOG_CURSOR_VARIABLE_PARENT_LOG_CONTROLLER,
+							rb_parent_log_controller );
+
+	VALUE	argv[]	=	{ rb_parent_log_controller };
 	rb_obj_call_init(	rb_log_cursor_controller,
 					 1, 
 					 argv );

@@ -80,10 +80,12 @@ VALUE rb_RPDB_RemoteSite_new(	int			argc,
 	
 	VALUE	rb_remote_site	=	RUBY_RPDB_REMOTE_SITE( RPDB_RemoteSite_new( c_parent_replication_controller ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_replication_controller;
-	
+	//	store reference to parent
+	rb_iv_set(	rb_remote_site,
+							RPDB_RB_REMOTE_SITE_VARIABLE_PARENT_REPLICATION_CONTROLLER,
+							rb_parent_replication_controller );
+
+	VALUE	argv[]	=	{ rb_parent_replication_controller };
 	rb_obj_call_init(	rb_remote_site,
 					 1, 
 					 argv );

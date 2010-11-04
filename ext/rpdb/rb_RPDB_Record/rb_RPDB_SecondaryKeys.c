@@ -73,13 +73,15 @@ VALUE rb_RPDB_SecondaryKeys_new(	int			argc,
 	
 	VALUE	rb_secondary_keys	=	RUBY_RPDB_SECONDARY_KEYS( RPDB_SecondaryKeys_new( c_parent_record ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_record;
-	
+	//	store reference to parent
+	rb_iv_set(	rb_secondary_keys,
+							RPDB_RB_SECONDARY_KEYS_VARIABLE_PARENT_RECORD,
+							rb_parent_record );
+
+	VALUE	argv[]	=	{ rb_parent_record };
 	rb_obj_call_init(	rb_secondary_keys,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_secondary_keys;	
 }

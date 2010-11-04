@@ -71,7 +71,7 @@ VALUE rb_RPDB_MemoryPoolFileController_new(	int			argc,
 																						VALUE*	args,
 																						VALUE		rb_klass_self __attribute__ ((unused)) )	{
 
-	VALUE	rb_parent_environment						=	Qnil;
+	VALUE	rb_parent_environment										=	Qnil;
 	VALUE	rb_parent_memory_pool_controller				=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
@@ -87,14 +87,16 @@ VALUE rb_RPDB_MemoryPoolFileController_new(	int			argc,
 	C_RPDB_MEMORY_POOL_CONTROLLER( rb_parent_memory_pool_controller, c_parent_memory_pool_controller );
 
 	VALUE	rb_memory_pool_file_controller	=	RUBY_RPDB_MEMORY_POOL_FILE_CONTROLLER( RPDB_MemoryPoolFileController_new( c_parent_memory_pool_controller ) );
+
+	//	store reference to parent
+	rb_iv_set(	rb_memory_pool_file_controller,
+							RPDB_RB_MEMORY_POOL_FILE_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_CONTROLLER,
+							rb_parent_memory_pool_controller );
 	
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_memory_pool_controller;
-	
+	VALUE	argv[]	=	{ rb_parent_memory_pool_controller };
 	rb_obj_call_init(	rb_memory_pool_file_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_memory_pool_file_controller;	
 }

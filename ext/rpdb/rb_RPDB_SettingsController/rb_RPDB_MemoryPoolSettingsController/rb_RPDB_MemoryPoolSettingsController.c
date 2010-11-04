@@ -119,6 +119,10 @@ VALUE rb_RPDB_MemoryPoolSettingsController_new(	int			argc,
 
 	VALUE	rb_memory_pool_settings_controller	=	RUBY_RPDB_MEMORY_POOL_SETTINGS_CONTROLLER( c_memory_pool_settings_controller );
 
+	rb_iv_set(	rb_memory_pool_settings_controller,
+							RPDB_RB_MEMORY_POOL_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							rb_parent_environment );
+
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_memory_pool_settings_controller,
 										1, 

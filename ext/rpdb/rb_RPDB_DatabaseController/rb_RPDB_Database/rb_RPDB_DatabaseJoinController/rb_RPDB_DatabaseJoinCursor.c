@@ -97,13 +97,15 @@ VALUE rb_RPDB_DatabaseJoinCursor_new(	int			argc,
 	
 	VALUE	rb_join_cursor	=	RUBY_RPDB_DATABASE_JOIN_CURSOR( RPDB_DatabaseJoinCursor_new( c_parent_join_controller ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_database_join_controller;
-	
+	//	store reference to parent
+	rb_iv_set(	rb_join_cursor,
+							RPDB_RB_JOIN_CURSOR_VARIABLE_PARENT_JOIN_CONTROLLER,
+							rb_parent_database_join_controller );
+
+	VALUE	argv[]	=	{ rb_parent_database_join_controller };
 	rb_obj_call_init(	rb_join_cursor,
-						1, 
-						argv );
+										1, 
+										argv );
 	
 	return rb_join_cursor;	
 }

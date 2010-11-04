@@ -81,11 +81,11 @@ void Init_RPDB_DatabaseSettingsController()	{
                     					
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"pagesize",														rb_RPDB_DatabaseSettingsController_pagesize,											0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"page_size",													"pagesize"	);
-	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"pagesize=",													rb_RPDB_DatabaseSettingsController_setPageSize,										1 	);
+	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"pagesize=",													rb_RPDB_DatabaseSettingsController_setPagesize,										1 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"page_size=",													"pagesize" 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"set_pagesize",												"pagesize"	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"set_page_size",											"pagesize"	);
-	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"max_size_page_in",										rb_RPDB_DatabaseSettingsController_maxSizePageIn,									0 	);
+//	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"max_size_page_in",										rb_RPDB_DatabaseSettingsController_maxSizePageIn,									0 	);
 
 	//	FIX - shouldn't this be in the file settings controller?                                	
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"is_big_endian?",											rb_RPDB_DatabaseSettingsController_isBigEndian,										0 	);
@@ -205,9 +205,9 @@ VALUE rb_RPDB_DatabaseSettingsController_new(	int			argc,
 	return rb_database_settings_controller;		
 }
 
-/*************
-*  init  *
-*************/
+/***************
+*  initialize  *
+***************/
 
 VALUE rb_RPDB_DatabaseSettingsController_init(	int				argc __attribute__ ((unused)),
 																								VALUE*		args __attribute__ ((unused)),
@@ -216,9 +216,9 @@ VALUE rb_RPDB_DatabaseSettingsController_init(	int				argc __attribute__ ((unuse
 	return rb_self;
 }
 
-/***************************************
-*  environment  *
-***************************************/
+/***********************
+*  parent_environment  *
+***********************/
 VALUE rb_RPDB_DatabaseSettingsController_parentEnvironment(	VALUE	rb_database_settings_controller )	{
 
 	RPDB_DatabaseSettingsController*	c_database_settings_controller;
@@ -228,9 +228,9 @@ VALUE rb_RPDB_DatabaseSettingsController_parentEnvironment(	VALUE	rb_database_se
 
 }
 
-/***************************************
-*  Database  *
-***************************************/
+/********************
+*  parent_database  *
+********************/
 VALUE rb_RPDB_DatabaseSettingsController_parentDatabase(	VALUE	rb_database_settings_controller )	{
 
 	RPDB_DatabaseSettingsController*	c_database_settings_controller;
@@ -244,9 +244,9 @@ VALUE rb_RPDB_DatabaseSettingsController_parentDatabase(	VALUE	rb_database_setti
 																		Switch Settings
 *******************************************************************************************************************************************************************************************/
 
-/****************
+/*************
 *  checksum  *
-****************/
+*************/
 
 //	DB_CHKSUM				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 VALUE rb_RPDB_DatabaseSettingsController_checksum( VALUE	rb_database_settings_controller )	{
@@ -258,9 +258,9 @@ VALUE rb_RPDB_DatabaseSettingsController_checksum( VALUE	rb_database_settings_co
 																						:	Qfalse );
 }
 
-	/************************
-	*  turnChecksumOn  *
-	************************/
+	/*********************
+	*  turn_checksum_on  *
+	*********************/
 
 	//	DB_CHKSUM				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 	VALUE rb_RPDB_DatabaseSettingsController_turnChecksumOn( VALUE	rb_database_settings_controller )	{
@@ -273,9 +273,9 @@ VALUE rb_RPDB_DatabaseSettingsController_checksum( VALUE	rb_database_settings_co
 		return rb_database_settings_controller;
 	}
 
-	/************************
-	*  turnChecksumOff  *
-	************************/
+	/**********************
+	*  turn_checksum_off  *
+	**********************/
 
 	//	DB_CHKSUM				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 	VALUE rb_RPDB_DatabaseSettingsController_turnChecksumOff( VALUE	rb_database_settings_controller )	{
@@ -288,9 +288,9 @@ VALUE rb_RPDB_DatabaseSettingsController_checksum( VALUE	rb_database_settings_co
 		return rb_database_settings_controller;
 	}
 
-/*************
+/*********
 *  logs  *
-*************/
+*********/
 
 //	DB_TXN_NOT_DURABLE		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 VALUE rb_RPDB_DatabaseSettingsController_transactionDurability( VALUE	rb_database_settings_controller )	{
@@ -303,9 +303,9 @@ VALUE rb_RPDB_DatabaseSettingsController_transactionDurability( VALUE	rb_databas
 
 }
 
-	/******************
-	*  turnLogsOn  *
-	******************/
+	/*****************
+	*  turn_logs_on  *
+	*****************/
 
 	//	DB_TXN_NOT_DURABLE		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 	VALUE rb_RPDB_DatabaseSettingsController_turnTransactionDurabilityOn( VALUE	rb_database_settings_controller )	{
@@ -318,9 +318,9 @@ VALUE rb_RPDB_DatabaseSettingsController_transactionDurability( VALUE	rb_databas
 		return rb_database_settings_controller;
 	}
 
-	/********************
-	*  turnLogsOff  *
-	********************/
+	/******************
+	*  turn_logs_off  *
+	******************/
 
 	//	DB_TXN_NOT_DURABLE		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 	VALUE rb_RPDB_DatabaseSettingsController_turnTransactionDurabilityOff( VALUE	rb_database_settings_controller )	{
@@ -337,9 +337,9 @@ VALUE rb_RPDB_DatabaseSettingsController_transactionDurability( VALUE	rb_databas
 																		Set Settings
 *******************************************************************************************************************************************************************************************/
 
-/****************
+/*************
 *  pagesize  *
-****************/
+*************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_pagesize.html
 VALUE rb_RPDB_DatabaseSettingsController_pagesize( VALUE	rb_database_settings_controller )	{
@@ -351,12 +351,12 @@ VALUE rb_RPDB_DatabaseSettingsController_pagesize( VALUE	rb_database_settings_co
 																							:	Qfalse );
 }
 
-/********************
-*  setPageSize  *
-********************/
+/*****************
+*  set_pagesize  *
+*****************/
 
-VALUE rb_RPDB_DatabaseSettingsController_setPageSize(	VALUE	rb_database_settings_controller, 
-														VALUE	rb_pagesize )	{
+VALUE rb_RPDB_DatabaseSettingsController_setPagesize(	VALUE	rb_database_settings_controller, 
+																											VALUE	rb_pagesize )	{
 
 	RPDB_DatabaseSettingsController*	c_database_settings_controller;
 	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
@@ -367,9 +367,9 @@ VALUE rb_RPDB_DatabaseSettingsController_setPageSize(	VALUE	rb_database_settings
 	return rb_database_settings_controller;													
 }
 
-/*********************
-*  isBigEndian  *
-*********************/
+/*******************
+*  is_big_endian?  *
+*******************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_lorder.html
 //	Byte order for stored integers in database
@@ -385,7 +385,7 @@ VALUE rb_RPDB_DatabaseSettingsController_isBigEndian( VALUE	rb_database_settings
 }
 
 /*********************************
-*  setByteOrderToBigEndian  *
+*  set_byte_order_to_big_endian  *
 *********************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_lorder.html
@@ -400,9 +400,9 @@ VALUE rb_RPDB_DatabaseSettingsController_setByteOrderToBigEndian( VALUE	rb_datab
 	return rb_database_settings_controller;
 }
 
-/*********************
-*  isLittleEndian  *
-*********************/
+/**********************
+*  is_little_endian?  *
+**********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_lorder.html
 //	Byte order for stored integers in database
@@ -415,9 +415,9 @@ VALUE rb_RPDB_DatabaseSettingsController_isLittleEndian( VALUE	rb_database_setti
 																								:	Qfalse );
 }
 
-/*************************************
-*  setByteOrderToLittleEndian  *
-*************************************/
+/************************************
+*  set_byte_order_to_little_endian  *
+************************************/
 
 VALUE rb_RPDB_DatabaseSettingsController_setByteOrderToLittleEndian( VALUE	rb_database_settings_controller )	{
 
@@ -430,7 +430,7 @@ VALUE rb_RPDB_DatabaseSettingsController_setByteOrderToLittleEndian( VALUE	rb_da
 }
 
 /********************
-*  isByteswapped  *
+*  is_byteswapped?  *
 ********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_get_byteswapped.html
@@ -443,10 +443,10 @@ VALUE rb_RPDB_DatabaseSettingsController_isByteswapped( VALUE	rb_database_settin
 																								:	Qfalse );
 }
 
-/*****************
-*  maxSizeIn  *
-*****************/
-
+/****************
+*  max_size_in  *
+****************/
+/*
 //	Return the maximum size possible for the database given page size, etc. 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/ref/am_misc/dbsizes.html
 //	Not a built in function - we will have to get page size, etc. in order to calculate.
@@ -457,14 +457,14 @@ VALUE rb_RPDB_DatabaseSettingsController_maxSizePageIn( VALUE	rb_database_settin
 
 	return INT2FIX( RPDB_DatabaseSettingsController_maxSizePageIn( c_database_settings_controller ) );
 }
-
+*/
 /*******************************************************************************************************************************************************************************************
 																		Controllers
 *******************************************************************************************************************************************************************************************/
 
-/********************************
-*  errorSettingsController  *
-********************************/
+/******************************
+*  error_settings_controller  *
+******************************/
 
 VALUE rb_RPDB_DatabaseSettingsController_errorSettingsController( VALUE	rb_database_settings_controller )	{
 
@@ -474,9 +474,9 @@ VALUE rb_RPDB_DatabaseSettingsController_errorSettingsController( VALUE	rb_datab
 	return RUBY_RPDB_DATABASE_ERROR_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_errorSettingsController( c_database_settings_controller ) );
 }
 
-/****************************
-*  associateController  *
-****************************/
+/************************************
+*  association_settings_controller  *
+************************************/
 
 VALUE rb_RPDB_DatabaseSettingsController_associationSettingsController( VALUE	rb_database_settings_controller )	{
 
@@ -486,9 +486,9 @@ VALUE rb_RPDB_DatabaseSettingsController_associationSettingsController( VALUE	rb
 	return RUBY_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_associationSettingsController( c_database_settings_controller ) );
 }
 
-/****************************
-*  joinController  *
-****************************/
+/********************
+*  join_controller  *
+********************/
 
 VALUE rb_RPDB_DatabaseSettingsController_joinSettingsController( VALUE	rb_database_settings_controller )	{
 
@@ -498,9 +498,9 @@ VALUE rb_RPDB_DatabaseSettingsController_joinSettingsController( VALUE	rb_databa
 	return RUBY_RPDB_DATABASE_JOIN_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_joinSettingsController( c_database_settings_controller ) );
 }
 
-/*****************************
-*  cacheController  *
-*****************************/
+/*********************
+*  cache_controller  *
+*********************/
 
 VALUE rb_RPDB_DatabaseSettingsController_cacheSettingsController( VALUE	rb_database_settings_controller )	{
 
@@ -510,9 +510,9 @@ VALUE rb_RPDB_DatabaseSettingsController_cacheSettingsController( VALUE	rb_datab
 	return RUBY_RPDB_DATABASE_CACHE_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_cacheSettingsController( c_database_settings_controller ) );
 }
 
-/*****************************
-*  cursorController  *
-*****************************/
+/**********************
+*  cursor_controller  *
+**********************/
 
 VALUE rb_RPDB_DatabaseSettingsController_cursorSettingsController( VALUE	rb_database_settings_controller )	{
 
@@ -522,9 +522,9 @@ VALUE rb_RPDB_DatabaseSettingsController_cursorSettingsController( VALUE	rb_data
 	return RUBY_RPDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_cursorSettingsController( c_database_settings_controller ) );
 }
 
-/*******************************
-*  sequenceSettingsController  *
-*******************************/
+/*********************************
+*  sequence_settings_controller  *
+*********************************/
 
 VALUE rb_RPDB_DatabaseSettingsController_sequenceSettingsController( VALUE	rb_database_settings_controller )	{
 
@@ -535,7 +535,7 @@ VALUE rb_RPDB_DatabaseSettingsController_sequenceSettingsController( VALUE	rb_da
 }
 
 /*****************************
-*  typeSettingsController  *
+*  type_settings_controller  *
 *****************************/
 
 VALUE rb_RPDB_DatabaseSettingsController_typeSettingsController( VALUE	rb_database_settings_controller )	{
@@ -546,9 +546,9 @@ VALUE rb_RPDB_DatabaseSettingsController_typeSettingsController( VALUE	rb_databa
 	return RUBY_RPDB_DATABASE_TYPE_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_typeSettingsController( c_database_settings_controller ) );
 }
 
-/*************************************
-*  readWriteSettingsController  *
-*************************************/
+/***********************************
+*  read_write_settings_controller  *
+***********************************/
 
 VALUE		rb_RPDB_DatabaseRecordSettingsController_readWriteSettingsController( VALUE	rb_database_record_settings_controller )	{
 
@@ -558,9 +558,9 @@ VALUE		rb_RPDB_DatabaseRecordSettingsController_readWriteSettingsController( VAL
 	return RUBY_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( RPDB_DatabaseRecordSettingsController_readWriteSettingsController( c_database_record_settings_controller ) );
 }
 
-/*************************************
-*  recordSettingsController  *
-************************************/
+/*******************************
+*  record_settings_controller  *
+*******************************/
 
 VALUE rb_RPDB_DatabaseSettingsController_recordSettingsController( VALUE	rb_database_settings_controller )	{
 

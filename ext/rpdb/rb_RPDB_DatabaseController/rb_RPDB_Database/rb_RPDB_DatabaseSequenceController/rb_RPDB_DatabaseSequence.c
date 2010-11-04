@@ -107,10 +107,12 @@ VALUE rb_RPDB_DatabaseSequence_new(	int			argc,
 	
 	VALUE	rb_database_sequence	=	RUBY_RPDB_DATABASE_SEQUENCE( RPDB_DatabaseSequence_new( c_parent_database_sequence_controller ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_database_sequence_controller;
-	
+	//	store reference to parent
+	rb_iv_set(	rb_database_sequence,
+							RPDB_RB_DATABASE_SEQUENCE_VARIABLE_PARENT_SEQUENCE_CONTROLLER,
+							rb_parent_database_sequence_controller );
+
+	VALUE	argv[]	=	{ rb_parent_database_sequence_controller };
 	rb_obj_call_init(	rb_database_sequence,
 						1, 
 						argv );

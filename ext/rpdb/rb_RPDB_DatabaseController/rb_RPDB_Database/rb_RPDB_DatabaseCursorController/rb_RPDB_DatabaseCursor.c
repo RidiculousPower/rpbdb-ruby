@@ -248,12 +248,12 @@ VALUE rb_RPDB_DatabaseCursor_new( int			argc,
 	RPDB_DatabaseCursor*	c_database_cursor		=	RPDB_DatabaseCursorController_cursor( c_parent_cursor_controller );
 	VALUE									rb_database_cursor	=	RUBY_RPDB_DATABASE_CURSOR( c_database_cursor );
 
+	//	store reference to parent
 	rb_iv_set(	rb_database_cursor,
 							RPDB_RB_ALL_VARIABLE_PARENT_DATABASE_CURSOR_CONTROLLER,
 							rb_parent_cursor_controller );
-																					
-	VALUE	argv[ 1 ];	
-	argv[ 0 ]	=	rb_parent_cursor_controller;
+
+	VALUE	argv[]	=	{ rb_parent_cursor_controller };
 	rb_obj_call_init(	rb_database_cursor,
 										1, 
 										argv );

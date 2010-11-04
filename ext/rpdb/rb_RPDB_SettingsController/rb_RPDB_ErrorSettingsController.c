@@ -90,10 +90,15 @@ VALUE rb_RPDB_ErrorSettingsController_new(	int			argc,
 	RPDB_SettingsController*	c_parent_settings_controller;
 	C_RPDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
-	VALUE	rb_error_settings_controller	= RUBY_RPDB_ERROR_SETTINGS_CONTROLLER( RPDB_ErrorSettingsController_new( c_parent_settings_controller ) );
+	RPDB_ErrorSettingsController*	c_error_settings_controller	=	RPDB_SettingsController_errorSettingsController( c_parent_settings_controller );
+
+	VALUE	rb_error_settings_controller	= RUBY_RPDB_ERROR_SETTINGS_CONTROLLER( c_error_settings_controller );
+
+	rb_iv_set(	rb_error_settings_controller,
+							RPDB_RB_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
-	
 	rb_obj_call_init(	rb_error_settings_controller,
 										 1, 
 										 argv );

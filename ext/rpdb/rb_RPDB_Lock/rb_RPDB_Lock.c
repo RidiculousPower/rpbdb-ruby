@@ -104,13 +104,16 @@ VALUE rb_RPDB_Lock_new(	int			argc,
 	
 	VALUE	rb_lock		=	RUBY_RPDB_LOCK( RPDB_Lock_new( c_parent_lock_controller ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_lock_controller;
-	
+	//	store reference to parent
+	rb_iv_set(	rb_lock,
+							RPDB_RB_LOCK_VARIABLE_PARENT_LOCK_CONTROLLER,
+							rb_parent_lock_controller );
+
+
+	VALUE	argv[]	=	{ rb_parent_lock_controller };	
 	rb_obj_call_init(	rb_lock,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_lock;	
 }

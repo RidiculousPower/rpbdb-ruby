@@ -95,13 +95,14 @@ VALUE rb_RPDB_TransactionController_new(	int			argc,
 
 	VALUE	rb_transaction_controller	=	RUBY_RPDB_TRANSACTION_CONTROLLER( RPDB_TransactionController_new( c_parent_environment ) );
 
-	VALUE	argv[ 1 ];
-	
-	argv[ 0 ]	=	rb_parent_environment;
-	
+	rb_iv_set(	rb_transaction_controller,
+							RPDB_RB_TRANSACTION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
+							rb_parent_environment );
+
+	VALUE	argv[]	=	{ rb_parent_environment };
 	rb_obj_call_init(	rb_transaction_controller,
-					 1, 
-					 argv );
+									 1, 
+									 argv );
 	
 	return rb_transaction_controller;	
 }
