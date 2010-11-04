@@ -198,25 +198,45 @@ VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_init(	int				argc __
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentEnvironment(	VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
-	RPDB_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_RPDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseCursorCachePrioritySettingsController_parentEnvironment( c_database_cursor_cache_priority_settings_controller ) );
 }
 
 /***************************************
-*  Database  *
+*  parent_database  *
 ***************************************/
 VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabase(	VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
-	RPDB_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_RPDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+}
 
-	return RUBY_RPDB_DATABASE( RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabase( c_database_cursor_cache_priority_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentSettingsController(	VALUE	rb_database_cursor_cache_priority_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabaseSettingsController(	VALUE	rb_database_cursor_cache_priority_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_cursor_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabaseCursorSettingsController(	VALUE	rb_database_cursor_cache_priority_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_cursor_cache_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabaseCursorCacheSettingsController(	VALUE	rb_database_cursor_cache_priority_settings_controller )	{
+
 }
 
 /*****************

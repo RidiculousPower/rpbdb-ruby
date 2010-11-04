@@ -127,15 +127,63 @@ VALUE rb_RPDB_LogSequenceNumber_settingsController(	VALUE	rb_log_sequence_number
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_LogSequenceNumber_parentEnvironment(	VALUE	rb_log_sequence_number )	{
 
-	RPDB_LogSequenceNumber*	c_log_sequence_number;
-	C_RPDB_LOG_SEQUENCE_NUMBER( rb_log_sequence_number, c_log_sequence_number );
+	VALUE	rb_parent_log_controller		=	rb_RPDB_LogSequenceNumber_parentLogController( rb_log_sequence_number );
+	VALUE	rb_parent_environment				=	rb_RPDB_LogController_parentEnvironment( rb_parent_log_controller );
+	
+	return rb_parent_environment;
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_LogSequenceNumber_parentEnvironment( c_log_sequence_number ) );
+/***************************************
+*  parent_log_controller  *
+***************************************/
 
+VALUE rb_RPDB_LogSequenceNumber_parentLogController(	VALUE	rb_log_sequence_number )	{
+
+	VALUE	rb_parent_log_cursor_controller		=	rb_RPDB_LogSequenceNumber_parentLogCursorController( rb_log_sequence_number );
+	VALUE	rb_parent_log_controller					=	rb_RPDB_LogCursorController_parentLogController( rb_parent_log_cursor_controller );
+	
+	return rb_parent_log_cursor_controller;
+}
+
+/***************************************
+*  parent_log_cursor_controller  *
+***************************************/
+
+VALUE rb_RPDB_LogSequenceNumber_parentLogCursorController(	VALUE	rb_log_sequence_number )	{
+
+	VALUE	rb_parent_log_cursor						=	rb_RPDB_LogSequenceNumber_parentLogCursor( rb_log_sequence_number );
+	VALUE	rb_parent_log_cursor_controller	=	rb_RPDB_LogCursor_parentLogCursorController( rb_parent_log_cursor );
+	
+	return rb_parent_log_cursor_controller;
+}
+
+/***************************************
+*  parent_log_cursor  *
+***************************************/
+
+VALUE rb_RPDB_LogSequenceNumber_parentLogCursor(	VALUE	rb_log_sequence_number )	{
+
+	VALUE	rb_parent_log					=	rb_RPDB_LogSequenceNumber_parentLog( rb_log_sequence_number );
+	VALUE	rb_parent_log_cursor	=	rb_RPDB_LogSequenceNumber_parentLogCursor( rb_parent_log );
+	
+	return rb_parent_log_cursor;
+}
+
+/***************************************
+*  parent_log  *
+***************************************/
+
+VALUE rb_RPDB_LogSequenceNumber_parentLog(	VALUE	rb_log_sequence_number )	{
+
+	VALUE	rb_parent_log	=	rb_iv_get(	rb_log_sequence_number,
+																		RPDB_RB_LOG_SEQUENCE_NUMBER_VARIABLE_PARENT_LOG );
+	
+	return rb_parent_log;
 }
 
 /****************

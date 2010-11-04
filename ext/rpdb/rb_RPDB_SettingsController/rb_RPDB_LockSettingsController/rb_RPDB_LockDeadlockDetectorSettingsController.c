@@ -144,14 +144,27 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_init(	int				argc __attribu
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentEnvironment(	VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
-	RPDB_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-	C_RPDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_LockDeadlockDetectorSettingsController_parentEnvironment( c_lock_deadlock_detector_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentSettingsController(	VALUE	rb_lock_deadlock_detector_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_lock_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentLockSettingsController(	VALUE	rb_lock_deadlock_detector_settings_controller )	{
+
 }
 
 /*********************

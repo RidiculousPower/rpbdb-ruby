@@ -151,10 +151,21 @@ VALUE rb_RPDB_DatabaseSequence_settingsController(	VALUE	rb_database_sequence )	
 
 VALUE rb_RPDB_DatabaseSequence_parentEnvironment(	VALUE	rb_database_sequence )	{
 
-	RPDB_DatabaseSequence*		c_database_sequence;
-	C_RPDB_DATABASE_SEQUENCE( rb_database_sequence, c_database_sequence );
+	VALUE	rb_parent_database_controller		=	rb_RPDB_DatabaseSequence_parentDatabaseController( rb_database_sequence );
+	VALUE	rb_parent_environment						=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );
+	
+	return rb_parent_environment;
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseSequence_parentEnvironment( c_database_sequence ) );
+/****************
+*  parent_database_controller  *
+****************/
+
+VALUE rb_RPDB_DatabaseSequence_parentDatabaseController(	VALUE	rb_database_sequence )	{
+
+	VALUE	rb_parent_database							=	rb_RPDB_DatabaseSequence_parentDatabase( rb_database_sequence );
+	VALUE	rb_parent_database_controller		= rb_RPDB_Database_parentDatabaseController( rb_database_sequence );
+	return rb_parent_database_controller;
 }
 
 /****************
@@ -163,10 +174,9 @@ VALUE rb_RPDB_DatabaseSequence_parentEnvironment(	VALUE	rb_database_sequence )	{
 
 VALUE rb_RPDB_DatabaseSequence_parentDatabase(	VALUE	rb_database_sequence )	{
 
-	RPDB_DatabaseSequence*		c_database_sequence;
-	C_RPDB_DATABASE_SEQUENCE( rb_database_sequence, c_database_sequence );
-
-	return RUBY_RPDB_DATABASE( RPDB_DatabaseSequence_parentDatabase( c_database_sequence ) );
+	VALUE	rb_parent_database_sequence_controller	=	rb_RPDB_DatabaseSequence_parentDatabaseSequenceController( rb_database_sequence );
+	VALUE	rb_parent_database											=	rb_RPDB_DatabaseSequenceController_parentDatabase( rb_parent_database_sequence_controller );
+	return rb_parent_database;
 }
 
 /*******************************
@@ -175,10 +185,9 @@ VALUE rb_RPDB_DatabaseSequence_parentDatabase(	VALUE	rb_database_sequence )	{
 
 VALUE rb_RPDB_DatabaseSequence_parentDatabaseSequenceController(	VALUE	rb_database_sequence )	{
 
-	RPDB_DatabaseSequence*		c_database_sequence;
-	C_RPDB_DATABASE_SEQUENCE( rb_database_sequence, c_database_sequence );
-
-	return RUBY_RPDB_DATABASE( RPDB_DatabaseSequence_parentDatabase( c_database_sequence ) );
+	VALUE	=	rb_iv_get(	rb_database_sequence,
+											RPDB_RB_DATABASE_SEQUENCE_VARIABLE_PARENT_SEQUENCE_CONTROLLER );
+	return rb_database_sequence;
 }
 
 /*******************************************************************************************************************************************************************************************

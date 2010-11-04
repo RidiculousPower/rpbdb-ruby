@@ -109,23 +109,29 @@ VALUE rb_RPDB_RemoteSite_init(	int				argc __attribute__ ((unused)),
 ***************************/
 VALUE rb_RPDB_RemoteSite_settingsController(	VALUE	rb_remote_site )	{
 
-	RPDB_RemoteSite*			c_remote_site;
-	C_RPDB_REMOTE_SITE( rb_remote_site, c_remote_site );
-
-	return RUBY_RPDB_REPLICATION_SETTINGS_CONTROLLER( RPDB_RemoteSite_settingsController( c_remote_site ) );
-
+	return rb_remote_site;
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_RemoteSite_parentEnvironment(	VALUE	rb_remote_site )	{
 
-	RPDB_RemoteSite*		c_remote_site;
-	C_RPDB_REMOTE_SITE( rb_remote_site, c_remote_site );
+	VALUE	rb_parent_replication_controller	=	rb_RPDB_RemoteSite_parentReplicationController( rb_remote_site );
+	VALUE	rb_parent_environment							=	rb_RPDB_RemoteSite_parentEnvironment( rb_parent_replication_controller );
+	
+	return rb_parent_environment;
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_RemoteSite_parentEnvironment( c_remote_site ) );
+/***************************************
+*  parent_replication_controller  *
+***************************************/
+VALUE rb_RPDB_RemoteSite_parentReplicationController(	VALUE	rb_remote_site )	{
 
+	VALUE	rb_replication_controller	=	rb_iv_get(	rb_remote_site,
+																								RPDB_RB_REMOTE_SITE_VARIABLE_PARENT_REPLICATION_CONTROLLER );
+
+	return rb_replication_controller;
 }
 
 

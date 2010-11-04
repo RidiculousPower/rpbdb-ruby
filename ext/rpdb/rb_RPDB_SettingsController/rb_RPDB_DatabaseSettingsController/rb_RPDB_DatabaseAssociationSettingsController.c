@@ -150,26 +150,37 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_init(	int				argc __attribut
 }
 
 /**********************
-*  parentEnvironment  *
+*  parent_environment  *
 **********************/
 
 VALUE rb_RPDB_DatabaseAssociationSettingsController_parentEnvironment(	VALUE	rb_database_association_settings_controller )	{
 
-	RPDB_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
-	C_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseAssociationSettingsController_parentEnvironment( c_database_association_settings_controller ) );
 }
 
 /*******************
-*  parentDatabase  *
+*  parent_database  *
 *******************/
+
 VALUE rb_RPDB_DatabaseAssociationSettingsController_parentDatabase(	VALUE	rb_database_association_settings_controller )	{
 
-	RPDB_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
-	C_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
+}
 
-	return RUBY_RPDB_DATABASE( RPDB_DatabaseAssociationSettingsController_parentDatabase( c_database_association_settings_controller ) );
+/*******************
+*  parent_settings_controller  *
+*******************/
+
+VALUE rb_RPDB_DatabaseAssociationSettingsController_parentSettingsController(	VALUE	rb_database_association_settings_controller )	{
+
+}
+
+
+/*******************
+*  parent_database_settings_controller  *
+*******************/
+
+VALUE rb_RPDB_DatabaseAssociationSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_association_settings_controller )	{
+
+	
 }
 
 /*****************

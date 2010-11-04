@@ -212,14 +212,27 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_init(	int				argc __attribut
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_parentEnvironment(	VALUE	rb_memory_pool_read_write_settings_controller )	{
 
-	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_MemoryPoolReadWriteSettingsController_parentEnvironment( c_memory_pool_record_read_write_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_parentSettingsController(	VALUE	rb_memory_pool_read_write_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_memory_pool_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_parentMemoryPoolSettingsController(	VALUE	rb_memory_pool_read_write_settings_controller )	{
+
 }
 
 /*********************

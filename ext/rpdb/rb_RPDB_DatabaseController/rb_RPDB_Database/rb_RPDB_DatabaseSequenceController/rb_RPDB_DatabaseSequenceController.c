@@ -165,11 +165,22 @@ VALUE rb_RPDB_DatabaseSequenceController_settingsController(	VALUE	rb_database_s
 
 VALUE rb_RPDB_DatabaseSequenceController_parentEnvironment(	VALUE	rb_database_sequence_controller )	{
 
-	VALUE	rb_parent_database	=	rb_RPDB_DatabaseSequenceController_parentDatabase( rb_database_sequence_controller );
-	
-	VALUE	rb_parent_environment	=	rb_RPDB_Database_parentEnvironment( rb_parent_database );
+	VALUE	rb_parent_database_controller	=	rb_RPDB_DatabaseSequenceController_parentDatabaseController( rb_database_sequence_controller );
+	VALUE	rb_parent_environment	=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database );
 	
 	return rb_parent_environment;
+}
+
+/*******************************
+*  parent_database_controller  *
+*******************************/
+
+VALUE rb_RPDB_DatabaseSequenceController_parentDatabaseController(	VALUE	rb_database_sequence_controller )	{
+
+	VALUE	rb_parent_database						=	rb_RPDB_DatabaseSequenceController_parentDatabase( rb_database_sequence_controller );
+	VALUE	rb_parent_database_controller	=	rb_RPDB_Database_parentDatabaseController( rb_parent_database );
+	
+	return rb_parent_database_controller;
 }
 
 /********************

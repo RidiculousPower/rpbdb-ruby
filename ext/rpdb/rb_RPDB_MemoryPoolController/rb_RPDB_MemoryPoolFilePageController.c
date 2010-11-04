@@ -134,15 +134,52 @@ VALUE rb_RPDB_MemoryPoolFilePageController_settingsController(	VALUE	rb_memory_p
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_MemoryPoolFilePageController_parentEnvironment(	VALUE	rb_memory_pool_file_page_controller )	{
 
-	RPDB_MemoryPoolFilePageController*		c_memory_pool_file_page_controller;
-	C_RPDB_MEMORY_POOL_FILE_PAGE_CONTROLLER( rb_memory_pool_file_page_controller, c_memory_pool_file_page_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_MemoryPoolFilePageController_parentEnvironment( c_memory_pool_file_page_controller ) );
+	VALUE	rb_parent_memory_pool_file_controller		=	rb_RPDB_MemoryPoolFilePage_parentMemoryPoolController( rb_memory_pool_file_page_controller );
+	VALUE	rb_parent_environment										=	rb_RPDB_MemoryPoolFileController_memoryPoolFileController( rb_parent_memory_pool_file_controller );
+	
+	return rb_parent_environment;
 }
+
+/***************************************
+*  parent_memory_pool_controller  *
+***************************************/
+
+VALUE rb_RPDB_MemoryPoolFilePageController_parentMemoryPoolController(	VALUE	rb_memory_pool_file_page_controller )	{
+
+	VALUE	rb_parent_memory_pool_file						=	rb_RPDB_MemoryPoolFilePage_parentMemoryPoolFile( rb_memory_pool_file_page_controller );
+	VALUE	rb_parent_memory_pool_controller			=	rb_RPDB_MemoryPoolFile_memoryPoolFileController( rb_parent_memory_pool_file );
+	
+	return rb_parent_memory_pool_controller;
+}
+
+/***************************************
+*  parent_memory_pool_file_controller  *
+***************************************/
+
+VALUE rb_RPDB_MemoryPoolFilePageController_parentMemoryPoolFileController(	VALUE	rb_memory_pool_file_page_controller )	{
+
+	VALUE	rb_parent_memory_pool_file						=	rb_RPDB_MemoryPoolFilePage_parentMemoryPoolFile( rb_memory_pool_file_page_controller );
+	VALUE	rb_parent_memory_pool_file_controller	=	rb_RPDB_MemoryPoolFile_memoryPoolFileController( rb_parent_memory_pool_file );
+	
+	return rb_parent_memory_pool_file_controller;
+}
+
+/***************************************
+*  parent_memory_pool_file  *
+***************************************/
+
+VALUE rb_RPDB_MemoryPoolFilePageController_parentMemoryPoolFile(	VALUE	rb_memory_pool_file_page_controller )	{
+
+	VALUE	rb_parent_memory_pool_file	=	rb_iv_get(	rb_memory_pool_file_page_controller,
+																									RPDB_RB_MEMORY_POOL_FILE_PAGE_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_FILE );
+	return rb_parent_memory_pool_file;
+}
+
 
 /*****************************
 *  retrievePageFromCache  *

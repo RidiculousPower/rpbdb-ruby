@@ -170,26 +170,30 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_init(	int				argc __attribute__ ((
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_DatabaseCacheSettingsController_parentEnvironment(	VALUE	rb_database_cache_settings_controller )	{
-
-	RPDB_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-	C_RPDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseCacheSettingsController_parentEnvironment( c_database_cache_settings_controller ) );
 
 }
 
 /***************************************
-*  Database  *
+*  parent_database  *
 ***************************************/
 VALUE rb_RPDB_DatabaseCacheSettingsController_parentDatabase(	VALUE	rb_database_cache_settings_controller )	{
 
-	RPDB_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-	C_RPDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
+}
 
-	return RUBY_RPDB_DATABASE( RPDB_DatabaseCacheSettingsController_parentDatabase( c_database_cache_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseCacheSettingsController_parentSettingsController(	VALUE	rb_database_cache_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseCacheSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_cache_settings_controller )	{
 
 }
 

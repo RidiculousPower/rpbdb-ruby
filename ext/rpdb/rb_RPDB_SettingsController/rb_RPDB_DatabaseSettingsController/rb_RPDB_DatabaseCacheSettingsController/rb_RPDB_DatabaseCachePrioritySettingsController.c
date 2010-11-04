@@ -180,27 +180,45 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_init(	int				argc __attrib
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentEnvironment(	VALUE	rb_database_cache_priority_settings_controller )	{
-
-	RPDB_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-	C_RPDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseCachePrioritySettingsController_parentEnvironment( c_database_cache_priority_settings_controller ) );
 
 }
 
 /***************************************
-*  Database  *
+*  parent_database  *
 ***************************************/
+
 VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabase(	VALUE	rb_database_cache_priority_settings_controller )	{
 
-	RPDB_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-	C_RPDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
-
-	return RUBY_RPDB_DATABASE( RPDB_DatabaseCachePrioritySettingsController_parentDatabase( c_database_cache_priority_settings_controller ) );
 }
+
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentSettingsController(	VALUE	rb_database_cache_priority_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabaseSettingsController(	VALUE	rb_database_cache_priority_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_cache_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabaseCacheSettingsController(	VALUE	rb_database_cache_priority_settings_controller )	{
+
+}
+
 
 /*****************
 *  priority  *

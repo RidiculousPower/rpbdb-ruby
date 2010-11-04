@@ -260,26 +260,37 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_init(	int				argc __attr
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentEnvironment(	VALUE	rb_database_record_read_write_settings_controller )	{
-
-	RPDB_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseRecordReadWriteSettingsController_parentEnvironment( c_database_record_read_write_settings_controller ) );
 
 }
 
 /***************************************
-*  Database  *
+*  parent_database  *
 ***************************************/
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabase(	VALUE	rb_database_record_read_write_settings_controller )	{
 
-	RPDB_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+}
 
-	return RUBY_RPDB_DATABASE( RPDB_DatabaseRecordReadWriteSettingsController_parentDatabase( c_database_record_read_write_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentSettingsController(	VALUE	rb_database_record_read_write_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_record_read_write_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_record_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseRecordSettingsController(	VALUE	rb_database_record_read_write_settings_controller )	{
 
 }
 

@@ -126,14 +126,19 @@ VALUE rb_RPDB_MutexSettingsController_init(	int				argc __attribute__ ((unused))
 
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_MutexSettingsController_parentEnvironment(	VALUE	rb_mutex_settings_controller )	{
 
-	RPDB_MutexSettingsController*	c_mutex_settings_controller;
-	C_RPDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_MutexSettingsController_parentEnvironment( c_mutex_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_MutexSettingsController_parentSettingsController(	VALUE	rb_mutex_settings_controller )	{
+
 }
 
 /*****************************************************

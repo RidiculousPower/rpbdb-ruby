@@ -129,14 +129,27 @@ VALUE rb_RPDB_DebugVerbositySettingsController_init(	int				argc __attribute__ (
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_DebugVerbositySettingsController_parentEnvironment(	VALUE	rb_debug_verbosity_settings_controller )	{
 
-	RPDB_DebugVerbositySettingsController*	c_debug_verbosity_settings_controller;
-	C_RPDB_DEBUG_VERBOSITY_SETTINGS_CONTROLLER( rb_debug_verbosity_settings_controller, c_debug_verbosity_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DebugVerbositySettingsController_parentEnvironment( c_debug_verbosity_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DebugVerbositySettingsController_parentSettingsController(	VALUE	rb_debug_verbosity_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_debug_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DebugVerbositySettingsController_parentDebugSettingsController(	VALUE	rb_debug_verbosity_settings_controller )	{
+
 }
 
 /*************************************************

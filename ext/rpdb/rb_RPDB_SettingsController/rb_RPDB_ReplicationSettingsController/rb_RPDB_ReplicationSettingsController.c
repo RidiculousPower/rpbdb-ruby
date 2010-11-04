@@ -169,15 +169,21 @@ VALUE rb_RPDB_ReplicationSettingsController_init(	int				argc __attribute__ ((un
 	
 	return rb_self;
 }
+
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_ReplicationSettingsController_parentEnvironment(	VALUE	rb_replication_settings_controller )	{
 
-	RPDB_ReplicationSettingsController*	c_replication_settings_controller;
-	C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_ReplicationSettingsController_parentEnvironment( c_replication_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_ReplicationSettingsController_parentSettingsController(	VALUE	rb_replication_settings_controller )	{
+
 }
 
 /*********

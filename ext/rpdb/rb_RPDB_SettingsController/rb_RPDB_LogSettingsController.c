@@ -158,14 +158,19 @@ VALUE rb_RPDB_LogSettingsController_init(	int				argc __attribute__ ((unused)),
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_LogSettingsController_parentEnvironment(	VALUE	rb_log_settings_controller )	{
 
-	RPDB_LogSettingsController*	c_log_settings_controller;
-	C_RPDB_LOG_SETTINGS_CONTROLLER( rb_log_settings_controller, c_log_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_LogSettingsController_parentEnvironment( c_log_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_LogSettingsController_parentSettingsController(	VALUE	rb_log_settings_controller )	{
+
 }
 
 /***********

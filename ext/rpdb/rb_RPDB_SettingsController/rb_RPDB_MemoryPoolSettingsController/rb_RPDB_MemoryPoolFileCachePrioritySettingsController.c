@@ -166,15 +166,43 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_init(	int				argc __
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 
 VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_parentEnvironment(	VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
 
-	RPDB_MemoryPoolFileCachePrioritySettingsController*	c_memory_pool_file_cache_priority_settings_controller;
-	C_RPDB_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_memory_pool_file_cache_priority_settings_controller, c_memory_pool_file_cache_priority_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_MemoryPoolFileCachePrioritySettingsController_parentEnvironment( c_memory_pool_file_cache_priority_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_parentSettingsController(	VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_memory_pool_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_parentMemoryPoolSettingsController(	VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_memory_pool_file_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_parentMemoryPoolFileSettingsController(	VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_memory_pool_file_cache_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_parentMemoryPoolFileCacheSettingsController(	VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
+
 }
 
 /*************************

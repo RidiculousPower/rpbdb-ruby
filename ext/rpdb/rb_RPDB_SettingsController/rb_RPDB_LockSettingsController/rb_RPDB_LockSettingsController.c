@@ -141,14 +141,19 @@ VALUE rb_RPDB_LockSettingsController_init(	int				argc __attribute__ ((unused)),
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_LockSettingsController_parentEnvironment(	VALUE	rb_lock_settings_controller )	{
 
-	RPDB_LockSettingsController*	c_lock_settings_controller;
-	C_RPDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_LockSettingsController_parentEnvironment( c_lock_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_LockSettingsController_parentSettingsController(	VALUE	rb_lock_settings_controller )	{
+
 }
 
 /*********

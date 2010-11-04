@@ -120,15 +120,12 @@ VALUE rb_RPDB_MemoryPoolController_settingsController(	VALUE	rb_memory_pool_cont
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_MemoryPoolController_parentEnvironment(	VALUE	rb_memory_pool_controller )	{
 
-	RPDB_MemoryPoolController*		c_memory_pool_controller;
-	C_RPDB_MEMORY_POOL_CONTROLLER( rb_memory_pool_controller, c_memory_pool_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_MemoryPoolController_parentEnvironment( c_memory_pool_controller ) );
-
+	VALUE	rb_parent_environment	=	rb_iv_get(	rb_memory_pool_controller,
+																						RPDB_RB_MEMORY_POOL_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
 }
 
 /*********************

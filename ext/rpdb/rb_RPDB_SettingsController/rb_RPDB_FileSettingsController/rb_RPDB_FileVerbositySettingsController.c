@@ -130,14 +130,27 @@ VALUE rb_RPDB_FileVerbositySettingsController_init(	int				argc __attribute__ ((
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_FileVerbositySettingsController_parentEnvironment(	VALUE	rb_file_verbosity_settings_controller )	{
 
-	RPDB_FileVerbositySettingsController*	c_file_verbosity_settings_controller;
-	C_RPDB_FILE_VERBOSITY_SETTINGS_CONTROLLER( rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_FileVerbositySettingsController_parentEnvironment( c_file_verbosity_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_FileVerbositySettingsController_parentSettingsController(	VALUE	rb_file_verbosity_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_file_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_FileVerbositySettingsController_parentFileSettingsController(	VALUE	rb_file_verbosity_settings_controller )	{
+
 }
 
 /*************************************************************************

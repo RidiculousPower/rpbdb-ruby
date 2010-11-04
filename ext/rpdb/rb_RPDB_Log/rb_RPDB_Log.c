@@ -141,15 +141,47 @@ VALUE rb_RPDB_Log_settingsController(	VALUE	rb_log )	{
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_Log_parentEnvironment(	VALUE	rb_log )	{
 
-	RPDB_Log*			c_log;
-	C_RPDB_LOG( rb_log, c_log );
+	VALUE	rb_parent_log_controller			=	rb_RPDB_Log_parentLogController( rb_log );
+	VALUE	rb_parent_environment					=	rb_RPDB_LogController_parentEnvironment( rb_parent_log_controller );
+	
+	return rb_parent_environment;
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_Log_parentEnvironment( c_log ) );
+/***************************************
+*  parent_log_controller  *
+***************************************/
+VALUE rb_RPDB_Log_parentLogController(	VALUE	rb_log )	{
 
+	VALUE	rb_parent_log_cursor_controller		=	rb_RPDB_Log_parentLogCursorController( rb_log );
+	VALUE	rb_parent_log_controller					=	rb_RPDB_LogCursorController_parentLogController( rb_parent_log_cursor_controller );
+	
+	return rb_parent_log_controller;
+}
+
+/***************************************
+*  parent_log_cursor_controller  *
+***************************************/
+VALUE rb_RPDB_Log_parentLogCursorController(	VALUE	rb_log )	{
+
+	VALUE	rb_parent_log_cursor							=	rb_RPDB_Log_parentLogCursor( rb_log );
+	VALUE	rb_parent_log_cursor_controller		=	rb_RPDB_LogCursor_parentLogCursorController( rb_parent_log_cursor );
+	
+	return rb_parent_log_cursor_controller;
+}
+
+/***************************************
+*  parent_log_cursor  *
+***************************************/
+VALUE rb_RPDB_Log_parentLogCursor(	VALUE	rb_log )	{
+
+	VALUE	rb_parent_log_cursor	=	rb_iv_get(	rb_log,
+																						RPDB_RB_LOG_VARIABLE_PARENT_LOG_CURSOR );
+
+	return rb_parent_log_cursor;
 }
 
 /*****************

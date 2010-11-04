@@ -219,24 +219,24 @@ VALUE rb_RPDB_DatabaseSettingsController_init(	int				argc __attribute__ ((unuse
 /***********************
 *  parent_environment  *
 ***********************/
+
 VALUE rb_RPDB_DatabaseSettingsController_parentEnvironment(	VALUE	rb_database_settings_controller )	{
-
-	RPDB_DatabaseSettingsController*	c_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseSettingsController_parentEnvironment( c_database_settings_controller ) );
 
 }
 
 /********************
 *  parent_database  *
 ********************/
+
 VALUE rb_RPDB_DatabaseSettingsController_parentDatabase(	VALUE	rb_database_settings_controller )	{
 
-	RPDB_DatabaseSettingsController*	c_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+}
 
-	return RUBY_RPDB_DATABASE( RPDB_DatabaseSettingsController_parentDatabase( c_database_settings_controller ) );
+/********************
+*  parent_settings_controller  *
+********************/
+
+VALUE rb_RPDB_DatabaseSettingsController_parentSettingsController(	VALUE	rb_database_settings_controller )	{
 
 }
 

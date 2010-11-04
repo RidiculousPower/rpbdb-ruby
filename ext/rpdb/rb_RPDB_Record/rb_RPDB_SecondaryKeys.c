@@ -98,6 +98,43 @@ VALUE rb_RPDB_SecondaryKeys_init(	int				argc __attribute__ ((unused)),
 	return rb_self;
 }
 
+/***************************************
+*  parent_environment  *
+***************************************/
+
+VALUE rb_RPDB_SecondaryKeys_parentEnvironment(	VALUE	rb_secondary_keys )	{
+
+	VALUE	rb_parent_database_controller	=	rb_RPDB_SecondaryKeys_parentDatabaseController( rb_secondary_keys );
+	VALUE	rb_parent_environment					=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );
+	
+	return rb_parent_environment;
+}
+
+/***************************************
+*  parent_database_controller  *
+***************************************/
+
+VALUE rb_RPDB_SecondaryKeys_parentDatabaseController(	VALUE	rb_secondary_keys )	{
+	
+	VALUE	rb_parent_database						=	rb_RPDB_SecondaryKeys_parentDatabase( rb_secondary_keys );
+	VALUE	rb_parent_database_controller	=	rb_RPDB_Database_parentDatabaseController( rb_parent_database );
+	
+	return rb_parent_database_controller;
+}
+
+/***************************************
+*  parent_database  *
+***************************************/
+
+VALUE rb_RPDB_SecondaryKeys_parentDatabase(	VALUE	rb_secondary_keys )	{
+	
+	VALUE	rb_parent_record		=	rb_RPDB_SecondaryKeys_parentRecord( rb_secondary_keys );
+	VALUE	rb_parent_database	=	rb_RPDB_Record_parentDatabase( rb_parent_record );
+	
+	return rb_parent_database;
+}
+
+
 /*****************
 *  keyData  *
 *****************/

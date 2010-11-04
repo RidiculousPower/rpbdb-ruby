@@ -183,25 +183,43 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_init(	int				argc __attr
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentEnvironment(	VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseCursorReadWriteSettingsController_parentEnvironment( c_database_cursor_record_read_write_settings_controller ) );
 }
 
 /***************************************
-*  Database  *
+*  parent_database  *
 ***************************************/
+
 VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabase(	VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
-	RPDB_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-	C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+}
 
-	return RUBY_RPDB_DATABASE( RPDB_DatabaseCursorReadWriteSettingsController_parentDatabase( c_database_cursor_record_read_write_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentSettingsController(	VALUE	rb_database_cursor_record_read_write_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_cursor_record_read_write_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_cursor_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabaseCursorSettingsController(	VALUE	rb_database_cursor_record_read_write_settings_controller )	{
+
 }
 
 /*******************************************************************************************************************************************************************************************

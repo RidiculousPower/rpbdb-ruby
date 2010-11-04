@@ -149,14 +149,27 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_init(	int				argc __attribu
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_ReplicationVerbositySettingsController_parentEnvironment(	VALUE	rb_replication_verbosity_settings_controller )	{
 
-	RPDB_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-	C_RPDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_ReplicationVerbositySettingsController_parentEnvironment( c_replication_verbosity_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_ReplicationVerbositySettingsController_parentSettingsController(	VALUE	rb_replication_verbosity_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_replication_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_ReplicationVerbositySettingsController_parentReplicationSettingsController(	VALUE	rb_replication_verbosity_settings_controller )	{
+
 }
 
 /*****************************************

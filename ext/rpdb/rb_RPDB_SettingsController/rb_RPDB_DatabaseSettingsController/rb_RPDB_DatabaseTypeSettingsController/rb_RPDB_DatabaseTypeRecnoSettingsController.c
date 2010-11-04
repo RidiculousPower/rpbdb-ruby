@@ -166,27 +166,42 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_init(	int				argc __attribute_
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentEnvironment(	VALUE	rb_database_type_recno_settings_controller )	{
-
-	RPDB_DatabaseTypeRecnoSettingsController*	c_database_type_recno_settings_controller;
-	C_RPDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseTypeRecnoSettingsController_parentEnvironment( c_database_type_recno_settings_controller ) );
 
 }
 
-
 /***************************************
-*  Database  *
+*  parent_database  *
 ***************************************/
+
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabase(	VALUE	rb_database_type_recno_settings_controller )	{
 
-	RPDB_DatabaseTypeRecnoSettingsController*	c_database_type_recno_settings_controller;
-	C_RPDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
+}
 
-	return RUBY_RPDB_DATABASE(	RPDB_DatabaseTypeRecnoSettingsController_parentDatabase( c_database_type_recno_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentSettingsController(	VALUE	rb_database_type_recno_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_type_recno_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_type_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabaseTypeSettingsController(	VALUE	rb_database_type_recno_settings_controller )	{
 
 }
 

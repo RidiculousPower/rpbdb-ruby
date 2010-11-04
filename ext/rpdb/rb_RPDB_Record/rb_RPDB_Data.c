@@ -112,18 +112,50 @@ VALUE rb_RPDB_Data_settingsController(	VALUE	rb_data )	{
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 
 VALUE rb_RPDB_Data_parentEnvironment(	VALUE	rb_data )	{
 
-	RPDB_Data*			c_data;
-	C_RPDB_DATA( rb_data, c_data );
+	VALUE	rb_parent_database_controller	=	rb_RPDB_Data_parentDatabaseController( rb_data );
+	VALUE	rb_parent_environment					=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );
+	
+	return rb_parent_database;
+}
 
-	RPDB_Environment*	c_environment	=	RPDB_Data_parentEnvironment( c_data );
+/***************************************
+*  parent_database_controller  *
+***************************************/
 
-	return RUBY_RPDB_ENVIRONMENT( c_environment );
+VALUE rb_RPDB_Data_parentDatabaseController(	VALUE	rb_data )	{
+	
+	VALUE	rb_parent_database						=	rb_RPDB_Data_parentDatabase( rb_data );
+	VALUE	rb_parent_database_controller	=	rb_RPDB_Database_parentDatabaseController( rb_parent_database );
+	
+	return rb_parent_database;
+}
 
+/***************************************
+*  parent_database  *
+***************************************/
+
+VALUE rb_RPDB_Data_parentDatabase(	VALUE	rb_data )	{
+	
+	VALUE	rb_parent_record		=	rb_RPDB_Data_parentRecord( rb_data );
+	VALUE	rb_parent_database	=	rb_RPDB_Record_parentDatabase( rb_parent_record );
+	
+	return rb_parent_database;
+}
+
+/***************************************
+*  parent_record  *
+***************************************/
+
+VALUE rb_RPDB_Data_parentRecord(	VALUE	rb_data )	{
+	
+	VALUE	rb_parent_record	=	rb_iv_get(	rb_data,
+																				RPDB_RB_DATA_VARIABLE_PARENT_RECORD );
+	return rb_parent_record;
 }
 
 //	Functions need to be added here

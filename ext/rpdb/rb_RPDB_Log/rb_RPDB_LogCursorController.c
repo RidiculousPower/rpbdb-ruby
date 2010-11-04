@@ -126,14 +126,27 @@ VALUE rb_RPDB_LogCursorController_settingsController(	VALUE	rb_log_cursor_contro
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_LogCursorController_parentEnvironment(	VALUE	rb_log_cursor_controller )	{
 
-	RPDB_LogCursorController*		c_log_cursor_controller;
-	C_RPDB_LOG_CURSOR_CONTROLLER( rb_log_cursor_controller, c_log_cursor_controller  );
+	VALUE	rb_parent_log_controller	=	rb_RPDB_LogCursorController_parentLogController( rb_log_cursor_controller );
+	VALUE	rb_parent_environment			=	rb_RPDB_LogController_parentEnvironment( rb_parent_log_controller );
+	
+	return rb_parent_environment;
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_LogCursorController_parentEnvironment( c_log_cursor_controller ) );
+/***************************************
+*  parent_log_controller  *
+***************************************/
+
+VALUE rb_RPDB_LogCursorController_parentLogController(	VALUE	rb_log_cursor_controller )	{
+	
+	VALUE	rb_parent_log_controller	=	rb_iv_get(	rb_log_cursor_controller,
+																								RPDB_RB_LOG_CURSOR_VARIABLE_PARENT_LOG_CONTROLLER );
+	
+	return rb_parent_log_controller;
 }
 
 /*************************

@@ -156,14 +156,19 @@ VALUE rb_RPDB_TransactionSettingsController_init(	int				argc __attribute__ ((un
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_TransactionSettingsController_parentEnvironment(	VALUE	rb_transaction_settings_controller )	{
 
-	RPDB_TransactionSettingsController*	c_transaction_settings_controller;
-	C_RPDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_TransactionSettingsController_parentEnvironment( c_transaction_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_TransactionSettingsController_parentSettingsController(	VALUE	rb_transaction_settings_controller )	{
+
 }
 
 /*******************************************************************************************************************************************************************************************

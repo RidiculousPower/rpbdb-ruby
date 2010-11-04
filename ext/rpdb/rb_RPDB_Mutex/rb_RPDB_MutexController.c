@@ -116,14 +116,13 @@ VALUE	rb_RPDB_MutexController_settingsController(	VALUE	rb_mutex_controller )	{
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE	rb_RPDB_MutexController_parentEnvironment(	VALUE	rb_mutex_controller )	{
 
-	RPDB_MutexController*		c_mutex_controller;
-	C_RPDB_MUTEX_CONTROLLER( rb_mutex_controller, c_mutex_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_MutexController_parentEnvironment( c_mutex_controller ) );
+	VALUE	rb_parent_environment	=	rb_iv_get(	rb_mutex_controller,
+																						RPDB_RB_MUTEX_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
+	return rb_parent_environment;
 }
 
 /*************************

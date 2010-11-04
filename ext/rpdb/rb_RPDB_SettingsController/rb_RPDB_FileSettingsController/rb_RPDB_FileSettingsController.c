@@ -143,14 +143,19 @@ VALUE rb_RPDB_FileSettingsController_init(	int				argc __attribute__ ((unused)),
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_FileSettingsController_parentEnvironment(	VALUE	rb_file_settings_controller )	{
 
-	RPDB_FileSettingsController*	c_file_settings_controller;
-	C_RPDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_FileSettingsController_parentEnvironment( c_file_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_FileSettingsController_parentSettingsController(	VALUE	rb_file_settings_controller )	{
+
 }
 
 /*********************************

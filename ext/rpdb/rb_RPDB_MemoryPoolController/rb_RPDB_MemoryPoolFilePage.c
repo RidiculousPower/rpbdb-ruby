@@ -135,15 +135,58 @@ VALUE rb_RPDB_MemoryPoolFilePage_settingsController(	VALUE	rb_memory_pool_file_p
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_MemoryPoolFilePage_parentEnvironment(	VALUE	rb_memory_pool_file_page )	{
 
-	RPDB_MemoryPoolFilePage*		c_memory_pool_file_page;
-	C_RPDB_MEMORY_POOL_FILE_PAGE( rb_memory_pool_file_page, c_memory_pool_file_page );
+	VALUE	rb_parent_memory_pool_controller	=	rb_RPDB_MemoryPoolFilePage_parentMemoryPoolFileController( rb_memory_pool_file_page );
+	VALUE	rb_parent_environment							=	rb_RPDB_MemoryPoolController_parentEnvironment( rb_parent_memory_pool_controller );
+	
+	return rb_parent_environment;
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_MemoryPoolFilePage_parentEnvironment( c_memory_pool_file_page ) );
+/***************************************
+*  parent_memory_pool_controller  *
+***************************************/
+VALUE rb_RPDB_MemoryPoolFilePage_parentMemoryPoolController(	VALUE	rb_memory_pool_file_page )	{
 
+	VALUE	rb_parent_memory_pool_file_controller	=	rb_RPDB_MemoryPoolFilePage_parentMemoryPoolFileController( rb_memory_pool_file_page );
+	VALUE	rb_parent_memory_pool_controller			=	rb_RPDB_MemoryPoolFileController_parentMemoryPoolController( rb_parent_memory_pool_file_controller );
+	
+	return rb_parent_memory_pool_controller;
+}
+
+/***************************************
+*  parent_memory_pool_file_controller  *
+***************************************/
+VALUE rb_RPDB_MemoryPoolFilePage_parentMemoryPoolFileController(	VALUE	rb_memory_pool_file_page )	{
+
+	VALUE	rb_parent_memory_pool_file	=	rb_RPDB_MemoryPoolFilePage_parentMemoryPoolFile( rb_memory_pool_file_page );
+	VALUE	rb_parent_memory_pool_file_controller	=	rb_RPDB_MemoryPoolFile_parentMemoryPoolFileController( rb_parent_memory_pool_file );
+	
+	return rb_parent_memory_pool_file_controller;
+}
+
+/***************************************
+*  parent_memory_pool_file  *
+***************************************/
+VALUE rb_RPDB_MemoryPoolFilePage_parentMemoryPoolFile(	VALUE	rb_memory_pool_file_page )	{
+
+	VALUE	rb_parent_memory_pool_file_page_controller	=	rb_RPDB_MemoryPoolFilePage_parentMemoryPoolFilePageController( rb_memory_pool_file_page );
+	VALUE	rb_parent_memory_pool_file									=	rb_RPDB_MemoryPoolFile_parentMemoryPoolFileController( rb_parent_memory_pool_file );
+	
+	return rb_parent_memory_pool_file;
+}
+
+/***************************************
+*  parent_memory_pool_file  *
+***************************************/
+VALUE rb_RPDB_MemoryPoolFilePage_parentMemoryPoolFilePageController(	VALUE	rb_memory_pool_file_page )	{
+
+	VALUE	rb_parent_memory_pool_file	=	rb_iv_get(	rb_memory_pool_file_page,
+																									RPDB_RB_MEMORY_POOL_FILE_PAGE_VARIABLE_PARENT_MEMORY_POOL_FILE_PAGE_CONTROLLER );
+	
+	return rb_parent_memory_pool_file;
 }
 
 /*************************

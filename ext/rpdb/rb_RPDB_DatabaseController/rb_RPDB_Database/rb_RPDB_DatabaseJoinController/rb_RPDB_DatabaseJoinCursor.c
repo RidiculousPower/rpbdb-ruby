@@ -137,35 +137,46 @@ VALUE rb_RPDB_DatabaseJoinCursor_settingsController(	VALUE	rb_join_cursor )	{
 ***************************************/
 VALUE rb_RPDB_DatabaseJoinCursor_parentEnvironment(	VALUE	rb_join_cursor )	{
 
-	RPDB_DatabaseJoinCursor*	c_join_cursor;
-	C_RPDB_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
+	VALUE	rb_parent_join_controller					=	rb_RPDB_DatabaseJoinCursor_parentJoinController( rb_join_cursor );
+	VALUE	rb_parent_database								=	rb_RPDB_DatabaseJoinController_parentDatabase( rb_parent_join_controller );
+	VALUE	rb_parent_database_controller			=	rb_RPDB_Database_parentDatabaseController( rb_parent_database );
+	VALUE	rb_parent_environment							=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseJoinCursor_parentEnvironment( c_join_cursor ) );
-
+	return rb_parent_environment;
 }
 
 /***************************************
 *  database  *
+***************************************/
+VALUE rb_RPDB_DatabaseJoinCursor_parentDatabaseController(	VALUE	rb_join_cursor )	{
+	
+	VALUE	rb_parent_database								=	rb_RPDB_DatabaseJoinCursor_parentDatabase( rb_join_cursor );
+	VALUE	rb_parent_database_controller			=	rb_RPDB_Database_parentDatabaseController( rb_parent_database );
+		
+	return rb_parent_database_controller;
+}
+
+/***************************************
+*  parent_database  *
 ***************************************/
 VALUE rb_RPDB_DatabaseJoinCursor_parentDatabase(	VALUE	rb_join_cursor )	{
 	
-	RPDB_DatabaseJoinCursor*	c_join_cursor;
-	C_RPDB_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
-	
-	return RUBY_RPDB_DATABASE( RPDB_DatabaseJoinCursor_parentDatabase( c_join_cursor ) );
-	
+	VALUE	rb_parent_join_controller					=	rb_RPDB_DatabaseJoinCursor_parentDatabaseJoinController( rb_join_cursor );
+	VALUE	rb_parent_database								=	rb_RPDB_DatabaseJoinController_parentDatabase( rb_parent_join_controller );
+		
+	return rb_parent_database;
 }
 
 /***************************************
-*  database  *
+*  parent_database_join_controller  *
+*  parent_join_controller  *
 ***************************************/
 VALUE rb_RPDB_DatabaseJoinCursor_parentDatabaseJoinController(	VALUE	rb_join_cursor )	{
 	
-	RPDB_DatabaseJoinCursor*	c_join_cursor;
-	C_RPDB_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
-	
-	return RUBY_RPDB_DATABASE_JOIN_CONTROLLER( RPDB_DatabaseJoinCursor_parentDatabaseJoinController( c_join_cursor ) );
-	
+	VALUE		rb_database_join_controller	=	rb_iv_get(	rb_join_cursor,
+																										RPDB_RB_JOIN_CURSOR_VARIABLE_PARENT_JOIN_CONTROLLER );
+
+	return rb_database_join_controller;
 }
 	
 /******************

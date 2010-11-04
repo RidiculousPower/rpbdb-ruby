@@ -123,15 +123,35 @@ VALUE rb_RPDB_MemoryPoolFile_settingsController(	VALUE	rb_memory_pool_file )	{
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_MemoryPoolFile_parentEnvironment(	VALUE	rb_memory_pool_file )	{
 
-	RPDB_MemoryPoolFile*	c_memory_pool_file;
-	C_RPDB_MEMORY_POOL_FILE( rb_memory_pool_file, c_memory_pool_file );
+	VALUE	rb_parent_memory_pool_controller		=	rb_RPDB_MemoryPoolFile_parentMemoryPoolController( rb_memory_pool_file );
+	VALUE	rb_parent_environment								=	rb_RPDB_MemoryPoolController_parentEnvironment( rb_parent_memory_pool_controller );
+	
+	return rb_parent_memory_pool_controller;
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_MemoryPoolFile_parentEnvironment( c_memory_pool_file ) );
+/***************************************
+*  parent_memory_pool_controller  *
+***************************************/
+VALUE rb_RPDB_MemoryPoolFile_parentMemoryPoolController(	VALUE	rb_memory_pool_file )	{
 
+	VALUE	rb_parent_memory_pool_file_controller	=	rb_RPDB_MemoryPoolFile_parentMemoryPoolFileController( rb_memory_pool_file );
+	VALUE	rb_parent_memory_pool_controller			=	rb_RPDB_MemoryPoolFileController_parentMemoryPoolController( rb_parent_memory_pool_file_controller );
+	
+	return rb_parent_memory_pool_controller;
+}
+
+/***************************************
+*  parent_memory_pool_file_controller  *
+***************************************/
+VALUE rb_RPDB_MemoryPoolFile_parentMemoryPoolFileController(	VALUE	rb_memory_pool_file )	{
+
+	VALUE	rb_parent_memory_pool_file_controller	=	rb_iv_get(	rb_memory_pool_file,
+																														RPDB_RB_MEMORY_POOL_FILE_VARIABLE_PARENT_MEMORY_POOL_FILE_CONTROLLER );
+	return rb_parent_memory_pool_file_controller;
 }
 
 /*************

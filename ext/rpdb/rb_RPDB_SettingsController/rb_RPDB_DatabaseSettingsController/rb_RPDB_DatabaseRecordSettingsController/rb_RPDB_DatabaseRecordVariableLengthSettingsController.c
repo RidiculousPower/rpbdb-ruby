@@ -165,29 +165,39 @@ VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_init(	int				argc _
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentEnvironment(	VALUE	rb_database_record_variable_length_settings_controller )	{
-
-	RPDB_DatabaseRecordVariableLengthSettingsController*	c_database_record_variable_length_settings_controller;
-	C_RPDB_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER( rb_database_record_variable_length_settings_controller, c_database_record_variable_length_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseRecordVariableLengthSettingsController_parentEnvironment( c_database_record_variable_length_settings_controller ) );
 
 }
 
 /***************************************
-*  Database  *
+*  parent_database  *
 ***************************************/
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabase(	VALUE	rb_database_record_variable_length_settings_controller )	{
 
-	RPDB_DatabaseRecordVariableLengthSettingsController*	c_database_record_variable_length_settings_controller;
-	C_RPDB_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER( rb_database_record_variable_length_settings_controller, c_database_record_variable_length_settings_controller );
+}
 
-	return RUBY_RPDB_DATABASE(	RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabase( c_database_record_variable_length_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentSettingsController(	VALUE	rb_database_record_variable_length_settings_controller )	{
 
 }
 
+/***************************************
+*  parent_database_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_record_variable_length_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_record_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseRecordSettingsController(	VALUE	rb_database_record_variable_length_settings_controller )	{
+
+}
 	/************************
 	*  recordDelimeter  *
 	************************/

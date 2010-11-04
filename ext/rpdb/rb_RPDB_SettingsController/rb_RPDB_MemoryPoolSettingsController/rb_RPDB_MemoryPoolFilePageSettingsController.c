@@ -147,15 +147,35 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_init(	int				argc __attribute
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 
 VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentEnvironment(	VALUE	rb_memory_pool_file_page_settings_controller )	{
 
-	RPDB_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-	C_RPDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_MemoryPoolFilePageSettingsController_parentEnvironment( c_memory_pool_file_page_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentSettingsController(	VALUE	rb_memory_pool_file_page_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_memory_pool_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentMemoryPoolSettingsController(	VALUE	rb_memory_pool_file_page_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_memory_pool_file_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentMemoryPoolFileSettingsController(	VALUE	rb_memory_pool_file_page_settings_controller )	{
+
 }
 
 /*****************************************

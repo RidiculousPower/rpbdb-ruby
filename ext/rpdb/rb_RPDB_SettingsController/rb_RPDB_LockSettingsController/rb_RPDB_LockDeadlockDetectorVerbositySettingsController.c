@@ -141,14 +141,35 @@ VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_init(	int				argc 
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentEnvironment(	VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
 
-	RPDB_LockDeadlockDetectorVerbositySettingsController*	c_lock_deadlock_detector_verbosity_settings_controller;
-	C_RPDB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_LockDeadlockDetectorVerbositySettingsController_parentEnvironment( c_lock_deadlock_detector_verbosity_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentSettingsController(	VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_lock_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentLockSettingsController(	VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_lock_deadlock_detector_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentLockDeadlockDetectorSettingsController(	VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
+
 }
 
 /*************************************************************

@@ -167,25 +167,43 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_init(	int				argc __attribute_
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentEnvironment(	VALUE	rb_database_type_btree_settings_controller )	{
 
-	RPDB_DatabaseTypeBtreeSettingsController*	c_database_type_btree_settings_controller;
-	C_RPDB_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER( rb_database_type_btree_settings_controller, c_database_type_btree_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseTypeBtreeSettingsController_parentEnvironment( c_database_type_btree_settings_controller ) );
 }
 
 /***************************************
-*  Database  *
+*  parent_database  *
 ***************************************/
+
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentDatabase(	VALUE	rb_database_type_btree_settings_controller )	{
 
-	RPDB_DatabaseTypeBtreeSettingsController*	c_database_type_btree_settings_controller;
-	C_RPDB_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER( rb_database_type_btree_settings_controller, c_database_type_btree_settings_controller );
+}
 
-	return RUBY_RPDB_DATABASE( RPDB_DatabaseTypeBtreeSettingsController_parentDatabase( c_database_type_btree_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentSettingsController(	VALUE	rb_database_type_btree_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_type_btree_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_type_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentDatabaseTypeSettingsController(	VALUE	rb_database_type_btree_settings_controller )	{
+
 }
 
 /*******************************************************************************************************************************************************************************************

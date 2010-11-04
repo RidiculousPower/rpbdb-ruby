@@ -113,16 +113,41 @@ VALUE rb_RPDB_Record_settingsController(	VALUE	rb_record )	{
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_Record_parentEnvironment(	VALUE	rb_record )	{
 
-	RPDB_Record*		c_record;
-	C_RPDB_RECORD( rb_record, c_record );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_Record_parentEnvironment( c_record ) );
-
+	VALUE	rb_parent_database_controller		=	rb_RPDB_Record_parentDatabase( rb_record );
+	VALUE	rb_parent_environment						=	rb_RPDB_Database_parentDatabaseController( rb_parent_database_controller );
+	
+	return rb_parent_environment;
 }
+
+/***************************************
+*  parent_database_controller  *
+***************************************/
+
+VALUE rb_RPDB_Record_parentDatabaseController(	VALUE	rb_record )	{
+
+	VALUE	rb_parent_database						=	rb_RPDB_Record_parentDatabase( rb_record );
+	VALUE	rb_parent_database_controller	=	rb_RPDB_Database_parentDatabaseController( rb_parent_database );
+	
+	return rb_parent_database_controller;
+}
+
+/***************************************
+*  parent_database  *
+***************************************/
+
+VALUE rb_RPDB_Record_parentDatabase(	VALUE	rb_record )	{
+
+	VALUE	rb_parent_database	=	rb_iv_get(	rb_record,
+																					RPDB_RB_RECORD_VARIABLE_PARENT_DATABASE );
+	
+	return rb_parent_database;
+}
+
 
 /*******************************************************************************************************************************************************************************************
 																		Record Management Public Methods

@@ -117,15 +117,19 @@ VALUE rb_RPDB_ThreadSettingsController_init(	int				argc __attribute__ ((unused)
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 
 VALUE rb_RPDB_ThreadSettingsController_parentEnvironment(	VALUE	rb_thread_settings_controller )	{
 
-	RPDB_ThreadSettingsController*	c_thread_settings_controller;
-	C_RPDB_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_ThreadSettingsController_parentEnvironment( c_thread_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_ThreadSettingsController_parentSettingsController(	VALUE	rb_thread_settings_controller )	{
+
 }
 
 /**********

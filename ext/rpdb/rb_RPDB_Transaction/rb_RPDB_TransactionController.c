@@ -135,10 +135,10 @@ VALUE rb_RPDB_TransactionController_settingsController(	VALUE	rb_transaction_con
 ***************************************/
 VALUE rb_RPDB_TransactionController_parentEnvironment(	VALUE	rb_transaction_controller )	{
 
-	RPDB_TransactionController*	c_transaction_controller;
-	C_RPDB_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_TransactionController_parentEnvironment( c_transaction_controller ) );
+	VALUE	rb_parent_environment	=	rb_iv_get(	rb_transaction_controller,
+																						RPDB_RB_TRANSACTION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT);
+	
+	return rb_parent_environment;
 }
 
 /*******************************************************************************************************************************************************************************************

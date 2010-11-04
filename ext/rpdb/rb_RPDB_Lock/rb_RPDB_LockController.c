@@ -171,11 +171,9 @@ VALUE rb_RPDB_LockController_settingsController(	VALUE	rb_lock_controller )	{
 ****************/
 VALUE rb_RPDB_LockController_parentEnvironment(	VALUE	rb_lock_controller )	{
 
-	RPDB_LockController*	c_lock_controller;
-	C_RPDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_LockController_parentEnvironment( c_lock_controller ) );
-
+	VALUE	rb_parent_environment			=	rb_iv_get(	rb_lock_controller,
+																								RPDB_RB_LOCK_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
+	return rb_parent_environment;
 }
 
 /**************

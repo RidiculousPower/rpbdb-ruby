@@ -167,26 +167,37 @@ VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_init(	int				argc __at
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentEnvironment(	VALUE	rb_database_record_fixed_length_settings_controller )	{
-
-	RPDB_DatabaseRecordFixedLengthSettingsController*	c_database_record_fixed_length_settings_controller;
-	C_RPDB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( rb_database_record_fixed_length_settings_controller, c_database_record_fixed_length_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseRecordFixedLengthSettingsController_parentEnvironment( c_database_record_fixed_length_settings_controller ) );
 
 }
 
 /***************************************
-*  Database  *
+*  parent_database  *
 ***************************************/
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabase(	VALUE	rb_database_record_fixed_length_settings_controller )	{
 
-	RPDB_DatabaseRecordFixedLengthSettingsController*	c_database_record_fixed_length_settings_controller;
-	C_RPDB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( rb_database_record_fixed_length_settings_controller, c_database_record_fixed_length_settings_controller );
+}
 
-	return RUBY_RPDB_DATABASE( RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabase( c_database_record_fixed_length_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentSettingsController(	VALUE	rb_database_record_fixed_length_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_record_fixed_length_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_record_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabaseRecordSettingsController(	VALUE	rb_database_record_fixed_length_settings_controller )	{
 
 }
 

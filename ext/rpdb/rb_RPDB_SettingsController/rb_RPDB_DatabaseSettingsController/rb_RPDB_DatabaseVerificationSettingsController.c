@@ -134,27 +134,38 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_init(	int				argc __attribu
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_DatabaseVerificationSettingsController_parentEnvironment(	VALUE	rb_database_verification_settings_controller )	{
-
-	RPDB_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-	C_RPDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseVerificationSettingsController_parentEnvironment( c_database_verification_settings_controller ) );
 
 }
 
 /***************************************
-*  database  *
+*  parent_database  *
 ***************************************/
+
 VALUE rb_RPDB_DatabaseVerificationSettingsController_parentDatabase(	VALUE	rb_database_verification_settings_controller )	{
 
-	RPDB_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-	C_RPDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
-	return RUBY_RPDB_DATABASE(	RPDB_DatabaseVerificationSettingsController_parentDatabase( c_database_verification_settings_controller ) );
+}
 
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseVerificationSettingsController_parentSettingsController(	VALUE	rb_database_verification_settings_controller )	{
+	
+	
+}
+
+/***************************************
+*  parent_database_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseVerificationSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_verification_settings_controller )	{
+	
+	
 }
 
 /*************

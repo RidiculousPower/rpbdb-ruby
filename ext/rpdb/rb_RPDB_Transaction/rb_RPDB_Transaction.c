@@ -113,15 +113,25 @@ VALUE rb_RPDB_Transaction_settingsController(	VALUE	rb_transaction )	{
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_Transaction_parentEnvironment(	VALUE	rb_transaction )	{
 
-	RPDB_Transaction*	c_transaction;
-	C_RPDB_TRANSACTION( rb_transaction, c_transaction );
+	VALUE	rb_parent_transaction_controller	=	rb_RPDB_Transaction_parentTransactionController( rb_transaction );
+	VALUE	rb_parent_environment							=	rb_RPDB_TransactionController_parentEnvironment( rb_parent_transaction_controller );
+	
+	return rb_parent_environment;
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_Transaction_parentEnvironment( c_transaction ) );
+/***************************************
+*  parent_transaction_controller  *
+***************************************/
+VALUE rb_RPDB_Transaction_parentTransactionController(	VALUE	rb_transaction )	{
 
+	VALUE	rb_parent_transaction_controller	=	rb_iv_get(	rb_transaction,
+																												RPDB_RB_TRANSACTION_VARIABLE_PARENT_TRANSACTION_CONTROLLER );
+	
+	return rb_parent_transaction_controller;
 }
 
 /*******************************************************************************************************************************************************************************************

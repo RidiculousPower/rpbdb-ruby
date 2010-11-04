@@ -152,30 +152,21 @@ VALUE rb_RPDB_DebugSettingsController_init(	int				argc __attribute__ ((unused))
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_DebugSettingsController_parentEnvironment(	VALUE	rb_debug_settings_controller )	{
 
-	RPDB_DebugSettingsController*	c_debug_settings_controller;
-	C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DebugSettingsController_parentEnvironment( c_debug_settings_controller ) );
 }
 
 /***************************************
-*  parent_database  *
+*  parent_settings_controller  *
 ***************************************/
-/*
-VALUE rb_RPDB_DebugSettingsController_parentDatabase(	VALUE	rb_debug_settings_controller )	{
 
-	RPDB_DebugSettingsController*	c_debug_settings_controller;
-	C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+VALUE rb_RPDB_DebugSettingsController_parentSettingsController(	VALUE	rb_debug_settings_controller )	{
 
-	RPDB_Database*	c_parent_database	=	RPDB_DebugSettingsController_parentDatabase( c_debug_settings_controller );
-
-	return RUBY_RPDB_DATABASE( c_parent_database );
 }
-*/
+
 /*********************************************************
 *  runNormalRecoveryBeforeOpeningEnvironment  *
 *********************************************************/

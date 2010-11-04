@@ -144,14 +144,19 @@ VALUE rb_RPDB_MemoryPoolSettingsController_init(	int				argc __attribute__ ((unu
 
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_MemoryPoolSettingsController_parentEnvironment(	VALUE	rb_memory_pool_settings_controller )	{
 
-	RPDB_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-	C_RPDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_MemoryPoolSettingsController_parentEnvironment( c_memory_pool_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_MemoryPoolSettingsController_parentSettingsController(	VALUE	rb_memory_pool_settings_controller )	{
+
 }
 
 /*********

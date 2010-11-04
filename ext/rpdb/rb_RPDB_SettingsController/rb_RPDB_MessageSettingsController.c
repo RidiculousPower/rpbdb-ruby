@@ -113,14 +113,19 @@ VALUE rb_RPDB_MessageSettingsController_init(	int				argc __attribute__ ((unused
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_MessageSettingsController_parentEnvironment(	VALUE	rb_message_settings_controller )	{
 
-	RPDB_MessageSettingsController*	c_message_settings_controller;
-	C_RPDB_MESSAGE_SETTINGS_CONTROLLER( rb_message_settings_controller, c_message_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_MessageSettingsController_parentEnvironment( c_message_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_MessageSettingsController_parentSettingsController(	VALUE	rb_message_settings_controller )	{
+
 }
 
 /*************

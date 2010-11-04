@@ -155,23 +155,33 @@ VALUE rb_RPDB_DatabaseJoinSettingsController_init(	int				argc __attribute__ ((u
 /***************************************
 *  environment  *
 ***************************************/
+
 VALUE rb_RPDB_DatabaseJoinSettingsController_parentEnvironment(	VALUE	rb_join_settings_controller )	{
 
-	RPDB_DatabaseJoinSettingsController*	c_join_settings_controller;
-	C_RPDB_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseJoinSettingsController_parentEnvironment( c_join_settings_controller ) );
 }
 
 /***************************************
 *  parent_database  *
 ***************************************/
+
 VALUE rb_RPDB_DatabaseJoinSettingsController_parentDatabase(	VALUE	rb_join_settings_controller )	{
 
-	RPDB_DatabaseJoinSettingsController*	c_join_settings_controller;
-	C_RPDB_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseJoinSettingsController_parentDatabase( c_join_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseJoinSettingsController_parentSettingsController(	VALUE	rb_join_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseJoinSettingsController_parentDatabaseSettingsController(	VALUE	rb_join_settings_controller )	{
+
 }
 
 /*****************************
@@ -185,7 +195,7 @@ VALUE rb_RPDB_DatabaseJoinController_degreeOneIsolation( VALUE	rb_join_settings_
 	C_RPDB_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
 
 	return ( RPDB_DatabaseJoinController_degreeOneIsolation( c_join_settings_controller )	?	Qtrue
-																					:	Qfalse );
+																																												:	Qfalse );
 }
 
 	/********************************

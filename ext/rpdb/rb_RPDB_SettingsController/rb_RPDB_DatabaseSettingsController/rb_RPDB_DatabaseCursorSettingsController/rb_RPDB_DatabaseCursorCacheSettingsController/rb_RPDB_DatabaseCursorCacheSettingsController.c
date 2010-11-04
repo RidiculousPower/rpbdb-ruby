@@ -170,25 +170,44 @@ VALUE rb_RPDB_DatabaseCursorCacheSettingsController_init(	int				argc __attribut
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentEnvironment(	VALUE	rb_database_cursor_cache_settings_controller )	{
 
-	RPDB_DatabaseCursorCacheSettingsController*	c_database_cursor_cache_settings_controller;
-	C_RPDB_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER( rb_database_cursor_cache_settings_controller, c_database_cursor_cache_settings_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_DatabaseCursorCacheSettingsController_parentEnvironment( c_database_cursor_cache_settings_controller ) );
 }
 
 /***************************************
-*  Database  *
+*  parent_database  *
 ***************************************/
+
 VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabase(	VALUE	rb_database_cursor_cache_settings_controller )	{
 
-	RPDB_DatabaseCursorCacheSettingsController*	c_database_cursor_cache_settings_controller;
-	C_RPDB_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER( rb_database_cursor_cache_settings_controller, c_database_cursor_cache_settings_controller );
+}
 
-	return RUBY_RPDB_DATABASE( RPDB_DatabaseCursorCacheSettingsController_parentDatabase( c_database_cursor_cache_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentSettingsController(	VALUE	rb_database_cursor_cache_settings_controller )	{
+
+}
+
+
+/***************************************
+*  parent_database_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_cursor_cache_settings_controller )	{
+
+}
+
+/***************************************
+*  parent_database_cursor_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabaseCursorSettingsController(	VALUE	rb_database_cursor_cache_settings_controller )	{
+
 }
 
 /*******************************************************************************************************************************************************************************************

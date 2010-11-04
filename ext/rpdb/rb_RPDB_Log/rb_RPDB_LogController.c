@@ -136,15 +136,14 @@ VALUE rb_RPDB_LogController_settingsController(	VALUE	rb_log_controller )	{
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_LogController_parentEnvironment(	VALUE	rb_log_controller )	{
 
-	RPDB_LogController*	c_log_controller;
-	C_RPDB_LOG_CONTROLLER( rb_log_controller, c_log_controller );
-
-	return RUBY_RPDB_ENVIRONMENT( RPDB_LogController_parentEnvironment( c_log_controller ) );
-
+	VALUE	rb_parent_environment	=	rb_iv_get(	rb_log_controller,
+																						RPDB_RB_LOG_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
+	
+	return rb_parent_environment;
 }
 
 /*********************
