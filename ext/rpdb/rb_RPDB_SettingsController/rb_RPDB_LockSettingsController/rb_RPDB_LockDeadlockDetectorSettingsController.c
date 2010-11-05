@@ -48,25 +48,25 @@ void Init_RPDB_LockDeadlockDetectorSettingsController()	{
 	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"parent_environment",									rb_RPDB_LockDeadlockDetectorSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"environment",												"parent_environment"	);
 
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_isDefault,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_setToDefault,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectExpired,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectExpired,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithMostLocks,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithMostLocks,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithMostWriteLocks,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithMostWriteLocks,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithFewestLocks,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithFewestLocks,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithFewestWriteLocks,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithFewestWriteLocks,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithOldestLock,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithOldestLock,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithYoungestLock,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithYoungestLock,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectRandom,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectRandom,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorSettingsController_verbositySettingsController,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"is_default?",														rb_RPDB_LockDeadlockDetectorSettingsController_isDefault,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"set_to_default",														rb_RPDB_LockDeadlockDetectorSettingsController_setToDefault,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"reject_expired?",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectExpired,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"set_to_reject_expired",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectExpired,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"reject_locker_with_most_locks?",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithMostLocks,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"set_to_reject_locker_with_most_locks",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithMostLocks,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"reject_locker_with_most_write_locks?",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithMostWriteLocks,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"set_to_reject_locker_with_most_write_locks",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithMostWriteLocks,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"reject_locker_with_fewest_locks?",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithFewestLocks,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"set_to_reject_locker_with_fewest_locks",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithFewestLocks,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"reject_locker_with_fewest_write_locks?",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithFewestWriteLocks,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"set_to_reject_locker_with_fewest_write_locks",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithFewestWriteLocks,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"reject_locker_with_oldest_lock?",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithOldestLock,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"set_to_reject_locker_with_oldest_lock",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithOldestLock,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"reject_locker_with_youngest_lock?",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithYoungestLock,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"set_to_reject_locker_with_youngest_lock",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithYoungestLock,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"reject_random_lock?",														rb_RPDB_LockDeadlockDetectorSettingsController_rejectRandom,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"set_to_reject_random_lock",														rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectRandom,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"verbosity_settings_controller",														rb_RPDB_LockDeadlockDetectorSettingsController_verbositySettingsController,													0 	);
 
 }
 	

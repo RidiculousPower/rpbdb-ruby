@@ -44,20 +44,20 @@ void Init_RPDB_MutexSettingsController()	{
 	rb_define_method(			rb_RPDB_MutexSettingsController, 				"parent_environment",									rb_RPDB_MutexSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_MutexSettingsController, 				"environment",												"parent_environment"	);
 
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"shm_key",														rb_RPDB_MutexSettingsController_spinTimesBeforeBlockingForTestAndSpinMutexes,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"shm_key",														rb_RPDB_MutexSettingsController_setSpinTimesBeforeBlockingForTestAndSpinMutexes,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"shm_key",														rb_RPDB_MutexSettingsController_maxAllowableMutexes,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"shm_key",														rb_RPDB_MutexSettingsController_setMaxAllowableMutexes,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"shm_key",														rb_RPDB_MutexSettingsController_incrementForAddingMutexes,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"shm_key",														rb_RPDB_MutexSettingsController_setIncrementForAddingMutexes,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"shm_key",														rb_RPDB_MutexSettingsController_mutexAlignment,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"shm_key",														rb_RPDB_MutexSettingsController_setMutexAlignment,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"shm_key",														rb_RPDB_MutexSettingsController_associatedWithSingleProcess,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"shm_key",														rb_RPDB_MutexSettingsController_turnAssociatedWithSingleProcessOn,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"shm_key",														rb_RPDB_MutexSettingsController_turnAssociatedWithSingleProcessOff,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"shm_key",														rb_RPDB_MutexSettingsController_selfBlocking,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"shm_key",														rb_RPDB_MutexSettingsController_turnSelfBlockingOn,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"shm_key",														rb_RPDB_MutexSettingsController_turnSelfBlockingOff,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"spin_time_before_blocking_for_test_and_spin_mutexes",														rb_RPDB_MutexSettingsController_spinTimesBeforeBlockingForTestAndSpinMutexes,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"set_spin_time_before_blocking_for_test_and_spin_mutexes",														rb_RPDB_MutexSettingsController_setSpinTimesBeforeBlockingForTestAndSpinMutexes,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"max_allowable_mutexes",														rb_RPDB_MutexSettingsController_maxAllowableMutexes,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"set_max_allowable_mutexes",														rb_RPDB_MutexSettingsController_setMaxAllowableMutexes,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"increment_for_adding_mutexes",														rb_RPDB_MutexSettingsController_incrementForAddingMutexes,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"set_increment_for_adding_mutexes",														rb_RPDB_MutexSettingsController_setIncrementForAddingMutexes,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"mutex_alignment",														rb_RPDB_MutexSettingsController_mutexAlignment,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"set_mutex_alignment",														rb_RPDB_MutexSettingsController_setMutexAlignment,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"associate_with_single_process?",														rb_RPDB_MutexSettingsController_associatedWithSingleProcess,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"turn_associate_with_single_process_on",														rb_RPDB_MutexSettingsController_turnAssociatedWithSingleProcessOn,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"turn_associate_with_single_process_off",														rb_RPDB_MutexSettingsController_turnAssociatedWithSingleProcessOff,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"self_blocking?",														rb_RPDB_MutexSettingsController_selfBlocking,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"turn_self_blocking_on",														rb_RPDB_MutexSettingsController_turnSelfBlockingOn,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"turn_self_blocking_off",														rb_RPDB_MutexSettingsController_turnSelfBlockingOff,													0 	);
 
 }
 

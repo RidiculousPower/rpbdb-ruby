@@ -47,17 +47,17 @@ void Init_RPDB_MemoryPoolReadWriteSettingsController()	{
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"parent_environment",									rb_RPDB_MemoryPoolReadWriteSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"environment",												"parent_environment"	);
                                     			                                                                                                    				
-	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolReadWriteSettingsController_maxOpenFiles,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxOpenFiles,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolReadWriteSettingsController_maxSequentialWrites,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxSequentialWrites,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolReadWriteSettingsController_timeToSleepBeforeNextWrite,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolReadWriteSettingsController_setTimeToSleepBeforeNextWrite,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolReadWriteSettingsController_maxMappedDBSize,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxMappedDBSize,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOn,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOff,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"max_open_files",														rb_RPDB_MemoryPoolReadWriteSettingsController_maxOpenFiles,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"set_max_open_files",														rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxOpenFiles,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"max_sequential_writes",														rb_RPDB_MemoryPoolReadWriteSettingsController_maxSequentialWrites,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"set_max_sequential_writes",														rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxSequentialWrites,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"time_to_sleep_before_next_write",														rb_RPDB_MemoryPoolReadWriteSettingsController_timeToSleepBeforeNextWrite,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"set_time_to_sleep_before_next_write",														rb_RPDB_MemoryPoolReadWriteSettingsController_setTimeToSleepBeforeNextWrite,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"max_mapped_database_size",														rb_RPDB_MemoryPoolReadWriteSettingsController_maxMappedDBSize,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"set_max_mapped_database_size",														rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxMappedDBSize,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"pagefault_shared_regions?",														rb_RPDB_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_pagefault_shared_regions_on",														rb_RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOn,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_pagefault_shared_regions_off",														rb_RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOff,													0 	);
 
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"do_not_write_to_temporary_backing_file?",					rb_RPDB_MemoryPoolReadWriteSettingsController_doNotWriteToTemporaryBackingFile,							0 	);
 	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"no_temporary_backing_file?",												"do_not_write_to_temporary_backing_file?"	);

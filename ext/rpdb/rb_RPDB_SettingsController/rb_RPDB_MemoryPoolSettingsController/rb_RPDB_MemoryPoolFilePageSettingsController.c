@@ -50,21 +50,21 @@ void Init_RPDB_MemoryPoolFilePageSettingsController()	{
 	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"parent_environment",									rb_RPDB_MemoryPoolFilePageSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"environment",												"parent_environment"	);
 
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_getPageCreatesPageIfDoesNotExist,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageCreatesPageIfDoesNotExistOn,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageCreatesPageIfDoesNotExistOff,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_getPageWritesCopyBeforeEviction,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageWritesCopyBeforeEvictionOn,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageWritesCopyBeforeEvictionOff,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_getPageWritesBeforeEvictionWithoutCopy,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_turnWriteBeforeEvictionButProhibitMultiversionCopyOn,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_turnWriteBeforeEvictionButProhibitMultiversionCopyOff,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_getPageReturnsLastPage,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageReturnsLastPageOn,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageReturnsLastPageOff,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_getPageCreatesNewPage,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageCreatesNewPageOn,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageCreatesNewPageOff,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"get_page_creates_page_if_does_not_exist?",														rb_RPDB_MemoryPoolFilePageSettingsController_getPageCreatesPageIfDoesNotExist,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"turn_get_page_creates_page_if_does_not_exist_on",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageCreatesPageIfDoesNotExistOn,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"turn_get_page_creates_page_if_does_not_exist_off",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageCreatesPageIfDoesNotExistOff,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"get_page_writes_copy_before_eviction?",														rb_RPDB_MemoryPoolFilePageSettingsController_getPageWritesCopyBeforeEviction,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"turn_get_page_writes_copy_before_eviction_on",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageWritesCopyBeforeEvictionOn,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"turn_get_page_writes_copy_before_eviction_off",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageWritesCopyBeforeEvictionOff,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"get_page_writes_before_eviction_without_copy?",														rb_RPDB_MemoryPoolFilePageSettingsController_getPageWritesBeforeEvictionWithoutCopy,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"turn_get_page_writes_before_eviction_without_copy_on",														rb_RPDB_MemoryPoolFilePageSettingsController_turnWriteBeforeEvictionButProhibitMultiversionCopyOn,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"turn_get_page_writes_before_eviction_without_copy_off",														rb_RPDB_MemoryPoolFilePageSettingsController_turnWriteBeforeEvictionButProhibitMultiversionCopyOff,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"get_page_returns_last_page?",														rb_RPDB_MemoryPoolFilePageSettingsController_getPageReturnsLastPage,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"turn_get_page_returns_last_page_on",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageReturnsLastPageOn,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"turn_get_page_returns_last_page_off",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageReturnsLastPageOff,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"get_page_creates_new_page?",														rb_RPDB_MemoryPoolFilePageSettingsController_getPageCreatesNewPage,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"turn_get_page_creates_new_page_on",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageCreatesNewPageOn,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"turn_get_page_creates_new_page_off",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageCreatesNewPageOff,													0 	);
 
 }
 

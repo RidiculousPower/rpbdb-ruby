@@ -51,12 +51,12 @@ void Init_RPDB_LockDeadlockDetectorVerbositySettingsController()	{
 	rb_define_alias(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"environment",												"parent_environment"	);
 
 
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorVerbositySettingsController_displayAdditionalInformationDuringDeadlockDetection,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorVerbositySettingsController_turnDisplayAdditionalInformationDuringDeadlockDetectionOn,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorVerbositySettingsController_turnDisplayAdditionalInformationDuringDeadlockDetectionOff,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorVerbositySettingsController_displayWaitTableDuringDeadlockDetection,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorVerbositySettingsController_turnDisplayWaitTableDuringDeadlockDetectionOn,													0 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"shm_key",														rb_RPDB_LockDeadlockDetectorVerbositySettingsController_turnDisplayWaitTableDuringDeadlockDetectionOff,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"display_additional_information_during_deadlock_detection?",														rb_RPDB_LockDeadlockDetectorVerbositySettingsController_displayAdditionalInformationDuringDeadlockDetection,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"turn_display_additional_information_during_deadlock_detection_on",														rb_RPDB_LockDeadlockDetectorVerbositySettingsController_turnDisplayAdditionalInformationDuringDeadlockDetectionOn,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"turn_display_additional_information_during_deadlock_detection_off",														rb_RPDB_LockDeadlockDetectorVerbositySettingsController_turnDisplayAdditionalInformationDuringDeadlockDetectionOff,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"display_wait_table_during_deadlock_detection?",														rb_RPDB_LockDeadlockDetectorVerbositySettingsController_displayWaitTableDuringDeadlockDetection,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"turn_display_wait_table_during_deadlock_detection_on",														rb_RPDB_LockDeadlockDetectorVerbositySettingsController_turnDisplayWaitTableDuringDeadlockDetectionOn,													0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"turn_display_wait_table_during_deadlock_detection_off",														rb_RPDB_LockDeadlockDetectorVerbositySettingsController_turnDisplayWaitTableDuringDeadlockDetectionOff,													0 	);
 
 }
 

@@ -55,26 +55,26 @@ void Init_RPDB_MemoryPoolFileSettingsController()	{
 	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"parent_environment",									rb_RPDB_MemoryPoolFileSettingsController_parentEnvironment,																		0 	);
 	rb_define_alias(			rb_RPDB_MemoryPoolFileSettingsController, 				"environment",												"parent_environment"	);
                                     			                                                                                                    				
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_createWithNumberInitialNullBytes,								0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_setReturnsCreateWithNumberInitialNullBytes,			0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_fileID,																					0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_setFileID,																				0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_fileType,																				0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_setFileType,																			0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_logSequenceNumberOffset,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_setLogSequenceNumberOffset,											0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInBytes,															0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInKBytes,															0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInMBytes,															0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInGBytes,															0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_setMaxFileSizeInBytes,														0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_setMaxFileSizeInKBytes,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_setMaxFileSizeInMBytes,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_setMaxFileSizeInGBytes,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_cookie,																					0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_setCookie,																				0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_cacheSettingsController,									0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"shm_key",														rb_RPDB_MemoryPoolFileSettingsController_pageSettingsController,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"create_with_number_initial_bytes_numbering",														rb_RPDB_MemoryPoolFileSettingsController_createWithInitialNullBytesNumbering,								0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"set_create_with_initial_null_bytes_numbering",														rb_RPDB_MemoryPoolFileSettingsController_setCreateWithInitialNullBytesNumbering,			0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"file_id",														rb_RPDB_MemoryPoolFileSettingsController_fileID,																					0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"set_file_id",														rb_RPDB_MemoryPoolFileSettingsController_setFileID,																				0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"file_type",														rb_RPDB_MemoryPoolFileSettingsController_fileType,																				0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"set_file_type",														rb_RPDB_MemoryPoolFileSettingsController_setFileType,																			0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"log_sequence_number_offset",														rb_RPDB_MemoryPoolFileSettingsController_logSequenceNumberOffset,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"set_log_sequence_number_offset",														rb_RPDB_MemoryPoolFileSettingsController_setLogSequenceNumberOffset,											0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"max_file_size_in_bytes",														rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInBytes,															0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"max_file_size_in_kbytes",														rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInKBytes,															0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"max_file_size_in_mbytes",														rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInMBytes,															0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"max_file_size_in_gbytes",														rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInGBytes,															0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"set_max_file_size_in_bytes",														rb_RPDB_MemoryPoolFileSettingsController_setMaxFileSizeInBytes,														0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"set_max_file_size_in_kbytes",														rb_RPDB_MemoryPoolFileSettingsController_setMaxFileSizeInKBytes,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"set_max_file_size_in_mbytes",														rb_RPDB_MemoryPoolFileSettingsController_setMaxFileSizeInMBytes,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"set_max_file_size_in_gbytes",														rb_RPDB_MemoryPoolFileSettingsController_setMaxFileSizeInGBytes,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"cookie",														rb_RPDB_MemoryPoolFileSettingsController_cookie,																					0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"set_cookie",														rb_RPDB_MemoryPoolFileSettingsController_setCookie,																				0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"cache_settings_controller",														rb_RPDB_MemoryPoolFileSettingsController_cacheSettingsController,									0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"page_settings_controller",														rb_RPDB_MemoryPoolFileSettingsController_pageSettingsController,													0 	);
 
 }
 
@@ -195,25 +195,25 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_parentMemoryPoolSettingsControlle
 *********************************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_set_clear_len.html
-VALUE rb_RPDB_MemoryPoolFileSettingsController_createWithNumberInitialNullBytes( VALUE	rb_memory_pool_file_settings_controller )	{
+VALUE rb_RPDB_MemoryPoolFileSettingsController_createWithInitialNullBytesNumbering( VALUE	rb_memory_pool_file_settings_controller )	{
 
 	RPDB_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
 	C_RPDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 											
-	return INT2NUM( RPDB_MemoryPoolFileSettingsController_createWithNumberInitialNullBytes( c_memory_pool_file_settings_controller ) );
+	return INT2NUM( RPDB_MemoryPoolFileSettingsController_createWithInitialNullBytesNumbering( c_memory_pool_file_settings_controller ) );
 }
 
 	/*************************************************
 	*  setReturnsCreateWithNumberInitialNullBytes  *
 	*************************************************/
 
-	VALUE rb_RPDB_MemoryPoolFileSettingsController_setReturnsCreateWithNumberInitialNullBytes( VALUE	rb_memory_pool_file_settings_controller, 
+	VALUE rb_RPDB_MemoryPoolFileSettingsController_setCreateWithInitialNullBytesNumbering( VALUE	rb_memory_pool_file_settings_controller, 
 																								VALUE	rb_initial_null_bytes )	{
 
 		RPDB_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
 		C_RPDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
-		RPDB_MemoryPoolFileSettingsController_setReturnsCreateWithNumberInitialNullBytes(	c_memory_pool_file_settings_controller,
+		RPDB_MemoryPoolFileSettingsController_setCreateWithInitialNullBytesNumbering(	c_memory_pool_file_settings_controller,
 																							FIX2INT( rb_initial_null_bytes ) );
 
 		return rb_memory_pool_file_settings_controller;

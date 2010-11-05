@@ -44,12 +44,12 @@ void Init_RPDB_ThreadSettingsController()	{
 	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"parent_environment",									rb_RPDB_ThreadSettingsController_parentEnvironment,				0 	);
 	rb_define_alias(			rb_RPDB_ThreadSettingsController, 				"environment",												"parent_environment"	);
 
-	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"shm_key",														rb_RPDB_ThreadSettingsController_on,													0 	);
-	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"shm_key",														rb_RPDB_ThreadSettingsController_off,													0 	);
-	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"shm_key",														rb_RPDB_ThreadSettingsController_turnOn,											0 	);
-	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"shm_key",														rb_RPDB_ThreadSettingsController_turnOff,											0 	);
-	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"shm_key",														rb_RPDB_ThreadSettingsController_threadCount,									0 	);
-	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"shm_key",														rb_RPDB_ThreadSettingsController_setThreadCount,							0 	);
+	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"on?",														rb_RPDB_ThreadSettingsController_on,													0 	);
+	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"off?",														rb_RPDB_ThreadSettingsController_off,													0 	);
+	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"turn_on",														rb_RPDB_ThreadSettingsController_turnOn,											0 	);
+	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"turn_off",														rb_RPDB_ThreadSettingsController_turnOff,											0 	);
+	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"thread_count",														rb_RPDB_ThreadSettingsController_threadCount,									0 	);
+	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"set_thread_count",														rb_RPDB_ThreadSettingsController_setThreadCount,							0 	);
 
 }
 	

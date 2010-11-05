@@ -45,10 +45,10 @@ void Init_RPDB_ErrorSettingsController()	{
 	rb_define_alias(						rb_RPDB_ErrorSettingsController, 	"environment",												"parent_environment"	);
 
 	//	FIX - make one max_size and set_max_size function w/dynamic options
-	rb_define_method(						rb_RPDB_ErrorSettingsController, 	"shm_key",														rb_RPDB_ErrorSettingsController_file,													0 	);
-	rb_define_method(						rb_RPDB_ErrorSettingsController, 	"shm_key",														rb_RPDB_ErrorSettingsController_setFile,													0 	);
-	rb_define_method(						rb_RPDB_ErrorSettingsController, 	"shm_key",														rb_RPDB_ErrorSettingsController_prefix,													0 	);
-	rb_define_method(						rb_RPDB_ErrorSettingsController, 	"shm_key",														rb_RPDB_ErrorSettingsController_setPrefix,													0 	);
+	rb_define_method(						rb_RPDB_ErrorSettingsController, 	"file",														rb_RPDB_ErrorSettingsController_file,													0 	);
+	rb_define_method(						rb_RPDB_ErrorSettingsController, 	"file=",														rb_RPDB_ErrorSettingsController_setFile,													0 	);
+	rb_define_method(						rb_RPDB_ErrorSettingsController, 	"prefix",														rb_RPDB_ErrorSettingsController_prefix,													0 	);
+	rb_define_method(						rb_RPDB_ErrorSettingsController, 	"prefix=",														rb_RPDB_ErrorSettingsController_setPrefix,													0 	);
 
 }
 

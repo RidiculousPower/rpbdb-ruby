@@ -44,35 +44,35 @@ void Init_RPDB_LockSettingsController()	{
 	rb_define_method(			rb_RPDB_LockSettingsController, 				"parent_environment",									rb_RPDB_LockSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_LockSettingsController, 				"environment",												"parent_environment"	);
 
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_on,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_off,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_turnOn,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_turnOff,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_prohibitLocking,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_turnProhibitLockingOn,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_turnProhibitLockingOff,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_timeoutReturnsReturnDenyNotDeadlock,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_turnTimeoutReturnsReturnDenyNotDeadlockOn,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_turnTimeoutReturnsReturnDenyNotDeadlockOff,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_noWaitingForConflicts,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_turnNoWaitingForConflictsOn,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_turnNoWaitingForConflictsOff,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_lockForEnvironmentNotDatabase,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_turnLockForEnvironmentNotDatabaseOn,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_turnLockForEnvironmentNotDatabaseOff,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_timeout,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_setTimeout,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_conflictMatrix,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_setConflictMatrix,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_maxLockers,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_setMaxLockers,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_maxLocks,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_setMaxLocks,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_maxObjects,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_setMaxObjects,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_numberOfPartitions,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_setNumberOfPartitions,													0 	);
-	rb_define_method(			rb_RPDB_LockSettingsController, 				"shm_key",														rb_RPDB_LockSettingsController_deadlockDetectorSettingsController,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"on?",														rb_RPDB_LockSettingsController_on,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"off?",														rb_RPDB_LockSettingsController_off,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"turn_on",														rb_RPDB_LockSettingsController_turnOn,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"turn_off",														rb_RPDB_LockSettingsController_turnOff,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"prohibit_locking?",														rb_RPDB_LockSettingsController_prohibitLocking,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"turn_prohibit_locking_on",														rb_RPDB_LockSettingsController_turnProhibitLockingOn,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"turn_prohibit_locking_off",														rb_RPDB_LockSettingsController_turnProhibitLockingOff,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"timeout_returns_deny_not_deadlock?",														rb_RPDB_LockSettingsController_timeoutReturnsReturnDenyNotDeadlock,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"turn_timeout_returns_deny_not_deadlock_on",														rb_RPDB_LockSettingsController_turnTimeoutReturnsDenyNotDeadlockOn,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"turn_timeout_returns_deny_not_deadlock_off",														rb_RPDB_LockSettingsController_turnTimeoutReturnsDenyNotDeadlockOff,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"no_waiting_for_conflicts?",														rb_RPDB_LockSettingsController_noWaitingForConflicts,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"turn_no_waiting_for_conflicts_on",														rb_RPDB_LockSettingsController_turnNoWaitingForConflictsOn,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"turn_no_waiting_for_conflicts_off",														rb_RPDB_LockSettingsController_turnNoWaitingForConflictsOff,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"lock_for_environment_not_database?",														rb_RPDB_LockSettingsController_lockForEnvironmentNotDatabase,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"turn_lock_for_environment_not_database_on",														rb_RPDB_LockSettingsController_turnLockForEnvironmentNotDatabaseOn,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"turn_lock_for_environment_not_database_off",														rb_RPDB_LockSettingsController_turnLockForEnvironmentNotDatabaseOff,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"timeout",														rb_RPDB_LockSettingsController_timeout,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"set_timeout",														rb_RPDB_LockSettingsController_setTimeout,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"conflict_matrix",														rb_RPDB_LockSettingsController_conflictMatrix,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"set_conflict_matrix",														rb_RPDB_LockSettingsController_setConflictMatrix,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"max_lockers",														rb_RPDB_LockSettingsController_maxLockers,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"set_max_lockers",														rb_RPDB_LockSettingsController_setMaxLockers,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"max_locks",														rb_RPDB_LockSettingsController_maxLocks,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"set_max_locks",														rb_RPDB_LockSettingsController_setMaxLocks,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"max_objects",														rb_RPDB_LockSettingsController_maxObjects,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"set_max_objects",														rb_RPDB_LockSettingsController_setMaxObjects,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"number_of_positions",														rb_RPDB_LockSettingsController_numberOfPartitions,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"set_number_of_positions",														rb_RPDB_LockSettingsController_setNumberOfPartitions,													0 	);
+	rb_define_method(			rb_RPDB_LockSettingsController, 				"deadlock_detector_settings_controller",														rb_RPDB_LockSettingsController_deadlockDetectorSettingsController,													0 	);
 
 }
 
@@ -285,12 +285,12 @@ VALUE rb_RPDB_LockSettingsController_timeoutReturnsReturnDenyNotDeadlock( VALUE	
 	*************************************************/
 
 	//	DB_TIME_NOTGRANTED      http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
-	VALUE rb_RPDB_LockSettingsController_turnTimeoutReturnsReturnDenyNotDeadlockOn( VALUE	rb_lock_settings_controller )	{
+	VALUE rb_RPDB_LockSettingsController_turnTimeoutReturnsDenyNotDeadlockOn( VALUE	rb_lock_settings_controller )	{
 
 		RPDB_LockSettingsController*	c_lock_settings_controller;
 		C_RPDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
-		RPDB_LockSettingsController_turnTimeoutReturnsReturnDenyNotDeadlockOn( c_lock_settings_controller );
+		RPDB_LockSettingsController_turnTimeoutReturnsDenyNotDeadlockOn( c_lock_settings_controller );
 
 		return rb_lock_settings_controller;
 	}
@@ -300,12 +300,12 @@ VALUE rb_RPDB_LockSettingsController_timeoutReturnsReturnDenyNotDeadlock( VALUE	
 	*************************************************/
 
 	//	DB_TIME_NOTGRANTED      http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
-	VALUE rb_RPDB_LockSettingsController_turnTimeoutReturnsReturnDenyNotDeadlockOff( VALUE	rb_lock_settings_controller )	{
+	VALUE rb_RPDB_LockSettingsController_turnTimeoutReturnsDenyNotDeadlockOff( VALUE	rb_lock_settings_controller )	{
 
 		RPDB_LockSettingsController*	c_lock_settings_controller;
 		C_RPDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
-		RPDB_LockSettingsController_turnTimeoutReturnsReturnDenyNotDeadlockOff( c_lock_settings_controller );
+		RPDB_LockSettingsController_turnTimeoutReturnsDenyNotDeadlockOff( c_lock_settings_controller );
 
 		return rb_lock_settings_controller;
 	}

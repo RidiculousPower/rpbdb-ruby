@@ -46,31 +46,31 @@ void Init_RPDB_FileSettingsController()	{
 	rb_define_method(			rb_RPDB_FileSettingsController, 				"parent_environment",									rb_RPDB_FileSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_FileSettingsController, 				"environment",												"parent_environment"	);
 
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_intermediateDirectoryMode,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_setIntermediateDirectoryMode,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_tempDirectory,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_setTempDirectory,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_permitEnvironmentBasedFileNaming,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_turnPermitEnvironmentBasedFileNamingOn,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_turnPermitEnvironmentBasedFileNamingOff,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_useEnvironmentHomePermissionsForFileNaming,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_turnUseEnvironmentHomePermissionsForFileNamingOn,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_turnUseEnvironmentHomePermissionsForFileNamingOff,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_createIfNecessary,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_turnCreateIfNecessaryOn,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_turnCreateIfNecessaryOff,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_isErrorIfDBExistsBeforeCreate,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_turnIsErrorIfDBExistsBeforeCreateOn,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_turnIsErrorIfDBExistsBeforeCreateOff,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_openReadOnly,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_turnOpenReadOnlyOn,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_turnOpenReadOnlyOff,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_forceRemoval,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_turnForceRemovalOn,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_turnForceRemovalOff,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_fileCreationMode,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_setFileCreationMode,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"shm_key",														rb_RPDB_FileSettingsController_verbositySettingsController,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"intermediate_directory_mode",														rb_RPDB_FileSettingsController_intermediateDirectoryMode,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"set_intermediate_directory_mode",														rb_RPDB_FileSettingsController_setIntermediateDirectoryMode,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"temp_directory",														rb_RPDB_FileSettingsController_tempDirectory,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"set_temp_directory",														rb_RPDB_FileSettingsController_setTempDirectory,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"permit_environment_based_naming?",														rb_RPDB_FileSettingsController_permitEnvironmentBasedFileNaming,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_permit_environment_based_naming_on",														rb_RPDB_FileSettingsController_turnPermitEnvironmentBasedFileNamingOn,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_permit_environment_based_naming_off",														rb_RPDB_FileSettingsController_turnPermitEnvironmentBasedFileNamingOff,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"use_environment_home_permissions_for_file_naming?",														rb_RPDB_FileSettingsController_useEnvironmentHomePermissionsForFileNaming,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_use_environment_home_permissions_for_file_naming_on",														rb_RPDB_FileSettingsController_turnUseEnvironmentHomePermissionsForFileNamingOn,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_use_environment_home_permissions_for_file_naming_off",														rb_RPDB_FileSettingsController_turnUseEnvironmentHomePermissionsForFileNamingOff,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"create_if_necessary?",														rb_RPDB_FileSettingsController_createIfNecessary,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_create_if_necessary_on",														rb_RPDB_FileSettingsController_turnCreateIfNecessaryOn,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_create_if_necessary_off",														rb_RPDB_FileSettingsController_turnCreateIfNecessaryOff,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"is_error_if_database_exists_before_create?",														rb_RPDB_FileSettingsController_isErrorIfDBExistsBeforeCreate,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_is_error_if_database_exists_before_create_on",														rb_RPDB_FileSettingsController_turnIsErrorIfDBExistsBeforeCreateOn,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_is_error_if_database_exists_before_create_off",														rb_RPDB_FileSettingsController_turnIsErrorIfDBExistsBeforeCreateOff,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"open_read_only?",														rb_RPDB_FileSettingsController_openReadOnly,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_open_read_only_on",														rb_RPDB_FileSettingsController_turnOpenReadOnlyOn,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_open_read_only_off",														rb_RPDB_FileSettingsController_turnOpenReadOnlyOff,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"force_removal?",														rb_RPDB_FileSettingsController_forceRemoval,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_force_removal_on",														rb_RPDB_FileSettingsController_turnForceRemovalOn,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_force_removal_off",														rb_RPDB_FileSettingsController_turnForceRemovalOff,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"file_creation_mode",														rb_RPDB_FileSettingsController_fileCreationMode,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"set_file_creation_mode",														rb_RPDB_FileSettingsController_setFileCreationMode,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"verbosity_settings_controller",														rb_RPDB_FileSettingsController_verbositySettingsController,													0 	);
 
 }
 

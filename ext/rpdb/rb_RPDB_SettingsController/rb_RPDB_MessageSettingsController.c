@@ -45,8 +45,8 @@ void Init_RPDB_MessageSettingsController()	{
 	rb_define_method(			rb_RPDB_MessageSettingsController, 				"parent_environment",									rb_RPDB_MessageSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_MessageSettingsController, 				"environment",												"parent_environment"	);
 
-	rb_define_method(			rb_RPDB_MessageSettingsController, 				"shm_key",														rb_RPDB_MessageSettingsController_file,													0 	);
-	rb_define_method(			rb_RPDB_MessageSettingsController, 				"shm_key",														rb_RPDB_MessageSettingsController_setFile,													0 	);
+	rb_define_method(			rb_RPDB_MessageSettingsController, 				"file",														rb_RPDB_MessageSettingsController_file,													0 	);
+	rb_define_method(			rb_RPDB_MessageSettingsController, 				"set_file",														rb_RPDB_MessageSettingsController_setFile,													0 	);
 
 }
 

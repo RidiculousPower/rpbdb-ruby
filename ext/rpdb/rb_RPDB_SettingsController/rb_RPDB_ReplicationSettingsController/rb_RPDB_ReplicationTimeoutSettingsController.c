@@ -48,24 +48,24 @@ void Init_RPDB_ReplicationTimeoutSettingsController()	{
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"parent_environment",									rb_RPDB_ReplicationTimeoutSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(						rb_RPDB_ReplicationTimeoutSettingsController, 	"environment",												"parent_environment"	);
                         			            			                                                                                              				
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_timeout,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_setTimeout,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeCheckpointWrite,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeCheckpointWrite,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeRetryConnection,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryConnection,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_electionTimeout,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_setElectionTimeout,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeRetryElection,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryElection,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_fullElectionParticipationTimeout,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_setFullElectionParticipationTimeout,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_heartbeatMonitorPulse,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatMonitorPulse,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_heartbeatBroadcastPulse,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatBroadcastPulse,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_leaseTimeout,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"shm_key",														rb_RPDB_ReplicationTimeoutSettingsController_setLeaseTimeout,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"timeout",														rb_RPDB_ReplicationTimeoutSettingsController_timeout,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_setTimeout,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"wait_time_before_checkpoint_write",														rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeCheckpointWrite,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_wait_time_before_checkpoint_write",														rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeCheckpointWrite,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"wait_time_before_retry_connection",														rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeRetryConnection,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_wait_time_before_retry_connection",														rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryConnection,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"election_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_electionTimeout,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_election_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_setElectionTimeout,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"wait_time_before_retry_election",														rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeRetryElection,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_wait_time_before_retry_election",														rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryElection,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"full_election_participation_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_fullElectionParticipationTimeout,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_full_election_participation_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_setFullElectionParticipationTimeout,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"heartbeat_monitor_pulse",														rb_RPDB_ReplicationTimeoutSettingsController_heartbeatMonitorPulse,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_heartbeat_monitor_pulse",														rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatMonitorPulse,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"heartbeat_broadcast_pulse",														rb_RPDB_ReplicationTimeoutSettingsController_heartbeatBroadcastPulse,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_heartbeat_broadcast_pulse",														rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatBroadcastPulse,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"lease_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_leaseTimeout,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_lease_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_setLeaseTimeout,													0 	);
 
 }
 

@@ -47,28 +47,28 @@ void Init_RPDB_ReplicationElectionSettingsController()	{
 	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"parent_environment",									rb_RPDB_ReplicationElectionSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_ReplicationElectionSettingsController, 				"environment",												"parent_environment"	);
                                     			                                                                                                    				
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_numberOfSitesRequiredForElection,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_setNumberOfSitesRequiredForElection,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_numberOfVotesRequiredForElection,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_setNumberOfVotesRequiredForElection,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_waitForAllClients,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAllClientsOn,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAllClientsOff,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_waitForAllElectablePeers,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAllElectablePeersOn,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAllElectablePeersOff,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_neverWait,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_turnNeverWaitOn,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_turnNeverWaitOff,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_waitForAtLeastOneClient,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAtLeastOneClientOn,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAtLeastOneClientOff,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_waitForAtLeastOneElectablePeer,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAtLeastOneElectablePeerOn,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAtLeastOneElectablePeerOff,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_waitForMinimumElectablePeersForDurableElection,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForMinimumElectablePeersForDurableElectionOn,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"shm_key",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForMinimumElectablePeersForDurableElectionOff,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"number_of_sites_required_for_election",														rb_RPDB_ReplicationElectionSettingsController_numberOfSitesRequiredForElection,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"set_number_of_sites_required_for_election",														rb_RPDB_ReplicationElectionSettingsController_setNumberOfSitesRequiredForElection,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"number_of_votes_required_for_election",														rb_RPDB_ReplicationElectionSettingsController_numberOfVotesRequiredForElection,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"set_number_of_votes_required_for_election",														rb_RPDB_ReplicationElectionSettingsController_setNumberOfVotesRequiredForElection,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"wait_for_all_clients?",														rb_RPDB_ReplicationElectionSettingsController_waitForAllClients,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"turn_wait_for_all_clients_on",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAllClientsOn,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"turn_wait_for_all_clients_off",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAllClientsOff,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"wait_for_all_electable_peers?",														rb_RPDB_ReplicationElectionSettingsController_waitForAllElectablePeers,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"turn_wait_for_all_electable_peers_on",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAllElectablePeersOn,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"turn_wait_for_all_electable_peers_off",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAllElectablePeersOff,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"never_wait?",														rb_RPDB_ReplicationElectionSettingsController_neverWait,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"turn_never_wait_on",														rb_RPDB_ReplicationElectionSettingsController_turnNeverWaitOn,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"turn_never_wait_off",														rb_RPDB_ReplicationElectionSettingsController_turnNeverWaitOff,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"wait_for_at_least_one_client?",														rb_RPDB_ReplicationElectionSettingsController_waitForAtLeastOneClient,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"turn_wait_for_at_least_one_client_on",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAtLeastOneClientOn,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"turn_wait_for_at_least_one_client_off",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAtLeastOneClientOff,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"wait_for_at_least_one_electable_peer?",														rb_RPDB_ReplicationElectionSettingsController_waitForAtLeastOneElectablePeer,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"turn_wait_for_at_least_one_electable_peer_on",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAtLeastOneElectablePeerOn,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"turn_wait_for_at_least_one_electable_peer_off",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForAtLeastOneElectablePeerOff,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"wait_for_minimum_electable_peers_for_durable_election?",														rb_RPDB_ReplicationElectionSettingsController_waitForMinimumElectablePeersForDurableElection,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"turn_wait_for_minimum_electable_peers_for_durable_election_on",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForMinimumElectablePeersForDurableElectionOn,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"turn_wait_for_minimum_electable_peers_for_durable_election_off",														rb_RPDB_ReplicationElectionSettingsController_turnWaitForMinimumElectablePeersForDurableElectionOff,													0 	);
 
 }
 

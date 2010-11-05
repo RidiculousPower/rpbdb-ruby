@@ -47,12 +47,12 @@ void Init_RPDB_FileVerbositySettingsController()	{
 	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"parent_environment",									rb_RPDB_FileVerbositySettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_FileVerbositySettingsController, 				"environment",												"parent_environment"	);
 
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"shm_key",														rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuringOpenCloseRenameFileOperations,													0 	);
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"shm_key",														rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOn,													0 	);
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"shm_key",														rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOff,													0 	);
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"shm_key",														rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuringAllFileOperations,													0 	);
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"shm_key",														rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOn,													0 	);
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"shm_key",														rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOff,													0 	);
+	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"display_additional_information_during_open_close_rename_file_operations?",														rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuringOpenCloseRenameFileOperations,													0 	);
+	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"turn_display_additional_information_during_open_close_rename_file_operations_on",														rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOn,													0 	);
+	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"turn_display_additional_information_during_open_close_rename_file_operations_off",														rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOff,													0 	);
+	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"display_additional_information_during_all_file_operations?",														rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuringAllFileOperations,													0 	);
+	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"turn_display_additional_information_during_all_file_operations_on",														rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOn,													0 	);
+	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"turn_display_additional_information_during_all_file_operations_off",														rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOff,													0 	);
 
 }
 

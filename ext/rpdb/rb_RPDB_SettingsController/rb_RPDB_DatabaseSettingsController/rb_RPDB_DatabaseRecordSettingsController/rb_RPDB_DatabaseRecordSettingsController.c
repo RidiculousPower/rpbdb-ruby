@@ -54,6 +54,12 @@ void Init_RPDB_DatabaseRecordSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseRecordSettingsController, 	"environment",																				"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseRecordSettingsController, 	"parent_database",																		rb_RPDB_DatabaseRecordSettingsController_parentDatabase,																0 	);
 	rb_define_alias(						rb_RPDB_DatabaseRecordSettingsController, 	"database",																						"parent_database"	);                    					
+
+/*
+	rb_define_method(						rb_RPDB_DatabaseRecordSettingsController, 	"fixed_length_settings_controller",										rb_RPDB_DatabaseRecordSettingsController_fixed,																0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordSettingsController, 	"variable_length_settings_controller",										rb_RPDB_DatabaseRecordSettingsController_fixed,																0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordSettingsController, 	"read_write_settings_controller",										rb_RPDB_DatabaseRecordSettingsController_fixed,																0 	);
+*/
 }
 	
 /*******************************************************************************************************************************************************************************************
