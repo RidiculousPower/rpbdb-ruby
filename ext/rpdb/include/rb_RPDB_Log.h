@@ -11,7 +11,10 @@ VALUE rb_RPDB_Log_init(	int				argc __attribute__ ((unused)),
 												VALUE*		args __attribute__ ((unused)),
 												VALUE			rb_self );
 	VALUE rb_RPDB_Log_settingsController(	VALUE	rb_log );
-	VALUE rb_RPDB_Log_parentEnvironment(	VALUE	rb_log );
+VALUE rb_RPDB_Log_parentEnvironment(	VALUE	rb_log );
+VALUE rb_RPDB_Log_parentLogController(	VALUE	rb_log );
+VALUE rb_RPDB_Log_parentLogCursorController(	VALUE	rb_log );
+VALUE rb_RPDB_Log_parentLogCursor(	VALUE	rb_log );
 	VALUE rb_RPDB_Log_logRecord( VALUE	rb_log );
 	VALUE rb_RPDB_Log_logSequenceNumber( VALUE	rb_log );
 	VALUE rb_RPDB_Log_filename( VALUE	rb_log );

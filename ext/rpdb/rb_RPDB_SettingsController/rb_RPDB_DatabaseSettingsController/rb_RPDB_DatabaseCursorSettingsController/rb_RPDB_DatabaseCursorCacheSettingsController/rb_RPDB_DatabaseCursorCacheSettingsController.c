@@ -175,6 +175,10 @@ VALUE rb_RPDB_DatabaseCursorCacheSettingsController_init(	int				argc __attribut
 
 VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentEnvironment(	VALUE	rb_database_cursor_cache_settings_controller )	{
 
+	VALUE	rb_parent_database_cursor_settings_controller		=	rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabaseCursorSettingsController( rb_database_cursor_cache_settings_controller );
+	VALUE	rb_parent_environment														=	rb_RPDB_DatabaseCursorSettingsController_parentEnvironment( rb_parent_database_cursor_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -183,6 +187,10 @@ VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentEnvironment(	VALUE	rb_
 
 VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabase(	VALUE	rb_database_cursor_cache_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabaseSettingsController( rb_database_cursor_cache_settings_controller );
+	VALUE	rb_parent_database												=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
+	
+	return rb_parent_database_settings_controller;
 }
 
 /***************************************
@@ -191,8 +199,11 @@ VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabase(	VALUE	rb_dat
 
 VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentSettingsController(	VALUE	rb_database_cursor_cache_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabaseSettingsController( rb_database_cursor_cache_settings_controller );
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_DatabaseSettingsController_parentSettingsController( rb_parent_database_settings_controller );
+	
+	return rb_parent_settings_controller;
 }
-
 
 /***************************************
 *  parent_database_settings_controller  *
@@ -200,6 +211,10 @@ VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentSettingsController(	VA
 
 VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_cursor_cache_settings_controller )	{
 
+	VALUE	rb_parent_database_cursor_settings_controller		=	rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabaseCursorSettingsController( rb_database_cursor_cache_settings_controller );
+	VALUE	rb_parent_database_settings_controller					=	rb_RPDB_DatabaseCursorSettingsController_parentSettingsController( rb_parent_database_cursor_settings_controller );
+	
+	return rb_parent_database_settings_controller;
 }
 
 /***************************************
@@ -208,6 +223,10 @@ VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabaseSettingsContro
 
 VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabaseCursorSettingsController(	VALUE	rb_database_cursor_cache_settings_controller )	{
 
+	VALUE	rb_parent_database_cursor_cache_settings_controller	=	rb_iv_get(	rb_database_cursor_cache_settings_controller,
+																																					RPDB_RB_DATABASE_COMPACT_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+
+	return rb_parent_database_cursor_cache_settings_controller;
 }
 
 /*******************************************************************************************************************************************************************************************

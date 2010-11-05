@@ -12,8 +12,11 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_new(	int			argc,
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_init(	int				argc __attribute__ ((unused)),
 																															VALUE*		args __attribute__ ((unused)),
 																															VALUE			rb_self );
-	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentEnvironment(	VALUE	rb_database_record_read_write_settings_controller );
-	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabase(	VALUE	rb_database_record_read_write_settings_controller );
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentEnvironment(	VALUE	rb_database_record_read_write_settings_controller );
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabase(	VALUE	rb_database_record_read_write_settings_controller );
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentSettingsController(	VALUE	rb_database_record_read_write_settings_controller );
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_record_read_write_settings_controller );
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseRecordSettingsController(	VALUE	rb_database_record_read_write_settings_controller );
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_filename( VALUE	rb_database_record_read_write_settings_controller );
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_setFilename(	VALUE	rb_database_record_read_write_settings_controller,
 																	VALUE	rb_filename	);

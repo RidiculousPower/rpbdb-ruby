@@ -185,9 +185,9 @@ VALUE rb_RPDB_DatabaseSequence_parentDatabase(	VALUE	rb_database_sequence )	{
 
 VALUE rb_RPDB_DatabaseSequence_parentDatabaseSequenceController(	VALUE	rb_database_sequence )	{
 
-	VALUE	=	rb_iv_get(	rb_database_sequence,
-											RPDB_RB_DATABASE_SEQUENCE_VARIABLE_PARENT_SEQUENCE_CONTROLLER );
-	return rb_database_sequence;
+	VALUE	rb_parent_database_sequence_controller	=	rb_iv_get(	rb_database_sequence,
+																															RPDB_RB_DATABASE_SEQUENCE_VARIABLE_PARENT_SEQUENCE_CONTROLLER );
+	return rb_parent_database_sequence_controller;
 }
 
 /*******************************************************************************************************************************************************************************************

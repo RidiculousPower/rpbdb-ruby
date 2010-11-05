@@ -118,7 +118,7 @@ VALUE rb_RPDB_Key_parentEnvironment(	VALUE	rb_key )	{
 	VALUE	rb_parent_database_controller	=	rb_RPDB_Key_parentDatabaseController( rb_key );
 	VALUE	rb_parent_environment					=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );
 	
-	return rb_parent_database;
+	return rb_parent_environment;
 }
 
 /***************************************

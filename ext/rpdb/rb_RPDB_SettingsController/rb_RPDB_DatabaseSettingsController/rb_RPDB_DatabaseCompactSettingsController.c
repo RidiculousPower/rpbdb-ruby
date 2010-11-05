@@ -164,6 +164,10 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_init(	int				argc __attribute__ 
 
 VALUE rb_RPDB_DatabaseCompactSettingsController_parentEnvironment(	VALUE	rb_database_compact_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController( rb_database_compact_settings_controller );
+	VALUE	rb_parent_environment										=	rb_RPDB_DatabaseSettingsController_parentEnvironment( rb_parent_database_settings_controller );
+
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -172,6 +176,10 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_parentEnvironment(	VALUE	rb_data
 
 VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabase(	VALUE	rb_database_compact_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController( rb_database_compact_settings_controller );
+	VALUE	rb_parent_database											=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
+
+	return rb_parent_database;
 }
 
 /***************************************
@@ -180,6 +188,10 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabase(	VALUE	rb_databas
 
 VALUE rb_RPDB_DatabaseCompactSettingsController_parentSettingsController(	VALUE	rb_database_compact_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController( rb_database_compact_settings_controller );
+	VALUE	rb_parent_settings_controller						=	rb_RPDB_DatabaseSettingsController_parentSettingsController( rb_parent_database_settings_controller );
+
+	return rb_parent_settings_controller;
 }
 
 /***************************************
@@ -188,6 +200,10 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_parentSettingsController(	VALUE	
 
 VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_compact_settings_controller )	{
 
+	VALUE	rb_parent_database_compact_settings_controller	=	rb_iv_get(	rb_database_compact_settings_controller,
+																																			RPDB_RB_DATABASE_COMPACT_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+
+	return rb_parent_database_compact_settings_controller;
 }
 
 /*********************

@@ -158,6 +158,10 @@ VALUE rb_RPDB_DatabaseJoinSettingsController_init(	int				argc __attribute__ ((u
 
 VALUE rb_RPDB_DatabaseJoinSettingsController_parentEnvironment(	VALUE	rb_join_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseJoinSettingsController_parentDatabaseSettingsController( rb_join_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_DatabaseSettingsController_parentEnvironment( rb_parent_database_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -166,6 +170,10 @@ VALUE rb_RPDB_DatabaseJoinSettingsController_parentEnvironment(	VALUE	rb_join_se
 
 VALUE rb_RPDB_DatabaseJoinSettingsController_parentDatabase(	VALUE	rb_join_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseJoinSettingsController_parentDatabaseSettingsController( rb_join_settings_controller );
+	VALUE	rb_parent_database												=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
+	
+	return rb_parent_database;
 }
 
 /***************************************
@@ -174,6 +182,10 @@ VALUE rb_RPDB_DatabaseJoinSettingsController_parentDatabase(	VALUE	rb_join_setti
 
 VALUE rb_RPDB_DatabaseJoinSettingsController_parentSettingsController(	VALUE	rb_join_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseJoinSettingsController_parentDatabaseSettingsController( rb_join_settings_controller );
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_DatabaseSettingsController_parentSettingsController( rb_parent_database_settings_controller );
+	
+	return rb_parent_settings_controller;
 }
 
 /***************************************
@@ -182,6 +194,10 @@ VALUE rb_RPDB_DatabaseJoinSettingsController_parentSettingsController(	VALUE	rb_
 
 VALUE rb_RPDB_DatabaseJoinSettingsController_parentDatabaseSettingsController(	VALUE	rb_join_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_join_settings_controller,
+																															RPDB_RB_DATABASE_JOIN_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+
+	return rb_parent_database_settings_controller;
 }
 
 /*****************************

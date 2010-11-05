@@ -12,8 +12,10 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_new(	int			argc,
 VALUE rb_RPDB_DatabaseTypeSettingsController_init(	int				argc __attribute__ ((unused)),
 																										VALUE*		args __attribute__ ((unused)),
 																										VALUE			rb_self );
-	VALUE rb_RPDB_DatabaseTypeSettingsController_parentEnvironment(	VALUE	rb_database_type_settings_controller );
-	VALUE rb_RPDB_DatabaseTypeSettingsController_parentDatabase(	VALUE	rb_database_type_settings_controller );
+VALUE rb_RPDB_DatabaseTypeSettingsController_parentEnvironment(	VALUE	rb_database_type_settings_controller );
+VALUE rb_RPDB_DatabaseTypeSettingsController_parentDatabase(	VALUE	rb_database_type_settings_controller );
+VALUE rb_RPDB_DatabaseTypeSettingsController_parentSettingsController(	VALUE	rb_database_type_settings_controller );
+VALUE rb_RPDB_DatabaseTypeSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_type_settings_controller );
 	VALUE rb_RPDB_DatabaseTypeSettingsController_databaseType( VALUE	rb_database_type_settings_controller );
 	VALUE rb_RPDB_DatabaseTypeSettingsController_isBTree( VALUE	rb_database_type_settings_controller );
 	VALUE rb_RPDB_DatabaseTypeSettingsController_setTypeToBTree( VALUE	rb_database_type_settings_controller );

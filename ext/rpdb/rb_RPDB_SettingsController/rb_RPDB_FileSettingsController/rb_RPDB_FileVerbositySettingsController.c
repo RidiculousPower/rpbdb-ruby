@@ -151,6 +151,10 @@ VALUE rb_RPDB_FileVerbositySettingsController_parentSettingsController(	VALUE	rb
 
 VALUE rb_RPDB_FileVerbositySettingsController_parentFileSettingsController(	VALUE	rb_file_verbosity_settings_controller )	{
 
+	VALUE	rb_parent_file_settings_controller	=	rb_iv_get(	rb_file_verbosity_settings_controller,
+																													RPDB_RB_FILE_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_FILE_SETTINGS_CONTROLLER );
+
+	return rb_parent_file_settings_controller;
 }
 
 /*************************************************************************

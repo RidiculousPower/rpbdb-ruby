@@ -12,7 +12,9 @@
 	VALUE rb_RPDB_MemoryPoolFileCacheSettingsController_init(	int				argc __attribute__ ((unused)),
 																														VALUE*		args __attribute__ ((unused)),
 																														VALUE			rb_self );
-	VALUE rb_RPDB_MemoryPoolFileCacheSettingsController_parentEnvironment(	VALUE	rb_memory_pool_file_cache_settings_controller );
-	VALUE rb_RPDB_MemoryPoolFileCacheSettingsController_prioritySettingsController( VALUE	rb_memory_pool_file_settings_controller );
+VALUE rb_RPDB_MemoryPoolFileCacheSettingsController_parentEnvironment(	VALUE	rb_memory_pool_file_cache_settings_controller );
+VALUE rb_RPDB_MemoryPoolFileCacheSettingsController_parentSettingsController(	VALUE	rb_memory_pool_file_cache_settings_controller );
+VALUE rb_RPDB_MemoryPoolFileCacheSettingsController_parentMemoryPoolSettingsController(	VALUE	rb_memory_pool_file_cache_settings_controller );
+VALUE rb_RPDB_MemoryPoolFileCacheSettingsController_parentMemoryPoolFileSettingsController(	VALUE	rb_memory_pool_file_cache_settings_controller );
 
 #endif

@@ -171,6 +171,10 @@ VALUE rb_RPDB_LogSettingsController_parentEnvironment(	VALUE	rb_log_settings_con
 
 VALUE rb_RPDB_LogSettingsController_parentSettingsController(	VALUE	rb_log_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_log_settings_controller,
+																										RPDB_RB_LOG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+
+	return rb_parent_settings_controller;
 }
 
 /***********

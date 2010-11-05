@@ -163,6 +163,10 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_parentSettingsController(	VAL
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_parentReplicationSettingsController(	VALUE	rb_replication_timeout_settings_controller )	{
 
+	VALUE	rb_parent_replication_settings_controller	=	rb_iv_get(	rb_replication_timeout_settings_controller,
+																																RPDB_RB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER );
+
+	return rb_parent_replication_settings_controller;
 }
 
 /****************

@@ -174,6 +174,10 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_init(	int				argc __attribute__ ((
 ***************************************/
 VALUE rb_RPDB_DatabaseCacheSettingsController_parentEnvironment(	VALUE	rb_database_cache_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller				=	rb_RPDB_DatabaseCacheSettingsController_parentSettingsController( rb_database_cache_settings_controller );
+	VALUE	rb_parent_environment								=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -181,6 +185,10 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_parentEnvironment(	VALUE	rb_databa
 ***************************************/
 VALUE rb_RPDB_DatabaseCacheSettingsController_parentDatabase(	VALUE	rb_database_cache_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseCacheSettingsController_parentDatabaseSettingsController( rb_database_cache_settings_controller );
+	VALUE	rb_parent_database											=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
+	
+	return rb_parent_database;
 }
 
 /***************************************
@@ -188,6 +196,10 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_parentDatabase(	VALUE	rb_database_
 ***************************************/
 VALUE rb_RPDB_DatabaseCacheSettingsController_parentSettingsController(	VALUE	rb_database_cache_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseCacheSettingsController_parentDatabaseSettingsController( rb_database_cache_settings_controller );
+	VALUE	rb_parent_settings_controller						=	rb_RPDB_DatabaseSettingsController_parentSettingsController( rb_parent_database_settings_controller );
+	
+	return rb_parent_settings_controller;
 }
 
 /***************************************
@@ -195,6 +207,10 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_parentSettingsController(	VALUE	rb
 ***************************************/
 VALUE rb_RPDB_DatabaseCacheSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_cache_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_cache_settings_controller,
+																															RPDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER );
+
+	return rb_parent_database_settings_controller;
 }
 
 /********************

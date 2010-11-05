@@ -185,6 +185,10 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_init(	int				argc __attrib
 
 VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentEnvironment(	VALUE	rb_database_cache_priority_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabaseSettingsController( rb_database_cache_priority_settings_controller );
+	VALUE	rb_parent_environment										=	rb_RPDB_DatabaseSettingsController_parentEnvironment( rb_parent_database_settings_controller );
+
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -193,6 +197,10 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentEnvironment(	VALUE	r
 
 VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabase(	VALUE	rb_database_cache_priority_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabaseSettingsController( rb_database_cache_priority_settings_controller );
+	VALUE	rb_parent_database											=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
+
+	return rb_parent_database;
 }
 
 /***************************************
@@ -201,6 +209,10 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabase(	VALUE	rb_d
 
 VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentSettingsController(	VALUE	rb_database_cache_priority_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabaseSettingsController( rb_database_cache_priority_settings_controller );
+	VALUE	rb_parent_settings_controller						=	rb_RPDB_DatabaseSettingsController_parentSettingsController( rb_parent_database_settings_controller );
+
+	return rb_parent_database_settings_controller;
 }
 
 /***************************************
@@ -209,6 +221,10 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentSettingsController(	
 
 VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabaseSettingsController(	VALUE	rb_database_cache_priority_settings_controller )	{
 
+	VALUE	rb_parent_database_cache_settings_controller	=	rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabaseCacheSettingsController( rb_database_cache_priority_settings_controller );
+	VALUE	rb_parent_database_settings_controller				=	rb_RPDB_DatabaseCacheSettingsController_parentDatabaseSettingsController( rb_parent_database_cache_settings_controller );
+
+	return rb_parent_database_settings_controller;
 }
 
 /***************************************
@@ -217,6 +233,10 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabaseSettingsCont
 
 VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabaseCacheSettingsController(	VALUE	rb_database_cache_priority_settings_controller )	{
 
+	VALUE	rb_parent_database_cache_settings_controller	=	rb_iv_get(	rb_database_cache_priority_settings_controller,
+																																		RPDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER );
+
+	return rb_parent_database_cache_settings_controller;
 }
 
 

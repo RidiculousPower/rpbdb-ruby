@@ -155,6 +155,10 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_init(	int				argc __attribut
 
 VALUE rb_RPDB_DatabaseAssociationSettingsController_parentEnvironment(	VALUE	rb_database_association_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseAssociationSettingsController_parentDatabaseSettingsController(rb_database_association_settings_controller );
+	VALUE	rb_parent_environment										=	rb_RPDB_DatabaseSettingsController_parentEnvironment( rb_parent_database_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /*******************
@@ -163,6 +167,10 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_parentEnvironment(	VALUE	rb_
 
 VALUE rb_RPDB_DatabaseAssociationSettingsController_parentDatabase(	VALUE	rb_database_association_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseAssociationSettingsController_parentDatabaseSettingsController(rb_database_association_settings_controller );
+	VALUE	rb_parent_database											=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
+	
+	return rb_parent_database;
 }
 
 /*******************
@@ -171,6 +179,10 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_parentDatabase(	VALUE	rb_dat
 
 VALUE rb_RPDB_DatabaseAssociationSettingsController_parentSettingsController(	VALUE	rb_database_association_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseAssociationSettingsController_parentDatabaseSettingsController(rb_database_association_settings_controller );
+	VALUE	rb_parent_settings_controller						=	rb_RPDB_DatabaseSettingsController_parentSettingsController( rb_parent_database_settings_controller );
+	
+	return rb_parent_settings_controller;
 }
 
 
@@ -179,8 +191,11 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_parentSettingsController(	VA
 *******************/
 
 VALUE rb_RPDB_DatabaseAssociationSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_association_settings_controller )	{
-
 	
+	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_association_settings_controller,
+																															RPDB_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER );
+	
+	return rb_parent_database_settings_controller;
 }
 
 /*****************

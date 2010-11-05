@@ -165,6 +165,10 @@ VALUE rb_RPDB_DebugSettingsController_parentEnvironment(	VALUE	rb_debug_settings
 
 VALUE rb_RPDB_DebugSettingsController_parentSettingsController(	VALUE	rb_debug_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_debug_settings_controller,
+																															RPDB_RB_DEBUG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+
+	return rb_parent_database_settings_controller;
 }
 
 /*********************************************************

@@ -119,6 +119,10 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_init(	int				argc __attribute
 
 VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentEnvironment(	VALUE	rb_database_encryption_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseEncryptionSettingsController_parentDatabaseSettingsController( rb_database_encryption_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_DatabaseSettingsController_parentEnvironment( rb_parent_database_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -127,6 +131,10 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentEnvironment(	VALUE	rb_d
 
 VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentDatabase(	VALUE	rb_database_encryption_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseEncryptionSettingsController_parentDatabaseSettingsController( rb_database_encryption_settings_controller );
+	VALUE	rb_parent_database												=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
+	
+	return rb_parent_database;
 }
 
 /***************************************
@@ -135,6 +143,10 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentDatabase(	VALUE	rb_data
 
 VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentSettingsController(	VALUE	rb_database_encryption_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseEncryptionSettingsController_parentDatabaseSettingsController( rb_database_encryption_settings_controller );
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_DatabaseSettingsController_parentSettingsController( rb_parent_database_settings_controller );
+	
+	return rb_parent_settings_controller;
 }
 
 /***************************************
@@ -143,6 +155,10 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentSettingsController(	VAL
 
 VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_encryption_settings_controller )	{
 
+	VALUE	rb_parent_database_encryption_settings_controller	=	rb_iv_get(	rb_database_encryption_settings_controller,
+																																				RPDB_RB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+
+	return rb_parent_database_encryption_settings_controller;
 }
 
 /*****************

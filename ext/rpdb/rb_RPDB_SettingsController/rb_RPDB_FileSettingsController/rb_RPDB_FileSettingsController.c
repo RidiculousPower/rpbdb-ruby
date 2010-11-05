@@ -156,6 +156,10 @@ VALUE rb_RPDB_FileSettingsController_parentEnvironment(	VALUE	rb_file_settings_c
 
 VALUE rb_RPDB_FileSettingsController_parentSettingsController(	VALUE	rb_file_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_file_settings_controller,
+																										RPDB_RB_FILE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+
+	return rb_parent_settings_controller;
 }
 
 /*********************************

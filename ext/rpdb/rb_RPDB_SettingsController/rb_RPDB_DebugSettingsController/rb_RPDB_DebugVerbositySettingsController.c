@@ -150,6 +150,10 @@ VALUE rb_RPDB_DebugVerbositySettingsController_parentSettingsController(	VALUE	r
 
 VALUE rb_RPDB_DebugVerbositySettingsController_parentDebugSettingsController(	VALUE	rb_debug_verbosity_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_debug_verbosity_settings_controller,
+																										RPDB_RB_DEBUG_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DEBUG_SETTINGS_CONTROLLER );
+
+	return rb_parent_settings_controller;
 }
 
 /*************************************************

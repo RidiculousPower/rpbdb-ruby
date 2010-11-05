@@ -118,14 +118,23 @@ VALUE rb_RPDB_ErrorSettingsController_init(	int				argc __attribute__ ((unused))
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
+
 VALUE rb_RPDB_ErrorSettingsController_parentEnvironment(	VALUE	rb_error_settings_controller )	{
 
-	RPDB_ErrorSettingsController*	c_error_settings_controller;
-	C_RPDB_ERROR_SETTINGS_CONTROLLER( rb_error_settings_controller, c_error_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_ErrorSettingsController_parentEnvironment( c_error_settings_controller ) );
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+
+VALUE rb_RPDB_ErrorSettingsController_parentSettingsController(	VALUE	rb_error_settings_controller )	{
+
+	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_environment_cache_settings_controller,
+																										RPDB_RB_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+
+	return rb_parent_settings_controller;
 }
 
 /************

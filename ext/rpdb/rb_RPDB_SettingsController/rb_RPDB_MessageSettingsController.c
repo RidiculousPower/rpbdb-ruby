@@ -126,6 +126,10 @@ VALUE rb_RPDB_MessageSettingsController_parentEnvironment(	VALUE	rb_message_sett
 
 VALUE rb_RPDB_MessageSettingsController_parentSettingsController(	VALUE	rb_message_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_message_settings_controller,
+																										RPDB_RB_MESSAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+
+	return rb_parent_settings_controller;
 }
 
 /*************

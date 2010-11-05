@@ -13,6 +13,9 @@ VALUE rb_RPDB_Data_init(	int				argc __attribute__ ((unused)),
 													VALUE*		args __attribute__ ((unused)),
 													VALUE			rb_self );
 	VALUE rb_RPDB_Data_settingsController(	VALUE	rb_data );
-	VALUE rb_RPDB_Data_parentEnvironment(	VALUE	rb_data );
+VALUE rb_RPDB_Data_parentEnvironment(	VALUE	rb_data );
+VALUE rb_RPDB_Data_parentDatabaseController(	VALUE	rb_data );
+VALUE rb_RPDB_Data_parentDatabase(	VALUE	rb_data );
+VALUE rb_RPDB_Data_parentRecord(	VALUE	rb_data );
 
 #endif

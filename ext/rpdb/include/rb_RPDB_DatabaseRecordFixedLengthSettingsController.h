@@ -14,6 +14,9 @@ VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_init(	int				argc __at
 																																VALUE			rb_self );
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentEnvironment(	VALUE	rb_database_record_fixed_length_settings_controller );
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabase(	VALUE	rb_database_record_fixed_length_settings_controller );
+VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentSettingsController(	VALUE	rb_database_record_fixed_length_settings_controller );
+VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_record_fixed_length_settings_controller );
+VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabaseRecordSettingsController(	VALUE	rb_database_record_fixed_length_settings_controller );
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_recordLength( VALUE	rb_database_record_fixed_length_settings_controller );
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_setRecordLength(	VALUE	rb_database_record_fixed_length_settings_controller,
 																		VALUE	rb_record_length );

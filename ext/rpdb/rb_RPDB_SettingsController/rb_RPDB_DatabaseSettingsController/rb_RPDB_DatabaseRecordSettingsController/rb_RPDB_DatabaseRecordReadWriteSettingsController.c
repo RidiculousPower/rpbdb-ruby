@@ -264,6 +264,10 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_init(	int				argc __attr
 ***************************************/
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentEnvironment(	VALUE	rb_database_record_read_write_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsController( rb_database_record_read_write_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_DatabaseSettingsController_parentEnvironment( rb_parent_database_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -271,6 +275,10 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentEnvironment(	VALUE
 ***************************************/
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabase(	VALUE	rb_database_record_read_write_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsController( rb_database_record_read_write_settings_controller );
+	VALUE	rb_parent_database												=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
+	
+	return rb_parent_database;
 }
 
 /***************************************
@@ -278,6 +286,10 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabase(	VALUE	rb
 ***************************************/
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentSettingsController(	VALUE	rb_database_record_read_write_settings_controller )	{
 
+	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsController( rb_database_record_read_write_settings_controller );
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_DatabaseSettingsController_parentSettingsController( rb_parent_database_settings_controller );
+	
+	return rb_parent_settings_controller;
 }
 
 /***************************************
@@ -285,6 +297,10 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentSettingsController
 ***************************************/
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_record_read_write_settings_controller )	{
 
+	VALUE	rb_parent_database_record_settings_controller		=	rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseRecordSettingsController( rb_database_record_read_write_settings_controller );
+	VALUE	rb_parent_database_settings_controller					=	rb_RPDB_DatabaseRecordSettingsController_parentDatabaseSettingsController( rb_parent_database_record_settings_controller );
+	
+	return rb_parent_database_settings_controller;
 }
 
 /***************************************
@@ -292,6 +308,10 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsCo
 ***************************************/
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseRecordSettingsController(	VALUE	rb_database_record_read_write_settings_controller )	{
 
+	VALUE	rb_parent_database_record_settings_controller	=	rb_iv_get(	rb_database_record_read_write_settings_controller,
+																																		RPDB_RB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER );
+
+	return rb_parent_database_record_settings_controller;
 }
 
 /*******************************************************************************************************************************************************************************************

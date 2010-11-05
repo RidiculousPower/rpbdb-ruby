@@ -203,6 +203,10 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_parentMemoryPoolFile
 
 VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_parentMemoryPoolFileCacheSettingsController(	VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
 
+	VALUE	rb_parent_memory_pool_file_cache_settings_controller	=	rb_iv_get(	rb_memory_pool_file_cache_priority_settings_controller,
+																																						RPDB_RB_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_FILE_SETTINGS_CONTROLLER );
+
+	return rb_parent_memory_pool_file_cache_settings_controller;
 }
 
 /*************************

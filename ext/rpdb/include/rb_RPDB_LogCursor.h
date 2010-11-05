@@ -11,7 +11,9 @@ VALUE rb_RPDB_LogCursor_init(	int				argc __attribute__ ((unused)),
 															VALUE*		args __attribute__ ((unused)),
 															VALUE			rb_self );
 	VALUE rb_RPDB_LogCursor_settingsController(	VALUE	rb_log_cursor );
-	VALUE rb_RPDB_LogCursor_parentEnvironment(	VALUE	rb_log_cursor );
+VALUE rb_RPDB_LogCursor_parentEnvironment(	VALUE	rb_log_cursor );
+VALUE rb_RPDB_LogCursor_parentLogController(	VALUE	rb_log_cursor );
+VALUE rb_RPDB_LogCursor_parentLogCursorController(	VALUE	rb_log_cursor );
 	VALUE rb_RPDB_LogCursor_open( VALUE	rb_log_cursor );
 	VALUE rb_RPDB_LogCursor_close( VALUE	rb_log_cursor );
 	VALUE rb_RPDB_LogCursor_retrieveCurrentLogRecord( VALUE	rb_log_cursor );

@@ -12,8 +12,11 @@ VALUE rb_RPDB_DatabaseTypeQueueSettingsController_new(	int			argc,
 VALUE rb_RPDB_DatabaseTypeQueueSettingsController_init(	int				argc __attribute__ ((unused)),
 																												VALUE*		args __attribute__ ((unused)),
 																												VALUE			rb_self );
-	VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentEnvironment(	VALUE	rb_database_type_queue_settings_controller );
-	VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentDatabase(	VALUE database_type_recno_settings_controller );
+VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentEnvironment(	VALUE	rb_database_type_queue_settings_controller );
+VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentDatabase(	VALUE	rb_database_type_queue_settings_controller );
+VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentSettingsController(	VALUE	rb_database_type_queue_settings_controller );
+VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_type_queue_settings_controller );
+VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentDatabaseTypeSettingsController(	VALUE	rb_database_type_queue_settings_controller );
 	VALUE rb_RPDB_DatabaseTypeQueueSettingsController_returnKeyDataPairsInOrder( VALUE	rb_database_type_queue_settings_controller );
 		VALUE rb_RPDB_DatabaseTypeQueueSettingsController_turnReturnKeyDataPairsInOrderOn( VALUE	rb_database_type_queue_settings_controller );
 		VALUE rb_RPDB_DatabaseTypeQueueSettingsController_turnReturnKeyDataPairsInOrderOff( VALUE	rb_database_type_queue_settings_controller );

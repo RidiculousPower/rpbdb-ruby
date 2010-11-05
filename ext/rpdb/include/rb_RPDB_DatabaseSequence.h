@@ -24,7 +24,9 @@ VALUE rb_RPDB_DatabaseSequence_init(	int				argc __attribute__ ((unused)),
 	VALUE rb_RPDB_DatabaseSequence_stepBackward(	VALUE	rb_database_sequence 	);
 	VALUE rb_RPDB_DatabaseSequence_stepBackwardBy(	VALUE	rb_database_sequence,
 																									VALUE	rb_step_value	);
-	VALUE rb_RPDB_DatabaseSequence_parentDatabase(	VALUE	rb_database_sequence );
+VALUE rb_RPDB_DatabaseSequence_parentEnvironment(	VALUE	rb_database_sequence );
+VALUE rb_RPDB_DatabaseSequence_parentDatabaseController(	VALUE	rb_database_sequence );
+VALUE rb_RPDB_DatabaseSequence_parentDatabase(	VALUE	rb_database_sequence );
 VALUE rb_RPDB_DatabaseSequence_parentDatabaseSequenceController(	VALUE	rb_database_sequence );
 
 #endif

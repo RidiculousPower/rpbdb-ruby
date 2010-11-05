@@ -139,6 +139,10 @@ VALUE rb_RPDB_MutexSettingsController_parentEnvironment(	VALUE	rb_mutex_settings
 
 VALUE rb_RPDB_MutexSettingsController_parentSettingsController(	VALUE	rb_mutex_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_mutex_settings_controller,
+																										RPDB_RB_MUTEX_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+
+	return rb_parent_settings_controller;
 }
 
 /*****************************************************

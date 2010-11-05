@@ -184,6 +184,10 @@ VALUE rb_RPDB_ReplicationSettingsController_parentEnvironment(	VALUE	rb_replicat
 
 VALUE rb_RPDB_ReplicationSettingsController_parentSettingsController(	VALUE	rb_replication_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_replication_settings_controller,
+																										RPDB_RB_REPLICATION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+
+	return rb_parent_settings_controller;
 }
 
 /*********

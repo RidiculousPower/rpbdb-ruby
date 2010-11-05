@@ -14,6 +14,10 @@ VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_init(	int				argc __
 																																	VALUE			rb_self );
 	VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentEnvironment(	VALUE	rb_database_cursor_cache_priority_settings_controller );
 	VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabase(	VALUE	rb_database_cursor_cache_priority_settings_controller );
+	VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentSettingsController(	VALUE	rb_database_cursor_cache_priority_settings_controller );
+	VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabaseSettingsController(	VALUE	rb_database_cursor_cache_priority_settings_controller );
+	VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabaseCursorSettingsController(	VALUE	rb_database_cursor_cache_priority_settings_controller );
+	VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabaseCursorCacheSettingsController(	VALUE	rb_database_cursor_cache_priority_settings_controller );
 	VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_priority( VALUE	rb_cursor_cache_priority_settings_controller );
 	VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_veryLow( VALUE	rb_cursor_cache_priority_settings_controller );
 	VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_setVeryLow( VALUE	rb_cursor_cache_priority_settings_controller );

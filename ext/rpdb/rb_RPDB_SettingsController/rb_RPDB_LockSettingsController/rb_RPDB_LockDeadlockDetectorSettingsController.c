@@ -165,6 +165,10 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentSettingsController(	V
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentLockSettingsController(	VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
+	VALUE	rb_parent_lock_settings_controller	=	rb_iv_get(	rb_lock_deadlock_detector_settings_controller,
+																													RPDB_RB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_LOCK_SETTINGS_CONTROLLER );
+
+	return rb_parent_lock_settings_controller;
 }
 
 /*********************

@@ -170,6 +170,10 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_parentSettingsController(	V
 
 VALUE rb_RPDB_ReplicationVerbositySettingsController_parentReplicationSettingsController(	VALUE	rb_replication_verbosity_settings_controller )	{
 
+	VALUE	rb_parent_replication_settings_controller	=	rb_iv_get(	rb_replication_verbosity_settings_controller,
+																																RPDB_RB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER );
+
+	return rb_parent_replication_settings_controller;
 }
 
 /*****************************************

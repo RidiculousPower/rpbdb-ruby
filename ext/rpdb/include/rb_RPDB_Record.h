@@ -13,7 +13,9 @@ VALUE rb_RPDB_Record_init(	int				argc __attribute__ ((unused)),
 														VALUE*		args __attribute__ ((unused)),
 														VALUE			rb_self );
 	VALUE rb_RPDB_Record_settingsController(	VALUE	rb_record );
-	VALUE rb_RPDB_Record_parentEnvironment(	VALUE	rb_record );
+VALUE rb_RPDB_Record_parentEnvironment(	VALUE	rb_record );
+VALUE rb_RPDB_Record_parentDatabaseController(	VALUE	rb_record );
+VALUE rb_RPDB_Record_parentDatabase(	VALUE	rb_record );
 	VALUE rb_RPDB_Record_primaryKey( VALUE	rb_record );
 	VALUE rb_RPDB_Record_retrievalKey( VALUE	rb_record );
 	VALUE rb_RPDB_Record_setExistsInDatabase(	VALUE	rb_record,

@@ -11,6 +11,7 @@ VALUE rb_RPDB_RemoteSite_init(	int				argc __attribute__ ((unused)),
 																VALUE*		args __attribute__ ((unused)),
 																VALUE			rb_self );
 	VALUE rb_RPDB_RemoteSite_settingsController(	VALUE	rb_remote_site );
-	VALUE rb_RPDB_RemoteSite_parentEnvironment(	VALUE	rb_remote_site );
+VALUE rb_RPDB_RemoteSite_parentEnvironment(	VALUE	rb_remote_site );
+VALUE rb_RPDB_RemoteSite_parentReplicationController(	VALUE	rb_remote_site );
 
 #endif

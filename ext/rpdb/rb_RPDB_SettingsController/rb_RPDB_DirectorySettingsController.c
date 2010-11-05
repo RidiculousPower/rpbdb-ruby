@@ -124,6 +124,16 @@ VALUE rb_RPDB_DirectorySettingsController_parentEnvironment(	VALUE	rb_directory_
 	return rb_parent_environment;
 }
 
+/***************************************
+*  parent_settings_controller  *
+***************************************/
+VALUE rb_RPDB_DirectorySettingsController_parentSettingsController(	VALUE	rb_directory_settings_controller )	{
+	
+	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_directory_settings_controller,
+																										RPDB_RB_DIRECTORY_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+
+	return rb_parent_settings_controller;
+}
 
 /*********************
 *  homeDirectory  *

@@ -166,7 +166,7 @@ VALUE rb_RPDB_DatabaseSequenceController_settingsController(	VALUE	rb_database_s
 VALUE rb_RPDB_DatabaseSequenceController_parentEnvironment(	VALUE	rb_database_sequence_controller )	{
 
 	VALUE	rb_parent_database_controller	=	rb_RPDB_DatabaseSequenceController_parentDatabaseController( rb_database_sequence_controller );
-	VALUE	rb_parent_environment	=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database );
+	VALUE	rb_parent_environment	=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );
 	
 	return rb_parent_environment;
 }

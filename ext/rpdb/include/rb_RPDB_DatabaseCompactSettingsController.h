@@ -12,8 +12,10 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_new(	int			argc,
 VALUE rb_RPDB_DatabaseCompactSettingsController_init(	int				argc __attribute__ ((unused)),
 																											VALUE*		args __attribute__ ((unused)),
 																											VALUE			rb_self );
-	VALUE rb_RPDB_DatabaseCompactSettingsController_parentEnvironment(	VALUE	rb_database_compact_settings_controller );
-	VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabase(	VALUE	rb_database_compact_settings_controller );
+VALUE rb_RPDB_DatabaseCompactSettingsController_parentEnvironment(	VALUE	rb_database_compact_settings_controller );
+VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabase(	VALUE	rb_database_compact_settings_controller );
+VALUE rb_RPDB_DatabaseCompactSettingsController_parentSettingsController(	VALUE	rb_database_compact_settings_controller );
+VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_compact_settings_controller );
 	VALUE rb_RPDB_DatabaseCompactSettingsController_fillPercent( VALUE	rb_database_compact_settings_controller );
 	VALUE rb_RPDB_DatabaseCompactSettingsController_setFillPercent(	VALUE	rb_database_compact_settings_controller, 
 																		VALUE	rb_fill_percent );

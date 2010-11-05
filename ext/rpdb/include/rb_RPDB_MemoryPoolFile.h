@@ -11,7 +11,9 @@ VALUE rb_RPDB_MemoryPoolFile_init(	int				argc __attribute__ ((unused)),
 																		VALUE*		args __attribute__ ((unused)),
 																		VALUE			rb_self );
 	VALUE rb_RPDB_MemoryPoolFile_settingsController(	VALUE	rb_memory_pool_file );
-	VALUE rb_RPDB_MemoryPoolFile_parentEnvironment(	VALUE	rb_memory_pool_file );
+VALUE rb_RPDB_MemoryPoolFile_parentEnvironment(	VALUE	rb_memory_pool_file );
+VALUE rb_RPDB_MemoryPoolFile_parentMemoryPoolController(	VALUE	rb_memory_pool_file );
+VALUE rb_RPDB_MemoryPoolFile_parentMemoryPoolFileController(	VALUE	rb_memory_pool_file );
 	VALUE rb_RPDB_MemoryPoolFile_sync( VALUE	rb_memory_pool_file );
 	VALUE rb_RPDB_MemoryPoolFile_close( VALUE	rb_memory_pool_file );
 

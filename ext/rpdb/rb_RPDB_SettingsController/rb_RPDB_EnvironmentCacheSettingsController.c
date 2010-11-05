@@ -130,10 +130,17 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_init(	int				argc __attribute__
 ***************************************/
 VALUE rb_RPDB_EnvironmentCacheSettingsController_parentEnvironment(	VALUE	rb_environment_cache_settings_controller )	{
 
-	RPDB_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-	C_RPDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+}
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_EnvironmentCacheSettingsController_parentEnvironment( c_environment_cache_settings_controller ) );
+/***************************************
+*  environment  *
+***************************************/
+VALUE rb_RPDB_EnvironmentCacheSettingsController_parentSettingsController(	VALUE	rb_environment_cache_settings_controller )	{
+
+	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_environment_cache_settings_controller,
+																										RPDB_RB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+
+	return rb_parent_settings_controller;
 }
 
 /********************

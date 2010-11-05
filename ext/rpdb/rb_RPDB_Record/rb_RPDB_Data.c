@@ -120,7 +120,7 @@ VALUE rb_RPDB_Data_parentEnvironment(	VALUE	rb_data )	{
 	VALUE	rb_parent_database_controller	=	rb_RPDB_Data_parentDatabaseController( rb_data );
 	VALUE	rb_parent_environment					=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );
 	
-	return rb_parent_database;
+	return rb_parent_environment;
 }
 
 /***************************************

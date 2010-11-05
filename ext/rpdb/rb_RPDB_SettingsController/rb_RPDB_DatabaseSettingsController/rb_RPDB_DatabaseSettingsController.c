@@ -197,6 +197,17 @@ VALUE rb_RPDB_DatabaseSettingsController_new(	int			argc,
 
 	VALUE	rb_database_settings_controller	=	RUBY_RPDB_DATABASE_SETTINGS_CONTROLLER( c_database_settings_controller );
 
+	if ( rb_parent_database != Qnil )	{
+		rb_iv_set(	rb_database_settings_controller,
+								RPDB_RB_DATABASE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE,
+								rb_parent_database);
+	}
+	if ( rb_parent_settings_controller != Qnil )	{
+		rb_iv_set(	rb_database_settings_controller,
+								RPDB_RB_DATABASE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+								rb_parent_settings_controller);	
+	}
+	
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_database_settings_controller,
 										1, 
@@ -230,6 +241,10 @@ VALUE rb_RPDB_DatabaseSettingsController_parentEnvironment(	VALUE	rb_database_se
 
 VALUE rb_RPDB_DatabaseSettingsController_parentDatabase(	VALUE	rb_database_settings_controller )	{
 
+	VALUE	rb_parent_database	=	rb_iv_get(	rb_database_settings_controller,
+																					RPDB_RB_DATABASE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE );
+
+	return rb_parent_database;
 }
 
 /********************
@@ -238,6 +253,10 @@ VALUE rb_RPDB_DatabaseSettingsController_parentDatabase(	VALUE	rb_database_setti
 
 VALUE rb_RPDB_DatabaseSettingsController_parentSettingsController(	VALUE	rb_database_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_database_settings_controller,
+																										RPDB_RB_DATABASE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+
+	return rb_parent_settings_controller;
 }
 
 /*******************************************************************************************************************************************************************************************

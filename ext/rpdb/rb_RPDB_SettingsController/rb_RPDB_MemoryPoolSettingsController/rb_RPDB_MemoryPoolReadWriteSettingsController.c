@@ -233,6 +233,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_parentSettingsController(	VA
 
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_parentMemoryPoolSettingsController(	VALUE	rb_memory_pool_read_write_settings_controller )	{
 
+	VALUE	rb_parent_memory_pool_settings_controller	=	rb_iv_get(	rb_memory_pool_read_write_settings_controller,
+																																RPDB_RB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_SETTINGS_CONTROLLER );
+
+	return rb_parent_memory_pool_settings_controller;
 }
 
 /*********************

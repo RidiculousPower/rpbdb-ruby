@@ -130,6 +130,10 @@ VALUE rb_RPDB_ThreadSettingsController_parentEnvironment(	VALUE	rb_thread_settin
 
 VALUE rb_RPDB_ThreadSettingsController_parentSettingsController(	VALUE	rb_thread_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_thread_settings_controller,
+																										RPDB_RB_THREAD_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+
+	return rb_parent_settings_controller;
 }
 
 /**********

@@ -11,7 +11,11 @@ VALUE rb_RPDB_LogSequenceNumber_init(	int				argc __attribute__ ((unused)),
 																			VALUE*		args __attribute__ ((unused)),
 																			VALUE			rb_self );
 	VALUE rb_RPDB_LogSequenceNumber_settingsController(	VALUE	rb_log_sequence_number );
-	VALUE rb_RPDB_LogSequenceNumber_parentEnvironment(	VALUE	rb_log_sequence_number );
+VALUE rb_RPDB_LogSequenceNumber_parentEnvironment(	VALUE	rb_log_sequence_number );
+VALUE rb_RPDB_LogSequenceNumber_parentLogController(	VALUE	rb_log_sequence_number );
+VALUE rb_RPDB_LogSequenceNumber_parentLogCursorController(	VALUE	rb_log_sequence_number );
+VALUE rb_RPDB_LogSequenceNumber_parentLogCursor(	VALUE	rb_log_sequence_number );
+VALUE rb_RPDB_LogSequenceNumber_parentLog(	VALUE	rb_log_sequence_number );
 	VALUE rb_RPDB_LogSequenceNumber_compare(	VALUE	rb_log_sequence_number,
 	 											VALUE	rb_log_sequence_number_two);
 

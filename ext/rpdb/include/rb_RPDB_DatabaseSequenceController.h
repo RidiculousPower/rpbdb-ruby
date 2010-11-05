@@ -17,6 +17,8 @@ VALUE rb_RPDB_DatabaseSequenceController_init(	int			argc,
 	VALUE rb_RPDB_DatabaseSequenceController_createSequence(	int			argc,
 																														VALUE*	argv,
 																														VALUE		rb_database_sequence_controller );
+VALUE rb_RPDB_DatabaseSequenceController_parentEnvironment(	VALUE	rb_database_sequence_controller );
+VALUE rb_RPDB_DatabaseSequenceController_parentDatabaseController(	VALUE	rb_database_sequence_controller );
 VALUE rb_RPDB_DatabaseSequenceController_parentDatabase(	VALUE	rb_database_sequence_controller );
 
 #endif
