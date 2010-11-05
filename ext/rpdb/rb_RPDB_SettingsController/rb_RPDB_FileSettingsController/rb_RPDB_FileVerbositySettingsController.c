@@ -135,6 +135,10 @@ VALUE rb_RPDB_FileVerbositySettingsController_init(	int				argc __attribute__ ((
 
 VALUE rb_RPDB_FileVerbositySettingsController_parentEnvironment(	VALUE	rb_file_verbosity_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_FileVerbositySettingsController_parentSettingsController( rb_file_verbosity_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -143,6 +147,10 @@ VALUE rb_RPDB_FileVerbositySettingsController_parentEnvironment(	VALUE	rb_file_v
 
 VALUE rb_RPDB_FileVerbositySettingsController_parentSettingsController(	VALUE	rb_file_verbosity_settings_controller )	{
 
+	VALUE	rb_parent_file_settings_controller		=	rb_RPDB_FileVerbositySettingsController_parentFileSettingsController( rb_file_verbosity_settings_controller );
+	VALUE	rb_parent_settings_controller					=	rb_RPDB_FileSettingsController_parentSettingsController( rb_parent_file_settings_controller );
+	
+	return rb_parent_settings_controller;	
 }
 
 /***************************************

@@ -295,6 +295,8 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseJoinController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseJoinCursor.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseObject.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseObject_internal.h
@@ -330,7 +332,10 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.o: /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSequence.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSequenceController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database_internal.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c
@@ -366,6 +371,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSequenceController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c
@@ -729,6 +735,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogCursor.c.o: /Users/asher/.rvm
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LogController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LogCursor.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LogCursorController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogCursor.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LogSequenceNumber.h
@@ -798,6 +805,9 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.o: /Users/as
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Log.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LogController.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LogCursor.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LogCursorController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_LogSequenceNumber.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.o: /usr/local/include/db.h
@@ -862,7 +872,9 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFile.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFileController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.o: /usr/local/include/db.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.o: /usr/local/include/rargs.h
@@ -893,6 +905,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileC
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFileController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.o: /usr/local/include/db.h
@@ -926,6 +939,9 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileP
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolController.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFile.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFileController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFilePage.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.o: /usr/local/include/db.h
@@ -957,6 +973,9 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileP
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFile.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFileController.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFilePage.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MemoryPoolFilePageController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.o: /usr/local/include/db.h
@@ -990,6 +1009,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Mutex/rb_RPDB_Mutex.c.o: /Users/asher/Projec
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Mutex/rb_RPDB_Mutex.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Mutex/rb_RPDB_Mutex.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Mutex/rb_RPDB_Mutex.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Mutex.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Mutex/rb_RPDB_Mutex.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MutexController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Mutex/rb_RPDB_Mutex.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Mutex/rb_RPDB_Mutex.c
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Mutex/rb_RPDB_Mutex.c.o: /usr/local/include/db.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Mutex/rb_RPDB_Mutex.c.o: /usr/local/include/rargs.h
@@ -1052,7 +1072,10 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Data.c.o: /Users/asher/.rvm/r
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Data.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Data.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Data.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Data.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Data.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Data.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Data.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Data.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Record.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Data.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Record/rb_RPDB_Data.c
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Data.c.o: /usr/local/include/db.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Data.c.o: /usr/local/include/rargs.h
@@ -1083,8 +1106,11 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.o: /Users/asher/.rvm/ru
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.o: /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Key.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Record.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Record/rb_RPDB_Key.c
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.o: /usr/local/include/db.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.o: /usr/local/include/rargs.h
@@ -1115,6 +1141,8 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Record.c.o: /Users/asher/.rvm
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Record.c.o: /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Record.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Record.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Record.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Record.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Record.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Record.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Record.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Record.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Record/rb_RPDB_Record.c
@@ -1150,6 +1178,8 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.o: /Users/ash
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.o: /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Record.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SecondaryKeys.h
@@ -1570,6 +1600,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseEncryptionSettingsController.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.o: /usr/local/include/db.h
@@ -1604,6 +1635,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseErrorSettingsController.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c
@@ -1874,6 +1906,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
@@ -1917,6 +1950,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseRecordSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseTypeBtreeSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseTypeSettingsController.h
@@ -1997,6 +2031,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseRecordSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseTypeQueueSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseTypeSettingsController.h
@@ -2038,6 +2073,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Database.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseController.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseRecordSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseTypeRecnoSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseTypeSettingsController.h
@@ -2114,6 +2150,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.o: /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseVerbositySettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c
@@ -2145,6 +2182,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsC
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.o: /Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0/ruby/config.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_BaseStandardIncludes.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DatabaseVerificationSettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c
@@ -2248,6 +2286,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettings
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_DirectorySettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o: /usr/local/include/db.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o: /usr/local/include/rargs.h
@@ -2776,6 +2815,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsCo
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_MessageSettingsController.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_SettingsController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o: /usr/local/include/db.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o: /usr/local/include/rargs.h
@@ -3083,6 +3123,7 @@ rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o: /Users/
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Constants.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Environment.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_Transaction.h
+rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include/rb_RPDB_TransactionController.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/rb_RPDB_Transaction/rb_RPDB_Transaction.c
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o: /usr/local/include/db.h
 rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o: /usr/local/include/rargs.h

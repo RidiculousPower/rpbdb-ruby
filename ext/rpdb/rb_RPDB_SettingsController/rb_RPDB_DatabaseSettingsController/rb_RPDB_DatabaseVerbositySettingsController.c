@@ -11,6 +11,7 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_DatabaseVerbositySettingsController.h"
+#include "rb_RPDB_DatabaseSettingsController.h"
 
 #include "rb_RPDB_Environment.h"
 

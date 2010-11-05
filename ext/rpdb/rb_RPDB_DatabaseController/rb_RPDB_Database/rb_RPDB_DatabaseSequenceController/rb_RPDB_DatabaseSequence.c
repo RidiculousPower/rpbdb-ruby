@@ -11,6 +11,9 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_DatabaseSequence.h"
+#include "rb_RPDB_DatabaseSequenceController.h"
+#include "rb_RPDB_DatabaseController.h"
+#include "rb_RPDB_Database.h"
 
 #include "rb_RPDB_Database_internal.h"
 
@@ -164,7 +167,7 @@ VALUE rb_RPDB_DatabaseSequence_parentEnvironment(	VALUE	rb_database_sequence )	{
 VALUE rb_RPDB_DatabaseSequence_parentDatabaseController(	VALUE	rb_database_sequence )	{
 
 	VALUE	rb_parent_database							=	rb_RPDB_DatabaseSequence_parentDatabase( rb_database_sequence );
-	VALUE	rb_parent_database_controller		= rb_RPDB_Database_parentDatabaseController( rb_database_sequence );
+	VALUE	rb_parent_database_controller		= rb_RPDB_Database_parentDatabaseController( rb_parent_database );
 	return rb_parent_database_controller;
 }
 

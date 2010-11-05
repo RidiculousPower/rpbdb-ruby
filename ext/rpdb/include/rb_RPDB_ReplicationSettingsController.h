@@ -12,7 +12,8 @@ VALUE rb_RPDB_ReplicationSettingsController_new(	int			argc,
 VALUE rb_RPDB_ReplicationSettingsController_init(	int				argc __attribute__ ((unused)),
 																									VALUE*		args __attribute__ ((unused)),
 																									VALUE			rb_self );
-	VALUE rb_RPDB_ReplicationSettingsController_parentEnvironment(	VALUE	rb_replication_settings_controller );
+VALUE rb_RPDB_ReplicationSettingsController_parentEnvironment(	VALUE	rb_replication_settings_controller );
+VALUE rb_RPDB_ReplicationSettingsController_parentSettingsController(	VALUE	rb_replication_settings_controller );
 	VALUE rb_RPDB_ReplicationSettingsController_on( VALUE	rb_replication_settings_controller );
 	VALUE rb_RPDB_ReplicationSettingsController_turnOn( VALUE	rb_replication_settings_controller );
 	VALUE rb_RPDB_ReplicationSettingsController_off( VALUE	rb_replication_settings_controller );

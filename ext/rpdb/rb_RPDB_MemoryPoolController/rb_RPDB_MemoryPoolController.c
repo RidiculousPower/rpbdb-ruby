@@ -126,6 +126,7 @@ VALUE rb_RPDB_MemoryPoolController_parentEnvironment(	VALUE	rb_memory_pool_contr
 
 	VALUE	rb_parent_environment	=	rb_iv_get(	rb_memory_pool_controller,
 																						RPDB_RB_MEMORY_POOL_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
+	return rb_parent_environment;
 }
 
 /*********************

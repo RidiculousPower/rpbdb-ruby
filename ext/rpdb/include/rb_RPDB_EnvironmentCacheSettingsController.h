@@ -12,7 +12,8 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_new(	int			argc,
 VALUE rb_RPDB_EnvironmentCacheSettingsController_init(	int				argc __attribute__ ((unused)),
 																												VALUE*		args __attribute__ ((unused)),
 																												VALUE			rb_self );
-	VALUE rb_RPDB_EnvironmentCacheSettingsController_parentEnvironment(	VALUE	rb_environment_cache_settings_controller );
+VALUE rb_RPDB_EnvironmentCacheSettingsController_parentEnvironment(	VALUE	rb_environment_cache_settings_controller );
+VALUE rb_RPDB_EnvironmentCacheSettingsController_parentSettingsController(	VALUE	rb_environment_cache_settings_controller );
 	VALUE rb_RPDB_EnvironmentCacheSettingsController_buffering( VALUE	rb_environment_cache_settings_controller );
 		VALUE rb_RPDB_EnvironmentCacheSettingsController_turnBufferingOn( VALUE	rb_environment_cache_settings_controller );
 		VALUE rb_RPDB_EnvironmentCacheSettingsController_turnBufferingOff( VALUE	rb_environment_cache_settings_controller );

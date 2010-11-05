@@ -141,6 +141,10 @@ VALUE rb_RPDB_MemoryPoolFileCacheSettingsController_init(	int				argc __attribut
 
 VALUE rb_RPDB_MemoryPoolFileCacheSettingsController_parentEnvironment(	VALUE	rb_memory_pool_file_cache_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_MemoryPoolFileCacheSettingsController_parentSettingsController( rb_memory_pool_file_cache_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -149,6 +153,10 @@ VALUE rb_RPDB_MemoryPoolFileCacheSettingsController_parentEnvironment(	VALUE	rb_
 
 VALUE rb_RPDB_MemoryPoolFileCacheSettingsController_parentSettingsController(	VALUE	rb_memory_pool_file_cache_settings_controller )	{
 
+	VALUE	rb_parent_memory_pool_settings_controller		=	rb_RPDB_MemoryPoolFileCacheSettingsController_parentMemoryPoolSettingsController( rb_memory_pool_file_cache_settings_controller );
+	VALUE	rb_parent_settings_controller								=	rb_RPDB_MemoryPoolFileSettingsController_parentSettingsController( rb_parent_memory_pool_settings_controller );
+	
+	return rb_parent_settings_controller;	
 }
 
 /***************************************
@@ -157,6 +165,10 @@ VALUE rb_RPDB_MemoryPoolFileCacheSettingsController_parentSettingsController(	VA
 
 VALUE rb_RPDB_MemoryPoolFileCacheSettingsController_parentMemoryPoolSettingsController(	VALUE	rb_memory_pool_file_cache_settings_controller )	{
 
+	VALUE	rb_parent_memory_pool_file_settings_controller		=	rb_RPDB_MemoryPoolFileCacheSettingsController_parentMemoryPoolFileSettingsController( rb_memory_pool_file_cache_settings_controller );
+	VALUE	rb_parent_settings_controller											=	rb_RPDB_MemoryPoolFileSettingsController_parentSettingsController( rb_parent_memory_pool_file_settings_controller );
+	
+	return rb_parent_settings_controller;	
 }
 
 /***************************************

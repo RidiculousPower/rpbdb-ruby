@@ -11,6 +11,9 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_MemoryPoolFilePageController.h"
+#include "rb_RPDB_MemoryPoolFile.h"
+#include "rb_RPDB_MemoryPoolFileController.h"
+#include "rb_RPDB_MemoryPoolFilePage.h"
 
 #include <rpdb/RPDB_Environment.h>
 
@@ -140,7 +143,7 @@ VALUE rb_RPDB_MemoryPoolFilePageController_settingsController(	VALUE	rb_memory_p
 VALUE rb_RPDB_MemoryPoolFilePageController_parentEnvironment(	VALUE	rb_memory_pool_file_page_controller )	{
 
 	VALUE	rb_parent_memory_pool_file_controller		=	rb_RPDB_MemoryPoolFilePage_parentMemoryPoolController( rb_memory_pool_file_page_controller );
-	VALUE	rb_parent_environment										=	rb_RPDB_MemoryPoolFileController_memoryPoolFileController( rb_parent_memory_pool_file_controller );
+	VALUE	rb_parent_environment										=	rb_RPDB_MemoryPoolFileController_parentEnvironment( rb_parent_memory_pool_file_controller );
 	
 	return rb_parent_environment;
 }
@@ -151,8 +154,8 @@ VALUE rb_RPDB_MemoryPoolFilePageController_parentEnvironment(	VALUE	rb_memory_po
 
 VALUE rb_RPDB_MemoryPoolFilePageController_parentMemoryPoolController(	VALUE	rb_memory_pool_file_page_controller )	{
 
-	VALUE	rb_parent_memory_pool_file						=	rb_RPDB_MemoryPoolFilePage_parentMemoryPoolFile( rb_memory_pool_file_page_controller );
-	VALUE	rb_parent_memory_pool_controller			=	rb_RPDB_MemoryPoolFile_memoryPoolFileController( rb_parent_memory_pool_file );
+	VALUE	rb_parent_memory_pool_file						=	rb_RPDB_MemoryPoolFilePageController_parentMemoryPoolFile( rb_memory_pool_file_page_controller );
+	VALUE	rb_parent_memory_pool_controller			=	rb_RPDB_MemoryPoolFile_parentMemoryPoolFileController( rb_parent_memory_pool_file );
 	
 	return rb_parent_memory_pool_controller;
 }
@@ -163,8 +166,8 @@ VALUE rb_RPDB_MemoryPoolFilePageController_parentMemoryPoolController(	VALUE	rb_
 
 VALUE rb_RPDB_MemoryPoolFilePageController_parentMemoryPoolFileController(	VALUE	rb_memory_pool_file_page_controller )	{
 
-	VALUE	rb_parent_memory_pool_file						=	rb_RPDB_MemoryPoolFilePage_parentMemoryPoolFile( rb_memory_pool_file_page_controller );
-	VALUE	rb_parent_memory_pool_file_controller	=	rb_RPDB_MemoryPoolFile_memoryPoolFileController( rb_parent_memory_pool_file );
+	VALUE	rb_parent_memory_pool_file						=	rb_RPDB_MemoryPoolFilePageController_parentMemoryPoolFile( rb_memory_pool_file_page_controller );
+	VALUE	rb_parent_memory_pool_file_controller	=	rb_RPDB_MemoryPoolFile_parentMemoryPoolFileController( rb_parent_memory_pool_file );
 	
 	return rb_parent_memory_pool_file_controller;
 }

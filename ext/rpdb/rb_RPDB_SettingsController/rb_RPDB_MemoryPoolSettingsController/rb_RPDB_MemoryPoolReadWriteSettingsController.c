@@ -217,6 +217,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_init(	int				argc __attribut
 
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_parentEnvironment(	VALUE	rb_memory_pool_read_write_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_MemoryPoolReadWriteSettingsController_parentSettingsController( rb_memory_pool_read_write_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -225,6 +229,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_parentEnvironment(	VALUE	rb_
 
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_parentSettingsController(	VALUE	rb_memory_pool_read_write_settings_controller )	{
 
+	VALUE	rb_parent_memory_pool_settings_controller		=	rb_RPDB_MemoryPoolReadWriteSettingsController_parentMemoryPoolSettingsController( rb_memory_pool_read_write_settings_controller );
+	VALUE	rb_parent_settings_controller								=	rb_RPDB_MemoryPoolSettingsController_parentSettingsController( rb_parent_memory_pool_settings_controller );
+	
+	return rb_parent_settings_controller;	
 }
 
 /***************************************

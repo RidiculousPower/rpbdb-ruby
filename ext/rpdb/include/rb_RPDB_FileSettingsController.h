@@ -12,7 +12,8 @@ VALUE rb_RPDB_FileSettingsController_new(	int			argc,
 VALUE rb_RPDB_FileSettingsController_init(	int				argc __attribute__ ((unused)),
 																						VALUE*		args __attribute__ ((unused)),
 																						VALUE			rb_self );
-	VALUE rb_RPDB_FileSettingsController_parentEnvironment(	VALUE	rb_file_settings_controller );
+VALUE rb_RPDB_FileSettingsController_parentEnvironment(	VALUE	rb_file_settings_controller );
+VALUE rb_RPDB_FileSettingsController_parentSettingsController(	VALUE	rb_file_settings_controller );
 	VALUE rb_RPDB_FileSettingsController_intermediateDirectoryMode( VALUE	rb_file_settings_controller );
 		VALUE rb_RPDB_FileSettingsController_setIntermediateDirectoryMode(	VALUE			rb_file_settings_controller, 
 																			VALUE		rb_mode );

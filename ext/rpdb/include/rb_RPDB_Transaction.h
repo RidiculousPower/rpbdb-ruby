@@ -12,7 +12,8 @@ VALUE rb_RPDB_Transaction_init(	int				argc __attribute__ ((unused)),
 																VALUE*		args __attribute__ ((unused)),
 																VALUE			rb_self );
 	VALUE rb_RPDB_Transaction_settingsController(	VALUE	rb_transaction );
-	VALUE rb_RPDB_Transaction_parentEnvironment(	VALUE	rb_transaction );
+VALUE rb_RPDB_Transaction_parentEnvironment(	VALUE	rb_transaction );
+VALUE rb_RPDB_Transaction_parentTransactionController(	VALUE	rb_transaction );
 	VALUE rb_RPDB_Transaction_name( VALUE	rb_transaction );
 	VALUE rb_RPDB_Transaction_setName(	VALUE	rb_transaction,
 	 												VALUE	rb_transaction_name );

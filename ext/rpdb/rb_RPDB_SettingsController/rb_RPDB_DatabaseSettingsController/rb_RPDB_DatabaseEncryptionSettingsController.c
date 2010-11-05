@@ -10,11 +10,14 @@
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
+#include "rb_RPDB_DatabaseEncryptionSettingsController.h"
+#include "rb_RPDB_DatabaseSettingsController.h"
+
+
 #include <rpdb/RPDB_Environment.h>
 #include <rpdb/RPDB_Database.h>
 
 #include <rpdb/RPDB_DatabaseEncryptionSettingsController.h>
-#include "rb_RPDB_DatabaseEncryptionSettingsController.h"
 
 #include <rargs.h>
 

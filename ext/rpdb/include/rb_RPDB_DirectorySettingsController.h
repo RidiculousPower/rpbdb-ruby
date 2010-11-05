@@ -12,7 +12,8 @@ VALUE rb_RPDB_DirectorySettingsController_new(	int				argc,
 VALUE rb_RPDB_DirectorySettingsController_init(	int				argc,
 																								VALUE*		args,
 																								VALUE			rb_self );
-	VALUE rb_RPDB_DirectorySettingsController_parentEnvironment(	VALUE	rb_directory_settings_controller );
+VALUE rb_RPDB_DirectorySettingsController_parentEnvironment(	VALUE	rb_directory_settings_controller );
+VALUE rb_RPDB_DirectorySettingsController_parentSettingsController(	VALUE	rb_directory_settings_controller );
 	VALUE rb_RPDB_DirectorySettingsController_homeDirectory( VALUE	rb_directory_settings_controller );
 	VALUE rb_RPDB_DirectorySettingsController_dataDirectories( VALUE	rb_directory_settings_controller );
 	VALUE rb_RPDB_DirectorySettingsController_addDataDirectory(	VALUE	rb_directory_settings_controller, 

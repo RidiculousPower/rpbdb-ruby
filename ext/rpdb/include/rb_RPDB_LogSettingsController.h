@@ -12,7 +12,8 @@ VALUE rb_RPDB_LogSettingsController_new(	int			argc,
 VALUE rb_RPDB_LogSettingsController_init(	int				argc __attribute__ ((unused)),
 																					VALUE*		args __attribute__ ((unused)),
 																					VALUE			rb_self );
-	VALUE rb_RPDB_LogSettingsController_parentEnvironment(	VALUE	rb_log_settings_controller );
+VALUE rb_RPDB_LogSettingsController_parentEnvironment(	VALUE	rb_log_settings_controller );
+VALUE rb_RPDB_LogSettingsController_parentSettingsController(	VALUE	rb_log_settings_controller );
 	VALUE rb_RPDB_LogSettingsController_on( VALUE	rb_log_settings_controller );
 		VALUE rb_RPDB_LogSettingsController_turnOn( VALUE	rb_log_settings_controller );
 	VALUE rb_RPDB_LogSettingsController_off( VALUE	rb_log_settings_controller );

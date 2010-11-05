@@ -17,5 +17,6 @@ VALUE rb_RPDB_SecondaryKeys_init(	int				argc __attribute__ ((unused)),
 VALUE rb_RPDB_SecondaryKeys_parentEnvironment(	VALUE	rb_secondary_keys );
 VALUE rb_RPDB_SecondaryKeys_parentDatabaseController(	VALUE	rb_secondary_keys );
 VALUE rb_RPDB_SecondaryKeys_parentDatabase(	VALUE	rb_secondary_keys );
+VALUE rb_RPDB_SecondaryKeys_parentRecord(	VALUE	rb_secondary_keys );
 
 #endif

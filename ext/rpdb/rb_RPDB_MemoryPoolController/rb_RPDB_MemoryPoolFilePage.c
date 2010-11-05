@@ -11,6 +11,9 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_MemoryPoolFilePage.h"
+#include "rb_RPDB_MemoryPoolFile.h"
+#include "rb_RPDB_MemoryPoolFileController.h"
+#include "rb_RPDB_MemoryPoolController.h"
 
 #include <rpdb/RPDB_Environment.h>
 
@@ -173,7 +176,7 @@ VALUE rb_RPDB_MemoryPoolFilePage_parentMemoryPoolFileController(	VALUE	rb_memory
 VALUE rb_RPDB_MemoryPoolFilePage_parentMemoryPoolFile(	VALUE	rb_memory_pool_file_page )	{
 
 	VALUE	rb_parent_memory_pool_file_page_controller	=	rb_RPDB_MemoryPoolFilePage_parentMemoryPoolFilePageController( rb_memory_pool_file_page );
-	VALUE	rb_parent_memory_pool_file									=	rb_RPDB_MemoryPoolFile_parentMemoryPoolFileController( rb_parent_memory_pool_file );
+	VALUE	rb_parent_memory_pool_file									=	rb_RPDB_MemoryPoolFile_parentMemoryPoolFileController( rb_parent_memory_pool_file_page_controller );
 	
 	return rb_parent_memory_pool_file;
 }

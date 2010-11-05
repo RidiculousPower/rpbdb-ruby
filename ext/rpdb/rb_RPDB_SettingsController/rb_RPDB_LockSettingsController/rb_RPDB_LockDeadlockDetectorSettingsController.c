@@ -149,6 +149,10 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_init(	int				argc __attribu
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentEnvironment(	VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_LockDeadlockDetectorSettingsController_parentSettingsController( rb_lock_deadlock_detector_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -157,6 +161,10 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentEnvironment(	VALUE	rb
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentSettingsController(	VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
+	VALUE	rb_parent_lock_settings_controller		=	rb_RPDB_LockDeadlockDetectorSettingsController_parentLockSettingsController( rb_lock_deadlock_detector_settings_controller );
+	VALUE	rb_parent_settings_controller					=	rb_RPDB_LockSettingsController_parentSettingsController( rb_parent_lock_settings_controller );
+	
+	return rb_parent_settings_controller;	
 }
 
 /***************************************

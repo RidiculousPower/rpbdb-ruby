@@ -11,6 +11,7 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_MemoryPoolFileController.h"
+#include "rb_RPDB_MemoryPoolController.h"
 
 #include <rpdb/RPDB_Environment.h>
 

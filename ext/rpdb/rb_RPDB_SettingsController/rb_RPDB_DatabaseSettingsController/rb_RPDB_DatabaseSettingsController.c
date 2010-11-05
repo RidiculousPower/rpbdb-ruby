@@ -11,6 +11,7 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB.h"
+#include "rb_RPDB_Database.h"
 #include "rb_RPDB_DatabaseController.h"
 
 #include "rb_RPDB_DatabaseSettingsController.h"
@@ -232,7 +233,11 @@ VALUE rb_RPDB_DatabaseSettingsController_init(	int				argc __attribute__ ((unuse
 ***********************/
 
 VALUE rb_RPDB_DatabaseSettingsController_parentEnvironment(	VALUE	rb_database_settings_controller )	{
-
+	
+	VALUE	rb_parent_database			=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_database_settings_controller );
+	VALUE	rb_parent_environment		=	rb_RPDB_Database_parentEnvironment( rb_parent_database );
+	
+	return rb_parent_environment;
 }
 
 /********************

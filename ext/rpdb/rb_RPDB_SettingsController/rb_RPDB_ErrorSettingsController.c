@@ -123,6 +123,10 @@ VALUE rb_RPDB_ErrorSettingsController_init(	int				argc __attribute__ ((unused))
 
 VALUE rb_RPDB_ErrorSettingsController_parentEnvironment(	VALUE	rb_error_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_ErrorSettingsController_parentSettingsController( rb_error_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -131,7 +135,7 @@ VALUE rb_RPDB_ErrorSettingsController_parentEnvironment(	VALUE	rb_error_settings
 
 VALUE rb_RPDB_ErrorSettingsController_parentSettingsController(	VALUE	rb_error_settings_controller )	{
 
-	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_environment_cache_settings_controller,
+	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_error_settings_controller,
 																										RPDB_RB_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_settings_controller;

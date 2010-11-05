@@ -11,6 +11,8 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_MemoryPoolFile.h"
+#include "rb_RPDB_MemoryPoolController.h"
+#include "rb_RPDB_MemoryPoolFileController.h"
  
 #include <rpdb/RPDB_Environment.h>
 
@@ -130,7 +132,7 @@ VALUE rb_RPDB_MemoryPoolFile_parentEnvironment(	VALUE	rb_memory_pool_file )	{
 	VALUE	rb_parent_memory_pool_controller		=	rb_RPDB_MemoryPoolFile_parentMemoryPoolController( rb_memory_pool_file );
 	VALUE	rb_parent_environment								=	rb_RPDB_MemoryPoolController_parentEnvironment( rb_parent_memory_pool_controller );
 	
-	return rb_parent_memory_pool_controller;
+	return rb_parent_environment;
 }
 
 /***************************************

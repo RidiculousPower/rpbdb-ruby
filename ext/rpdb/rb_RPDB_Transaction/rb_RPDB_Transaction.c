@@ -4,12 +4,14 @@
  *
  */
 
+#include "rb_RPDB_Transaction.h"
+#include "rb_RPDB_TransactionController.h"
+#include "rb_RPDB_Environment.h"
+
 #include <rpdb/RPDB_Environment.h>
 
 #include <rpdb/RPDB_Transaction.h>
-#include "rb_RPDB_Transaction.h"
 #include <rpdb/RPDB_TransactionSettingsController.h>
-#include "rb_RPDB_Environment.h"
 
 #include <rargs.h>
 

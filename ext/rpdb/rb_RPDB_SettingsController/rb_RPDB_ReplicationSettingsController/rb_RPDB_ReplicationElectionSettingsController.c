@@ -150,6 +150,10 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_init(	int				argc __attribut
 
 VALUE rb_RPDB_ReplicationElectionSettingsController_parentEnvironment(	VALUE	rb_replication_election_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_ReplicationElectionSettingsController_parentSettingsController( rb_replication_election_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -158,6 +162,10 @@ VALUE rb_RPDB_ReplicationElectionSettingsController_parentEnvironment(	VALUE	rb_
 
 VALUE rb_RPDB_ReplicationElectionSettingsController_parentSettingsController(	VALUE	rb_replication_election_settings_controller )	{
 
+	VALUE	rb_parent_replication_settings_controller		=	rb_RPDB_ReplicationElectionSettingsController_parentReplicationSettingsController( rb_replication_election_settings_controller );
+	VALUE	rb_parent_settings_controller								=	rb_RPDB_ReplicationSettingsController_parentSettingsController( rb_parent_replication_settings_controller );
+	
+	return rb_parent_settings_controller;	
 }
 
 /***************************************

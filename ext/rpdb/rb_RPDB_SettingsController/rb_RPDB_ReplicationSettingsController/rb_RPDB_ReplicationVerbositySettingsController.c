@@ -154,6 +154,10 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_init(	int				argc __attribu
 
 VALUE rb_RPDB_ReplicationVerbositySettingsController_parentEnvironment(	VALUE	rb_replication_verbosity_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_ReplicationVerbositySettingsController_parentSettingsController( rb_replication_verbosity_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -162,6 +166,10 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_parentEnvironment(	VALUE	rb
 
 VALUE rb_RPDB_ReplicationVerbositySettingsController_parentSettingsController(	VALUE	rb_replication_verbosity_settings_controller )	{
 
+	VALUE	rb_parent_replication_settings_controller		=	rb_RPDB_ReplicationVerbositySettingsController_parentReplicationSettingsController( rb_replication_verbosity_settings_controller );
+	VALUE	rb_parent_settings_controller								=	rb_RPDB_ReplicationVerbositySettingsController_parentSettingsController( rb_parent_replication_settings_controller );
+	
+	return rb_parent_settings_controller;	
 }
 
 /***************************************

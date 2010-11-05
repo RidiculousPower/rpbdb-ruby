@@ -146,6 +146,10 @@ VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_init(	int				argc 
 
 VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentEnvironment(	VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentSettingsController( rb_lock_deadlock_detector_verbosity_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -154,6 +158,10 @@ VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentEnvironment(
 
 VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentSettingsController(	VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
 
+	VALUE	rb_parent_lock_deadlock_detector_settings_controller		=	rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentLockSettingsController( rb_lock_deadlock_detector_verbosity_settings_controller );
+	VALUE	rb_parent_settings_controller														=	rb_RPDB_LockDeadlockDetectorSettingsController_parentSettingsController( rb_parent_lock_deadlock_detector_settings_controller );
+	
+	return rb_parent_settings_controller;	
 }
 
 /***************************************
@@ -162,6 +170,10 @@ VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentSettingsCont
 
 VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentLockSettingsController(	VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
 
+	VALUE	rb_parent_lock_deadlock_detector_settings_controller		=	rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentLockDeadlockDetectorSettingsController( rb_lock_deadlock_detector_verbosity_settings_controller );
+	VALUE	rb_parent_settings_controller														=	rb_RPDB_LockDeadlockDetectorSettingsController_parentSettingsController( rb_parent_lock_deadlock_detector_settings_controller );
+	
+	return rb_parent_settings_controller;	
 }
 
 /***************************************

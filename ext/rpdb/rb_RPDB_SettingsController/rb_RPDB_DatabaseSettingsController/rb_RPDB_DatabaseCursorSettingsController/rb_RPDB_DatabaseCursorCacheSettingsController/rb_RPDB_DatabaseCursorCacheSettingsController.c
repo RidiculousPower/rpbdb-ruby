@@ -190,7 +190,7 @@ VALUE rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabase(	VALUE	rb_dat
 	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseCursorCacheSettingsController_parentDatabaseSettingsController( rb_database_cursor_cache_settings_controller );
 	VALUE	rb_parent_database												=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
 	
-	return rb_parent_database_settings_controller;
+	return rb_parent_database;
 }
 
 /***************************************

@@ -10,12 +10,15 @@
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
+#include "rb_RPDB_DatabaseVerificationSettingsController.h"
+
+#include "rb_RPDB_Environment.h"
+#include "rb_RPDB_DatabaseSettingsController.h"
+
 #include <rpdb/RPDB_Environment.h>
 #include <rpdb/RPDB_Database.h>
 
 #include <rpdb/RPDB_DatabaseVerificationSettingsController.h>
-#include "rb_RPDB_DatabaseVerificationSettingsController.h"
-#include "rb_RPDB_Environment.h"
 
 #include <rargs.h>
 

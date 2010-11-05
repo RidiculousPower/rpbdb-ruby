@@ -12,6 +12,9 @@
 
 #include "rb_RPDB_Record.h"
 
+#include "rb_RPDB_DatabaseController.h"
+#include "rb_RPDB_Database.h"
+
 #include <rpdb/RPDB_Environment.h>
 
 #include <rpdb/RPDB_Database.h>

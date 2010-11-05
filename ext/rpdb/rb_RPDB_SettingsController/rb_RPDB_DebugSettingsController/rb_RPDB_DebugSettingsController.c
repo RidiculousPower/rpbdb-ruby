@@ -157,6 +157,10 @@ VALUE rb_RPDB_DebugSettingsController_init(	int				argc __attribute__ ((unused))
 
 VALUE rb_RPDB_DebugSettingsController_parentEnvironment(	VALUE	rb_debug_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_DebugSettingsController_parentSettingsController( rb_debug_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************

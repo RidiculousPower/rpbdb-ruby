@@ -11,6 +11,9 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_LogSequenceNumber.h"
+#include "rb_RPDB_LogController.h"
+#include "rb_RPDB_LogCursor.h"
+#include "rb_RPDB_LogCursorController.h"
 #include "rb_RPDB_Log.h"
 
 #include <rpdb/RPDB_Environment.h>
@@ -147,7 +150,7 @@ VALUE rb_RPDB_LogSequenceNumber_parentLogController(	VALUE	rb_log_sequence_numbe
 	VALUE	rb_parent_log_cursor_controller		=	rb_RPDB_LogSequenceNumber_parentLogCursorController( rb_log_sequence_number );
 	VALUE	rb_parent_log_controller					=	rb_RPDB_LogCursorController_parentLogController( rb_parent_log_cursor_controller );
 	
-	return rb_parent_log_cursor_controller;
+	return rb_parent_log_controller;
 }
 
 /***************************************

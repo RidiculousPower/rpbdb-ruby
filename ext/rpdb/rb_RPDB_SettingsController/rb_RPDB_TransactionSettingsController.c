@@ -161,6 +161,10 @@ VALUE rb_RPDB_TransactionSettingsController_init(	int				argc __attribute__ ((un
 
 VALUE rb_RPDB_TransactionSettingsController_parentEnvironment(	VALUE	rb_transaction_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_TransactionSettingsController_parentSettingsController( rb_transaction_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************

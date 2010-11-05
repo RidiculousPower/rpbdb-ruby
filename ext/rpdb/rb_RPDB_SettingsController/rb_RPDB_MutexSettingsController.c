@@ -131,6 +131,10 @@ VALUE rb_RPDB_MutexSettingsController_init(	int				argc __attribute__ ((unused))
 
 VALUE rb_RPDB_MutexSettingsController_parentEnvironment(	VALUE	rb_mutex_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_MutexSettingsController_parentSettingsController( rb_mutex_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************

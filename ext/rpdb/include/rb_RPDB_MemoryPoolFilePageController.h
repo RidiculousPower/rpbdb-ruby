@@ -11,7 +11,10 @@ VALUE rb_RPDB_MemoryPoolFilePageController_init(	int				argc __attribute__ ((unu
 																									VALUE*		args __attribute__ ((unused)),
 																									VALUE			rb_self );
 	VALUE rb_RPDB_MemoryPoolFilePageController_settingsController(	VALUE	rb_memory_pool_file_page_controller );
-	VALUE rb_RPDB_MemoryPoolFilePageController_parentEnvironment(	VALUE	rb_memory_pool_file_page_controller );
+VALUE rb_RPDB_MemoryPoolFilePageController_parentEnvironment(	VALUE	rb_memory_pool_file_page_controller );
+VALUE rb_RPDB_MemoryPoolFilePageController_parentMemoryPoolController(	VALUE	rb_memory_pool_file_page_controller );
+VALUE rb_RPDB_MemoryPoolFilePageController_parentMemoryPoolFileController(	VALUE	rb_memory_pool_file_page_controller );
+VALUE rb_RPDB_MemoryPoolFilePageController_parentMemoryPoolFile(	VALUE	rb_memory_pool_file_page_controller );
 	VALUE rb_RPDB_MemoryPoolFilePageController_retrievePageFromCache(	VALUE	rb_memory_pool_file_page_controller,
 																		VALUE	rb_page_number_address	);
 

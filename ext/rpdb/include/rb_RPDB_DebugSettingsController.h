@@ -12,7 +12,8 @@ VALUE rb_RPDB_DebugSettingsController_new(	int			argc,
 VALUE rb_RPDB_DebugSettingsController_init(	int				argc __attribute__ ((unused)),
 																					VALUE*		args __attribute__ ((unused)),
 																					VALUE			rb_self );
-	VALUE rb_RPDB_DebugSettingsController_parentEnvironment(	VALUE	rb_debug_settings_controller );
+VALUE rb_RPDB_DebugSettingsController_parentEnvironment(	VALUE	rb_debug_settings_controller );
+VALUE rb_RPDB_DebugSettingsController_parentSettingsController(	VALUE	rb_debug_settings_controller );
 	VALUE rb_RPDB_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment( VALUE	rb_debug_settings_controller );
 		VALUE rb_RPDB_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOn( VALUE	rb_debug_settings_controller );
 		VALUE rb_RPDB_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOff( VALUE	rb_debug_settings_controller );

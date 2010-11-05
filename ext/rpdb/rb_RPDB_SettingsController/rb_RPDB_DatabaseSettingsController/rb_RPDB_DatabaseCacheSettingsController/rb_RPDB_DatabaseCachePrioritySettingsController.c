@@ -12,6 +12,7 @@
 
 #include "rb_RPDB_DatabaseCachePrioritySettingsController.h"
 
+#include "rb_RPDB_DatabaseSettingsController.h"
 #include "rb_RPDB_DatabaseCacheSettingsController.h"
 
 #include "rb_RPDB_DatabaseSettingsController.h"
@@ -212,7 +213,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_parentSettingsController(	
 	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabaseSettingsController( rb_database_cache_priority_settings_controller );
 	VALUE	rb_parent_settings_controller						=	rb_RPDB_DatabaseSettingsController_parentSettingsController( rb_parent_database_settings_controller );
 
-	return rb_parent_database_settings_controller;
+	return rb_parent_settings_controller;
 }
 
 /***************************************

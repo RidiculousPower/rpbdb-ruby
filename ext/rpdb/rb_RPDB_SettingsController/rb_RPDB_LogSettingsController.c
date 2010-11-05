@@ -163,6 +163,10 @@ VALUE rb_RPDB_LogSettingsController_init(	int				argc __attribute__ ((unused)),
 
 VALUE rb_RPDB_LogSettingsController_parentEnvironment(	VALUE	rb_log_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_LogSettingsController_parentSettingsController( rb_log_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************

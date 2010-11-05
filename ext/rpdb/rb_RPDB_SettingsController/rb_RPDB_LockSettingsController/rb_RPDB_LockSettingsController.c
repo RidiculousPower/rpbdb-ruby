@@ -146,6 +146,10 @@ VALUE rb_RPDB_LockSettingsController_init(	int				argc __attribute__ ((unused)),
 
 VALUE rb_RPDB_LockSettingsController_parentEnvironment(	VALUE	rb_lock_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_LockSettingsController_parentSettingsController( rb_lock_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************

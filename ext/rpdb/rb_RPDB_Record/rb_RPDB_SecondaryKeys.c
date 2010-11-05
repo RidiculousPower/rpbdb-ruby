@@ -12,6 +12,8 @@
 
 #include "rb_RPDB_SecondaryKeys.h"
 #include "rb_RPDB_Record.h"
+#include "rb_RPDB_DatabaseController.h"
+#include "rb_RPDB_Database.h"
 
 #include <rpdb/RPDB_Environment.h>
 
@@ -132,6 +134,17 @@ VALUE rb_RPDB_SecondaryKeys_parentDatabase(	VALUE	rb_secondary_keys )	{
 	VALUE	rb_parent_database	=	rb_RPDB_Record_parentDatabase( rb_parent_record );
 	
 	return rb_parent_database;
+}
+
+/***************************************
+*  parent_record  *
+***************************************/
+
+VALUE rb_RPDB_SecondaryKeys_parentRecord(	VALUE	rb_secondary_keys )	{
+	
+	VALUE	rb_parent_record	=	rb_iv_get(	rb_secondary_keys,
+																				RPDB_RB_SECONDARY_KEYS_VARIABLE_PARENT_RECORD );
+	return rb_parent_record;
 }
 
 

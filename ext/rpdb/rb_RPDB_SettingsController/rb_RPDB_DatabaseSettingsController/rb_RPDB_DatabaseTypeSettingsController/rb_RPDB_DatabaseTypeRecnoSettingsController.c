@@ -14,6 +14,7 @@
 
 #include "rb_RPDB_DatabaseTypeSettingsController.h"
 #include "rb_RPDB_DatabaseSettingsController.h"
+#include "rb_RPDB_DatabaseRecordSettingsController.h"
 #include "rb_RPDB_SettingsController.h"
 #include "rb_RPDB_DatabaseController.h"
 #include "rb_RPDB_Database.h"

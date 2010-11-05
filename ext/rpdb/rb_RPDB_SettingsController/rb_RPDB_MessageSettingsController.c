@@ -11,6 +11,7 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_MessageSettingsController.h"
+#include "rb_RPDB_SettingsController.h"
 
 #include "rb_RPDB_Environment.h"
 
@@ -118,6 +119,10 @@ VALUE rb_RPDB_MessageSettingsController_init(	int				argc __attribute__ ((unused
 
 VALUE rb_RPDB_MessageSettingsController_parentEnvironment(	VALUE	rb_message_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_MessageSettingsController_parentSettingsController( rb_message_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************

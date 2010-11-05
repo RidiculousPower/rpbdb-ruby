@@ -12,7 +12,8 @@ VALUE rb_RPDB_LockSettingsController_new(	int			argc,
 VALUE rb_RPDB_LockSettingsController_init(	int				argc __attribute__ ((unused)),
 																						VALUE*		args __attribute__ ((unused)),
 																						VALUE			rb_self );
-	VALUE rb_RPDB_LockSettingsController_parentEnvironment(	VALUE	rb_lock_settings_controller );
+VALUE rb_RPDB_LockSettingsController_parentEnvironment(	VALUE	rb_lock_settings_controller );
+VALUE rb_RPDB_LockSettingsController_parentSettingsController(	VALUE	rb_lock_settings_controller );
 	VALUE rb_RPDB_LockSettingsController_on( VALUE	rb_lock_settings_controller );
 	VALUE rb_RPDB_LockSettingsController_off( VALUE	rb_lock_settings_controller );
 		VALUE rb_RPDB_LockSettingsController_turnOn( VALUE	rb_lock_settings_controller );

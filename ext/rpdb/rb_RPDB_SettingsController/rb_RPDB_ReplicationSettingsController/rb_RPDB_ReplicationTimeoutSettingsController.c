@@ -147,6 +147,10 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_init(	int				argc __attribute
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_parentEnvironment(	VALUE	rb_replication_timeout_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_ReplicationTimeoutSettingsController_parentSettingsController( rb_replication_timeout_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -155,6 +159,10 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_parentEnvironment(	VALUE	rb_r
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_parentSettingsController(	VALUE	rb_replication_timeout_settings_controller )	{
 
+	VALUE	rb_parent_replication_settings_controller		=	rb_RPDB_ReplicationTimeoutSettingsController_parentReplicationSettingsController( rb_replication_timeout_settings_controller );
+	VALUE	rb_parent_settings_controller								=	rb_RPDB_ReplicationTimeoutSettingsController_parentSettingsController( rb_parent_replication_settings_controller );
+	
+	return rb_parent_settings_controller;	
 }
 
 /***************************************

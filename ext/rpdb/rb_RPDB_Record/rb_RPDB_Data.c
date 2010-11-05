@@ -12,6 +12,9 @@
 
 #include "rb_RPDB_Environment.h"
 #include "rb_RPDB_Data.h"
+#include "rb_RPDB_DatabaseController.h"
+#include "rb_RPDB_Database.h"
+#include "rb_RPDB_Record.h"
 
 #include <rpdb/RPDB_Environment.h>
 
@@ -132,7 +135,7 @@ VALUE rb_RPDB_Data_parentDatabaseController(	VALUE	rb_data )	{
 	VALUE	rb_parent_database						=	rb_RPDB_Data_parentDatabase( rb_data );
 	VALUE	rb_parent_database_controller	=	rb_RPDB_Database_parentDatabaseController( rb_parent_database );
 	
-	return rb_parent_database;
+	return rb_parent_database_controller;
 }
 
 /***************************************

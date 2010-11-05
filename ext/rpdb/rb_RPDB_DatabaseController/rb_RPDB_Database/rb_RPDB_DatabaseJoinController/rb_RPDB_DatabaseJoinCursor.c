@@ -11,6 +11,8 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_DatabaseJoinCursor.h"
+#include "rb_RPDB_DatabaseJoinController.h"
+#include "rb_RPDB_DatabaseController.h"
 
 #include "rb_RPDB_Database.h"
 
@@ -137,7 +139,7 @@ VALUE rb_RPDB_DatabaseJoinCursor_settingsController(	VALUE	rb_join_cursor )	{
 ***************************************/
 VALUE rb_RPDB_DatabaseJoinCursor_parentEnvironment(	VALUE	rb_join_cursor )	{
 
-	VALUE	rb_parent_join_controller					=	rb_RPDB_DatabaseJoinCursor_parentJoinController( rb_join_cursor );
+	VALUE	rb_parent_join_controller					=	rb_RPDB_DatabaseJoinCursor_parentDatabaseJoinController( rb_join_cursor );
 	VALUE	rb_parent_database								=	rb_RPDB_DatabaseJoinController_parentDatabase( rb_parent_join_controller );
 	VALUE	rb_parent_database_controller			=	rb_RPDB_Database_parentDatabaseController( rb_parent_database );
 	VALUE	rb_parent_environment							=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );

@@ -215,7 +215,7 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentSettingsController
 	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabaseSettingsController( rb_database_cursor_record_read_write_settings_controller );
 	VALUE	rb_parent_settings_controller							=	rb_RPDB_DatabaseSettingsController_parentSettingsController( rb_parent_database_settings_controller );
 	
-	return rb_parent_database_settings_controller;
+	return rb_parent_settings_controller;
 }
 
 /***************************************

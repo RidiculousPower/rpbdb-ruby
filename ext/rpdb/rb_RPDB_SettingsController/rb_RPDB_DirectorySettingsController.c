@@ -11,6 +11,7 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_DirectorySettingsController.h"
+#include "rb_RPDB_SettingsController.h"
 #include "rb_RPDB.h"
 
 #include <rpdb/RPDB_Environment.h>
@@ -118,9 +119,9 @@ VALUE rb_RPDB_DirectorySettingsController_init(	int				argc __attribute__ ((unus
 ***************************************/
 VALUE rb_RPDB_DirectorySettingsController_parentEnvironment(	VALUE	rb_directory_settings_controller )	{
 	
-	VALUE	rb_parent_environment	=	rb_iv_get(	rb_directory_settings_controller,
-																						RPDB_RB_ALL_VARIABLE_PARENT_ENVIRONMENT );
-
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_DirectorySettingsController_parentSettingsController( rb_directory_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
 	return rb_parent_environment;
 }
 

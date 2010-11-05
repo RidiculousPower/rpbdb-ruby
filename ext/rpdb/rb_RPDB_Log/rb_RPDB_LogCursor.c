@@ -12,6 +12,7 @@
 
 #include "rb_RPDB_LogCursor.h"
 #include "rb_RPDB_LogCursorController.h"
+#include "rb_RPDB_LogController.h"
 #include "rb_RPDB_LogSequenceNumber.h"
 
 #include <rpdb/RPDB_Environment.h>
@@ -170,7 +171,7 @@ VALUE rb_RPDB_LogCursor_parentLogCursorController(	VALUE	rb_log_cursor )	{
 	
 	VALUE	rb_parent_log_cursor_controller	=	rb_iv_get(	rb_log_cursor,
 																											RPDB_RB_LOG_CURSOR_VARIABLE_PARENT_LOG_CONTROLLER );
-	
+	return rb_parent_log_cursor_controller;
 }
 
 /*************

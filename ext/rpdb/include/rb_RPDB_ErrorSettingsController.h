@@ -12,7 +12,8 @@ VALUE rb_RPDB_ErrorSettingsController_new(	int			argc,
 VALUE rb_RPDB_ErrorSettingsController_init(	int				argc __attribute__ ((unused)),
 																						VALUE*		args __attribute__ ((unused)),
 																						VALUE			rb_self);
-	VALUE rb_RPDB_ErrorSettingsController_parentEnvironment(	VALUE	rb_error_settings_controller );
+VALUE rb_RPDB_ErrorSettingsController_parentEnvironment(	VALUE	rb_error_settings_controller );
+VALUE rb_RPDB_ErrorSettingsController_parentSettingsController(	VALUE	rb_error_settings_controller );
 	VALUE rb_RPDB_ErrorSettingsController_file( VALUE	rb_error_settings_controller );
 		VALUE rb_RPDB_ErrorSettingsController_setFile(	VALUE	rb_error_settings_controller, 
 														VALUE	rb_file );

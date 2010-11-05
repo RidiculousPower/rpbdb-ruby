@@ -134,6 +134,10 @@ VALUE rb_RPDB_DebugVerbositySettingsController_init(	int				argc __attribute__ (
 
 VALUE rb_RPDB_DebugVerbositySettingsController_parentEnvironment(	VALUE	rb_debug_verbosity_settings_controller )	{
 
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_DebugSettingsController_parentSettingsController( rb_debug_verbosity_settings_controller );
+	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	
+	return rb_parent_environment;
 }
 
 /***************************************
@@ -142,6 +146,10 @@ VALUE rb_RPDB_DebugVerbositySettingsController_parentEnvironment(	VALUE	rb_debug
 
 VALUE rb_RPDB_DebugVerbositySettingsController_parentSettingsController(	VALUE	rb_debug_verbosity_settings_controller )	{
 
+	VALUE	rb_parent_debug_settings_controller		=	rb_RPDB_DebugVerbositySettingsController_parentDebugSettingsController( rb_debug_verbosity_settings_controller );
+	VALUE	rb_parent_settings_controller					=	rb_RPDB_DebugSettingsController_parentSettingsController( rb_parent_debug_settings_controller );
+	
+	return rb_parent_settings_controller;	
 }
 
 /***************************************
