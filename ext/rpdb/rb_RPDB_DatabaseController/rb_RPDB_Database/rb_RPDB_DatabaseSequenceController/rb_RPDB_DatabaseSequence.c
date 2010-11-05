@@ -142,10 +142,24 @@ VALUE rb_RPDB_DatabaseSequence_init(	int				argc __attribute__ ((unused)),
 
 VALUE rb_RPDB_DatabaseSequence_settingsController(	VALUE	rb_database_sequence )	{
 
-	RPDB_DatabaseSequence*		c_database_sequence;
-	C_RPDB_DATABASE_SEQUENCE( rb_database_sequence, c_database_sequence );
+	VALUE	rb_local_database_sequence_settings_controller	=	Qnil;
+	
+	if ( ( rb_local_database_sequence_settings_controller = rb_iv_get(	rb_database_sequence,
+																																			RPDB_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+		
+		RPDB_DatabaseSequence*		c_database_sequence;
+		C_RPDB_DATABASE_SEQUENCE( rb_database_sequence, c_database_sequence );
+	
+		RPDB_DatabaseSequenceSettingsController*	c_local_database_sequence_settings_controller	=	RPDB_DatabaseSequence_settingsController( c_database_sequence );
 
-	return RUBY_RPDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( RPDB_DatabaseSequence_settingsController( c_database_sequence ) );
+		rb_local_database_sequence_settings_controller	=	RUBY_RPDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( c_local_database_sequence_settings_controller );
+
+		rb_iv_set(	rb_database_sequence,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER,
+								rb_local_database_sequence_settings_controller );
+	}
+
+	return rb_local_database_sequence_settings_controller;
 }
 
 /****************

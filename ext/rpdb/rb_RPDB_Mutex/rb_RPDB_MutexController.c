@@ -109,10 +109,24 @@ VALUE	rb_RPDB_MutexController_init(	int				argc __attribute__ ((unused)),
 ***************************/
 VALUE	rb_RPDB_MutexController_settingsController(	VALUE	rb_mutex_controller )	{
 
-	RPDB_MutexController*	c_mutex_controller;
-	C_RPDB_MUTEX_CONTROLLER( rb_mutex_controller, c_mutex_controller );
+	VALUE	rb_local_mutex_settings_controller	=	Qnil;
+	
+	if ( ( rb_local_mutex_settings_controller = rb_iv_get(	rb_mutex_controller,
+																													RPDB_RB_SETTINGS_VARIABLE_MUTEX_SETTINGS_CONTROLLER ) ) == Qnil )	{
+		
+		RPDB_MutexController*		c_mutex_controller;
+		C_RPDB_MUTEX_CONTROLLER( rb_mutex_controller, c_mutex_controller );
+	
+		RPDB_MutexSettingsController*	c_local_mutex_settings_controller	=	RPDB_MutexController_settingsController( c_mutex_controller );
 
-	return RUBY_RPDB_MUTEX_SETTINGS_CONTROLLER( RPDB_MutexController_settingsController( c_mutex_controller ) );
+		rb_local_mutex_settings_controller	=	RUBY_RPDB_MUTEX_SETTINGS_CONTROLLER( c_local_mutex_settings_controller );
+
+		rb_iv_set(	rb_mutex_controller,
+								RPDB_RB_SETTINGS_VARIABLE_MUTEX_SETTINGS_CONTROLLER,
+								rb_local_mutex_settings_controller );
+	}
+
+	return rb_local_mutex_settings_controller;
 }
 
 /***************************************

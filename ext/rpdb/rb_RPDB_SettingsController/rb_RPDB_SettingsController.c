@@ -340,14 +340,14 @@ VALUE rb_RPDB_SettingsController_memoryPoolSettingsController( VALUE	rb_settings
 	VALUE	rb_memory_pool_settings_controller	=	Qnil;
 
 	if ( ( rb_memory_pool_settings_controller = rb_iv_get(	rb_settings_controller,
-																													RPDB_RB_SETTINGS_VARIABLE_MEMORY_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																													RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_memory_pool_settings_controller	=	rb_RPDB_MemoryPoolSettingsController_new( 1,
 																																										& rb_settings_controller,
 																																										rb_RPDB_MemoryPoolSettingsController );
 		
 		rb_iv_set(	rb_settings_controller,
-								RPDB_RB_SETTINGS_VARIABLE_MEMORY_SETTINGS_CONTROLLER,
+								RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_SETTINGS_CONTROLLER,
 								rb_memory_pool_settings_controller );
 	}
 

@@ -122,11 +122,24 @@ VALUE rb_RPDB_LogSequenceNumber_init(	int				argc __attribute__ ((unused)),
 ***************************/
 VALUE rb_RPDB_LogSequenceNumber_settingsController(	VALUE	rb_log_sequence_number )	{
 
-	RPDB_LogSequenceNumber*	c_log_sequence_number;
-	C_RPDB_LOG_SEQUENCE_NUMBER( rb_log_sequence_number, c_log_sequence_number );
+	VALUE	rb_local_log_settings_controller	=	Qnil;
+	
+	if ( ( rb_local_log_settings_controller = rb_iv_get(	rb_log_sequence_number,
+																												RPDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER ) ) == Qnil )	{
+		
+		RPDB_LogSequenceNumber*		c_log_sequence_number;
+		C_RPDB_LOG_SEQUENCE_NUMBER( rb_log_sequence_number, c_log_sequence_number );
+	
+		RPDB_LogSettingsController*	c_local_log_settings_controller	=	RPDB_LogSequenceNumber_settingsController( c_log_sequence_number );
 
-	return RUBY_RPDB_LOG_SETTINGS_CONTROLLER( RPDB_LogSequenceNumber_settingsController( c_log_sequence_number ) );
+		rb_local_log_settings_controller	=	RUBY_RPDB_LOG_SETTINGS_CONTROLLER( c_local_log_settings_controller );
 
+		rb_iv_set(	rb_log_sequence_number,
+								RPDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,
+								rb_local_log_settings_controller );
+	}
+
+	return rb_local_log_settings_controller;
 }
 
 /***************************************

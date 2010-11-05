@@ -109,7 +109,24 @@ VALUE rb_RPDB_RemoteSite_init(	int				argc __attribute__ ((unused)),
 ***************************/
 VALUE rb_RPDB_RemoteSite_settingsController(	VALUE	rb_remote_site )	{
 
-	return rb_remote_site;
+	VALUE	rb_local_replication_settings_controller	=	Qnil;
+	
+	if ( ( rb_local_replication_settings_controller = rb_iv_get(	rb_remote_site,
+																																RPDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER ) ) == Qnil )	{
+		
+		RPDB_RemoteSite*		c_remote_site;
+		C_RPDB_REMOTE_SITE( rb_remote_site, c_remote_site );
+	
+		RPDB_ReplicationSettingsController*	c_local_replication_settings_controller	=	RPDB_RemoteSite_settingsController( c_remote_site );
+
+		rb_local_replication_settings_controller	=	RUBY_RPDB_REPLICATION_SETTINGS_CONTROLLER( c_local_replication_settings_controller );
+
+		rb_iv_set(	rb_remote_site,
+								RPDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER,
+								rb_local_replication_settings_controller );
+	}
+
+	return rb_local_replication_settings_controller;
 }
 
 /***************************************

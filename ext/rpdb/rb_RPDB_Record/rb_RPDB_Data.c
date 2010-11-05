@@ -107,11 +107,24 @@ VALUE rb_RPDB_Data_init(	int				argc __attribute__ ((unused)),
 ***************************/
 VALUE rb_RPDB_Data_settingsController(	VALUE	rb_data )	{
 
-	RPDB_Data*					c_data;
-	C_RPDB_DATA( rb_data, c_data );
+	VALUE	rb_local_record_settings_controller	=	Qnil;
+	
+	if ( ( rb_local_record_settings_controller = rb_iv_get(	rb_data,
+																													RPDB_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER ) ) == Qnil )	{
+		
+		RPDB_Data*		c_data;
+		C_RPDB_DATA( rb_data, c_data );
+	
+		RPDB_DatabaseRecordSettingsController*	c_local_record_settings_controller	=	RPDB_Data_settingsController( c_data );
 
-	return RUBY_RPDB_DATABASE_RECORD_SETTINGS_CONTROLLER( RPDB_Data_settingsController( c_data ) );
+		rb_local_record_settings_controller	=	RUBY_RPDB_DATABASE_RECORD_SETTINGS_CONTROLLER( c_local_record_settings_controller );
 
+		rb_iv_set(	rb_data,
+								RPDB_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER,
+								rb_local_record_settings_controller );
+	}
+
+	return rb_local_record_settings_controller;
 }
 
 /***************************************

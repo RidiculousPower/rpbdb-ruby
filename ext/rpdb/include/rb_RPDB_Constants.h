@@ -311,9 +311,13 @@
 	#define RPDB_RB_SETTINGS_VARIABLE_FILE_SETTINGS_CONTROLLER										"@file_settings_controller"
 	#define RPDB_RB_SETTINGS_VARIABLE_ERROR_SETTINGS_CONTROLLER										"@error_settings_controller"
 	#define RPDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER											"@log_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_LOG_CURSOR_SETTINGS_CONTROLLER							"@log_cursor_settings_controller"
 	#define RPDB_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER										"@lock_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_MUTEX_SETTINGS_CONTROLLER										"@mutex_settings_controller"
 	#define RPDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER							"@replication_settings_controller"
-	#define RPDB_RB_SETTINGS_VARIABLE_MEMORY_SETTINGS_CONTROLLER									"@memory_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_SETTINGS_CONTROLLER							"@memory_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER				"@memory_file_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER		"@memory_file_page_settings_controller"
 	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER								"@database_settings_controller"
 	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER		"@database_association_settings_controller"
 	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER					"@database_cache_settings_controller"
@@ -321,6 +325,7 @@
 	#define RPDB_RB_SETTINGS_VARIABLE_DIRECTORY_SETTINGS_CONTROLLER								"@directory_settings_controller"
 	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER				"@database_sequence_settings_controller"
 	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER						"@database_join_settings_controller"
+	#define RPDB_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER									"@database_record_settings_controller"
 	
 	#define RPDB_RB_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA		"@serialize_data"
 

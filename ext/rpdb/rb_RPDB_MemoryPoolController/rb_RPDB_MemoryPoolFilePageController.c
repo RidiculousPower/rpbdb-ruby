@@ -129,11 +129,24 @@ VALUE rb_RPDB_MemoryPoolFilePageController_init(	int				argc __attribute__ ((unu
 ***************************/
 VALUE rb_RPDB_MemoryPoolFilePageController_settingsController(	VALUE	rb_memory_pool_file_page_controller )	{
 
-	RPDB_MemoryPoolFilePageController*	c_memory_pool_file_page_controller;
-	C_RPDB_MEMORY_POOL_FILE_PAGE_CONTROLLER( rb_memory_pool_file_page_controller, c_memory_pool_file_page_controller );
+	VALUE	rb_local_memory_pool_file_page_settings_controller	=	Qnil;
+	
+	if ( ( rb_local_memory_pool_file_page_settings_controller = rb_iv_get(	rb_memory_pool_file_page_controller,
+																																					RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+		
+		RPDB_MemoryPoolFilePageController*		c_memory_pool_file_page_controller;
+		C_RPDB_MEMORY_POOL_FILE_PAGE_CONTROLLER( rb_memory_pool_file_page_controller, c_memory_pool_file_page_controller );
+	
+		RPDB_MemoryPoolFilePageSettingsController*	c_local_memory_pool_file_page_settings_controller	=	RPDB_MemoryPoolFilePageController_settingsController( c_memory_pool_file_page_controller );
 
-	return RUBY_RPDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( RPDB_MemoryPoolFilePageController_settingsController( c_memory_pool_file_page_controller ) );
+		rb_local_memory_pool_file_page_settings_controller	=	RUBY_RPDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( c_local_memory_pool_file_page_settings_controller );
 
+		rb_iv_set(	rb_memory_pool_file_page_controller,
+								RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER,
+								rb_local_memory_pool_file_page_settings_controller );
+	}
+
+	return rb_local_memory_pool_file_page_settings_controller;
 }
 
 /***************************************

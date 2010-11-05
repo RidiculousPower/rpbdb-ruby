@@ -136,10 +136,24 @@ VALUE rb_RPDB_LogCursor_init(	int				argc __attribute__ ((unused)),
 ***************************/
 VALUE rb_RPDB_LogCursor_settingsController(	VALUE	rb_log_cursor )	{
 
-	RPDB_LogCursor*	c_log_cursor;
-	C_RPDB_LOG_CURSOR( rb_log_cursor, c_log_cursor );
+	VALUE	rb_local_log_settings_controller	=	Qnil;
+	
+	if ( ( rb_local_log_settings_controller = rb_iv_get(	rb_log_cursor,
+																												RPDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER ) ) == Qnil )	{
+		
+		RPDB_LogCursor*		c_log_cursor;
+		C_RPDB_LOG_CURSOR( rb_log_cursor, c_log_cursor );
+	
+		RPDB_LogSettingsController*	c_local_log_settings_controller	=	RPDB_LogCursor_settingsController( c_log_cursor );
 
-	return RUBY_RPDB_LOG_SETTINGS_CONTROLLER( RPDB_LogCursor_settingsController( c_log_cursor ) );
+		rb_local_log_settings_controller	=	RUBY_RPDB_LOG_SETTINGS_CONTROLLER( c_local_log_settings_controller );
+
+		rb_iv_set(	rb_log_cursor,
+								RPDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,
+								rb_local_log_settings_controller );
+	}
+
+	return rb_local_log_settings_controller;
 }
 
 /***************************************

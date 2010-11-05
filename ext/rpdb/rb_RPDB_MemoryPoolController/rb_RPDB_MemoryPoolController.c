@@ -112,11 +112,24 @@ VALUE rb_RPDB_MemoryPoolController_init(	int				argc __attribute__ ((unused)),
 ***************************/
 VALUE rb_RPDB_MemoryPoolController_settingsController(	VALUE	rb_memory_pool_controller )	{
 
-	RPDB_MemoryPoolController*	c_memory_pool_controller;
-	C_RPDB_MEMORY_POOL_CONTROLLER( rb_memory_pool_controller, c_memory_pool_controller );
+	VALUE	rb_local_memory_pool_settings_controller	=	Qnil;
+	
+	if ( ( rb_local_memory_pool_settings_controller = rb_iv_get(	rb_memory_pool_controller,
+																																RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_SETTINGS_CONTROLLER ) ) == Qnil )	{
+		
+		RPDB_MemoryPoolController*		c_memory_pool_controller;
+		C_RPDB_MEMORY_POOL_CONTROLLER( rb_memory_pool_controller, c_memory_pool_controller );
+	
+		RPDB_MemoryPoolSettingsController*	c_local_memory_pool_settings_controller	=	RPDB_MemoryPoolController_settingsController( c_memory_pool_controller );
 
-	return RUBY_RPDB_MEMORY_POOL_SETTINGS_CONTROLLER( RPDB_MemoryPoolController_settingsController( c_memory_pool_controller ) );
+		rb_local_memory_pool_settings_controller	=	RUBY_RPDB_MEMORY_POOL_SETTINGS_CONTROLLER( c_local_memory_pool_settings_controller );
 
+		rb_iv_set(	rb_memory_pool_controller,
+								RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_SETTINGS_CONTROLLER,
+								rb_local_memory_pool_settings_controller );
+	}
+
+	return rb_local_memory_pool_settings_controller;
 }
 
 /***************************************

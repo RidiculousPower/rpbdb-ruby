@@ -128,10 +128,24 @@ VALUE rb_RPDB_DatabaseJoinCursor_init(	int				argc __attribute__ ((unused)),
 ***************************/
 VALUE rb_RPDB_DatabaseJoinCursor_settingsController(	VALUE	rb_join_cursor )	{
 
-	RPDB_DatabaseJoinCursor*	c_join_cursor;
-	C_RPDB_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
+	VALUE	rb_local_database_join_settings_controller	=	Qnil;
+	
+	if ( ( rb_local_database_join_settings_controller = rb_iv_get(	rb_join_cursor,
+																																	RPDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER ) ) == Qnil )	{
+		
+		RPDB_DatabaseJoinCursor*		c_join_cursor;
+		C_RPDB_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
+	
+		RPDB_DatabaseJoinSettingsController*	c_local_database_join_settings_controller	=	RPDB_DatabaseJoinCursor_settingsController( c_join_cursor );
 
-	return RUBY_RPDB_DATABASE_JOIN_SETTINGS_CONTROLLER( RPDB_DatabaseJoinCursor_settingsController( c_join_cursor ) );
+		rb_local_database_join_settings_controller	=	RUBY_RPDB_DATABASE_JOIN_SETTINGS_CONTROLLER( c_local_database_join_settings_controller );
+
+		rb_iv_set(	rb_join_cursor,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
+								rb_local_database_join_settings_controller );
+	}
+
+	return rb_local_database_join_settings_controller;
 }
 
 /***************************************

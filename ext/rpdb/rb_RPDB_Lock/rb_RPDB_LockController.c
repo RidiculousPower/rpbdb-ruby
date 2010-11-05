@@ -160,10 +160,24 @@ VALUE rb_RPDB_LockController_init(	int				argc __attribute__ ((unused)),
 ************************/
 VALUE rb_RPDB_LockController_settingsController(	VALUE	rb_lock_controller )	{
 
-	RPDB_LockController*		c_lock_controller;
-	C_RPDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	VALUE	rb_local_lock_settings_controller	=	Qnil;
+	
+	if ( ( rb_local_lock_settings_controller = rb_iv_get(	rb_lock_controller,
+																												RPDB_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER ) ) == Qnil )	{
+		
+		RPDB_LockController*		c_lock_controller;
+		C_RPDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	
+		RPDB_LockSettingsController*	c_local_lock_settings_controller	=	RPDB_LockController_settingsController( c_lock_controller );
 
-	return RUBY_RPDB_LOCK_SETTINGS_CONTROLLER( RPDB_LockController_settingsController( c_lock_controller ) );
+		rb_local_lock_settings_controller	=	RUBY_RPDB_LOCK_SETTINGS_CONTROLLER( c_local_lock_settings_controller );
+
+		rb_iv_set(	rb_lock_controller,
+								RPDB_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER,
+								rb_local_lock_settings_controller );
+	}
+
+	return rb_local_lock_settings_controller;
 }
 
 /****************

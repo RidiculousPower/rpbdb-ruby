@@ -153,7 +153,7 @@ VALUE rb_RPDB_DatabaseSequenceController_settingsController(	VALUE	rb_database_s
 		rb_database_sequence_settings_controller	=	RUBY_RPDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( c_database_sequence_settings_controller );
 
 		rb_iv_set(	rb_database_sequence_controller,
-								RPDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER,
 								rb_database_sequence_settings_controller );
 	}
 

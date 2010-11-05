@@ -118,11 +118,24 @@ VALUE rb_RPDB_ReplicationController_init(	int				argc __attribute__ ((unused)),
 ***************************/
 VALUE rb_RPDB_ReplicationController_settingsController(	VALUE	rb_replication_controller )	{
 
-	RPDB_ReplicationController*	c_replication_controller;
-	C_RPDB_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
+	VALUE	rb_local_replication_settings_controller	=	Qnil;
+	
+	if ( ( rb_local_replication_settings_controller = rb_iv_get(	rb_replication_controller,
+																																RPDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER ) ) == Qnil )	{
+		
+		RPDB_ReplicationController*		c_replication_controller;
+		C_RPDB_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
+	
+		RPDB_ReplicationSettingsController*	c_local_replication_settings_controller	=	RPDB_ReplicationController_settingsController( c_replication_controller );
 
-	return RUBY_RPDB_REPLICATION_SETTINGS_CONTROLLER( RPDB_ReplicationController_settingsController( c_replication_controller ) );
+		rb_local_replication_settings_controller	=	RUBY_RPDB_REPLICATION_SETTINGS_CONTROLLER( c_local_replication_settings_controller );
 
+		rb_iv_set(	rb_replication_controller,
+								RPDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER,
+								rb_local_replication_settings_controller );
+	}
+
+	return rb_local_replication_settings_controller;
 }
 
 /***************************************
