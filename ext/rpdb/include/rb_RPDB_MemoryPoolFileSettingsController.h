@@ -15,8 +15,8 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_init(	int				argc __attribute__ (
 VALUE rb_RPDB_MemoryPoolFileSettingsController_parentEnvironment(	VALUE	rb_memory_pool_file_settings_controller );
 VALUE rb_RPDB_MemoryPoolFileSettingsController_parentSettingsController(	VALUE	rb_memory_pool_file_settings_controller );
 VALUE rb_RPDB_MemoryPoolFileSettingsController_parentMemoryPoolSettingsController(	VALUE	rb_memory_pool_file_settings_controller );
-	VALUE rb_RPDB_MemoryPoolFileSettingsController_createWithNumberInitialNullBytes( VALUE	rb_memory_pool_file_settings_controller );
-		VALUE rb_RPDB_MemoryPoolFileSettingsController_setReturnsCreateWithNumberInitialNullBytes( VALUE	rb_memory_pool_file_settings_controller, 
+	VALUE rb_RPDB_MemoryPoolFileSettingsController_createWithInitialNullBytesNumbering( VALUE	rb_memory_pool_file_settings_controller );
+		VALUE rb_RPDB_MemoryPoolFileSettingsController_setCreateWithInitialNullBytesNumbering( VALUE	rb_memory_pool_file_settings_controller, 
 																									VALUE	rb_initial_null_bytes );
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_fileID( VALUE	rb_memory_pool_file_settings_controller );
 		VALUE rb_RPDB_MemoryPoolFileSettingsController_setFileID(	VALUE	rb_memory_pool_file_settings_controller, 
