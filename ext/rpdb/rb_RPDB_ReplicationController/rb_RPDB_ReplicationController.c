@@ -139,15 +139,14 @@ VALUE rb_RPDB_ReplicationController_settingsController(	VALUE	rb_replication_con
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_ReplicationController_parentEnvironment(	VALUE	rb_replication_controller )	{
 
-	RPDB_ReplicationController*	c_replication_controller;
-	C_RPDB_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
+	VALUE	rb_parent_environment	=	rb_iv_get(	rb_replication_controller,
+																						RPDB_RB_REPLICATION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
 
-	return RUBY_RPDB_ENVIRONMENT( RPDB_ReplicationController_parentEnvironment( c_replication_controller ) );
-
+	return rb_parent_environment;
 }
 
 /*************************
