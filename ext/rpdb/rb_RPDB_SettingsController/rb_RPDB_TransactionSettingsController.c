@@ -39,7 +39,7 @@ void Init_RPDB_TransactionSettingsController()	{
 																																		rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_TransactionSettingsController, 	"new",																rb_RPDB_TransactionSettingsController_new,														-1 	);
-	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"initialize",													rb_RPDB_TransactionSettingsController_init,														-1 	);
+	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"initialize",													rb_RPDB_TransactionSettingsController_initialize,														-1 	);
 
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"parent_environment",									rb_RPDB_TransactionSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_TransactionSettingsController, 				"environment",												"parent_environment"	);
@@ -137,7 +137,7 @@ VALUE rb_RPDB_TransactionSettingsController_new(	int			argc,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
-	rb_obj_call_initialize(	rb_transaction_settings_controller,
+	rb_obj_call_init(	rb_transaction_settings_controller,
 										 1, 
 										 argv );
 	
@@ -184,7 +184,7 @@ VALUE rb_RPDB_TransactionSettingsController_parentSettingsController(	VALUE	rb_t
 *******************************************************************************************************************************************************************************************/
 
 /**********
-*  on  *
+*  on?  *
 **********/
 
 //	DB_INIT_TXN             http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -199,7 +199,7 @@ VALUE rb_RPDB_TransactionSettingsController_on( VALUE	rb_transaction_settings_co
 }
 
 /**********
-*  off  *
+*  off?  *
 **********/
 
 //	DB_INIT_TXN             http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -214,7 +214,7 @@ VALUE rb_RPDB_TransactionSettingsController_off( VALUE	rb_transaction_settings_c
 }
 
 	/**************
-	*  turnOn  *
+	*  turn_on  *
 	**************/
 
 	//	DB_INIT_TXN             http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -229,7 +229,7 @@ VALUE rb_RPDB_TransactionSettingsController_off( VALUE	rb_transaction_settings_c
 	}
 
 	/**************
-	*  turnOff  *
+	*  turn_off  *
 	**************/
 
 	//	DB_INIT_TXN             http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -245,7 +245,7 @@ VALUE rb_RPDB_TransactionSettingsController_off( VALUE	rb_transaction_settings_c
 	}
 
 /*****************************
-*  prohibitSyncOnWrite  *
+*  prohibit_sync_on_write?  *
 *****************************/
 
 //	DB_TXN_WRITE_NOSYNC     http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -259,7 +259,7 @@ VALUE rb_RPDB_TransactionSettingsController_prohibitSyncOnWrite( VALUE	rb_transa
 }
 
 	/********************************
-	*  prohibitSyncOnWriteOn  *
+	*  turn_prohibit_sync_on_write_on  *
 	********************************/
 
 	//	DB_TXN_WRITE_NOSYNC     http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -274,7 +274,7 @@ VALUE rb_RPDB_TransactionSettingsController_prohibitSyncOnWrite( VALUE	rb_transa
 	}
 	
 	/********************************
-	*  prohibitSyncOnWriteOff  *
+	*  turn_prohibit_sync_on_write_off  *
 	********************************/
 
 	//	DB_TXN_WRITE_NOSYNC     http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -289,7 +289,7 @@ VALUE rb_RPDB_TransactionSettingsController_prohibitSyncOnWrite( VALUE	rb_transa
 	}
 	
 /********************************************
-*  prohibitSyncOnCommitTransaction  *
+*  prohibit_sync_on_commit_transaction?  *
 ********************************************/
 
 //	DB_TXN_NOSYNC           http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -303,7 +303,7 @@ VALUE rb_RPDB_TransactionSettingsController_prohibitSyncOnCommit( VALUE	rb_trans
 }
 
 	/********************************************
-	*  prohibitSyncOnCommitTransactionOn  *
+	*  turn_prohibit_sync_on_commit_transaction_on  *
 	********************************************/
 
 	//	DB_TXN_NOSYNC           http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -318,7 +318,7 @@ VALUE rb_RPDB_TransactionSettingsController_prohibitSyncOnCommit( VALUE	rb_trans
 	}
 
 	/********************************************
-	*  prohibitSyncOnCommitTransactionOff  *
+	*  turn_prohibit_sync_on_commit_transaction_off  *
 	********************************************/
 
 	//	DB_TXN_NOSYNC           http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -333,7 +333,7 @@ VALUE rb_RPDB_TransactionSettingsController_prohibitSyncOnCommit( VALUE	rb_trans
 	}
 
 /****************************************
-*  timeoutReturnsDenyNotDeadlock  *
+*  timeout_returns_deny_not_deadlock?  *
 ****************************************/
 
 //	DB_TIME_NOTGRANTED      http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -347,7 +347,7 @@ VALUE rb_RPDB_TransactionSettingsController_timeoutInMicrosecondsReturnsDenyNotD
 }
 
 	/********************************************
-	*  timeoutReturnsDenyNotDeadlockOn  *
+	*  turn_timeout_returns_deny_not_deadlock_on  *
 	********************************************/
 
 	//	DB_TIME_NOTGRANTED      http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -362,7 +362,7 @@ VALUE rb_RPDB_TransactionSettingsController_timeoutInMicrosecondsReturnsDenyNotD
 	}
 
 	/********************************************
-	*  timeoutReturnsDenyNotDeadlockOff  *
+	*  turn_timeout_returns_deny_not_deadlock_off  *
 	********************************************/
 
 	//	DB_TIME_NOTGRANTED      http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -377,7 +377,7 @@ VALUE rb_RPDB_TransactionSettingsController_timeoutInMicrosecondsReturnsDenyNotD
 	}
 
 /************************************
-*  concurrentDataStoreLocking  *
+*  concurrent_data_store_locking?  *
 ************************************/
 
 //	DB_INIT_CDB - 			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -392,7 +392,7 @@ VALUE rb_RPDB_TransactionSettingsController_concurrentDataStoreLocking( VALUE	rb
 }
 
 	/************************************
-	*  concurrentDataStoreLockingOn  *
+	*  turn_concurrent_data_store_locking_on  *
 	************************************/
 
 	VALUE rb_RPDB_TransactionSettingsController_turnConcurrentDataStoreLockingOn( VALUE	rb_transaction_settings_controller )	{
@@ -406,7 +406,7 @@ VALUE rb_RPDB_TransactionSettingsController_concurrentDataStoreLocking( VALUE	rb
 	}
 
 	/****************************************
-	*  concurrentDataStoreLockingOff  *
+	*  turn_concurrent_data_store_locking_off  *
 	****************************************/
 
 	VALUE rb_RPDB_TransactionSettingsController_turnConcurrentDataStoreLockingOff( VALUE	rb_transaction_settings_controller )	{
@@ -420,7 +420,7 @@ VALUE rb_RPDB_TransactionSettingsController_concurrentDataStoreLocking( VALUE	rb
 	}
 
 /****************************
-*  snapshotIsolation  *
+*  snapshot_isolation?  *
 ****************************/
 
 //	DB_TXN_SNAPSHOT         http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -435,7 +435,7 @@ VALUE rb_RPDB_TransactionSettingsController_snapshotIsolation( VALUE	rb_transact
 }
 
 	/****************************
-	*  snapshotIsolationOn  *
+	*  turn_snapshot_isolation_on  *
 	****************************/
 
 	//	DB_TXN_SNAPSHOT         http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -451,7 +451,7 @@ VALUE rb_RPDB_TransactionSettingsController_snapshotIsolation( VALUE	rb_transact
 	}
 
 	/********************************
-	*  snapshotIsolationOff  *
+	*  turn_snapshot_isolation_off  *
 	********************************/
 
 	//	DB_TXN_SNAPSHOT         http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -467,7 +467,7 @@ VALUE rb_RPDB_TransactionSettingsController_snapshotIsolation( VALUE	rb_transact
 	}
 
 /************************************
-*  degreeOneIsolation  *
+*  degree_one_isolation?  *
 ************************************/
 
 //	DB_READ_UNCOMMITTED		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_cursor.html
@@ -483,7 +483,7 @@ VALUE rb_RPDB_TransactionSettingsController_degreeOneIsolation( VALUE	rb_transac
 }
 
 	/****************************************
-	*  turnDegreeOneIsolationOn  *
+	*  turn_degree_one_isolation_on  *
 	****************************************/
 
 	VALUE rb_RPDB_TransactionSettingsController_turnDegreeOneIsolationOn( VALUE	rb_transaction_settings_controller )	{
@@ -497,7 +497,7 @@ VALUE rb_RPDB_TransactionSettingsController_degreeOneIsolation( VALUE	rb_transac
 	}
 
 	/****************************************
-	*  turnDegreeOneIsolationOff  *
+	*  turn_degree_one_isolation_off  *
 	****************************************/
 
 	VALUE rb_RPDB_TransactionSettingsController_turnDegreeOneIsolationOff( VALUE	rb_transaction_settings_controller )	{
@@ -511,7 +511,7 @@ VALUE rb_RPDB_TransactionSettingsController_degreeOneIsolation( VALUE	rb_transac
 	}
 
 /****************************
-*  degreeTwoIsolation  *
+*  degree_two_isolation?  *
 ****************************/
 
 //	DB_READ_COMMITTED		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_cursor.html
@@ -526,7 +526,7 @@ VALUE rb_RPDB_TransactionSettingsController_degreeTwoIsolation( VALUE	rb_transac
 }
 
 	/****************************
-	*  degreeTwoIsolationOn  *
+	*  turn_degree_two_isolation_on  *
 	****************************/
 
 	VALUE rb_RPDB_TransactionSettingsController_turnDegreeTwoIsolationOn( VALUE	rb_transaction_settings_controller )	{
@@ -540,7 +540,7 @@ VALUE rb_RPDB_TransactionSettingsController_degreeTwoIsolation( VALUE	rb_transac
 	}
 
 	/****************************
-	*  degreeTwoIsolationOff  *
+	*  turn_degree_two_isolation_off  *
 	****************************/
 
 	VALUE rb_RPDB_TransactionSettingsController_turnDegreeTwoIsolationOff( VALUE	rb_transaction_settings_controller )	{
@@ -554,7 +554,7 @@ VALUE rb_RPDB_TransactionSettingsController_degreeTwoIsolation( VALUE	rb_transac
 	}
 
 /**********************************************
-*  encloseAllActivityInTransaction  *
+*  enclose_all_activity_in_transaction?  *
 **********************************************/
 
 //	DB_AUTO_COMMIT			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -568,7 +568,7 @@ VALUE rb_RPDB_TransactionSettingsController_encloseAllActivityInTransaction( VAL
 }
 
 	/*****************************************************
-	*  turnEncloseAllActivityInTransactionOn  *
+	*  turn_enclose_all_activity_in_transaction_on  *
 	*****************************************************/
 
 	VALUE rb_RPDB_TransactionSettingsController_turnEncloseAllActivityInTransactionOn( VALUE	rb_transaction_settings_controller )	{
@@ -582,7 +582,7 @@ VALUE rb_RPDB_TransactionSettingsController_encloseAllActivityInTransaction( VAL
 	}
 
 	/*****************************************************
-	*  turnEncloseAllActivityInTransactionOff  *
+	*  turn_enclose_all_activity_in_transaction_off  *
 	*****************************************************/
 
 	VALUE rb_RPDB_TransactionSettingsController_turnEncloseAllActivityInTransactionOff( VALUE	rb_transaction_settings_controller )	{
@@ -596,7 +596,7 @@ VALUE rb_RPDB_TransactionSettingsController_encloseAllActivityInTransaction( VAL
 	}
 
 /******************************************
-*  environmentalSnapshotIsolation  *
+*  environmental_snapshot_isolation?  *
 ******************************************/
 
 //	DB_MULTIVERSION         http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -610,7 +610,7 @@ VALUE rb_RPDB_TransactionSettingsController_environmentalSnapshotIsolation( VALU
 }
 
 	/*********************************************
-	*  turnEnvironmentalSnapshotIsolationOn  *
+	*  turn_environmental_snapshot_isolation_on  *
 	*********************************************/
 
 	VALUE rb_RPDB_TransactionSettingsController_turnEnvironmentalSnapshotIsolationOn( VALUE	rb_transaction_settings_controller )	{
@@ -624,7 +624,7 @@ VALUE rb_RPDB_TransactionSettingsController_environmentalSnapshotIsolation( VALU
 	}
 
 	/*********************************************
-	*  turnEnvironmentalSnapshotIsolationOff  *
+	*  turn_environmental_snapshot_isolation_off  *
 	*********************************************/
 
 	VALUE rb_RPDB_TransactionSettingsController_turnEnvironmentalSnapshotIsolationOff( VALUE	rb_transaction_settings_controller )	{
@@ -638,7 +638,7 @@ VALUE rb_RPDB_TransactionSettingsController_environmentalSnapshotIsolation( VALU
 	}
 
 /******************************************
-*  syncOnCommit  *
+*  sync_on_commit  *
 ******************************************/
 
 //	DB_TXN_SYNC         http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/txn_begin.html
@@ -652,7 +652,7 @@ VALUE rb_RPDB_TransactionSettingsController_syncOnCommit( VALUE	rb_transaction_s
 }
 
 	/*********************************************
-	*  turnSyncOnCommitOn  *
+	*  turn_sync_on_commit_on  *
 	*********************************************/
 
 	VALUE rb_RPDB_TransactionSettingsController_turnSyncOnCommitOn( VALUE	rb_transaction_settings_controller )	{
@@ -666,7 +666,7 @@ VALUE rb_RPDB_TransactionSettingsController_syncOnCommit( VALUE	rb_transaction_s
 	}
 
 	/*********************************************
-	*  turnSyncOnCommitOff  *
+	*  turn_sync_on_commit_off  *
 	*********************************************/
 
 	VALUE rb_RPDB_TransactionSettingsController_turnSyncOnCommitOff( VALUE	rb_transaction_settings_controller )	{
@@ -680,7 +680,7 @@ VALUE rb_RPDB_TransactionSettingsController_syncOnCommit( VALUE	rb_transaction_s
 	}
 
 /******************************************
-*  waitForLocks  *
+*  wait_for_locks  *
 ******************************************/
 
 //	DB_TXN_WAIT         http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/txn_begin.html
@@ -694,7 +694,7 @@ VALUE rb_RPDB_TransactionSettingsController_waitForLocks( VALUE	rb_transaction_s
 }
 
 	/*********************************************
-	*  turnSyncOnCommitOn  *
+	*  turn_wait_for_locks_on  *
 	*********************************************/
 
 	VALUE rb_RPDB_TransactionSettingsController_turnWaitForLocksOn( VALUE	rb_transaction_settings_controller )	{
@@ -708,7 +708,7 @@ VALUE rb_RPDB_TransactionSettingsController_waitForLocks( VALUE	rb_transaction_s
 	}
 
 	/*********************************************
-	*  turnSyncOnCommitOff  *
+	*  turn_wait_for_locks_off  *
 	*********************************************/
 
 	VALUE rb_RPDB_TransactionSettingsController_turnWaitForLocksOff( VALUE	rb_transaction_settings_controller )	{
@@ -726,7 +726,7 @@ VALUE rb_RPDB_TransactionSettingsController_waitForLocks( VALUE	rb_transaction_s
 *******************************************************************************************************************************************************************************************/
 
 /************************************************
-*  maximumNumberOfTransactionsToRecover  *
+*  maximum_number_of_transactions_to_recover  *
 ************************************************/
 
 VALUE rb_RPDB_TransactionSettingsController_maximumNumberOfTransactionsToRecover( VALUE	rb_transaction_settings_controller )	{
@@ -738,7 +738,7 @@ VALUE rb_RPDB_TransactionSettingsController_maximumNumberOfTransactionsToRecover
 }
 
 /****************************************************
-*  setMaximumNumberOfTransactionsToRecover  *
+*  set_maximum_number_of_transactions_to_recover  *
 ****************************************************/
 
 VALUE rb_RPDB_TransactionSettingsController_setMaximumNumberOfTransactionsToRecover(	VALUE	rb_transaction_settings_controller,
@@ -767,7 +767,7 @@ VALUE rb_RPDB_TransactionSettingsController_timeoutInMicroseconds( VALUE	rb_tran
 }
 
 /********************
-*  setTimeout  *
+*  set_timeout  *
 ********************/
 
 //	DB_SET_TXN_TIMEOUT		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_timeout.html
@@ -784,7 +784,7 @@ VALUE rb_RPDB_TransactionSettingsController_setTimeoutInMicroseconds(	VALUE	rb_t
 }
 
 /****************
-*  maxOpen  *
+*  max_open  *
 ****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_tx_max.html
@@ -797,7 +797,7 @@ VALUE rb_RPDB_TransactionSettingsController_maxOpen( VALUE	rb_transaction_settin
 }
 
 /********************
-*  setMaxOpen  *
+*  set_max_open  *
 ********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_tx_max.html
@@ -827,7 +827,7 @@ VALUE rb_RPDB_TransactionSettingsController_recoveryTimestamp( VALUE	rb_transact
 }
 
 /********************
-*  setTimestamp  *
+*  set_timestamp  *
 ********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_tx_timestamp.html
@@ -850,7 +850,7 @@ VALUE rb_RPDB_TransactionSettingsController_setRecoveryTimestamp(	VALUE	rb_trans
 *******************************************************************************************************************************************************************************************/
 
 /****************************************
-*  setRollbackwardCallbackMethod  *
+*  set_rollbackward_callback_method  *
 ****************************************/
 /*
 VALUE rb_RPDB_TransactionSettingsController_setRollbackwardCallbackMethod(	VALUE	rb_transaction_settings_controller,
@@ -862,7 +862,7 @@ VALUE rb_RPDB_TransactionSettingsController_setRollbackwardCallbackMethod(	VALUE
 }
 */
 /************************************
-*  rollbackwardCallbackMethod  *
+*  rollbackward_callback_method  *
 ************************************/
 /*
 VALUE(*rollbackward_callback_method)(	VALUE				environment->wrapped_bdb_environment,
@@ -872,7 +872,7 @@ VALUE(*rollbackward_callback_method)(	VALUE				environment->wrapped_bdb_environm
 }
 */
 /****************************************
-*  setRollforwardCallbackMethod  *
+*  set_rollforward_callback_method  *
 ****************************************/
 /*
 VALUE rb_RPDB_TransactionSettingsController_setRollforwardCallbackMethod(	VALUE	rb_transaction_settings_controller,
@@ -884,7 +884,7 @@ VALUE rb_RPDB_TransactionSettingsController_setRollforwardCallbackMethod(	VALUE	
 }
 */
 /************************************
-*  rollforwardCallbackMethod  *
+*  rollforward_callback_method  *
 ************************************/
 /*
 VALUE(*rollforward_callback_method)(	VALUE				environment->wrapped_bdb_environment,
@@ -894,7 +894,7 @@ VALUE(*rollforward_callback_method)(	VALUE				environment->wrapped_bdb_environme
 }
 */
 /********************************
-*  setAbortCallbackMethod  *
+*  set_abort_callback_method  *
 ********************************/
 /*
 VALUE rb_RPDB_TransactionSettingsController_setAbortCallbackMethod(	VALUE	rb_transaction_settings_controller,
@@ -906,7 +906,7 @@ VALUE rb_RPDB_TransactionSettingsController_setAbortCallbackMethod(	VALUE	rb_tra
 }
 */
 /********************************
-*  abortCallbackMethod  *
+*  abort_callback_method  *
 ********************************/
 /*
 VALUE(*abort_callback_method)(	VALUE				environment->wrapped_bdb_environment,
@@ -916,7 +916,7 @@ VALUE(*abort_callback_method)(	VALUE				environment->wrapped_bdb_environment,
 }
 */
 /********************************
-*  setApplyCallbackMethod  *
+*  set_apply_callback_method  *
 ********************************/
 /*
 VALUE rb_RPDB_TransactionSettingsController_setApplyCallbackMethod(	VALUE	rb_transaction_settings_controller,
@@ -928,7 +928,7 @@ VALUE rb_RPDB_TransactionSettingsController_setApplyCallbackMethod(	VALUE	rb_tra
 }
 */
 /********************************
-*  applyCallbackMethod  *
+*  apply_callback_method  *
 ********************************/
 /*
 VALUE(*apply_callback_method)(	VALUE				environment->wrapped_bdb_environment,
@@ -938,7 +938,7 @@ VALUE(*apply_callback_method)(	VALUE				environment->wrapped_bdb_environment,
 }
 */
 /********************************
-*  setPrintCallbackMethod  *
+*  set_print_callback_method  *
 ********************************/
 /*
 VALUE rb_RPDB_TransactionSettingsController_setPrintCallbackMethod(	VALUE	rb_transaction_settings_controller,
@@ -950,7 +950,7 @@ VALUE rb_RPDB_TransactionSettingsController_setPrintCallbackMethod(	VALUE	rb_tra
 }
 */
 /********************************
-*  printCallbackMethod  *
+*  print_callback_method  *
 ********************************/
 /*
 VALUE(*print_callback_method)(	VALUE				environment->wrapped_bdb_environment,

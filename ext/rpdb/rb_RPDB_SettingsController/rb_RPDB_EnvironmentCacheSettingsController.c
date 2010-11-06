@@ -39,7 +39,7 @@ void Init_RPDB_EnvironmentCacheSettingsController()	{
 																																		rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_EnvironmentCacheSettingsController, 	"new",																rb_RPDB_EnvironmentCacheSettingsController_new,														-1 	);
-	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"initialize",													rb_RPDB_EnvironmentCacheSettingsController_init,														-1 	);
+	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"initialize",													rb_RPDB_EnvironmentCacheSettingsController_initialize,														-1 	);
                         			                                        
 	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"parent_environment",									rb_RPDB_EnvironmentCacheSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(						rb_RPDB_EnvironmentCacheSettingsController, 	"environment",												"parent_environment"	);
@@ -107,7 +107,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_new(	int			argc,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
-	rb_obj_call_initialize(	rb_environment_cache_settings_controller,
+	rb_obj_call_init(	rb_environment_cache_settings_controller,
 									 1, 
 									 argv );
 	
@@ -115,7 +115,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_new(	int			argc,
 }
 
 /************
-*  new  *
+*  initialize  *
 ************/
 
 VALUE rb_RPDB_EnvironmentCacheSettingsController_initialize(	int				argc __attribute__ ((unused)),
@@ -126,7 +126,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_initialize(	int				argc __attri
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_EnvironmentCacheSettingsController_parentEnvironment(	VALUE	rb_environment_cache_settings_controller )	{
 
@@ -148,7 +148,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_parentSettingsController(	VALUE
 }
 
 /********************
-*  buffering  *
+*  buffering?  *
 ********************/
 
 //	DB_DIRECT_DB            http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -162,7 +162,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_buffering( VALUE	rb_environment
 }
 
 	/************************
-	*  turnBufferingOn  *
+	*  turn_buffering_on  *
 	************************/
 
 	VALUE rb_RPDB_EnvironmentCacheSettingsController_turnBufferingOn( VALUE	rb_environment_cache_settings_controller )	{
@@ -176,7 +176,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_buffering( VALUE	rb_environment
 	}
 
 	/************************
-	*  turnBufferingOff  *
+	*  turn_buffering_off  *
 	************************/
 
 	VALUE rb_RPDB_EnvironmentCacheSettingsController_turnBufferingOff( VALUE	rb_environment_cache_settings_controller )	{
@@ -191,7 +191,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_buffering( VALUE	rb_environment
 
 
 /************************
-*  maxSizeInBytes  *
+*  max_size_in_bytes  *
 ************************/
 
 //http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cachesize.html
@@ -204,7 +204,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInBytes( VALUE	rb_enviro
 }
 
 /********************
-*  maxSizeInKBytes  *
+*  max_size_in_kbytes  *
 ********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cachesize.html
@@ -217,7 +217,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInKBytes( VALUE	rb_envir
 }
 
 /********************
-*  maxSizeInMBytes  *
+*  max_size_in_mbytes  *
 ********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cachesize.html
@@ -230,7 +230,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInMBytes( VALUE	rb_envir
 }
 
 /********************
-*  maxSizeInGBytes  *
+*  max_size_in_gbytes  *
 ********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cachesize.html
@@ -243,7 +243,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 }
 
 	/************************
-	*  setMaxSizeInBytes  *
+	*  set_max_size_in_bytes  *
 	************************/
 
 	//http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
@@ -260,7 +260,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 	}
 
 	/************************
-	*  setMaxSizeInKBytes  *
+	*  set_max_size_in_kbytes  *
 	************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
@@ -277,7 +277,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 	}
 
 	/************************
-	*  setMaxSizeInMBytes  *
+	*  set_max_size_in_mbytes  *
 	************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
@@ -294,7 +294,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 	}
 
 	/************************
-	*  setMaxSizeInGBytes  *
+	*  set_max_size_in_gbytes  *
 	************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
@@ -311,7 +311,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 	}
 
 	/****************************************
-	*  setMaxSizeInGBytesMBytesKBytesBytes  *
+	*  set_max_size_in_gbytes_mbytes_kbytes_bytes  *
 	****************************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
@@ -334,7 +334,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 	}
 
 	/********************************
-	*  setMaxSizeInMBytesKBytesBytes  *
+	*  set_max_size_in_mbytes_kbytes_bytes  *
 	********************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
@@ -355,7 +355,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 	}
 
 	/****************************
-	*  setMaxSizeInKBytesBytes  *
+	*  set_max_size_in_kbytes_bytes  *
 	****************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html

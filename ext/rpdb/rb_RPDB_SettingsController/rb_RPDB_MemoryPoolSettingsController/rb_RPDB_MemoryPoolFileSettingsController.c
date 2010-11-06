@@ -50,7 +50,7 @@ void Init_RPDB_MemoryPoolFileSettingsController()	{
 																																				rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_MemoryPoolFileSettingsController, 	"new",																rb_RPDB_MemoryPoolFileSettingsController_new,																								-1 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"initialize",													rb_RPDB_MemoryPoolFileSettingsController_init,																								-1 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"initialize",													rb_RPDB_MemoryPoolFileSettingsController_initialize,																								-1 	);
 
 	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"parent_environment",									rb_RPDB_MemoryPoolFileSettingsController_parentEnvironment,																		0 	);
 	rb_define_alias(			rb_RPDB_MemoryPoolFileSettingsController, 				"environment",												"parent_environment"	);
@@ -132,7 +132,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_new(	int			argc,
 							rb_parent_memory_pool_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_memory_pool_settings_controller };
-	rb_obj_call_initialize(	rb_memory_pool_file_settings_controller,
+	rb_obj_call_init(	rb_memory_pool_file_settings_controller,
 										 1, 
 										 argv );
 	
@@ -191,7 +191,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_parentMemoryPoolSettingsControlle
 }
 
 /*********************************************
-*  createWithNumberInitialNullBytes  *
+*  create_with_initial_null_bytes_numbering  *
 *********************************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_set_clear_len.html
@@ -204,7 +204,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_createWithInitialNullBytesNumberi
 }
 
 	/*************************************************
-	*  setReturnsCreateWithNumberInitialNullBytes  *
+	*  create_with_initial_null_bytes_numbering  *
 	*************************************************/
 
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_setCreateWithInitialNullBytesNumbering( VALUE	rb_memory_pool_file_settings_controller, 
@@ -220,7 +220,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_createWithInitialNullBytesNumberi
 	}
 
 /*************
-*  fileID  *
+*  file_id  *
 *************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_set_fileid.html
@@ -234,7 +234,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_fileID( VALUE	rb_memory_pool_file
 }
 
 	/*****************
-	*  setFileID  *
+	*  set_file_id  *
 	*****************/
 
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_setFileID(	VALUE	rb_memory_pool_file_settings_controller, 
@@ -253,7 +253,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_fileID( VALUE	rb_memory_pool_file
 	}
 
 /*****************
-*  fileType  *
+*  file_type  *
 *****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_set_ftype.html
@@ -268,7 +268,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_fileType( VALUE	rb_memory_pool_fi
 }
 
 	/*********************
-	*  setFileType  *
+	*  set_file_type  *
 	*********************/
 
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_setFileType(	VALUE	rb_memory_pool_file_settings_controller, 
@@ -284,7 +284,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_fileType( VALUE	rb_memory_pool_fi
 	}
 
 /*********************************
-*  logSequenceNumberOffset  *
+*  log_sequence_number_offset  *
 *********************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_set_lsn_offset.html
@@ -297,7 +297,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_logSequenceNumberOffset( VALUE	rb
 }
 
 	/*********************************
-	*  setLogSequenceNumberOffset  *
+	*  set_log_sequence_number_offset  *
 	*********************************/
 
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_setLogSequenceNumberOffset(	VALUE	rb_memory_pool_file_settings_controller, 
@@ -313,7 +313,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_logSequenceNumberOffset( VALUE	rb
 	}
 
 /*************************
-*  maxFileSizeInBytes  *
+*  max_file_size_in_bytes  *
 *************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_set_maxsize.html
@@ -326,7 +326,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInBytes( VALUE	rb_memo
 }
 
 /*****************************
-*  maxFileSizeInKBytes  *
+*  max_file_size_in_kbytes  *
 *****************************/
 
 VALUE rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInKBytes( VALUE	rb_memory_pool_file_settings_controller )	{
@@ -338,7 +338,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInKBytes( VALUE	rb_mem
 }
 
 /*****************************
-*  maxFileSizeInMBytes  *
+*  max_file_size_in_mbytes  *
 *****************************/
 
 VALUE rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInMBytes( VALUE	rb_memory_pool_file_settings_controller )	{
@@ -350,7 +350,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInMBytes( VALUE	rb_mem
 }
 
 /*****************************
-*  maxFileSizeInGBytes  *
+*  max_file_size_in_gbytes  *
 *****************************/
 
 VALUE rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInGBytes( VALUE	rb_memory_pool_file_settings_controller )	{
@@ -362,7 +362,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInGBytes( VALUE	rb_mem
 }
 
 	/*****************************
-	*  setMaxFileSizeInBytes  *
+	*  set_max_file_size_in_bytes  *
 	*****************************/
 
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_setMaxFileSizeInBytes(	VALUE	rb_memory_pool_file_settings_controller, 
@@ -378,7 +378,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInGBytes( VALUE	rb_mem
 	}
 
 	/*****************************
-	*  setMaxFileSizeInKBytes  *
+	*  set_max_file_size_in_kbytes  *
 	*****************************/
 
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_setMaxFileSizeInKBytes(	VALUE	rb_memory_pool_file_settings_controller, 
@@ -394,7 +394,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInGBytes( VALUE	rb_mem
 	}
 
 	/*****************************
-	*  setMaxFileSizeInMBytes  *
+	*  set_max_file_size_in_mbytes  *
 	*****************************/
 
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_setMaxFileSizeInMBytes(	VALUE	rb_memory_pool_file_settings_controller, 
@@ -410,7 +410,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_maxFileSizeInGBytes( VALUE	rb_mem
 	}
 
 	/*****************************
-	*  setMaxFileSizeInGBytes  *
+	*  set_max_file_size_in_gbytes  *
 	*****************************/
 
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_setMaxFileSizeInGBytes(	VALUE	rb_memory_pool_file_settings_controller, 
@@ -439,7 +439,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_cookie( VALUE	rb_memory_pool_file
 }
 
 	/*****************
-	*  setCookie  *
+	*  set_cookie  *
 	*****************/
 
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_setCookie(	VALUE	rb_memory_pool_file_settings_controller, 
@@ -462,7 +462,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_cookie( VALUE	rb_memory_pool_file
 *******************************************************************************************************************************************************************************************/
 
 /**************************
-*  cacheSettingsController  *
+*  cache_settings_controller  *
 **************************/
 
 VALUE rb_RPDB_MemoryPoolFileSettingsController_cacheSettingsController( VALUE	rb_memory_pool_file_settings_controller )	{
@@ -474,7 +474,7 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_cacheSettingsController( VALUE	rb
 }
 
 /**************************
-*  pageController  *
+*  page_settings_controller  *
 **************************/
 
 VALUE rb_RPDB_MemoryPoolFileSettingsController_pageSettingsController( VALUE	rb_memory_pool_file_settings_controller )	{

@@ -37,7 +37,7 @@ void Init_RPDB_MutexController()	{
 																										rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_MutexController, 	"new",																													rb_RPDB_MutexController_new,																							-1 	);
-	rb_define_method(						rb_RPDB_MutexController, 	"initialize",																										rb_RPDB_MutexController_init,																						-1 	);
+	rb_define_method(						rb_RPDB_MutexController, 	"initialize",																										rb_RPDB_MutexController_initialize,																						-1 	);
                                                                                           		
 	rb_define_method(						rb_RPDB_MutexController, 	"settings_controller",																					rb_RPDB_MutexController_settingsController,															0 	);
 	rb_define_alias(						rb_RPDB_MutexController, 	"settings",																											"settings_controller"	);
@@ -86,7 +86,7 @@ VALUE	rb_RPDB_MutexController_new(	int			argc,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_environment };
-	rb_obj_call_initialize(	rb_mutex_controller,
+	rb_obj_call_init(	rb_mutex_controller,
 										 1, 
 										 argv );
 	

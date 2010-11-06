@@ -48,7 +48,7 @@ void Init_RPDB_DatabaseSequence()	{
 																													rb_cObject );
 	
 	rb_define_singleton_method(	rb_RPDB_DatabaseSequence, 	"new",																	rb_RPDB_DatabaseSequence_new,															-1 	);
-	rb_define_method(						rb_RPDB_DatabaseSequence, 	"initialize",														rb_RPDB_DatabaseSequence_init,														-1 	);
+	rb_define_method(						rb_RPDB_DatabaseSequence, 	"initialize",														rb_RPDB_DatabaseSequence_initialize,														-1 	);
 	                                                                                          				
 	rb_define_method(						rb_RPDB_DatabaseSequence, 	"settings_controller",									rb_RPDB_DatabaseSequence_settingsController,							0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSequence, 	"settings",															"settings_controller"	);
@@ -116,7 +116,7 @@ VALUE rb_RPDB_DatabaseSequence_new(	int			argc,
 							rb_parent_database_sequence_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_sequence_controller };
-	rb_obj_call_initialize(	rb_database_sequence,
+	rb_obj_call_init(	rb_database_sequence,
 						1, 
 						argv );
 	

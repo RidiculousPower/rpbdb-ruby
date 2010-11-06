@@ -81,7 +81,7 @@ VALUE rb_RPDB_SecondaryKeys_new(	int			argc,
 							rb_parent_record );
 
 	VALUE	argv[]	=	{ rb_parent_record };
-	rb_obj_call_initialize(	rb_secondary_keys,
+	rb_obj_call_init(	rb_secondary_keys,
 										 1, 
 										 argv );
 	

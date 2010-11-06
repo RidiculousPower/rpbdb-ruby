@@ -45,7 +45,7 @@ void Init_RPDB_LockDeadlockDetectorVerbositySettingsController()	{
 																																											rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 	"new",																rb_RPDB_LockDeadlockDetectorVerbositySettingsController_new,														-1 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"initialize",													rb_RPDB_LockDeadlockDetectorVerbositySettingsController_init,														-1 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"initialize",													rb_RPDB_LockDeadlockDetectorVerbositySettingsController_initialize,														-1 	);
 
 	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"parent_environment",									rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"environment",												"parent_environment"	);
@@ -122,7 +122,7 @@ VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_new(	int			argc,
 							rb_parent_lock_deadlock_detector_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_lock_deadlock_detector_settings_controller };
-	rb_obj_call_initialize(	rb_lock_deadlock_detector_verbosity_settings_controller,
+	rb_obj_call_init(	rb_lock_deadlock_detector_verbosity_settings_controller,
 										 1, 
 										 argv );
 	
@@ -189,7 +189,7 @@ VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentLockDeadlock
 }
 
 /*************************************************************
-*  displayAdditionalInformationDuringDeadlockDetection  *
+*  display_additional_information_during_deadlock_detection?  *
 *************************************************************/
 
 //	DB_VERB_DEADLOCK        	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
@@ -203,7 +203,7 @@ VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_displayAdditionalI
 }
 
 	/*****************************************************************
-	*  turnDisplayAdditionalInformationDuringDeadlockDetectionOn  *
+	*  turn_display_additional_information_during_deadlock_detection_on  *
 	*****************************************************************/
 
 	VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_turnDisplayAdditionalInformationDuringDeadlockDetectionOn( VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
@@ -217,7 +217,7 @@ VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_displayAdditionalI
 	}
 
 	/*****************************************************************
-	*  turnDisplayAdditionalInformationDuringDeadlockDetectionOff  *
+	*  turn_display_additional_information_during_deadlock_detection_off  *
 	*****************************************************************/
 
 	VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_turnDisplayAdditionalInformationDuringDeadlockDetectionOff( VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
@@ -231,7 +231,7 @@ VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_displayAdditionalI
 	}
 
 /*************************************************
-*  displayWaitTableDuringDeadlockDetection  *
+*  display_wait_table_during_deadlock_detection?  *
 *************************************************/
 
 //	DB_VERB_WAITSFOR			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
@@ -245,7 +245,7 @@ VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_displayWaitTableDu
 }
 
 	/*****************************************************
-	*  turnDisplayWaitTableDuringDeadlockDetectionOn  *
+	*  turn_display_wait_table_during_deadlock_detection_on  *
 	*****************************************************/
 
 	VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_turnDisplayWaitTableDuringDeadlockDetectionOn( VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
@@ -259,7 +259,7 @@ VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_displayWaitTableDu
 	}
 
 	/*****************************************************
-	*  turnDisplayWaitTableDuringDeadlockDetectionOff  *
+	*  turn_display_wait_table_during_deadlock_detection_off  *
 	*****************************************************/
 
 	VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_turnDisplayWaitTableDuringDeadlockDetectionOff( VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{

@@ -83,7 +83,7 @@ VALUE rb_RPDB_Data_new(	int			argc,
 							rb_parent_record );
 
 	VALUE	argv[]	=	{ rb_parent_record };
-	rb_obj_call_initialize(	rb_data,
+	rb_obj_call_init(	rb_data,
 										1, 
 										argv );
 	

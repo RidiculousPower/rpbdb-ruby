@@ -39,7 +39,7 @@ void Init_RPDB_MutexSettingsController()	{
 																																		rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_MutexSettingsController, 	"new",																rb_RPDB_MutexSettingsController_new,														-1 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"initialize",													rb_RPDB_MutexSettingsController_init,														-1 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"initialize",													rb_RPDB_MutexSettingsController_initialize,														-1 	);
 
 	rb_define_method(			rb_RPDB_MutexSettingsController, 				"parent_environment",									rb_RPDB_MutexSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_MutexSettingsController, 				"environment",												"parent_environment"	);
@@ -106,7 +106,7 @@ VALUE rb_RPDB_MutexSettingsController_new(	int			argc,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
-	rb_obj_call_initialize(	rb_mutex_settings_controller,
+	rb_obj_call_init(	rb_mutex_settings_controller,
 										 1, 
 										 argv );
 	
@@ -114,7 +114,7 @@ VALUE rb_RPDB_MutexSettingsController_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  initialize  *
 *************/
 
 VALUE rb_RPDB_MutexSettingsController_initialize(	int				argc __attribute__ ((unused)),
@@ -150,7 +150,7 @@ VALUE rb_RPDB_MutexSettingsController_parentSettingsController(	VALUE	rb_mutex_s
 }
 
 /*****************************************************
-*  spinTimesBeforeBlockingForTestAndSpinMutexes  *
+*  spin_times_before_blocking_for_test_and_spin_mutexes  *
 *****************************************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/mutex_set_tas_spins.html
@@ -163,7 +163,7 @@ VALUE rb_RPDB_MutexSettingsController_spinTimesBeforeBlockingForTestAndSpinMutex
 }
 
 	/*********************************************************
-	*  setSpinTimesBeforeBlockingForTestAndSpinMutexes  *
+	*  set_spin_times_before_blocking_for_test_and_spin_mutexes  *
 	*********************************************************/
 
 	VALUE rb_RPDB_MutexSettingsController_setSpinTimesBeforeBlockingForTestAndSpinMutexes(	VALUE	rb_mutex_settings_controller, 
@@ -179,7 +179,7 @@ VALUE rb_RPDB_MutexSettingsController_spinTimesBeforeBlockingForTestAndSpinMutex
 	}
 
 /*****************************
-*  maxAllowableMutexes  *
+*  max_allowable_mutexes  *
 *****************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/mutex_set_max.html
@@ -192,7 +192,7 @@ VALUE rb_RPDB_MutexSettingsController_maxAllowableMutexes( VALUE	rb_mutex_settin
 }
 
 	/*****************************
-	*  setMaxAllowableMutexes  *
+	*  set_max_allowable_mutexes  *
 	*****************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/mutex_set_max.html
@@ -209,7 +209,7 @@ VALUE rb_RPDB_MutexSettingsController_maxAllowableMutexes( VALUE	rb_mutex_settin
 	}
 
 /*********************************
-*  incrementForAddingMutexes  *
+*  increment_for_adding_mutexes  *
 *********************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/mutex_set_max.html
@@ -222,7 +222,7 @@ VALUE rb_RPDB_MutexSettingsController_incrementForAddingMutexes( VALUE	rb_mutex_
 }
 
 	/*************************************
-	*  setIncrementForAddingMutexes  *
+	*  set_increment_for_adding_mutexes  *
 	*************************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/mutex_set_max.html
@@ -239,7 +239,7 @@ VALUE rb_RPDB_MutexSettingsController_incrementForAddingMutexes( VALUE	rb_mutex_
 	}
 
 /*********************
-*  mutexAlignment  *
+*  mutex_alignment  *
 *********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/mutex_set_max.html
@@ -252,7 +252,7 @@ VALUE rb_RPDB_MutexSettingsController_mutexAlignment( VALUE	rb_mutex_settings_co
 }
 
 	/*************************
-	*  setMutexAlignment  *
+	*  set_mutex_alignment  *
 	*************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/mutex_set_max.html
@@ -269,7 +269,7 @@ VALUE rb_RPDB_MutexSettingsController_mutexAlignment( VALUE	rb_mutex_settings_co
 	}
 
 /*************************
-*  setMutexAlignment  *
+*  associated_with_single_process?  *
 *************************/
 
 VALUE rb_RPDB_MutexSettingsController_associatedWithSingleProcess( VALUE	rb_mutex_settings_controller )	{
@@ -282,7 +282,7 @@ VALUE rb_RPDB_MutexSettingsController_associatedWithSingleProcess( VALUE	rb_mute
 }
 
 	/*************************
-	*  setMutexAlignment  *
+	*  turn_associated_with_single_process_on  *
 	*************************/
 
 	VALUE rb_RPDB_MutexSettingsController_turnAssociatedWithSingleProcessOn( VALUE	rb_mutex_settings_controller )	{
@@ -296,7 +296,7 @@ VALUE rb_RPDB_MutexSettingsController_associatedWithSingleProcess( VALUE	rb_mute
 	}
 
 	/*****************************************
-	*  turnAssociatedWithSingleProcessOff  *
+	*  turn_associated_with_single_process_off  *
 	*****************************************/
 
 	VALUE rb_RPDB_MutexSettingsController_turnAssociatedWithSingleProcessOff( VALUE	rb_mutex_settings_controller )	{
@@ -310,7 +310,7 @@ VALUE rb_RPDB_MutexSettingsController_associatedWithSingleProcess( VALUE	rb_mute
 	}
 
 /*********************
-*  selfBlocking  *
+*  self_blocking  *
 *********************/
 
 VALUE rb_RPDB_MutexSettingsController_selfBlocking( VALUE	rb_mutex_settings_controller )	{
@@ -323,7 +323,7 @@ VALUE rb_RPDB_MutexSettingsController_selfBlocking( VALUE	rb_mutex_settings_cont
 }
 
 	/*************************
-	*  turnSelfBlockingOn  *
+	*  turn_self_blocking_on  *
 	*************************/
 
 	VALUE rb_RPDB_MutexSettingsController_turnSelfBlockingOn( VALUE	rb_mutex_settings_controller )	{
@@ -337,7 +337,7 @@ VALUE rb_RPDB_MutexSettingsController_selfBlocking( VALUE	rb_mutex_settings_cont
 	}
 
 	/*****************************
-	*  turnSelfBlockingOff  *
+	*  turn_self_blocking_off  *
 	*****************************/
 
 	VALUE rb_RPDB_MutexSettingsController_turnSelfBlockingOff( VALUE	rb_mutex_settings_controller )	{

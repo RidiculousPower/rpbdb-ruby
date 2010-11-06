@@ -45,7 +45,7 @@ void Init_RPDB_LogController()	{
 																									rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_LogController, 	"new",																													rb_RPDB_LogController_new,										-1 	);
-	rb_define_method(						rb_RPDB_LogController, 	"initialize",																										rb_RPDB_LogController_init,									-1 	);
+	rb_define_method(						rb_RPDB_LogController, 	"initialize",																										rb_RPDB_LogController_initialize,									-1 	);
                                                                                           		                                                                        
 	rb_define_method(						rb_RPDB_LogController, 	"settings_controller",																					rb_RPDB_LogController_settingsController,		0 	);
 	rb_define_alias(						rb_RPDB_LogController, 	"settings",																											"settings_controller"	);                      
@@ -105,7 +105,7 @@ VALUE rb_RPDB_LogController_new(	int			argc,
 							rb_parent_environment );
 	
 	VALUE	argv[]	=	{ rb_parent_environment };
-	rb_obj_call_initialize(	rb_log_controller,
+	rb_obj_call_init(	rb_log_controller,
 					 1, 
 					 argv );
 	

@@ -39,7 +39,7 @@ void Init_RPDB_ErrorSettingsController()	{
 																															rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_ErrorSettingsController, 	"new",																rb_RPDB_ErrorSettingsController_new,														-1 	);
-	rb_define_method(						rb_RPDB_ErrorSettingsController, 	"initialize",													rb_RPDB_ErrorSettingsController_init,														-1 	);
+	rb_define_method(						rb_RPDB_ErrorSettingsController, 	"initialize",													rb_RPDB_ErrorSettingsController_initialize,														-1 	);
                         			                                        
 	rb_define_method(						rb_RPDB_ErrorSettingsController, 	"parent_environment",									rb_RPDB_ErrorSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(						rb_RPDB_ErrorSettingsController, 	"environment",												"parent_environment"	);
@@ -99,7 +99,7 @@ VALUE rb_RPDB_ErrorSettingsController_new(	int			argc,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
-	rb_obj_call_initialize(	rb_error_settings_controller,
+	rb_obj_call_init(	rb_error_settings_controller,
 										 1, 
 										 argv );
 	
@@ -107,7 +107,7 @@ VALUE rb_RPDB_ErrorSettingsController_new(	int			argc,
 }
 
 /************
-*  new  *
+*  initialize  *
 ************/
 
 VALUE rb_RPDB_ErrorSettingsController_initialize(	int				argc __attribute__ ((unused)),
@@ -161,7 +161,7 @@ VALUE rb_RPDB_ErrorSettingsController_file( VALUE	rb_error_settings_controller )
 }
 
 	/****************
-	*  setFile  *
+	*  set_file  *
 	****************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_errfile.html
@@ -194,7 +194,7 @@ VALUE rb_RPDB_ErrorSettingsController_prefix( VALUE	rb_error_settings_controller
 }
 
 	/****************
-	*  setPrefix  *
+	*  set_prefix  *
 	****************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_errpfx.html
@@ -211,7 +211,7 @@ VALUE rb_RPDB_ErrorSettingsController_prefix( VALUE	rb_error_settings_controller
 	}
 
 /****************************
-*  setErrorCallbackMethod  *
+*  set_error_callback_method  *
 ****************************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_errcall.html
@@ -224,7 +224,7 @@ VALUE rb_RPDB_ErrorSettingsController_setErrorCallbackMethod(	VALUE	rb_error_set
 }
 */
 /************************
-*  errorCallbackMethod  *
+*  error_callback_method  *
 ************************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_errcall.html

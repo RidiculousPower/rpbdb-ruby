@@ -48,7 +48,7 @@ void Init_RPDB_DatabaseController()	{
 																												rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_DatabaseController, 	"new",														rb_RPDB_DatabaseController_new,											-1 	);
-	rb_define_method(						rb_RPDB_DatabaseController, 	"initialize",											rb_RPDB_DatabaseController_init,										-1 	);
+	rb_define_method(						rb_RPDB_DatabaseController, 	"initialize",											rb_RPDB_DatabaseController_initialize,										-1 	);
                                                                                           		
 	rb_define_method(						rb_RPDB_DatabaseController, 	"settings_controller",						rb_RPDB_DatabaseController_settingsController,			0 	);
 	rb_define_alias(						rb_RPDB_DatabaseController, 	"settings",												"settings_controller"	);
@@ -126,7 +126,7 @@ VALUE rb_RPDB_DatabaseController_new(	int			argc,
 							rb_parent_environment );
 	
 	VALUE	argv[]	=	{ rb_parent_environment };
-	rb_obj_call_initialize(	rb_database_controller,
+	rb_obj_call_init(	rb_database_controller,
 										1, 
 										argv );
 	

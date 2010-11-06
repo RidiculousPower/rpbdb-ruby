@@ -51,7 +51,7 @@ void Init_RPDB_MemoryPoolFileCachePrioritySettingsController()	{
 																																										rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 	"new",																rb_RPDB_MemoryPoolFileCachePrioritySettingsController_new,														-1 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"initialize",													rb_RPDB_MemoryPoolFileCachePrioritySettingsController_init,														-1 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"initialize",													rb_RPDB_MemoryPoolFileCachePrioritySettingsController_initialize,														-1 	);
 
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"parent_environment",									rb_RPDB_MemoryPoolFileCachePrioritySettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"environment",												"parent_environment"	);
@@ -146,7 +146,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_new(	int			argc,
 							rb_parent_memory_pool_file_cache_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_memory_pool_file_settings_controller };
-	rb_obj_call_initialize(	rb_memory_pool_file_cache_priority_settings_controller,
+	rb_obj_call_init(	rb_memory_pool_file_cache_priority_settings_controller,
 										 1, 
 										 argv );
 	
@@ -225,7 +225,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_parentMemoryPoolFile
 }
 
 /*************************
-*  currentPriority  *
+*  current_priority  *
 *************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_set_priority.html
@@ -239,7 +239,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_currentPriority( VAL
 }
 
 /*****************
-*  veryLow  *
+*  very_low  *
 *****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_set_priority.html
@@ -253,7 +253,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_veryLow( VALUE	rb_me
 }
 
 	/*****************
-	*  setVeryLow  *
+	*  set_very_low  *
 	*****************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_setVeryLow( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
@@ -267,7 +267,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_veryLow( VALUE	rb_me
 	}
 
 	/*********************
-	*  atLeastVeryLow  *
+	*  at_least_very_low  *
 	*********************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtLeastVeryLow( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
@@ -280,7 +280,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_veryLow( VALUE	rb_me
 	}
 
 	/*********************
-	*  atMostVeryLow  *
+	*  at_most_very_low  *
 	*********************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtMostVeryLow( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
@@ -307,7 +307,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_low( VALUE	rb_memory
 }
 
 	/*************
-	*  setLow  *
+	*  set_low  *
 	*************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_setLow( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
@@ -321,7 +321,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_low( VALUE	rb_memory
 	}
 
 	/*****************
-	*  atLeastLow  *
+	*  at_least_low  *
 	*****************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtLeastLow( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
@@ -334,7 +334,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_low( VALUE	rb_memory
 	}
 
 	/*****************
-	*  atMostLow  *
+	*  at_most_low  *
 	******************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtMostLow( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
@@ -361,7 +361,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_default( VALUE	rb_me
 }
 
 	/*****************
-	*  setDefault  *
+	*  set_default  *
 	*****************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_setDefault( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
@@ -375,7 +375,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_default( VALUE	rb_me
 	}
 
 	/*********************
-	*  atLeastDefault  *
+	*  at_least_default  *
 	*********************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtLeastDefault( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
@@ -388,7 +388,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_default( VALUE	rb_me
 	}
 
 	/*********************
-	*  atMostDefault  *
+	*  at_most_default  *
 	*********************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtMostDefault( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
@@ -415,7 +415,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_high( VALUE	rb_memor
 }
 
 	/*****************
-	*  setHigh  *
+	*  set_high  *
 	*****************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_setHigh( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
@@ -429,7 +429,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_high( VALUE	rb_memor
 	}
 
 	/*********************
-	*  atLeastHigh  *
+	*  at_least_high  *
 	*********************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtLeastHigh( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
@@ -442,7 +442,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_high( VALUE	rb_memor
 	}
 
 	/*****************
-	*  atMostHigh  *
+	*  at_most_high  *
 	*****************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtMostHigh( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
@@ -455,7 +455,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_high( VALUE	rb_memor
 	}
 
 /*****************
-*  veryHigh  *
+*  very_high  *
 *****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_set_priority.html
@@ -469,7 +469,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_veryHigh( VALUE	rb_m
 }
 
 	/*********************
-	*  setVeryHigh  *
+	*  set_very_high  *
 	*********************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_setVeryHigh( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
@@ -483,7 +483,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_veryHigh( VALUE	rb_m
 	}
 
 	/*************************
-	*  atLeastVeryHigh  *
+	*  at_least_very_high  *
 	*************************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtLeastVeryHigh( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{
@@ -496,7 +496,7 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_veryHigh( VALUE	rb_m
 	}
 
 	/*********************
-	*  atMostVeryHigh  *
+	*  at_most_very_high  *
 	*********************/
 
 	VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtMostVeryHigh( VALUE	rb_memory_pool_file_cache_priority_settings_controller )	{

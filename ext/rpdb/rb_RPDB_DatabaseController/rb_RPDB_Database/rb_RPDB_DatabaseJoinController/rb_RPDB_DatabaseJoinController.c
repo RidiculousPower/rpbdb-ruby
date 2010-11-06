@@ -44,7 +44,7 @@ void Init_RPDB_DatabaseJoinController()	{
 																															rb_cObject );
 	
 	rb_define_singleton_method(	rb_RPDB_DatabaseJoinController, 	"new",													rb_RPDB_DatabaseJoinController_new,											-1 	);
-	rb_define_method(						rb_RPDB_DatabaseJoinController, 	"initialize",										rb_RPDB_DatabaseJoinController_init,										-1 	);
+	rb_define_method(						rb_RPDB_DatabaseJoinController, 	"initialize",										rb_RPDB_DatabaseJoinController_initialize,										-1 	);
 		
 	rb_define_method(						rb_RPDB_DatabaseJoinController, 	"settings_controller",					rb_RPDB_DatabaseJoinController_settingsController,			0 	);
 	rb_define_alias(						rb_RPDB_DatabaseJoinController, 	"settings",											"settings_controller"	);
@@ -110,7 +110,7 @@ VALUE rb_RPDB_DatabaseJoinController_new(	int			argc,
 							RPDB_RB_ALL_VARIABLE_PARENT_DATABASE,
 							rb_parent_database );
 
-	rb_obj_call_initialize(	rb_join_controller,
+	rb_obj_call_init(	rb_join_controller,
 										1, 
 										& rb_parent_database );
 	

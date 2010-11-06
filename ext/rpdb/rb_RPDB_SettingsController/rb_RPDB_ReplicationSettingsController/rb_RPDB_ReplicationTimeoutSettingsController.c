@@ -43,7 +43,7 @@ void Init_RPDB_ReplicationTimeoutSettingsController()	{
 																																						rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_ReplicationTimeoutSettingsController, 	"new",																rb_RPDB_ReplicationTimeoutSettingsController_new,														-1 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"initialize",													rb_RPDB_ReplicationTimeoutSettingsController_init,														-1 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"initialize",													rb_RPDB_ReplicationTimeoutSettingsController_initialize,														-1 	);
                         			                                        
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"parent_environment",									rb_RPDB_ReplicationTimeoutSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(						rb_RPDB_ReplicationTimeoutSettingsController, 	"environment",												"parent_environment"	);
@@ -123,7 +123,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_new(	int			argc,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_replication_settings_controller };
-	rb_obj_call_initialize(	rb_replication_timeout_settings_controller,
+	rb_obj_call_init(	rb_replication_timeout_settings_controller,
 										1, 
 										argv );
 	
@@ -131,7 +131,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_new(	int			argc,
 }
 
 /************
-*  new  *
+*  initialize  *
 ************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_initialize(	int				argc __attribute__ ((unused)),
@@ -192,7 +192,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_timeout( VALUE	rb_replication
 }
 
 /******************
-*  setTimeout  *
+*  set_timeout  *
 ******************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setTimeout(		VALUE	rb_replication_timeout_settings_controller, 
@@ -208,7 +208,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setTimeout(		VALUE	rb_replica
 }
 
 /**************************************
-*  waitTimeBeforeCheckpointWrite  *
+*  wait_time_before_checkpoint_write  *
 **************************************/
 
 //	DB_REP_CHECKPOINT_DELAY
@@ -222,7 +222,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeCheckpointWrite
 }
 
 /*****************************************
-*  setWaitTimeBeforeCheckpointWrite  *
+*  set_wait_time_before_checkpoint_write  *
 *****************************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeCheckpointWrite(	VALUE	rb_replication_timeout_settings_controller, 
@@ -238,7 +238,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeCheckpointWr
 }
 
 /*************************************
-*  waitTimeBeforeRetryConnection  *
+*  wait_time_before_retry_connection  *
 *************************************/
 
 //	DB_REP_CONNECTION_RETRY
@@ -252,7 +252,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeRetryConnection
 }
 
 /*****************************************
-*  setWaitTimeBeforeRetryConnection  *
+*  set_wait_time_before_retry_connection  *
 *****************************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryConnection(	VALUE	rb_replication_timeout_settings_controller,
@@ -268,7 +268,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryConnect
 }
 
 /*************************
-*  electionTimeout  *
+*  election_timeout  *
 *************************/
 
 //	DB_REP_ELECTION_TIMEOUT
@@ -282,7 +282,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_electionTimeout( VALUE	rb_rep
 }
 
 /*************************
-*  setElectionTimeout  *
+*  set_election_timeout  *
 *************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setElectionTimeout(	VALUE	rb_replication_timeout_settings_controller, 
@@ -298,7 +298,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setElectionTimeout(	VALUE	rb_
 }
 
 /*************************************
-*  waitTimeBeforeRetryElection  *
+*  wait_time_before_retry_election  *
 *************************************/
 
 //	DB_REP_ELECTION_RETRY
@@ -312,7 +312,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeRetryElection( 
 }
 
 /*****************************************
-*  setWaitTimeBeforeRetryElection  *
+*  set_wait_time_before_retry_election  *
 *****************************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryElection(	VALUE	rb_replication_timeout_settings_controller, 
@@ -328,7 +328,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryElectio
 }
 
 /*****************************************
-*  fullElectionParticipationTimeout  *
+*  full_election_participation_timeout  *
 *****************************************/
 
 //	DB_REP_FULL_ELECTION_TIMEOUT
@@ -342,7 +342,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_fullElectionParticipationTime
 }
 
 /********************************************
-*  setFullElectionParticipationTimeout  *
+*  set_full_election_participation_timeout  *
 ********************************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setFullElectionParticipationTimeout(	VALUE	rb_replication_timeout_settings_controller, 
@@ -358,7 +358,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setFullElectionParticipationT
 }
 
 /*********************************
-*  heartbeatMonitorPulse  *
+*  heartbeat_monitor_pulse  *
 *********************************/
 
 //	DB_REP_HEARTBEAT_MONITOR
@@ -372,7 +372,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_heartbeatMonitorPulse( VALUE	
 }
 
 /*************************************
-*  setHeartbeatMonitorPulse  *
+*  set_heartbeat_monitor_pulse  *
 *************************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatMonitorPulse(	VALUE	rb_replication_timeout_settings_controller, 
@@ -388,7 +388,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatMonitorPulse(	VAL
 }
 
 /*********************************
-*  heartbeatBroadcastPulse  *
+*  heartbeat_broadcast_pulse  *
 *********************************/
 
 //	DB_REP_HEARTBEAT_SEND
@@ -402,7 +402,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_heartbeatBroadcastPulse( VALU
 }
 
 /*************************************
-*  setHeartbeatBroadcastPulse  *
+*  set_heartbeat_broadcast_pulse  *
 *************************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatBroadcastPulse(	VALUE	rb_replication_timeout_settings_controller, 
@@ -417,7 +417,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatBroadcastPulse(	V
 }
 
 /*********************
-*  leaseTimeout  *
+*  lease_timeout  *
 *********************/
 
 //	DB_REP_LEASE_TIMEOUT
@@ -431,7 +431,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_leaseTimeout( VALUE	rb_replic
 }
 
 /************************
-*  setLeaseTimeout  *
+*  set_lease_timeout  *
 ************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setLeaseTimeout(	VALUE	rb_replication_timeout_settings_controller,

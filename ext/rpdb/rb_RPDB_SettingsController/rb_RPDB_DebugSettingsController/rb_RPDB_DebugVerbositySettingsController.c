@@ -44,7 +44,7 @@ void Init_RPDB_DebugVerbositySettingsController()	{
 																																				rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_DebugVerbositySettingsController, 	"new",																												rb_RPDB_DebugVerbositySettingsController_new,																									-1 	);
-	rb_define_method(						rb_RPDB_DebugVerbositySettingsController, 	"initialize",																									rb_RPDB_DebugVerbositySettingsController_init,																								-1 	);
+	rb_define_method(						rb_RPDB_DebugVerbositySettingsController, 	"initialize",																									rb_RPDB_DebugVerbositySettingsController_initialize,																								-1 	);
                     					
 	rb_define_method(						rb_RPDB_DebugVerbositySettingsController, 	"parent_environment",																					rb_RPDB_DebugVerbositySettingsController_parentEnvironment,																		0 	);
 	rb_define_alias(						rb_RPDB_DebugVerbositySettingsController, 	"environment",																								"parent_environment"	);
@@ -110,7 +110,7 @@ VALUE rb_RPDB_DebugVerbositySettingsController_new(	int			argc,
 							rb_parent_debug_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_debug_settings_controller };
-	rb_obj_call_initialize(	rb_debug_verbosity_settings_controller,
+	rb_obj_call_init(	rb_debug_verbosity_settings_controller,
 										 1, 
 										 argv );
 	
@@ -118,7 +118,7 @@ VALUE rb_RPDB_DebugVerbositySettingsController_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  initialize  *
 *************/
 
 VALUE rb_RPDB_DebugVerbositySettingsController_initialize(	int				argc __attribute__ ((unused)),
@@ -165,7 +165,7 @@ VALUE rb_RPDB_DebugVerbositySettingsController_parentDebugSettingsController(	VA
 }
 
 /*************************************************
-*  displayAdditionalInformationDuringRecovery  *
+*  display_additional_information_during_recovery  *
 *************************************************/
 
 //	DB_VERB_RECOVERY        	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
@@ -179,7 +179,7 @@ VALUE rb_RPDB_DebugVerbositySettingsController_displayAdditionalInformationDurin
 }
 
 	/*********************************************************
-	*  turnDisplayAdditionalInformationDuringRecoveryOn  *
+	*  turn_display_additional_information_during_recovery_on  *
 	*********************************************************/
 
 	VALUE rb_RPDB_DebugVerbositySettingsController_turnDisplayAdditionalInformationDuringRecoveryOn( VALUE	rb_debug_verbosity_settings_controller )	{
@@ -193,7 +193,7 @@ VALUE rb_RPDB_DebugVerbositySettingsController_displayAdditionalInformationDurin
 	}
 
 	/*********************************************************
-	*  turnDisplayAdditionalInformationDuringRecoveryOff  *
+	*  turn_display_additional_information_during_recovery_off  *
 	*********************************************************/
 
 	VALUE rb_RPDB_DebugVerbositySettingsController_turnDisplayAdditionalInformationDuringRecoveryOff( VALUE	rb_debug_verbosity_settings_controller )	{

@@ -55,7 +55,7 @@ void Init_RPDB_DatabaseCursor()	{
 																											rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_DatabaseCursor, 	"new",																	rb_RPDB_DatabaseCursor_new,															-1 	);
-	rb_define_method(						rb_RPDB_DatabaseCursor, 	"initialize",														rb_RPDB_DatabaseCursor_init,														-1 	);
+	rb_define_method(						rb_RPDB_DatabaseCursor, 	"initialize",														rb_RPDB_DatabaseCursor_initialize,														-1 	);
 
 	rb_define_method(						rb_RPDB_DatabaseCursor, 	"settings_controller",									rb_RPDB_DatabaseCursor_settingsController,							0 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursor, 	"settings",															"settings_controller"	);
@@ -254,7 +254,7 @@ VALUE rb_RPDB_DatabaseCursor_new( int			argc,
 							rb_parent_cursor_controller );
 
 	VALUE	argv[]	=	{ rb_parent_cursor_controller };
-	rb_obj_call_initialize(	rb_database_cursor,
+	rb_obj_call_init(	rb_database_cursor,
 										1, 
 										argv );
 	

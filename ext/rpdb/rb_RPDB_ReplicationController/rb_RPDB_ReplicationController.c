@@ -39,7 +39,7 @@ void Init_RPDB_ReplicationController()	{
 																														rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_ReplicationController, 	"new",											rb_RPDB_ReplicationController_new,												-1 	);
-	rb_define_method(						rb_RPDB_ReplicationController, 	"initialize",								rb_RPDB_ReplicationController_init,												-1 	);
+	rb_define_method(						rb_RPDB_ReplicationController, 	"initialize",								rb_RPDB_ReplicationController_initialize,												-1 	);
                                                                           
 	rb_define_method(						rb_RPDB_ReplicationController, 	"settings_controller",			rb_RPDB_ReplicationController_settingsController,					0 	);
 	rb_define_alias(						rb_RPDB_ReplicationController, 	"settings",									"settings_controller"	);
@@ -95,7 +95,7 @@ VALUE rb_RPDB_ReplicationController_new(	int			argc,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_environment };
-	rb_obj_call_initialize(	rb_replication_controller,
+	rb_obj_call_init(	rb_replication_controller,
 										 1, 
 										 argv );
 	

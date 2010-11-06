@@ -34,7 +34,7 @@ void Init_RPDB_Transaction()	{
 																								rb_cObject );
 	
 	rb_define_singleton_method(	rb_RPDB_Transaction, 	"new",										rb_RPDB_Transaction_new,										-1 	);
-	rb_define_method(						rb_RPDB_Transaction,	"initialize",							rb_RPDB_Transaction_init,										-1 	);
+	rb_define_method(						rb_RPDB_Transaction,	"initialize",							rb_RPDB_Transaction_initialize,										-1 	);
 	                  					
 	rb_define_method(						rb_RPDB_Transaction, 	"settings_controller",			rb_RPDB_Transaction_settingsController,			0 	);
 	rb_define_alias(						rb_RPDB_Transaction, 	"settings_controller",		"settings_controller"	);
@@ -84,7 +84,7 @@ VALUE rb_RPDB_Transaction_new(	int			argc,
 							rb_parent_transaction_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_transaction_controller };
-	rb_obj_call_initialize(	rb_transaction,
+	rb_obj_call_init(	rb_transaction,
 					 1, 
 					 argv );
 	

@@ -53,7 +53,7 @@ void Init_RPDB_DatabaseRecordVariableLengthSettingsController()	{
 																																							rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"new",												rb_RPDB_DatabaseRecordVariableLengthSettingsController_new,										-1 	);
-	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"initialize",									rb_RPDB_DatabaseRecordVariableLengthSettingsController_init,									-1 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"initialize",									rb_RPDB_DatabaseRecordVariableLengthSettingsController_initialize,									-1 	);
                     					                                                                                                                                                        	
 	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"parent_environment",					rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentEnvironment,			0 	);
 	rb_define_alias(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"environment",								"parent_environment"	);                                              	
@@ -146,7 +146,7 @@ VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_new(	int			argc,
 							rb_parent_database_record_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_database_record_settings_controller };
-	rb_obj_call_initialize(	rb_database_record_variable_length_settings_controller,
+	rb_obj_call_init(	rb_database_record_variable_length_settings_controller,
 										1, 
 										argv );
 	
@@ -154,7 +154,7 @@ VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_new(	int			argc,
 }
 
 	/*************
-	*  new  *
+	*  initialize  *
 	*************/
 
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_initialize(	int				argc __attribute__ ((unused)),
@@ -219,7 +219,7 @@ VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseRecor
 	return rb_parent_database_record_settings_controller;
 }
 	/************************
-	*  recordDelimeter  *
+	*  record_delimeter  *
 	************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_re_delim.html
@@ -232,7 +232,7 @@ VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_recordDelimeter( VA
 }
 
 	/****************************
-	*  setRecordDelimeter  *
+	*  set_record_delimeter  *
 	****************************/
 
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_setRecordDelimeter(	VALUE	rb_database_record_variable_length_settings_controller, 

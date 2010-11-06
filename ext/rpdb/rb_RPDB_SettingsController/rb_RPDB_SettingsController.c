@@ -58,7 +58,7 @@ void Init_RPDB_SettingsController()	{
 																														rb_RPDB_SettingsController);
 
 		rb_define_singleton_method(	rb_RPDB_SettingsController, 	"new",																rb_RPDB_SettingsController_new,														-1 	);
-		rb_define_method(						rb_RPDB_SettingsController, 	"initialize",													rb_RPDB_SettingsController_init,														-1 	);
+		rb_define_method(						rb_RPDB_SettingsController, 	"initialize",													rb_RPDB_SettingsController_initialize,														-1 	);
 
 		rb_define_method(						rb_RPDB_SettingsController, 	"parent_environment",									rb_RPDB_SettingsController_parentEnvironment,								0 	);
 		rb_define_alias(						rb_RPDB_SettingsController, 	"environment",												"parent_environment"	);
@@ -136,7 +136,7 @@ VALUE rb_RPDB_SettingsController_new(	int				argc,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_environment };
-	rb_obj_call_initialize(	rb_settings_controller,
+	rb_obj_call_init(	rb_settings_controller,
 										1, 
 										argv );
 	

@@ -42,7 +42,7 @@ void Init_RPDB_LogCursorController()	{
 																												rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_LogCursorController, 	"new",																													rb_RPDB_LogCursorController_new,																							-1 	);
-	rb_define_method(						rb_RPDB_LogCursorController, 	"initialize",																										rb_RPDB_LogCursorController_init,																						-1 	);
+	rb_define_method(						rb_RPDB_LogCursorController, 	"initialize",																										rb_RPDB_LogCursorController_initialize,																						-1 	);
                                                                                           		
 	rb_define_method(						rb_RPDB_LogCursorController, 	"settings_controller",																					rb_RPDB_LogCursorController_settingsController,															0 	);
 	rb_define_alias(						rb_RPDB_LogCursorController, 	"settings",																											"settings_controller"	);
@@ -95,7 +95,7 @@ VALUE rb_RPDB_LogCursorController_new(	int			argc,
 							rb_parent_log_controller );
 
 	VALUE	argv[]	=	{ rb_parent_log_controller };
-	rb_obj_call_initialize(	rb_log_cursor_controller,
+	rb_obj_call_init(	rb_log_cursor_controller,
 					 1, 
 					 argv );
 	

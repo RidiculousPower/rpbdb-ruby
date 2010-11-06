@@ -35,7 +35,7 @@ void Init_RPDB_RemoteSite()	{
 																									rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_RemoteSite, 	"new",											rb_RPDB_RemoteSite_new,													-1 	);
-	rb_define_method(						rb_RPDB_RemoteSite, 	"initialize",								rb_RPDB_RemoteSite_init,												-1 	);
+	rb_define_method(						rb_RPDB_RemoteSite, 	"initialize",								rb_RPDB_RemoteSite_initialize,												-1 	);
 
 	rb_define_method(						rb_RPDB_RemoteSite, 	"settings_controller",			rb_RPDB_RemoteSite_settingsController,					0 	);
 	rb_define_alias(						rb_RPDB_RemoteSite, 	"settings",									"settings_controller"	);
@@ -78,7 +78,7 @@ VALUE rb_RPDB_RemoteSite_new(	int			argc,
 	RPDB_ReplicationController*	c_parent_replication_controller;
 	C_RPDB_REPLICATION_CONTROLLER( rb_parent_replication_controller, c_parent_replication_controller );
 	
-	RPDB_RemoteSite*	c_remote_site	=	RPDB_ReplicationController_addRemoteSite( c_parent_replication_controller );
+	RPDB_RemoteSite*	c_remote_site	=	RPDB_RemoteSite_new( c_parent_replication_controller );
 	
 	VALUE	rb_remote_site	=	RUBY_RPDB_REMOTE_SITE( c_remote_site );
 
@@ -88,7 +88,7 @@ VALUE rb_RPDB_RemoteSite_new(	int			argc,
 							rb_parent_replication_controller );
 
 	VALUE	argv[]	=	{ rb_parent_replication_controller };
-	rb_obj_call_initialize(	rb_remote_site,
+	rb_obj_call_init(	rb_remote_site,
 										1, 
 										argv );
 	

@@ -43,7 +43,7 @@ void Init_RPDB_DebugSettingsController()	{
 																															rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_DebugSettingsController, 	"new",																																	rb_RPDB_DebugSettingsController_new,									-1 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"initialize",																														rb_RPDB_DebugSettingsController_init,									-1 	);
+	rb_define_method(						rb_RPDB_DebugSettingsController, 	"initialize",																														rb_RPDB_DebugSettingsController_initialize,									-1 	);
                     					                                                                                        				
 	rb_define_method(						rb_RPDB_DebugSettingsController, 	"parent_environment",																										rb_RPDB_DebugSettingsController_parentEnvironment,						0 	);
 	rb_define_alias(						rb_RPDB_DebugSettingsController, 	"environment",																													"parent_environment"	);
@@ -133,7 +133,7 @@ VALUE rb_RPDB_DebugSettingsController_new(	int			argc,
 							rb_parent_environment );
 	
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
-	rb_obj_call_initialize(	rb_debug_settings_controller,
+	rb_obj_call_init(	rb_debug_settings_controller,
 					 1, 
 					 argv );
 	
@@ -141,7 +141,7 @@ VALUE rb_RPDB_DebugSettingsController_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  initialize  *
 *************/
 
 VALUE rb_RPDB_DebugSettingsController_initialize(	int				argc __attribute__ ((unused)),
@@ -176,7 +176,7 @@ VALUE rb_RPDB_DebugSettingsController_parentSettingsController(	VALUE	rb_debug_s
 }
 
 /*********************************************************
-*  runNormalRecoveryBeforeOpeningEnvironment  *
+*  run_normal_recovery_before_opening_environment?  *
 *********************************************************/
 
 //	DB_RECOVER              http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -193,7 +193,7 @@ VALUE rb_RPDB_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment(
 }
 
 	/*************************************************************
-	*  turnRunNormalRecoveryBeforeOpeningEnvironmentOn  *
+	*  turn_run_normal_recovery_before_opening_environment_on  *
 	*************************************************************/
 
 	VALUE rb_RPDB_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOn( VALUE	rb_debug_settings_controller )	{
@@ -207,7 +207,7 @@ VALUE rb_RPDB_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment(
 	}
 
 	/**************************************************************
-	*  turnRunNormalRecoveryBeforeOpeningEnvironmentOff  *
+	*  turn_run_normal_recovery_before_opening_environment_off  *
 	**************************************************************/
 
 	VALUE rb_RPDB_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOff( VALUE	rb_debug_settings_controller )	{
@@ -221,7 +221,7 @@ VALUE rb_RPDB_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment(
 	}
 
 /**************************************************************
-*  runCatastrophicRecoveryBeforeOpeningEnvironment  *
+*  run_catastrophic_recovery_before_opening_environment?  *
 **************************************************************/
 
 //	DB_RECOVER_FATAL        http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -238,7 +238,7 @@ VALUE rb_RPDB_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnviro
 }
 
 	/********************************************************************
-	*  turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOn  *
+	*  turn_run_catastrophic_recovery_before_opening_environment_on  *
 	********************************************************************/
 
 	//	DB_RECOVER_FATAL        http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -253,7 +253,7 @@ VALUE rb_RPDB_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnviro
 	}
 
 	/********************************************************************
-	*  turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOff  *
+	*  turn_run_catastrophic_recovery_before_opening_environment_off  *
 	********************************************************************/
 
 	//	DB_RECOVER_FATAL        http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -268,7 +268,7 @@ VALUE rb_RPDB_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnviro
 	}
 
 /******************************
-*  openInLockdown  *
+*  open_in_lockdown?  *
 ******************************/
 
 //	DB_LOCKDOWN             http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -283,7 +283,7 @@ VALUE rb_RPDB_DebugSettingsController_openInLockdown( VALUE	rb_debug_settings_co
 }
 
 	/**********************************
-	*  turnOpenInLockdownOn  *
+	*  turn_open_in_lockdown_on  *
 	**********************************/
 
 	//	DB_LOCKDOWN             http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -299,7 +299,7 @@ VALUE rb_RPDB_DebugSettingsController_openInLockdown( VALUE	rb_debug_settings_co
 	}
 
 	/**************************************
-	*  turnOpenInLockdownOff  *
+	*  turn_open_in_lockdown_off  *
 	***************************************/
 
 	//	DB_LOCKDOWN             http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -315,7 +315,7 @@ VALUE rb_RPDB_DebugSettingsController_openInLockdown( VALUE	rb_debug_settings_co
 	}
 
 /******************************************************
-*  checkForRecoveryBeforeOpeningEnvironment  *
+*  check_for_recovery_before_opening_environment?  *
 ******************************************************/
 
 //	DB_REGISTER             http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -335,7 +335,7 @@ VALUE rb_RPDB_DebugSettingsController_registerForRecovery( VALUE	rb_debug_settin
 }
 
 	/**************************************************************
-	*  turnCheckForRecoveryBeforeOpeningEnvironmentOn  *
+	*  turn_check_for_recovery_before_opening_environment_on  *
 	**************************************************************/
 
 	VALUE rb_RPDB_DebugSettingsController_turnRegisterForRecoveryOn( VALUE	rb_debug_settings_controller )	{
@@ -349,7 +349,7 @@ VALUE rb_RPDB_DebugSettingsController_registerForRecovery( VALUE	rb_debug_settin
 	}
 
 	/**************************************************************
-	*  turnCheckForRecoveryBeforeOpeningEnvironmentOff  *
+	*  turn_check_for_recovery_before_opening_environment_off  *
 	**************************************************************/
 
 	VALUE rb_RPDB_DebugSettingsController_turnRegisterForRecoveryOff( VALUE	rb_debug_settings_controller )	{
@@ -363,7 +363,7 @@ VALUE rb_RPDB_DebugSettingsController_registerForRecovery( VALUE	rb_debug_settin
 	}
 
 /**********************
-*  prohibitPanic  *
+*  prohibit_panic?  *
 **********************/
 
 //	DB_NOPANIC				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -387,7 +387,7 @@ VALUE rb_RPDB_DebugSettingsController_prohibitPanic( VALUE	rb_debug_settings_con
 }
 
 	/******************************
-	*  turnProhibitPanicOn  *
+	*  turn_prohibit_panic_on  *
 	******************************/
 
 	VALUE rb_RPDB_DebugSettingsController_turnProhibitPanicOn( VALUE	rb_debug_settings_controller )	{
@@ -401,7 +401,7 @@ VALUE rb_RPDB_DebugSettingsController_prohibitPanic( VALUE	rb_debug_settings_con
 	}
 
 	/******************************
-	*  turnProhibitPanicOff  *
+	*  turn_prohibit_panic_off  *
 	******************************/
 
 	VALUE rb_RPDB_DebugSettingsController_turnProhibitPanicOff( VALUE	rb_debug_settings_controller )	{
@@ -415,7 +415,7 @@ VALUE rb_RPDB_DebugSettingsController_prohibitPanic( VALUE	rb_debug_settings_con
 	}
 
 /**************
-*  panic  *
+*  panic?  *
 **************/
 
 //	DB_PANIC_ENVIRONMENT    http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -439,7 +439,7 @@ VALUE rb_RPDB_DebugSettingsController_panic( VALUE	rb_debug_settings_controller 
 }
 
 	/**********************
-	*  turnPanicOn  *
+	*  turn_panic_on  *
 	**********************/
 
 	//	DB_PANIC_ENVIRONMENT    http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -454,7 +454,7 @@ VALUE rb_RPDB_DebugSettingsController_panic( VALUE	rb_debug_settings_controller 
 	}
 
 	/**********************
-	*  turnPanicOff  *
+	*  turn_panic_off  *
 	**********************/
 
 	//	DB_PANIC_ENVIRONMENT    http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -469,7 +469,7 @@ VALUE rb_RPDB_DebugSettingsController_panic( VALUE	rb_debug_settings_controller 
 	}
 
 /******************************
-*  yieldCPUForStressTest  *
+*  yield_cpu_for_stress_test  *
 ******************************/
 
 //	DB_YIELDCPU				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
@@ -495,7 +495,7 @@ VALUE rb_RPDB_DebugSettingsController_yieldCPUForStressTest( VALUE	rb_debug_sett
 }
 
 	/**************************************
-	*  turnYieldCPUForStressTestOn  *
+	*  turn_yield_cpu_for_stress_test_on  *
 	**************************************/
 
 	VALUE rb_RPDB_DebugSettingsController_turnYieldCPUForStressTestOn( VALUE	rb_debug_settings_controller )	{
@@ -509,7 +509,7 @@ VALUE rb_RPDB_DebugSettingsController_yieldCPUForStressTest( VALUE	rb_debug_sett
 	}
 
 	/**************************************
-	*  turnYieldCPUForStressTestOff  *
+	*  turn_yield_cpu_for_stress_test_off  *
 	**************************************/
 
 	VALUE rb_RPDB_DebugSettingsController_turnYieldCPUForStressTestOff( VALUE	rb_debug_settings_controller )	{
@@ -523,7 +523,7 @@ VALUE rb_RPDB_DebugSettingsController_yieldCPUForStressTest( VALUE	rb_debug_sett
 	}
 
 /*************************************
-*  verbositySettingsController  *
+*  verbosity_settings_controller  *
 *************************************/
 
 VALUE rb_RPDB_DebugSettingsController_verbositySettingsController( VALUE	rb_debug_settings_controller )	{

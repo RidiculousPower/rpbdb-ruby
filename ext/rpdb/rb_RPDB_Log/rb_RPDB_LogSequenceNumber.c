@@ -41,7 +41,7 @@ void Init_RPDB_LogSequenceNumber()	{
 																											rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_LogSequenceNumber, 	"new",																													rb_RPDB_LogSequenceNumber_new,											-1 	);
-	rb_define_method(						rb_RPDB_LogSequenceNumber, 	"initialize",																										rb_RPDB_LogSequenceNumber_init,											-1 	);
+	rb_define_method(						rb_RPDB_LogSequenceNumber, 	"initialize",																										rb_RPDB_LogSequenceNumber_initialize,											-1 	);
                                                                                           		
 	rb_define_method(						rb_RPDB_LogSequenceNumber, 	"settings_controller",																					rb_RPDB_LogSequenceNumber_settingsController,				0 	);
 	rb_define_alias(						rb_RPDB_LogSequenceNumber, 	"settings",																											"settings_controller"	);
@@ -98,7 +98,7 @@ VALUE rb_RPDB_LogSequenceNumber_new(	int			argc,
 							rb_parent_log );
 
 	VALUE	argv[]	=	{ rb_parent_log };
-	rb_obj_call_initialize(	rb_log_sequence_number,
+	rb_obj_call_init(	rb_log_sequence_number,
 										 1, 
 										 argv );
 	

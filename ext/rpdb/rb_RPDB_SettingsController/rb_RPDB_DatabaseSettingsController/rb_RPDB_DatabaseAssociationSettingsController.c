@@ -46,7 +46,7 @@ void Init_RPDB_DatabaseAssociationSettingsController()	{
 																																						rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_DatabaseAssociationSettingsController, 	"new",																						rb_RPDB_DatabaseAssociationSettingsController_new,													-1 	);
-	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController,	"initialize",																			rb_RPDB_DatabaseAssociationSettingsController_init,													-1 	);
+	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController,	"initialize",																			rb_RPDB_DatabaseAssociationSettingsController_initialize,													-1 	);
 
 	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"parent_environment",															rb_RPDB_DatabaseAssociationSettingsController_parentEnvironment,									0 	);
 	rb_define_alias(						rb_RPDB_DatabaseAssociationSettingsController, 	"environment",																		"parent_environment"	);
@@ -132,7 +132,7 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_new(	int			argc,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
-	rb_obj_call_initialize(	rb_database_association_settings_controller,
+	rb_obj_call_init(	rb_database_association_settings_controller,
 					 					1, 
 					 					argv );
 	

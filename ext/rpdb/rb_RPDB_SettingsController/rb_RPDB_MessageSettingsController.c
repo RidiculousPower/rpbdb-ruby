@@ -40,7 +40,7 @@ void Init_RPDB_MessageSettingsController()	{
 																																		rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_MessageSettingsController, 	"new",																rb_RPDB_MessageSettingsController_new,														-1 	);
-	rb_define_method(			rb_RPDB_MessageSettingsController, 				"initialize",													rb_RPDB_MessageSettingsController_init,														-1 	);
+	rb_define_method(			rb_RPDB_MessageSettingsController, 				"initialize",													rb_RPDB_MessageSettingsController_initialize,														-1 	);
 
 	rb_define_method(			rb_RPDB_MessageSettingsController, 				"parent_environment",									rb_RPDB_MessageSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_MessageSettingsController, 				"environment",												"parent_environment"	);
@@ -95,7 +95,7 @@ VALUE rb_RPDB_MessageSettingsController_new(	int			argc,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
-	rb_obj_call_initialize(	rb_message_settings_controller,
+	rb_obj_call_init(	rb_message_settings_controller,
 										 1, 
 										 argv );
 	
@@ -103,7 +103,7 @@ VALUE rb_RPDB_MessageSettingsController_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  initialize  *
 *************/
 
 VALUE rb_RPDB_MessageSettingsController_initialize(	int				argc __attribute__ ((unused)),
@@ -156,7 +156,7 @@ VALUE rb_RPDB_MessageSettingsController_file( VALUE	rb_message_settings_controll
 }
 
 /*****************
-*  setFile  *
+*  set_file  *
 *****************/
 
 VALUE rb_RPDB_MessageSettingsController_setFile(	VALUE	rb_message_settings_controller, 
@@ -175,7 +175,7 @@ VALUE rb_RPDB_MessageSettingsController_setFile(	VALUE	rb_message_settings_contr
 }
 
 /*************************
-*  setMessageCallback  *
+*  set_message_callback  *
 *************************/
 /*
 VALUE rb_RPDB_MessageSettingsController_setMessageCallbackMethod(	VALUE	rb_message_settings_controller, 
@@ -187,7 +187,7 @@ VALUE rb_RPDB_MessageSettingsController_setMessageCallbackMethod(	VALUE	rb_messa
 }
 */
 /*************************
-*  messageCallback  *
+*  message_callback  *
 *************************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_msgcall.html
@@ -197,7 +197,7 @@ void (*message_callback_method)(	VALUE			environment,
 }
 */
 /*****************************
-*  setPanicCallbackMethod  *
+*  set_panic_callback_method  *
 *****************************/
 /*
 VALUE rb_RPDB_MessageSettingsController_setPanicCallbackMethod(	VALUE	rb_message_settings_controller,
@@ -208,7 +208,7 @@ VALUE rb_RPDB_MessageSettingsController_setPanicCallbackMethod(	VALUE	rb_message
 }
 */
 /*****************************
-*  panicCallbackMethod  *
+*  panic_callback_method  *
 *****************************/
 /*
 void *(panic_callback_method)( VALUE	environment ) RPDB_MessageSettingsController_panicCallbackMethod(	VALUE	rb_message_settings_controller )	{
@@ -217,7 +217,7 @@ void *(panic_callback_method)( VALUE	environment ) RPDB_MessageSettingsControlle
 }
 */
 /*****************************************************
-*  setSiteIsNowReplicationClientCallbackMethod  *
+*  set_site_is_now_replication_client_callback_method  *
 *****************************************************/
 /*
 VALUE rb_RPDB_MessageSettingsController_setSiteIsNowReplicationClientCallbackMethod(	VALUE	rb_message_settings_controller,
@@ -228,7 +228,7 @@ VALUE rb_RPDB_MessageSettingsController_setSiteIsNowReplicationClientCallbackMet
 }
 */
 /*************************************************
-*  siteIsNowReplicationClientCallbackMethod  *
+*  site_is_now_replication_client_callback_method  *
 *************************************************/
 /*
 void *(site_is_now_replication_client_callback_method)( VALUE	environment ) RPDB_MessageSettingsController_siteIsNowReplicationClientCallbackMethod(	VALUE	rb_message_settings_controller )	{
@@ -237,7 +237,7 @@ void *(site_is_now_replication_client_callback_method)( VALUE	environment ) RPDB
 }
 */
 /*****************************************************
-*  setSiteWonReplicationElectionCallbackMethod  *
+*  set_site_won_replication_election_callback_method  *
 *****************************************************/
 /*
 VALUE rb_RPDB_MessageSettingsController_setSiteWonReplicationElectionCallbackMethod(	VALUE	rb_message_settings_controller,
@@ -247,7 +247,7 @@ VALUE rb_RPDB_MessageSettingsController_setSiteWonReplicationElectionCallbackMet
 }
 */
 /*************************************************
-*  siteWonReplicationElectionCallbackMethod  *
+*  site_won_replication_election_callback_method  *
 *************************************************/
 /*
 void *(site_won_replication_election_callback_method)( VALUE	environment ) RPDB_MessageSettingsController_siteWonReplicationElectionCallbackMethod(	VALUE	rb_message_settings_controller )	{
@@ -256,7 +256,7 @@ void *(site_won_replication_election_callback_method)( VALUE	environment ) RPDB_
 }
 */
 /*********************************************************
-*  setSiteIsNowMasterOfReplicationGroupCallbackMethod  *
+*  set_site_is_now_master_of_replication_group_callback_method  *
 *********************************************************/
 /*
 VALUE rb_RPDB_MessageSettingsController_setSiteIsNowMasterOfReplicationGroupCallbackMethod(	VALUE	rb_message_settings_controller,
@@ -266,7 +266,7 @@ VALUE rb_RPDB_MessageSettingsController_setSiteIsNowMasterOfReplicationGroupCall
 }
 */
 /*********************************************************
-*  siteIsNowMasterOfReplicationGroupCallbackMethod  *
+*  site_is_now_master_of_replication_group_callback_method  *
 *********************************************************/
 /*
 void *(site_is_now_master_of_replication_group_callback_method)( VALUE	environment ) RPDB_MessageSettingsController_siteIsNowMasterOfReplicationGroupCallbackMethod(	VALUE	rb_message_settings_controller )	{
@@ -274,7 +274,7 @@ void *(site_is_now_master_of_replication_group_callback_method)( VALUE	environme
 }
 */
 /*****************************************************
-*  setReplicationGroupHasNewMasterCallbackMethod  *
+*  set_replication_group_has_new_master_callback_method  *
 *****************************************************/
 /*
 VALUE rb_RPDB_MessageSettingsController_setReplicationGroupHasNewMasterCallbackMethod(	VALUE	rb_message_settings_controller,
@@ -284,7 +284,7 @@ VALUE rb_RPDB_MessageSettingsController_setReplicationGroupHasNewMasterCallbackM
 }
 */
 /*************************************************
-*  replicationGroupHasNewMasterCallbackMethod  *
+*  replication_group_has_new_master_callback_method  *
 *************************************************/
 /*
 void *(replication_group_has_new_master_callback_method)( VALUE	environment ) RPDB_MessageSettingsController_replicationGroupHasNewMasterCallbackMethod(	VALUE	rb_message_settings_controller )	{
@@ -292,7 +292,7 @@ void *(replication_group_has_new_master_callback_method)( VALUE	environment ) RP
 }
 */
 /*********************************************************
-*  setReplicationAcknowledgementFailedCallbackMethod  *
+*  set_replication_acknowledgement_failed_callback_method  *
 *********************************************************/
 /*
 VALUE rb_RPDB_MessageSettingsController_setReplicationAcknowledgementFailedCallbackMethod(	VALUE	rb_message_settings_controller,
@@ -303,7 +303,7 @@ VALUE rb_RPDB_MessageSettingsController_setReplicationAcknowledgementFailedCallb
 }
 */
 /*****************************************************
-*  replicationAcknowledgementFailedCallbackMethod  *
+*  replication_acknowledgement_failed_callback_method  *
 *****************************************************/
 /*
 void *(replication_acknowledgement_failed_callback_method)( VALUE	environment ) RPDB_MessageSettingsController_replicationAcknowledgementFailedCallbackMethod(	VALUE	rb_message_settings_controller )	{
@@ -312,7 +312,7 @@ void *(replication_acknowledgement_failed_callback_method)( VALUE	environment ) 
 }
 */
 /*****************************************************
-*  setReplicationStartupCompletedCallbackMethod  *
+*  set_replication_startup_completed_callback_method  *
 *****************************************************/
 /*
 VALUE rb_RPDB_MessageSettingsController_setReplicationStartupCompletedCallbackMethod(	VALUE	rb_message_settings_controller,
@@ -322,7 +322,7 @@ VALUE rb_RPDB_MessageSettingsController_setReplicationStartupCompletedCallbackMe
 }
 */
 /*************************************************
-*  replicationStartupCompletedCallbackMethod  *
+*  replication_startup_completed_callback_method  *
 *************************************************/
 /*
 void *(replication_startup_completed_callback_method)( VALUE	environment ) RPDB_MessageSettingsController_replicationStartupCompletedCallbackMethod(	VALUE	rb_message_settings_controller )	{
@@ -330,7 +330,7 @@ void *(replication_startup_completed_callback_method)( VALUE	environment ) RPDB_
 }
 */
 /*************************************
-*  setWriteFailedCallbackMethod  *
+*  set_write_failed_callback_method  *
 *************************************/
 /*
 VALUE rb_RPDB_MessageSettingsController_setWriteFailedCallbackMethod(	VALUE	rb_message_settings_controller,
@@ -341,7 +341,7 @@ VALUE rb_RPDB_MessageSettingsController_setWriteFailedCallbackMethod(	VALUE	rb_m
 }
 */
 /*********************************
-*  writeFailedCallbackMethod  *
+*  write_failed_callback_method  *
 *********************************/
 /*
 void *(write_failed_callback_method)( VALUE	environment ) RPDB_MessageSettingsController_writeFailedCallbackMethod(	VALUE	rb_message_settings_controller )	{

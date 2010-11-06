@@ -67,7 +67,7 @@ void Init_RPDB_Environment()	{
 																									rb_cObject );
 		
 	rb_define_singleton_method(	rb_RPDB_Environment, 	"new",															rb_RPDB_Environment_new,													-1 );
-	rb_define_method(						rb_RPDB_Environment, 	"initialize",												rb_RPDB_Environment_init,													-1 );
+	rb_define_method(						rb_RPDB_Environment, 	"initialize",												rb_RPDB_Environment_initialize,													-1 );
 	rb_define_method(						rb_RPDB_Environment, 	"init_for_storage_in_memory",				rb_RPDB_Environment_initForStorageInMemory,				0 );
 	rb_define_method(						rb_RPDB_Environment, 	"identify_for_rpdb_as",							rb_RPDB_Environment_setIdentifiesAs,							-1 );
 	rb_define_alias(						rb_RPDB_Environment, 	"identify_for_rpdb_as=",						"identify_for_rpdb_as" );
@@ -131,7 +131,7 @@ VALUE rb_RPDB_Environment_new(	int			argc,
 	VALUE	rb_environment	=	RUBY_RPDB_ENVIRONMENT_WITH_FREE( c_environment );
 
 	VALUE	argv[]	=	{ rb_environment_home_directory };
-	rb_obj_call_initialize(	rb_environment,
+	rb_obj_call_init(	rb_environment,
 										1, 
 										argv );
 	

@@ -42,7 +42,7 @@ void Init_RPDB_ReplicationElectionSettingsController()	{
 																																						rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_ReplicationElectionSettingsController, 	"new",																rb_RPDB_ReplicationElectionSettingsController_new,														-1 	);
-	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"initialize",													rb_RPDB_ReplicationElectionSettingsController_init,														-1 	);
+	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"initialize",													rb_RPDB_ReplicationElectionSettingsController_initialize,														-1 	);
 
 	rb_define_method(			rb_RPDB_ReplicationElectionSettingsController, 				"parent_environment",									rb_RPDB_ReplicationElectionSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_ReplicationElectionSettingsController, 				"environment",												"parent_environment"	);
@@ -126,7 +126,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_new(	int			argc,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_replication_settings_controller };
-	rb_obj_call_initialize(	rb_replication_election_settings_controller,
+	rb_obj_call_init(	rb_replication_election_settings_controller,
 										 1, 
 										 argv );
 	
@@ -134,12 +134,12 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  initialize  *
 *************/
 
 VALUE	rb_RPDB_ReplicationElectionSettingsController_initialize(	int				argc __attribute__ ((unused)),
-																													VALUE*		args __attribute__ ((unused)),
-																													VALUE			rb_self )	{
+																																VALUE*		args __attribute__ ((unused)),
+																																VALUE			rb_self )	{
 	
 	return rb_self;
 }
@@ -181,7 +181,7 @@ VALUE rb_RPDB_ReplicationElectionSettingsController_parentReplicationSettingsCon
 }
 
 /*****************************************
-*  numberOfSitesRequiredForElection  *
+*  number_of_sites_required_for_election  *
 *****************************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/repmgr_ack_policy.html
@@ -195,7 +195,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_numberOfSitesRequiredForElec
 }
 
 	/*********************************************
-	*  setNumberOfSitesRequiredForElection  *
+	*  set_number_of_sites_required_for_election  *
 	*********************************************/
 
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_setNumberOfSitesRequiredForElection(	VALUE	rb_replication_election_settings_controller,
@@ -211,7 +211,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_numberOfSitesRequiredForElec
 	}
 
 /*****************************************
-*  numberOfSitesRequiredForElection  *
+*  number_of_votes_required_for_election  *
 *****************************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/repmgr_ack_policy.html
@@ -225,7 +225,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_numberOfVotesRequiredForElec
 }
 
 	/*********************************************
-	*  setNumberOfSitesRequiredForElection  *
+	*  set_number_of_votes_required_for_election  *
 	*********************************************/
 
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_setNumberOfVotesRequiredForElection(	VALUE	rb_replication_election_settings_controller,
@@ -241,7 +241,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_numberOfVotesRequiredForElec
 	}
 
 /*************************
-*  waitForAllClients  *
+*  wait_for_all_clients  *
 *************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/repmgr_ack_policy.html
@@ -256,7 +256,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_waitForAllClients( VALUE	rb_
 }
 
 	/*********************************
-	*  turnWaitForAllClientsOn  *
+	*  turn_wait_for_all_clients_on  *
 	*********************************/
 
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_turnWaitForAllClientsOn( VALUE	rb_replication_election_settings_controller )	{
@@ -270,7 +270,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_waitForAllClients( VALUE	rb_
 	}
 
 	/*********************************
-	*  turnWaitForAllClientsOff  *
+	*  turn_wait_for_all_clients_off  *
 	*********************************/
 
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_turnWaitForAllClientsOff( VALUE	rb_replication_election_settings_controller )	{
@@ -284,7 +284,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_waitForAllClients( VALUE	rb_
 	}
 
 /*********************************
-*  waitForAllElectablePeers  *
+*  wait_for_all_electable_peers  *
 *********************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/repmgr_ack_policy.html
@@ -299,7 +299,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_waitForAllElectablePeers( VA
 }
 
 	/*************************************
-	*  turnWaitForAllElectablePeersOn  *
+	*  turn_wait_for_all_electable_peers_on  *
 	*************************************/
 
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_turnWaitForAllElectablePeersOn( VALUE	rb_replication_election_settings_controller )	{
@@ -313,7 +313,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_waitForAllElectablePeers( VA
 	}
 
 	/****************************************
-	*  turnWaitForAllElectablePeersOff  *
+	*  turn_wait_for_all_electable_peers_off  *
 	***************************************/
 
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_turnWaitForAllElectablePeersOff( VALUE	rb_replication_election_settings_controller )	{
@@ -327,7 +327,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_waitForAllElectablePeers( VA
 	}
 
 /*********************
-*  waitForNone  *
+*  wait_for_none  *
 *********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/repmgr_ack_policy.html
@@ -342,7 +342,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_neverWait( VALUE	rb_replicat
 }
 
 	/*************************
-	*  turnWaitForNoneOn  *
+	*  turn_wait_for_none_on  *
 	*************************/
 
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_turnNeverWaitOn( VALUE	rb_replication_election_settings_controller )	{
@@ -356,7 +356,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_neverWait( VALUE	rb_replicat
 	}
 
 	/*************************
-	*  turnWaitForNoneOff  *
+	*  turn_wait_for_none_off  *
 	*************************/
 
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_turnNeverWaitOff( VALUE	rb_replication_election_settings_controller )	{
@@ -370,7 +370,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_neverWait( VALUE	rb_replicat
 	}
 
 /*********************************
-*  waitForAtLeastOneClient  *
+*  wait_for_at_least_one_client  *
 *********************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/repmgr_ack_policy.html
@@ -385,7 +385,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_waitForAtLeastOneClient( VAL
 }
 
 	/*************************************
-	*  turnWaitForAtLeastOneClientOn  *
+	*  turn_wait_for_at_least_one_client_on  *
 	*************************************/
 
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_turnWaitForAtLeastOneClientOn( VALUE	rb_replication_election_settings_controller )	{
@@ -399,7 +399,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_waitForAtLeastOneClient( VAL
 	}
 
 	/*************************************
-	*  turnWaitForAtLeastOneClientOff  *
+	*  turn_wait_for_at_least_one_client_off  *
 	*************************************/
 
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_turnWaitForAtLeastOneClientOff( VALUE	rb_replication_election_settings_controller )	{
@@ -413,7 +413,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_waitForAtLeastOneClient( VAL
 	}
 
 /*************************************
-*  waitForAtLeastOneElectablePeer  *
+*  wait_for_at_least_one_electable_peer  *
 *************************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/repmgr_ack_policy.html
@@ -428,7 +428,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_waitForAtLeastOneElectablePe
 }
 
 	/*********************************************
-	*  turnWaitForAtLeastOneElectablePeerOn  *
+	*  turn_wait_for_at_least_one_electable_peer_on  *
 	*********************************************/
 
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_turnWaitForAtLeastOneElectablePeerOn( VALUE	rb_replication_election_settings_controller )	{
@@ -442,7 +442,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_waitForAtLeastOneElectablePe
 	}
 
 	/*********************************************
-	*  turnWaitForAtLeastOneElectablePeerOff  *
+	*  turn_wait_for_at_least_one_electable_peer_off  *
 	*********************************************/
 
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_turnWaitForAtLeastOneElectablePeerOff( VALUE	rb_replication_election_settings_controller )	{
@@ -456,7 +456,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_waitForAtLeastOneElectablePe
 	}
 
 /*****************************************************
-*  waitForMinimumElectablePeersForDurableElection  *
+*  wait_for_minimum_electable_peers_for_durable_election  *
 *****************************************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/repmgr_ack_policy.html
@@ -471,7 +471,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_waitForMinimumElectablePeers
 }
 
 	/*************************************************************
-	*  turnWaitForMinimumElectablePeersForDurableElectionOn  *
+	*  turn_wait_for_minimum_electable_peers_for_durable_election_on  *
 	*************************************************************/
 
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_turnWaitForMinimumElectablePeersForDurableElectionOn( VALUE	rb_replication_election_settings_controller )	{
@@ -485,7 +485,7 @@ VALUE	rb_RPDB_ReplicationElectionSettingsController_waitForMinimumElectablePeers
 	}
 
 	/*************************************************************
-	*  turnWaitForMinimumElectablePeersForDurableElectionOff  *
+	*  turn_wait_for_minimum_electable_peers_for_durable_election_off  *
 	*************************************************************/
 
 	VALUE	rb_RPDB_ReplicationElectionSettingsController_turnWaitForMinimumElectablePeersForDurableElectionOff( VALUE	rb_replication_election_settings_controller )	{

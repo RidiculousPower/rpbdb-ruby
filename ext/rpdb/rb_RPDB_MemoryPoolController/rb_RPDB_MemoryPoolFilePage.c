@@ -42,7 +42,7 @@ void Init_RPDB_MemoryPoolFilePage()	{
 																																	rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_MemoryPoolFilePage, 	"new",																													rb_RPDB_MemoryPoolFilePage_new,																							-1 	);
-	rb_define_method(						rb_RPDB_MemoryPoolFilePage, 	"initialize",																										rb_RPDB_MemoryPoolFilePage_init,																						-1 	);
+	rb_define_method(						rb_RPDB_MemoryPoolFilePage, 	"initialize",																										rb_RPDB_MemoryPoolFilePage_initialize,																						-1 	);
                                                                                           		
 	rb_define_method(						rb_RPDB_MemoryPoolFilePage, 	"settings_controller",																					rb_RPDB_MemoryPoolFilePage_settingsController,															0 	);
 	rb_define_alias(						rb_RPDB_MemoryPoolFilePage, 	"settings",																											"settings_controller"	);
@@ -107,7 +107,7 @@ VALUE rb_RPDB_MemoryPoolFilePage_new( int			argc,
 							rb_parent_memory_pool_file_page_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_memory_pool_file_page_controller };
-	rb_obj_call_initialize(	rb_memory_pool_file_page,
+	rb_obj_call_init(	rb_memory_pool_file_page,
 										 1, 
 										 argv );
 	

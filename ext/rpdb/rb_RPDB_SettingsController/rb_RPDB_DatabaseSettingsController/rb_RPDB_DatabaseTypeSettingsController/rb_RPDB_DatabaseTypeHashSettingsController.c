@@ -50,7 +50,7 @@ void Init_RPDB_DatabaseTypeHashSettingsController()	{
 																																					rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_DatabaseTypeHashSettingsController, 	"new",															rb_RPDB_DatabaseTypeHashSettingsController_new,										-1 	);
-	rb_define_method(						rb_RPDB_DatabaseTypeHashSettingsController, 	"initialize",												rb_RPDB_DatabaseTypeHashSettingsController_init,									-1 	);
+	rb_define_method(						rb_RPDB_DatabaseTypeHashSettingsController, 	"initialize",												rb_RPDB_DatabaseTypeHashSettingsController_initialize,									-1 	);
                     					                                                                                                                                                  	
 	rb_define_method(						rb_RPDB_DatabaseTypeHashSettingsController, 	"parent_environment",								rb_RPDB_DatabaseTypeHashSettingsController_parentEnvironment,			0 	);
 	rb_define_alias(						rb_RPDB_DatabaseTypeHashSettingsController, 	"environment",											"parent_environment"	);                                        	
@@ -142,7 +142,7 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_new(	int			argc,
 							rb_parent_database_type_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_database_type_settings_controller };
-	rb_obj_call_initialize(	rb_database_type_hash_settings_controller,
+	rb_obj_call_init(	rb_database_type_hash_settings_controller,
 										 1, 
 										 argv );
 	
@@ -225,7 +225,7 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_parentDatabaseTypeSettingsContr
 *******************************************************************************************************************************************************************************************/
 
 /******************
-*  tableSize  *
+*  table_size  *
 ******************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_h_nelem.html
@@ -238,7 +238,7 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_tableSize( VALUE	rb_database_ty
 }
 
 /*********************
-*  setTableSize  *
+*  set_table_size  *
 *********************/
 
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_setTableSize(	VALUE	rb_database_type_hash_settings_controller, 
@@ -254,7 +254,7 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_setTableSize(	VALUE	rb_database
 }
 
 /**************************
-*  hashDensityFactor  *
+*  hash_density_factor  *
 **************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_h_ffactor.html
@@ -267,7 +267,7 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_hashDensityFactor( VALUE	rb_dat
 }
 
 /******************************
-*  setHashDensityFactor  *
+*  set_hash_density_factor  *
 ******************************/
 
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_setHashDensityFactor(	VALUE	rb_database_type_hash_settings_controller, 
@@ -287,7 +287,7 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_setHashDensityFactor(	VALUE	rb_
 *******************************************************************************************************************************************************************************************/
 	
 /**********************
-*  setHashMethod  *
+*  set_hash_method  *
 **********************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_h_hash.html
@@ -303,7 +303,7 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_setHashMethod(	VALUE	rb_databas
 }
 */
 /******************
-*  hashMethod  *
+*  hash_method  *
 ******************/
 /*
 VALUE(*hash_method)(	VALUE			database, 
@@ -316,7 +316,7 @@ VALUE(*hash_method)(	VALUE			database,
 }
 */
 /**************************
-*  setCompareMethod  *
+*  set_compare_method  *
 **************************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_h_compare.html
@@ -344,7 +344,7 @@ VALUE(*compare_method)(	VALUE		database,
 }
 */
 /**********************************
-*  setDuplicateCompareMethod  *
+*  set_duplicate_compare_method  *
 **********************************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_dup_compare.html
@@ -359,7 +359,7 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_setDuplicateCompareMethod(	VALU
 }
 */
 /*****************************
-*  duplicateCompareMethod  *
+*  duplicate_compare_method  *
 *****************************/
 /*
 VALUE(*duplicate_compare_method)(	VALUE		database, 

@@ -38,7 +38,7 @@ void Init_RPDB_DirectorySettingsController()	{
 																																		rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_DirectorySettingsController, 	"new",																rb_RPDB_DirectorySettingsController_new,															-1 	);
-	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"initialize",													rb_RPDB_DirectorySettingsController_init,															-1 	);
+	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"initialize",													rb_RPDB_DirectorySettingsController_initialize,															-1 	);
 
 	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"parent_environment",									rb_RPDB_DirectorySettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_DirectorySettingsController, 				"environment",												"parent_environment"	);
@@ -96,7 +96,7 @@ VALUE rb_RPDB_DirectorySettingsController_new(	int				argc,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
-	rb_obj_call_initialize(	rb_directory_settings_controller,
+	rb_obj_call_init(	rb_directory_settings_controller,
 										1, 
 										argv );
 	
@@ -104,7 +104,7 @@ VALUE rb_RPDB_DirectorySettingsController_new(	int				argc,
 }
 
 /*************
-*  new  *
+*  initialize  *
 *************/
 
 VALUE rb_RPDB_DirectorySettingsController_initialize(	int				argc __attribute__ ((unused)),
@@ -115,7 +115,7 @@ VALUE rb_RPDB_DirectorySettingsController_initialize(	int				argc __attribute__ 
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 VALUE rb_RPDB_DirectorySettingsController_parentEnvironment(	VALUE	rb_directory_settings_controller )	{
 	
@@ -137,7 +137,7 @@ VALUE rb_RPDB_DirectorySettingsController_parentSettingsController(	VALUE	rb_dir
 }
 
 /*********************
-*  homeDirectory  *
+*  home_directory  *
 *********************/
 
 //	Get home directory
@@ -151,7 +151,7 @@ VALUE rb_RPDB_DirectorySettingsController_homeDirectory( VALUE	rb_directory_sett
 }
 
 /************************
-*  dataDirectories  *
+*  data_directories  *
 ************************/
 
 //	Get data directories
@@ -179,7 +179,7 @@ VALUE rb_RPDB_DirectorySettingsController_dataDirectories( VALUE	rb_directory_se
 }
 
 /************************
-*  dataDirectories  *
+*  add_data_directory  *
 ************************/
 
 //	Add a data directory

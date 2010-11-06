@@ -37,7 +37,7 @@ void Init_RPDB_Lock()	{
 																										rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_Lock, 	"new",																													rb_RPDB_Lock_new,																	-1 	);
-	rb_define_method(						rb_RPDB_Lock, 	"initialize",																										rb_RPDB_Lock_init,																-1 	);
+	rb_define_method(						rb_RPDB_Lock, 	"initialize",																										rb_RPDB_Lock_initialize,																-1 	);
                                                                                           		
 	rb_define_method(						rb_RPDB_Lock, 	"settings_controller",																					rb_RPDB_Lock_settingsController,									0 	);
 	rb_define_alias(						rb_RPDB_Lock, 	"settings",																											"settings_controller"	);
@@ -111,7 +111,7 @@ VALUE rb_RPDB_Lock_new(	int			argc,
 
 
 	VALUE	argv[]	=	{ rb_parent_lock_controller };	
-	rb_obj_call_initialize(	rb_lock,
+	rb_obj_call_init(	rb_lock,
 										 1, 
 										 argv );
 	

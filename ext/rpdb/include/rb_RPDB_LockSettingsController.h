@@ -21,7 +21,7 @@ VALUE rb_RPDB_LockSettingsController_parentSettingsController(	VALUE	rb_lock_set
 	VALUE rb_RPDB_LockSettingsController_prohibitLocking( VALUE	rb_lock_settings_controller );
 		VALUE rb_RPDB_LockSettingsController_turnProhibitLockingOn( VALUE	rb_lock_settings_controller );
 		VALUE rb_RPDB_LockSettingsController_turnProhibitLockingOff( VALUE	rb_lock_settings_controller );
-	VALUE rb_RPDB_LockSettingsController_timeoutReturnsReturnDenyNotDeadlock( VALUE	rb_lock_settings_controller );
+	VALUE rb_RPDB_LockSettingsController_timeoutReturnsDenyNotDeadlock( VALUE	rb_lock_settings_controller );
 		VALUE rb_RPDB_LockSettingsController_turnTimeoutReturnsDenyNotDeadlockOn( VALUE	rb_lock_settings_controller );
 		VALUE rb_RPDB_LockSettingsController_turnTimeoutReturnsDenyNotDeadlockOff( VALUE	rb_lock_settings_controller );
 	VALUE rb_RPDB_LockSettingsController_noWaitingForConflicts( VALUE	rb_lock_settings_controller );

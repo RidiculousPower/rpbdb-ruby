@@ -90,7 +90,7 @@ void Init_RPDB_Database()	{
 																								rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_Database, 	"new",																					rb_RPDB_Database_new,																				-1 	);
-	rb_define_method(						rb_RPDB_Database, 	"initialize",																		rb_RPDB_Database_init,																			-1 	);
+	rb_define_method(						rb_RPDB_Database, 	"initialize",																		rb_RPDB_Database_initialize,																			-1 	);
 
 	rb_define_method(						rb_RPDB_Database, 	"settings_controller",													rb_RPDB_Database_settingsController,												0 	);
 	rb_define_alias(						rb_RPDB_Database, 	"settings",																			"settings_controller"	);                            				
@@ -267,7 +267,7 @@ VALUE rb_RPDB_Database_new(	int			argc,
 	rb_RPDB_Database_internal_storeRubyRuntimeInstanceForCInstance( rb_database );
 
 	VALUE	argv[]	=	{ rb_parent_database_controller };
-	rb_obj_call_initialize(	rb_database,
+	rb_obj_call_init(	rb_database,
 										1, 
 										argv );
 

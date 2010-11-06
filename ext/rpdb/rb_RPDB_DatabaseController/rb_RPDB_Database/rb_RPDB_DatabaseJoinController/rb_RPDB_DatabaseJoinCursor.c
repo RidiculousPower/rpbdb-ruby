@@ -49,7 +49,7 @@ void Init_RPDB_DatabaseJoinCursor()	{
 																													rb_cObject );
 	
 	rb_define_singleton_method(	rb_RPDB_DatabaseJoinCursor, 	"new",																	rb_RPDB_DatabaseJoinCursor_new,															-1 	);
-	rb_define_method(						rb_RPDB_DatabaseJoinCursor, 	"initialize",														rb_RPDB_DatabaseJoinCursor_init,														-1 	);
+	rb_define_method(						rb_RPDB_DatabaseJoinCursor, 	"initialize",														rb_RPDB_DatabaseJoinCursor_initialize,														-1 	);
 	                                                                                          				
 	rb_define_method(						rb_RPDB_DatabaseJoinCursor, 	"settings_controller",									rb_RPDB_DatabaseJoinCursor_settingsController,							0 	);
 	rb_define_alias(						rb_RPDB_DatabaseJoinCursor, 	"settings",															"settings_controller"	);
@@ -105,7 +105,7 @@ VALUE rb_RPDB_DatabaseJoinCursor_new(	int			argc,
 							rb_parent_database_join_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_join_controller };
-	rb_obj_call_initialize(	rb_join_cursor,
+	rb_obj_call_init(	rb_join_cursor,
 										1, 
 										argv );
 	

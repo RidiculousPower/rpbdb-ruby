@@ -55,7 +55,7 @@ void Init_RPDB_DatabaseTypeSettingsController()	{
 																																				rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_DatabaseTypeSettingsController, 	"new",										rb_RPDB_DatabaseTypeSettingsController_new,									-1 	);
-	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"initialize",							rb_RPDB_DatabaseTypeSettingsController_init,								-1 	);
+	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"initialize",							rb_RPDB_DatabaseTypeSettingsController_initialize,								-1 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"parent_environment",			rb_RPDB_DatabaseTypeSettingsController_parentEnvironment,		0 	);
 	rb_define_alias(						rb_RPDB_DatabaseTypeSettingsController, 	"environment",						"parent_environment"	);
@@ -153,7 +153,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_new(	int			argc,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
-	rb_obj_call_initialize(	rb_database_type_settings_controller,
+	rb_obj_call_init(	rb_database_type_settings_controller,
 										 1, 
 										 argv );
 	
@@ -161,7 +161,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  initialize  *
 *************/
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_initialize(	int				argc __attribute__ ((unused)),
@@ -220,7 +220,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_parentDatabaseSettingsController(	V
 *******************************************************************************************************************************************************************************************/
 
 /*********************
-*  databaseType  *
+*  database_type  *
 *********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_get_type.html
@@ -234,7 +234,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_databaseType( VALUE	rb_database_typ
 }
 
 /*****************
-*  isBTree  *
+*  is_btree?  *
 *****************/
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_isBTree( VALUE	rb_database_type_settings_controller )	{
@@ -247,7 +247,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_isBTree( VALUE	rb_database_type_set
 }
 
 /*****************
-*  setToBTree  *
+*  set_to_btree  *
 *****************/
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_setTypeToBTree( VALUE	rb_database_type_settings_controller )	{
@@ -261,7 +261,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_setTypeToBTree( VALUE	rb_database_t
 }
 
 /*****************
-*  isHash  *
+*  is_hash?  *
 *****************/
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_isHash( VALUE	rb_database_type_settings_controller )	{
@@ -274,7 +274,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_isHash( VALUE	rb_database_type_sett
 }
 
 /*****************
-*  setToHash  *
+*  set_to_hash  *
 *****************/
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_setTypeToHash( VALUE	rb_database_type_settings_controller )	{
@@ -288,7 +288,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_setTypeToHash( VALUE	rb_database_ty
 }
 
 /*****************
-*  isRecno  *
+*  is_recno?  *
 *****************/
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_isRecno( VALUE	rb_database_type_settings_controller )	{
@@ -301,7 +301,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_isRecno( VALUE	rb_database_type_set
 }
 
 /*****************
-*  setToRecno  *
+*  set_to_recno  *
 *****************/
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_setTypeToRecno( VALUE	rb_database_type_settings_controller )	{
@@ -315,7 +315,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_setTypeToRecno( VALUE	rb_database_t
 }
 
 /*****************
-*  isQueue  *
+*  is_queue?  *
 *****************/
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_isQueue( VALUE	rb_database_type_settings_controller )	{
@@ -328,7 +328,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_isQueue( VALUE	rb_database_type_set
 }
 
 /*****************
-*  setToQueue  *
+*  set_to_queue  *
 *****************/
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_setTypeToQueue( VALUE	rb_database_type_settings_controller )	{
@@ -342,7 +342,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_setTypeToQueue( VALUE	rb_database_t
 }
 
 /*************************
-*  btreeController  *
+*  btree_controller  *
 *************************/
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_btreeController( VALUE	rb_database_type_settings_controller )	{
@@ -354,7 +354,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_btreeController( VALUE	rb_database_
 }
 
 /*************************
-*  hashController  *
+*  hash_controller  *
 *************************/
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_hashController( VALUE	rb_database_type_settings_controller )	{
@@ -366,7 +366,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_hashController( VALUE	rb_database_t
 }
 
 /*************************
-*  queueController  *
+*  queue_controller  *
 *************************/
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_queueController( VALUE	rb_database_type_settings_controller )	{
@@ -378,7 +378,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_queueController( VALUE	rb_database_
 }
 
 /*************************
-*  recnoController  *
+*  recno_controller  *
 *************************/
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_recnoController( VALUE	rb_database_type_settings_controller )	{

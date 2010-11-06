@@ -52,7 +52,7 @@ void Init_RPDB_DatabaseCachePrioritySettingsController()	{
 																																						rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_DatabaseCachePrioritySettingsController, 	"new",											rb_RPDB_DatabaseCachePrioritySettingsController_new,										-1 	);
-	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"initialize",								rb_RPDB_DatabaseCachePrioritySettingsController_init,										-1 	);
+	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"initialize",								rb_RPDB_DatabaseCachePrioritySettingsController_initialize,										-1 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"parent_environment",				rb_RPDB_DatabaseCachePrioritySettingsController_parentEnvironment,			0 	);
 	rb_define_alias(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"environment",							"parent_environment"	);
@@ -162,7 +162,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_new(	int			argc,
 							rb_parent_database_cache_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_cache_settings_controller };
-	rb_obj_call_initialize(	rb_database_cache_priority_settings_controller,
+	rb_obj_call_init(	rb_database_cache_priority_settings_controller,
 										1, 
 										argv );
 	

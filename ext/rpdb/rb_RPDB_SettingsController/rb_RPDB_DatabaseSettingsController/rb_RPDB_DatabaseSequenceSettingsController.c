@@ -44,7 +44,7 @@ void Init_RPDB_DatabaseSequenceSettingsController()	{
 																																					rb_cObject );
 
  rb_define_singleton_method(	rb_RPDB_DatabaseSequenceSettingsController, 	"new",											rb_RPDB_DatabaseSequenceSettingsController_new,									-1 	);
-	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"initialize",								rb_RPDB_DatabaseSequenceSettingsController_init,								-1 	);
+	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"initialize",								rb_RPDB_DatabaseSequenceSettingsController_initialize,								-1 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"parent_environment",				rb_RPDB_DatabaseSequenceSettingsController_parentEnvironment,			0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSequenceSettingsController, 	"environment",							"parent_environment"	);
@@ -157,7 +157,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_new(	int			argc,
 							rb_parent_database_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };	
-	rb_obj_call_initialize(	rb_database_sequence_settings_controller,
+	rb_obj_call_init(	rb_database_sequence_settings_controller,
 										 1, 
 										 argv );
 	
@@ -165,7 +165,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  initialize  *
 *************/
 
 VALUE rb_RPDB_DatabaseSequenceSettingsController_initialize(	int				argc __attribute__ ((unused)),
@@ -235,7 +235,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_increasing( VALUE	rb_database_s
 }
 
 /*************************
-*  setAsIncreasing  *
+*  set_as_increasing  *
 *************************/
 
 VALUE rb_RPDB_DatabaseSequenceSettingsController_setAsIncreasing( VALUE	rb_database_sequence_settings_controller )	{
@@ -264,7 +264,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_decreasing( VALUE	rb_database_s
 }
 
 /*************************
-*  setAsDecreasing  *
+*  set_as_decreasing  *
 *************************/
 
 VALUE rb_RPDB_DatabaseSequenceSettingsController_setAsDecreasing( VALUE	rb_database_sequence_settings_controller )	{
@@ -292,7 +292,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_wrap( VALUE	rb_database_sequenc
 }
 
 /*****************
-*  setToWrap  *
+*  set_to_wrap  *
 *****************/
 
 VALUE rb_RPDB_DatabaseSequenceSettingsController_setToWrap( VALUE	rb_database_sequence_settings_controller )	{
@@ -306,7 +306,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_setToWrap( VALUE	rb_database_se
 }
 
 /*********************
-*  rangeMinimum  *
+*  range_minimum  *
 *********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/seq_set_range.html
@@ -319,7 +319,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_rangeMinimum( VALUE	rb_database
 }
 
 /*************************
-*  setRangeMinimum  *
+*  set_range_minimum  *
 *************************/
 
 VALUE rb_RPDB_DatabaseSequenceSettingsController_setRangeMinimum(	VALUE	rb_database_sequence_settings_controller, 
@@ -335,7 +335,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_setRangeMinimum(	VALUE	rb_datab
 }
 
 /*********************
-*  rangeMaximum  *
+*  range_maximum  *
 *********************/
 
 VALUE rb_RPDB_DatabaseSequenceSettingsController_rangeMaximum( VALUE	rb_database_sequence_settings_controller )	{
@@ -347,7 +347,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_rangeMaximum( VALUE	rb_database
 }
 
 /************************
-*  setRangeMaximum  *
+*  set_range_maximum  *
 ************************/
 
 VALUE rb_RPDB_DatabaseSequenceSettingsController_setRangeMaximum(	VALUE	rb_database_sequence_settings_controller,
@@ -363,7 +363,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_setRangeMaximum(	VALUE	rb_datab
 }
 
 /****************
-*  cacheSize  *
+*  cache_size  *
 ****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/seq_set_cachesize.html
@@ -376,7 +376,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_cacheSize( VALUE	rb_database_se
 }
 
 /********************
-*  setCacheSize  *
+*  set_cache_size  *
 ********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/seq_set_cachesize.html
@@ -393,7 +393,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_setCacheSize(	VALUE	rb_database
 }
 
 /********************
-*  initialValue  *
+*  initial_value  *
 ********************/
 
 VALUE rb_RPDB_DatabaseSequenceSettingsController_initialValue( VALUE	rb_database_sequence_settings_controller )	{
@@ -405,7 +405,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_initialValue( VALUE	rb_database
 }
 
 /**********************
-*  setInitialValue  *
+*  set_initial_value  *
 **********************/
 
 //	The DB_SEQUENCE->initial_value method may not be called after the DB_SEQUENCE->open method is called.
@@ -423,7 +423,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_setInitialValue(	VALUE	rb_datab
 }
 
 /************************
-*  defaultStepValue  *
+*  default_step_value  *
 ************************/
 
 VALUE rb_RPDB_DatabaseSequenceSettingsController_defaultStepValue( VALUE	rb_database_sequence_settings_controller )	{
@@ -435,7 +435,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_defaultStepValue( VALUE	rb_data
 }
 
 /************************
-*  setDefaultStepValue  *
+*  set_default_step_value  *
 ************************/
 
 VALUE rb_RPDB_DatabaseSequenceSettingsController_setDefaultStepValue(	VALUE	rb_database_sequence_settings_controller,

@@ -43,7 +43,7 @@ void Init_RPDB_DatabaseJoinSettingsController()	{
 																																			rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_DatabaseJoinSettingsController, 	"new",																							rb_RPDB_DatabaseJoinSettingsController_new,											-1 	);
-	rb_define_method(						rb_RPDB_DatabaseJoinSettingsController, 	"initialize",																				rb_RPDB_DatabaseJoinSettingsController_init,											-1 	);
+	rb_define_method(						rb_RPDB_DatabaseJoinSettingsController, 	"initialize",																				rb_RPDB_DatabaseJoinSettingsController_initialize,											-1 	);
                     					                                                                        														
 	rb_define_method(						rb_RPDB_DatabaseJoinSettingsController, 	"parent_environment",																rb_RPDB_DatabaseJoinSettingsController_parentEnvironment,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseJoinSettingsController, 	"environment",																			"parent_environment"	);
@@ -134,7 +134,7 @@ VALUE rb_RPDB_DatabaseJoinSettingsController_new(	int			argc,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=		{ rb_parent_database_settings_controller };
-	rb_obj_call_initialize(	rb_join_settings_controller,
+	rb_obj_call_init(	rb_join_settings_controller,
 										1, 
 										argv );
 	
@@ -142,7 +142,7 @@ VALUE rb_RPDB_DatabaseJoinSettingsController_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  initialize  *
 *************/
 
 VALUE rb_RPDB_DatabaseJoinSettingsController_initialize(	int				argc __attribute__ ((unused)),
@@ -153,7 +153,7 @@ VALUE rb_RPDB_DatabaseJoinSettingsController_initialize(	int				argc __attribute
 }
 
 /***************************************
-*  environment  *
+*  parent_environment  *
 ***************************************/
 
 VALUE rb_RPDB_DatabaseJoinSettingsController_parentEnvironment(	VALUE	rb_join_settings_controller )	{
@@ -201,7 +201,7 @@ VALUE rb_RPDB_DatabaseJoinSettingsController_parentDatabaseSettingsController(	V
 }
 
 /*****************************
-*  degreeOneIsolation  *
+*  degree_one_isolation  *
 *****************************/
 
 //	DB_READ_UNCOMMITTED				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_join.html
@@ -215,7 +215,7 @@ VALUE rb_RPDB_DatabaseJoinController_degreeOneIsolation( VALUE	rb_join_settings_
 }
 
 	/********************************
-	*  turnDegreeOneIsolationOn  *
+	*  turn_degree_one_isolation_on  *
 	********************************/
 
 	VALUE rb_RPDB_DatabaseJoinController_turnDegreeOneIsolationOn( VALUE	rb_join_settings_controller )	{
@@ -229,7 +229,7 @@ VALUE rb_RPDB_DatabaseJoinController_degreeOneIsolation( VALUE	rb_join_settings_
 	}
 
 	/********************************
-	*  turnDegreeOneIsolationOff  *
+	*  turn_degree_one_isolation_off  *
 	********************************/
 
 	VALUE rb_RPDB_DatabaseJoinController_turnDegreeOneIsolationOff( VALUE	rb_join_settings_controller )	{
@@ -243,7 +243,7 @@ VALUE rb_RPDB_DatabaseJoinController_degreeOneIsolation( VALUE	rb_join_settings_
 	}
 
 /******************************************
-*  writeLocksInsteadOfReadLocks  *
+*  write_locks_instead_of_read_locks  *
 ******************************************/
 
 //	DB_RMW						http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_join.html
@@ -257,7 +257,7 @@ VALUE rb_RPDB_DatabaseJoinController_writeLocksInsteadOfReadLocks( VALUE	rb_join
 }
 
 	/********************************************
-	*  turnWriteLocksInsteadOfReadLocksOn  *
+	*  turn_write_locks_instead_of_read_locks_on  *
 	********************************************/
 
 	VALUE rb_RPDB_DatabaseJoinController_turnWriteLocksInsteadOfReadLocksOn( VALUE	rb_join_settings_controller )	{
@@ -271,7 +271,7 @@ VALUE rb_RPDB_DatabaseJoinController_writeLocksInsteadOfReadLocks( VALUE	rb_join
 	}
 
 	/********************************************
-	*  turnWriteLocksInsteadOfReadLocksOff  *
+	*  turn_write_locks_instead_of_read_locks_off  *
 	********************************************/
 
 	VALUE rb_RPDB_DatabaseJoinController_turnWriteLocksInsteadOfReadLocksOff( VALUE	rb_join_settings_controller )	{
@@ -285,7 +285,7 @@ VALUE rb_RPDB_DatabaseJoinController_writeLocksInsteadOfReadLocks( VALUE	rb_join
 	}
 
 /******************************************
-*  writeLocksInsteadOfReadLocks  *
+*  write_locks_instead_of_read_locks  *
 ******************************************/
 
 //	DB_JOIN_NOSORT			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_join.html
@@ -299,7 +299,7 @@ VALUE rb_RPDB_DatabaseJoinController_noSortBeforeJoin( VALUE	rb_join_settings_co
 }
 
 	/********************************************
-	*  turnWriteLocksInsteadOfReadLocksOn  *
+	*  turn_write_locks_instead_of_read_locks_on  *
 	********************************************/
 
 	VALUE rb_RPDB_DatabaseJoinController_turnNoSortBeforeJoinOn( VALUE	rb_join_settings_controller )	{
@@ -313,7 +313,7 @@ VALUE rb_RPDB_DatabaseJoinController_noSortBeforeJoin( VALUE	rb_join_settings_co
 	}
 
 	/********************************************
-	*  turnWriteLocksInsteadOfReadLocksOff  *
+	*  turn_write_locks_instead_of_read_locks_off  *
 	********************************************/
 
 	VALUE rb_RPDB_DatabaseJoinController_turnNoSortBeforeJoinOff( VALUE	rb_join_settings_controller )	{

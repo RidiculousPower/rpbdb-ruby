@@ -50,7 +50,7 @@ void Init_RPDB_Log()	{
 																					rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_Log, 	"new",																													rb_RPDB_Log_new,												-1 	);
-	rb_define_method(						rb_RPDB_Log, 	"initialize",																										rb_RPDB_Log_init,											-1 	);
+	rb_define_method(						rb_RPDB_Log, 	"initialize",																										rb_RPDB_Log_initialize,											-1 	);
                                                                                           		
 	rb_define_method(						rb_RPDB_Log, 	"settings_controller",																					rb_RPDB_Log_settingsController,				0 	);
 	rb_define_alias(						rb_RPDB_Log, 	"settings",																											"settings_controller"	);
@@ -111,7 +111,7 @@ VALUE rb_RPDB_Log_new(	int			argc,
 							rb_parent_log_cursor );
 	
 	VALUE	argv[]	=	{ rb_parent_log_controller };
-	rb_obj_call_initialize(	rb_log,
+	rb_obj_call_init(	rb_log,
 					 1, 
 					 argv );
 	

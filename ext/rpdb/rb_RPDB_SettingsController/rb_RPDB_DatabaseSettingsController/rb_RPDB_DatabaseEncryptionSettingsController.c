@@ -39,7 +39,7 @@ void Init_RPDB_DatabaseEncryptionSettingsController()	{
 																																							rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_DatabaseEncryptionSettingsController, 	"new",											rb_RPDB_DatabaseEncryptionSettingsController_new,											-1 	);
-	rb_define_method(						rb_RPDB_DatabaseEncryptionSettingsController, 	"initialize",								rb_RPDB_DatabaseEncryptionSettingsController_init,										-1 	);
+	rb_define_method(						rb_RPDB_DatabaseEncryptionSettingsController, 	"initialize",								rb_RPDB_DatabaseEncryptionSettingsController_initialize,										-1 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseEncryptionSettingsController, 	"parent_environment",				rb_RPDB_DatabaseEncryptionSettingsController_parentEnvironment,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseEncryptionSettingsController, 	"environment",							"parent_environment"	);
@@ -98,7 +98,7 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_new(	int			argc,
 							rb_parent_database_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
-	rb_obj_call_initialize(	rb_database_encryption_settings_controller,
+	rb_obj_call_init(	rb_database_encryption_settings_controller,
 										 1, 
 										 argv );
 	
@@ -106,12 +106,12 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  initialize  *
 *************/
 	
 VALUE rb_RPDB_DatabaseEncryptionSettingsController_initialize(	int				argc __attribute__ ((unused)),
-																													VALUE*		args __attribute__ ((unused)),
-																													VALUE			rb_self )	{
+																																VALUE*		args __attribute__ ((unused)),
+																																VALUE			rb_self )	{
 
 	return rb_self;
 }
@@ -180,7 +180,7 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_encrypted( VALUE	rb_database_
 }
 
 	/*************************
-	*  turnEncryptionOn  *
+	*  turn_encryption_on  *
 	*************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_encrypt.html
@@ -197,7 +197,7 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_encrypted( VALUE	rb_database_
 	}
 
 	/*************************
-	*  turnEncryptionOff  *
+	*  turn_encryption_off  *
 	*************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_encrypt.html
