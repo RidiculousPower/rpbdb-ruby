@@ -61,7 +61,7 @@ void Init_RPDB_DebugVerbositySettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_DebugVerbositySettingsController_new(	int			argc,
@@ -117,9 +117,9 @@ VALUE rb_RPDB_DebugVerbositySettingsController_new(	int			argc,
 	return rb_debug_verbosity_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_DebugVerbositySettingsController_initialize(	int				argc __attribute__ ((unused)),
 																											VALUE*		args __attribute__ ((unused)),
@@ -128,9 +128,9 @@ VALUE rb_RPDB_DebugVerbositySettingsController_initialize(	int				argc __attribu
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_DebugVerbositySettingsController_parentEnvironment(	VALUE	rb_debug_verbosity_settings_controller )	{
 
@@ -140,9 +140,9 @@ VALUE rb_RPDB_DebugVerbositySettingsController_parentEnvironment(	VALUE	rb_debug
 	return rb_parent_environment;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_DebugVerbositySettingsController_parentSettingsController(	VALUE	rb_debug_verbosity_settings_controller )	{
 
@@ -152,9 +152,9 @@ VALUE rb_RPDB_DebugVerbositySettingsController_parentSettingsController(	VALUE	r
 	return rb_parent_settings_controller;	
 }
 
-/***************************************
+/*************************************
 *  parent_debug_settings_controller  *
-***************************************/
+*************************************/
 
 VALUE rb_RPDB_DebugVerbositySettingsController_parentDebugSettingsController(	VALUE	rb_debug_verbosity_settings_controller )	{
 
@@ -164,9 +164,9 @@ VALUE rb_RPDB_DebugVerbositySettingsController_parentDebugSettingsController(	VA
 	return rb_parent_settings_controller;
 }
 
-/*************************************************
+/***************************************************
 *  display_additional_information_during_recovery  *
-*************************************************/
+***************************************************/
 
 //	DB_VERB_RECOVERY        	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
 VALUE rb_RPDB_DebugVerbositySettingsController_displayAdditionalInformationDuringRecovery( VALUE	rb_debug_verbosity_settings_controller )	{
@@ -178,9 +178,9 @@ VALUE rb_RPDB_DebugVerbositySettingsController_displayAdditionalInformationDurin
 																																		:	Qfalse );
 }
 
-	/*********************************************************
+	/***********************************************************
 	*  turn_display_additional_information_during_recovery_on  *
-	*********************************************************/
+	***********************************************************/
 
 	VALUE rb_RPDB_DebugVerbositySettingsController_turnDisplayAdditionalInformationDuringRecoveryOn( VALUE	rb_debug_verbosity_settings_controller )	{
 
@@ -192,9 +192,9 @@ VALUE rb_RPDB_DebugVerbositySettingsController_displayAdditionalInformationDurin
 		return rb_debug_verbosity_settings_controller;
 	}
 
-	/*********************************************************
+	/************************************************************
 	*  turn_display_additional_information_during_recovery_off  *
-	*********************************************************/
+	************************************************************/
 
 	VALUE rb_RPDB_DebugVerbositySettingsController_turnDisplayAdditionalInformationDuringRecoveryOff( VALUE	rb_debug_verbosity_settings_controller )	{
 

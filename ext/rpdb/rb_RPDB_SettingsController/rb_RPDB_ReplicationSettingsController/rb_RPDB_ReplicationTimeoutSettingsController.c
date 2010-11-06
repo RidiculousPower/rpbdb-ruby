@@ -75,9 +75,9 @@ void Init_RPDB_ReplicationTimeoutSettingsController()	{
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-/************
-*  new  *
-************/
+/*************
+*  self.new  *
+*************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_new(	int			argc,
 																												VALUE*	args,
@@ -130,9 +130,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_new(	int			argc,
 	return rb_replication_timeout_settings_controller;		
 }
 
-/************
+/***************
 *  initialize  *
-************/
+***************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																													VALUE*		args __attribute__ ((unused)),
@@ -141,9 +141,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_initialize(	int				argc __att
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_parentEnvironment(	VALUE	rb_replication_timeout_settings_controller )	{
 
@@ -153,9 +153,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_parentEnvironment(	VALUE	rb_r
 	return rb_parent_environment;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_parentSettingsController(	VALUE	rb_replication_timeout_settings_controller )	{
 
@@ -165,9 +165,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_parentSettingsController(	VAL
 	return rb_parent_settings_controller;	
 }
 
-/***************************************
+/*******************************************
 *  parent_replication_settings_controller  *
-***************************************/
+*******************************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_parentReplicationSettingsController(	VALUE	rb_replication_timeout_settings_controller )	{
 
@@ -177,9 +177,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_parentReplicationSettingsCont
 	return rb_parent_replication_settings_controller;
 }
 
-/****************
+/************
 *  timeout  *
-****************/
+************/
 
 //	DB_REP_ACK_TIMEOUT
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_timeout.html
@@ -191,9 +191,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_timeout( VALUE	rb_replication
 	return INT2FIX( RPDB_ReplicationTimeoutSettingsController_timeout( c_replication_timeout_settings_controller ) );
 }
 
-/******************
+/****************
 *  set_timeout  *
-******************/
+****************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setTimeout(		VALUE	rb_replication_timeout_settings_controller, 
 																	VALUE	rb_timeout )	{
@@ -221,9 +221,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeCheckpointWrite
 	return INT2FIX( RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeCheckpointWrite( c_replication_timeout_settings_controller ) );
 }
 
-/*****************************************
+/******************************************
 *  set_wait_time_before_checkpoint_write  *
-*****************************************/
+******************************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeCheckpointWrite(	VALUE	rb_replication_timeout_settings_controller, 
 																						VALUE	rb_wait_time_before_checkpoint_write )	{
@@ -237,9 +237,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeCheckpointWr
 	return rb_replication_timeout_settings_controller;
 }
 
-/*************************************
+/**************************************
 *  wait_time_before_retry_connection  *
-*************************************/
+**************************************/
 
 //	DB_REP_CONNECTION_RETRY
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_timeout.html
@@ -251,9 +251,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeRetryConnection
 	return INT2FIX( RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeRetryConnection( c_replication_timeout_settings_controller ) );
 }
 
-/*****************************************
+/******************************************
 *  set_wait_time_before_retry_connection  *
-*****************************************/
+******************************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryConnection(	VALUE	rb_replication_timeout_settings_controller,
 																						VALUE	rb_wait_time_before_retry_connection )	{
@@ -267,9 +267,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryConnect
 	return rb_replication_timeout_settings_controller;
 }
 
-/*************************
+/*********************
 *  election_timeout  *
-*************************/
+*********************/
 
 //	DB_REP_ELECTION_TIMEOUT
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_timeout.html
@@ -297,9 +297,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setElectionTimeout(	VALUE	rb_
 	return rb_replication_timeout_settings_controller;
 }
 
-/*************************************
+/************************************
 *  wait_time_before_retry_election  *
-*************************************/
+************************************/
 
 //	DB_REP_ELECTION_RETRY
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_timeout.html
@@ -311,9 +311,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeRetryElection( 
 	return INT2FIX( RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeRetryElection( c_replication_timeout_settings_controller ) );
 }
 
-/*****************************************
+/****************************************
 *  set_wait_time_before_retry_election  *
-*****************************************/
+****************************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryElection(	VALUE	rb_replication_timeout_settings_controller, 
 																					VALUE	rb_wait_time_before_retry_election )	{
@@ -327,9 +327,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryElectio
 	return rb_replication_timeout_settings_controller;
 }
 
-/*****************************************
+/****************************************
 *  full_election_participation_timeout  *
-*****************************************/
+****************************************/
 
 //	DB_REP_FULL_ELECTION_TIMEOUT
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_timeout.html
@@ -357,9 +357,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setFullElectionParticipationT
 	return rb_replication_timeout_settings_controller;
 }
 
-/*********************************
+/****************************
 *  heartbeat_monitor_pulse  *
-*********************************/
+****************************/
 
 //	DB_REP_HEARTBEAT_MONITOR
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_timeout.html
@@ -371,9 +371,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_heartbeatMonitorPulse( VALUE	
 	return INT2FIX( RPDB_ReplicationTimeoutSettingsController_heartbeatMonitorPulse( c_replication_timeout_settings_controller ) );
 }
 
-/*************************************
+/********************************
 *  set_heartbeat_monitor_pulse  *
-*************************************/
+********************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatMonitorPulse(	VALUE	rb_replication_timeout_settings_controller, 
 																				VALUE	rb_heartbeat_monitor_pulse )	{
@@ -387,9 +387,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatMonitorPulse(	VAL
 	return rb_replication_timeout_settings_controller;
 }
 
-/*********************************
+/******************************
 *  heartbeat_broadcast_pulse  *
-*********************************/
+******************************/
 
 //	DB_REP_HEARTBEAT_SEND
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_timeout.html
@@ -401,9 +401,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_heartbeatBroadcastPulse( VALU
 	return INT2FIX( RPDB_ReplicationTimeoutSettingsController_heartbeatBroadcastPulse( c_replication_timeout_settings_controller ) );
 }
 
-/*************************************
+/**********************************
 *  set_heartbeat_broadcast_pulse  *
-*************************************/
+**********************************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatBroadcastPulse(	VALUE	rb_replication_timeout_settings_controller, 
 																				VALUE	rb_heartbeat_broadcast_pulse )	{
@@ -416,9 +416,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatBroadcastPulse(	V
 	return rb_replication_timeout_settings_controller;
 }
 
-/*********************
+/******************
 *  lease_timeout  *
-*********************/
+******************/
 
 //	DB_REP_LEASE_TIMEOUT
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_timeout.html
@@ -430,9 +430,9 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_leaseTimeout( VALUE	rb_replic
 	return INT2FIX( RPDB_ReplicationTimeoutSettingsController_leaseTimeout( c_replication_timeout_settings_controller ) );
 }
 
-/************************
+/**********************
 *  set_lease_timeout  *
-************************/
+**********************/
 
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_setLeaseTimeout(	VALUE	rb_replication_timeout_settings_controller,
 																		VALUE	rb_lease_timeout )	{

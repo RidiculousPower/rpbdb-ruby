@@ -58,7 +58,7 @@ void Init_RPDB_DirectorySettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_DirectorySettingsController_new(	int				argc,
@@ -103,9 +103,9 @@ VALUE rb_RPDB_DirectorySettingsController_new(	int				argc,
 	return rb_directory_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_DirectorySettingsController_initialize(	int				argc __attribute__ ((unused)),
 																								VALUE*		args __attribute__ ((unused)),
@@ -114,9 +114,9 @@ VALUE rb_RPDB_DirectorySettingsController_initialize(	int				argc __attribute__ 
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 VALUE rb_RPDB_DirectorySettingsController_parentEnvironment(	VALUE	rb_directory_settings_controller )	{
 	
 	VALUE	rb_parent_settings_controller							=	rb_RPDB_DirectorySettingsController_parentSettingsController( rb_directory_settings_controller );
@@ -125,9 +125,9 @@ VALUE rb_RPDB_DirectorySettingsController_parentEnvironment(	VALUE	rb_directory_
 	return rb_parent_environment;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 VALUE rb_RPDB_DirectorySettingsController_parentSettingsController(	VALUE	rb_directory_settings_controller )	{
 	
 	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_directory_settings_controller,
@@ -136,9 +136,9 @@ VALUE rb_RPDB_DirectorySettingsController_parentSettingsController(	VALUE	rb_dir
 	return rb_parent_settings_controller;
 }
 
-/*********************
+/*******************
 *  home_directory  *
-*********************/
+*******************/
 
 //	Get home directory
 //	Environment's home directory	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -150,9 +150,9 @@ VALUE rb_RPDB_DirectorySettingsController_homeDirectory( VALUE	rb_directory_sett
 	return rb_str_new2( RPDB_DirectorySettingsController_homeDirectory( c_directory_settings_controller ) );
 }
 
-/************************
+/*********************
 *  data_directories  *
-************************/
+*********************/
 
 //	Get data directories
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_data_dir.html
@@ -178,9 +178,9 @@ VALUE rb_RPDB_DirectorySettingsController_dataDirectories( VALUE	rb_directory_se
 	return rb_directory_settings_controller;
 }
 
-/************************
+/***********************
 *  add_data_directory  *
-************************/
+***********************/
 
 //	Add a data directory
 VALUE rb_RPDB_DirectorySettingsController_addDataDirectory(	VALUE	rb_directory_settings_controller, 

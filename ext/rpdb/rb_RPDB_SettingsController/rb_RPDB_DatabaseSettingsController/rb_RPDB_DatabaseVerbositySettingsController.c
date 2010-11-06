@@ -61,7 +61,7 @@ void Init_RPDB_DatabaseVerbositySettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_DatabaseVerbositySettingsController_new(	int			argc,
@@ -107,9 +107,9 @@ VALUE rb_RPDB_DatabaseVerbositySettingsController_new(	int			argc,
 	return rb_database_verbosity_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_DatabaseVerbositySettingsController_initialize(	int				argc __attribute__ ((unused)),
 																												VALUE*		args __attribute__ ((unused)),
@@ -118,9 +118,9 @@ VALUE rb_RPDB_DatabaseVerbositySettingsController_initialize(	int				argc __attr
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_DatabaseVerbositySettingsController_parentEnvironment(	VALUE	rb_database_verbosity_settings_controller )	{
 
@@ -130,9 +130,9 @@ VALUE rb_RPDB_DatabaseVerbositySettingsController_parentEnvironment(	VALUE	rb_da
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 
 VALUE rb_RPDB_DatabaseVerbositySettingsController_parentDatabase(	VALUE	rb_database_verbosity_settings_controller )	{
 
@@ -142,9 +142,9 @@ VALUE rb_RPDB_DatabaseVerbositySettingsController_parentDatabase(	VALUE	rb_datab
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_DatabaseVerbositySettingsController_parentSettingsController(	VALUE	rb_database_verbosity_settings_controller )	{
 
@@ -154,9 +154,9 @@ VALUE rb_RPDB_DatabaseVerbositySettingsController_parentSettingsController(	VALU
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
 
 VALUE rb_RPDB_DatabaseVerbositySettingsController_parentDatabaseSettingsController(	VALUE	rb_database_verbosity_settings_controller )	{
 
@@ -166,9 +166,9 @@ VALUE rb_RPDB_DatabaseVerbositySettingsController_parentDatabaseSettingsControll
 	return rb_parent_database_settings_controller;
 }
 
-/*****************************************************
+/**************************************************************
 *  display_additional_information_for_database_register_flag  *
-*****************************************************/
+**************************************************************/
 
 //	DB_VERB_REGISTER        	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
 VALUE rb_RPDB_DatabaseVerbositySettingsController_displayAdditionalInformationForDBRegisterFlag( VALUE	rb_database_verbosity_settings_controller )	{
@@ -180,9 +180,9 @@ VALUE rb_RPDB_DatabaseVerbositySettingsController_displayAdditionalInformationFo
 																																					:	Qfalse );
 }
 
-	/*************************************************************
+	/**********************************************************************
 	*  turn_display_additional_information_for_database_register_flag_on  *
-	*************************************************************/
+	**********************************************************************/
 
 	VALUE rb_RPDB_DatabaseVerbositySettingsController_turnDisplayAdditionalInformationForDBRegisterFlagOn( VALUE	rb_database_verbosity_settings_controller )	{
 
@@ -194,9 +194,9 @@ VALUE rb_RPDB_DatabaseVerbositySettingsController_displayAdditionalInformationFo
 		return rb_database_verbosity_settings_controller;
 	}
 
-	/*************************************************************
+	/***********************************************************************
 	*  turn_display_additional_information_for_database_register_flag_off  *
-	*************************************************************/
+	***********************************************************************/
 
 	VALUE rb_RPDB_DatabaseVerbositySettingsController_turnDisplayAdditionalInformationForDBRegisterFlagOff( VALUE	rb_database_verbosity_settings_controller )	{
 

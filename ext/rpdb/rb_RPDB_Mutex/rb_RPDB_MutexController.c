@@ -59,7 +59,7 @@ void Init_RPDB_MutexController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE	rb_RPDB_MutexController_new(	int			argc,
@@ -94,7 +94,7 @@ VALUE	rb_RPDB_MutexController_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE	rb_RPDB_MutexController_initialize(	int				argc __attribute__ ((unused)),

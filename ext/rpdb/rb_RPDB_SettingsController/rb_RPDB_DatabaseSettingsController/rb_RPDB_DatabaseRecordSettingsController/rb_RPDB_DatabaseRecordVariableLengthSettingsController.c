@@ -72,7 +72,7 @@ void Init_RPDB_DatabaseRecordVariableLengthSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_new(	int			argc,
@@ -153,9 +153,9 @@ VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_new(	int			argc,
 	return rb_database_record_variable_length_settings_controller;		
 }
 
-	/*************
+	/***************
 	*  initialize  *
-	*************/
+	***************/
 
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																																		VALUE*		args __attribute__ ((unused)),
@@ -164,9 +164,10 @@ VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_initialize(	int				
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
+
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentEnvironment(	VALUE	rb_database_record_variable_length_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseSettingsController( rb_database_record_variable_length_settings_controller );
@@ -175,9 +176,10 @@ VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentEnvironment(	
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
+
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabase(	VALUE	rb_database_record_variable_length_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseSettingsController( rb_database_record_variable_length_settings_controller );
@@ -186,9 +188,10 @@ VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabase(	VAL
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
+
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentSettingsController(	VALUE	rb_database_record_variable_length_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseSettingsController( rb_database_record_variable_length_settings_controller );
@@ -197,9 +200,10 @@ VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentSettingsContr
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
+
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_record_variable_length_settings_controller )	{
 
 	VALUE	rb_parent_database_record_settings_controller		=	rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseRecordSettingsController( rb_database_record_variable_length_settings_controller );
@@ -208,9 +212,10 @@ VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseSetti
 	return rb_parent_database_settings_controller;
 }
 
-/***************************************
+/***********************************************
 *  parent_database_record_settings_controller  *
-***************************************/
+***********************************************/
+
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseRecordSettingsController(	VALUE	rb_database_record_variable_length_settings_controller )	{
 
 	VALUE	rb_parent_database_record_settings_controller	=	rb_iv_get(	rb_database_record_variable_length_settings_controller,
@@ -218,9 +223,9 @@ VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseRecor
 
 	return rb_parent_database_record_settings_controller;
 }
-	/************************
+	/*********************
 	*  record_delimeter  *
-	************************/
+	*********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_re_delim.html
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_recordDelimeter( VALUE	rb_database_record_variable_length_settings_controller )	{
@@ -231,12 +236,12 @@ VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_recordDelimeter( VA
 	return INT2FIX( RPDB_DatabaseRecordVariableLengthSettingsController_recordDelimeter( c_database_record_variable_length_settings_controller ) );
 }
 
-	/****************************
+	/*************************
 	*  set_record_delimeter  *
-	****************************/
+	*************************/
 
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_setRecordDelimeter(	VALUE	rb_database_record_variable_length_settings_controller, 
-																			VALUE	rb_record_delimeter )	{
+																																									VALUE	rb_record_delimeter )	{
 
 	RPDB_DatabaseRecordVariableLengthSettingsController*	c_database_record_variable_length_settings_controller;
 	C_RPDB_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER( rb_database_record_variable_length_settings_controller, c_database_record_variable_length_settings_controller );

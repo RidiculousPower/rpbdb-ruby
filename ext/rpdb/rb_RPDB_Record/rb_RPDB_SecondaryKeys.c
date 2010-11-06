@@ -51,7 +51,7 @@ void Init_RPDB_SecondaryKey()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_SecondaryKeys_new(	int			argc,
@@ -90,7 +90,7 @@ VALUE rb_RPDB_SecondaryKeys_new(	int			argc,
 
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_SecondaryKeys_initialize(	int				argc __attribute__ ((unused)),

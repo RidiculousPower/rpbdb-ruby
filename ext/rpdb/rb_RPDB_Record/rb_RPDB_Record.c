@@ -57,7 +57,7 @@ void Init_RPDB_Record()	{
 }
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_Record_new(	int			argc,
@@ -92,7 +92,7 @@ VALUE rb_RPDB_Record_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_Record_initialize(	int				argc __attribute__ ((unused)),

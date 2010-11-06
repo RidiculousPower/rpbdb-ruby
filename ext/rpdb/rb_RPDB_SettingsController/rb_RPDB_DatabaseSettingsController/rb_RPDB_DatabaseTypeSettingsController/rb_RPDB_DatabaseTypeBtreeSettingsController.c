@@ -80,7 +80,7 @@ void Init_RPDB_DatabaseTypeBtreeSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_new(	int			argc,
@@ -156,9 +156,9 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_new(	int			argc,
 	return rb_database_type_btree_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																												VALUE*		args __attribute__ ((unused)),
@@ -167,9 +167,9 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_initialize(	int				argc __attr
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentEnvironment(	VALUE	rb_database_type_btree_settings_controller )	{
 
@@ -179,9 +179,9 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentEnvironment(	VALUE	rb_da
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentDatabase(	VALUE	rb_database_type_btree_settings_controller )	{
 
@@ -191,9 +191,9 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentDatabase(	VALUE	rb_datab
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentSettingsController(	VALUE	rb_database_type_btree_settings_controller )	{
 
@@ -203,9 +203,9 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentSettingsController(	VALU
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
 
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_type_btree_settings_controller )	{
 
@@ -215,9 +215,9 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentDatabaseSettingsControll
 	return rb_parent_database_settings_controller;
 }
 
-/***************************************
+/*********************************************
 *  parent_database_type_settings_controller  *
-***************************************/
+*********************************************/
 
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentDatabaseTypeSettingsController(	VALUE	rb_database_type_btree_settings_controller )	{
 
@@ -231,9 +231,9 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentDatabaseTypeSettingsCont
 																		Switch Settings
 *******************************************************************************************************************************************************************************************/
 
-/*****************************
+/****************************
 *  record_number_retrieval  *
-*****************************/
+****************************/
 
 //	DB_RECNUM			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_recordNumberRetrieval( VALUE	rb_database_type_btree_settings_controller )	{
@@ -273,9 +273,9 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_recordNumberRetrieval( VALUE	r
 		return rb_database_type_btree_settings_controller;
 	}
 
-/*************************
+/**********************
 *  reverse_splitting  *
-*************************/
+**********************/
 
 //	DB_REVSPLITOFF		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_reverseSplitting( VALUE	rb_database_type_btree_settings_controller )	{
@@ -301,9 +301,9 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_reverseSplitting( VALUE	rb_dat
 		return rb_database_type_btree_settings_controller;
 	}
 
-	/********************************
+	/*******************************
 	*  turn_reverse_splitting_off  *
-	********************************/
+	*******************************/
 	VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_turnReverseSplittingOff( VALUE	rb_database_type_btree_settings_controller )	{
 	
 		RPDB_DatabaseTypeBtreeSettingsController*	c_database_type_btree_settings_controller;
@@ -353,9 +353,9 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_setMinimumKeysPerPage(	VALUE	r
 																		Callback Public Methods
 *******************************************************************************************************************************************************************************************/
 	
-/********************************
+/******************************
 *  set_prefix_compare_method  *
-********************************/
+******************************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_bt_prefix.html
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_setPrefixCompareMethod(	VALUE	rb_database_type_btree_settings_controller,
@@ -368,9 +368,9 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_setPrefixCompareMethod(	VALUE	
 
 }
 */
-/****************************
+/**************************
 *  prefix_compare_method  *
-****************************/
+**************************/
 /*
 VALUE (*prefix_compare_method)(	VALUE		database, 
 									const DBT*			data_one, 
@@ -381,9 +381,9 @@ VALUE (*prefix_compare_method)(	VALUE		database,
 
 }
 */
-/*************************
+/***********************
 *  set_compare_method  *
-*************************/
+***********************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_bt_compare.html
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_setCompareMethod(	VALUE	rb_database_type_btree_settings_controller,
@@ -396,9 +396,9 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_setCompareMethod(	VALUE	rb_dat
 
 }
 */
-/*********************
+/*******************
 *  compare_method  *
-*********************/
+*******************/
 /*
 VALUE(*compare_method)(	VALUE		database, 
 						const DBT*			data_one, 
@@ -409,9 +409,9 @@ VALUE(*compare_method)(	VALUE		database,
 
 }
 */
-/**********************************
+/*********************************
 *  set_duplicate_compare_method  *
-**********************************/
+*********************************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_dup_compare.html
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_setDuplicateCompareMethod(	VALUE	rb_database_type_btree_settings_controller,

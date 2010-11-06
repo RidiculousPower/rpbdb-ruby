@@ -73,7 +73,7 @@ void Init_RPDB_DatabaseTypeHashSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_new(	int			argc,
@@ -149,9 +149,9 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_new(	int			argc,
 	return rb_database_type_hash_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																												VALUE*		args __attribute__ ((unused)),
@@ -160,9 +160,9 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_initialize(	int				argc __attri
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_parentEnvironment(	VALUE	rb_database_type_hash_settings_controller )	{
 
@@ -172,9 +172,9 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_parentEnvironment(	VALUE	rb_dat
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_parentDatabase(	VALUE	rb_database_type_hash_settings_controller )	{
 
@@ -184,9 +184,9 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_parentDatabase(	VALUE	rb_databa
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_parentSettingsController(	VALUE	rb_database_type_hash_settings_controller )	{
 
@@ -196,9 +196,9 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_parentSettingsController(	VALUE
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
 
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_type_hash_settings_controller )	{
 
@@ -208,9 +208,9 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_parentDatabaseSettingsControlle
 	return rb_parent_database_settings_controller;
 }
 
-/***************************************
+/*********************************************
 *  parent_database_type_settings_controller  *
-***************************************/
+*********************************************/
 
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_parentDatabaseTypeSettingsController(	VALUE	rb_database_type_hash_settings_controller )	{
 
@@ -224,9 +224,9 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_parentDatabaseTypeSettingsContr
 																		Set Settings
 *******************************************************************************************************************************************************************************************/
 
-/******************
+/***************
 *  table_size  *
-******************/
+***************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_h_nelem.html
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_tableSize( VALUE	rb_database_type_hash_settings_controller )	{
@@ -237,9 +237,9 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_tableSize( VALUE	rb_database_ty
 	return INT2FIX( RPDB_DatabaseTypeHashSettingsController_tableSize( c_database_type_hash_settings_controller ) );
 }
 
-/*********************
+/*******************
 *  set_table_size  *
-*********************/
+*******************/
 
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_setTableSize(	VALUE	rb_database_type_hash_settings_controller, 
 																VALUE	rb_number_of_elements )	{
@@ -253,9 +253,9 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_setTableSize(	VALUE	rb_database
 	return rb_database_type_hash_settings_controller;
 }
 
-/**************************
+/************************
 *  hash_density_factor  *
-**************************/
+************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_h_ffactor.html
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_hashDensityFactor( VALUE	rb_database_type_hash_settings_controller )	{
@@ -266,9 +266,9 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_hashDensityFactor( VALUE	rb_dat
 	return INT2FIX( RPDB_DatabaseTypeHashSettingsController_hashDensityFactor( c_database_type_hash_settings_controller ) );
 }
 
-/******************************
+/****************************
 *  set_hash_density_factor  *
-******************************/
+****************************/
 
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_setHashDensityFactor(	VALUE	rb_database_type_hash_settings_controller, 
 																		VALUE	rb_density )	{
@@ -286,9 +286,9 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_setHashDensityFactor(	VALUE	rb_
 																		Callback Public Methods
 *******************************************************************************************************************************************************************************************/
 	
-/**********************
+/********************
 *  set_hash_method  *
-**********************/
+********************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_h_hash.html
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_setHashMethod(	VALUE	rb_database_type_hash_settings_controller,
@@ -302,9 +302,9 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_setHashMethod(	VALUE	rb_databas
 
 }
 */
-/******************
+/****************
 *  hash_method  *
-******************/
+****************/
 /*
 VALUE(*hash_method)(	VALUE			database, 
 					const VALUE				bytes, 
@@ -315,9 +315,9 @@ VALUE(*hash_method)(	VALUE			database,
 
 }
 */
-/**************************
+/***********************
 *  set_compare_method  *
-**************************/
+***********************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_h_compare.html
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_setCompareMethod(		VALUE	rb_database_type_hash_settings_controller,
@@ -330,9 +330,9 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_setCompareMethod(		VALUE	rb_dat
 
 }
 */
-/*********************
+/******************
 *  compareMethod  *
-*********************/
+******************/
 /*
 VALUE(*compare_method)(	VALUE		database, 
 						const DBT*			data_one, 
@@ -343,9 +343,9 @@ VALUE(*compare_method)(	VALUE		database,
 
 }
 */
-/**********************************
+/*********************************
 *  set_duplicate_compare_method  *
-**********************************/
+*********************************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_dup_compare.html
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_setDuplicateCompareMethod(	VALUE	rb_database_type_hash_settings_controller,

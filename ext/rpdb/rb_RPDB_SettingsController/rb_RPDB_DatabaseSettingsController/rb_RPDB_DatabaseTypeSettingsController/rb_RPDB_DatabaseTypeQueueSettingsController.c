@@ -78,7 +78,7 @@ void Init_RPDB_DatabaseTypeQueueSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_DatabaseTypeQueueSettingsController_new(	int			argc,
@@ -154,9 +154,9 @@ VALUE rb_RPDB_DatabaseTypeQueueSettingsController_new(	int			argc,
 	return rb_database_type_queue_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_DatabaseTypeQueueSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																												VALUE*		args __attribute__ ((unused)),
@@ -165,9 +165,9 @@ VALUE rb_RPDB_DatabaseTypeQueueSettingsController_initialize(	int				argc __attr
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentEnvironment(	VALUE	rb_database_type_queue_settings_controller )	{
 
@@ -177,9 +177,9 @@ VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentEnvironment(	VALUE	rb_da
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 
 VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentDatabase(	VALUE	rb_database_type_queue_settings_controller )	{
 
@@ -189,9 +189,9 @@ VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentDatabase(	VALUE	rb_datab
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentSettingsController(	VALUE	rb_database_type_queue_settings_controller )	{
 
@@ -201,9 +201,9 @@ VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentSettingsController(	VALU
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
 
 VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_type_queue_settings_controller )	{
 
@@ -213,9 +213,9 @@ VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentDatabaseSettingsControll
 	return rb_parent_database_settings_controller;
 }
 
-/***************************************
+/*********************************************
 *  parent_database_type_settings_controller  *
-***************************************/
+*********************************************/
 
 VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentDatabaseTypeSettingsController(	VALUE	rb_database_type_queue_settings_controller )	{
 
@@ -229,9 +229,9 @@ VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentDatabaseTypeSettingsCont
 																		Switch Settings
 *******************************************************************************************************************************************************************************************/
 
-/*********************************
+/***********************************
 *  return_key_data_pairs_in_order  *
-*********************************/
+***********************************/
 
 //	DB_INORDER					http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 VALUE rb_RPDB_DatabaseTypeQueueSettingsController_returnKeyDataPairsInOrder( VALUE	rb_database_type_queue_settings_controller )	{
@@ -243,9 +243,9 @@ VALUE rb_RPDB_DatabaseTypeQueueSettingsController_returnKeyDataPairsInOrder( VAL
 																																:	Qfalse );
 }
 
-	/*****************************************
+	/*******************************************
 	*  turn_return_key_data_pairs_in_order_on  *
-	*****************************************/
+	*******************************************/
 
 	VALUE rb_RPDB_DatabaseTypeQueueSettingsController_turnReturnKeyDataPairsInOrderOn( VALUE	rb_database_type_queue_settings_controller )	{
 
@@ -257,9 +257,9 @@ VALUE rb_RPDB_DatabaseTypeQueueSettingsController_returnKeyDataPairsInOrder( VAL
 		return rb_database_type_queue_settings_controller;
 	}
 
-	/*****************************************
+	/***************************************
 	*  return_key_data_pairs_in_order_off  *
-	*****************************************/
+	***************************************/
 
 	VALUE rb_RPDB_DatabaseTypeQueueSettingsController_turnReturnKeyDataPairsInOrderOff( VALUE	rb_database_type_queue_settings_controller )	{
 
@@ -275,9 +275,9 @@ VALUE rb_RPDB_DatabaseTypeQueueSettingsController_returnKeyDataPairsInOrder( VAL
 																		Set Settings
 *******************************************************************************************************************************************************************************************/
 
-/*****************************************
+/****************************************
 *  number_of_pages_for_underlying_data  *
-*****************************************/
+****************************************/
 
 //	For Queue Databases		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_q_extentsize.html
 VALUE rb_RPDB_DatabaseTypeQueueSettingsController_numberOfPagesForUnderlyingData( VALUE	rb_database_type_queue_settings_controller )	{
@@ -288,9 +288,9 @@ VALUE rb_RPDB_DatabaseTypeQueueSettingsController_numberOfPagesForUnderlyingData
 	return FIX2INT( RPDB_DatabaseTypeQueueSettingsController_numberOfPagesForUnderlyingData( c_database_type_queue_settings_controller ) );
 }
 
-/*****************************************
+/********************************************
 *  set_number_of_pages_for_underlying_data  *
-*****************************************/
+********************************************/
 
 VALUE rb_RPDB_DatabaseTypeQueueSettingsController_setNumberOfPagesForUnderlyingData(	VALUE	rb_database_type_queue_settings_controller, 
 																						VALUE	rb_number_of_pages_for_underlying_data )	{

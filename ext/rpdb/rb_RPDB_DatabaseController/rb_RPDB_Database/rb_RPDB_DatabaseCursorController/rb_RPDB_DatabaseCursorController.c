@@ -67,9 +67,9 @@ void Init_RPDB_DatabaseCursorController()	{
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-/************
-*  new  *
-************/
+/*************
+*  self.new  *
+*************/
 
 VALUE rb_RPDB_DatabaseCursorController_new( int			argc,
 																						VALUE*	args,
@@ -121,9 +121,9 @@ VALUE rb_RPDB_DatabaseCursorController_new( int			argc,
 	return rb_database_cursor_controller;	
 }
 
-/************
-*  new  *
-************/
+/*************
+*  self.new  *
+*************/
 
 VALUE rb_RPDB_DatabaseCursorController_initialize( 	int			argc __attribute__ ((unused)),
 																							VALUE*	args __attribute__ ((unused)),

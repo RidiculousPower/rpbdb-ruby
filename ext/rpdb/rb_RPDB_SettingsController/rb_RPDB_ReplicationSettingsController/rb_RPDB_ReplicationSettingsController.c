@@ -109,7 +109,7 @@ void Init_RPDB_ReplicationSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 //	FIX - replication should be moved under database (probably?)
@@ -159,9 +159,9 @@ VALUE rb_RPDB_ReplicationSettingsController_new(	int			argc,
 	return rb_replication_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_ReplicationSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																									VALUE*		args __attribute__ ((unused)),
@@ -170,9 +170,9 @@ VALUE rb_RPDB_ReplicationSettingsController_initialize(	int				argc __attribute_
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_ReplicationSettingsController_parentEnvironment(	VALUE	rb_replication_settings_controller )	{
 
@@ -182,9 +182,9 @@ VALUE rb_RPDB_ReplicationSettingsController_parentEnvironment(	VALUE	rb_replicat
 	return rb_parent_environment;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_ReplicationSettingsController_parentSettingsController(	VALUE	rb_replication_settings_controller )	{
 
@@ -194,9 +194,9 @@ VALUE rb_RPDB_ReplicationSettingsController_parentSettingsController(	VALUE	rb_r
 	return rb_parent_settings_controller;
 }
 
-/*********
+/********
 *  on?  *
-*********/
+********/
 
 //	DB_INIT_REP             http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 VALUE rb_RPDB_ReplicationSettingsController_on( VALUE	rb_replication_settings_controller )	{
@@ -208,9 +208,9 @@ VALUE rb_RPDB_ReplicationSettingsController_on( VALUE	rb_replication_settings_co
 																							:	Qfalse );
 }
 
-/*************
+/************
 *  turn_on  *
-*************/
+************/
 
 VALUE rb_RPDB_ReplicationSettingsController_turnOn( VALUE	rb_replication_settings_controller )	{
 
@@ -222,9 +222,9 @@ VALUE rb_RPDB_ReplicationSettingsController_turnOn( VALUE	rb_replication_setting
 	return rb_replication_settings_controller;
 }
 
-/*************
+/*********
 *  off?  *
-*************/
+*********/
 
 VALUE rb_RPDB_ReplicationSettingsController_off( VALUE	rb_replication_settings_controller )	{
 
@@ -235,9 +235,9 @@ VALUE rb_RPDB_ReplicationSettingsController_off( VALUE	rb_replication_settings_c
 																							:	Qfalse );
 }
 
-/*****************
+/*************
 *  turn_off  *
-*****************/
+*************/
 
 VALUE rb_RPDB_ReplicationSettingsController_turnOff( VALUE	rb_replication_settings_controller )	{
 
@@ -250,9 +250,9 @@ VALUE rb_RPDB_ReplicationSettingsController_turnOff( VALUE	rb_replication_settin
 }
 
 
-/*************
+/*************************************
 *  client_to_client_synchronization  *
-*************/
+*************************************/
 
 //	Currently, the replication manager framework only supports a single client peer, and the last specified peer is used
 VALUE rb_RPDB_ReplicationSettingsController_clientToClientSynchronization( VALUE	rb_replication_settings_controller )	{
@@ -264,9 +264,9 @@ VALUE rb_RPDB_ReplicationSettingsController_clientToClientSynchronization( VALUE
 																													:	Qfalse );
 }
 
-	/*****************
+	/*********************************************
 	*  turn_client_to_client_synchronization_on  *
-	*****************/
+	*********************************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnClientToClientSynchronizationOn( VALUE	rb_replication_settings_controller )	{
 
@@ -278,9 +278,9 @@ VALUE rb_RPDB_ReplicationSettingsController_clientToClientSynchronization( VALUE
 		return rb_replication_settings_controller;
 	}
 
-	/*****************
+	/*********************************************
 	*  turn_client_to_client_synchronization_on  *
-	*****************/
+	*********************************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnClientToClientSynchronizationOff( VALUE	rb_replication_settings_controller )	{
 
@@ -320,9 +320,9 @@ VALUE rb_RPDB_ReplicationSettingsController_singleBulkTransfer( VALUE	rb_replica
 		return rb_replication_settings_controller;
 	}
 
-	/*********************************
+	/**********************************
 	*  turn_single_bulk_transfer_off  *
-	*********************************/
+	**********************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnSingleBulkTransferOff( VALUE	rb_replication_settings_controller )	{
 
@@ -334,9 +334,9 @@ VALUE rb_RPDB_ReplicationSettingsController_singleBulkTransfer( VALUE	rb_replica
 		return rb_replication_settings_controller;
 	}
 
-/*************************************
+/***************************************
 *  delay_new_sync_until_explicit_call  *
-*************************************/
+***************************************/
 
 //	DB_REP_CONF_DELAYCLIENT         http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_config.html
 VALUE rb_RPDB_ReplicationSettingsController_delayNewSyncUntilExplicitCall( VALUE	rb_replication_settings_controller )	{
@@ -349,9 +349,9 @@ VALUE rb_RPDB_ReplicationSettingsController_delayNewSyncUntilExplicitCall( VALUE
 
 }
 
-	/*********************************************
+	/***********************************************
 	*  turn_delay_new_sync_until_explicit_call_on  *
-	*********************************************/
+	***********************************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnDelayNewSyncUntilExplicitCallOn( VALUE	rb_replication_settings_controller )	{
 
@@ -363,9 +363,9 @@ VALUE rb_RPDB_ReplicationSettingsController_delayNewSyncUntilExplicitCall( VALUE
 		return rb_replication_settings_controller;
 	}
 
-	/*********************************************
+	/************************************************
 	*  turn_delay_new_sync_until_explicit_call_off  *
-	*********************************************/
+	************************************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnDelayNewSyncUntilExplicitCallOff( VALUE	rb_replication_settings_controller )	{
 
@@ -377,9 +377,9 @@ VALUE rb_RPDB_ReplicationSettingsController_delayNewSyncUntilExplicitCall( VALUE
 		return rb_replication_settings_controller;
 	}
 
-/*************************
+/**********************
 *  use_master_leases  *
-*************************/
+**********************/
 
 //	DB_REP_CONF_LEASE               http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_config.html
 VALUE rb_RPDB_ReplicationSettingsController_useMasterLeases( VALUE	rb_replication_settings_controller )	{
@@ -391,9 +391,9 @@ VALUE rb_RPDB_ReplicationSettingsController_useMasterLeases( VALUE	rb_replicatio
 																										:	Qfalse );
 }
 
-	/*****************************
+	/******************************
 	*  turn_use_master_leases_on  *
-	*****************************/
+	******************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnUseMasterLeasesOn( VALUE	rb_replication_settings_controller )	{
 
@@ -405,9 +405,9 @@ VALUE rb_RPDB_ReplicationSettingsController_useMasterLeases( VALUE	rb_replicatio
 		return rb_replication_settings_controller;
 	}
 
-	/*****************************
+	/*******************************
 	*  turn_use_master_leases_off  *
-	*****************************/
+	*******************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnUseMasterLeasesOff( VALUE	rb_replication_settings_controller )	{
 
@@ -419,9 +419,9 @@ VALUE rb_RPDB_ReplicationSettingsController_useMasterLeases( VALUE	rb_replicatio
 		return rb_replication_settings_controller;
 	}
 
-/*************************************
+/**********************************
 *  reinitialize_outdated_clients  *
-*************************************/
+**********************************/
 
 //	DB_REP_CONF_NOAUTOINIT          http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_config.html
 VALUE rb_RPDB_ReplicationSettingsController_reinitializeOutdatedClients( VALUE	rb_replication_settings_controller )	{
@@ -433,9 +433,9 @@ VALUE rb_RPDB_ReplicationSettingsController_reinitializeOutdatedClients( VALUE	r
 																													:	Qfalse );
 }
 
-	/*********************************************
+	/******************************************
 	*  turn_reinitialize_outdated_clients_on  *
-	*********************************************/
+	******************************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnReinitializeOutdatedClientsOn( VALUE	rb_replication_settings_controller )	{
 
@@ -447,9 +447,9 @@ VALUE rb_RPDB_ReplicationSettingsController_reinitializeOutdatedClients( VALUE	r
 		return rb_replication_settings_controller;
 	}
 
-	/*********************************************
+	/*******************************************
 	*  turn_reinitialize_outdated_clients_off  *
-	*********************************************/
+	*******************************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnReinitializeOutdatedClientsOff( VALUE	rb_replication_settings_controller )	{
 
@@ -461,9 +461,9 @@ VALUE rb_RPDB_ReplicationSettingsController_reinitializeOutdatedClients( VALUE	r
 		return rb_replication_settings_controller;
 	}
 
-/*********************
+/*******************
 *  prohibit_wait?  *
-*********************/
+*******************/
 
 //	DB_REP_CONF_NOWAIT              http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_config.html
 VALUE rb_RPDB_ReplicationSettingsController_prohibitWait( VALUE	rb_replication_settings_controller )	{
@@ -475,9 +475,9 @@ VALUE rb_RPDB_ReplicationSettingsController_prohibitWait( VALUE	rb_replication_s
 																									:	Qfalse );
 }
 
-	/*************************
+	/**************************
 	*  turn_prohibit_wait_on  *
-	*************************/
+	**************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnProhibitWaitOn( VALUE	rb_replication_settings_controller )	{
 
@@ -489,9 +489,9 @@ VALUE rb_RPDB_ReplicationSettingsController_prohibitWait( VALUE	rb_replication_s
 		return rb_replication_settings_controller;
 	}
 
-	/*****************************
+	/***************************
 	*  turn_prohibit_wait_off  *
-	*****************************/
+	***************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnProhibitWaitOff( VALUE	rb_replication_settings_controller )	{
 
@@ -517,9 +517,9 @@ VALUE rb_RPDB_ReplicationSettingsController_requireStrictMajority( VALUE	rb_repl
 																											:	Qfalse );
 }
 
-	/*************************************
+	/************************************
 	*  turn_require_strict_majority_on  *
-	*************************************/
+	************************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnRequireStrictMajorityOn( VALUE	rb_replication_settings_controller )	{
 
@@ -545,9 +545,9 @@ VALUE rb_RPDB_ReplicationSettingsController_requireStrictMajority( VALUE	rb_repl
 		return rb_replication_settings_controller;
 	}
 
-/*****************
+/***************
 *  is_master?  *
-*****************/
+***************/
 
 //	DB_REP_MASTER			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_start.html
 VALUE rb_RPDB_ReplicationSettingsController_isMaster( VALUE	rb_replication_settings_controller )	{
@@ -559,9 +559,9 @@ VALUE rb_RPDB_ReplicationSettingsController_isMaster( VALUE	rb_replication_setti
 																								:	Qfalse );
 }
 
-	/*********************
+	/******************
 	*  set_is_master  *
-	*********************/
+	******************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_setIsMaster( VALUE	rb_replication_settings_controller )	{
 
@@ -573,9 +573,9 @@ VALUE rb_RPDB_ReplicationSettingsController_isMaster( VALUE	rb_replication_setti
 		return rb_replication_settings_controller;
 	}
 
-/*****************
+/***************
 *  is_client?  *
-*****************/
+***************/
 
 //	DB_REP_CLIENT		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/repmgr_start.html
 VALUE rb_RPDB_ReplicationSettingsController_isClient( VALUE	rb_replication_settings_controller )	{
@@ -587,9 +587,9 @@ VALUE rb_RPDB_ReplicationSettingsController_isClient( VALUE	rb_replication_setti
 																								:	Qfalse );
 }
 
-	/*********************
+	/******************
 	*  set_is_client  *
-	*********************/
+	******************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_setIsClient( VALUE	rb_replication_settings_controller )	{
 
@@ -601,9 +601,9 @@ VALUE rb_RPDB_ReplicationSettingsController_isClient( VALUE	rb_replication_setti
 		return rb_replication_settings_controller;
 	}
 
-/*****************
+/**************************************
 *  start_as_client_or_rally_election  *
-*****************/
+**************************************/
 
 VALUE rb_RPDB_ReplicationSettingsController_startAsClientOrRallyElection( VALUE	rb_replication_settings_controller )	{
 
@@ -614,9 +614,9 @@ VALUE rb_RPDB_ReplicationSettingsController_startAsClientOrRallyElection( VALUE	
 																													:	Qfalse );
 }
 
-	/*****************
+	/******************************************
 	*  set_start_as_client_or_rally_election  *
-	*****************/
+	******************************************/
 
 	//	DB_REP_ELECTION		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/repmgr_start.html
 	VALUE rb_RPDB_ReplicationSettingsController_setStartAsClientOrRallyElection( VALUE	rb_replication_settings_controller )	{
@@ -629,9 +629,9 @@ VALUE rb_RPDB_ReplicationSettingsController_startAsClientOrRallyElection( VALUE	
 		return rb_replication_settings_controller;
 	}
 
-/*************
+/**********
 *  limit  *
-*************/
+**********/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_limit.html
 VALUE rb_RPDB_ReplicationSettingsController_limit( VALUE	rb_replication_settings_controller )	{
@@ -642,9 +642,9 @@ VALUE rb_RPDB_ReplicationSettingsController_limit( VALUE	rb_replication_settings
 	return INT2FIX( RPDB_ReplicationSettingsController_limit( c_replication_settings_controller ) );
 }
 
-	/*****************
+	/**************
 	*  set_limit  *
-	*****************/
+	**************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_setLimit(	VALUE	rb_replication_settings_controller, 
 															VALUE	rb_limit_in_gbytes, 
@@ -660,9 +660,9 @@ VALUE rb_RPDB_ReplicationSettingsController_limit( VALUE	rb_replication_settings
 		return rb_replication_settings_controller;
 	}
 
-/*************
+/*********
 *  host  *
-*************/
+*********/
 
 VALUE rb_RPDB_ReplicationSettingsController_host( VALUE	rb_replication_settings_controller )	{
 
@@ -672,9 +672,9 @@ VALUE rb_RPDB_ReplicationSettingsController_host( VALUE	rb_replication_settings_
 	return rb_str_new2( RPDB_ReplicationSettingsController_host( c_replication_settings_controller ) );
 }
 
-	/*****************
+	/*************
 	*  set_host  *
-	*****************/
+	*************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/repmgr_local_site.html
 	//	specifies the host identification string and port number for the local system.
@@ -690,9 +690,9 @@ VALUE rb_RPDB_ReplicationSettingsController_host( VALUE	rb_replication_settings_
 		return rb_replication_settings_controller;
 	}
 
-/*************
+/*********
 *  port  *
-*************/
+*********/
 
 VALUE rb_RPDB_ReplicationSettingsController_port( VALUE	rb_replication_settings_controller )	{
 
@@ -702,9 +702,9 @@ VALUE rb_RPDB_ReplicationSettingsController_port( VALUE	rb_replication_settings_
 	return INT2FIX( RPDB_ReplicationSettingsController_port( c_replication_settings_controller ) );
 }
 
-	/*****************
+	/*************
 	*  set_port  *
-	*****************/
+	*************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_setPort(	VALUE	rb_replication_settings_controller,
 															VALUE	rb_host, 
@@ -720,9 +720,9 @@ VALUE rb_RPDB_ReplicationSettingsController_port( VALUE	rb_replication_settings_
 		return rb_replication_settings_controller;
 	}
 
-/*****************
+/***************
 *  site_count  *
-*****************/
+***************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_nsites.html
 VALUE rb_RPDB_ReplicationSettingsController_siteCount( VALUE	rb_replication_settings_controller )	{
@@ -733,9 +733,9 @@ VALUE rb_RPDB_ReplicationSettingsController_siteCount( VALUE	rb_replication_sett
 	return INT2FIX( RPDB_ReplicationSettingsController_siteCount( c_replication_settings_controller ) );
 }
 
-	/*********************
+	/*******************
 	*  set_site_count  *
-	*********************/
+	*******************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_setSiteCount(	VALUE	rb_replication_settings_controller, 
 																VALUE	rb_site_count )	{
@@ -749,9 +749,9 @@ VALUE rb_RPDB_ReplicationSettingsController_siteCount( VALUE	rb_replication_sett
 		return rb_replication_settings_controller;
 	}
 
-/*****************************
+/**************************
 *  priority_order_number  *
-*****************************/
+**************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_priority.html
 VALUE rb_RPDB_ReplicationSettingsController_priorityOrderNumber( VALUE	rb_replication_settings_controller )	{
@@ -762,9 +762,9 @@ VALUE rb_RPDB_ReplicationSettingsController_priorityOrderNumber( VALUE	rb_replic
 	return INT2FIX( RPDB_ReplicationSettingsController_priorityOrderNumber( c_replication_settings_controller ) );
 }
 
-	/*****************************
+	/******************************
 	*  set_priority_order_number  *
-	*****************************/
+	******************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_priority.html
 	VALUE rb_RPDB_ReplicationSettingsController_setPriorityOrderNumber(	VALUE	rb_replication_settings_controller,
@@ -836,9 +836,9 @@ VALUE rb_RPDB_ReplicationSettingsController_retransmissionThresholdMaximum( VALU
 		return rb_replication_settings_controller;
 	}
 
-/*************************
+/************************
 *  slowest_clock_value  *
-*************************/
+************************/
 
 VALUE rb_RPDB_ReplicationSettingsController_slowestClockValue( VALUE	rb_replication_settings_controller )	{
 
@@ -848,9 +848,9 @@ VALUE rb_RPDB_ReplicationSettingsController_slowestClockValue( VALUE	rb_replicat
 	return INT2FIX( RPDB_ReplicationSettingsController_slowestClockValue( c_replication_settings_controller ) );
 }
 
-	/*****************************
+	/****************************
 	*  set_slowest_clock_value  *
-	*****************************/
+	****************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_setSlowestClockValue(	VALUE	rb_replication_settings_controller, 
 																		VALUE	rb_slowest_clock_value )	{
@@ -892,9 +892,9 @@ VALUE rb_RPDB_ReplicationSettingsController_fastestClockSkewValue( VALUE	rb_repl
 		return rb_replication_settings_controller;
 	}
 
-/*************************************************
+/***********************************************
 *  acknowledgement_policy_settings_controller  *
-*************************************************/
+***********************************************/
 
 VALUE rb_RPDB_ReplicationSettingsController_electionSettingsController( VALUE	rb_replication_settings_controller )	{
 
@@ -904,9 +904,9 @@ VALUE rb_RPDB_ReplicationSettingsController_electionSettingsController( VALUE	rb
 	return RUBY_RPDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( RPDB_ReplicationSettingsController_electionSettingsController( c_replication_settings_controller ) );
 }
 
-/*********************************
+/********************************
 *  timeout_settings_controller  *
-*********************************/
+********************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_timeout.html
 VALUE rb_RPDB_ReplicationSettingsController_timeoutSettingsController( VALUE	rb_replication_settings_controller )	{

@@ -103,9 +103,9 @@ void Init_RPDB_Environment()	{
 	rb_define_alias(						rb_RPDB_Environment, 	"is_set_to",												"settings_controller"	);
 }
 
-/********
-*  new  *
-********/
+/*************
+*  self.new  *
+*************/
 
 VALUE rb_RPDB_Environment_new(	int			argc,
 																VALUE*	args,

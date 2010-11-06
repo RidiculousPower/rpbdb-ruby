@@ -77,9 +77,9 @@ void Init_RPDB_DatabaseCursorSettingsController()	{
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-/************
-*  new  *
-************/
+/*************
+*  self.new  *
+*************/
 
 VALUE rb_RPDB_DatabaseCursorSettingsController_new(	int			argc,
 																										VALUE*	args,
@@ -150,9 +150,9 @@ VALUE rb_RPDB_DatabaseCursorSettingsController_new(	int			argc,
 	return rb_database_cursor_settings_controller;		
 }
 
-/************
+/***************
 *  initialize  *
-************/
+***************/
 
 VALUE rb_RPDB_DatabaseCursorSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																											VALUE*		args __attribute__ ((unused)),
@@ -161,9 +161,9 @@ VALUE rb_RPDB_DatabaseCursorSettingsController_initialize(	int				argc __attribu
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 VALUE rb_RPDB_DatabaseCursorSettingsController_parentEnvironment(	VALUE	rb_database_cursor_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseCursorSettingsController_parentDatabaseSettingsController( rb_database_cursor_settings_controller );
@@ -172,9 +172,9 @@ VALUE rb_RPDB_DatabaseCursorSettingsController_parentEnvironment(	VALUE	rb_datab
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 VALUE rb_RPDB_DatabaseCursorSettingsController_parentDatabase(	VALUE	rb_database_cursor_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseCursorSettingsController_parentDatabaseSettingsController( rb_database_cursor_settings_controller );
@@ -183,9 +183,9 @@ VALUE rb_RPDB_DatabaseCursorSettingsController_parentDatabase(	VALUE	rb_database
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 VALUE rb_RPDB_DatabaseCursorSettingsController_parentSettingsController(	VALUE	rb_database_cursor_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseCursorSettingsController_parentDatabaseSettingsController( rb_database_cursor_settings_controller );
@@ -194,9 +194,9 @@ VALUE rb_RPDB_DatabaseCursorSettingsController_parentSettingsController(	VALUE	r
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
 VALUE rb_RPDB_DatabaseCursorSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_cursor_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_cursor_settings_controller,
@@ -205,9 +205,9 @@ VALUE rb_RPDB_DatabaseCursorSettingsController_parentDatabaseSettingsController(
 	return rb_parent_database_settings_controller;
 }
 
-/**********************************
+/*******************************
 *  duplicate_retains_location  *
-**********************************/
+*******************************/
 
 //	DB_POSITION		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_dup.html
 VALUE rb_RPDB_DatabaseCursorSettingsController_duplicateRetainsLocation( VALUE	rb_database_cursor_settings_controller )	{
@@ -219,9 +219,9 @@ VALUE rb_RPDB_DatabaseCursorSettingsController_duplicateRetainsLocation( VALUE	r
 																														:	Qfalse );
 }
 
-	/**************************************
+	/***************************************
 	*  turn_duplicate_retains_location_on  *
-	**************************************/
+	***************************************/
 
 	VALUE rb_RPDB_DatabaseCursorSettingsController_turnDuplicateRetainsLocationOn( VALUE	rb_database_cursor_settings_controller )	{
 
@@ -233,9 +233,9 @@ VALUE rb_RPDB_DatabaseCursorSettingsController_duplicateRetainsLocation( VALUE	r
 		return rb_database_cursor_settings_controller;
 	}
 
-	/**************************************
+	/****************************************
 	*  turn_duplicate_retains_location_off  *
-	**************************************/
+	****************************************/
 
 	VALUE rb_RPDB_DatabaseCursorSettingsController_turnDuplicateRetainsLocationOff( VALUE	rb_database_cursor_settings_controller )	{
 
@@ -251,9 +251,9 @@ VALUE rb_RPDB_DatabaseCursorSettingsController_duplicateRetainsLocation( VALUE	r
 																		Controllers
 *******************************************************************************************************************************************************************************************/
 
-/****************************
+/*********************
 *  cache_controller  *
-****************************/
+*********************/
 
 VALUE rb_RPDB_DatabaseCursorSettingsController_cacheSettingsController( VALUE	rb_database_cursor_settings_controller )	{
 
@@ -263,9 +263,9 @@ VALUE rb_RPDB_DatabaseCursorSettingsController_cacheSettingsController( VALUE	rb
 	return RUBY_RPDB_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER( RPDB_DatabaseCursorSettingsController_cacheSettingsController( c_database_cursor_settings_controller ) );
 }
 
-/******************************
+/**************************
 *  read_write_controller  *
-******************************/
+**************************/
 
 VALUE rb_RPDB_DatabaseCursorSettingsController_readWriteSettingsController( VALUE	rb_database_cursor_settings_controller )	{
 

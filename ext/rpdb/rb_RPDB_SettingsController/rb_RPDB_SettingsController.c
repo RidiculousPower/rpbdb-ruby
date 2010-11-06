@@ -103,9 +103,9 @@ void Init_RPDB_SettingsController()	{
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-/********
-*  new  *
-********/
+/*************
+*  self.new  *
+*************/
 
 VALUE rb_RPDB_SettingsController_new(	int				argc,
 																			VALUE*		args,
@@ -143,9 +143,9 @@ VALUE rb_RPDB_SettingsController_new(	int				argc,
 	return rb_settings_controller;		
 }
 
-/*********
+/***************
 *  initialize  *
-*********/
+***************/
 
 VALUE rb_RPDB_SettingsController_initialize(	int				argc __attribute__ ((unused)),
 																				VALUE*		args __attribute__ ((unused)),
@@ -279,9 +279,9 @@ VALUE rb_RPDB_SettingsController_logSettingsController( VALUE	rb_settings_contro
 	return rb_log_settings_controller;	
 }
 
-/****************************
+/*****************************
 *  lock_settings_controller  *
-****************************/
+*****************************/
 
 VALUE rb_RPDB_SettingsController_lockSettingsController( VALUE	rb_settings_controller )	{
 
@@ -305,9 +305,9 @@ VALUE rb_RPDB_SettingsController_lockSettingsController( VALUE	rb_settings_contr
 	return rb_lock_settings_controller;	
 }
 
-/****************************
+/************************************
 *  replication_settings_controller  *
-****************************/
+************************************/
 
 VALUE rb_RPDB_SettingsController_replicationSettingsController( VALUE	rb_settings_controller )	{
 

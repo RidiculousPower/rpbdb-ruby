@@ -61,7 +61,7 @@ void Init_RPDB_Mutex()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/mutex_alloc.html
@@ -101,7 +101,7 @@ VALUE rb_RPDB_Mutex_new(	int			argc,
 
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/mutex_alloc.html

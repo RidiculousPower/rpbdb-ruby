@@ -79,7 +79,7 @@ void Init_RPDB_DatabaseVerificationSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_DatabaseVerificationSettingsController_new(	int			argc,
@@ -125,9 +125,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_new(	int			argc,
 	return rb_database_verification_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_DatabaseVerificationSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																														VALUE*		args __attribute__ ((unused)),
@@ -136,9 +136,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_initialize(	int				argc __a
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_DatabaseVerificationSettingsController_parentEnvironment(	VALUE	rb_database_verification_settings_controller )	{
 
@@ -148,9 +148,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_parentEnvironment(	VALUE	rb
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 
 VALUE rb_RPDB_DatabaseVerificationSettingsController_parentDatabase(	VALUE	rb_database_verification_settings_controller )	{
 
@@ -160,9 +160,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_parentDatabase(	VALUE	rb_da
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_DatabaseVerificationSettingsController_parentSettingsController(	VALUE	rb_database_verification_settings_controller )	{
 	
@@ -172,9 +172,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_parentSettingsController(	V
 	return rb_parent_settings_controller;	
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
 
 VALUE rb_RPDB_DatabaseVerificationSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_verification_settings_controller )	{
 	
@@ -184,9 +184,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_parentDatabaseSettingsContr
 	return rb_parent_database_settings_controller;
 }
 
-/*************
+/*********
 *  file  *
-*************/
+*********/
 
 VALUE rb_RPDB_DatabaseVerificationSettingsController_file(	VALUE	rb_database_verification_settings_controller )	{
 
@@ -203,9 +203,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_file(	VALUE	rb_database_ver
 	return rb_file;	
 }
 
-/*****************
+/*************
 *  set_file  *
-*****************/
+*************/
 
 VALUE rb_RPDB_DatabaseVerificationSettingsController_setFile(	VALUE	rb_database_verification_settings_controller, 
 																															VALUE	rb_data_output_file )	{
@@ -223,9 +223,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_setFile(	VALUE	rb_database_
 	return rb_database_verification_settings_controller;
 }
 
-/**********************************
+/***********************************
 *  aggressive_key_data_pair_dump?  *
-**********************************/
+***********************************/
 
 //	DB_AGGRESSIVE						http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_verify.html
 VALUE rb_RPDB_DatabaseVerificationSettingsController_aggressiveKeyDataPairDump( VALUE	rb_database_verification_settings_controller )	{
@@ -251,9 +251,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_aggressiveKeyDataPairDump( 
 		return rb_database_verification_settings_controller;
 	}
 
-	/******************************************
+	/*******************************************
 	*  turn_aggressive_key_data_pair_dump_off  *
-	******************************************/
+	*******************************************/
 
 	VALUE rb_RPDB_DatabaseVerificationSettingsController_turnAggressiveKeyDataPairDumpOff( VALUE	rb_database_verification_settings_controller )	{
 
@@ -265,9 +265,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_aggressiveKeyDataPairDump( 
 		return rb_database_verification_settings_controller;
 	}
 
-/******************************
+/**************************
 *  printable_characters?  *
-******************************/
+**************************/
 
 //	DB_PRINTABLE						http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_verify.html
 VALUE rb_RPDB_DatabaseVerificationSettingsController_printableCharacters( VALUE	rb_database_verification_settings_controller )	{
@@ -279,9 +279,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_printableCharacters( VALUE	
 																																:	Qfalse );
 }
 
-	/**********************************
+	/*********************************
 	*  turn_printable_characters_on  *
-	**********************************/
+	*********************************/
 
 	VALUE rb_RPDB_DatabaseVerificationSettingsController_turnPrintableCharactersOn( VALUE	rb_database_verification_settings_controller )	{
 
@@ -322,9 +322,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_skipOrderCheck( VALUE	rb_da
 
 }
 
-	/******************************
+	/*****************************
 	*  turn_skip_order_check_on  *
-	******************************/
+	*****************************/
 
 	VALUE rb_RPDB_DatabaseVerificationSettingsController_turnSkipOrderCheckOn( VALUE	rb_database_verification_settings_controller )	{
 
@@ -365,9 +365,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_onlyOrderCheck( VALUE	rb_da
 
 }
 
-	/******************************
+	/*****************************
 	*  turn_only_order_check_on  *
-	******************************/
+	*****************************/
 
 	VALUE rb_RPDB_DatabaseVerificationSettingsController_turnOnlyOrderCheckOn(	VALUE	rb_database_verification_settings_controller )	{
 
@@ -393,9 +393,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_onlyOrderCheck( VALUE	rb_da
 		return rb_database_verification_settings_controller;
 	}
 
-/**************************
+/***********************
 *  force_order_check?  *
-**************************/
+***********************/
 
 VALUE rb_RPDB_DatabaseVerificationSettingsController_forceOrderCheck(	VALUE	rb_database_verification_settings_controller )	{
 
@@ -420,9 +420,9 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_forceOrderCheck(	VALUE	rb_d
 		return rb_database_verification_settings_controller;
 	}
 
-	/******************************
+	/*******************************
 	*  turn_force_order_check_off  *
-	******************************/
+	*******************************/
 
 	VALUE rb_RPDB_DatabaseVerificationSettingsController_turnForceOrderCheckOff(	VALUE	rb_database_verification_settings_controller )	{
 

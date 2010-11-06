@@ -61,7 +61,7 @@ void Init_RPDB_MemoryPoolFile()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_MemoryPoolFile_new(	int			argc,
@@ -102,7 +102,7 @@ VALUE rb_RPDB_MemoryPoolFile_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 	
 VALUE rb_RPDB_MemoryPoolFile_initialize(	int				argc __attribute__ ((unused)),

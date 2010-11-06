@@ -74,7 +74,7 @@ void Init_RPDB_DatabaseRecordFixedLengthSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 	
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_new(	int			argc,
@@ -155,9 +155,9 @@ VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_new(	int			argc,
 	return rb_database_record_fixed_length_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																																VALUE*		args __attribute__ ((unused)),
@@ -166,9 +166,9 @@ VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_initialize(	int				arg
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentEnvironment(	VALUE	rb_database_record_fixed_length_settings_controller )	{
 
@@ -178,9 +178,9 @@ VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentEnvironment(	VAL
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabase(	VALUE	rb_database_record_fixed_length_settings_controller )	{
 
@@ -190,9 +190,9 @@ VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabase(	VALUE	
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentSettingsController(	VALUE	rb_database_record_fixed_length_settings_controller )	{
 
@@ -202,9 +202,9 @@ VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentSettingsControll
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
 
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_record_fixed_length_settings_controller )	{
 
@@ -214,9 +214,9 @@ VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabaseSettings
 	return rb_parent_database_settings_controller;
 }
 
-/***************************************
+/***********************************************
 *  parent_database_record_settings_controller  *
-***************************************/
+***********************************************/
 
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabaseRecordSettingsController(	VALUE	rb_database_record_fixed_length_settings_controller )	{
 
@@ -226,9 +226,9 @@ VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabaseRecordSe
 	return rb_parent_database_record_settings_controller;
 }
 
-/*********************
+/******************
 *  record_length  *
-*********************/
+******************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_re_len.html
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_recordLength( VALUE	rb_database_record_fixed_length_settings_controller )	{
@@ -239,9 +239,9 @@ VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_recordLength( VALUE	rb
 	return INT2FIX( RPDB_DatabaseRecordFixedLengthSettingsController_recordLength( c_database_record_fixed_length_settings_controller ) );
 }
 
-/************************
+/**********************
 *  set_record_length  *
-************************/
+**********************/
 
 //	The DB->set_re_len method configures a database, not only operations performed using the specified DB name.
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_setRecordLength(	VALUE	rb_database_record_fixed_length_settings_controller,
@@ -256,9 +256,9 @@ VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_setRecordLength(	VALUE
 	return rb_database_record_fixed_length_settings_controller;
 }
 
-/********************
+/*****************
 *  padding_byte  *
-********************/
+*****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_re_pad.html
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_paddingByte( VALUE	rb_database_record_fixed_length_settings_controller )	{
@@ -269,9 +269,9 @@ VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_paddingByte( VALUE	rb_
 	return INT2FIX( RPDB_DatabaseRecordFixedLengthSettingsController_paddingByte( c_database_record_fixed_length_settings_controller ) );
 }
 
-/************************
+/*********************
 *  set_padding_byte  *
-************************/
+*********************/
 	
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_re_pad.html
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_setPaddingByte(	VALUE	rb_database_record_fixed_length_settings_controller, 

@@ -71,9 +71,9 @@ void Init_RPDB_DatabaseController()	{
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-/********
-*  new  *
-********/
+/*************
+*  self.new  *
+*************/
 
 VALUE rb_RPDB_DatabaseController_new(	int			argc,
 																			VALUE*	args,
@@ -171,8 +171,8 @@ VALUE rb_RPDB_DatabaseController_parentEnvironment(	VALUE rb_database_controller
 }
 
 /*****************
-*  new_database  *
-*  new           *
+*  self.new_database  *
+*  self.new           *
 *****************/
 
 //	Return a name that has been created or creates it if necessary

@@ -86,9 +86,9 @@ void Init_RPDB_DatabaseCursorReadWriteSettingsController()	{
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-/************
-*  new  *
-************/
+/*************
+*  self.new  *
+*************/
 
 VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_new(	int			argc,
 																															VALUE*	args,
@@ -171,9 +171,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_new(	int			argc,
 	return rb_database_cursor_read_write_settings_controller;		
 }
 
-/************
+/***************
 *  initialize  *
-************/
+***************/
 
 VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																															VALUE*		args __attribute__ ((unused)),
@@ -182,9 +182,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_initialize(	int				argc 
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentEnvironment(	VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
@@ -194,9 +194,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentEnvironment(	VALUE
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 
 VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabase(	VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
@@ -206,9 +206,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabase(	VALUE	rb
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentSettingsController(	VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
@@ -218,9 +218,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentSettingsController
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
 
 VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
@@ -230,9 +230,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabaseSettingsCo
 	return rb_parent_database_settings_controller;
 }
 
-/***************************************
+/***********************************************
 *  parent_database_cursor_settings_controller  *
-***************************************/
+***********************************************/
 
 VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabaseCursorSettingsController(	VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
@@ -246,9 +246,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabaseCursorSett
 																		Switch Settings
 *******************************************************************************************************************************************************************************************/
 
-/********************
+/*****************
 *  permit_write  *
-********************/
+*****************/
 
 //	DB_WRITECURSOR			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_cursor.html
 VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_permitWrite( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
@@ -260,9 +260,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_permitWrite( VALUE	rb_da
 																																:	Qfalse );
 }
 
-	/************************
+	/********************
 	*  permit_write_on  *
-	************************/
+	********************/
 
 	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnPermitWriteOn( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
@@ -274,9 +274,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_permitWrite( VALUE	rb_da
 		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
-	/************************
+	/*********************
 	*  permit_write_off  *
-	************************/
+	*********************/
 
 	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnPermitWriteOff( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
@@ -288,9 +288,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_permitWrite( VALUE	rb_da
 		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
-/********************
+/*****************
 *  ignore_lease  *
-********************/
+*****************/
 
 //	DB_IGNORE_LEASE				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_ignoreLease( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
@@ -302,9 +302,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_ignoreLease( VALUE	rb_da
 																																:	Qfalse );
 }
 
-	/************************
+	/********************
 	*  ignore_lease_on  *
-	************************/
+	********************/
 
 	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_ignoreLeaseOn( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
@@ -316,9 +316,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_ignoreLease( VALUE	rb_da
 		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
-	/************************
+	/*********************
 	*  ignore_lease_off  *
-	************************/
+	*********************/
 
 	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_ignoreLeaseOff( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
@@ -330,9 +330,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_ignoreLease( VALUE	rb_da
 		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
-/************************************
+/**************************************
 *  write_locks_instead_of_read_locks  *
-************************************/
+**************************************/
 
 //	DB_RMW					http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadLocks( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
@@ -344,9 +344,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadL
 																																				:	Qfalse );
 }
 
-	/****************************************
+	/**********************************************
 	*  turn_write_locks_instead_of_read_locks_on  *
-	****************************************/
+	**********************************************/
 
 	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOn( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
@@ -358,9 +358,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadL
 		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
-	/****************************************
+	/***********************************************
 	*  turn_write_locks_instead_of_read_locks_off  *
-	****************************************/
+	***********************************************/
 
 	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOff( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
@@ -372,9 +372,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadL
 		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
-/********************************
+/*******************************
 *  return_multiple_data_items  *
-********************************/
+*******************************/
 
 //	DB_MULTIPLE				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleDataItems( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
@@ -386,9 +386,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleDataItems(
 																																	:	Qfalse );
 }
 
-	/************************************
+	/***************************************
 	*  turn_return_multiple_data_items_on  *
-	************************************/
+	***************************************/
 
 	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleDataItemsOn( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
@@ -400,9 +400,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleDataItems(
 		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
-	/************************************
+	/****************************************
 	*  turn_return_multiple_data_items_off  *
-	************************************/
+	****************************************/
 
 	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleDataItemsOff( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
@@ -433,9 +433,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleKeyDataPai
 																																			:	Qfalse );
 }
 
-	/***************************************
+	/*******************************************
 	*  turn_return_multiple_key_data_pairs_on  *
-	***************************************/
+	*******************************************/
 
 	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleKeyDataPairsOn( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 
@@ -447,9 +447,9 @@ VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_returnMultipleKeyDataPai
 		return rb_database_cursor_record_read_write_settings_controller;
 	}
 
-	/***************************************
+	/********************************************
 	*  turn_return_multiple_key_data_pairs_off  *
-	***************************************/
+	********************************************/
 
 	VALUE rb_RPDB_DatabaseCursorReadWriteSettingsController_turnReturnMultipleKeyDataPairsOff( VALUE	rb_database_cursor_record_read_write_settings_controller )	{
 	

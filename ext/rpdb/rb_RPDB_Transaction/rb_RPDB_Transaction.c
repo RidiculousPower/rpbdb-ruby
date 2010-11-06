@@ -55,7 +55,7 @@ void Init_RPDB_Transaction()	{
 }
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_Transaction_new(	int			argc,

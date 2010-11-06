@@ -53,7 +53,7 @@ void Init_RPDB_Key()	{
 }
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_Key_new(	int			argc,
@@ -91,7 +91,7 @@ VALUE rb_RPDB_Key_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_Key_initialize(	int				argc __attribute__ ((unused)),

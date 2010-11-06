@@ -76,7 +76,7 @@ void Init_RPDB_DatabaseErrorSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_DatabaseErrorSettingsController_new(	int			argc,
@@ -147,9 +147,9 @@ VALUE rb_RPDB_DatabaseErrorSettingsController_new(	int			argc,
 	return rb_database_error_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_DatabaseErrorSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																										VALUE*		args __attribute__ ((unused)),
@@ -158,9 +158,9 @@ VALUE rb_RPDB_DatabaseErrorSettingsController_initialize(	int				argc __attribut
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_DatabaseErrorSettingsController_parentEnvironment(	VALUE	rb_database_error_settings_controller )	{
 
@@ -170,9 +170,9 @@ VALUE rb_RPDB_DatabaseErrorSettingsController_parentEnvironment(	VALUE	rb_databa
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 
 VALUE rb_RPDB_DatabaseErrorSettingsController_parentDatabase(	VALUE	rb_database_error_settings_controller )	{
 
@@ -182,9 +182,9 @@ VALUE rb_RPDB_DatabaseErrorSettingsController_parentDatabase(	VALUE	rb_database_
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_DatabaseErrorSettingsController_parentSettingsController(	VALUE	rb_database_error_settings_controller )	{
 
@@ -194,9 +194,9 @@ VALUE rb_RPDB_DatabaseErrorSettingsController_parentSettingsController(	VALUE	rb
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
 
 VALUE rb_RPDB_DatabaseErrorSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_error_settings_controller )	{
 
@@ -206,9 +206,9 @@ VALUE rb_RPDB_DatabaseErrorSettingsController_parentDatabaseSettingsController(	
 	return rb_parent_database_settings_controller;
 }
 
-/*************
+/*********
 *  file  *
-*************/
+*********/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_errfile.html
 VALUE rb_RPDB_DatabaseErrorSettingsController_file( VALUE	rb_database_error_settings_controller )	{
@@ -227,9 +227,9 @@ VALUE rb_RPDB_DatabaseErrorSettingsController_file( VALUE	rb_database_error_sett
 	return rb_file;
 }
 
-/****************
+/*************
 *  set_file  *
-****************/
+*************/
 
 VALUE rb_RPDB_DatabaseErrorSettingsController_setFile(	VALUE	rb_database_error_settings_controller, 
 														VALUE	rb_error_file )	{
@@ -247,9 +247,9 @@ VALUE rb_RPDB_DatabaseErrorSettingsController_setFile(	VALUE	rb_database_error_s
 	return rb_database_error_settings_controller;
 }
 
-/**************
+/***********
 *  prefix  *
-**************/
+***********/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_errpfx.html
 VALUE rb_RPDB_DatabaseErrorSettingsController_prefix( VALUE	rb_database_error_settings_controller )	{
@@ -260,9 +260,9 @@ VALUE rb_RPDB_DatabaseErrorSettingsController_prefix( VALUE	rb_database_error_se
 	return rb_str_new2( RPDB_DatabaseErrorSettingsController_prefix( c_database_error_settings_controller ) );
 }
 
-/******************
+/***************
 *  set_prefix  *
-******************/
+***************/
 
 VALUE rb_RPDB_DatabaseErrorSettingsController_setPrefix(	VALUE			rb_database_error_settings_controller, 
 															VALUE		rb_error_prefix )	{
@@ -276,9 +276,9 @@ VALUE rb_RPDB_DatabaseErrorSettingsController_setPrefix(	VALUE			rb_database_err
 	return rb_database_error_settings_controller;
 }
 
-/****************************
+/******************************
 *  set_error_callback_method  *
-****************************/
+******************************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_errcall.html
 VALUE rb_RPDB_DatabaseErrorSettingsController_setErrorCallbackMethod(	VALUE	rb_database_error_settings_controller,
@@ -290,9 +290,9 @@ VALUE rb_RPDB_DatabaseErrorSettingsController_setErrorCallbackMethod(	VALUE	rb_d
 	C_RPDB_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
 }
 */
-/****************************
+/**************************
 *  error_callback_method  *
-****************************/
+**************************/
 /*
 void (*error_callback_method)(	RBDB*			environment,
 								const VALUE		error_prefix_string,

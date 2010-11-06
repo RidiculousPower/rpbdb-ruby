@@ -59,9 +59,9 @@ void Init_RPDB_ThreadSettingsController()	{
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-/************
-*  new  *
-************/
+/*************
+*  self.new  *
+*************/
 
 VALUE rb_RPDB_ThreadSettingsController_new(	int			argc,
 																						VALUE*	args,
@@ -105,9 +105,9 @@ VALUE rb_RPDB_ThreadSettingsController_new(	int			argc,
 	return rb_thread_settings_controller;		
 }
 
-/************
+/***************
 *  initialize  *
-************/
+***************/
 
 VALUE rb_RPDB_ThreadSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																							VALUE*		args __attribute__ ((unused)),
@@ -116,9 +116,9 @@ VALUE rb_RPDB_ThreadSettingsController_initialize(	int				argc __attribute__ ((u
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_ThreadSettingsController_parentEnvironment(	VALUE	rb_thread_settings_controller )	{
 
@@ -128,9 +128,9 @@ VALUE rb_RPDB_ThreadSettingsController_parentEnvironment(	VALUE	rb_thread_settin
 	return rb_parent_environment;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_ThreadSettingsController_parentSettingsController(	VALUE	rb_thread_settings_controller )	{
 
@@ -140,9 +140,9 @@ VALUE rb_RPDB_ThreadSettingsController_parentSettingsController(	VALUE	rb_thread
 	return rb_parent_settings_controller;
 }
 
-/**********
+/********
 *  on?  *
-**********/
+********/
 
 //	DB_THREAD		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_open.html
 VALUE rb_RPDB_ThreadSettingsController_on( VALUE	rb_thread_settings_controller )	{
@@ -154,9 +154,9 @@ VALUE rb_RPDB_ThreadSettingsController_on( VALUE	rb_thread_settings_controller )
 																				:	Qfalse );
 }
 
-/************
+/*********
 *  off?  *
-************/
+*********/
 
 VALUE rb_RPDB_ThreadSettingsController_off( VALUE	rb_thread_settings_controller )	{
 
@@ -167,9 +167,9 @@ VALUE rb_RPDB_ThreadSettingsController_off( VALUE	rb_thread_settings_controller 
 																				:	Qfalse );
 }
 
-/****************
+/************
 *  turn_on  *
-****************/
+************/
 
 VALUE rb_RPDB_ThreadSettingsController_turnOn( VALUE	rb_thread_settings_controller )	{
 
@@ -181,9 +181,9 @@ VALUE rb_RPDB_ThreadSettingsController_turnOn( VALUE	rb_thread_settings_controll
 	return rb_thread_settings_controller;
 }
 
-/****************
+/*************
 *  turn_off  *
-****************/
+*************/
 
 VALUE rb_RPDB_ThreadSettingsController_turnOff( VALUE	rb_thread_settings_controller )	{
 
@@ -195,9 +195,9 @@ VALUE rb_RPDB_ThreadSettingsController_turnOff( VALUE	rb_thread_settings_control
 	return rb_thread_settings_controller;
 }
 
-/*********************
+/*****************
 *  thread_count  *
-*********************/
+*****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_thread_count.html
 VALUE rb_RPDB_ThreadSettingsController_threadCount( VALUE	rb_thread_settings_controller )	{
@@ -208,9 +208,9 @@ VALUE rb_RPDB_ThreadSettingsController_threadCount( VALUE	rb_thread_settings_con
 	return FIX2INT( RPDB_ThreadSettingsController_threadCount( c_thread_settings_controller ) );
 }
 
-/**********************
+/*********************
 *  set_thread_count  *
-**********************/
+*********************/
 
 VALUE rb_RPDB_ThreadSettingsController_setThreadCount(	VALUE	rb_thread_settings_controller, 
 														VALUE	rb_thread_count )	{
@@ -224,9 +224,9 @@ VALUE rb_RPDB_ThreadSettingsController_setThreadCount(	VALUE	rb_thread_settings_
 	return rb_thread_settings_controller;
 }
 
-/************************************************
+/*************************************************
 *  set_unique_thread_identifier_callback_method  *
-************************************************/
+*************************************************/
 /*
 VALUE rb_RPDB_ThreadSettingsController_setUniqueThreadIdentifierCallbackMethod(	VALUE	rb_thread_settings_controller,
  																				void (*unique_thread_identifier_callback_method)(	VALUE				environment,
@@ -235,9 +235,9 @@ VALUE rb_RPDB_ThreadSettingsController_setUniqueThreadIdentifierCallbackMethod(	
 
 }
 */
-/********************************************
+/*********************************************
 *  unique_thread_identifier_callback_method  *
-********************************************/
+*********************************************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_thread_id.html
 void (*unique_thread_identifier_callback_method)(	VALUE				environment,
@@ -246,9 +246,9 @@ void (*unique_thread_identifier_callback_method)(	VALUE				environment,
 
 }
 */
-/********************************************************************
+/*************************************************************************
 *  set_format_thread_and_process_identifier_for_display_callback_method  *
-********************************************************************/
+*************************************************************************/
 /*
 VALUE rb_RPDB_ThreadSettingsController_setFormatThreadAndProcessIdentifierForDisplayCallbackMethod(	VALUE	rb_thread_settings_controller,
  																									void (*format_thread_and_process_identifier_for_display_callback_method)(	VALUE				environment,
@@ -258,9 +258,9 @@ VALUE rb_RPDB_ThreadSettingsController_setFormatThreadAndProcessIdentifierForDis
 
 }
 */
-/****************************************************************
+/*********************************************************************
 *  format_thread_and_process_identifier_for_display_callback_method  *
-****************************************************************/
+*********************************************************************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_thread_id_string.html
 void (*format_thread_and_process_identifier_for_display_callback_method)(	VALUE				environment,
@@ -271,9 +271,9 @@ void (*format_thread_and_process_identifier_for_display_callback_method)(	VALUE	
 
 }
 */
-/************************************
+/****************************************
 *  set_is_thread_alive_callback_method  *
-************************************/
+****************************************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_isalive.html
 VALUE rb_RPDB_ThreadSettingsController_setIsThreadAliveCallbackgBDB_ThreadSettingsController* 									thread_settings_controller,

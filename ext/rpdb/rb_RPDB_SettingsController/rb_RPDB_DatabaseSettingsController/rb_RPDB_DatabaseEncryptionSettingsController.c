@@ -59,7 +59,7 @@ void Init_RPDB_DatabaseEncryptionSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_DatabaseEncryptionSettingsController_new(	int			argc,
@@ -105,9 +105,9 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_new(	int			argc,
 	return rb_database_encryption_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 	
 VALUE rb_RPDB_DatabaseEncryptionSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																																VALUE*		args __attribute__ ((unused)),
@@ -116,9 +116,9 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_initialize(	int				argc __att
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentEnvironment(	VALUE	rb_database_encryption_settings_controller )	{
 
@@ -128,9 +128,9 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentEnvironment(	VALUE	rb_d
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 
 VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentDatabase(	VALUE	rb_database_encryption_settings_controller )	{
 
@@ -140,9 +140,9 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentDatabase(	VALUE	rb_data
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentSettingsController(	VALUE	rb_database_encryption_settings_controller )	{
 
@@ -152,9 +152,9 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentSettingsController(	VAL
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
 
 VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_encryption_settings_controller )	{
 
@@ -164,9 +164,9 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_parentDatabaseSettingsControl
 	return rb_parent_database_encryption_settings_controller;
 }
 
-/*****************
+/**************
 *  encrypted  *
-*****************/
+**************/
 
 //	DB_ENCRYPT		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_fileid_reset.html
 //	DB_ENCRYPT		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
@@ -179,9 +179,9 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_encrypted( VALUE	rb_database_
 																												:	Qfalse	);
 }
 
-	/*************************
+	/***********************
 	*  turn_encryption_on  *
-	*************************/
+	***********************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_encrypt.html
 	VALUE rb_RPDB_DatabaseEncryptionSettingsController_turnEncryptionOn(	VALUE	rb_database_encryption_settings_controller,
@@ -196,9 +196,9 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_encrypted( VALUE	rb_database_
 		return rb_database_encryption_settings_controller;
 	}
 
-	/*************************
+	/************************
 	*  turn_encryption_off  *
-	*************************/
+	************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_encrypt.html
 	VALUE rb_RPDB_DatabaseEncryptionSettingsController_turnEncryptionOff(	VALUE	rb_database_encryption_settings_controller, 

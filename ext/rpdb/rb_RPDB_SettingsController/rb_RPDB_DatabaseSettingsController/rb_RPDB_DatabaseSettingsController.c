@@ -101,7 +101,6 @@ void Init_RPDB_DatabaseSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"byte_swapped?",											"is_byte_swapped?" 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"byteswapped?",												"is_byte_swapped?" 	);
 
-	//	FIX - shouldn't this be environment settings rather than under DB? or otherwise the error controller under DB?
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"error_settings_controller",					rb_RPDB_DatabaseSettingsController_errorSettingsController,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"errors",															"error_settings_controller"	);
 
@@ -252,9 +251,9 @@ VALUE rb_RPDB_DatabaseSettingsController_parentDatabase(	VALUE	rb_database_setti
 	return rb_parent_database;
 }
 
-/********************
+/*******************************
 *  parent_settings_controller  *
-********************/
+*******************************/
 
 VALUE rb_RPDB_DatabaseSettingsController_parentSettingsController(	VALUE	rb_database_settings_controller )	{
 

@@ -78,7 +78,7 @@ void Init_RPDB_LogController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_LogController_new(	int			argc,
@@ -114,7 +114,7 @@ VALUE rb_RPDB_LogController_new(	int			argc,
 
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_LogController_initialize(	int				argc __attribute__ ((unused)),

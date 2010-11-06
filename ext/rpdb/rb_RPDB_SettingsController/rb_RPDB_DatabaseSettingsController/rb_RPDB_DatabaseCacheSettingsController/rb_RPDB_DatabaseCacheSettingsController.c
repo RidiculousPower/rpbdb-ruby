@@ -86,9 +86,9 @@ void Init_RPDB_DatabaseCacheSettingsController()	{
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-/********
-*  new  *
-********/
+/*************
+*  self.new  *
+*************/
 
 VALUE rb_RPDB_DatabaseCacheSettingsController_new(	int			argc,
 																										VALUE*	args,
@@ -158,9 +158,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_new(	int			argc,
 	return rb_database_cache_settings_controller;		
 }
 
-/*********
+/***************
 *  initialize  *
-*********/
+***************/
 
 VALUE rb_RPDB_DatabaseCacheSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																										VALUE*		args __attribute__ ((unused)),
@@ -169,9 +169,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_initialize(	int				argc __attribut
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 VALUE rb_RPDB_DatabaseCacheSettingsController_parentEnvironment(	VALUE	rb_database_cache_settings_controller )	{
 
 	VALUE	rb_parent_settings_controller				=	rb_RPDB_DatabaseCacheSettingsController_parentSettingsController( rb_database_cache_settings_controller );
@@ -180,9 +180,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_parentEnvironment(	VALUE	rb_databa
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 VALUE rb_RPDB_DatabaseCacheSettingsController_parentDatabase(	VALUE	rb_database_cache_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseCacheSettingsController_parentDatabaseSettingsController( rb_database_cache_settings_controller );
@@ -191,9 +191,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_parentDatabase(	VALUE	rb_database_
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 VALUE rb_RPDB_DatabaseCacheSettingsController_parentSettingsController(	VALUE	rb_database_cache_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseCacheSettingsController_parentDatabaseSettingsController( rb_database_cache_settings_controller );
@@ -202,9 +202,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_parentSettingsController(	VALUE	rb
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
 VALUE rb_RPDB_DatabaseCacheSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_cache_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_cache_settings_controller,
@@ -213,9 +213,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_parentDatabaseSettingsController(	
 	return rb_parent_database_settings_controller;
 }
 
-/********************
+/**********************
 *  max_size_in_bytes  *
-********************/
+**********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_cachesize.html
 //	Because databases opened within Berkeley DB environments use the cache specified to the environment, 
@@ -228,9 +228,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_maxSizeInBytes( VALUE	rb_database_
 	return INT2NUM( RPDB_DatabaseCacheSettingsController_maxSizeInBytes( c_database_cache_settings_controller ) );
 }
 
-	/********************
+	/***********************
 	*  max_size_in_kbytes  *
-	********************/
+	***********************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_cachesize.html
 	VALUE rb_RPDB_DatabaseCacheSettingsController_maxSizeInKBytes( VALUE	rb_database_cache_settings_controller )	{
@@ -241,9 +241,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_maxSizeInBytes( VALUE	rb_database_
 		return INT2NUM( RPDB_DatabaseCacheSettingsController_maxSizeInKBytes( c_database_cache_settings_controller ) );
 	}
 
-	/********************
+	/***********************
 	*  max_size_in_mbytes  *
-	********************/
+	***********************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_cachesize.html
 	VALUE rb_RPDB_DatabaseCacheSettingsController_maxSizeInMBytes( VALUE	rb_database_cache_settings_controller )	{
@@ -254,9 +254,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_maxSizeInBytes( VALUE	rb_database_
 		return INT2NUM( RPDB_DatabaseCacheSettingsController_maxSizeInMBytes( c_database_cache_settings_controller ) );
 	}
 
-	/********************
+	/***********************
 	*  max_size_in_gbytes  *
-	********************/
+	***********************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_cachesize.html
 	VALUE rb_RPDB_DatabaseCacheSettingsController_maxSizeInGBytes( VALUE	rb_database_cache_settings_controller )	{
@@ -267,9 +267,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_maxSizeInBytes( VALUE	rb_database_
 		return INT2FIX( RPDB_DatabaseCacheSettingsController_maxSizeInGBytes( c_database_cache_settings_controller ) );
 	}
 
-/************************
+/**************************
 *  set_max_size_in_bytes  *
-************************/
+**************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_cachesize.html
 //	Because databases opened within Berkeley DB environments use the cache specified to the environment, 
@@ -286,9 +286,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 	return rb_database_cache_settings_controller;
 }
 
-	/************************
+	/***************************
 	*  set_max_size_in_kbytes  *
-	************************/
+	***************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
 	VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInKBytes(	VALUE	rb_database_cache_settings_controller, 
@@ -303,9 +303,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 		return rb_database_cache_settings_controller;
 	}
 
-	/************************
+	/***************************
 	*  set_max_size_in_mbytes  *
-	************************/
+	***************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
 	VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInMBytes(	VALUE	rb_database_cache_settings_controller, 
@@ -320,9 +320,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 		return rb_database_cache_settings_controller;
 	}
 
-	/************************
+	/***************************
 	*  set_max_size_in_gbytes  *
-	************************/
+	***************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
 	VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInGBytes(	VALUE	rb_database_cache_settings_controller, 
@@ -337,9 +337,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 		return rb_database_cache_settings_controller;
 	}
 
-	/****************************************
+	/***********************************************
 	*  set_max_size_in_gbytes_mbytes_kbytes_bytes  *
-	****************************************/
+	***********************************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
 	VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInGBytesMBytesKBytesBytes(	VALUE	rb_database_cache_settings_controller, 
@@ -360,9 +360,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 		return rb_database_cache_settings_controller;
 	}
 
-	/************************************
+	/****************************************
 	*  set_max_size_in_mbytes_kbytes_bytes  *
-	************************************/
+	****************************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
 	VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInMBytesKBytesBytes(	VALUE	rb_database_cache_settings_controller, 
@@ -381,9 +381,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 		return rb_database_cache_settings_controller;
 	}
 
-	/****************************
+	/*********************************
 	*  set_max_size_in_kbytes_bytes  *
-	****************************/
+	*********************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
 	VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInKBytesBytes(	VALUE	rb_database_cache_settings_controller, 
@@ -400,9 +400,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 		return rb_database_cache_settings_controller;
 	}
 
-/**************************
+/*************************
 *  number_cache_regions  *
-**************************/
+*************************/
 
 VALUE rb_RPDB_DatabaseCacheSettingsController_numberCacheRegions( VALUE	rb_database_cache_settings_controller )	{
 
@@ -412,7 +412,7 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_numberCacheRegions( VALUE	rb_datab
 	return INT2FIX( RPDB_DatabaseCacheSettingsController_numberCacheRegions( c_database_cache_settings_controller ) );
 }
 
-/****************************
+/*****************************
 *  set_number_cache_regions  *
 *****************************/
 
@@ -428,9 +428,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_setNumberCacheRegions(	VALUE	rb_da
 	return rb_database_cache_settings_controller;
 }
 
-/*********************
+/*****************
 *  cache_update  *
-*********************/
+*****************/
 
 	//	To be included in a later version:
 
@@ -463,9 +463,9 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_setNumberCacheRegions(	VALUE	rb_da
 																		Controllers
 *******************************************************************************************************************************************************************************************/
 
-/**************************
+/************************
 *  priority_controller  *
-**************************/
+************************/
 
 VALUE rb_RPDB_DatabaseCacheSettingsController_priorityController( VALUE	rb_database_cache_settings_controller )	{
 

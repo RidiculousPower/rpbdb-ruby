@@ -75,7 +75,7 @@ void Init_RPDB_MemoryPoolFilePageSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 	
 VALUE rb_RPDB_MemoryPoolFilePageSettingsController_new(	int			argc,
@@ -135,9 +135,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_new(	int			argc,
 	return rb_memory_pool_file_page_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_MemoryPoolFilePageSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																													VALUE*		args __attribute__ ((unused)),
@@ -146,9 +146,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_initialize(	int				argc __att
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentEnvironment(	VALUE	rb_memory_pool_file_page_settings_controller )	{
 
@@ -158,9 +158,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentEnvironment(	VALUE	rb_m
 	return rb_parent_environment;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentSettingsController(	VALUE	rb_memory_pool_file_page_settings_controller )	{
 
@@ -170,9 +170,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentSettingsController(	VAL
 	return rb_parent_settings_controller;	
 }
 
-/***************************************
+/*******************************************
 *  parent_memory_pool_settings_controller  *
-***************************************/
+*******************************************/
 
 VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentMemoryPoolSettingsController(	VALUE	rb_memory_pool_file_page_settings_controller )	{
 
@@ -182,9 +182,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentMemoryPoolSettingsContr
 	return rb_parent_memory_pool_settings_controller;	
 }
 
-/***************************************
+/************************************************
 *  parent_memory_pool_file_settings_controller  *
-***************************************/
+************************************************/
 
 VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentMemoryPoolFileSettingsController(	VALUE	rb_memory_pool_file_page_settings_controller )	{
 
@@ -194,9 +194,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentMemoryPoolFileSettingsC
 	return rb_parent_memory_pool_file_settings_controller;
 }
 
-/*****************************************
+/********************************************
 *  get_page_creates_page_if_does_not_exist  *
-*****************************************/
+********************************************/
 
 //	The DB_MPOOL_CREATE, DB_MPOOL_LAST, and DB_MPOOL_NEW flags are mutually exclusive.
 //	DB_MPOOL_CREATE		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_fget.html
@@ -209,9 +209,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageCreatesPageIfDoesNotEx
 																																		:	Qfalse );
 }
 
-	/*********************************************
+	/****************************************************
 	*  turn_get_page_creates_page_if_does_not_exist_on  *
-	*********************************************/
+	****************************************************/
 
 	VALUE rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageCreatesPageIfDoesNotExistOn( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
@@ -223,9 +223,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageCreatesPageIfDoesNotEx
 		return rb_memory_pool_file_page_settings_controller;
 	}
 
-	/*************************************************
+	/*****************************************************
 	*  turn_get_page_creates_page_if_does_not_exist_off  *
-	*************************************************/
+	*****************************************************/
 
 	VALUE rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageCreatesPageIfDoesNotExistOff( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
@@ -253,9 +253,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageWritesCopyBeforeEvicti
 																																		:	Qfalse );
 }
 
-	/*********************************************
+	/*************************************************
 	*  turn_get_page_writes_copy_before_eviction_on  *
-	*********************************************/
+	*************************************************/
 
 	VALUE rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageWritesCopyBeforeEvictionOn( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
@@ -267,9 +267,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageWritesCopyBeforeEvicti
 		return rb_memory_pool_file_page_settings_controller;
 	}
 
-	/*********************************************
+	/**************************************************
 	*  turn_get_page_writes_copy_before_eviction_off  *
-	*********************************************/
+	**************************************************/
 
 	VALUE rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageWritesCopyBeforeEvictionOff( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
@@ -281,9 +281,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageWritesCopyBeforeEvicti
 		return rb_memory_pool_file_page_settings_controller;
 	}
 
-/*********************************************
+/*************************************************
 *  get_page_writes_before_eviction_without_copy  *
-*********************************************/
+*************************************************/
 
 //	The page will be modified and must be written to the source file before being evicted from the pool. 
 //	No copy of the page will be made, regardless of the DB_MULTIVERSION setting. 
@@ -298,9 +298,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageWritesBeforeEvictionWi
 																																				:	Qfalse );
 }
 
-	/*************************************************************
+	/*********************************************************
 	*  turn_get_page_writes_before_eviction_without_copy_on  *
-	*************************************************************/
+	*********************************************************/
 
 	VALUE rb_RPDB_MemoryPoolFilePageSettingsController_turnWriteBeforeEvictionButProhibitMultiversionCopyOn( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
@@ -312,9 +312,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageWritesBeforeEvictionWi
 		return rb_memory_pool_file_page_settings_controller;
 	}
 
-	/*************************************************************
+	/**********************************************************
 	*  turn_get_page_writes_before_eviction_without_copy_off  *
-	*************************************************************/
+	**********************************************************/
 
 	VALUE rb_RPDB_MemoryPoolFilePageSettingsController_turnWriteBeforeEvictionButProhibitMultiversionCopyOff( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
@@ -326,9 +326,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageWritesBeforeEvictionWi
 		return rb_memory_pool_file_page_settings_controller;
 	}
 	
-/*****************************
+/*******************************
 *  get_page_returns_last_page  *
-*****************************/
+*******************************/
 
 //	The DB_MPOOL_CREATE, DB_MPOOL_LAST, and DB_MPOOL_NEW flags are mutually exclusive.
 //	Return the last page of the source file, and copy its page number into the memory location to which pgnoaddr refers.
@@ -342,9 +342,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageReturnsLastPage( VALUE
 																																:	Qfalse );
 }
 
-	/*************************************
+	/***************************************
 	*  turn_get_page_returns_last_page_on  *
-	*************************************/
+	***************************************/
 
 	VALUE rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageReturnsLastPageOn( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
@@ -356,9 +356,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageReturnsLastPage( VALUE
 		return rb_memory_pool_file_page_settings_controller;
 	}
 
-	/*************************************
+	/****************************************
 	*  turn_get_page_returns_last_page_off  *
-	*************************************/
+	****************************************/
 
 	VALUE rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageReturnsLastPageOff( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
@@ -370,9 +370,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageReturnsLastPage( VALUE
 		return rb_memory_pool_file_page_settings_controller;
 	}	
 	
-/*****************************
+/******************************
 *  get_page_creates_new_page  *
-*****************************/
+******************************/
 
 //	The DB_MPOOL_CREATE, DB_MPOOL_LAST, and DB_MPOOL_NEW flags are mutually exclusive.
 //	Create a new page in the file, and copy its page number into the memory location to which pgnoaddr refers. 
@@ -387,9 +387,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageCreatesNewPage( VALUE	
 																																:	Qfalse );
 }
 
-	/*************************************
+	/**************************************
 	*  turn_get_page_creates_new_page_on  *
-	*************************************/
+	**************************************/
 
 	VALUE rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageCreatesNewPageOn( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
@@ -401,9 +401,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageCreatesNewPage( VALUE	
 		return rb_memory_pool_file_page_settings_controller;
 	}
 
-	/*************************************
+	/***************************************
 	*  turn_get_page_creates_new_page_off  *
-	*************************************/
+	***************************************/
 
 	VALUE rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageCreatesNewPageOff( VALUE	rb_memory_pool_file_page_settings_controller )	{
 

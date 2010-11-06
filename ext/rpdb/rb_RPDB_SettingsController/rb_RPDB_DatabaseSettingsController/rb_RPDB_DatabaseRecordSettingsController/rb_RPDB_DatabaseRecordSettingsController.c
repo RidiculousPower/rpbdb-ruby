@@ -69,7 +69,7 @@ void Init_RPDB_DatabaseRecordSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 	
 VALUE rb_RPDB_DatabaseRecordSettingsController_new(	int			argc,
@@ -141,9 +141,9 @@ VALUE rb_RPDB_DatabaseRecordSettingsController_new(	int			argc,
 	return rb_database_record_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_DatabaseRecordSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																											VALUE*		args __attribute__ ((unused)),
@@ -153,9 +153,9 @@ VALUE rb_RPDB_DatabaseRecordSettingsController_initialize(	int				argc __attribu
 }
 
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_DatabaseRecordSettingsController_parentEnvironment(	VALUE	rb_database_record_settings_controller )	{
 
@@ -165,9 +165,9 @@ VALUE rb_RPDB_DatabaseRecordSettingsController_parentEnvironment(	VALUE	rb_datab
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 
 VALUE rb_RPDB_DatabaseRecordSettingsController_parentDatabase(	VALUE	rb_database_record_settings_controller )	{
 
@@ -177,9 +177,9 @@ VALUE rb_RPDB_DatabaseRecordSettingsController_parentDatabase(	VALUE	rb_database
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_DatabaseRecordSettingsController_parentSettingsController(	VALUE	rb_database_record_settings_controller )	{
 
@@ -189,9 +189,9 @@ VALUE rb_RPDB_DatabaseRecordSettingsController_parentSettingsController(	VALUE	r
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
 
 VALUE rb_RPDB_DatabaseRecordSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_record_settings_controller )	{
 

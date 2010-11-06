@@ -77,7 +77,7 @@ void Init_RPDB_LockDeadlockDetectorSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_new(	int			argc,
@@ -132,9 +132,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_new(	int			argc,
 	return rb_lock_deadlock_detector_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																														VALUE*		args __attribute__ ((unused)),
@@ -143,9 +143,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_initialize(	int				argc __a
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentEnvironment(	VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -155,9 +155,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentEnvironment(	VALUE	rb
 	return rb_parent_environment;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentSettingsController(	VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -167,9 +167,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentSettingsController(	V
 	return rb_parent_settings_controller;	
 }
 
-/***************************************
+/************************************
 *  parent_lock_settings_controller  *
-***************************************/
+************************************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentLockSettingsController(	VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -179,9 +179,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_parentLockSettingsControlle
 	return rb_parent_lock_settings_controller;
 }
 
-/*********************
+/****************
 *  is_default?  *
-*********************/
+****************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_isDefault( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -192,9 +192,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_isDefault( VALUE	rb_lock_de
 																													:	Qfalse );
 }
 
-	/*********************
+	/*******************
 	*  set_to_default  *
-	*********************/
+	*******************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_lk_detect.html
 	VALUE rb_RPDB_LockDeadlockDetectorSettingsController_setToDefault( VALUE	rb_lock_deadlock_detector_settings_controller )	{
@@ -207,9 +207,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_isDefault( VALUE	rb_lock_de
 		return rb_lock_deadlock_detector_settings_controller;
 	}
 
-/*****************************
+/********************
 *  reject_expired?  *
-*****************************/
+********************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectExpired( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -220,9 +220,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectExpired( VALUE	rb_loc
 																														:	Qfalse );
 }
 
-	/*************************
+	/**************************
 	*  set_to_reject_expired  *
-	*************************/
+	**************************/
 
 	VALUE rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectExpired( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -234,9 +234,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectExpired( VALUE	rb_loc
 		return rb_lock_deadlock_detector_settings_controller;
 	}
 
-/*****************************************
+/***********************************
 *  reject_locker_with_most_locks?  *
-*****************************************/
+***********************************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithMostLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -247,9 +247,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithMostLocks( 
 																																	:	Qfalse );
 }
 
-	/*************************************
+	/*****************************************
 	*  set_to_reject_locker_with_most_locks  *
-	*************************************/
+	*****************************************/
 
 	VALUE rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithMostLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -261,9 +261,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithMostLocks( 
 		return rb_lock_deadlock_detector_settings_controller;
 	}
 
-/*********************************************
+/*****************************************
 *  reject_locker_with_most_write_locks?  *
-*********************************************/
+*****************************************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithMostWriteLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -274,9 +274,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithMostWriteLo
 																																			:	Qfalse );
 }
 
-	/*********************************************
+	/***********************************************
 	*  set_to_reject_locker_with_most_write_locks  *
-	*********************************************/
+	***********************************************/
 
 	VALUE rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithMostWriteLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -288,9 +288,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithMostWriteLo
 		return rb_lock_deadlock_detector_settings_controller;
 	}
 
-/*****************************************
+/*************************************
 *  reject_locker_with_fewest_locks?  *
-*****************************************/
+*************************************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithFewestLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -301,9 +301,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithFewestLocks
 																																		:	Qfalse );
 }
 
-	/*****************************************
+	/*******************************************
 	*  set_to_reject_locker_with_fewest_locks  *
-	*****************************************/
+	*******************************************/
 
 	VALUE rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithFewestLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -315,9 +315,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithFewestLocks
 		return rb_lock_deadlock_detector_settings_controller;
 	}
 
-/*************************************************
+/*******************************************
 *  reject_locker_with_fewest_write_locks?  *
-*************************************************/
+*******************************************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithFewestWriteLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -328,9 +328,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithFewestWrite
 																																			:	Qfalse );
 }
 
-	/*********************************************
+	/*************************************************
 	*  set_to_reject_locker_with_fewest_write_locks  *
-	*********************************************/
+	*************************************************/
 
 	VALUE rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithFewestWriteLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -342,9 +342,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithFewestWrite
 		return rb_lock_deadlock_detector_settings_controller;
 	}
 
-/*****************************************
+/************************************
 *  reject_locker_with_oldest_lock?  *
-*****************************************/
+************************************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithOldestLock( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -355,9 +355,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithOldestLock(
 																																		:	Qfalse );
 }
 
-	/*****************************************
+	/******************************************
 	*  set_to_reject_locker_with_oldest_lock  *
-	*****************************************/
+	******************************************/
 
 	VALUE rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithOldestLock( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -369,9 +369,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithOldestLock(
 		return rb_lock_deadlock_detector_settings_controller;
 	}
 
-/*********************************************
+/**************************************
 *  reject_locker_with_youngest_lock?  *
-*********************************************/
+**************************************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithYoungestLock( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -382,9 +382,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithYoungestLoc
 																																		:	Qfalse );
 }
 
-	/*****************************************
+	/********************************************
 	*  set_to_reject_locker_with_youngest_lock  *
-	*****************************************/
+	********************************************/
 
 	VALUE rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectLockerWithYoungestLock( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -396,9 +396,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithYoungestLoc
 		return rb_lock_deadlock_detector_settings_controller;
 	}
 
-/*****************************
+/*******************
 *  reject_random?  *
-*****************************/
+*******************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectRandom( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -423,9 +423,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectRandom( VALUE	rb_lock
 		return rb_lock_deadlock_detector_settings_controller;
 	}
 
-/*************************************
+/**********************************
 *  verbosity_settings_controller  *
-*************************************/
+**********************************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_verbositySettingsController( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 

@@ -76,7 +76,7 @@ void Init_RPDB_DatabaseCompactSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_DatabaseCompactSettingsController_new(	int			argc,
@@ -147,9 +147,9 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_new(	int			argc,
 	return rb_database_compact_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_DatabaseCompactSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																											VALUE*		args __attribute__ ((unused)),
@@ -158,9 +158,9 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_initialize(	int				argc __attrib
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_DatabaseCompactSettingsController_parentEnvironment(	VALUE	rb_database_compact_settings_controller )	{
 
@@ -170,9 +170,9 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_parentEnvironment(	VALUE	rb_data
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 
 VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabase(	VALUE	rb_database_compact_settings_controller )	{
 
@@ -182,9 +182,9 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabase(	VALUE	rb_databas
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_DatabaseCompactSettingsController_parentSettingsController(	VALUE	rb_database_compact_settings_controller )	{
 
@@ -194,9 +194,9 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_parentSettingsController(	VALUE	
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
 
 VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_compact_settings_controller )	{
 
@@ -206,9 +206,9 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController
 	return rb_parent_database_compact_settings_controller;
 }
 
-/*********************
+/*****************
 *  fill_percent  *
-*********************/
+*****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html
 //	If non-zero, the goal for filling pages, specified as a percentage between 1 and 100. 
@@ -222,9 +222,9 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_fillPercent( VALUE	rb_database_c
 	return INT2FIX( RPDB_DatabaseCompactSettingsController_fillPercent( c_database_compact_settings_controller ) );
 }
 
-/*************************
+/*********************
 *  set_fill_percent  *
-*************************/
+*********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html
 //	If non-zero, the goal for filling pages, specified as a percentage between 1 and 100. 
@@ -274,9 +274,9 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_setMaxPagesToCompact(	VALUE	rb_d
 	return rb_database_compact_settings_controller;
 }
 
-/****************
+/************
 *  timeout  *
-****************/
+************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html
 //	If non-zero, and no txnid parameter was specified, the lock timeout set for implicit transactions, in microseconds.
@@ -289,9 +289,9 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_timeout( VALUE	rb_database_compa
 
 }
 
-/********************
+/****************
 *  set_timeout  *
-********************/
+****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html
 //	If non-zero, and no txnid parameter was specified, the lock timeout set for implicit transactions, in microseconds.

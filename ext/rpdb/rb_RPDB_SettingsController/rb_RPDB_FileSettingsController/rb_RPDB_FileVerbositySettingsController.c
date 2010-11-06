@@ -63,7 +63,7 @@ void Init_RPDB_FileVerbositySettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_FileVerbositySettingsController_new(	int			argc,
@@ -118,9 +118,9 @@ VALUE rb_RPDB_FileVerbositySettingsController_new(	int			argc,
 	return rb_file_verbosity_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_FileVerbositySettingsController_initialize(	int				argc __attribute__ ((unused)),
 																										VALUE*		args __attribute__ ((unused)),
@@ -129,9 +129,9 @@ VALUE rb_RPDB_FileVerbositySettingsController_initialize(	int				argc __attribut
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_FileVerbositySettingsController_parentEnvironment(	VALUE	rb_file_verbosity_settings_controller )	{
 
@@ -141,9 +141,9 @@ VALUE rb_RPDB_FileVerbositySettingsController_parentEnvironment(	VALUE	rb_file_v
 	return rb_parent_environment;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_FileVerbositySettingsController_parentSettingsController(	VALUE	rb_file_verbosity_settings_controller )	{
 
@@ -153,9 +153,9 @@ VALUE rb_RPDB_FileVerbositySettingsController_parentSettingsController(	VALUE	rb
 	return rb_parent_settings_controller;	
 }
 
-/***************************************
+/************************************
 *  parent_file_settings_controller  *
-***************************************/
+************************************/
 
 VALUE rb_RPDB_FileVerbositySettingsController_parentFileSettingsController(	VALUE	rb_file_verbosity_settings_controller )	{
 
@@ -165,9 +165,9 @@ VALUE rb_RPDB_FileVerbositySettingsController_parentFileSettingsController(	VALU
 	return rb_parent_file_settings_controller;
 }
 
-/*************************************************************************
+/*****************************************************************************
 *  display_additional_information_during_open_close_rename_file_operations?  *
-*************************************************************************/
+*****************************************************************************/
 
 //	DB_VERB_FILEOPS         	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
 VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuringOpenCloseRenameFileOperations( VALUE	rb_file_verbosity_settings_controller )	{
@@ -179,9 +179,9 @@ VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuring
 																																							:	Qfalse );
 }
 
-	/*****************************************************************************
+	/************************************************************************************
 	*  turn_display_additional_information_during_open_close_rename_file_operations_on  *
-	*****************************************************************************/
+	************************************************************************************/
 
 	VALUE rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOn( VALUE	rb_file_verbosity_settings_controller )	{
 
@@ -193,9 +193,9 @@ VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuring
 		return rb_file_verbosity_settings_controller;
 	}
 
-	/*****************************************************************************
+	/*************************************************************************************
 	*  turn_display_additional_information_during_open_close_rename_file_operations_off  *
-	*****************************************************************************/
+	*************************************************************************************/
 
 	VALUE rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOff( VALUE	rb_file_verbosity_settings_controller )	{
 
@@ -207,9 +207,9 @@ VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuring
 		return rb_file_verbosity_settings_controller;
 	}
 
-/*************************************************************
+/***************************************************************
 *  display_additional_information_during_all_file_operations?  *
-*************************************************************/
+***************************************************************/
 
 //	DB_VERB_FILEOPS_ALL     	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
 VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuringAllFileOperations( VALUE	rb_file_verbosity_settings_controller )	{
@@ -221,9 +221,9 @@ VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuring
 																																				:	Qfalse );
 }
 
-	/*****************************************************************
+	/**********************************************************************
 	*  turn_display_additional_information_during_all_file_operations_on  *
-	*****************************************************************/
+	**********************************************************************/
 
 	VALUE rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOn( VALUE	rb_file_verbosity_settings_controller )	{
 
@@ -235,9 +235,9 @@ VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuring
 		return rb_file_verbosity_settings_controller;
 	}
 
-	/*****************************************************************
+	/***********************************************************************
 	*  turn_display_additional_information_during_all_file_operations_off  *
-	*****************************************************************/
+	***********************************************************************/
 
 	VALUE rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOff( VALUE	rb_file_verbosity_settings_controller )	{
 

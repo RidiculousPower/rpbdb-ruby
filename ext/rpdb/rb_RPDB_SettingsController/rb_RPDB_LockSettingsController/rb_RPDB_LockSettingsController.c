@@ -84,7 +84,7 @@ void Init_RPDB_LockSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 	
 VALUE rb_RPDB_LockSettingsController_new(	int			argc,
@@ -129,9 +129,9 @@ VALUE rb_RPDB_LockSettingsController_new(	int			argc,
 	return rb_lock_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_LockSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																						VALUE*		args __attribute__ ((unused)),
@@ -140,9 +140,9 @@ VALUE rb_RPDB_LockSettingsController_initialize(	int				argc __attribute__ ((unu
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_LockSettingsController_parentEnvironment(	VALUE	rb_lock_settings_controller )	{
 
@@ -152,9 +152,9 @@ VALUE rb_RPDB_LockSettingsController_parentEnvironment(	VALUE	rb_lock_settings_c
 	return rb_parent_environment;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_LockSettingsController_parentSettingsController(	VALUE	rb_lock_settings_controller )	{
 
@@ -164,9 +164,9 @@ VALUE rb_RPDB_LockSettingsController_parentSettingsController(	VALUE	rb_lock_set
 	return rb_parent_settings_controller;
 }
 
-/*********
+/********
 *  on?  *
-*********/
+********/
 
 //	DB_INIT_LOCK			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 VALUE rb_RPDB_LockSettingsController_on( VALUE	rb_lock_settings_controller )	{
@@ -178,9 +178,9 @@ VALUE rb_RPDB_LockSettingsController_on( VALUE	rb_lock_settings_controller )	{
 																			:	Qfalse );
 }
 
-/*************
+/*********
 *  off?  *
-*************/
+*********/
 
 //	DB_INIT_LOCK			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 VALUE rb_RPDB_LockSettingsController_off( VALUE	rb_lock_settings_controller )	{
@@ -192,9 +192,9 @@ VALUE rb_RPDB_LockSettingsController_off( VALUE	rb_lock_settings_controller )	{
 																			:	Qfalse );
 }
 
-	/*************
+	/************
 	*  turn_on  *
-	*************/
+	************/
 
 	//	DB_INIT_LOCK			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 	VALUE rb_RPDB_LockSettingsController_turnOn( VALUE	rb_lock_settings_controller )	{
@@ -207,9 +207,9 @@ VALUE rb_RPDB_LockSettingsController_off( VALUE	rb_lock_settings_controller )	{
 		return rb_lock_settings_controller;
 	}
 
-	/*****************
+	/*************
 	*  turn_off  *
-	*****************/
+	*************/
 
 	//	DB_INIT_LOCK			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 	VALUE rb_RPDB_LockSettingsController_turnOff( VALUE	rb_lock_settings_controller )	{
@@ -222,9 +222,9 @@ VALUE rb_RPDB_LockSettingsController_off( VALUE	rb_lock_settings_controller )	{
 		return rb_lock_settings_controller;
 	}
 
-/*************************
+/**********************
 *  prohibit_locking?  *
-*************************/
+**********************/
 
 //	DB_NOLOCKING			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 VALUE rb_RPDB_LockSettingsController_prohibitLocking( VALUE	rb_lock_settings_controller )	{
@@ -251,9 +251,9 @@ VALUE rb_RPDB_LockSettingsController_prohibitLocking( VALUE	rb_lock_settings_con
 		return rb_lock_settings_controller;
 	}
 
-	/*****************************
+	/******************************
 	*  turn_prohibit_locking_off  *
-	*****************************/
+	******************************/
 
 	//	DB_NOLOCKING			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 	VALUE rb_RPDB_LockSettingsController_turnProhibitLockingOff( VALUE	rb_lock_settings_controller )	{
@@ -280,9 +280,9 @@ VALUE rb_RPDB_LockSettingsController_timeoutReturnsDenyNotDeadlock( VALUE	rb_loc
 																											:	Qfalse );
 }
 
-	/*************************************************
+	/*****************************************************
 	*  turn_timeout_returns_return_deny_not_deadlock_on  *
-	*************************************************/
+	*****************************************************/
 
 	//	DB_TIME_NOTGRANTED      http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 	VALUE rb_RPDB_LockSettingsController_turnTimeoutReturnsDenyNotDeadlockOn( VALUE	rb_lock_settings_controller )	{
@@ -295,9 +295,9 @@ VALUE rb_RPDB_LockSettingsController_timeoutReturnsDenyNotDeadlock( VALUE	rb_loc
 		return rb_lock_settings_controller;
 	}
 
-	/*************************************************
+	/******************************************************
 	*  turn_timeout_returns_return_deny_not_deadlock_off  *
-	*************************************************/
+	******************************************************/
 
 	//	DB_TIME_NOTGRANTED      http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 	VALUE rb_RPDB_LockSettingsController_turnTimeoutReturnsDenyNotDeadlockOff( VALUE	rb_lock_settings_controller )	{
@@ -310,9 +310,9 @@ VALUE rb_RPDB_LockSettingsController_timeoutReturnsDenyNotDeadlock( VALUE	rb_loc
 		return rb_lock_settings_controller;
 	}
 
-/*************
+/*********
 *  wait  *
-*************/
+*********/
 
 //	DB_LOCK_NOWAIT			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/lock_get.html
 VALUE rb_RPDB_LockSettingsController_noWaitingForConflicts( VALUE	rb_lock_settings_controller )	{
@@ -339,9 +339,9 @@ VALUE rb_RPDB_LockSettingsController_noWaitingForConflicts( VALUE	rb_lock_settin
 		return rb_lock_settings_controller;
 	}
 
-	/*********************
+	/******************
 	*  turn_wait_off  *
-	*********************/
+	******************/
 
 	//	DB_LOCK_NOWAIT			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/lock_get.html
 	VALUE rb_RPDB_LockSettingsController_turnNoWaitingForConflictsOff( VALUE	rb_lock_settings_controller )	{
@@ -354,9 +354,9 @@ VALUE rb_RPDB_LockSettingsController_noWaitingForConflicts( VALUE	rb_lock_settin
 		return rb_lock_settings_controller;
 	}
 
-/*************************************
+/***************************************
 *  lock_for_environment_not_database?  *
-*************************************/
+***************************************/
 
 //	DB_CDB_ALLDB            http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 VALUE rb_RPDB_LockSettingsController_lockForEnvironmentNotDatabase( VALUE	rb_lock_settings_controller )	{
@@ -368,9 +368,9 @@ VALUE rb_RPDB_LockSettingsController_lockForEnvironmentNotDatabase( VALUE	rb_loc
 																										:	Qfalse );
 }
 
-	/*********************************************
+	/**********************************************
 	*  turn_lock_for_environment_not_database_on  *
-	*********************************************/
+	**********************************************/
 
 		VALUE rb_RPDB_LockSettingsController_turnLockForEnvironmentNotDatabaseOn( VALUE	rb_lock_settings_controller )	{
 
@@ -382,9 +382,9 @@ VALUE rb_RPDB_LockSettingsController_lockForEnvironmentNotDatabase( VALUE	rb_loc
 			return rb_lock_settings_controller;
 		}
 
-	/*********************************************
+	/***********************************************
 	*  turn_lock_for_environment_not_database_off  *
-	*********************************************/
+	***********************************************/
 
 		VALUE rb_RPDB_LockSettingsController_turnLockForEnvironmentNotDatabaseOff( VALUE	rb_lock_settings_controller )	{
 
@@ -396,9 +396,9 @@ VALUE rb_RPDB_LockSettingsController_lockForEnvironmentNotDatabase( VALUE	rb_loc
 			return rb_lock_settings_controller;
 		}
 
-/*****************
+/************
 *  timeout  *
-*****************/
+************/
 
 //	DB_SET_LOCK_TIMEOUT		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_timeout.html
 VALUE rb_RPDB_LockSettingsController_timeout( VALUE	rb_lock_settings_controller )	{
@@ -409,9 +409,9 @@ VALUE rb_RPDB_LockSettingsController_timeout( VALUE	rb_lock_settings_controller 
 	return INT2FIX( RPDB_LockSettingsController_timeout( c_lock_settings_controller ) );
 }
 
-	/*****************
+	/****************
 	*  set_timeout  *
-	*****************/
+	****************/
 
 	//	DB_SET_LOCK_TIMEOUT		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_timeout.html
 	VALUE rb_RPDB_LockSettingsController_setTimeout(	VALUE	rb_lock_settings_controller,
@@ -426,9 +426,9 @@ VALUE rb_RPDB_LockSettingsController_timeout( VALUE	rb_lock_settings_controller 
 		return rb_lock_settings_controller;
 	}
 
-/*********************
+/********************
 *  conflict_matrix  *
-*********************/
+********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_lk_conflicts.html
 VALUE rb_RPDB_LockSettingsController_conflictMatrix( VALUE	rb_lock_settings_controller )	{
@@ -445,9 +445,9 @@ VALUE rb_RPDB_LockSettingsController_conflictMatrix( VALUE	rb_lock_settings_cont
 	return rb_conflict_matrix;
 }
 
-	/*************************
+	/************************
 	*  set_conflict_matrix  *
-	*************************/
+	************************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_lk_conflicts.html
 	VALUE rb_RPDB_LockSettingsController_setConflictMatrix( 	VALUE	rb_lock_settings_controller,
@@ -465,9 +465,9 @@ VALUE rb_RPDB_LockSettingsController_conflictMatrix( VALUE	rb_lock_settings_cont
 		return rb_lock_settings_controller;
 	}
 
-/*****************
+/****************
 *  max_lockers  *
-*****************/
+****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_lk_max_lockers.html
 VALUE rb_RPDB_LockSettingsController_maxLockers( VALUE	rb_lock_settings_controller )	{
@@ -478,9 +478,9 @@ VALUE rb_RPDB_LockSettingsController_maxLockers( VALUE	rb_lock_settings_controll
 	return INT2FIX( RPDB_LockSettingsController_maxLockers( c_lock_settings_controller ) );
 }
 
-	/*********************
+	/********************
 	*  set_max_lockers  *
-	*********************/
+	********************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_lk_max_lockers.html
 	VALUE rb_RPDB_LockSettingsController_setMaxLockers(	VALUE	rb_lock_settings_controller, 
@@ -495,9 +495,9 @@ VALUE rb_RPDB_LockSettingsController_maxLockers( VALUE	rb_lock_settings_controll
 		return rb_lock_settings_controller;
 	}
 
-/*****************
+/**************
 *  max_locks  *
-*****************/
+**************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_lk_max_locks.html
 VALUE rb_RPDB_LockSettingsController_maxLocks( VALUE	rb_lock_settings_controller )	{
@@ -508,9 +508,9 @@ VALUE rb_RPDB_LockSettingsController_maxLocks( VALUE	rb_lock_settings_controller
 	return INT2FIX( RPDB_LockSettingsController_maxLocks( c_lock_settings_controller ) );
 }
 
-	/*********************
+	/******************
 	*  set_max_locks  *
-	*********************/
+	******************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_lk_max_locks.html
 	VALUE rb_RPDB_LockSettingsController_setMaxLocks(	VALUE	rb_lock_settings_controller, 
@@ -525,9 +525,9 @@ VALUE rb_RPDB_LockSettingsController_maxLocks( VALUE	rb_lock_settings_controller
 		return rb_lock_settings_controller;
 	}
 
-/*****************
+/****************
 *  max_objects  *
-*****************/
+****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_lk_max_objects.html
 VALUE rb_RPDB_LockSettingsController_maxObjects( VALUE	rb_lock_settings_controller )	{
@@ -538,9 +538,9 @@ VALUE rb_RPDB_LockSettingsController_maxObjects( VALUE	rb_lock_settings_controll
 	return INT2FIX( RPDB_LockSettingsController_maxObjects( c_lock_settings_controller ) );
 }
 
-	/*********************
+	/********************
 	*  set_max_objects  *
-	*********************/
+	********************/
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_lk_max_objects.html
 	VALUE rb_RPDB_LockSettingsController_setMaxObjects(	VALUE	rb_lock_settings_controller, 

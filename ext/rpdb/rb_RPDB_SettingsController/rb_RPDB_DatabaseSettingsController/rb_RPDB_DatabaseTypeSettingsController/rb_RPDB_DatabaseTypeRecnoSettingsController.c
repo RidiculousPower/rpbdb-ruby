@@ -79,7 +79,7 @@ void Init_RPDB_DatabaseTypeRecnoSettingsController()	{
 }
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_new(	int			argc,
@@ -155,9 +155,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_new(	int			argc,
 	return rb_database_type_recno_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																												VALUE*		args __attribute__ ((unused)),
@@ -166,9 +166,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_initialize(	int				argc __attr
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentEnvironment(	VALUE	rb_database_type_recno_settings_controller )	{
 
@@ -178,9 +178,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentEnvironment(	VALUE	rb_da
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
 
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabase(	VALUE	rb_database_type_recno_settings_controller )	{
 
@@ -190,9 +190,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabase(	VALUE	rb_datab
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentSettingsController(	VALUE	rb_database_type_recno_settings_controller )	{
 
@@ -202,9 +202,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentSettingsController(	VALU
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
 
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_type_recno_settings_controller )	{
 
@@ -214,9 +214,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabaseSettingsControll
 	return rb_parent_database_settings_controller;
 }
 
-/***************************************
+/*********************************************
 *  parent_database_type_settings_controller  *
-***************************************/
+*********************************************/
 
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabaseTypeSettingsController(	VALUE	rb_database_type_recno_settings_controller )	{
 
@@ -230,9 +230,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabaseTypeSettingsCont
 																		Switch Settings
 *******************************************************************************************************************************************************************************************/
 
-/*************************
+/***********************
 *  record_renumbering  *
-*************************/
+***********************/
 
 //	DB_RENUMBER				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_recordRenumbering( VALUE	rb_database_type_recno_settings_controller )	{
@@ -244,9 +244,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_recordRenumbering( VALUE	rb_da
 																														:	Qfalse );
 }
 
-	/*********************************
+	/*******************************
 	*  turn_record_renumbering_on  *
-	*********************************/
+	*******************************/
 
 	VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_turnRecordRenumberingOn( VALUE	rb_database_type_recno_settings_controller )	{
 
@@ -258,9 +258,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_recordRenumbering( VALUE	rb_da
 		return rb_database_type_recno_settings_controller;
 	}
 
-	/*********************************
+	/********************************
 	*  turn_record_renumbering_off  *
-	*********************************/
+	********************************/
 
 	VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_turnRecordRenumberingOff( VALUE	rb_database_type_recno_settings_controller )	{
 
@@ -272,9 +272,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_recordRenumbering( VALUE	rb_da
 		return rb_database_type_recno_settings_controller;
 	}
 
-/*****************
+/***********************
 *  snapshot_isolation  *
-*****************/
+***********************/
 
 //	DB_SNAPSHOT				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_snapshotIsolation( VALUE	rb_database_type_recno_settings_controller )	{
@@ -286,9 +286,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_snapshotIsolation( VALUE	rb_da
 																														:	Qfalse );
 }
 
-	/*********************************
+	/*******************************
 	*  turn_snapshot_isolation_on  *
-	*********************************/
+	*******************************/
 
 	VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_turnSnapshotIsolationOn( VALUE	rb_database_type_recno_settings_controller )	{
 
@@ -300,9 +300,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_snapshotIsolation( VALUE	rb_da
 		return rb_database_type_recno_settings_controller;
 	}
 
-	/*********************************
+	/********************************
 	*  turn_snapshot_isolation_off  *
-	*********************************/
+	********************************/
 
 	VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_turnSnapshotIsolationOff( VALUE	rb_database_type_recno_settings_controller )	{
 
@@ -318,9 +318,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_snapshotIsolation( VALUE	rb_da
 																		Set Settings
 *******************************************************************************************************************************************************************************************/
 
-/******************
+/****************
 *  source_file  *
-******************/
+****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_re_source.html
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_sourceFile( VALUE	rb_database_type_recno_settings_controller )	{
@@ -334,9 +334,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_sourceFile( VALUE	rb_database_
 	return rb_database_type_recno_settings_controller;
 }
 
-/*********************
+/********************
 *  set_source_file  *
-*********************/
+********************/
 
 //	FIX - take ruby file and use source from within
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_setSourceFile(	VALUE	rb_database_type_recno_settings_controller,
@@ -357,9 +357,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_setSourceFile(	VALUE	rb_databa
 																		Callback Public Methods
 *******************************************************************************************************************************************************************************************/
 
-/*********************************
+/*******************************
 *  set_append_callback_method  *
-*********************************/
+*******************************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_append_recno.html
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_setAppendCallbackMethod(	VALUE	rb_database_type_recno_settings_controller,
@@ -374,9 +374,9 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_setAppendCallbackMethod(	VALUE
 
 }
 */
-/*****************************
+/***************************
 *  append_callback_method  *
-*****************************/
+***************************/
 /*
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_append_recno.html
 void (*append_callback_method)(	VALUE		database,

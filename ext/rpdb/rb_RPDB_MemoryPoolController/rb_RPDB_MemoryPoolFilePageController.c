@@ -66,7 +66,7 @@ void Init_RPDB_MemoryPoolFilePageController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_MemoryPoolFilePageController_new(	int			argc,
@@ -114,7 +114,7 @@ VALUE rb_RPDB_MemoryPoolFilePageController_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_MemoryPoolFilePageController_initialize(	int				argc __attribute__ ((unused)),

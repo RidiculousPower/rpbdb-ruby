@@ -131,9 +131,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_new(	int			argc,
 	return rb_memory_pool_settings_controller;		
 }
 
-/*********
+/***************
 *  initialize  *
-*********/
+***************/
 
 VALUE rb_RPDB_MemoryPoolSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																									VALUE*		args __attribute__ ((unused)),
@@ -143,9 +143,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_initialize(	int				argc __attribute__
 }
 
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_MemoryPoolSettingsController_parentEnvironment(	VALUE	rb_memory_pool_settings_controller )	{
 
@@ -155,9 +155,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_parentEnvironment(	VALUE	rb_memory_po
 	return rb_parent_environment;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_MemoryPoolSettingsController_parentSettingsController(	VALUE	rb_memory_pool_settings_controller )	{
 
@@ -167,9 +167,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_parentSettingsController(	VALUE	rb_me
 	return rb_parent_settings_controller;
 }
 
-/*********
+/********
 *  on?  *
-*********/
+********/
 
 //	DB_INIT_MPOOL			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 VALUE rb_RPDB_MemoryPoolSettingsController_on( VALUE	rb_memory_pool_settings_controller )	{
@@ -181,9 +181,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_on( VALUE	rb_memory_pool_settings_con
 																						:	Qfalse );
 }
 
-/*************
+/*********
 *  off?  *
-*************/
+*********/
 
 //	DB_INIT_MPOOL			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 VALUE rb_RPDB_MemoryPoolSettingsController_off( VALUE	rb_memory_pool_settings_controller )	{
@@ -195,9 +195,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_off( VALUE	rb_memory_pool_settings_co
 																							:	Qfalse );
 }
 
-	/*************
+	/************
 	*  turn_on  *
-	*************/
+	************/
 
 	//	DB_INIT_MPOOL			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 	VALUE rb_RPDB_MemoryPoolSettingsController_turnOn( VALUE	rb_memory_pool_settings_controller )	{
@@ -225,9 +225,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_off( VALUE	rb_memory_pool_settings_co
 		return rb_memory_pool_settings_controller;
 	}
 
-/*********************
+/*******************
 *  memory_mapping  *
-*********************/
+*******************/
 
 //	DB_NOMMAP 				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 //	Note: function default inverts default from flag
@@ -240,9 +240,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_memoryMapping( VALUE	rb_memory_pool_s
 																									:	Qfalse );
 }
 
-	/*****************************
+	/***************************
 	*  turn_memory_mapping_on  *
-	*****************************/
+	***************************/
 
 	//	DB_NOMMAP 				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 	//	Note: function default inverts default from flag
@@ -256,9 +256,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_memoryMapping( VALUE	rb_memory_pool_s
 		return rb_memory_pool_settings_controller;
 	}
 
-	/*****************************
+	/****************************
 	*  turn_memory_mapping_off  *
-	*****************************/
+	****************************/
 
 	//	DB_NOMMAP 				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 	//	Note: function default inverts default from flag
@@ -272,9 +272,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_memoryMapping( VALUE	rb_memory_pool_s
 		return rb_memory_pool_settings_controller;
 	}
 
-/*************************************
+/************************************
 *  remove_file_with_last_reference  *
-*************************************/
+************************************/
 
 //	DB_MPOOL_UNLINK			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_set_flags.html
 VALUE rb_RPDB_MemoryPoolSettingsController_removeFileWithLastReference( VALUE	rb_memory_pool_settings_controller )	{
@@ -286,9 +286,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_removeFileWithLastReference( VALUE	rb
 																													:	Qfalse );
 }
 
-	/*****************************************
+	/********************************************
 	*  turn_remove_file_with_last_reference_on  *
-	*****************************************/
+	********************************************/
 
 	//	DB_MPOOL_UNLINK			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_set_flags.html
 	VALUE rb_RPDB_MemoryPoolSettingsController_turnRemoveFileWithLastReferenceOn( VALUE	rb_memory_pool_settings_controller )	{
@@ -301,9 +301,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_removeFileWithLastReference( VALUE	rb
 		return rb_memory_pool_settings_controller;
 	}
 
-	/*****************************************
+	/*********************************************
 	*  turn_remove_file_with_last_reference_off  *
-	*****************************************/
+	*********************************************/
 
 	//	DB_MPOOL_UNLINK			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_set_flags.html
 	VALUE rb_RPDB_MemoryPoolSettingsController_turnRemoveFileWithLastReferenceOff( VALUE	rb_memory_pool_settings_controller )	{
@@ -316,9 +316,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_removeFileWithLastReference( VALUE	rb
 		return rb_memory_pool_settings_controller;
 	}
 
-/******************************************
+/*****************************************
 *  pagesize_factor_mismatch_should_fail  *
-******************************************/
+*****************************************/
 
 //	Attempts to open files which are not a multiple of the page size in length will fail, by default. 
 //	If the DB_ODDFILESIZE flag is set, any partial page at the end of the file will be ignored and the open will proceed.
@@ -332,9 +332,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_pagesizeFactorMismatchShouldFail( VAL
 																														:	Qfalse );
 }
 
-	/**************************************************
+	/*************************************************
 	*  turn_pagesize_factor_mismatch_should_fail_on  *
-	**************************************************/
+	*************************************************/
 
 	VALUE rb_RPDB_MemoryPoolSettingsController_turnPageSizeFactorMismatchShouldFailOn( VALUE	rb_memory_pool_settings_controller )	{
 
@@ -361,9 +361,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_pagesizeFactorMismatchShouldFail( VAL
 	}
 
 
-/**************************************************
+/*****************************
 *  file_settings_controller  *
-**************************************************/
+*****************************/
 
 VALUE rb_RPDB_MemoryPoolSettingsController_fileSettingsController( VALUE	rb_memory_pool_settings_controller )	{
 
@@ -375,9 +375,9 @@ VALUE rb_RPDB_MemoryPoolSettingsController_fileSettingsController( VALUE	rb_memo
 	return RUBY_RPDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( c_memory_pool_file_settings_controller );
 }
 
-/**************************************************
+/***********************************
 *  read_write_settings_controller  *
-**************************************************/
+***********************************/
 
 VALUE rb_RPDB_MemoryPoolSettingsController_readWriteSettingsController( VALUE	rb_memory_pool_settings_controller )	{
 

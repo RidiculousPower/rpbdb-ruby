@@ -101,7 +101,7 @@ void Init_RPDB_LogSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 	
 VALUE rb_RPDB_LogSettingsController_new(	int			argc,
@@ -146,9 +146,9 @@ VALUE rb_RPDB_LogSettingsController_new(	int			argc,
 	return rb_log_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_LogSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																					VALUE*		args __attribute__ ((unused)),
@@ -157,9 +157,9 @@ VALUE rb_RPDB_LogSettingsController_initialize(	int				argc __attribute__ ((unus
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
 
 VALUE rb_RPDB_LogSettingsController_parentEnvironment(	VALUE	rb_log_settings_controller )	{
 
@@ -169,9 +169,9 @@ VALUE rb_RPDB_LogSettingsController_parentEnvironment(	VALUE	rb_log_settings_con
 	return rb_parent_environment;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
 
 VALUE rb_RPDB_LogSettingsController_parentSettingsController(	VALUE	rb_log_settings_controller )	{
 
@@ -181,9 +181,9 @@ VALUE rb_RPDB_LogSettingsController_parentSettingsController(	VALUE	rb_log_setti
 	return rb_parent_settings_controller;
 }
 
-/***********
+/********
 *  on?  *
-***********/
+********/
 
 //	DB_INIT_LOG			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 VALUE rb_RPDB_LogSettingsController_on( VALUE	rb_log_settings_controller )	{
@@ -195,9 +195,9 @@ VALUE rb_RPDB_LogSettingsController_on( VALUE	rb_log_settings_controller )	{
 																																			:	Qfalse );
 }
 
-	/**************
+	/************
 	*  turn_on  *
-	**************/
+	************/
 
 	VALUE rb_RPDB_LogSettingsController_turnOn( VALUE	rb_log_settings_controller )	{
 
@@ -209,9 +209,9 @@ VALUE rb_RPDB_LogSettingsController_on( VALUE	rb_log_settings_controller )	{
 		return rb_log_settings_controller;
 	}
 
-/*************
+/*********
 *  off?  *
-*************/
+*********/
 
 VALUE rb_RPDB_LogSettingsController_off( VALUE	rb_log_settings_controller )	{
 
@@ -222,9 +222,9 @@ VALUE rb_RPDB_LogSettingsController_off( VALUE	rb_log_settings_controller )	{
 																																				:	Qfalse );
 }
 
-	/*****************
+	/*************
 	*  turn_off  *
-	*****************/
+	*************/
 
 	VALUE rb_RPDB_LogSettingsController_turnOff( VALUE	rb_log_settings_controller )	{
 
@@ -236,9 +236,9 @@ VALUE rb_RPDB_LogSettingsController_off( VALUE	rb_log_settings_controller )	{
 		return rb_log_settings_controller;
 	}
 
-/*****************
+/**************
 *  buffering  *
-*****************/
+**************/
 
 //	DB_LOG_DIRECT		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_log_set_config.html
 //	Inverted from BDB Default
@@ -251,9 +251,9 @@ VALUE rb_RPDB_LogSettingsController_disableSystemBuffering( VALUE	rb_log_setting
 																				:	Qfalse );
 }
 
-	/*************************
+	/**********************
 	*  turn_buffering_on  *
-	*************************/
+	**********************/
 
 	VALUE rb_RPDB_LogSettingsController_turnDisableSystemBufferingOn( VALUE	rb_log_settings_controller )	{
 
@@ -265,9 +265,9 @@ VALUE rb_RPDB_LogSettingsController_disableSystemBuffering( VALUE	rb_log_setting
 		return rb_log_settings_controller;
 	}
 
-	/*************************
+	/***********************
 	*  turn_buffering_off  *
-	*************************/
+	***********************/
 
 	VALUE rb_RPDB_LogSettingsController_turnDisableSystemBufferingOff( VALUE	rb_log_settings_controller )	{
 
@@ -279,9 +279,9 @@ VALUE rb_RPDB_LogSettingsController_disableSystemBuffering( VALUE	rb_log_setting
 		return rb_log_settings_controller;
 	}
 
-/*********************************
+/***********************************
 *  flush_before_return_from_write  *
-*********************************/
+***********************************/
 
 //	DB_LOG_DSYNC		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_log_set_config.html
 VALUE rb_RPDB_LogSettingsController_flushBeforeReturnFromWrite( VALUE	rb_log_settings_controller )	{
@@ -293,9 +293,9 @@ VALUE rb_RPDB_LogSettingsController_flushBeforeReturnFromWrite( VALUE	rb_log_set
 																									:	Qfalse );
 }
 
-	/*****************************************
+	/*******************************************
 	*  turn_flush_before_return_from_write_on  *
-	*****************************************/
+	*******************************************/
 
 	VALUE rb_RPDB_LogSettingsController_turnFlushBeforeReturnFromWriteOn( VALUE	rb_log_settings_controller )	{
 
@@ -307,9 +307,9 @@ VALUE rb_RPDB_LogSettingsController_flushBeforeReturnFromWrite( VALUE	rb_log_set
 		return rb_log_settings_controller;
 	}
 
-	/*****************************************
+	/********************************************
 	*  turn_flush_before_return_from_write_off  *
-	*****************************************/
+	********************************************/
 
 	VALUE rb_RPDB_LogSettingsController_turnFlushBeforeReturnFromWriteOff( VALUE	rb_log_settings_controller )	{
 
@@ -321,9 +321,9 @@ VALUE rb_RPDB_LogSettingsController_flushBeforeReturnFromWrite( VALUE	rb_log_set
 		return rb_log_settings_controller;
 	}
 
-/*********************
+/********************
 *  autoremove_logs  *
-*********************/
+********************/
 
 //	DB_LOG_AUTO_REMOVE	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_log_set_config.html
 VALUE rb_RPDB_LogSettingsController_autoremoveLogs( VALUE	rb_log_settings_controller )	{
@@ -335,9 +335,9 @@ VALUE rb_RPDB_LogSettingsController_autoremoveLogs( VALUE	rb_log_settings_contro
 																						:	Qfalse );
 }
 
-	/**************************
+	/***********************
 	*  turn_autoremove_on  *
-	**************************/
+	***********************/
 
 	VALUE rb_RPDB_LogSettingsController_turnAutoremoveLogsOn( VALUE	rb_log_settings_controller )	{
 
@@ -363,9 +363,9 @@ VALUE rb_RPDB_LogSettingsController_autoremoveLogs( VALUE	rb_log_settings_contro
 		return rb_log_settings_controller;
 	}
 
-/*********************
+/******************
 *  log_in_memory  *
-*********************/
+******************/
 
 //	DB_LOG_IN_MEMORY	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_log_set_config.html
 VALUE rb_RPDB_LogSettingsController_logInMemory( VALUE	rb_log_settings_controller )	{
@@ -377,9 +377,9 @@ VALUE rb_RPDB_LogSettingsController_logInMemory( VALUE	rb_log_settings_controlle
 																																								:	Qfalse );
 }
 
-	/*************************
+	/**************************
 	*  turn_log_in_memory_on  *
-	*************************/
+	**************************/
 
 	VALUE rb_RPDB_LogSettingsController_turnLogInMemoryOn( VALUE	rb_log_settings_controller )	{
 
@@ -391,9 +391,9 @@ VALUE rb_RPDB_LogSettingsController_logInMemory( VALUE	rb_log_settings_controlle
 		return rb_log_settings_controller;
 	}
 
-	/*************************
+	/***************************
 	*  turn_log_in_memory_off  *
-	*************************/
+	***************************/
 
 	VALUE rb_RPDB_LogSettingsController_turnLogInMemoryOff( VALUE	rb_log_settings_controller )	{
 
@@ -405,9 +405,9 @@ VALUE rb_RPDB_LogSettingsController_logInMemory( VALUE	rb_log_settings_controlle
 		return rb_log_settings_controller;
 	}
 
-/*********************
+/**********************
 *  zero_at_creation?  *
-*********************/
+**********************/
 
 //	DB_LOG_ZERO			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_log_set_config.html
 VALUE rb_RPDB_LogSettingsController_zeroAtCreation( VALUE	rb_log_settings_controller )	{
@@ -419,9 +419,9 @@ VALUE rb_RPDB_LogSettingsController_zeroAtCreation( VALUE	rb_log_settings_contro
 																						:	Qfalse );
 }
 
-	/*******************************
+	/*****************************
 	*  turn_zero_at_creation_on  *
-	*******************************/
+	*****************************/
 
 	VALUE rb_RPDB_LogSettingsController_turnZeroAtCreationOn( VALUE	rb_log_settings_controller )	{
 
@@ -433,9 +433,9 @@ VALUE rb_RPDB_LogSettingsController_zeroAtCreation( VALUE	rb_log_settings_contro
 		return rb_log_settings_controller;
 	}
 
-	/*****************************
+	/******************************
 	*  turn_zero_at_creation_off  *
-	*****************************/
+	******************************/
 
 	VALUE rb_RPDB_LogSettingsController_turnZeroAtCreationOff( VALUE	rb_log_settings_controller )	{
 
@@ -447,9 +447,9 @@ VALUE rb_RPDB_LogSettingsController_zeroAtCreation( VALUE	rb_log_settings_contro
 		return rb_log_settings_controller;
 	}
 
-/*********************************
+/************************************
 *  force_flush_after_record_write?  *
-*********************************/
+************************************/
 
 VALUE rb_RPDB_LogSettingsController_forceFlushAfterRecordWrite( VALUE	rb_log_settings_controller )	{
 
@@ -460,9 +460,9 @@ VALUE rb_RPDB_LogSettingsController_forceFlushAfterRecordWrite( VALUE	rb_log_set
 																									:	Qfalse );
 }
 
-	/*****************************************
+	/*******************************************
 	*  turn_force_flush_after_record_write_on  *
-	*****************************************/
+	*******************************************/
 
 	VALUE rb_RPDB_LogSettingsController_turnForceFlushAfterRecordWriteOn( VALUE	rb_log_settings_controller )	{
 
@@ -474,9 +474,9 @@ VALUE rb_RPDB_LogSettingsController_forceFlushAfterRecordWrite( VALUE	rb_log_set
 		return rb_log_settings_controller;
 	}
 
-	/*****************************************
+	/********************************************
 	*  turn_force_flush_after_record_write_off  *
-	*****************************************/
+	********************************************/
 
 	VALUE rb_RPDB_LogSettingsController_turnForceFlushAfterRecordWriteOff( VALUE	rb_log_settings_controller )	{
 
@@ -488,9 +488,9 @@ VALUE rb_RPDB_LogSettingsController_forceFlushAfterRecordWrite( VALUE	rb_log_set
 		return rb_log_settings_controller;
 	}
 
-/*****************
+/****************
 *  buffer_size  *
-*****************/
+****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_lg_bsize.html
 VALUE rb_RPDB_LogSettingsController_bufferSize( VALUE	rb_log_settings_controller )	{
@@ -501,9 +501,9 @@ VALUE rb_RPDB_LogSettingsController_bufferSize( VALUE	rb_log_settings_controller
 	return INT2FIX( RPDB_LogSettingsController_bufferSize( c_log_settings_controller ) );
 }
 
-	/*********************
+	/********************
 	*  set_buffer_size  *
-	*********************/
+	********************/
 
 	VALUE rb_RPDB_LogSettingsController_setBufferSize(	VALUE	rb_log_settings_controller, 
 														VALUE	rb_buffer_size )	{
@@ -517,9 +517,9 @@ VALUE rb_RPDB_LogSettingsController_bufferSize( VALUE	rb_log_settings_controller
 		return rb_log_settings_controller;
 	}
 
-/*****************
+/**************
 *  directory  *
-*****************/
+**************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_lg_dir.html
 VALUE rb_RPDB_LogSettingsController_directory( VALUE	rb_log_settings_controller )	{
@@ -530,9 +530,9 @@ VALUE rb_RPDB_LogSettingsController_directory( VALUE	rb_log_settings_controller 
 	return rb_str_new2( RPDB_LogSettingsController_directory( c_log_settings_controller ) );
 }
 
-	/*********************
+	/******************
 	*  set_directory  *
-	*********************/
+	******************/
 
 	VALUE rb_RPDB_LogSettingsController_setDirectory(	VALUE	rb_log_settings_controller, 
 														VALUE	rb_directory )	{
@@ -546,9 +546,9 @@ VALUE rb_RPDB_LogSettingsController_directory( VALUE	rb_log_settings_controller 
 		return rb_log_settings_controller;
 	}
 
-/*************
+/*********
 *  mode  *
-*************/
+*********/
 
 //	Set the absolute file mode for created log files. This method is only useful for the rare Berkeley DB application that does not control its umask value.
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_lg_mode.html
@@ -560,9 +560,9 @@ VALUE rb_RPDB_LogSettingsController_mode( VALUE	rb_log_settings_controller )	{
 	return INT2FIX( RPDB_LogSettingsController_mode( c_log_settings_controller ) );
 }
 
-	/*****************
+	/*************
 	*  set_mode  *
-	*****************/
+	*************/
 
 	VALUE rb_RPDB_LogSettingsController_setMode(	VALUE	rb_log_settings_controller, 
 													VALUE	rb_mode )	{
@@ -605,9 +605,9 @@ VALUE rb_RPDB_LogSettingsController_maxLogSize( VALUE	rb_log_settings_controller
 		return rb_log_settings_controller;
 	}
 
-/*********************
+/********************
 *  max_region_size  *
-*********************/
+********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_lg_regionmax.html
 VALUE rb_RPDB_LogSettingsController_maxRegionSize( VALUE	rb_log_settings_controller )	{
@@ -618,9 +618,9 @@ VALUE rb_RPDB_LogSettingsController_maxRegionSize( VALUE	rb_log_settings_control
 	return INT2FIX( RPDB_LogSettingsController_maxRegionSize(	c_log_settings_controller ) );
 }
 
-	/*************************
+	/************************
 	*  set_max_region_size  *
-	*************************/
+	************************/
 
 	VALUE rb_RPDB_LogSettingsController_setMaxRegionSize(	VALUE	rb_log_settings_controller, 
 															VALUE	rb_max_region_size )	{

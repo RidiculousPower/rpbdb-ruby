@@ -167,7 +167,7 @@ void Init_RPDB_DatabaseRecordReadWriteSettingsController()	{
 *******************************************************************************************************************************************************************************************/
 
 /*************
-*  new  *
+*  self.new  *
 *************/
 
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_new(	int			argc,
@@ -248,9 +248,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_new(	int			argc,
 	return rb_database_record_read_write_settings_controller;		
 }
 
-/*************
+/***************
 *  initialize  *
-*************/
+***************/
 
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																																		VALUE*		args __attribute__ ((unused)),
@@ -259,9 +259,10 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_initialize(	int				argc 
 	return rb_self;
 }
 
-/***************************************
+/***********************
 *  parent_environment  *
-***************************************/
+***********************/
+
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentEnvironment(	VALUE	rb_database_record_read_write_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsController( rb_database_record_read_write_settings_controller );
@@ -270,9 +271,10 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentEnvironment(	VALUE
 	return rb_parent_environment;
 }
 
-/***************************************
+/********************
 *  parent_database  *
-***************************************/
+********************/
+
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabase(	VALUE	rb_database_record_read_write_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsController( rb_database_record_read_write_settings_controller );
@@ -281,9 +283,10 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabase(	VALUE	rb
 	return rb_parent_database;
 }
 
-/***************************************
+/*******************************
 *  parent_settings_controller  *
-***************************************/
+*******************************/
+
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentSettingsController(	VALUE	rb_database_record_read_write_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller		=	rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsController( rb_database_record_read_write_settings_controller );
@@ -292,9 +295,10 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentSettingsController
 	return rb_parent_settings_controller;
 }
 
-/***************************************
+/****************************************
 *  parent_database_settings_controller  *
-***************************************/
+****************************************/
+
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_record_read_write_settings_controller )	{
 
 	VALUE	rb_parent_database_record_settings_controller		=	rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseRecordSettingsController( rb_database_record_read_write_settings_controller );
@@ -303,9 +307,10 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsCo
 	return rb_parent_database_settings_controller;
 }
 
-/***************************************
+/***********************************************
 *  parent_database_record_settings_controller  *
-***************************************/
+***********************************************/
+
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseRecordSettingsController(	VALUE	rb_database_record_read_write_settings_controller )	{
 
 	VALUE	rb_parent_database_record_settings_controller	=	rb_iv_get(	rb_database_record_read_write_settings_controller,
@@ -318,9 +323,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseRecordSett
 																		File Settings
 *******************************************************************************************************************************************************************************************/
 
-/*****************
+/*************
 *  filename  *
-*****************/
+*************/
 
 //	In-memory databases never intended to be preserved on disk may be created by setting the file parameter to NULL.
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_open.html
@@ -332,9 +337,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_filename( VALUE	rb_datab
 	return rb_str_new2( RPDB_DatabaseRecordReadWriteSettingsController_filename( c_database_record_read_write_settings_controller ) );
 }
 
-/*********************
+/*****************
 *  set_filename  *
-*********************/
+*****************/
 
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_setFilename(	VALUE	rb_database_record_read_write_settings_controller,
 																VALUE	rb_filename	)	{
@@ -352,9 +357,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_setFilename(	VALUE	rb_da
 																		Switch Settings
 *******************************************************************************************************************************************************************************************/
 
-/****************************
+/***************************
 *  prohibit_sync_on_close  *
-****************************/
+***************************/
 
 //	DB_NOSYNC				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_close.html
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_prohibitSyncOnClose( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -367,9 +372,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_prohibitSyncOnClose( VAL
 
 }
 
-	/*********************************
+	/***********************************
 	*  turn_prohibit_sync_on_close_on  *
-	*********************************/
+	***********************************/
 
 	//	DB_NOSYNC				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_close.html
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnProhibitSyncOnCloseOn( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -397,9 +402,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_prohibitSyncOnClose( VAL
 		return rb_database_record_read_write_settings_controller;
 	}
 
-/********************
+/*****************
 *  ignore_lease  *
-********************/
+*****************/
 
 //	DB_IGNORE_LEASE			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_get.html
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_ignoreLease( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -412,9 +417,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_ignoreLease( VALUE	rb_da
 
 }
 
-	/****************************
+	/*************************
 	*  turn_ignore_lease_on  *
-	****************************/
+	*************************/
 
 	//	DB_IGNORE_LEASE			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_get.html
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnIgnoreLeaseOn( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -427,9 +432,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_ignoreLease( VALUE	rb_da
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/****************************
+	/**************************
 	*  turn_ignore_lease_off  *
-	****************************/
+	**************************/
 
 	//	DB_IGNORE_LEASE			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_get.html
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnIgnoreLeaseOff( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -442,9 +447,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_ignoreLease( VALUE	rb_da
 		return rb_database_record_read_write_settings_controller;
 	}
 		
-/**********************
+/********************
 *  return_multiple  *
-**********************/
+********************/
 
 //	DB_MULTIPLE				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_get.html
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_returnMultiple( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -472,9 +477,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_returnMultiple( VALUE	rb
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/******************************
+	/*****************************
 	*  turn_return_multiple_off  *
-	******************************/
+	*****************************/
 
 	//	DB_MULTIPLE				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_get.html
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnReturnMultipleOff( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -502,9 +507,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_prohibitDuplicateData( V
 																															:	Qfalse );
 }
 
-	/*************************************
+	/************************************
 	*  turn_prohibit_duplicate_data_on  *
-	*************************************/
+	************************************/
 
 	//	DB_NODUPDATA			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_put.html
 	//	Btree and Hash only
@@ -518,9 +523,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_prohibitDuplicateData( V
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/************************************
+	/*************************************
 	*  turn_prohibit_duplicate_data_off  *
-	************************************/
+	*************************************/
 
 	//	DB_NODUPDATA			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_put.html
 	//	Btree and Hash only
@@ -534,9 +539,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_prohibitDuplicateData( V
 		return rb_database_record_read_write_settings_controller;
 	}
 
-/*************************
+/***********************
 *  prohibit_overwrite  *
-*************************/
+***********************/
 
 //	DB_NOOVERWRITE			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_put.html
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_prohibitOverwrite( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -549,9 +554,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_prohibitOverwrite( VALUE
 
 }
 
-	/********************************
+	/*******************************
 	*  turn_prohibit_overwrite_on  *
-	********************************/
+	*******************************/
 
 	//	DB_NOOVERWRITE			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_put.html
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnProhibitOverwriteOn( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -579,9 +584,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_prohibitOverwrite( VALUE
 		return rb_database_record_read_write_settings_controller;
 	}
 
-/********************************
+/*****************************
 *  prohibit_page_compaction  *
-********************************/
+*****************************/
 
 //	DB_FREELIST_ONLY		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html
 //	Must be set for Hash
@@ -611,9 +616,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_prohibitPageCompaction( 
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/*************************************
+	/**************************************
 	*  turn_prohibit_page_compaction_off  *
-	*************************************/
+	**************************************/
 
 	//	DB_FREELIST_ONLY		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html
 	//	Must be set for Hash
@@ -627,9 +632,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_prohibitPageCompaction( 
 		return rb_database_record_read_write_settings_controller;
 	}
 
-/********************************
+/*******************************
 *  return_pages_to_filesystem  *
-********************************/
+*******************************/
 
 //	DB_FREE_SPACE			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_put.html
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_returnPagesToFilesystem( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -642,9 +647,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_returnPagesToFilesystem(
 
 }
 
-	/*************************************
+	/***************************************
 	*  turn_return_pages_to_filesystem_on  *
-	*************************************/
+	***************************************/
 
 	//	DB_FREE_SPACE			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_put.html
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnReturnPagesToFilesystemOn( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -671,9 +676,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_returnPagesToFilesystem(
 		return rb_database_record_read_write_settings_controller;
 	}
 
-/*****************************
+/**************************
 *  truncate_file_on_open  *
-*****************************/
+**************************/
 
 //	DB_TRUNCATE		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_open.html
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_truncateFileOnOpen( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -686,9 +691,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_truncateFileOnOpen( VALU
 
 }
 
-	/************************************
+	/**********************************
 	*  turn_truncate_file_on_open_on  *
-	************************************/
+	**********************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnTruncateFileOnOpenOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -700,9 +705,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_truncateFileOnOpen( VALU
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/*********************************
+	/***********************************
 	*  turn_truncate_file_on_open_off  *
-	*********************************/
+	***********************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnTruncateFileOnOpenOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -714,9 +719,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_truncateFileOnOpen( VALU
 		return rb_database_record_read_write_settings_controller;
 	}
 
-/************************************
+/**************************************
 *  write_locks_instead_of_read_locks  *
-************************************/
+**************************************/
 
 //	DB_RMW					http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_writeLocksInsteadOfReadLocks( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -729,9 +734,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_writeLocksInsteadOfReadL
 
 }
 
-	/****************************************
+	/**********************************************
 	*  turn_write_locks_instead_of_read_locks_on  *
-	****************************************/
+	**********************************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -743,9 +748,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_writeLocksInsteadOfReadL
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/****************************************
+	/***********************************************
 	*  turn_write_locks_instead_of_read_locks_off  *
-	****************************************/
+	***********************************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -758,9 +763,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_writeLocksInsteadOfReadL
 	}
 
 
-/*********************
+/*******************
 *  partial_access  *
-*********************/
+*******************/
 
 //	DB_DBT_PARTIAL		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_partialAccess( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -772,9 +777,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_partialAccess( VALUE	rb_
 																													:	Qfalse );
 }
 
-	/*****************************
+	/***************************
 	*  turn_partial_access_on  *
-	*****************************/
+	***************************/
 
 	//	DB_DBT_PARTIAL		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnPartialAccessOn( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -787,9 +792,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_partialAccess( VALUE	rb_
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/*****************************
+	/****************************
 	*  turn_partial_access_off  *
-	*****************************/
+	****************************/
 
 	//	DB_DBT_PARTIAL		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnPartialAccessOff( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -802,9 +807,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_partialAccess( VALUE	rb_
 		return rb_database_record_read_write_settings_controller;
 	}
 
-/*****************************************
+/*******************************************
 *  database_allocates_memory_using_malloc  *
-*****************************************/
+*******************************************/
 
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryUsingMalloc( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -816,9 +821,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryU
 	
 }
 
-	/*************************************************
+	/***************************************************
 	*  turn_database_allocates_memory_using_malloc_on  *
-	*************************************************/
+	***************************************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -830,9 +835,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryU
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/*************************************************
+	/****************************************************
 	*  turn_database_allocates_memory_using_malloc_off  *
-	*************************************************/
+	****************************************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -844,9 +849,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryU
 		return rb_database_record_read_write_settings_controller;
 	}
 
-/*********************************************
+/********************************************
 *  database_allocates_memory_using_realloc  *
-*********************************************/
+********************************************/
 
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryUsingRealloc( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -857,9 +862,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryU
 																																	:	Qfalse );	
 }
 
-	/*************************************************
+	/****************************************************
 	*  turn_database_allocates_memory_using_realloc_on  *
-	*************************************************/
+	****************************************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -871,9 +876,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryU
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/*************************************************
+	/*****************************************************
 	*  turn_database_allocates_memory_using_realloc_off  *
-	*************************************************/
+	*****************************************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -913,9 +918,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_applicationAllocatesMemo
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/*****************************************
+	/******************************************
 	*  turn_application_allocates_memory_off  *
-	*****************************************/
+	******************************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnApplicationAllocatesMemoryOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -927,9 +932,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_applicationAllocatesMemo
 		return rb_database_record_read_write_settings_controller;
 	}
 
-/*****************************
+/**************************
 *  database_frees_memory  *
-*****************************/
+**************************/
 
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_databaseFreesMemory( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -941,9 +946,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_databaseFreesMemory( VAL
 	
 }
 
-	/*********************************
+	/**********************************
 	*  turn_database_frees_memory_on  *
-	*********************************/
+	**********************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnDatabaseFreesMemoryOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -955,9 +960,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_databaseFreesMemory( VAL
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/*********************************
+	/***********************************
 	*  turn_database_frees_memory_off  *
-	*********************************/
+	***********************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnDatabaseFreesMemoryOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -969,9 +974,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_databaseFreesMemory( VAL
 		return rb_database_record_read_write_settings_controller;
 	}
 
-/*****************************
+/*******************************
 *  sync_prior_to_write_return  *
-*****************************/
+*******************************/
 
 //	DB_DSYNC_DB             http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_syncPriorToWriteReturn( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -984,9 +989,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_syncPriorToWriteReturn( 
 
 }
 
-	/**************************************
+	/***************************************
 	*  turn_sync_prior_to_write_return_on  *
-	**************************************/
+	***************************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnSyncPriorToWriteReturnOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -998,9 +1003,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_syncPriorToWriteReturn( 
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/************************************
+	/****************************************
 	*  turn_sync_prior_to_write_return_off  *
-	************************************/
+	****************************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnSyncPriorToWriteReturnOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
@@ -1040,9 +1045,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_setDataBufferSize(	VALUE
 	return rb_database_record_read_write_settings_controller;
 }	
 
-/*****************************
+/****************************
 *  partial_read_write_size  *
-*****************************/
+****************************/
 
 //	Returns size of partial write (if applicable)
 //	It is an error to attempt a partial put using the DB->put function in a database that supports duplicate records. 
@@ -1055,9 +1060,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_partialReadWriteSize( VA
 	return INT2FIX( RPDB_DatabaseRecordReadWriteSettingsController_partialReadWriteSize( c_database_record_settings_controller ) );
 }	
 
-/*********************************
+/********************************
 *  set_partial_read_write_size  *
-*********************************/
+********************************/
 
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_setPartialReadWriteSize(	VALUE	rb_database_record_read_write_settings_controller, 
 																			VALUE	rb_partial_read_write_size )	{
@@ -1083,9 +1088,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_partialReadWriteOffset( 
 	return INT2FIX( RPDB_DatabaseRecordReadWriteSettingsController_partialReadWriteOffset( c_database_record_settings_controller ) );
 }	
 
-/*********************************
+/**********************************
 *  set_partial_read_write_offset  *
-*********************************/
+**********************************/
 
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_setPartialReadWriteOffset(	VALUE	rb_database_record_read_write_settings_controller, 
 																			VALUE	rb_partial_read_write_offset )	{
@@ -1104,9 +1109,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_setPartialReadWriteOffse
 														Switch Settings
 *******************************************************************************************************************************************************************************************/
 
-/*************************
+/**********************
 *  permit_duplicates  *
-*************************/
+**********************/
 
 //	DB_DUP				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_unsortedDuplicates( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -1118,9 +1123,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_unsortedDuplicates( VALU
 																												:	Qfalse );
 }
 
-	/*****************************
+	/*******************************
 	 *  turn_permit_duplicates_on  *
-	 *****************************/
+	 ******************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnUnsortedDuplicatesOn( VALUE	rb_database_record_read_write_settings_controller )	{
 		
@@ -1132,9 +1137,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_unsortedDuplicates( VALU
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/*********************************
+	/********************************
 	 *  turn_permit_duplicates_off  *
-	 *********************************/
+	 *******************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnUnsortedDuplicatesOff( VALUE	rb_database_record_read_write_settings_controller )	{
 		
@@ -1146,9 +1151,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_unsortedDuplicates( VALU
 		return rb_database_record_read_write_settings_controller;
 	}
 
-/**********************
+/********************
 *  sort_duplicates  *
-**********************/
+********************/
 
 //	DB_DUPSORT			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_sortedDuplicates( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -1160,9 +1165,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_sortedDuplicates( VALUE	
 																																																																:	Qfalse );
 }
 
-	/******************************
+	/*****************************
 	 *  turn_sort_duplicates_on  *
-	 ******************************/
+	 ****************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnSortedDuplicatesOn( VALUE	rb_database_record_read_write_settings_controller )	{
 		
@@ -1176,7 +1181,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_sortedDuplicates( VALUE	
 
 	/******************************
 	 *  turn_sort_duplicates_off  *
-	 ******************************/
+	 *****************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnSortedDuplicatesOff( VALUE	rb_database_record_read_write_settings_controller )	{
 		
@@ -1188,9 +1193,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_sortedDuplicates( VALUE	
 		return rb_database_record_read_write_settings_controller;
 	}
 
-/**********************
+/*******************
 *  serialize_data  *
-**********************/
+*******************/
 
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_database_record_read_write_settings_controller )	{
 	
@@ -1202,9 +1207,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_
 																																																												:	Qfalse;
 }
 
-	/******************************
+	/****************************
 	 *  turn_serialize_data_on  *
-	 ******************************/
+	 ***************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnSerializeDataOn( VALUE	rb_database_record_read_write_settings_controller )	{
 		
@@ -1218,9 +1223,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/******************************
+	/*****************************
 	 *  turn_serialize_data_off  *
-	 ******************************/
+	 ****************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnSerializeDataOff( VALUE	rb_database_record_read_write_settings_controller )	{
 		
@@ -1234,9 +1239,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_
 		return rb_database_record_read_write_settings_controller;
 	}
 
-/****************
+/*****************
 *  storage_type  *
-****************/
+*****************/
 
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_storageType( VALUE rb_database_record_read_write_settings_controller )	{
 	
@@ -1246,9 +1251,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_storageType( VALUE rb_da
 	return rb_class_to_specify_type;
 }
 
-/*******************
+/*********************
 *  set_storage_type  *
-*******************/
+*********************/
 
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_setStorageType(	VALUE rb_database_record_read_write_settings_controller,
 																																	VALUE	rb_class_to_specify_type )	{
