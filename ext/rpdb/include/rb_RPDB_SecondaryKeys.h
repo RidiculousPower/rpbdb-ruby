@@ -7,7 +7,7 @@
 VALUE rb_RPDB_SecondaryKeys_new(	int			argc,
 																	VALUE*	args,
 																	VALUE		rb_klass_self );
-VALUE rb_RPDB_SecondaryKeys_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_SecondaryKeys_initialize(	int				argc __attribute__ ((unused)),
 																	VALUE*		args __attribute__ ((unused)),
 																	VALUE			rb_self );
 	VALUE rb_RPDB_SecondaryKeys_addSecondaryKey(	VALUE	rb_secondary_keys,

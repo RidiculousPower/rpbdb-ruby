@@ -10,7 +10,7 @@ void Init_RPDB_Environment();
 									VALUE*	args,
 									VALUE	rb_klass_self );
 	void rb_RPDB_Environment_free(	RPDB_Environment* c_environment );
-VALUE rb_RPDB_Environment_init(	int		argc,
+VALUE rb_RPDB_Environment_initialize(	int		argc,
 							   VALUE*	args,
 							   VALUE	rb_environment );
 	VALUE rb_RPDB_Environment_initForStorageInMemory( VALUE	rb_environment );

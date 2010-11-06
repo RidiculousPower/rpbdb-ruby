@@ -106,7 +106,7 @@ VALUE rb_RPDB_MemoryPoolFilePageController_new(	int			argc,
 
 	VALUE	argv[]	=	{ rb_parent_memory_pool_file };
 	
-	rb_obj_call_init(	rb_memory_pool_file_page_controller,
+	rb_obj_call_initialize(	rb_memory_pool_file_page_controller,
 										 1, 
 										 argv );
 	
@@ -117,7 +117,7 @@ VALUE rb_RPDB_MemoryPoolFilePageController_new(	int			argc,
 *  new  *
 *************/
 
-VALUE rb_RPDB_MemoryPoolFilePageController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_MemoryPoolFilePageController_initialize(	int				argc __attribute__ ((unused)),
 																									VALUE*		args __attribute__ ((unused)),
 																									VALUE			rb_self )	{
 

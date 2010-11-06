@@ -7,7 +7,7 @@
 VALUE	rb_RPDB_MutexController_new(	int			argc,
 																		VALUE*	args,
 																		VALUE		rb_klass_self );
-VALUE	rb_RPDB_MutexController_init(	int				argc __attribute__ ((unused)),
+VALUE	rb_RPDB_MutexController_initialize(	int				argc __attribute__ ((unused)),
 																		VALUE*		args __attribute__ ((unused)),
 																		VALUE			rb_self );
 	VALUE	rb_RPDB_MutexController_settingsController(	VALUE	rb_mutex_controller );

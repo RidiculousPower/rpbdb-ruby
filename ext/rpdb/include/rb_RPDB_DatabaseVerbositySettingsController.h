@@ -9,7 +9,7 @@ void Init_RPDB_DatabaseVerbositySettingsController();
 VALUE rb_RPDB_DatabaseVerbositySettingsController_new(	int			argc,
 																												VALUE*	args,
 																												VALUE		rb_klass_self );
-VALUE rb_RPDB_DatabaseVerbositySettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseVerbositySettingsController_initialize(	int				argc __attribute__ ((unused)),
 																												VALUE*		args __attribute__ ((unused)),
 																												VALUE			rb_self );
 VALUE rb_RPDB_DatabaseVerbositySettingsController_parentEnvironment(	VALUE	rb_database_verbosity_settings_controller );

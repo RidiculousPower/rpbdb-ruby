@@ -9,7 +9,7 @@ void Init_RPDB_DatabaseRecordFixedLengthSettingsController();
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_new(	int			argc,
 																																VALUE*	args,
 																																VALUE		rb_klass_self );
-VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																																VALUE*		args __attribute__ ((unused)),
 																																VALUE			rb_self );
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentEnvironment(	VALUE	rb_database_record_fixed_length_settings_controller );

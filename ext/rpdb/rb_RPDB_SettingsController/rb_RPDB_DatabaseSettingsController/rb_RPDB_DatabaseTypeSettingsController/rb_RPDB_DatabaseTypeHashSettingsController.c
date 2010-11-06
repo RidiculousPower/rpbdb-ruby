@@ -142,7 +142,7 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_new(	int			argc,
 							rb_parent_database_type_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_database_type_settings_controller };
-	rb_obj_call_init(	rb_database_type_hash_settings_controller,
+	rb_obj_call_initialize(	rb_database_type_hash_settings_controller,
 										 1, 
 										 argv );
 	
@@ -150,10 +150,10 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_new(	int			argc,
 }
 
 /*************
-*  init  *
+*  initialize  *
 *************/
 
-VALUE rb_RPDB_DatabaseTypeHashSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseTypeHashSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																												VALUE*		args __attribute__ ((unused)),
 																												VALUE			rb_self )	{
 

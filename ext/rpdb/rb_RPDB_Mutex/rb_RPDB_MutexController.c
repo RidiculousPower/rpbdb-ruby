@@ -86,7 +86,7 @@ VALUE	rb_RPDB_MutexController_new(	int			argc,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_environment };
-	rb_obj_call_init(	rb_mutex_controller,
+	rb_obj_call_initialize(	rb_mutex_controller,
 										 1, 
 										 argv );
 	
@@ -97,7 +97,7 @@ VALUE	rb_RPDB_MutexController_new(	int			argc,
 *  new  *
 *************/
 
-VALUE	rb_RPDB_MutexController_init(	int				argc __attribute__ ((unused)),
+VALUE	rb_RPDB_MutexController_initialize(	int				argc __attribute__ ((unused)),
 																		VALUE*		args __attribute__ ((unused)),
 																		VALUE			rb_self )	{
 	

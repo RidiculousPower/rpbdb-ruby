@@ -9,7 +9,7 @@ void Init_RPDB_DatabaseTypeSettingsController();
 VALUE rb_RPDB_DatabaseTypeSettingsController_new(	int			argc,
 																									VALUE*	args,
 																									VALUE		rb_klass_self );
-VALUE rb_RPDB_DatabaseTypeSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseTypeSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																										VALUE*		args __attribute__ ((unused)),
 																										VALUE			rb_self );
 VALUE rb_RPDB_DatabaseTypeSettingsController_parentEnvironment(	VALUE	rb_database_type_settings_controller );

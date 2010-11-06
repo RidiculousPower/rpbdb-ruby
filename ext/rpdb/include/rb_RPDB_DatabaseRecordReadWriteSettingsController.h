@@ -9,7 +9,7 @@ void Init_RPDB_DatabaseRecordReadWriteSettingsController();
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_new(	int			argc,
 																															VALUE*	args,
 																															VALUE		rb_klass_self );
-VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																															VALUE*		args __attribute__ ((unused)),
 																															VALUE			rb_self );
 VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentEnvironment(	VALUE	rb_database_record_read_write_settings_controller );

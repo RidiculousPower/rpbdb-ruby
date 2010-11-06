@@ -114,7 +114,7 @@ VALUE rb_RPDB_DatabaseSequenceController_new(	int			argc,
 							RPDB_RB_DATABASE_SEQUENCE_CONTROLLER_VARIABLE_PARENT_DATABASE,
 							rb_parent_database );
 	
-	rb_obj_call_init(	rb_database_sequence_controller,
+	rb_obj_call_initialize(	rb_database_sequence_controller,
 										1, 
 										& rb_parent_database );
 	
@@ -123,11 +123,11 @@ VALUE rb_RPDB_DatabaseSequenceController_new(	int			argc,
 
 
 /*********
-*  init  * 
+*  initialize  * 
 *********/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/seq_class.html
-VALUE rb_RPDB_DatabaseSequenceController_init(	int			argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseSequenceController_initialize(	int			argc __attribute__ ((unused)),
 																								VALUE*	args __attribute__ ((unused)),
 																								VALUE		rb_database_sequence_controller )	{
 

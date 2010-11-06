@@ -131,7 +131,7 @@ VALUE rb_RPDB_Environment_new(	int			argc,
 	VALUE	rb_environment	=	RUBY_RPDB_ENVIRONMENT_WITH_FREE( c_environment );
 
 	VALUE	argv[]	=	{ rb_environment_home_directory };
-	rb_obj_call_init(	rb_environment,
+	rb_obj_call_initialize(	rb_environment,
 										1, 
 										argv );
 	
@@ -148,10 +148,10 @@ void rb_RPDB_Environment_free(	RPDB_Environment* c_environment )	{
 }
 
 /*********
-*  init  *
+*  initialize  *
 *********/
 
-VALUE rb_RPDB_Environment_init(	int			argc __attribute__ ((unused)),
+VALUE rb_RPDB_Environment_initialize(	int			argc __attribute__ ((unused)),
 																VALUE*	args __attribute__ ((unused)),
 																VALUE		rb_environment )	{
 

@@ -9,7 +9,7 @@ void Init_RPDB_DatabaseRecordVariableLengthSettingsController();
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_new(	int			argc,
 																																	VALUE*	args,
 																																	VALUE		rb_klass_self );
-VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																																		VALUE*		args __attribute__ ((unused)),
 																																		VALUE			rb_self);
 VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentEnvironment(	VALUE	rb_database_record_variable_length_settings_controller );

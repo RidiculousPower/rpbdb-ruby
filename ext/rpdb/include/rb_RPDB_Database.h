@@ -9,7 +9,7 @@ void Init_RPDB_Database();
 VALUE rb_RPDB_Database_new(	int			argc,
 														VALUE*	args,
 														VALUE		rb_klass_self );
-VALUE rb_RPDB_Database_init(	int			argc,
+VALUE rb_RPDB_Database_initialize(	int			argc,
 															VALUE*	args,
 															VALUE		rb_klass_self );
 	VALUE rb_RPDB_Database_settingsController( VALUE	rb_database );

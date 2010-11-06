@@ -83,7 +83,7 @@ VALUE rb_RPDB_Data_new(	int			argc,
 							rb_parent_record );
 
 	VALUE	argv[]	=	{ rb_parent_record };
-	rb_obj_call_init(	rb_data,
+	rb_obj_call_initialize(	rb_data,
 										1, 
 										argv );
 	
@@ -94,7 +94,7 @@ VALUE rb_RPDB_Data_new(	int			argc,
 *  new  *
 *************/
 
-VALUE rb_RPDB_Data_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_Data_initialize(	int				argc __attribute__ ((unused)),
 													VALUE*		args __attribute__ ((unused)),
 													VALUE			rb_self)	{
 

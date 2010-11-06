@@ -239,7 +239,7 @@ VALUE	rb_RPDB_TransactionSettingsController;
 
 
 /*********
-*  init  *
+*  initialize  *
 *********/
 
 //	Called from ruby when RPDB module is initialized

@@ -241,7 +241,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_new(	int			argc,
 							rb_parent_database_record_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_record_settings_controller };
-	rb_obj_call_init(	rb_database_record_read_write_settings_controller,
+	rb_obj_call_initialize(	rb_database_record_read_write_settings_controller,
 										1, 
 										argv );
 	
@@ -252,7 +252,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_new(	int			argc,
 *  new  *
 *************/
 
-VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																															VALUE*		args __attribute__ ((unused)),
 																															VALUE			rb_self )	{
 	

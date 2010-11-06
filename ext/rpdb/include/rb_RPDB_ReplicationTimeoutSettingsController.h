@@ -9,7 +9,7 @@ void Init_RPDB_ReplicationTimeoutSettingsController();
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_new(	int			argc,
 																												VALUE*	args,
 																												VALUE		rb_klass_self );
-VALUE rb_RPDB_ReplicationTimeoutSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_ReplicationTimeoutSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																													VALUE*		args __attribute__ ((unused)),
 																													VALUE			rb_self );
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_parentEnvironment(	VALUE	rb_replication_timeout_settings_controller );

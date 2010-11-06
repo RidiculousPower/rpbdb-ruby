@@ -9,7 +9,7 @@ void Init_RPDB_DatabaseSequence();
 VALUE rb_RPDB_DatabaseSequence_new(	int			argc,
 																		VALUE*	args,
 																		VALUE		rb_klass_self );
-VALUE rb_RPDB_DatabaseSequence_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseSequence_initialize(	int				argc __attribute__ ((unused)),
 																			VALUE*		args __attribute__ ((unused)),
 																			VALUE			rb_self );
 	VALUE rb_RPDB_DatabaseSequence_settingsController(	VALUE	rb_database_sequence );

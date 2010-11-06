@@ -92,7 +92,7 @@ VALUE rb_RPDB_Mutex_new(	int			argc,
 							rb_parent_mutex_controller );
 
 	VALUE	argv[]	=	{ rb_parent_mutex_controller };
-	rb_obj_call_init(	rb_mutex,
+	rb_obj_call_initialize(	rb_mutex,
 										 1, 
 										 argv );
 	
@@ -105,7 +105,7 @@ VALUE rb_RPDB_Mutex_new(	int			argc,
 *************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/mutex_alloc.html
-VALUE rb_RPDB_Mutex_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_Mutex_initialize(	int				argc __attribute__ ((unused)),
 													VALUE*		args __attribute__ ((unused)),
 													VALUE			rb_self )	{
 

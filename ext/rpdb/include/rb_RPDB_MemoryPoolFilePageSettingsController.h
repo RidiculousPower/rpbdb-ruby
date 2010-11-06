@@ -9,7 +9,7 @@ void Init_RPDB_MemoryPoolFilePageSettingsController();
 VALUE rb_RPDB_MemoryPoolFilePageSettingsController_new(	int			argc,
 																												VALUE*	args,
 																												VALUE		rb_klass_self );
-VALUE rb_RPDB_MemoryPoolFilePageSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_MemoryPoolFilePageSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																													VALUE*		args __attribute__ ((unused)),
 																													VALUE			rb_self );
 VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentEnvironment(	VALUE	rb_memory_pool_file_page_settings_controller );

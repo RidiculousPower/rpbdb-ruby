@@ -9,7 +9,7 @@ void Init_RPDB_ReplicationSettingsController();
 VALUE rb_RPDB_ReplicationSettingsController_new(	int			argc,
 																									VALUE*	args,
 																									VALUE		rb_klass_self );
-VALUE rb_RPDB_ReplicationSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_ReplicationSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																									VALUE*		args __attribute__ ((unused)),
 																									VALUE			rb_self );
 VALUE rb_RPDB_ReplicationSettingsController_parentEnvironment(	VALUE	rb_replication_settings_controller );

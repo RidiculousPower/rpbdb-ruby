@@ -111,7 +111,7 @@ VALUE rb_RPDB_Log_new(	int			argc,
 							rb_parent_log_cursor );
 	
 	VALUE	argv[]	=	{ rb_parent_log_controller };
-	rb_obj_call_init(	rb_log,
+	rb_obj_call_initialize(	rb_log,
 					 1, 
 					 argv );
 	
@@ -122,7 +122,7 @@ VALUE rb_RPDB_Log_new(	int			argc,
 *  new  *
 *************/
 
-VALUE rb_RPDB_Log_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_Log_initialize(	int				argc __attribute__ ((unused)),
 												VALUE*		args __attribute__ ((unused)),
 												VALUE			rb_self )	{
 

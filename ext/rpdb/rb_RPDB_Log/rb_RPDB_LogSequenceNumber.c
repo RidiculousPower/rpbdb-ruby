@@ -98,7 +98,7 @@ VALUE rb_RPDB_LogSequenceNumber_new(	int			argc,
 							rb_parent_log );
 
 	VALUE	argv[]	=	{ rb_parent_log };
-	rb_obj_call_init(	rb_log_sequence_number,
+	rb_obj_call_initialize(	rb_log_sequence_number,
 										 1, 
 										 argv );
 	
@@ -109,7 +109,7 @@ VALUE rb_RPDB_LogSequenceNumber_new(	int			argc,
 *  new  *
 *************/
 
-VALUE rb_RPDB_LogSequenceNumber_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_LogSequenceNumber_initialize(	int				argc __attribute__ ((unused)),
 																			VALUE*		args __attribute__ ((unused)),
 																			VALUE			rb_self )	{
 

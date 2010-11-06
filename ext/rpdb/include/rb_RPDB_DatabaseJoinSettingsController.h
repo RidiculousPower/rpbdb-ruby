@@ -9,7 +9,7 @@ void Init_RPDB_DatabaseJoinSettingsController();
 VALUE rb_RPDB_DatabaseJoinSettingsController_new(	int			argc,
 																									VALUE*	args,
 																									VALUE		rb_klass_self );
-VALUE rb_RPDB_DatabaseJoinSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseJoinSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																										VALUE*		args __attribute__ ((unused)),
 																										VALUE			rb_self );
 VALUE rb_RPDB_DatabaseJoinSettingsController_parentEnvironment(	VALUE	rb_join_settings_controller );

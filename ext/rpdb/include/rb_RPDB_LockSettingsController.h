@@ -9,7 +9,7 @@ void Init_RPDB_LockSettingsController();
 VALUE rb_RPDB_LockSettingsController_new(	int			argc,
 																					VALUE*	args,
 																					VALUE		rb_klass_self );
-VALUE rb_RPDB_LockSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_LockSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																						VALUE*		args __attribute__ ((unused)),
 																						VALUE			rb_self );
 VALUE rb_RPDB_LockSettingsController_parentEnvironment(	VALUE	rb_lock_settings_controller );

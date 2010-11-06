@@ -105,7 +105,7 @@ VALUE rb_RPDB_DatabaseJoinCursor_new(	int			argc,
 							rb_parent_database_join_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_join_controller };
-	rb_obj_call_init(	rb_join_cursor,
+	rb_obj_call_initialize(	rb_join_cursor,
 										1, 
 										argv );
 	
@@ -116,7 +116,7 @@ VALUE rb_RPDB_DatabaseJoinCursor_new(	int			argc,
 *  new  *
 ************/
 
-VALUE rb_RPDB_DatabaseJoinCursor_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseJoinCursor_initialize(	int				argc __attribute__ ((unused)),
 																				VALUE*		args __attribute__ ((unused)),
 																				VALUE			rb_self )	{
 

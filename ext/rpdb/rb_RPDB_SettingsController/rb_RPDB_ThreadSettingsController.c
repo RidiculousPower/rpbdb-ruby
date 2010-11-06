@@ -98,7 +98,7 @@ VALUE rb_RPDB_ThreadSettingsController_new(	int			argc,
 							rb_parent_environment );
 	
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
-	rb_obj_call_init(	rb_thread_settings_controller,
+	rb_obj_call_initialize(	rb_thread_settings_controller,
 										 1, 
 										 argv );
 	
@@ -106,10 +106,10 @@ VALUE rb_RPDB_ThreadSettingsController_new(	int			argc,
 }
 
 /************
-*  init  *
+*  initialize  *
 ************/
 
-VALUE rb_RPDB_ThreadSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_ThreadSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																							VALUE*		args __attribute__ ((unused)),
 																							VALUE			rb_self )	{
 

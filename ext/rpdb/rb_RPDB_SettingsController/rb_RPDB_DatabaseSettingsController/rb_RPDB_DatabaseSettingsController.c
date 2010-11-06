@@ -210,7 +210,7 @@ VALUE rb_RPDB_DatabaseSettingsController_new(	int			argc,
 	}
 	
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
-	rb_obj_call_init(	rb_database_settings_controller,
+	rb_obj_call_initialize(	rb_database_settings_controller,
 										1, 
 										argv );
 	
@@ -221,7 +221,7 @@ VALUE rb_RPDB_DatabaseSettingsController_new(	int			argc,
 *  initialize  *
 ***************/
 
-VALUE rb_RPDB_DatabaseSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																								VALUE*		args __attribute__ ((unused)),
 																								VALUE			rb_self )	{
 

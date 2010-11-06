@@ -139,7 +139,7 @@ VALUE rb_RPDB_LogSettingsController_new(	int			argc,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
-	rb_obj_call_init(	rb_log_settings_controller,
+	rb_obj_call_initialize(	rb_log_settings_controller,
 										 1, 
 										 argv );
 	
@@ -147,10 +147,10 @@ VALUE rb_RPDB_LogSettingsController_new(	int			argc,
 }
 
 /*************
-*  init  *
+*  initialize  *
 *************/
 
-VALUE rb_RPDB_LogSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_LogSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																					VALUE*		args __attribute__ ((unused)),
 																					VALUE			rb_self )	{
 	

@@ -95,7 +95,7 @@ VALUE rb_RPDB_ReplicationController_new(	int			argc,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_environment };
-	rb_obj_call_init(	rb_replication_controller,
+	rb_obj_call_initialize(	rb_replication_controller,
 										 1, 
 										 argv );
 	
@@ -106,7 +106,7 @@ VALUE rb_RPDB_ReplicationController_new(	int			argc,
 *  new  *
 *************/
 
-VALUE rb_RPDB_ReplicationController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_ReplicationController_initialize(	int				argc __attribute__ ((unused)),
 																					VALUE*		args __attribute__ ((unused)),
 																					VALUE			rb_self )	{
 

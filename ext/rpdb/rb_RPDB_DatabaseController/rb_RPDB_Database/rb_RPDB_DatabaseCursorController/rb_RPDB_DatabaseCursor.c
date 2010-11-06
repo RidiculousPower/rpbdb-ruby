@@ -254,7 +254,7 @@ VALUE rb_RPDB_DatabaseCursor_new( int			argc,
 							rb_parent_cursor_controller );
 
 	VALUE	argv[]	=	{ rb_parent_cursor_controller };
-	rb_obj_call_init(	rb_database_cursor,
+	rb_obj_call_initialize(	rb_database_cursor,
 										1, 
 										argv );
 	
@@ -262,11 +262,11 @@ VALUE rb_RPDB_DatabaseCursor_new( int			argc,
 }
 
 /*********
-*  init  *
+*  initialize  *
 *********/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_cursor.html
-VALUE rb_RPDB_DatabaseCursor_init(	int			argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseCursor_initialize(	int			argc __attribute__ ((unused)),
 																		VALUE*	args __attribute__ ((unused)),
 																		VALUE		rb_database_cursor )	{
 

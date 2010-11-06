@@ -78,7 +78,9 @@ VALUE rb_RPDB_RemoteSite_new(	int			argc,
 	RPDB_ReplicationController*	c_parent_replication_controller;
 	C_RPDB_REPLICATION_CONTROLLER( rb_parent_replication_controller, c_parent_replication_controller );
 	
-	VALUE	rb_remote_site	=	RUBY_RPDB_REMOTE_SITE( RPDB_RemoteSite_new( c_parent_replication_controller ) );
+	RPDB_RemoteSite*	c_remote_site	=	RPDB_ReplicationController_addRemoteSite( c_parent_replication_controller );
+	
+	VALUE	rb_remote_site	=	RUBY_RPDB_REMOTE_SITE( c_remote_site );
 
 	//	store reference to parent
 	rb_iv_set(	rb_remote_site,
@@ -86,9 +88,9 @@ VALUE rb_RPDB_RemoteSite_new(	int			argc,
 							rb_parent_replication_controller );
 
 	VALUE	argv[]	=	{ rb_parent_replication_controller };
-	rb_obj_call_init(	rb_remote_site,
-					 1, 
-					 argv );
+	rb_obj_call_initialize(	rb_remote_site,
+										1, 
+										argv );
 	
 	return rb_remote_site;		
 }
@@ -97,7 +99,7 @@ VALUE rb_RPDB_RemoteSite_new(	int			argc,
 *  new  *
 ************/
 
-VALUE rb_RPDB_RemoteSite_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_RemoteSite_initialize(	int				argc __attribute__ ((unused)),
 																VALUE*		args __attribute__ ((unused)),
 																VALUE			rb_self )	{
 

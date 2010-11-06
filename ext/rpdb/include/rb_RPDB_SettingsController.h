@@ -10,7 +10,7 @@ void Init_RPDB_SettingsController();
 VALUE rb_RPDB_SettingsController_new(	int				argc,
 																			VALUE*		args,
 																			VALUE			rb_klass_self );
-VALUE rb_RPDB_SettingsController_init(	int				argc,
+VALUE rb_RPDB_SettingsController_initialize(	int				argc,
 																				VALUE*		args,
 																				VALUE			rb_settings_controller_self );
 

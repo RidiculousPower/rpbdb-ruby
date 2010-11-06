@@ -111,7 +111,7 @@ VALUE rb_RPDB_Lock_new(	int			argc,
 
 
 	VALUE	argv[]	=	{ rb_parent_lock_controller };	
-	rb_obj_call_init(	rb_lock,
+	rb_obj_call_initialize(	rb_lock,
 										 1, 
 										 argv );
 	
@@ -119,10 +119,10 @@ VALUE rb_RPDB_Lock_new(	int			argc,
 }
 
 /*********
-*  init  *
+*  initialize  *
 *********/
 
-VALUE rb_RPDB_Lock_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_Lock_initialize(	int				argc __attribute__ ((unused)),
 													VALUE*		args __attribute__ ((unused)),
 													VALUE			rb_self )	{
 

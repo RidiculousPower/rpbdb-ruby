@@ -162,7 +162,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_new(	int			argc,
 							rb_parent_database_cache_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_cache_settings_controller };
-	rb_obj_call_init(	rb_database_cache_priority_settings_controller,
+	rb_obj_call_initialize(	rb_database_cache_priority_settings_controller,
 										1, 
 										argv );
 	
@@ -173,7 +173,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_new(	int			argc,
 *  new  *
 ************/
 
-VALUE rb_RPDB_DatabaseCachePrioritySettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseCachePrioritySettingsController_initialize(	int				argc __attribute__ ((unused)),
 																														VALUE*		args __attribute__ ((unused)),
 																														VALUE			rb_self )	{
 
@@ -255,7 +255,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_priority( VALUE	rb_databas
 }
 
 /*****************
-*  veryLow  *
+*  very_low  *
 *****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_set_priority.html
@@ -268,7 +268,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_veryLow( VALUE	rb_database
 }
 
 	/*****************
-	*  setVeryLow  *
+	*  set_very_low  *
 	*****************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_setVeryLow( VALUE	rb_database_cache_priority_settings_controller )	{
@@ -282,7 +282,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_veryLow( VALUE	rb_database
 	}
 
 	/*********************
-	*  atLeastVeryLow  *
+	*  at_least_very_low  *
 	*********************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_isAtLeastVeryLow( VALUE	rb_database_cache_priority_settings_controller )	{
@@ -294,7 +294,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_veryLow( VALUE	rb_database
 	}
 
 	/*********************
-	*  atMostVeryLow  *
+	*  at_most_very_low  *
 	*********************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_isAtMostVeryLow( VALUE	rb_database_cache_priority_settings_controller )	{
@@ -319,7 +319,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_low( VALUE	rb_database_cac
 }
 
 	/*************
-	*  setLow  *
+	*  set_low  *
 	*************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_setLow( VALUE	rb_database_cache_priority_settings_controller )	{
@@ -333,7 +333,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_low( VALUE	rb_database_cac
 	}
 
 	/*****************
-	*  atLeastLow  *
+	*  at_least_low  *
 	*****************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_isAtLeastLow( VALUE	rb_database_cache_priority_settings_controller )	{
@@ -345,7 +345,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_low( VALUE	rb_database_cac
 	}
 
 	/*********************
-	*  atMostLow  *
+	*  at_most_low  *
 	*********************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_isAtMostLow( VALUE	rb_database_cache_priority_settings_controller )	{
@@ -370,7 +370,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_default( VALUE	rb_database
 }
 
 	/*****************
-	*  setDefault  *
+	*  set_default  *
 	*****************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_setDefault( VALUE	rb_database_cache_priority_settings_controller )	{
@@ -384,7 +384,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_default( VALUE	rb_database
 	}
 
 	/*********************
-	*  atLeastDefault  *
+	*  at_least_default  *
 	*********************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_isAtLeastDefault( VALUE	rb_database_cache_priority_settings_controller )	{
@@ -396,7 +396,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_default( VALUE	rb_database
 	}
 
 	/*********************
-	*  atMostDefault  *
+	*  at_most_default  *
 	*********************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_isAtMostDefault( VALUE	rb_database_cache_priority_settings_controller )	{
@@ -421,7 +421,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_high( VALUE	rb_database_ca
 }
 
 	/*****************
-	*  setHigh  *
+	*  set_high  *
 	*****************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_setHigh( VALUE	rb_database_cache_priority_settings_controller )	{
@@ -435,7 +435,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_high( VALUE	rb_database_ca
 	}
 
 	/*********************
-	*  atLeastHigh  *
+	*  at_least_high  *
 	*********************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_isAtLeastHigh( VALUE	rb_database_cache_priority_settings_controller )	{
@@ -447,7 +447,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_high( VALUE	rb_database_ca
 	}
 
 	/*********************
-	*  atMostHigh  *
+	*  at_most_high  *
 	*********************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_isAtMostHigh( VALUE	rb_database_cache_priority_settings_controller )	{
@@ -459,7 +459,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_high( VALUE	rb_database_ca
 	}
 
 /*****************
-*  veryHigh  *
+*  very_high  *
 *****************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_set_priority.html
@@ -472,7 +472,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_veryHigh( VALUE	rb_databas
 }
 
 	/*********************
-	*  setVeryHigh  *
+	*  set_very_high  *
 	*********************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_setVeryHigh( VALUE	rb_database_cache_priority_settings_controller )	{
@@ -486,7 +486,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_veryHigh( VALUE	rb_databas
 	}
 
 	/*************************
-	*  atLeastVeryHigh  *
+	*  at_least_very_high  *
 	*************************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_isAtLeastVeryHigh( VALUE	rb_database_cache_priority_settings_controller )	{
@@ -498,7 +498,7 @@ VALUE rb_RPDB_DatabaseCachePrioritySettingsController_veryHigh( VALUE	rb_databas
 	}
 
 	/*********************
-	*  atMostVeryHigh  *
+	*  at_most_very_high  *
 	*********************/
 
 	VALUE rb_RPDB_DatabaseCachePrioritySettingsController_isAtMostVeryHigh( VALUE	rb_database_cache_priority_settings_controller )	{

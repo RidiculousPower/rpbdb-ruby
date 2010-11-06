@@ -132,7 +132,7 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_new(	int			argc,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
-	rb_obj_call_init(	rb_database_association_settings_controller,
+	rb_obj_call_initialize(	rb_database_association_settings_controller,
 					 					1, 
 					 					argv );
 	
@@ -140,10 +140,10 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_new(	int			argc,
 }
 
 /*********
-*  init  *
+*  initialize  *
 *********/
 
-VALUE rb_RPDB_DatabaseAssociationSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseAssociationSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																													VALUE*		args __attribute__ ((unused)),
 																													VALUE			rb_self )	{	
 	return rb_self;
@@ -199,7 +199,7 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_parentDatabaseSettingsContro
 }
 
 /*****************
-*  indexPrimary  *
+*  index_primary  *
 *****************/
 
 //	DB_CREATE	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_associate.html
@@ -219,7 +219,7 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesI
 }
 
 	/*******************
-	*  indexPrimaryOn  *
+	*  index_primary_on  *
 	*******************/
 
 	VALUE rb_RPDB_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOn( VALUE	rb_database_association_settings_controller )	{
@@ -233,7 +233,7 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesI
 	}
 
 	/********************
-	*  indexPrimaryOff  *
+	*  index_primary_off  *
 	********************/
 
 	VALUE rb_RPDB_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOff( VALUE	rb_database_association_settings_controller )	{
@@ -247,7 +247,7 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesI
 	}
 
 /**************************
-*  immutableSecondaryKey  *
+*  immutable_secondary_key  *
 **************************/
 
 //	DB_IMMUTABLE_KEY		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_associate.html
@@ -267,7 +267,7 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_immutableSecondaryKey( VALUE
 }
 
 	/****************************
-	*  immutableSecondaryKeyOn  *
+	*  immutable_secondary_key_on  *
 	****************************/
 
 	VALUE rb_RPDB_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOn( VALUE	rb_database_association_settings_controller )	{
@@ -281,7 +281,7 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_immutableSecondaryKey( VALUE
 	}
 
 	/*****************************
-	*  immutableSecondaryKeyOff  *
+	*  immutable_secondary_key_off  *
 	*****************************/
 
 	VALUE rb_RPDB_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOff( VALUE	rb_database_association_settings_controller )	{

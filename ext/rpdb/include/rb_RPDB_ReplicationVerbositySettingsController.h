@@ -9,7 +9,7 @@ void Init_RPDB_ReplicationVerbositySettingsController();
 VALUE rb_RPDB_ReplicationVerbositySettingsController_new(	int			argc,
 																													VALUE*	args,
 																													VALUE		rb_klass_self );
-VALUE rb_RPDB_ReplicationVerbositySettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_ReplicationVerbositySettingsController_initialize(	int				argc __attribute__ ((unused)),
 																														VALUE*		args __attribute__ ((unused)),
 																														VALUE			rb_self );
 VALUE rb_RPDB_ReplicationVerbositySettingsController_parentEnvironment(	VALUE	rb_replication_verbosity_settings_controller );

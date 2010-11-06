@@ -9,7 +9,7 @@ void Init_RPDB_ReplicationElectionSettingsController();
 VALUE	rb_RPDB_ReplicationElectionSettingsController_new(	int			argc,
 																													VALUE*	args,
 																													VALUE		rb_klass_self );
-VALUE	rb_RPDB_ReplicationElectionSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE	rb_RPDB_ReplicationElectionSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																													VALUE*		args __attribute__ ((unused)),
 																													VALUE			rb_self );
 VALUE rb_RPDB_ReplicationElectionSettingsController_parentEnvironment(	VALUE	rb_replication_election_settings_controller );

@@ -157,7 +157,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_new(	int			argc,
 							rb_parent_database_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };	
-	rb_obj_call_init(	rb_database_sequence_settings_controller,
+	rb_obj_call_initialize(	rb_database_sequence_settings_controller,
 										 1, 
 										 argv );
 	
@@ -168,7 +168,7 @@ VALUE rb_RPDB_DatabaseSequenceSettingsController_new(	int			argc,
 *  new  *
 *************/
 
-VALUE rb_RPDB_DatabaseSequenceSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseSequenceSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																												VALUE*		args __attribute__ ((unused)),
 																												VALUE			rb_self )	{
 	

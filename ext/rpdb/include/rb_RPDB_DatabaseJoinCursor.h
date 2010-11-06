@@ -8,7 +8,7 @@ void Init_RPDB_DatabaseJoinCursor();
 VALUE rb_RPDB_DatabaseJoinCursor_new(	int			argc,
 																			VALUE*	args,
 																			VALUE		rb_klass_self );
-VALUE rb_RPDB_DatabaseJoinCursor_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseJoinCursor_initialize(	int				argc __attribute__ ((unused)),
 																					VALUE*		args __attribute__ ((unused)),
 																					VALUE			rb_self );
 	VALUE rb_RPDB_DatabaseJoinCursor_settingsController(	VALUE	rb_join_cursor );

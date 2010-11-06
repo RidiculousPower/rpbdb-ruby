@@ -9,7 +9,7 @@ void Init_RPDB_ThreadSettingsController();
 VALUE rb_RPDB_ThreadSettingsController_new(	int			argc,
 																						VALUE*	args,
 																						VALUE		rb_klass_self );
-VALUE rb_RPDB_ThreadSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_ThreadSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																							VALUE*		args __attribute__ ((unused)),
 																							VALUE			rb_self );
 VALUE rb_RPDB_ThreadSettingsController_parentEnvironment(	VALUE	rb_thread_settings_controller );

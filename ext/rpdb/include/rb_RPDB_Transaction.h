@@ -8,7 +8,7 @@ void Init_RPDB_Transaction();
 VALUE rb_RPDB_Transaction_new(	int			argc,
 																VALUE*	args,
 																VALUE		rb_klass_self );
-VALUE rb_RPDB_Transaction_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_Transaction_initialize(	int				argc __attribute__ ((unused)),
 																VALUE*		args __attribute__ ((unused)),
 																VALUE			rb_self );
 	VALUE rb_RPDB_Transaction_settingsController(	VALUE	rb_transaction );

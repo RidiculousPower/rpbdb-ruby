@@ -8,7 +8,7 @@ void Init_RPDB_DatabaseJoinController();
 VALUE rb_RPDB_DatabaseJoinController_new(	int			argc,
 																					VALUE*	args,
 																					VALUE		rb_klass_self );
-VALUE rb_RPDB_DatabaseJoinController_init(	int			argc,
+VALUE rb_RPDB_DatabaseJoinController_initialize(	int			argc,
 																						VALUE*	args,
 																						VALUE		rb_join_controller );
 	VALUE rb_RPDB_DatabaseJoinController_settingsController(	VALUE	rb_join_controller );

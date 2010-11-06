@@ -7,7 +7,7 @@
 VALUE rb_RPDB_MemoryPoolController_new(	int			argc,
 																				VALUE*	args,
 																				VALUE		rb_klass_self );
-VALUE rb_RPDB_MemoryPoolController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_MemoryPoolController_initialize(	int				argc __attribute__ ((unused)),
 																					VALUE*		args __attribute__ ((unused)),
 																					VALUE			rb_self );
 	VALUE rb_RPDB_MemoryPoolController_settingsController(	VALUE	rb_memory_pool_controller );

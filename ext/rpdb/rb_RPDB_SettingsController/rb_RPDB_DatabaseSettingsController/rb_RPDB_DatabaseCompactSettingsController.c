@@ -140,7 +140,7 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_new(	int			argc,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
-	rb_obj_call_init(	rb_database_compact_settings_controller,
+	rb_obj_call_initialize(	rb_database_compact_settings_controller,
 										 1, 
 										 argv );
 	
@@ -148,10 +148,10 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_new(	int			argc,
 }
 
 /*************
-*  new  *
+*  initialize  *
 *************/
 
-VALUE rb_RPDB_DatabaseCompactSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseCompactSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																											VALUE*		args __attribute__ ((unused)),
 																											VALUE			rb_self )	{
 
@@ -207,7 +207,7 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController
 }
 
 /*********************
-*  fillPercent  *
+*  fill_percent  *
 *********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html
@@ -223,7 +223,7 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_fillPercent( VALUE	rb_database_c
 }
 
 /*************************
-*  setFillPercent  *
+*  set_fill_percent  *
 *************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html
@@ -243,7 +243,7 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_setFillPercent(	VALUE	rb_databas
 }
 
 /*************************
-*  maxPagesToCompact  *
+*  max_pages_to_compact  *
 *************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html
@@ -257,7 +257,7 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_maxPagesToCompact( VALUE	rb_data
 }
 
 /*****************************
-*  setMaxPagesToCompact  *
+*  set_max_pages_to_compact  *
 *****************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html
@@ -290,7 +290,7 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_timeout( VALUE	rb_database_compa
 }
 
 /********************
-*  setTimeout  *
+*  set_timeout  *
 ********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html

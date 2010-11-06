@@ -84,7 +84,7 @@ VALUE rb_RPDB_Transaction_new(	int			argc,
 							rb_parent_transaction_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_transaction_controller };
-	rb_obj_call_init(	rb_transaction,
+	rb_obj_call_initialize(	rb_transaction,
 					 1, 
 					 argv );
 	
@@ -92,10 +92,10 @@ VALUE rb_RPDB_Transaction_new(	int			argc,
 }
 
 /*************
-*  init  *
+*  initialize  *
 *************/
 
-VALUE rb_RPDB_Transaction_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_Transaction_initialize(	int				argc __attribute__ ((unused)),
 																VALUE*		args __attribute__ ((unused)),
 																VALUE			rb_self )	{
 

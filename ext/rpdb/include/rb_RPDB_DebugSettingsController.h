@@ -9,7 +9,7 @@ void Init_RPDB_DebugSettingsController();
 VALUE rb_RPDB_DebugSettingsController_new(	int			argc,
 																						VALUE*	args,
 																						VALUE		rb_klass_self );
-VALUE rb_RPDB_DebugSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DebugSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																					VALUE*		args __attribute__ ((unused)),
 																					VALUE			rb_self );
 VALUE rb_RPDB_DebugSettingsController_parentEnvironment(	VALUE	rb_debug_settings_controller );

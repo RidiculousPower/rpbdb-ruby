@@ -110,7 +110,7 @@ VALUE rb_RPDB_DatabaseJoinController_new(	int			argc,
 							RPDB_RB_ALL_VARIABLE_PARENT_DATABASE,
 							rb_parent_database );
 
-	rb_obj_call_init(	rb_join_controller,
+	rb_obj_call_initialize(	rb_join_controller,
 										1, 
 										& rb_parent_database );
 	
@@ -121,7 +121,7 @@ VALUE rb_RPDB_DatabaseJoinController_new(	int			argc,
 *  new  *
 ************/
 
-VALUE rb_RPDB_DatabaseJoinController_init(	int			argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseJoinController_initialize(	int			argc __attribute__ ((unused)),
 																						VALUE*	args __attribute__ ((unused)),
 																						VALUE		rb_join_controller )	{
 

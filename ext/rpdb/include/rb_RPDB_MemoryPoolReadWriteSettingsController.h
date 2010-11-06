@@ -9,7 +9,7 @@ void Init_RPDB_MemoryPoolReadWriteSettingsController();
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_new(	int			argc,
 																													VALUE*	args,
 																													VALUE		rb_klass_self );
-VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																													VALUE*		args __attribute__ ((unused)),
 																													VALUE			rb_self );
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_parentEnvironment(	VALUE	rb_memory_pool_read_write_settings_controller );

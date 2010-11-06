@@ -9,7 +9,7 @@ void Init_RPDB_DatabaseTypeBtreeSettingsController();
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_new(	int			argc,
 																												VALUE*	args,
 																												VALUE		rb_klass_self );
-VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																												VALUE*		args __attribute__ ((unused)),
 																												VALUE			rb_self );
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentEnvironment(	VALUE	rb_database_type_btree_settings_controller );

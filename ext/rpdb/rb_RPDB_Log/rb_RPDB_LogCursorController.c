@@ -95,7 +95,7 @@ VALUE rb_RPDB_LogCursorController_new(	int			argc,
 							rb_parent_log_controller );
 
 	VALUE	argv[]	=	{ rb_parent_log_controller };
-	rb_obj_call_init(	rb_log_cursor_controller,
+	rb_obj_call_initialize(	rb_log_cursor_controller,
 					 1, 
 					 argv );
 	
@@ -106,7 +106,7 @@ VALUE rb_RPDB_LogCursorController_new(	int			argc,
 *  new  *
 ************/
 
-VALUE rb_RPDB_LogCursorController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_LogCursorController_initialize(	int				argc __attribute__ ((unused)),
 																				VALUE*		args __attribute__ ((unused)),
 																				VALUE			rb_self )	{
 

@@ -9,7 +9,7 @@ void Init_RPDB_DatabaseAssociationSettingsController();
 VALUE rb_RPDB_DatabaseAssociationSettingsController_new(	int			argc,
 																													VALUE*	args,
 																													VALUE		rb_klass_self );
-VALUE rb_RPDB_DatabaseAssociationSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DatabaseAssociationSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																													VALUE*		args __attribute__ ((unused)),
 																													VALUE			rb_self );
 VALUE rb_RPDB_DatabaseAssociationSettingsController_parentEnvironment(	VALUE	rb_database_association_settings_controller );

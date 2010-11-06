@@ -9,7 +9,7 @@ void Init_RPDB_FileSettingsController();
 VALUE rb_RPDB_FileSettingsController_new(	int			argc,
 																					VALUE*	args,
 																					VALUE		rb_klass_self );
-VALUE rb_RPDB_FileSettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_FileSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																						VALUE*		args __attribute__ ((unused)),
 																						VALUE			rb_self );
 VALUE rb_RPDB_FileSettingsController_parentEnvironment(	VALUE	rb_file_settings_controller );

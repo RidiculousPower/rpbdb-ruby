@@ -267,7 +267,7 @@ VALUE rb_RPDB_Database_new(	int			argc,
 	rb_RPDB_Database_internal_storeRubyRuntimeInstanceForCInstance( rb_database );
 
 	VALUE	argv[]	=	{ rb_parent_database_controller };
-	rb_obj_call_init(	rb_database,
+	rb_obj_call_initialize(	rb_database,
 										1, 
 										argv );
 
@@ -279,7 +279,7 @@ VALUE rb_RPDB_Database_new(	int			argc,
 ***************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_class.html
-VALUE rb_RPDB_Database_init(	int			argc __attribute__((unused)),
+VALUE rb_RPDB_Database_initialize(	int			argc __attribute__((unused)),
 															VALUE*	args __attribute__((unused)),
 															VALUE		rb_database_self )	{
 		

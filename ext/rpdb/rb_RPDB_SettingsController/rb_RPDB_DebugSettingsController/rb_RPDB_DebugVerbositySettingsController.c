@@ -110,7 +110,7 @@ VALUE rb_RPDB_DebugVerbositySettingsController_new(	int			argc,
 							rb_parent_debug_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_debug_settings_controller };
-	rb_obj_call_init(	rb_debug_verbosity_settings_controller,
+	rb_obj_call_initialize(	rb_debug_verbosity_settings_controller,
 										 1, 
 										 argv );
 	
@@ -121,7 +121,7 @@ VALUE rb_RPDB_DebugVerbositySettingsController_new(	int			argc,
 *  new  *
 *************/
 
-VALUE rb_RPDB_DebugVerbositySettingsController_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_DebugVerbositySettingsController_initialize(	int				argc __attribute__ ((unused)),
 																											VALUE*		args __attribute__ ((unused)),
 																											VALUE			rb_self )	{
 

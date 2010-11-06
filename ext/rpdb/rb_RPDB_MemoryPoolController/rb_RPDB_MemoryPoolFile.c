@@ -94,7 +94,7 @@ VALUE rb_RPDB_MemoryPoolFile_new(	int			argc,
 							rb_parent_memory_pool_file_controller );
 
 	VALUE	argv[]	=	{ rb_parent_memory_pool_file_controller };
-	rb_obj_call_init(	rb_memory_pool_file,
+	rb_obj_call_initialize(	rb_memory_pool_file,
 					 					1, 
 					 					argv );
 	
@@ -105,7 +105,7 @@ VALUE rb_RPDB_MemoryPoolFile_new(	int			argc,
 *  new  *
 *************/
 	
-VALUE rb_RPDB_MemoryPoolFile_init(	int				argc __attribute__ ((unused)),
+VALUE rb_RPDB_MemoryPoolFile_initialize(	int				argc __attribute__ ((unused)),
 																		VALUE*		args __attribute__ ((unused)),
 																		VALUE			rb_self )	{
 
