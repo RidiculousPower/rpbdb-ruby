@@ -56,29 +56,29 @@ describe RPDB::Environment::Settings::Database::Record do
     RPDB::Environment::Settings::Database::Record.new.should_not == nil
   end
 
-  /*************
-  *  self.new  *
-  *************/
+  ##############
+  #  self.new  #
+  ##############
 
-  /***************
-  *  initialize  *
-  ***************/
+  ################
+  #  initialize  #
+  ################
 
-  /***********************
-  *  parent_environment  *
-  ***********************/
+  ########################
+  #  parent_environment  #
+  ########################
 
-  /********************
-  *  parent_database  *
-  ********************/
+  #####################
+  #  parent_database  #
+  #####################
 
-  /*******************************
-  *  parent_settings_controller  *
-  *******************************/
+  ################################
+  #  parent_settings_controller  #
+  ################################
 
-  /****************************************
-  *  parent_database_settings_controller  *
-  ****************************************/
+  #########################################
+  #  parent_database_settings_controller  #
+  #########################################
 
 end
 
