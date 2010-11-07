@@ -71,6 +71,38 @@ describe RPDB::Environment::Settings::Database::Cursor::Cache do
     RPDB::Environment::Settings::Database::Cursor::Cache.new.should_not == nil
   end
 
+  /*************
+  *  self.new  *
+  *************/
+
+  /***************
+  *  initialize  *
+  ***************/
+
+  /***********************
+  *  parent_environment  *
+  ***********************/
+
+  /********************
+  *  parent_database  *
+  ********************/
+
+  /*******************************
+  *  parent_settings_controller  *
+  *******************************/
+
+  /****************************************
+  *  parent_database_settings_controller  *
+  ****************************************/
+
+  /***********************************************
+  *  parent_database_cursor_settings_controller  *
+  ***********************************************/
+
+  /*********************************
+  *  priority_settings_controller  *
+  *********************************/
+
 end
 
 

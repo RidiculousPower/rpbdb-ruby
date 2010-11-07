@@ -56,5 +56,41 @@ describe RPDB::Environment::Settings::Database::Record::VariableLength do
     RPDB::Environment::Settings::Database::Record::VariableLength.new.should_not == nil
   end
 
+  /*************
+  *  self.new  *
+  *************/
+
+  	/***************
+  	*  initialize  *
+  	***************/
+
+  /***********************
+  *  parent_environment  *
+  ***********************/
+
+  /********************
+  *  parent_database  *
+  ********************/
+
+  /*******************************
+  *  parent_settings_controller  *
+  *******************************/
+
+  /****************************************
+  *  parent_database_settings_controller  *
+  ****************************************/
+
+  /***********************************************
+  *  parent_database_record_settings_controller  *
+  ***********************************************/
+
+  	/*********************
+  	*  record_delimeter  *
+  	*********************/
+
+  	/*************************
+  	*  set_record_delimeter  *
+  	*************************/
+
 end
 

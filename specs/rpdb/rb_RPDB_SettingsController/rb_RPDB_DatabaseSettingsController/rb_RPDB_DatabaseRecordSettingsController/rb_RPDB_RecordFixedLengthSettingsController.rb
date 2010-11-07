@@ -56,5 +56,50 @@ describe RPDB::Environment::Settings::Database::Record::FixedLength do
     RPDB::Environment::Settings::Database::Record::FixedLength.new.should_not == nil
   end
 
+  /*************
+  *  self.new  *
+  *************/
+
+  /***************
+  *  initialize  *
+  ***************/
+
+  /***********************
+  *  parent_environment  *
+  ***********************/
+
+  /********************
+  *  parent_database  *
+  ********************/
+
+  /*******************************
+  *  parent_settings_controller  *
+  *******************************/
+
+  /****************************************
+  *  parent_database_settings_controller  *
+  ****************************************/
+
+  /***********************************************
+  *  parent_database_record_settings_controller  *
+  ***********************************************/
+
+  /******************
+  *  record_length  *
+  ******************/
+
+  /**********************
+  *  set_record_length  *
+  **********************/
+
+  /*****************
+  *  padding_byte  *
+  *****************/
+
+  /*********************
+  *  set_padding_byte  *
+  *********************/
+
+
 end
 

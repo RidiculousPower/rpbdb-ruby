@@ -41,5 +41,33 @@ describe RPDB::Environment::Settings::Directory do
     RPDB::Environment::Settings::Directory.new.should_not == nil
   end
 
+  /*************
+  *  self.new  *
+  *************/
+
+  /***************
+  *  initialize  *
+  ***************/
+
+  /***********************
+  *  parent_environment  *
+  ***********************/
+
+  /*******************************
+  *  parent_settings_controller  *
+  *******************************/
+
+  /*******************
+  *  home_directory  *
+  *******************/
+
+  /*********************
+  *  data_directories  *
+  *********************/
+
+  /***********************
+  *  add_data_directory  *
+  ***********************/
+
 end
 

@@ -51,5 +51,33 @@ describe RPDB::Environment::Settings::MemoryPool::File::Cache do
     RPDB::Environment::Settings::MemoryPool::File::Cache.new.should_not == nil
   end
 
+  /*************
+  *  self.new  *
+  *************/
+
+  /***************
+  *  initialize  *
+  ***************/
+
+  /***********************
+  *  parent_environment  *
+  ***********************/
+
+  /*******************************
+  *  parent_settings_controller  *
+  *******************************/
+
+  /*******************************************
+  *  parent_memory_pool_settings_controller  *
+  *******************************************/
+
+  /************************************************
+  *  parent_memory_pool_file_settings_controller  *
+  ************************************************/
+
+  /************************
+  *  priority_controller  *
+  ************************/
+
 end
 

@@ -310,9 +310,9 @@ VALUE rb_RPDB_LockSettingsController_timeoutReturnsDenyNotDeadlock( VALUE	rb_loc
 		return rb_lock_settings_controller;
 	}
 
-/*********
-*  wait  *
-*********/
+/**********
+*  wait?  *
+**********/
 
 //	DB_LOCK_NOWAIT			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/lock_get.html
 VALUE rb_RPDB_LockSettingsController_noWaitingForConflicts( VALUE	rb_lock_settings_controller )	{

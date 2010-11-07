@@ -46,5 +46,37 @@ describe RPDB::Environment::DatabaseController::Database do
     RPDB::Environment::Settings::Debug::Verbosity.new.should_not == nil
   end
 
+  /*************
+  *  self.new  *
+  *************/
+
+  /***************
+  *  initialize  *
+  ***************/
+
+  /***********************
+  *  parent_environment  *
+  ***********************/
+
+  /*******************************
+  *  parent_settings_controller  *
+  *******************************/
+
+  /*************************************
+  *  parent_debug_settings_controller  *
+  *************************************/
+
+  /***************************************************
+  *  display_additional_information_during_recovery  *
+  ***************************************************/
+
+  	/***********************************************************
+  	*  turn_display_additional_information_during_recovery_on  *
+  	***********************************************************/
+
+  	/************************************************************
+  	*  turn_display_additional_information_during_recovery_off  *
+  	************************************************************/
+
 end
 

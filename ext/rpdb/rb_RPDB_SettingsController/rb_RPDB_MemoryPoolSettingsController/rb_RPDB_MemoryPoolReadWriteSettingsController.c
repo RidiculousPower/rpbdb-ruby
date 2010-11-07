@@ -200,9 +200,9 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_new(	int			argc,
 	return rb_memory_pool_read_write_settings_controller;		
 }
 
-/*************
-*  self.new  *
-*************/
+/***************
+*  initialize  *
+***************/
 
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																													VALUE*		args __attribute__ ((unused)),

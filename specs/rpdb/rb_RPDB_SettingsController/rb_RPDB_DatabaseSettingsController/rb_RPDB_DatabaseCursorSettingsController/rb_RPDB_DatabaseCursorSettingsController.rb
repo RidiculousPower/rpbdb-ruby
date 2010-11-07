@@ -56,5 +56,49 @@ describe RPDB::Environment::Settings::Database::Cursor do
     RPDB::Environment::Settings::Database::Cursor.new.should_not == nil
   end
 
+  /*************
+  *  self.new  *
+  *************/
+
+  /***************
+  *  initialize  *
+  ***************/
+
+  /***********************
+  *  parent_environment  *
+  ***********************/
+
+  /********************
+  *  parent_database  *
+  ********************/
+
+  /*******************************
+  *  parent_settings_controller  *
+  *******************************/
+
+  /****************************************
+  *  parent_database_settings_controller  *
+  ****************************************/
+
+  /*******************************
+  *  duplicate_retains_location  *
+  *******************************/
+
+  	/***************************************
+  	*  turn_duplicate_retains_location_on  *
+  	***************************************/
+
+  	/****************************************
+  	*  turn_duplicate_retains_location_off  *
+  	****************************************/
+
+  /*********************
+  *  cache_controller  *
+  *********************/
+
+  /**************************
+  *  read_write_controller  *
+  **************************/
+
 end
 

@@ -1,6 +1,6 @@
 require_relative '../../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings::Database::Error do
+describe RPDB::Environment::Settings::Database::Encryption do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,34 +26,34 @@ describe RPDB::Environment::Settings::Database::Error do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::Database::Error.new( environment )
+  # RPDB::Environment::Settings::Database::Encryption.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::Database::Error.new( @environment ).should_not == nil
+    RPDB::Environment::Settings::Database::Encryption.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Error.new( database_controller )
+  # RPDB::Environment::Settings::Database::Encryption.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Environment::Settings::Database::Error.new( @environment.database_controller ).should_not == nil
+    RPDB::Environment::Settings::Database::Encryption.new( @environment.database_controller ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Error.new( database )
+  # RPDB::Environment::Settings::Database::Encryption.new( database )
   it "can be created with a database" do
-    RPDB::Environment::Settings::Database::Error.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Environment::Settings::Database::Encryption.new( @environment.database_controller.new( $database_name ) ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Error.new( settings_controller )
+  # RPDB::Environment::Settings::Database::Encryption.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::Database::Error.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Environment::Settings::Database::Encryption.new( RPDB::Environment::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Error.new( database_settings_controller )
+  # RPDB::Environment::Settings::Database::Encryption.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Environment::Settings::Database::Error.new( RPDB::Environment::Settings::Database.new ).should_not == nil
+    RPDB::Environment::Settings::Database::Encryption.new( RPDB::Environment::Settings::Database.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Error.new
+  # RPDB::Environment::Settings::Database::Encryption.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::Database::Error.new.should_not == nil
+    RPDB::Environment::Settings::Database::Encryption.new.should_not == nil
   end
 
   /*************
@@ -80,30 +80,17 @@ describe RPDB::Environment::Settings::Database::Error do
   *  parent_database_settings_controller  *
   ****************************************/
 
-  /*********
-  *  file  *
-  *********/
+  /**************
+  *  encrypted  *
+  **************/
 
-  /*************
-  *  set_file  *
-  *************/
+  	/***********************
+  	*  turn_encryption_on  *
+  	***********************/
 
-  /***********
-  *  prefix  *
-  ***********/
-
-
-  /***************
-  *  set_prefix  *
-  ***************/
-
-  /******************************
-  *  set_error_callback_method  *
-  ******************************/
-
-  /**************************
-  *  error_callback_method  *
-  **************************/
+  	/************************
+  	*  turn_encryption_off  *
+  	************************/
 
 end
 

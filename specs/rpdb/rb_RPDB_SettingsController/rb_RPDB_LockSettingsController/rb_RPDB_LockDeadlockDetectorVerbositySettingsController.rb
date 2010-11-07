@@ -51,5 +51,53 @@ describe RPDB::Environment::Settings::Lock::DeadlockDetector::Verbosity do
     RPDB::Environment::Settings::Lock::DeadlockDetector::Verbosity.new.should_not == nil
   end
 
+  /*************
+  *  self.new  *
+  *************/
+
+  /***************
+  *  initialize  *
+  ***************/
+
+  /***********************
+  *  parent_environment  *
+  ***********************/
+
+  /*******************************
+  *  parent_settings_controller  *
+  *******************************/
+
+  /************************************
+  *  parent_lock_settings_controller  *
+  ************************************/
+
+  /******************************************************
+  *  parent_lock_deadlock_detector_settings_controller  *
+  ******************************************************/
+
+  /**************************************************************
+  *  display_additional_information_during_deadlock_detection?  *
+  **************************************************************/
+
+  	/*********************************************************************
+  	*  turn_display_additional_information_during_deadlock_detection_on  *
+  	*********************************************************************/
+
+  	/**********************************************************************
+  	*  turn_display_additional_information_during_deadlock_detection_off  *
+  	**********************************************************************/
+
+  /**************************************************
+  *  display_wait_table_during_deadlock_detection?  *
+  **************************************************/
+
+  	/*********************************************************
+  	*  turn_display_wait_table_during_deadlock_detection_on  *
+  	*********************************************************/
+
+  	/**********************************************************
+  	*  turn_display_wait_table_during_deadlock_detection_off  *
+  	**********************************************************/
+
 end
 

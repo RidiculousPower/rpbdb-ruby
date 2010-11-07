@@ -56,5 +56,53 @@ describe RPDB::Environment::Settings::Database::Compact do
     RPDB::Environment::Settings::Database::Compact.new.should_not == nil
   end
 
+  /*************
+  *  self.new  *
+  *************/
+
+  /***************
+  *  initialize  *
+  ***************/
+
+  /***********************
+  *  parent_environment  *
+  ***********************/
+
+  /********************
+  *  parent_database  *
+  ********************/
+
+  /*******************************
+  *  parent_settings_controller  *
+  *******************************/
+
+  /****************************************
+  *  parent_database_settings_controller  *
+  ****************************************/
+
+  /*****************
+  *  fill_percent  *
+  *****************/
+
+  /*********************
+  *  set_fill_percent  *
+  *********************/
+
+  /*************************
+  *  max_pages_to_compact  *
+  *************************/
+
+  /*****************************
+  *  set_max_pages_to_compact  *
+  *****************************/
+
+  /************
+  *  timeout  *
+  ************/
+
+  /****************
+  *  set_timeout  *
+  ****************/
+
 end
 

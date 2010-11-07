@@ -56,5 +56,54 @@ describe RPDB::Environment::Settings::Database::Association do
     RPDB::Environment::Settings::Database::Association.new.should_not == nil
   end
 
+  /*************
+  *  self.new  *
+  *************/
+
+  /***************
+  *  initialize  *
+  ***************/
+
+  /***********************
+  *  parent_environment  *
+  ***********************/
+
+  /********************
+  *  parent_database  *
+  ********************/
+
+  /*******************************
+  *  parent_settings_controller  *
+  *******************************/
+
+  /****************************************
+  *  parent_database_settings_controller  *
+  ****************************************/
+
+  /******************
+  *  index_primary  *
+  ******************/
+
+  	/*********************
+  	*  index_primary_on  *
+  	*********************/
+
+  	/**********************
+  	*  index_primary_off  *
+  	**********************/
+
+  /****************************
+  *  immutable_secondary_key  *
+  ****************************/
+
+  	/*******************************
+  	*  immutable_secondary_key_on  *
+  	*******************************/
+
+  	/********************************
+  	*  immutable_secondary_key_off  *
+  	********************************/
+
+
 end
 
