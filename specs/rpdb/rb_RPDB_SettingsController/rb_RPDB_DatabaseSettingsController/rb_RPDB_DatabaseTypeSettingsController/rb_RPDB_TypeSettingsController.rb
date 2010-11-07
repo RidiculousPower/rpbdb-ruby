@@ -60,77 +60,153 @@ describe RPDB::Environment::Settings::Database::Type do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   #####################
   #  parent_database  #
   #####################
+
+  it "" do
+    Fail
+  end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   #########################################
   #  parent_database_settings_controller  #
   #########################################
+
+  it "" do
+    Fail
+  end
 
   ###################
   #  database_type  #
   ###################
 
+  it "" do
+    Fail
+  end
+
   ###############
   #  is_btree?  #
   ###############
+
+  it "" do
+    Fail
+  end
 
   ##################
   #  set_to_btree  #
   ##################
 
+  it "" do
+    Fail
+  end
+
   ##############
   #  is_hash?  #
   ##############
+
+  it "" do
+    Fail
+  end
 
   #################
   #  set_to_hash  #
   #################
 
+  it "" do
+    Fail
+  end
+
   ###############
   #  is_recno?  #
   ###############
+
+  it "" do
+    Fail
+  end
 
   ##################
   #  set_to_recno  #
   ##################
 
+  it "" do
+    Fail
+  end
+
   ###############
   #  is_queue?  #
   ###############
+
+  it "" do
+    Fail
+  end
 
   ##################
   #  set_to_queue  #
   ##################
 
+  it "" do
+    Fail
+  end
+
   ######################
   #  btree_controller  #
   ######################
+
+  it "" do
+    Fail
+  end
 
   #####################
   #  hash_controller  #
   #####################
 
+  it "" do
+    Fail
+  end
+
   ######################
   #  queue_controller  #
   ######################
 
+  it "" do
+    Fail
+  end
+
   ######################
   #  recno_controller  #
   ######################
+
+  it "" do
+    Fail
+  end
 
 end
 

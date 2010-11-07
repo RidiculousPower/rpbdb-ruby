@@ -60,37 +60,73 @@ describe RPDB::Environment::Settings::Database::Record::VariableLength do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   	################
   	#  initialize  #
   	################
+
+    it "" do
+      Fail
+    end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   #####################
   #  parent_database  #
   #####################
+
+  it "" do
+    Fail
+  end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   #########################################
   #  parent_database_settings_controller  #
   #########################################
+
+  it "" do
+    Fail
+  end
 
   ################################################
   #  parent_database_record_settings_controller  #
   ################################################
 
+  it "" do
+    Fail
+  end
+
   	######################
   	#  record_delimeter  #
   	######################
 
+    it "" do
+      Fail
+    end
+
   	##########################
   	#  set_record_delimeter  #
   	##########################
+
+    it "" do
+      Fail
+    end
 
 end
 

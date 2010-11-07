@@ -45,66 +45,129 @@ describe RPDB::Environment::Settings::Thread do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   #########
   #  on?  #
   #########
 
+  it "" do
+    Fail
+  end
+
   ##########
   #  off?  #
   ##########
 
+  it "" do
+    Fail
+  end
 
   #############
   #  turn_on  #
   #############
 
+  it "" do
+    Fail
+  end
+
   ##############
   #  turn_off  #
   ##############
+
+  it "" do
+    Fail
+  end
 
   ##################
   #  thread_count  #
   ##################
 
+  it "" do
+    Fail
+  end
+
   ######################
   #  set_thread_count  #
   ######################
+
+  it "" do
+    Fail
+  end
 
   ##################################################
   #  set_unique_thread_identifier_callback_method  #
   ##################################################
 
+  it "" do
+    Fail
+  end
+
   ##############################################
   #  unique_thread_identifier_callback_method  #
   ##############################################
+
+  it "" do
+    Fail
+  end
 
   ##########################################################################
   #  set_format_thread_and_process_identifier_for_display_callback_method  #
   ##########################################################################
 
+  it "" do
+    Fail
+  end
+
   ######################################################################
   #  format_thread_and_process_identifier_for_display_callback_method  #
   ######################################################################
+
+  it "" do
+    Fail
+  end
 
   #########################################
   #  set_is_thread_alive_callback_method  #
   #########################################
 
+  it "" do
+    Fail
+  end
+
   #####################################
   #  is_thread_alive_callback_method  #
   #####################################
+
+  it "" do
+    Fail
+  end
 
 end
 

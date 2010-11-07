@@ -45,77 +45,145 @@ describe RPDB::Environment::Settings::Mutex do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   ##########################################################
   #  spin_times_before_blocking_for_test_and_spin_mutexes  #
   ##########################################################
+
+  it "" do
+    Fail
+  end
 
   	##############################################################
   	#  set_spin_times_before_blocking_for_test_and_spin_mutexes  #
   	##############################################################
 
+    it "" do
+      Fail
+    end
+
   ###########################
   #  max_allowable_mutexes  #
   ###########################
 
+  it "" do
+    Fail
+  end
 
   	###############################
   	#  set_max_allowable_mutexes  #
   	###############################
 
+    it "" do
+      Fail
+    end
 
   ##################################
   #  increment_for_adding_mutexes  #
   ##################################
 
+  it "" do
+    Fail
+  end
+
   	######################################
   	#  set_increment_for_adding_mutexes  #
   	######################################
 
+    it "" do
+      Fail
+    end
 
   #####################
   #  mutex_alignment  #
   #####################
 
+  it "" do
+    Fail
+  end
+
   	#########################
   	#  set_mutex_alignment  #
   	#########################
+
+    it "" do
+      Fail
+    end
 
   #####################################
   #  associated_with_single_process?  #
   #####################################
 
+  it "" do
+    Fail
+  end
+
   	############################################
   	#  turn_associated_with_single_process_on  #
   	############################################
+
+    it "" do
+      Fail
+    end
 
   	#############################################
   	#  turn_associated_with_single_process_off  #
   	#############################################
 
+    it "" do
+      Fail
+    end
+
   ###################
   #  self_blocking  #
   ###################
+
+  it "" do
+    Fail
+  end
 
   	###########################
   	#  turn_self_blocking_on  #
   	###########################
 
+    it "" do
+      Fail
+    end
+
   	############################
   	#  turn_self_blocking_off  #
   	############################
+
+    it "" do
+      Fail
+    end
 
 
 end

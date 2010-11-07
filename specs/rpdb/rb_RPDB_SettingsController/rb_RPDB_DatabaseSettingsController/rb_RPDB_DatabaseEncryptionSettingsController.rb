@@ -60,37 +60,73 @@ describe RPDB::Environment::Settings::Database::Encryption do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   #####################
   #  parent_database  #
   #####################
+
+  it "" do
+    Fail
+  end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   #########################################
   #  parent_database_settings_controller  #
   #########################################
+
+  it "" do
+    Fail
+  end
 
   ###############
   #  encrypted  #
   ###############
 
+  it "" do
+    Fail
+  end
+
   	########################
   	#  turn_encryption_on  #
   	########################
 
+    it "" do
+      Fail
+    end
+
   	#########################
   	#  turn_encryption_off  #
   	#########################
+
+    it "" do
+      Fail
+    end
 
 end
 

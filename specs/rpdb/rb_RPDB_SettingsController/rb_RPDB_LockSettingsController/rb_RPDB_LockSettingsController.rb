@@ -45,133 +45,265 @@ describe RPDB::Environment::Settings::Lock do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   #########
   #  on?  #
   #########
 
+  it "" do
+    Fail
+  end
+
   ##########
   #  off?  #
   ##########
+
+  it "" do
+    Fail
+  end
 
   	#############
   	#  turn_on  #
   	#############
 
+    it "" do
+      Fail
+    end
+
   	##############
   	#  turn_off  #
   	##############
+
+    it "" do
+      Fail
+    end
 
   #######################
   #  prohibit_locking?  #
   #######################
 
+  it "" do
+    Fail
+  end
+
   	##############################
   	#  turn_prohibit_locking_on  #
   	##############################
+
+    it "" do
+      Fail
+    end
 
   	###############################
   	#  turn_prohibit_locking_off  #
   	###############################
 
+    it "" do
+      Fail
+    end
+
   ##############################################
   #  timeout_returns_return_deny_not_deadlock  #
   ##############################################
+
+  it "" do
+    Fail
+  end
 
   	######################################################
   	#  turn_timeout_returns_return_deny_not_deadlock_on  #
   	######################################################
 
+    it "" do
+      Fail
+    end
+
   	#######################################################
   	#  turn_timeout_returns_return_deny_not_deadlock_off  #
   	#######################################################
+
+    it "" do
+      Fail
+    end
 
   ###########
   #  wait?  #
   ###########
 
+  it "" do
+    Fail
+  end
+
   	##################
   	#  turn_wait_on  #
   	##################
+
+    it "" do
+      Fail
+    end
 
   	###################
   	#  turn_wait_off  #
   	###################
 
+    it "" do
+      Fail
+    end
+
   ########################################
   #  lock_for_environment_not_database?  #
   ########################################
+
+  it "" do
+    Fail
+  end
 
   	###############################################
   	#  turn_lock_for_environment_not_database_on  #
   	###############################################
 
+    it "" do
+      Fail
+    end
+
   	################################################
   	#  turn_lock_for_environment_not_database_off  #
   	################################################
+
+    it "" do
+      Fail
+    end
 
   #############
   #  timeout  #
   #############
 
+  it "" do
+    Fail
+  end
+
   	#################
   	#  set_timeout  #
   	#################
+
+    it "" do
+      Fail
+    end
 
   #####################
   #  conflict_matrix  #
   #####################
 
+  it "" do
+    Fail
+  end
+
   	#########################
   	#  set_conflict_matrix  #
   	#########################
+
+    it "" do
+      Fail
+    end
 
   #################
   #  max_lockers  #
   #################
 
+  it "" do
+    Fail
+  end
+
   	#####################
   	#  set_max_lockers  #
   	#####################
+
+    it "" do
+      Fail
+    end
 
   ###############
   #  max_locks  #
   ###############
 
+  it "" do
+    Fail
+  end
+
   	###################
   	#  set_max_locks  #
   	###################
+
+    it "" do
+      Fail
+    end
 
   #################
   #  max_objects  #
   #################
 
+  it "" do
+    Fail
+  end
+
   	#####################
   	#  set_max_objects  #
   	#####################
+
+    it "" do
+      Fail
+    end
 
   ##########################
   #  number_of_partitions  #
   ##########################
 
+  it "" do
+    Fail
+  end
+
   	##############################
   	#  set_number_of_partitions  #
   	##############################
 
+    it "" do
+      Fail
+    end
+
   ##################################
   #  deadlock_detector_controller  #
   ##################################
+
+  it "" do
+    Fail
+  end
 
 end
 

@@ -60,69 +60,137 @@ describe RPDB::Environment::Settings::Database::Type::Recno do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   #####################
   #  parent_database  #
   #####################
+
+  it "" do
+    Fail
+  end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   #########################################
   #  parent_database_settings_controller  #
   #########################################
+
+  it "" do
+    Fail
+  end
 
   ##############################################
   #  parent_database_type_settings_controller  #
   ##############################################
 
+  it "" do
+    Fail
+  end
+
   ########################
   #  record_renumbering  #
   ########################
+
+  it "" do
+    Fail
+  end
 
   	################################
   	#  turn_record_renumbering_on  #
   	################################
 
+    it "" do
+      Fail
+    end
+
   	#################################
   	#  turn_record_renumbering_off  #
   	#################################
+
+    it "" do
+      Fail
+    end
 
   ########################
   #  snapshot_isolation  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   	################################
   	#  turn_snapshot_isolation_on  #
   	################################
+
+    it "" do
+      Fail
+    end
 
   	#################################
   	#  turn_snapshot_isolation_off  #
   	#################################
 
+    it "" do
+      Fail
+    end
+
   #################
   #  source_file  #
   #################
+
+  it "" do
+    Fail
+  end
 
   #####################
   #  set_source_file  #
   #####################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  set_append_callback_method  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   ############################
   #  append_callback_method  #
   ############################
+
+  it "" do
+    Fail
+  end
 
 end
 

@@ -60,62 +60,121 @@ describe RPDB::Environment::Settings::Database::Join do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   #####################
   #  parent_database  #
   #####################
+
+  it "" do
+    Fail
+  end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   #########################################
   #  parent_database_settings_controller  #
   #########################################
+
+  it "" do
+    Fail
+  end
 
   ##########################
   #  degree_one_isolation  #
   ##########################
 
+  it "" do
+    Fail
+  end
+
   	##################################
   	#  turn_degree_one_isolation_on  #
   	##################################
+
+    it "" do
+      Fail
+    end
 
   	###################################
   	#  turn_degree_one_isolation_off  #
   	###################################
 
-  #######################################
-  #  write_locks_instead_of_read_locks  #
-  #######################################
-
-  	###############################################
-  	#  turn_write_locks_instead_of_read_locks_on  #
-  	###############################################
-
-  	################################################
-  	#  turn_write_locks_instead_of_read_locks_off  #
-  	################################################
+    it "" do
+      Fail
+    end
 
   #######################################
   #  write_locks_instead_of_read_locks  #
   #######################################
 
+  it "" do
+    Fail
+  end
+
   	###############################################
   	#  turn_write_locks_instead_of_read_locks_on  #
   	###############################################
+
+    it "" do
+      Fail
+    end
 
   	################################################
   	#  turn_write_locks_instead_of_read_locks_off  #
   	################################################
 
+    it "" do
+      Fail
+    end
+
+  #######################################
+  #  write_locks_instead_of_read_locks  #
+  #######################################
+
+  it "" do
+    Fail
+  end
+
+  	###############################################
+  	#  turn_write_locks_instead_of_read_locks_on  #
+  	###############################################
+
+    it "" do
+      Fail
+    end
+
+  	################################################
+  	#  turn_write_locks_instead_of_read_locks_off  #
+  	################################################
+
+    it "" do
+      Fail
+    end
 
 end
 

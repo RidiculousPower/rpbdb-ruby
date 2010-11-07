@@ -55,85 +55,169 @@ describe RPDB::Environment::Settings::MemoryPool::File::Page do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   ############################################
   #  parent_memory_pool_settings_controller  #
   ############################################
 
+  it "" do
+    Fail
+  end
+
   #################################################
   #  parent_memory_pool_file_settings_controller  #
   #################################################
+
+  it "" do
+    Fail
+  end
 
   #############################################
   #  get_page_creates_page_if_does_not_exist  #
   #############################################
 
+  it "" do
+    Fail
+  end
+
   	#####################################################
   	#  turn_get_page_creates_page_if_does_not_exist_on  #
   	#####################################################
+
+    it "" do
+      Fail
+    end
 
   	######################################################
   	#  turn_get_page_creates_page_if_does_not_exist_off  #
   	######################################################
 
+    it "" do
+      Fail
+    end
+
   ##########################################
   #  get_page_writes_copy_before_eviction  #
   ##########################################
+
+  it "" do
+    Fail
+  end
 
   	##################################################
   	#  turn_get_page_writes_copy_before_eviction_on  #
   	##################################################
 
+    it "" do
+      Fail
+    end
+
   	###################################################
   	#  turn_get_page_writes_copy_before_eviction_off  #
   	###################################################
+
+    it "" do
+      Fail
+    end
 
   ##################################################
   #  get_page_writes_before_eviction_without_copy  #
   ##################################################
 
+  it "" do
+    Fail
+  end
+
   	##########################################################
   	#  turn_get_page_writes_before_eviction_without_copy_on  #
   	##########################################################
+
+    it "" do
+      Fail
+    end
 
   	###########################################################
   	#  turn_get_page_writes_before_eviction_without_copy_off  #
   	###########################################################
 
+    it "" do
+      Fail
+    end
+
   ################################
   #  get_page_returns_last_page  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   	########################################
   	#  turn_get_page_returns_last_page_on  #
   	########################################
 
+    it "" do
+      Fail
+    end
+
   	#########################################
   	#  turn_get_page_returns_last_page_off  #
   	#########################################
+
+    it "" do
+      Fail
+    end
 
   ###############################
   #  get_page_creates_new_page  #
   ###############################
 
+  it "" do
+    Fail
+  end
+
   	#######################################
   	#  turn_get_page_creates_new_page_on  #
   	#######################################
 
+    it "" do
+      Fail
+    end
+
   	########################################
   	#  turn_get_page_creates_new_page_off  #
   	########################################
+
+    it "" do
+      Fail
+    end
 
 end
 

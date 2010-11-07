@@ -60,81 +60,161 @@ describe RPDB::Environment::Settings::Database::Cache do
   #  initialize  #
   ################
 
+  it "" do
+    Fail
+  end
+
   ########################
   #  parent_environment  #
   ########################
+
+  it "" do
+    Fail
+  end
 
   #####################
   #  parent_database  #
   #####################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   #########################################
   #  parent_database_settings_controller  #
   #########################################
 
+  it "" do
+    Fail
+  end
+
   #######################
   #  max_size_in_bytes  #
   #######################
+
+  it "" do
+    Fail
+  end
 
   	########################
   	#  max_size_in_kbytes  #
   	########################
 
+    it "" do
+      Fail
+    end
+
   	########################
   	#  max_size_in_mbytes  #
   	########################
+
+    it "" do
+      Fail
+    end
 
   	########################
   	#  max_size_in_gbytes  #
   	########################
 
+    it "" do
+      Fail
+    end
+
   ###########################
   #  set_max_size_in_bytes  #
   ###########################
+
+  it "" do
+    Fail
+  end
 
   	############################
   	#  set_max_size_in_kbytes  #
   	############################
 
+    it "" do
+      Fail
+    end
+
   	############################
   	#  set_max_size_in_mbytes  #
   	############################
+
+    it "" do
+      Fail
+    end
 
   	############################
   	#  set_max_size_in_gbytes  #
   	############################
 
+    it "" do
+      Fail
+    end
+
   	################################################
   	#  set_max_size_in_gbytes_mbytes_kbytes_bytes  #
   	################################################
+
+    it "" do
+      Fail
+    end
 
   	#########################################
   	#  set_max_size_in_mbytes_kbytes_bytes  #
   	#########################################
 
+    it "" do
+      Fail
+    end
+
   	##################################
   	#  set_max_size_in_kbytes_bytes  #
   	##################################
+
+    it "" do
+      Fail
+    end
 
   ##########################
   #  number_cache_regions  #
   ##########################
 
+  it "" do
+    Fail
+  end
+
   ##############################
   #  set_number_cache_regions  #
   ##############################
+
+  it "" do
+    Fail
+  end
 
   ##################
   #  cache_update  #
   ##################
 
+  it "" do
+    Fail
+  end
+
   #########################
   #  priority_controller  #
   #########################
+
+  it "" do
+    Fail
+  end
 
 end
 

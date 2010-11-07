@@ -50,93 +50,185 @@ describe RPDB::Environment::Settings::Replication::Timeout do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   ############################################
   #  parent_replication_settings_controller  #
   ############################################
 
+  it "" do
+    Fail
+  end
+
   #############
   #  timeout  #
   #############
+
+  it "" do
+    Fail
+  end
 
   #################
   #  set_timeout  #
   #################
 
+  it "" do
+    Fail
+  end
+
   #######################################
   #  wait_time_before_checkpoint_write  #
   #######################################
+
+  it "" do
+    Fail
+  end
 
   ###########################################
   #  set_wait_time_before_checkpoint_write  #
   ###########################################
 
+  it "" do
+    Fail
+  end
+
   #######################################
   #  wait_time_before_retry_connection  #
   #######################################
+
+  it "" do
+    Fail
+  end
 
   ###########################################
   #  set_wait_time_before_retry_connection  #
   ###########################################
 
+  it "" do
+    Fail
+  end
+
   ######################
   #  election_timeout  #
   ######################
+
+  it "" do
+    Fail
+  end
 
   ##########################
   #  set_election_timeout  #
   ##########################
 
+  it "" do
+    Fail
+  end
+
   #####################################
   #  wait_time_before_retry_election  #
   #####################################
+
+  it "" do
+    Fail
+  end
 
   #########################################
   #  set_wait_time_before_retry_election  #
   #########################################
 
+  it "" do
+    Fail
+  end
+
   #########################################
   #  full_election_participation_timeout  #
   #########################################
+
+  it "" do
+    Fail
+  end
 
   #############################################
   #  set_full_election_participation_timeout  #
   #############################################
 
+  it "" do
+    Fail
+  end
+
   #############################
   #  heartbeat_monitor_pulse  #
   #############################
+
+  it "" do
+    Fail
+  end
 
   #################################
   #  set_heartbeat_monitor_pulse  #
   #################################
 
+  it "" do
+    Fail
+  end
+
   ###############################
   #  heartbeat_broadcast_pulse  #
   ###############################
+
+  it "" do
+    Fail
+  end
 
   ###################################
   #  set_heartbeat_broadcast_pulse  #
   ###################################
 
+  it "" do
+    Fail
+  end
+
   ###################
   #  lease_timeout  #
   ###################
 
+  it "" do
+    Fail
+  end
+
   #######################
   #  set_lease_timeout  #
   #######################
+
+  it "" do
+    Fail
+  end
 
 end
 

@@ -40,53 +40,105 @@ describe RPDB::Environment::Settings do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   #############
   #  shm_key  #
   #############
+
+  it "" do
+    Fail
+  end
 
   #################
   #  set_shm_key  #
   #################
 
+  it "" do
+    Fail
+  end
+
   ##############################
   #  file_settings_controller  #
   ##############################
+
+  it "" do
+    Fail
+  end
 
   ###############################
   #  error_settings_controller  #
   ###############################
 
+  it "" do
+    Fail
+  end
+
   #############################
   #  log_settings_controller  #
   #############################
+
+  it "" do
+    Fail
+  end
 
   ##############################
   #  lock_settings_controller  #
   ##############################
 
+  it "" do
+    Fail
+  end
+
   #####################################
   #  replication_settings_controller  #
   #####################################
+
+  it "" do
+    Fail
+  end
 
   #####################################
   #  memory_pool_settings_controller  #
   #####################################
 
+  it "" do
+    Fail
+  end
+
   ##################################
   #  database_settings_controller  #
   ##################################
 
+  it "" do
+    Fail
+  end
+
   ###################################
   #  directory_settings_controller  #
   ###################################
+
+  it "" do
+    Fail
+  end
 
 end
 

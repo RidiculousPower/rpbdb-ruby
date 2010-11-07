@@ -50,97 +50,193 @@ describe RPDB::Environment::Settings::Lock::DeadlockDetector do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   #####################################
   #  parent_lock_settings_controller  #
   #####################################
 
+  it "" do
+    Fail
+  end
+
   #################
   #  is_default?  #
   #################
+
+  it "" do
+    Fail
+  end
 
   	####################
   	#  set_to_default  #
   	####################
 
+    it "" do
+      Fail
+    end
+
   #####################
   #  reject_expired?  #
   #####################
+
+  it "" do
+    Fail
+  end
 
   	###########################
   	#  set_to_reject_expired  #
   	###########################
 
+    it "" do
+      Fail
+    end
+
   ####################################
   #  reject_locker_with_most_locks?  #
   ####################################
+
+  it "" do
+    Fail
+  end
 
   	##########################################
   	#  set_to_reject_locker_with_most_locks  #
   	##########################################
 
+    it "" do
+      Fail
+    end
+
   ##########################################
   #  reject_locker_with_most_write_locks?  #
   ##########################################
+
+  it "" do
+    Fail
+  end
 
   	################################################
   	#  set_to_reject_locker_with_most_write_locks  #
   	################################################
 
+    it "" do
+      Fail
+    end
+
   ######################################
   #  reject_locker_with_fewest_locks?  #
   ######################################
+
+  it "" do
+    Fail
+  end
 
   	############################################
   	#  set_to_reject_locker_with_fewest_locks  #
   	############################################
 
+    it "" do
+      Fail
+    end
+
   ############################################
   #  reject_locker_with_fewest_write_locks?  #
   ############################################
+
+  it "" do
+    Fail
+  end
 
   	##################################################
   	#  set_to_reject_locker_with_fewest_write_locks  #
   	##################################################
 
+    it "" do
+      Fail
+    end
+
   #####################################
   #  reject_locker_with_oldest_lock?  #
   #####################################
+
+  it "" do
+    Fail
+  end
 
   	###########################################
   	#  set_to_reject_locker_with_oldest_lock  #
   	###########################################
 
+    it "" do
+      Fail
+    end
+
   #######################################
   #  reject_locker_with_youngest_lock?  #
   #######################################
+
+  it "" do
+    Fail
+  end
 
   	#############################################
   	#  set_to_reject_locker_with_youngest_lock  #
   	#############################################
 
+    it "" do
+      Fail
+    end
+
   ####################
   #  reject_random?  #
   ####################
+
+  it "" do
+    Fail
+  end
 
   	##########################
   	#  set_to_reject_random  #
   	##########################
 
+    it "" do
+      Fail
+    end
+
   ###################################
   #  verbosity_settings_controller  #
   ###################################
+
+  it "" do
+    Fail
+  end
 
 end
 

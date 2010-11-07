@@ -45,105 +45,209 @@ describe RPDB::Environment::DatabaseController::Database do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   #####################################################
   #  run_normal_recovery_before_opening_environment?  #
   #####################################################
 
+  it "" do
+    Fail
+  end
+
   	############################################################
   	#  turn_run_normal_recovery_before_opening_environment_on  #
   	############################################################
+
+    it "" do
+      Fail
+    end
 
   	#############################################################
   	#  turn_run_normal_recovery_before_opening_environment_off  #
   	#############################################################
 
+    it "" do
+      Fail
+    end
+
   ###########################################################
   #  run_catastrophic_recovery_before_opening_environment?  #
   ###########################################################
+
+  it "" do
+    Fail
+  end
 
   	##################################################################
   	#  turn_run_catastrophic_recovery_before_opening_environment_on  #
   	##################################################################
 
+    it "" do
+      Fail
+    end
+
   	###################################################################
   	#  turn_run_catastrophic_recovery_before_opening_environment_off  #
   	###################################################################
+
+    it "" do
+      Fail
+    end
 
   #######################
   #  open_in_lockdown?  #
   #######################
 
+  it "" do
+    Fail
+  end
+
   	##############################
   	#  turn_open_in_lockdown_on  #
   	##############################
+
+    it "" do
+      Fail
+    end
 
   	###############################
   	#  turn_open_in_lockdown_off  #
   	###############################
 
+    it "" do
+      Fail
+    end
+
   ####################################################
   #  check_for_recovery_before_opening_environment?  #
   ####################################################
+
+  it "" do
+    Fail
+  end
 
   	###########################################################
   	#  turn_check_for_recovery_before_opening_environment_on  #
   	###########################################################
 
+    it "" do
+      Fail
+    end
+
   	############################################################
   	#  turn_check_for_recovery_before_opening_environment_off  #
   	############################################################
+
+    it "" do
+      Fail
+    end
 
   #####################
   #  prohibit_panic?  #
   #####################
 
+  it "" do
+    Fail
+  end
+
   	############################
   	#  turn_prohibit_panic_on  #
   	############################
+
+    it "" do
+      Fail
+    end
 
   	#############################
   	#  turn_prohibit_panic_off  #
   	#############################
 
+    it "" do
+      Fail
+    end
+
   ############
   #  panic?  #
   ############
+
+  it "" do
+    Fail
+  end
 
   	###################
   	#  turn_panic_on  #
   	###################
 
+    it "" do
+      Fail
+    end
+
   	####################
   	#  turn_panic_off  #
   	####################
+
+    it "" do
+      Fail
+    end
 
   ###############################
   #  yield_cpu_for_stress_test  #
   ###############################
 
+  it "" do
+    Fail
+  end
+
   	#######################################
   	#  turn_yield_cpu_for_stress_test_on  #
   	#######################################
+
+    it "" do
+      Fail
+    end
 
   	########################################
   	#  turn_yield_cpu_for_stress_test_off  #
   	########################################
 
+    it "" do
+      Fail
+    end
+
   ###################################
   #  verbosity_settings_controller  #
   ###################################
+
+  it "" do
+    Fail
+  end
 
 end
 

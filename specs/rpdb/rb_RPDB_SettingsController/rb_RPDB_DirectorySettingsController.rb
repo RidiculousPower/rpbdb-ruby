@@ -45,29 +45,57 @@ describe RPDB::Environment::Settings::Directory do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   ####################
   #  home_directory  #
   ####################
 
+  it "" do
+    Fail
+  end
+
   ######################
   #  data_directories  #
   ######################
 
+  it "" do
+    Fail
+  end
+
   ########################
   #  add_data_directory  #
   ########################
+
+  it "" do
+    Fail
+  end
 
 end
 

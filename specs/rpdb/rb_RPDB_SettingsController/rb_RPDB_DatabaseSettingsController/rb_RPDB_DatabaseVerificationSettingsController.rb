@@ -60,93 +60,185 @@ describe RPDB::Environment::Settings::Database::Verification do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   #####################
   #  parent_database  #
   #####################
+
+  it "" do
+    Fail
+  end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   #########################################
   #  parent_database_settings_controller  #
   #########################################
+
+  it "" do
+    Fail
+  end
 
   ##########
   #  file  #
   ##########
 
+  it "" do
+    Fail
+  end
+
   ##############
   #  set_file  #
   ##############
+
+  it "" do
+    Fail
+  end
 
   ####################################
   #  aggressive_key_data_pair_dump?  #
   ####################################
 
+  it "" do
+    Fail
+  end
+
   	###########################################
   	#  turn_aggressive_key_data_pair_dump_on  #
   	###########################################
+
+    it "" do
+      Fail
+    end
 
   	############################################
   	#  turn_aggressive_key_data_pair_dump_off  #
   	############################################
 
+    it "" do
+      Fail
+    end
+
   ###########################
   #  printable_characters?  #
   ###########################
+
+  it "" do
+    Fail
+  end
 
   	##################################
   	#  turn_printable_characters_on  #
   	##################################
 
+    it "" do
+      Fail
+    end
+
   	###################################
   	#  turn_printable_characters_off  #
   	###################################
+
+    it "" do
+      Fail
+    end
 
   #######################
   #  skip_order_check?  #
   #######################
 
+  it "" do
+    Fail
+  end
+
   	##############################
   	#  turn_skip_order_check_on  #
   	##############################
+
+    it "" do
+      Fail
+    end
 
   	###############################
   	#  turn_skip_order_check_off  #
   	###############################
 
+    it "" do
+      Fail
+    end
+
   #######################
   #  only_order_check?  #
   #######################
+
+  it "" do
+    Fail
+  end
 
   	##############################
   	#  turn_only_order_check_on  #
   	##############################
 
+    it "" do
+      Fail
+    end
+
   	###############################
   	#  turn_only_order_check_off  #
   	###############################
+
+    it "" do
+      Fail
+    end
 
   ########################
   #  force_order_check?  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   	###############################
   	#  turn_force_order_check_on  #
   	###############################
 
+    it "" do
+      Fail
+    end
+
   	################################
   	#  turn_force_order_check_off  #
   	################################
+
+    it "" do
+      Fail
+    end
 
 end
 

@@ -60,69 +60,137 @@ describe RPDB::Environment::Settings::Database::Type::Hash do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   #####################
   #  parent_database  #
   #####################
+
+  it "" do
+    Fail
+  end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   #########################################
   #  parent_database_settings_controller  #
   #########################################
+
+  it "" do
+    Fail
+  end
 
   ##############################################
   #  parent_database_type_settings_controller  #
   ##############################################
 
+  it "" do
+    Fail
+  end
+
   ################
   #  table_size  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ####################
   #  set_table_size  #
   ####################
 
+  it "" do
+    Fail
+  end
+
   #########################
   #  hash_density_factor  #
   #########################
+
+  it "" do
+    Fail
+  end
 
   #############################
   #  set_hash_density_factor  #
   #############################
 
+  it "" do
+    Fail
+  end
+
   #####################
   #  set_hash_method  #
   #####################
+
+  it "" do
+    Fail
+  end
 
   #################
   #  hash_method  #
   #################
 
+  it "" do
+    Fail
+  end
+
   ########################
   #  set_compare_method  #
   ########################
+
+  it "" do
+    Fail
+  end
 
   ###################
   #  compareMethod  #
   ###################
 
+  it "" do
+    Fail
+  end
+
   ##################################
   #  set_duplicate_compare_method  #
   ##################################
 
+  it "" do
+    Fail
+  end
+
   ##############################
   #  duplicate_compare_method  #
   ##############################
+
+  it "" do
+    Fail
+  end
 
 end
 

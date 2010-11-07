@@ -141,85 +141,169 @@ describe RPDB::Environment::Settings::Database::Type::Btree do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   #####################
   #  parent_database  #
   #####################
+
+  it "" do
+    Fail
+  end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   #########################################
   #  parent_database_settings_controller  #
   #########################################
+
+  it "" do
+    Fail
+  end
 
   ##############################################
   #  parent_database_type_settings_controller  #
   ##############################################
 
+  it "" do
+    Fail
+  end
+
   #############################
   #  record_number_retrieval  #
   #############################
+
+  it "" do
+    Fail
+  end
 
   	#####################################
   	#  turn_record_number_retrieval_on  #
   	#####################################
 
+    it "" do
+      Fail
+    end
+
   	######################################
   	#  turn_record_number_retrieval_off  #
   	######################################
+
+    it "" do
+      Fail
+    end
 
   #######################
   #  reverse_splitting  #
   #######################
 
+  it "" do
+    Fail
+  end
+
   	###############################
   	#  turn_reverse_splitting_on  #
   	###############################
+
+    it "" do
+      Fail
+    end
 
   	################################
   	#  turn_reverse_splitting_off  #
   	################################
 
+    it "" do
+      Fail
+    end
+
   ###########################
   #  minimum_keys_per_page  #
   ###########################
+
+  it "" do
+    Fail
+  end
 
   ###############################
   #  set_minimum_keys_per_page  #
   ###############################
 
+  it "" do
+    Fail
+  end
+
   ###############################
   #  set_prefix_compare_method  #
   ###############################
+
+  it "" do
+    Fail
+  end
 
   ###########################
   #  prefix_compare_method  #
   ###########################
 
+  it "" do
+    Fail
+  end
+
   ########################
   #  set_compare_method  #
   ########################
+
+  it "" do
+    Fail
+  end
 
   ####################
   #  compare_method  #
   ####################
 
+  it "" do
+    Fail
+  end
+
   ##################################
   #  set_duplicate_compare_method  #
   ##################################
 
+  it "" do
+    Fail
+  end
+
   ##############################
   #  duplicate_compare_method  #
   ##############################
+
+  it "" do
+    Fail
+  end
 
 end
 

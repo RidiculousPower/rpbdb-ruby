@@ -60,46 +60,89 @@ describe RPDB::Environment::Settings::Database::Record::FixedLength do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   #####################
   #  parent_database  #
   #####################
+
+  it "" do
+    Fail
+  end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   #########################################
   #  parent_database_settings_controller  #
   #########################################
+
+  it "" do
+    Fail
+  end
 
   ################################################
   #  parent_database_record_settings_controller  #
   ################################################
 
+  it "" do
+    Fail
+  end
+
   ###################
   #  record_length  #
   ###################
+
+  it "" do
+    Fail
+  end
 
   #######################
   #  set_record_length  #
   #######################
 
+  it "" do
+    Fail
+  end
+
   ##################
   #  padding_byte  #
   ##################
+
+  it "" do
+    Fail
+  end
 
   ######################
   #  set_padding_byte  #
   ######################
 
+  it "" do
+    Fail
+  end
 
 end
 

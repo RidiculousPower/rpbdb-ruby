@@ -70,90 +70,177 @@ describe RPDB::Environment::Settings::Database::Cursor::ReadWrite do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   #####################
   #  parent_database  #
   #####################
+
+  it "" do
+    Fail
+  end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   #########################################
   #  parent_database_settings_controller  #
   #########################################
+
+  it "" do
+    Fail
+  end
 
   ################################################
   #  parent_database_cursor_settings_controller  #
   ################################################
 
+  it "" do
+    Fail
+  end
+
   ##################
   #  permit_write  #
   ##################
+
+  it "" do
+    Fail
+  end
 
   	#####################
   	#  permit_write_on  #
   	#####################
 
+    it "" do
+      Fail
+    end
+
   	######################
   	#  permit_write_off  #
   	######################
+
+    it "" do
+      Fail
+    end
 
   ##################
   #  ignore_lease  #
   ##################
 
+  it "" do
+    Fail
+  end
+
   	#####################
   	#  ignore_lease_on  #
   	#####################
+
+    it "" do
+      Fail
+    end
 
   	######################
   	#  ignore_lease_off  #
   	######################
 
+    it "" do
+      Fail
+    end
+
   #######################################
   #  write_locks_instead_of_read_locks  #
   #######################################
+
+  it "" do
+    Fail
+  end
 
   	###############################################
   	#  turn_write_locks_instead_of_read_locks_on  #
   	###############################################
 
+    it "" do
+      Fail
+    end
+
   	################################################
   	#  turn_write_locks_instead_of_read_locks_off  #
   	################################################
+
+    it "" do
+      Fail
+    end
 
   ################################
   #  return_multiple_data_items  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   	########################################
   	#  turn_return_multiple_data_items_on  #
   	########################################
+
+    it "" do
+      Fail
+    end
 
   	#########################################
   	#  turn_return_multiple_data_items_off  #
   	#########################################
 
+    it "" do
+      Fail
+    end
+
   ####################################
   #  return_multiple_key_data_pairs  #
   ####################################
+
+  it "" do
+    Fail
+  end
 
   	############################################
   	#  turn_return_multiple_key_data_pairs_on  #
   	############################################
 
+    it "" do
+      Fail
+    end
+
   	#############################################
   	#  turn_return_multiple_key_data_pairs_off  #
   	#############################################
 
+    it "" do
+      Fail
+    end
 
 end
 

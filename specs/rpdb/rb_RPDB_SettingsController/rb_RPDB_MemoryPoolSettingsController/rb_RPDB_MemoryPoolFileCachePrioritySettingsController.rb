@@ -60,113 +60,225 @@ describe RPDB::Environment::Settings::MemoryPool::File::Cache::Priority do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   ############################################
   #  parent_memory_pool_settings_controller  #
   ############################################
 
+  it "" do
+    Fail
+  end
+
   #################################################
   #  parent_memory_pool_file_settings_controller  #
   #################################################
+
+  it "" do
+    Fail
+  end
 
   #######################################################
   #  parent_memory_pool_file_cache_settings_controller  #
   #######################################################
 
+  it "" do
+    Fail
+  end
+
   ######################
   #  current_priority  #
   ######################
+
+  it "" do
+    Fail
+  end
 
   ##############
   #  very_low  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   	##################
   	#  set_very_low  #
   	##################
+
+    it "" do
+      Fail
+    end
 
   	#######################
   	#  at_least_very_low  #
   	#######################
 
+    it "" do
+      Fail
+    end
+
   	######################
   	#  at_most_very_low  #
   	######################
+
+    it "" do
+      Fail
+    end
 
   #########
   #  low  #
   #########
 
+  it "" do
+    Fail
+  end
+
   	#############
   	#  set_low  #
   	#############
+
+    it "" do
+      Fail
+    end
 
   	##################
   	#  at_least_low  #
   	##################
 
+    it "" do
+      Fail
+    end
+
   	#################
   	#  at_most_low  #
   	#################
+
+    it "" do
+      Fail
+    end
 
   #############
   #  default  #
   #############
 
+  it "" do
+    Fail
+  end
+
   	#################
   	#  set_default  #
   	#################
+
+    it "" do
+      Fail
+    end
 
   	######################
   	#  at_least_default  #
   	######################
 
+    it "" do
+      Fail
+    end
+
   	#####################
   	#  at_most_default  #
   	#####################
+
+    it "" do
+      Fail
+    end
 
   ##########
   #  high  #
   ##########
 
+  it "" do
+    Fail
+  end
+
   	##############
   	#  set_high  #
   	##############
+
+    it "" do
+      Fail
+    end
 
   	###################
   	#  at_least_high  #
   	###################
 
+    it "" do
+      Fail
+    end
+
   	##################
   	#  at_most_high  #
   	##################
+
+    it "" do
+      Fail
+    end
 
   ###############
   #  very_high  #
   ###############
 
+  it "" do
+    Fail
+  end
+
   	###################
   	#  set_very_high  #
   	###################
+
+    it "" do
+      Fail
+    end
 
   	########################
   	#  at_least_very_high  #
   	########################
 
+    it "" do
+      Fail
+    end
+
   	#######################
   	#  at_most_very_high  #
   	#######################
+
+    it "" do
+      Fail
+    end
 
 end
 

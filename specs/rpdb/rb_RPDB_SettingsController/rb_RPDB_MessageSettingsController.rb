@@ -45,97 +45,193 @@ describe RPDB::Environment::Settings::Message do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   ##########
   #  file  #
   ##########
 
+  it "" do
+    Fail
+  end
+
   ##############
   #  set_file  #
   ##############
+
+  it "" do
+    Fail
+  end
 
   ##########################
   #  set_message_callback  #
   ##########################
 
+  it "" do
+    Fail
+  end
+
   ######################
   #  message_callback  #
   ######################
+
+  it "" do
+    Fail
+  end
 
   ###############################
   #  set_panic_callback_method  #
   ###############################
 
+  it "" do
+    Fail
+  end
+
   ###########################
   #  panic_callback_method  #
   ###########################
+
+  it "" do
+    Fail
+  end
 
   ########################################################
   #  set_site_is_now_replication_client_callback_method  #
   ########################################################
 
+  it "" do
+    Fail
+  end
+
   ####################################################
   #  site_is_now_replication_client_callback_method  #
   ####################################################
+
+  it "" do
+    Fail
+  end
 
   #######################################################
   #  set_site_won_replication_election_callback_method  #
   #######################################################
 
+  it "" do
+    Fail
+  end
+
   ###################################################
   #  site_won_replication_election_callback_method  #
   ###################################################
+
+  it "" do
+    Fail
+  end
 
   #################################################################
   #  set_site_is_now_master_of_replication_group_callback_method  #
   #################################################################
 
+  it "" do
+    Fail
+  end
+
   #############################################################
   #  site_is_now_master_of_replication_group_callback_method  #
   #############################################################
+
+  it "" do
+    Fail
+  end
 
   ##########################################################
   #  set_replication_group_has_new_master_callback_method  #
   ##########################################################
 
+  it "" do
+    Fail
+  end
+
   ######################################################
   #  replication_group_has_new_master_callback_method  #
   ######################################################
+
+  it "" do
+    Fail
+  end
 
   ############################################################
   #  set_replication_acknowledgement_failed_callback_method  #
   ############################################################
 
+  it "" do
+    Fail
+  end
+
   ########################################################
   #  replication_acknowledgement_failed_callback_method  #
   ########################################################
+
+  it "" do
+    Fail
+  end
 
   #######################################################
   #  set_replication_startup_completed_callback_method  #
   #######################################################
 
+  it "" do
+    Fail
+  end
+
   ###################################################
   #  replication_startup_completed_callback_method  #
   ###################################################
+
+  it "" do
+    Fail
+  end
 
   ######################################
   #  set_write_failed_callback_method  #
   ######################################
 
+  it "" do
+    Fail
+  end
+
   ##################################
   #  write_failed_callback_method  #
   ##################################
+
+  it "" do
+    Fail
+  end
 
 end
 

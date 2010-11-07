@@ -45,117 +45,233 @@ describe RPDB::Environment::DatabaseController::Database do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   #################################
   #  intermediate_directory_mode  #
   #################################
 
+  it "" do
+    Fail
+  end
+
   	#####################################
   	#  set_intermediate_directory_mode  #
   	#####################################
+
+    it "" do
+      Fail
+    end
 
   ####################
   #  temp_directory  #
   ####################
 
+  it "" do
+    Fail
+  end
+
   	########################
   	#  set_temp_directory  #
   	########################
+
+    it "" do
+      Fail
+    end
 
   ###############################
   #  permit_environment_naming  #
   ###############################
 
+  it "" do
+    Fail
+  end
+
   	#######################################
   	#  turn_permit_environment_naming_on  #
   	#######################################
+
+    it "" do
+      Fail
+    end
 
   	########################################
   	#  turn_permit_environment_naming_off  #
   	########################################
 
+    it "" do
+      Fail
+    end
+
   ###########################
   #  use_environment_home?  #
   ###########################
+
+  it "" do
+    Fail
+  end
 
   	##################################
   	#  turn_use_environment_home_on  #
   	##################################
 
+    it "" do
+      Fail
+    end
+
   	###################################
   	#  turn_use_environment_home_off  #
   	###################################
+
+    it "" do
+      Fail
+    end
 
   #########################
   #  create_if_necessary  #
   #########################
 
+  it "" do
+    Fail
+  end
+
   	#################################
   	#  turn_create_if_necessary_on  #
   	#################################
+
+    it "" do
+      Fail
+    end
 
   	##################################
   	#  turn_create_if_necessary_off  #
   	##################################
 
+    it "" do
+      Fail
+    end
+
   ###############################################
   #  is_error_if_database_exists_before_create  #
   ###############################################
+
+  it "" do
+    Fail
+  end
 
   	#######################################################
   	#  turn_is_error_if_database_exists_before_create_on  #
   	#######################################################
 
+    it "" do
+      Fail
+    end
+
   	########################################################
   	#  turn_is_error_if_database_exists_before_create_off  #
   	########################################################
+
+    it "" do
+      Fail
+    end
 
   ####################
   #  open_read_only  #
   ####################
 
+  it "" do
+    Fail
+  end
+
   	############################
   	#  turn_open_read_only_on  #
   	############################
+
+    it "" do
+      Fail
+    end
 
   	#############################
   	#  turn_open_read_only_off  #
   	#############################
 
+    it "" do
+      Fail
+    end
+
   ###################
   #  force_removal  #
   ###################
+
+  it "" do
+    Fail
+  end
 
   	###########################
   	#  turn_force_removal_on  #
   	###########################
 
+    it "" do
+      Fail
+    end
+
   	############################
   	#  turn_force_removal_off  #
   	############################
+
+    it "" do
+      Fail
+    end
 
   ########################
   #  file_creation_mode  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   	############################
   	#  set_file_creation_mode  #
   	############################
 
+    it "" do
+      Fail
+    end
+
   ###################################
   #  verbosity_settings_controller  #
   ###################################
+
+  it "" do
+    Fail
+  end
 
 end
 

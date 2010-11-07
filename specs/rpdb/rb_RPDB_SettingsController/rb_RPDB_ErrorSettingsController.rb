@@ -45,41 +45,81 @@ describe RPDB::Environment::Settings::Error do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   ##########
   #  file  #
   ##########
 
+  it "" do
+    Fail
+  end
+
   	##############
   	#  set_file  #
   	##############
+
+    it "" do
+      Fail
+    end
 
   ############
   #  prefix  #
   ############
 
+  it "" do
+    Fail
+  end
+
   	################
   	#  set_prefix  #
   	################
+
+    it "" do
+      Fail
+    end
 
   ###############################
   #  set_error_callback_method  #
   ###############################
 
+  it "" do
+    Fail
+  end
+
   ###########################
   #  error_callback_method  #
   ###########################
+
+  it "" do
+    Fail
+  end
 
 end
 

@@ -45,74 +45,145 @@ describe RPDB::Environment::Settings::Cache do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   ################
   #  buffering?  #
   ################
 
+  it "" do
+    Fail
+  end
+
   	#######################
   	#  turn_buffering_on  #
   	#######################
+
+    it "" do
+      Fail
+    end
 
   	########################
   	#  turn_buffering_off  #
   	########################
 
+    it "" do
+      Fail
+    end
+
   #######################
   #  max_size_in_bytes  #
   #######################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  max_size_in_kbytes  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ########################
   #  max_size_in_mbytes  #
   ########################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  max_size_in_gbytes  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   	###########################
   	#  set_max_size_in_bytes  #
   	###########################
+
+    it "" do
+      Fail
+    end
 
   	############################
   	#  set_max_size_in_kbytes  #
   	############################
 
+    it "" do
+      Fail
+    end
+
   	############################
   	#  set_max_size_in_mbytes  #
   	############################
+
+    it "" do
+      Fail
+    end
 
   	############################
   	#  set_max_size_in_gbytes  #
   	############################
 
+    it "" do
+      Fail
+    end
+
   	################################################
   	#  set_max_size_in_gbytes_mbytes_kbytes_bytes  #
   	################################################
+
+    it "" do
+      Fail
+    end
 
   	#########################################
   	#  set_max_size_in_mbytes_kbytes_bytes  #
   	#########################################
 
+    it "" do
+      Fail
+    end
+
   	##################################
   	#  set_max_size_in_kbytes_bytes  #
   	##################################
 
+    it "" do
+      Fail
+    end
 
 end
 

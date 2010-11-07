@@ -60,45 +60,89 @@ describe RPDB::Environment::Settings::Database::Cursor do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   #####################
   #  parent_database  #
   #####################
+
+  it "" do
+    Fail
+  end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   #########################################
   #  parent_database_settings_controller  #
   #########################################
+
+  it "" do
+    Fail
+  end
 
   ################################
   #  duplicate_retains_location  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   	########################################
   	#  turn_duplicate_retains_location_on  #
   	########################################
+
+    it "" do
+      Fail
+    end
 
   	#########################################
   	#  turn_duplicate_retains_location_off  #
   	#########################################
 
+    it "" do
+      Fail
+    end
+
   ######################
   #  cache_controller  #
   ######################
 
+  it "" do
+    Fail
+  end
+
   ###########################
   #  read_write_controller  #
   ###########################
+
+  it "" do
+    Fail
+  end
 
 end
 

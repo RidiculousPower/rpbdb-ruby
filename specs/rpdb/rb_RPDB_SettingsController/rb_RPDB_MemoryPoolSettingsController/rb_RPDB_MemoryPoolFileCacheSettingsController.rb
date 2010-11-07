@@ -55,29 +55,57 @@ describe RPDB::Environment::Settings::MemoryPool::File::Cache do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   ############################################
   #  parent_memory_pool_settings_controller  #
   ############################################
 
+  it "" do
+    Fail
+  end
+
   #################################################
   #  parent_memory_pool_file_settings_controller  #
   #################################################
 
+  it "" do
+    Fail
+  end
+
   #########################
   #  priority_controller  #
   #########################
+
+  it "" do
+    Fail
+  end
 
 end
 

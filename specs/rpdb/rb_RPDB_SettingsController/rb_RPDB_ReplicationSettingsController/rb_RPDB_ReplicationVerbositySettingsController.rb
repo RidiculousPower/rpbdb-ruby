@@ -50,122 +50,233 @@ describe RPDB::Environment::Settings::Replication::Verbosity do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   ############################################
   #  parent_replication_settings_controller  #
   ############################################
 
+  it "" do
+    Fail
+  end
+
   #########################################
   #  display_all_replication_information  #
   #########################################
 
+  it "" do
+    Fail
+  end
 
   	#################################################
   	#  turn_display_all_replication_information_on  #
   	#################################################
 
+    it "" do
+      Fail
+    end
+
   	##################################################
   	#  turn_display_all_replication_information_off  #
   	##################################################
+
+    it "" do
+      Fail
+    end
 
   ##################################
   #  display_election_information  #
   ##################################
 
+  it "" do
+    Fail
+  end
+
   	##########################################
   	#  turn_display_election_information_on  #
   	##########################################
 
+    it "" do
+      Fail
+    end
 
   	###########################################
   	#  turn_display_election_information_off  #
   	###########################################
 
+    it "" do
+      Fail
+    end
+
   ##################################################
   #  display_replication_master_lease_information  #
   ##################################################
 
+  it "" do
+    Fail
+  end
 
   	##########################################################
   	#  turn_display_replication_master_lease_information_on  #
   	##########################################################
 
+    it "" do
+      Fail
+    end
+
   	###########################################################
   	#  turn_display_replication_master_lease_information_off  #
   	###########################################################
+
+    it "" do
+      Fail
+    end
 
   #########################################
   #  display_misc_processing_information  #
   #########################################
 
+  it "" do
+    Fail
+  end
+
   	#################################################
   	#  turn_display_misc_processing_information_on  #
   	#################################################
+
+    it "" do
+      Fail
+    end
 
   	##################################################
   	#  turn_display_misc_processing_information_off  #
   	##################################################
 
+    it "" do
+      Fail
+    end
+
   ############################################
   #  display_message_processing_information  #
   ############################################
+
+  it "" do
+    Fail
+  end
 
   	####################################################
   	#  turn_display_message_processing_information_on  #
   	####################################################
 
+    it "" do
+      Fail
+    end
+
   	#####################################################
   	#  turn_display_message_processing_information_off  #
   	#####################################################
 
+    it "" do
+      Fail
+    end
 
   ################################################
   #  display_client_synchronization_information  #
   ################################################
 
+  it "" do
+    Fail
+  end
+
   	########################################################
   	#  turn_display_client_synchronization_information_on  #
   	########################################################
+
+    it "" do
+      Fail
+    end
 
   	#########################################################
   	#  turn_display_client_synchronization_information_off  #
   	#########################################################
 
+    it "" do
+      Fail
+    end
+
   ####################################################
   #  display_manager_connection_failure_information  #
   ####################################################
+
+  it "" do
+    Fail
+  end
 
   	############################################################
   	#  turn_display_manager_connection_failure_information_on  #
   	############################################################
 
+    it "" do
+      Fail
+    end
+
   	#############################################################
   	#  turn_display_manager_connection_failure_information_off  #
   	#############################################################
+
+    it "" do
+      Fail
+    end
 
   #####################################
   #  display_manager_misc_processing  #
   #####################################
 
+  it "" do
+    Fail
+  end
+
   	#############################################
   	#  turn_display_manager_misc_processing_on  #
   	#############################################
 
+    it "" do
+      Fail
+    end
 
   	##############################################
   	#  turn_display_manager_misc_processing_off  #
   	##############################################
+
+    it "" do
+      Fail
+    end
 
 end
 

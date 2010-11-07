@@ -60,50 +60,97 @@ describe RPDB::Environment::Settings::Database::Type::Queue do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   #####################
   #  parent_database  #
   #####################
+
+  it "" do
+    Fail
+  end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
+  it "" do
+    Fail
+  end
+
   #########################################
   #  parent_database_settings_controller  #
   #########################################
+
+  it "" do
+    Fail
+  end
 
   ##############################################
   #  parent_database_type_settings_controller  #
   ##############################################
 
+  it "" do
+    Fail
+  end
+
   ####################################
   #  return_key_data_pairs_in_order  #
   ####################################
+
+  it "" do
+    Fail
+  end
 
   	############################################
   	#  turn_return_key_data_pairs_in_order_on  #
   	############################################
 
+    it "" do
+      Fail
+    end
+
   	########################################
   	#  return_key_data_pairs_in_order_off  #
   	########################################
+
+    it "" do
+      Fail
+    end
 
   #########################################
   #  number_of_pages_for_underlying_data  #
   #########################################
 
+  it "" do
+    Fail
+  end
+
   #############################################
   #  set_number_of_pages_for_underlying_data  #
   #############################################
 
+  it "" do
+    Fail
+  end
 
 end
 

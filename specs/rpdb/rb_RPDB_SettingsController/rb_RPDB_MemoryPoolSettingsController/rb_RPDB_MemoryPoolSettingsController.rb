@@ -45,77 +45,153 @@ describe RPDB::Environment::Settings::MemoryPool do
   #  self.new  #
   ##############
 
+  it "" do
+    Fail
+  end
+
   ################
   #  initialize  #
   ################
+
+  it "" do
+    Fail
+  end
 
   ########################
   #  parent_environment  #
   ########################
 
+  it "" do
+    Fail
+  end
+
   ################################
   #  parent_settings_controller  #
   ################################
+
+  it "" do
+    Fail
+  end
 
   #########
   #  on?  #
   #########
 
+  it "" do
+    Fail
+  end
+
   ##########
   #  off?  #
   ##########
+
+  it "" do
+    Fail
+  end
 
   	#############
   	#  turn_on  #
   	#############
 
+    it "" do
+      Fail
+    end
+
   	##############
   	#  turn_off  #
   	##############
+
+    it "" do
+      Fail
+    end
 
   ####################
   #  memory_mapping  #
   ####################
 
+  it "" do
+    Fail
+  end
+
   	############################
   	#  turn_memory_mapping_on  #
   	############################
+
+    it "" do
+      Fail
+    end
 
   	#############################
   	#  turn_memory_mapping_off  #
   	#############################
 
+    it "" do
+      Fail
+    end
+
   #####################################
   #  remove_file_with_last_reference  #
   #####################################
+
+  it "" do
+    Fail
+  end
 
   	#############################################
   	#  turn_remove_file_with_last_reference_on  #
   	#############################################
 
+    it "" do
+      Fail
+    end
+
   	##############################################
   	#  turn_remove_file_with_last_reference_off  #
   	##############################################
+
+    it "" do
+      Fail
+    end
 
   ##########################################
   #  pagesize_factor_mismatch_should_fail  #
   ##########################################
 
+  it "" do
+    Fail
+  end
+
   	##################################################
   	#  turn_pagesize_factor_mismatch_should_fail_on  #
   	##################################################
+
+    it "" do
+      Fail
+    end
 
   	###################################################
   	#  turn_pagesize_factor_mismatch_should_fail_off  #
   	###################################################
 
+    it "" do
+      Fail
+    end
+
   ##############################
   #  file_settings_controller  #
   ##############################
 
+  it "" do
+    Fail
+  end
+
   ####################################
   #  read_write_settings_controller  #
   ####################################
+
+  it "" do
+    Fail
+  end
 
 end
 
