@@ -1,6 +1,6 @@
 require_relative '../../../../lib/rpdb/rpdb'
 
-describe RPDB::Environment::DatabaseController::Database do
+describe RPDB::Database do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,26 +26,26 @@ describe RPDB::Environment::DatabaseController::Database do
   #  initialize  #
   ################
 
-  # RPDB::Environment::DatabaseController::Database.new( name, environment )
+  # RPDB::Database.new( name, environment )
   it "can be created with a name and a parent environment" do
-    RPDB::Environment::DatabaseController::Database.new( $database_name, @environment ).should_not == nil
+    RPDB::Database.new( $database_name, @environment ).should_not == nil
   end
 
-  # RPDB::Environment::DatabaseController::Database.new( name, environment_name ) 
+  # RPDB::Database.new( name, environment_name ) 
   it "can be created with a name and a parent environment directory" do
-    RPDB::Environment::DatabaseController::Database.new( $database_name, $environment_path ).should_not == nil  
+    RPDB::Database.new( $database_name, $environment_path ).should_not == nil  
   end
 
-  # RPDB::Environment::DatabaseController::Database.new( name, database_controller ) 
+  # RPDB::Database.new( name, database_controller ) 
   it "can be created with a name and a parent database controller" do
-    RPDB::Environment::DatabaseController::Database.new( $database_name, @database_controller ).should_not == nil
+    RPDB::Database.new( $database_name, @database_controller ).should_not == nil
   end
 
-  # RPDB::Environment::DatabaseController::Database.new( name )  
+  # RPDB::Database.new( name )  
   it "can be created with a name (using the default environment)" do
-    RPDB::Environment::DatabaseController::Database.new( $database_name ).should_not == nil
+    RPDB::Database.new( $database_name ).should_not == nil
   end
-  
+
   #########################
   #  settings_controller  #
   #########################

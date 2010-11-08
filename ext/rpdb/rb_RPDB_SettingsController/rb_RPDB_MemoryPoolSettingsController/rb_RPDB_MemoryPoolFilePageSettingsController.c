@@ -49,6 +49,9 @@ void Init_RPDB_MemoryPoolFilePageSettingsController()	{
 
 	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"parent_environment",									rb_RPDB_MemoryPoolFilePageSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"environment",												"parent_environment"	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController,					"parent_settings_controller",					rb_RPDB_MemoryPoolFilePageSettingsController_parentSettingsController,								0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController,					"parent_memory_pool_settings_controller",					rb_RPDB_MemoryPoolFilePageSettingsController_parentMemoryPoolSettingsController,								0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController,					"parent_memory_pool_file_settings_controller",					rb_RPDB_MemoryPoolFilePageSettingsController_parentMemoryPoolFileSettingsController,								0 	);
 
 	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"get_page_creates_page_if_does_not_exist?",														rb_RPDB_MemoryPoolFilePageSettingsController_getPageCreatesPageIfDoesNotExist,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFilePageSettingsController, 				"turn_get_page_creates_page_if_does_not_exist_on",														rb_RPDB_MemoryPoolFilePageSettingsController_turnGetPageCreatesPageIfDoesNotExistOn,													0 	);
@@ -113,7 +116,7 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_new(	int			argc,
 		rb_parent_memory_pool_settings_controller = rb_RPDB_SettingsController_memoryPoolSettingsController( rb_parent_settings_controller );
 	}
 	if ( rb_parent_memory_pool_settings_controller != Qnil )	{
-		rb_parent_memory_pool_file_settings_controller	=	rb_RPDB_MemoryPoolFileSettingsController_pageSettingsController( rb_parent_memory_pool_settings_controller );
+		rb_parent_memory_pool_file_settings_controller	=	rb_RPDB_MemoryPoolSettingsController_fileSettingsController( rb_parent_memory_pool_settings_controller );
 	}
 
 	RPDB_MemoryPoolFileSettingsController*	c_parent_memory_pool_file_settings_controller;
@@ -164,8 +167,8 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentEnvironment(	VALUE	rb_m
 
 VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentSettingsController(	VALUE	rb_memory_pool_file_page_settings_controller )	{
 
-	VALUE	rb_parent_memory_pool_file_settings_controller	=	rb_RPDB_MemoryPoolFilePageSettingsController_parentMemoryPoolSettingsController( rb_memory_pool_file_page_settings_controller );
-	VALUE	rb_parent_settings_controller										=	rb_RPDB_MemoryPoolFileSettingsController_parentSettingsController( rb_parent_memory_pool_file_settings_controller );
+	VALUE	rb_parent_memory_pool_settings_controller	=	rb_RPDB_MemoryPoolFilePageSettingsController_parentMemoryPoolSettingsController( rb_memory_pool_file_page_settings_controller );
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_MemoryPoolSettingsController_parentSettingsController( rb_parent_memory_pool_settings_controller );
 	
 	return rb_parent_settings_controller;	
 }

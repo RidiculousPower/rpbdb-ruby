@@ -44,11 +44,14 @@ void Init_RPDB_LockDeadlockDetectorVerbositySettingsController()	{
 																																											"Verbosity",	
 																																											rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 	"new",																rb_RPDB_LockDeadlockDetectorVerbositySettingsController_new,														-1 	);
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"initialize",													rb_RPDB_LockDeadlockDetectorVerbositySettingsController_initialize,														-1 	);
+	rb_define_singleton_method(	rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 	"new",																									rb_RPDB_LockDeadlockDetectorVerbositySettingsController_new,														-1 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"initialize",																						rb_RPDB_LockDeadlockDetectorVerbositySettingsController_initialize,														-1 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController,				"parent_settings_controller",														rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentSettingsController,								0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController,				"parent_lock_settings_controller",											rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentLockSettingsController,								0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController,				"parent_lock_deadlock_detector_settings_controller",		rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentLockDeadlockDetectorSettingsController,								0 	);
 
-	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"parent_environment",									rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentEnvironment,								0 	);
-	rb_define_alias(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"environment",												"parent_environment"	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"parent_environment",																		rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentEnvironment,								0 	);
+	rb_define_alias(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"environment",																					"parent_environment"	);
 
 
 	rb_define_method(			rb_RPDB_LockDeadlockDetectorVerbositySettingsController, 				"display_additional_information_during_deadlock_detection?",														rb_RPDB_LockDeadlockDetectorVerbositySettingsController_displayAdditionalInformationDuringDeadlockDetection,													0 	);
@@ -158,8 +161,8 @@ VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentEnvironment(
 
 VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentSettingsController(	VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
 
-	VALUE	rb_parent_lock_deadlock_detector_settings_controller		=	rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentLockSettingsController( rb_lock_deadlock_detector_verbosity_settings_controller );
-	VALUE	rb_parent_settings_controller														=	rb_RPDB_LockDeadlockDetectorSettingsController_parentSettingsController( rb_parent_lock_deadlock_detector_settings_controller );
+	VALUE	rb_parent_lock_settings_controller		=	rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentLockSettingsController( rb_lock_deadlock_detector_verbosity_settings_controller );
+	VALUE	rb_parent_settings_controller					=	rb_RPDB_LockSettingsController_parentSettingsController( rb_parent_lock_settings_controller );
 	
 	return rb_parent_settings_controller;	
 }
@@ -171,9 +174,9 @@ VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentSettingsCont
 VALUE rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentLockSettingsController(	VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
 
 	VALUE	rb_parent_lock_deadlock_detector_settings_controller		=	rb_RPDB_LockDeadlockDetectorVerbositySettingsController_parentLockDeadlockDetectorSettingsController( rb_lock_deadlock_detector_verbosity_settings_controller );
-	VALUE	rb_parent_settings_controller														=	rb_RPDB_LockDeadlockDetectorSettingsController_parentSettingsController( rb_parent_lock_deadlock_detector_settings_controller );
+	VALUE	rb_parent_lock_settings_controller											=	rb_RPDB_LockDeadlockDetectorSettingsController_parentLockSettingsController( rb_parent_lock_deadlock_detector_settings_controller );
 	
-	return rb_parent_settings_controller;	
+	return rb_parent_lock_settings_controller;	
 }
 
 /******************************************************

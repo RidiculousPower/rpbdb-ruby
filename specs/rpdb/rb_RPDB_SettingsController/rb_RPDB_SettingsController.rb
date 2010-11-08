@@ -1,6 +1,6 @@
 require_relative '../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings do
+describe RPDB::Settings do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,38 +26,22 @@ describe RPDB::Environment::Settings do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings.new( environment )
+  # RPDB::Settings.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings.new( @environment ).should_not == nil
+    RPDB::Settings.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings.new
+  # RPDB::Settings.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings.new.should_not == nil
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ################
-  #  initialize  #
-  ################
-
-  it "" do
-    Fail
+    RPDB::Settings.new.should_not == nil
   end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings.new.parent_environment.should_not == nil
   end
 
   #############

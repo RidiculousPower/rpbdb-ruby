@@ -43,6 +43,7 @@ void Init_RPDB_ErrorSettingsController()	{
                         			                                        
 	rb_define_method(						rb_RPDB_ErrorSettingsController, 	"parent_environment",									rb_RPDB_ErrorSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(						rb_RPDB_ErrorSettingsController, 	"environment",												"parent_environment"	);
+	rb_define_method(						rb_RPDB_ErrorSettingsController, 	"parent_settings_controller",					rb_RPDB_ErrorSettingsController_parentSettingsController,								0 	);
 
 	//	FIX - make one max_size and set_max_size function w/dynamic options
 	rb_define_method(						rb_RPDB_ErrorSettingsController, 	"file",														rb_RPDB_ErrorSettingsController_file,													0 	);
@@ -96,7 +97,7 @@ VALUE rb_RPDB_ErrorSettingsController_new(	int			argc,
 
 	rb_iv_set(	rb_error_settings_controller,
 							RPDB_RB_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
-							rb_parent_environment );
+							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_error_settings_controller,

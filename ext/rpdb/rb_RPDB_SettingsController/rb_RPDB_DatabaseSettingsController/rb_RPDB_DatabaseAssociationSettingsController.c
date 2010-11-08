@@ -52,6 +52,8 @@ void Init_RPDB_DatabaseAssociationSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseAssociationSettingsController, 	"environment",																		"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"parent_database",																rb_RPDB_DatabaseAssociationSettingsController_parentDatabase,										0 	);
 	rb_define_alias(						rb_RPDB_DatabaseAssociationSettingsController, 	"database",																				"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"parent_settings_controller",											rb_RPDB_DatabaseAssociationSettingsController_parentSettingsController,										0 	);
+	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"parent_database_settings_controller",						rb_RPDB_DatabaseAssociationSettingsController_parentDatabaseSettingsController,										0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"secondary_association_creates_index?",						rb_RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesIndex,					0 	);
 	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"turn_secondary_association_creates_index_on",		rb_RPDB_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOn,				0 	);

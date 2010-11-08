@@ -11,6 +11,7 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_DebugSettingsController.h"
+#include "rb_RPDB_DebugVerbositySettingsController.h"
 #include "rb_RPDB_SettingsController.h"
 
 #include "rb_RPDB_Environment.h"
@@ -47,8 +48,7 @@ void Init_RPDB_DebugSettingsController()	{
                     					                                                                                        				
 	rb_define_method(						rb_RPDB_DebugSettingsController, 	"parent_environment",																										rb_RPDB_DebugSettingsController_parentEnvironment,						0 	);
 	rb_define_alias(						rb_RPDB_DebugSettingsController, 	"environment",																													"parent_environment"	);
-//	rb_define_method(						rb_RPDB_DebugSettingsController, 	"parent_database",																											rb_RPDB_DebugSettingsController_parentDatabase,							0 	);
-//	rb_define_alias(						rb_RPDB_DebugSettingsController, 	"database",																															"parent_database"	);
+	rb_define_method(						rb_RPDB_DebugSettingsController, 	"parent_settings_controller",																						rb_RPDB_DebugSettingsController_parentSettingsController,							0 	);
                     					                                                                                        				
 	rb_define_method(						rb_RPDB_DebugSettingsController, 	"run_normal_recovery_before_opening_environment?",											rb_RPDB_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment,									0 	);
 	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_run_normal_recovery_before_opening_environment_on",								rb_RPDB_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOn,								1 	);
@@ -130,12 +130,12 @@ VALUE rb_RPDB_DebugSettingsController_new(	int			argc,
 	//	store reference to parent
 	rb_iv_set(	rb_debug_settings_controller,
 							RPDB_RB_DEBUG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
-							rb_parent_environment );
+							rb_parent_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_debug_settings_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_debug_settings_controller;		
 }
@@ -528,8 +528,18 @@ VALUE rb_RPDB_DebugSettingsController_yieldCPUForStressTest( VALUE	rb_debug_sett
 
 VALUE rb_RPDB_DebugSettingsController_verbositySettingsController( VALUE	rb_debug_settings_controller )	{
 
-	RPDB_DebugSettingsController*	c_debug_settings_controller;
-	C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
-
-	return RUBY_RPDB_DEBUG_VERBOSITY_SETTINGS_CONTROLLER( RPDB_DebugSettingsController_verbositySettingsController( c_debug_settings_controller ) );
+	VALUE	rb_debug_verbosity_settings_controller	=	Qnil;
+	
+	if ( ( rb_debug_verbosity_settings_controller = rb_iv_get(	rb_debug_settings_controller,
+																															RPDB_RB_SETTINGS_VARIABLE_DEBUG_VERBOSITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_debug_verbosity_settings_controller	=	rb_RPDB_DebugVerbositySettingsController_new(	1,
+																																														& rb_debug_settings_controller,
+																																														rb_RPDB_DebugVerbositySettingsController );
+		rb_iv_set(	rb_debug_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DEBUG_VERBOSITY_SETTINGS_CONTROLLER,
+								rb_debug_verbosity_settings_controller );
+	}
+	
+	return rb_debug_verbosity_settings_controller;
 }

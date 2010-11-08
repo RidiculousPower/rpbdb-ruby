@@ -58,6 +58,9 @@ void Init_RPDB_DatabaseCachePrioritySettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"environment",							"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"parent_database",					rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabase,					0 	);
 	rb_define_alias(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"database",									"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"parent_settings_controller",					rb_RPDB_DatabaseCachePrioritySettingsController_parentSettingsController,					0 	);
+	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"parent_database_settings_controller",					rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabaseSettingsController,					0 	);
+	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"parent_database_cache_settings_controller",					rb_RPDB_DatabaseCachePrioritySettingsController_parentDatabaseCacheSettingsController,					0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"priority",									rb_RPDB_DatabaseCachePrioritySettingsController_priority,								0 	);
                     					

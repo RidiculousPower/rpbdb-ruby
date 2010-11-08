@@ -1,6 +1,6 @@
 require_relative '../../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings::Lock::DeadlockDetector::Verbosity do
+describe RPDB::Settings::Lock::DeadlockDetector::Verbosity do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,77 +26,61 @@ describe RPDB::Environment::Settings::Lock::DeadlockDetector::Verbosity do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::Lock::DeadlockDetector::Verbosity.new( environment )
+  # RPDB::Settings::Lock::DeadlockDetector::Verbosity.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::Lock::DeadlockDetector::Verbosity.new( @environment ).should_not == nil
+    RPDB::Settings::Lock::DeadlockDetector::Verbosity.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Lock::DeadlockDetector::Verbosity.new( settings_controller )
+  # RPDB::Settings::Lock::DeadlockDetector::Verbosity.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::Lock::DeadlockDetector::Verbosity.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::Lock::DeadlockDetector::Verbosity.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Lock::DeadlockDetector::Verbosity.new( lock_settings_controller )
+  # RPDB::Settings::Lock::DeadlockDetector::Verbosity.new( lock_settings_controller )
   it "can be created with a lock settings controller" do
-    RPDB::Environment::Settings::Lock::DeadlockDetector::Verbosity.new( RPDB::Environment::Settings::Lock.new ).should_not == nil
+    RPDB::Settings::Lock::DeadlockDetector::Verbosity.new( RPDB::Settings::Lock.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Lock::DeadlockDetector::Verbosity.new( lock_settings_controller )
+  # RPDB::Settings::Lock::DeadlockDetector::Verbosity.new( lock_settings_controller )
   it "can be created with a lock deadlock detector settings controller" do
-    RPDB::Environment::Settings::Lock::DeadlockDetector::Verbosity.new( RPDB::Environment::Settings::Lock::DeadlockDetector.new ).should_not == nil
+    RPDB::Settings::Lock::DeadlockDetector::Verbosity.new( RPDB::Settings::Lock::DeadlockDetector.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Lock::DeadlockDetector::Verbosity.new
+  # RPDB::Settings::Lock::DeadlockDetector::Verbosity.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::Lock::DeadlockDetector::Verbosity.new.should_not == nil
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ################
-  #  initialize  #
-  ################
-
-  it "" do
-    Fail
+    RPDB::Settings::Lock::DeadlockDetector::Verbosity.new.should_not == nil
   end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::Lock::DeadlockDetector::Verbosity.new.parent_environment.should_not == nil
   end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
-  it "" do
-    Fail
+  it "can return its parent settings controller" do
+    RPDB::Settings::Lock::DeadlockDetector::Verbosity.new.parent_settings_controller.should_not == nil
   end
 
   #####################################
   #  parent_lock_settings_controller  #
   #####################################
 
-  it "" do
-    Fail
+  it "can return its parent lock settings controller" do
+    RPDB::Settings::Lock::DeadlockDetector::Verbosity.new.parent_lock_settings_controller.should_not == nil
   end
 
   #######################################################
   #  parent_lock_deadlock_detector_settings_controller  #
   #######################################################
 
-  it "" do
-    Fail
+  it "can return its parent lock deadlock settings controller" do
+    RPDB::Settings::Lock::DeadlockDetector::Verbosity.new.parent_lock_deadlock_detector_settings_controller.should_not == nil
   end
 
   ###############################################################

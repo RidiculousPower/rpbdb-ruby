@@ -56,7 +56,10 @@ void Init_RPDB_DatabaseTypeHashSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseTypeHashSettingsController, 	"environment",											"parent_environment"	);                                        	
 	rb_define_method(						rb_RPDB_DatabaseTypeHashSettingsController, 	"parent_database",									rb_RPDB_DatabaseTypeHashSettingsController_parentDatabase,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseTypeHashSettingsController, 	"database",													"parent_database"	);                                            	
-                    					                                                                                                                                                  	
+	rb_define_method(						rb_RPDB_DatabaseTypeHashSettingsController, 	"parent_settings_controller",	rb_RPDB_DatabaseTypeHashSettingsController_parentSettingsController,										0 	);
+	rb_define_method(						rb_RPDB_DatabaseTypeHashSettingsController, 	"parent_database_settings_controller",	rb_RPDB_DatabaseTypeHashSettingsController_parentDatabaseSettingsController,										0 	);
+	rb_define_method(						rb_RPDB_DatabaseTypeHashSettingsController, 	"parent_database_type_settings_controller",	rb_RPDB_DatabaseTypeHashSettingsController_parentDatabaseTypeSettingsController,										0 	);
+
 	rb_define_method(						rb_RPDB_DatabaseTypeHashSettingsController, 	"table_size",												rb_RPDB_DatabaseTypeHashSettingsController_tableSize,							0 	);
 	rb_define_method(						rb_RPDB_DatabaseTypeHashSettingsController, 	"table_size=",											rb_RPDB_DatabaseTypeHashSettingsController_setTableSize,					1 	);
 	rb_define_alias(						rb_RPDB_DatabaseTypeHashSettingsController, 	"set_table_size",										"table_size="	);

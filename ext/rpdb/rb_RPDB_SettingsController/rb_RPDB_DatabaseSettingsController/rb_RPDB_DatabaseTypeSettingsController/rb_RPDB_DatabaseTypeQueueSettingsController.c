@@ -61,7 +61,10 @@ void Init_RPDB_DatabaseTypeQueueSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseTypeQueueSettingsController, 	"environment",																"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseTypeQueueSettingsController, 	"parent_database",														rb_RPDB_DatabaseTypeQueueSettingsController_parentDatabase,												0 	);
 	rb_define_alias(						rb_RPDB_DatabaseTypeQueueSettingsController, 	"database",																		"parent_database"	);
-                    					
+	rb_define_method(						rb_RPDB_DatabaseTypeQueueSettingsController, 	"parent_settings_controller",	rb_RPDB_DatabaseTypeQueueSettingsController_parentSettingsController,										0 	);
+	rb_define_method(						rb_RPDB_DatabaseTypeQueueSettingsController, 	"parent_database_settings_controller",	rb_RPDB_DatabaseTypeQueueSettingsController_parentDatabaseSettingsController,										0 	);
+	rb_define_method(						rb_RPDB_DatabaseTypeQueueSettingsController, 	"parent_database_type_settings_controller",	rb_RPDB_DatabaseTypeQueueSettingsController_parentDatabaseTypeSettingsController,										0 	);
+
 	rb_define_method(						rb_RPDB_DatabaseTypeQueueSettingsController, 	"return_key_data_pairs_in_order?",						rb_RPDB_DatabaseTypeQueueSettingsController_returnKeyDataPairsInOrder,						0 	);
 	rb_define_method(						rb_RPDB_DatabaseTypeQueueSettingsController, 	"turn_return_key_data_pairs_in_order_on",			rb_RPDB_DatabaseTypeQueueSettingsController_turnReturnKeyDataPairsInOrderOn,			0 	);
 	rb_define_method(						rb_RPDB_DatabaseTypeQueueSettingsController, 	"turn_return_key_data_pairs_in_order_off",		rb_RPDB_DatabaseTypeQueueSettingsController_turnReturnKeyDataPairsInOrderOff,			0 	);

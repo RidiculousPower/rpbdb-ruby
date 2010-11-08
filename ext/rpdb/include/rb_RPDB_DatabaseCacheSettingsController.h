@@ -43,6 +43,6 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_parentDatabaseSettingsController(	
 	VALUE rb_RPDB_DatabaseCacheSettingsController_numberCacheRegions( VALUE	rb_database_cache_settings_controller );
 	VALUE rb_RPDB_DatabaseCacheSettingsController_setNumberCacheRegions(	VALUE	rb_database_cache_settings_controller, 
 																			VALUE	rb_number_cache_regions );
-	VALUE rb_RPDB_DatabaseCacheSettingsController_priorityController( VALUE	rb_database_cache_settings_controller );
+	VALUE rb_RPDB_DatabaseCacheSettingsController_prioritySettingsController( VALUE	rb_database_cache_settings_controller );
 
 #endif

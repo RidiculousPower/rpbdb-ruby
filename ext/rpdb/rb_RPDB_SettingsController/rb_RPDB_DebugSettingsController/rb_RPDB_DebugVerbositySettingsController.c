@@ -48,6 +48,8 @@ void Init_RPDB_DebugVerbositySettingsController()	{
                     					
 	rb_define_method(						rb_RPDB_DebugVerbositySettingsController, 	"parent_environment",																					rb_RPDB_DebugVerbositySettingsController_parentEnvironment,																		0 	);
 	rb_define_alias(						rb_RPDB_DebugVerbositySettingsController, 	"environment",																								"parent_environment"	);
+	rb_define_method(						rb_RPDB_DebugVerbositySettingsController, 	"parent_settings_controller",																	rb_RPDB_DebugVerbositySettingsController_parentSettingsController,																		0 	);
+	rb_define_method(						rb_RPDB_DebugVerbositySettingsController, 	"parent_debug_settings_controller",														rb_RPDB_DebugVerbositySettingsController_parentDebugSettingsController,																		0 	);
                     					
 	rb_define_method(						rb_RPDB_DebugVerbositySettingsController, 	"display_additional_information_during_recovery?",						rb_RPDB_DebugVerbositySettingsController_displayAdditionalInformationDuringRecovery,					0 	);
 	rb_define_method(						rb_RPDB_DebugVerbositySettingsController, 	"turn_display_additional_information_during_recovery_on",			rb_RPDB_DebugVerbositySettingsController_turnDisplayAdditionalInformationDuringRecoveryOn,		0 	);
@@ -94,7 +96,7 @@ VALUE rb_RPDB_DebugVerbositySettingsController_new(	int			argc,
 		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
 	}
 	if ( rb_parent_settings_controller != Qnil )	{
-		rb_parent_debug_settings_controller = rb_RPDB_DebugSettingsController_verbositySettingsController( rb_parent_settings_controller );
+		rb_parent_debug_settings_controller = rb_RPDB_SettingsController_debugSettingsController( rb_parent_settings_controller );
 	}
 
 	RPDB_DebugSettingsController*	c_parent_debug_settings_controller;
@@ -134,7 +136,7 @@ VALUE rb_RPDB_DebugVerbositySettingsController_initialize(	int				argc __attribu
 
 VALUE rb_RPDB_DebugVerbositySettingsController_parentEnvironment(	VALUE	rb_debug_verbosity_settings_controller )	{
 
-	VALUE	rb_parent_settings_controller							=	rb_RPDB_DebugSettingsController_parentSettingsController( rb_debug_verbosity_settings_controller );
+	VALUE	rb_parent_settings_controller							=	rb_RPDB_DebugVerbositySettingsController_parentSettingsController( rb_debug_verbosity_settings_controller );
 	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
 	
 	return rb_parent_environment;

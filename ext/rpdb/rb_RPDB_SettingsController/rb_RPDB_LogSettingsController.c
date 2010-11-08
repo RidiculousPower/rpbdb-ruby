@@ -42,6 +42,7 @@ void Init_RPDB_LogSettingsController()	{
 
 	rb_define_method(			rb_RPDB_LogSettingsController, 				"parent_environment",													rb_RPDB_LogSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_LogSettingsController, 				"environment",																"parent_environment"	);
+	rb_define_method(			rb_RPDB_LogSettingsController, 				"parent_settings_controller",									rb_RPDB_LogSettingsController_parentSettingsController,								0 	);
 
 	rb_define_method(			rb_RPDB_LogSettingsController, 				"on?",																				rb_RPDB_LogSettingsController_on,													0 	);
 	rb_define_method(			rb_RPDB_LogSettingsController, 				"turn_on",																		rb_RPDB_LogSettingsController_turnOn,													0 	);
@@ -136,7 +137,7 @@ VALUE rb_RPDB_LogSettingsController_new(	int			argc,
 
 	rb_iv_set(	rb_log_settings_controller,
 							RPDB_RB_LOG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
-							rb_parent_environment );
+							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_log_settings_controller,

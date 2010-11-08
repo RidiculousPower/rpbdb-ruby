@@ -46,7 +46,9 @@ void Init_RPDB_MemoryPoolReadWriteSettingsController()	{
 
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"parent_environment",									rb_RPDB_MemoryPoolReadWriteSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"environment",												"parent_environment"	);
-                                    			                                                                                                    				
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController,				"parent_settings_controller",					rb_RPDB_MemoryPoolReadWriteSettingsController_parentSettingsController,								0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController,				"parent_memory_pool_settings_controller",					rb_RPDB_MemoryPoolReadWriteSettingsController_parentMemoryPoolSettingsController,								0 	);
+
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"max_open_files",														rb_RPDB_MemoryPoolReadWriteSettingsController_maxOpenFiles,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"set_max_open_files",														rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxOpenFiles,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"max_sequential_writes",														rb_RPDB_MemoryPoolReadWriteSettingsController_maxSequentialWrites,													0 	);

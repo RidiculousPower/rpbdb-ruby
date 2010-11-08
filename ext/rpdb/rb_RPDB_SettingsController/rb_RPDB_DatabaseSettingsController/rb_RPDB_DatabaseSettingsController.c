@@ -14,6 +14,15 @@
 #include "rb_RPDB_Database.h"
 #include "rb_RPDB_DatabaseController.h"
 
+#include "rb_RPDB_DatabaseAssociationSettingsController.h"
+#include "rb_RPDB_DatabaseErrorSettingsController.h"
+#include "rb_RPDB_DatabaseRecordSettingsController.h"
+#include "rb_RPDB_DatabaseTypeSettingsController.h"
+#include "rb_RPDB_DatabaseCursorSettingsController.h"
+#include "rb_RPDB_DatabaseCacheSettingsController.h"
+#include "rb_RPDB_DatabaseJoinSettingsController.h"
+#include "rb_RPDB_DatabaseSequenceSettingsController.h"
+
 #include "rb_RPDB_DatabaseSettingsController.h"
 
 #include "rb_RPDB_SettingsController.h"
@@ -201,6 +210,11 @@ VALUE rb_RPDB_DatabaseSettingsController_new(	int			argc,
 		rb_iv_set(	rb_database_settings_controller,
 								RPDB_RB_DATABASE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE,
 								rb_parent_database);
+		//	if we create with a database we also want to make sure we can get a reference to the parent settings controller
+		if ( rb_parent_environment == Qnil )	{
+			rb_parent_environment = rb_RPDB_Database_parentEnvironment( rb_parent_database );
+		}
+		rb_parent_settings_controller	=	rb_RPDB_Environment_settingsController( rb_parent_environment );
 	}
 	if ( rb_parent_settings_controller != Qnil )	{
 		rb_iv_set(	rb_database_settings_controller,
@@ -208,7 +222,16 @@ VALUE rb_RPDB_DatabaseSettingsController_new(	int			argc,
 								rb_parent_settings_controller);	
 	}
 	
-	VALUE	argv[]	=	{ rb_parent_settings_controller };
+	VALUE*	argv		=	NULL;
+	if ( rb_parent_database != Qnil )	{
+		VALUE args[] =	{ rb_parent_database };	
+		argv = args;
+	}
+	else {
+		VALUE args[] =	{ rb_parent_settings_controller };
+		argv = args;
+	}
+
 	rb_obj_call_init(	rb_database_settings_controller,
 										1, 
 										argv );
@@ -221,8 +244,8 @@ VALUE rb_RPDB_DatabaseSettingsController_new(	int			argc,
 ***************/
 
 VALUE rb_RPDB_DatabaseSettingsController_initialize(	int				argc __attribute__ ((unused)),
-																								VALUE*		args __attribute__ ((unused)),
-																								VALUE			rb_self )	{
+																											VALUE*		args __attribute__ ((unused)),
+																											VALUE			rb_self )	{
 
 	return rb_self;
 }
@@ -233,8 +256,8 @@ VALUE rb_RPDB_DatabaseSettingsController_initialize(	int				argc __attribute__ (
 
 VALUE rb_RPDB_DatabaseSettingsController_parentEnvironment(	VALUE	rb_database_settings_controller )	{
 	
-	VALUE	rb_parent_database			=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_database_settings_controller );
-	VALUE	rb_parent_environment		=	rb_RPDB_Database_parentEnvironment( rb_parent_database );
+	VALUE	rb_parent_settings_controller			=	rb_RPDB_DatabaseSettingsController_parentSettingsController( rb_database_settings_controller );
+	VALUE	rb_parent_environment							=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
 	
 	return rb_parent_environment;
 }
@@ -491,10 +514,20 @@ VALUE rb_RPDB_DatabaseSettingsController_maxSizePageIn( VALUE	rb_database_settin
 
 VALUE rb_RPDB_DatabaseSettingsController_errorSettingsController( VALUE	rb_database_settings_controller )	{
 
-	RPDB_DatabaseSettingsController*	c_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	VALUE	rb_database_error_settings_controller	=	Qnil;
+	if ( ( rb_database_error_settings_controller = rb_iv_get(	rb_database_settings_controller,
+																														RPDB_RB_SETTINGS_VARIABLE_DATABASE_ERROR_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-	return RUBY_RPDB_DATABASE_ERROR_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_errorSettingsController( c_database_settings_controller ) );
+		rb_database_error_settings_controller	=	rb_RPDB_DatabaseErrorSettingsController_new(	1,
+																																													& rb_database_settings_controller,
+																																													rb_RPDB_DatabaseErrorSettingsController );		
+
+		rb_iv_set(	rb_database_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_ERROR_SETTINGS_CONTROLLER,
+								rb_database_error_settings_controller );
+	}
+
+	return rb_database_settings_controller;
 }
 
 /************************************
@@ -503,10 +536,20 @@ VALUE rb_RPDB_DatabaseSettingsController_errorSettingsController( VALUE	rb_datab
 
 VALUE rb_RPDB_DatabaseSettingsController_associationSettingsController( VALUE	rb_database_settings_controller )	{
 
-	RPDB_DatabaseSettingsController*	c_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	VALUE	rb_database_association_settings_controller	=	Qnil;
+	if ( ( rb_database_association_settings_controller = rb_iv_get(	rb_database_settings_controller,
+																														RPDB_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-	return RUBY_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_associationSettingsController( c_database_settings_controller ) );
+		rb_database_association_settings_controller	=	rb_RPDB_DatabaseAssociationSettingsController_new(	1,
+																																																			& rb_database_settings_controller,
+																																																			rb_RPDB_DatabaseErrorSettingsController );		
+
+		rb_iv_set(	rb_database_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER,
+								rb_database_association_settings_controller );
+	}
+
+	return rb_database_association_settings_controller;
 }
 
 /********************
@@ -515,10 +558,20 @@ VALUE rb_RPDB_DatabaseSettingsController_associationSettingsController( VALUE	rb
 
 VALUE rb_RPDB_DatabaseSettingsController_joinSettingsController( VALUE	rb_database_settings_controller )	{
 
-	RPDB_DatabaseSettingsController*	c_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	VALUE	rb_database_join_settings_controller	=	Qnil;
+	if ( ( rb_database_join_settings_controller = rb_iv_get(	rb_database_settings_controller,
+																														RPDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-	return RUBY_RPDB_DATABASE_JOIN_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_joinSettingsController( c_database_settings_controller ) );
+		rb_database_join_settings_controller	=	rb_RPDB_DatabaseJoinSettingsController_new(	1,
+																																												& rb_database_settings_controller,
+																																												rb_RPDB_DatabaseErrorSettingsController );		
+
+		rb_iv_set(	rb_database_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
+								rb_database_join_settings_controller );
+	}
+
+	return rb_database_join_settings_controller;
 }
 
 /*********************
@@ -527,10 +580,20 @@ VALUE rb_RPDB_DatabaseSettingsController_joinSettingsController( VALUE	rb_databa
 
 VALUE rb_RPDB_DatabaseSettingsController_cacheSettingsController( VALUE	rb_database_settings_controller )	{
 
-	RPDB_DatabaseSettingsController*	c_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	VALUE	rb_database_cache_settings_controller	=	Qnil;
+	if ( ( rb_database_cache_settings_controller = rb_iv_get(	rb_database_settings_controller,
+																														RPDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-	return RUBY_RPDB_DATABASE_CACHE_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_cacheSettingsController( c_database_settings_controller ) );
+		rb_database_cache_settings_controller	=	rb_RPDB_DatabaseCacheSettingsController_new(	1,
+																																													& rb_database_settings_controller,
+																																													rb_RPDB_DatabaseErrorSettingsController );		
+
+		rb_iv_set(	rb_database_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER,
+								rb_database_cache_settings_controller );
+	}
+
+	return rb_database_cache_settings_controller;
 }
 
 /**********************
@@ -539,10 +602,20 @@ VALUE rb_RPDB_DatabaseSettingsController_cacheSettingsController( VALUE	rb_datab
 
 VALUE rb_RPDB_DatabaseSettingsController_cursorSettingsController( VALUE	rb_database_settings_controller )	{
 
-	RPDB_DatabaseSettingsController*	c_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	VALUE	rb_database_cursor_settings_controller	=	Qnil;
+	if ( ( rb_database_cursor_settings_controller = rb_iv_get(	rb_database_settings_controller,
+																															RPDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-	return RUBY_RPDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_cursorSettingsController( c_database_settings_controller ) );
+		rb_database_cursor_settings_controller	=	rb_RPDB_DatabaseCursorSettingsController_new(	1,
+																																														& rb_database_settings_controller,
+																																														rb_RPDB_DatabaseCursorSettingsController );		
+
+		rb_iv_set(	rb_database_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER,
+								rb_database_cursor_settings_controller );
+	}
+
+	return rb_database_cursor_settings_controller;
 }
 
 /*********************************
@@ -551,10 +624,20 @@ VALUE rb_RPDB_DatabaseSettingsController_cursorSettingsController( VALUE	rb_data
 
 VALUE rb_RPDB_DatabaseSettingsController_sequenceSettingsController( VALUE	rb_database_settings_controller )	{
 
-	RPDB_DatabaseSettingsController*	c_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	VALUE	rb_database_sequence_settings_controller	=	Qnil;
+	if ( ( rb_database_sequence_settings_controller = rb_iv_get(	rb_database_settings_controller,
+																																RPDB_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-	return RUBY_RPDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_sequenceSettingsController( c_database_settings_controller ) );
+		rb_database_sequence_settings_controller	=	rb_RPDB_DatabaseSequenceSettingsController_new(	1,
+																																																& rb_database_settings_controller,
+																																																rb_RPDB_DatabaseErrorSettingsController );		
+
+		rb_iv_set(	rb_database_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER,
+								rb_database_sequence_settings_controller );
+	}
+
+	return rb_database_sequence_settings_controller;
 }
 
 /*****************************
@@ -563,22 +646,20 @@ VALUE rb_RPDB_DatabaseSettingsController_sequenceSettingsController( VALUE	rb_da
 
 VALUE rb_RPDB_DatabaseSettingsController_typeSettingsController( VALUE	rb_database_settings_controller )	{
 
-	RPDB_DatabaseSettingsController*	c_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	VALUE	rb_database_type_settings_controller	=	Qnil;
+	if ( ( rb_database_type_settings_controller = rb_iv_get(	rb_database_settings_controller,
+																														RPDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-	return RUBY_RPDB_DATABASE_TYPE_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_typeSettingsController( c_database_settings_controller ) );
-}
+		rb_database_type_settings_controller	=	rb_RPDB_DatabaseTypeSettingsController_new(	1,
+																																												& rb_database_settings_controller,
+																																												rb_RPDB_DatabaseErrorSettingsController );		
 
-/***********************************
-*  read_write_settings_controller  *
-***********************************/
+		rb_iv_set(	rb_database_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_SETTINGS_CONTROLLER,
+								rb_database_type_settings_controller );
+	}
 
-VALUE		rb_RPDB_DatabaseRecordSettingsController_readWriteSettingsController( VALUE	rb_database_record_settings_controller )	{
-
-	RPDB_DatabaseRecordSettingsController*	c_database_record_settings_controller;
-	C_RPDB_DATABASE_RECORD_SETTINGS_CONTROLLER( rb_database_record_settings_controller, c_database_record_settings_controller );
-
-	return RUBY_RPDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( RPDB_DatabaseRecordSettingsController_readWriteSettingsController( c_database_record_settings_controller ) );
+	return rb_database_type_settings_controller;
 }
 
 /*******************************
@@ -587,8 +668,18 @@ VALUE		rb_RPDB_DatabaseRecordSettingsController_readWriteSettingsController( VAL
 
 VALUE rb_RPDB_DatabaseSettingsController_recordSettingsController( VALUE	rb_database_settings_controller )	{
 
-	RPDB_DatabaseSettingsController*	c_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	VALUE	rb_database_record_settings_controller	=	Qnil;
+	if ( ( rb_database_record_settings_controller = rb_iv_get(	rb_database_settings_controller,
+																															RPDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-	return RUBY_RPDB_DATABASE_RECORD_SETTINGS_CONTROLLER( RPDB_DatabaseSettingsController_recordSettingsController( c_database_settings_controller ) );
+		rb_database_record_settings_controller	=	rb_RPDB_DatabaseRecordSettingsController_new(	1,
+																																														& rb_database_settings_controller,
+																																														rb_RPDB_DatabaseErrorSettingsController );		
+
+		rb_iv_set(	rb_database_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_SETTINGS_CONTROLLER,
+								rb_database_record_settings_controller );
+	}
+
+	return rb_database_record_settings_controller;
 }

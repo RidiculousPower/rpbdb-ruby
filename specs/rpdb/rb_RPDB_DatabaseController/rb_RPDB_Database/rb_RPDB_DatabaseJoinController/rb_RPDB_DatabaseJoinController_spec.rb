@@ -1,6 +1,6 @@
 require_relative '../../../../../lib/rpdb/rpdb'
 
-describe RPDB::Environment::DatabaseController::Database::JoinController do
+describe RPDB::Database::JoinController do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -25,19 +25,19 @@ describe RPDB::Environment::DatabaseController::Database::JoinController do
   #  initialize  #
   ################
 
-  # RPDB::Environment::DatabaseController::Database::JoinController.new( database )
+  # RPDB::Database::JoinController.new( database )
   it "can be created with a parent database" do
-    RPDB::Environment::DatabaseController::Database::JoinController.new( @database ).should_not == nil
+    RPDB::Database::JoinController.new( @database ).should_not == nil
   end
 
-  # RPDB::Environment::DatabaseController::Database::JoinController.new( environment, database_name ) 
+  # RPDB::Database::JoinController.new( environment, database_name ) 
   it "can be created with a parent environment and a database name" do
-    RPDB::Environment::DatabaseController::Database::JoinController.new( @environment, @database.name ).should_not == nil  
+    RPDB::Database::JoinController.new( @environment, @database.name ).should_not == nil  
   end
 
-  # RPDB::Environment::DatabaseController::Database::JoinController.new( environment_directory, database_name ) 
+  # RPDB::Database::JoinController.new( environment_directory, database_name ) 
   it "can be created with a parent environment home directory and a database name" do
-    RPDB::Environment::DatabaseController::Database::JoinController.new( $environment_path, @database.name ).should_not == nil  
+    RPDB::Database::JoinController.new( $environment_path, @database.name ).should_not == nil  
   end
 
   #########################

@@ -50,6 +50,8 @@ void Init_RPDB_DatabaseSequenceSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseSequenceSettingsController, 	"environment",							"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"parent_database",					rb_RPDB_DatabaseSequenceSettingsController_parentDatabase,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSequenceSettingsController, 	"database",									"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"parent_settings_controller",					rb_RPDB_DatabaseSequenceSettingsController_parentSettingsController,				0 	);
+	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"parent_database_settings_controller",					rb_RPDB_DatabaseSequenceSettingsController_parentDatabaseSettingsController,				0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"increasing",								rb_RPDB_DatabaseSequenceSettingsController_increasing,						0 	);
 	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"set_as_increasing",				rb_RPDB_DatabaseSequenceSettingsController_setAsIncreasing,				0 	);

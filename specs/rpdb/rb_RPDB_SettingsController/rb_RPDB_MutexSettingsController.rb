@@ -1,6 +1,6 @@
 require_relative '../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings::Mutex do
+describe RPDB::Settings::Mutex do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,53 +26,38 @@ describe RPDB::Environment::Settings::Mutex do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::Mutex.new( environment )
+  # RPDB::Settings::Mutex.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::Mutex.new( @environment ).should_not == nil
+    RPDB::Settings::Mutex.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Mutex.new( settings_controller )
+  # RPDB::Settings::Mutex.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::Mutex.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::Mutex.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Mutex.new
+  # RPDB::Settings::Mutex.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::Mutex.new.should_not == nil
+    RPDB::Settings::Mutex.new.should_not == nil
   end
 
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ################
-  #  initialize  #
-  ################
-
-  it "" do
-    Fail
-  end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::Mutex.new.parent_environment.should_not == nil
   end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
-  it "" do
-    Fail
+  it "can return its parent settings controller" do
+    RPDB::Settings::Mutex.new.parent_settings_controller.should_not == nil
   end
-
+  
   ##########################################################
   #  spin_times_before_blocking_for_test_and_spin_mutexes  #
   ##########################################################

@@ -47,7 +47,9 @@ void Init_RPDB_ReplicationTimeoutSettingsController()	{
                         			                                        
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"parent_environment",									rb_RPDB_ReplicationTimeoutSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(						rb_RPDB_ReplicationTimeoutSettingsController, 	"environment",												"parent_environment"	);
-                        			            			                                                                                              				
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController,				"parent_settings_controller",					rb_RPDB_ReplicationTimeoutSettingsController_parentSettingsController,								0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController,				"parent_replication_settings_controller",					rb_RPDB_ReplicationTimeoutSettingsController_parentReplicationSettingsController,								0 	);
+
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"timeout",														rb_RPDB_ReplicationTimeoutSettingsController_timeout,													0 	);
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_setTimeout,													0 	);
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"wait_time_before_checkpoint_write",														rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeCheckpointWrite,													0 	);
@@ -120,7 +122,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_new(	int			argc,
 
 	rb_iv_set(	rb_replication_timeout_settings_controller,
 							RPDB_RB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER,
-							rb_parent_environment );
+							rb_parent_replication_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_replication_settings_controller };
 	rb_obj_call_init(	rb_replication_timeout_settings_controller,
@@ -160,7 +162,7 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_parentEnvironment(	VALUE	rb_r
 VALUE rb_RPDB_ReplicationTimeoutSettingsController_parentSettingsController(	VALUE	rb_replication_timeout_settings_controller )	{
 
 	VALUE	rb_parent_replication_settings_controller		=	rb_RPDB_ReplicationTimeoutSettingsController_parentReplicationSettingsController( rb_replication_timeout_settings_controller );
-	VALUE	rb_parent_settings_controller								=	rb_RPDB_ReplicationTimeoutSettingsController_parentSettingsController( rb_parent_replication_settings_controller );
+	VALUE	rb_parent_settings_controller								=	rb_RPDB_ReplicationSettingsController_parentSettingsController( rb_parent_replication_settings_controller );
 	
 	return rb_parent_settings_controller;	
 }

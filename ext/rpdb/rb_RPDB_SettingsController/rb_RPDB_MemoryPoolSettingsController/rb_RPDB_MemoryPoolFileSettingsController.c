@@ -11,6 +11,8 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_MemoryPoolFileSettingsController.h"
+#include "rb_RPDB_MemoryPoolFileCacheSettingsController.h"
+#include "rb_RPDB_MemoryPoolFilePageSettingsController.h"
 #include "rb_RPDB_MemoryPoolSettingsController.h"
 #include "rb_RPDB_SettingsController.h"
 
@@ -51,6 +53,8 @@ void Init_RPDB_MemoryPoolFileSettingsController()	{
 
 	rb_define_singleton_method(	rb_RPDB_MemoryPoolFileSettingsController, 	"new",																rb_RPDB_MemoryPoolFileSettingsController_new,																								-1 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"initialize",													rb_RPDB_MemoryPoolFileSettingsController_initialize,																								-1 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController,					"parent_settings_controller",					rb_RPDB_MemoryPoolFileSettingsController_parentSettingsController,								0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController,					"parent_memory_pool_settings_controller",					rb_RPDB_MemoryPoolFileSettingsController_parentMemoryPoolSettingsController,								0 	);
 
 	rb_define_method(			rb_RPDB_MemoryPoolFileSettingsController, 				"parent_environment",									rb_RPDB_MemoryPoolFileSettingsController_parentEnvironment,																		0 	);
 	rb_define_alias(			rb_RPDB_MemoryPoolFileSettingsController, 				"environment",												"parent_environment"	);
@@ -467,10 +471,20 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_cookie( VALUE	rb_memory_pool_file
 
 VALUE rb_RPDB_MemoryPoolFileSettingsController_cacheSettingsController( VALUE	rb_memory_pool_file_settings_controller )	{
 
-	RPDB_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-	C_RPDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
-
-	return RUBY_RPDB_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER( RPDB_MemoryPoolFileSettingsController_cacheSettingsController( c_memory_pool_file_settings_controller ) );
+	VALUE	rb_memory_pool_file_cache_settings_controller	=	Qnil;
+	
+	if ( ( rb_memory_pool_file_cache_settings_controller = rb_iv_get(	rb_memory_pool_file_settings_controller,
+																																		RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_memory_pool_file_cache_settings_controller	=	rb_RPDB_MemoryPoolFileCacheSettingsController_new(	1,
+																																																				& rb_memory_pool_file_settings_controller,
+																																																				rb_RPDB_MemoryPoolFileCacheSettingsController );
+		rb_iv_set(	rb_memory_pool_file_cache_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER,
+								rb_memory_pool_file_settings_controller );
+	}
+	
+	return rb_memory_pool_file_cache_settings_controller;
 }
 
 /*****************************
@@ -479,8 +493,18 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_cacheSettingsController( VALUE	rb
 
 VALUE rb_RPDB_MemoryPoolFileSettingsController_pageSettingsController( VALUE	rb_memory_pool_file_settings_controller )	{
 
-	RPDB_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-	C_RPDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
-
-	return RUBY_RPDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( RPDB_MemoryPoolFileSettingsController_pageSettingsController( c_memory_pool_file_settings_controller ) );	
+	VALUE	rb_memory_pool_file_page_settings_controller	=	Qnil;
+	
+	if ( ( rb_memory_pool_file_page_settings_controller = rb_iv_get(	rb_memory_pool_file_settings_controller,
+																																		RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_memory_pool_file_page_settings_controller	=	rb_RPDB_MemoryPoolFilePageSettingsController_new(	1,
+																																																			& rb_memory_pool_file_settings_controller,
+																																																			rb_RPDB_MemoryPoolFilePageSettingsController );
+		rb_iv_set(	rb_memory_pool_file_page_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER,
+								rb_memory_pool_file_settings_controller );
+	}
+	
+	return rb_memory_pool_file_page_settings_controller;
 }

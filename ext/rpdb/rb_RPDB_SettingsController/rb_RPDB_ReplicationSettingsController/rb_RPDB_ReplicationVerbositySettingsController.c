@@ -48,7 +48,9 @@ void Init_RPDB_ReplicationVerbositySettingsController()	{
 
 	rb_define_method(			rb_RPDB_ReplicationVerbositySettingsController, 				"parent_environment",									rb_RPDB_ReplicationVerbositySettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_ReplicationVerbositySettingsController, 				"environment",												"parent_environment"	);
-                                    			                                                                                                    				
+	rb_define_method(			rb_RPDB_ReplicationVerbositySettingsController,					"parent_settings_controller",					rb_RPDB_ReplicationVerbositySettingsController_parentSettingsController,								0 	);
+	rb_define_method(			rb_RPDB_ReplicationVerbositySettingsController,					"parent_replication_settings_controller",					rb_RPDB_ReplicationVerbositySettingsController_parentReplicationSettingsController,								0 	);
+
 	rb_define_method(			rb_RPDB_ReplicationVerbositySettingsController, 				"display_all_replication_information?",														rb_RPDB_ReplicationVerbositySettingsController_displayAllReplicationInformation,													0 	);
 	rb_define_method(			rb_RPDB_ReplicationVerbositySettingsController, 				"turn_display_all_replication_information_on",														rb_RPDB_ReplicationVerbositySettingsController_turnDisplayAllReplicationInformationOn,													0 	);
 	rb_define_method(			rb_RPDB_ReplicationVerbositySettingsController, 				"turn_display_all_replication_information_off",														rb_RPDB_ReplicationVerbositySettingsController_turnDisplayAllReplicationInformationOff,													0 	);
@@ -127,7 +129,7 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_new(	int			argc,
 
 	rb_iv_set(	rb_replication_verbosity_settings_controller,
 							RPDB_RB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER,
-							rb_parent_environment );
+							rb_parent_replication_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_replication_settings_controller };
 	rb_obj_call_init(	rb_replication_verbosity_settings_controller,
@@ -167,7 +169,7 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_parentEnvironment(	VALUE	rb
 VALUE rb_RPDB_ReplicationVerbositySettingsController_parentSettingsController(	VALUE	rb_replication_verbosity_settings_controller )	{
 
 	VALUE	rb_parent_replication_settings_controller		=	rb_RPDB_ReplicationVerbositySettingsController_parentReplicationSettingsController( rb_replication_verbosity_settings_controller );
-	VALUE	rb_parent_settings_controller								=	rb_RPDB_ReplicationVerbositySettingsController_parentSettingsController( rb_parent_replication_settings_controller );
+	VALUE	rb_parent_settings_controller								=	rb_RPDB_ReplicationSettingsController_parentSettingsController( rb_parent_replication_settings_controller );
 	
 	return rb_parent_settings_controller;	
 }

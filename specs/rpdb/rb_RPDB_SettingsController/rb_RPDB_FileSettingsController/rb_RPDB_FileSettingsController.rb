@@ -1,6 +1,6 @@
 require_relative '../../../../lib/rpdb.rb'
 
-describe RPDB::Environment::DatabaseController::Database do
+describe RPDB::Database do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,51 +26,35 @@ describe RPDB::Environment::DatabaseController::Database do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::File.new( environment )
+  # RPDB::Settings::File.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::File.new( @environment ).should_not == nil
+    RPDB::Settings::File.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::File.new( settings_controller )
+  # RPDB::Settings::File.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::File.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::File.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::File.new
+  # RPDB::Settings::File.new
   it "can be created with no environment specified" do
-    RPDB::Environment::Settings::File.new.should_not == nil
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ################
-  #  initialize  #
-  ################
-
-  it "" do
-    Fail
+    RPDB::Settings::File.new.should_not == nil
   end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::File.new.parent_environment.should_not == nil
   end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
-  it "" do
-    Fail
+  it "can return its parent settings controller" do
+    RPDB::Settings::File.new.parent_settings_controller.should_not == nil
   end
 
   #################################

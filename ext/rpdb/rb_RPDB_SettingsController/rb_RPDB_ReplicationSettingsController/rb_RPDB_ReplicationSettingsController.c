@@ -11,6 +11,9 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_ReplicationSettingsController.h"
+#include "rb_RPDB_ReplicationElectionSettingsController.h"
+#include "rb_RPDB_ReplicationTimeoutSettingsController.h"
+#include "rb_RPDB_ReplicationVerbositySettingsController.h"
 #include "rb_RPDB_SettingsController.h"
 #include "rb_RPDB.h"
 
@@ -33,6 +36,7 @@ extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_ReplicationSettingsController;
+extern	VALUE	rb_RPDB_ReplicationVerbositySettingsController;
 extern	VALUE	rb_RPDB_ReplicationElectionSettingsController;
 extern	VALUE	rb_RPDB_ReplicationTimeoutSettingsController;
 
@@ -47,7 +51,8 @@ void Init_RPDB_ReplicationSettingsController()	{
 
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"parent_environment",									rb_RPDB_ReplicationSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_ReplicationSettingsController, 				"environment",												"parent_environment"	);
-                                    			                                                                                                    				
+	rb_define_method(			rb_RPDB_ReplicationSettingsController,				"parent_settings_controller",					rb_RPDB_ReplicationSettingsController_parentSettingsController,								0 	);
+
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"on?",														rb_RPDB_ReplicationSettingsController_on,													0 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"turn_on",														rb_RPDB_ReplicationSettingsController_turnOn,													0 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"off?",														rb_RPDB_ReplicationSettingsController_off,													0 	);
@@ -149,7 +154,7 @@ VALUE rb_RPDB_ReplicationSettingsController_new(	int			argc,
 
 	rb_iv_set(	rb_replication_settings_controller,
 							RPDB_RB_REPLICATION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
-							rb_parent_environment );
+							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_replication_settings_controller,
@@ -892,16 +897,26 @@ VALUE rb_RPDB_ReplicationSettingsController_fastestClockSkewValue( VALUE	rb_repl
 		return rb_replication_settings_controller;
 	}
 
-/***********************************************
-*  acknowledgement_policy_settings_controller  *
-***********************************************/
+/*********************************
+*  election_settings_controller  *
+*********************************/
 
 VALUE rb_RPDB_ReplicationSettingsController_electionSettingsController( VALUE	rb_replication_settings_controller )	{
 
-	RPDB_ReplicationSettingsController*	c_replication_settings_controller;
-	C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
-
-	return RUBY_RPDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( RPDB_ReplicationSettingsController_electionSettingsController( c_replication_settings_controller ) );
+	VALUE	rb_replication_election_settings_controller	=	Qnil;
+	
+	if ( ( rb_replication_election_settings_controller = rb_iv_get(	rb_replication_settings_controller,
+																																	RPDB_RB_SETTINGS_VARIABLE_REPLICATION_ELECTION_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_replication_election_settings_controller	=	rb_RPDB_ReplicationElectionSettingsController_new(	1,
+																																																			& rb_replication_settings_controller,
+																																																			rb_RPDB_ReplicationElectionSettingsController );
+		rb_iv_set(	rb_replication_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_REPLICATION_ELECTION_SETTINGS_CONTROLLER,
+								rb_replication_election_settings_controller );
+	}
+	
+	return rb_replication_election_settings_controller;
 }
 
 /********************************
@@ -911,10 +926,43 @@ VALUE rb_RPDB_ReplicationSettingsController_electionSettingsController( VALUE	rb
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_timeout.html
 VALUE rb_RPDB_ReplicationSettingsController_timeoutSettingsController( VALUE	rb_replication_settings_controller )	{
 
-	RPDB_ReplicationSettingsController*	c_replication_settings_controller;
-	C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	VALUE	rb_replication_timeout_settings_controller	=	Qnil;
+	
+	if ( ( rb_replication_timeout_settings_controller = rb_iv_get(	rb_replication_settings_controller,
+																																	RPDB_RB_SETTINGS_VARIABLE_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_replication_timeout_settings_controller	=	rb_RPDB_ReplicationTimeoutSettingsController_new(	1,
+																																																		& rb_replication_settings_controller,
+																																																		rb_RPDB_ReplicationTimeoutSettingsController );
+		rb_iv_set(	rb_replication_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER,
+								rb_replication_timeout_settings_controller );
+	}
+	
+	return rb_replication_timeout_settings_controller;
+}
 
-	return RUBY_RPDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( RPDB_ReplicationSettingsController_timeoutSettingsController( c_replication_settings_controller ) );
+/********************************
+*  verbosity_settings_controller  *
+********************************/
+
+//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_verbosity.html
+VALUE rb_RPDB_ReplicationSettingsController_verbositySettingsController( VALUE	rb_replication_settings_controller )	{
+
+	VALUE	rb_replication_verbosity_settings_controller	=	Qnil;
+	
+	if ( ( rb_replication_verbosity_settings_controller = rb_iv_get(	rb_replication_settings_controller,
+																																	RPDB_RB_SETTINGS_VARIABLE_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_replication_verbosity_settings_controller	=	rb_RPDB_ReplicationVerbositySettingsController_new(	1,
+																																																				& rb_replication_settings_controller,
+																																																				rb_RPDB_ReplicationVerbositySettingsController );
+		rb_iv_set(	rb_replication_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER,
+								rb_replication_verbosity_settings_controller );
+	}
+	
+	return rb_replication_verbosity_settings_controller;
 }
 
 /*

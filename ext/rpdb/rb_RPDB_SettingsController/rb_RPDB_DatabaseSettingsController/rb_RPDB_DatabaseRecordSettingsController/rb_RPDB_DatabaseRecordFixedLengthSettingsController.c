@@ -57,6 +57,9 @@ void Init_RPDB_DatabaseRecordFixedLengthSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseRecordFixedLengthSettingsController, 	"environment",					"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseRecordFixedLengthSettingsController, 	"parent_database",			rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabase,					0 	);
 	rb_define_alias(						rb_RPDB_DatabaseRecordFixedLengthSettingsController, 	"database",							"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseRecordFixedLengthSettingsController, 	"parent_settings_controller",			rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentSettingsController,					0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordFixedLengthSettingsController, 	"parent_database_settings_controller",			rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabaseSettingsController,					0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordFixedLengthSettingsController, 	"parent_database_record_settings_controller",			rb_RPDB_DatabaseRecordFixedLengthSettingsController_parentDatabaseRecordSettingsController,					0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseRecordFixedLengthSettingsController, 	"record_length",				rb_RPDB_DatabaseRecordFixedLengthSettingsController_recordLength,						0 	);
 	rb_define_method(						rb_RPDB_DatabaseRecordFixedLengthSettingsController, 	"record_length=",				rb_RPDB_DatabaseRecordFixedLengthSettingsController_setRecordLength,				1 	);

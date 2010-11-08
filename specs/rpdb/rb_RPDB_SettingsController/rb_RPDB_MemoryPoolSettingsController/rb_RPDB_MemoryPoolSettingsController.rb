@@ -1,6 +1,6 @@
 require_relative '../../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings::MemoryPool do
+describe RPDB::Settings::MemoryPool do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,51 +26,35 @@ describe RPDB::Environment::Settings::MemoryPool do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::MemoryPool.new( environment )
+  # RPDB::Settings::MemoryPool.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::MemoryPool.new( @environment ).should_not == nil
+    RPDB::Settings::MemoryPool.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::MemoryPool.new( settings_controller )
+  # RPDB::Settings::MemoryPool.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::MemoryPool.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::MemoryPool.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::MemoryPool.new
+  # RPDB::Settings::MemoryPool.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::MemoryPool.new.should_not == nil
+    RPDB::Settings::MemoryPool.new.should_not == nil
   end
   
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ################
-  #  initialize  #
-  ################
-
-  it "" do
-    Fail
-  end
-
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::MemoryPool.new.parent_environment.should_not == nil
   end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
-  it "" do
-    Fail
+  it "can return its parent settings controller" do
+    RPDB::Settings::MemoryPool.new.parent_settings_controller.should_not == nil
   end
 
   #########

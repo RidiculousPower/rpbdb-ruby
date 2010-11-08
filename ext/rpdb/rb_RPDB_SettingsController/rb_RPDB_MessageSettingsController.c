@@ -44,6 +44,7 @@ void Init_RPDB_MessageSettingsController()	{
 
 	rb_define_method(			rb_RPDB_MessageSettingsController, 				"parent_environment",									rb_RPDB_MessageSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_MessageSettingsController, 				"environment",												"parent_environment"	);
+	rb_define_method(			rb_RPDB_MessageSettingsController,				"parent_settings_controller",					rb_RPDB_MessageSettingsController_parentSettingsController,								0 	);
 
 	rb_define_method(			rb_RPDB_MessageSettingsController, 				"file",														rb_RPDB_MessageSettingsController_file,													0 	);
 	rb_define_method(			rb_RPDB_MessageSettingsController, 				"set_file",														rb_RPDB_MessageSettingsController_setFile,													0 	);
@@ -92,7 +93,7 @@ VALUE rb_RPDB_MessageSettingsController_new(	int			argc,
 
 	rb_iv_set(	rb_message_settings_controller,
 							RPDB_RB_MESSAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
-							rb_parent_environment );
+							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_message_settings_controller,

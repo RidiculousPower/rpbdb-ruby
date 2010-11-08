@@ -43,8 +43,8 @@ extern	VALUE	rb_RPDB_DatabaseSettingsController;
 
 void Init_RPDB_DatabaseController()	{
 
-	rb_RPDB_DatabaseController	=	rb_define_class_under(	rb_RPDB_Environment, 
-																												"DatabaseController",			
+	rb_RPDB_DatabaseController	=	rb_define_class_under(	rb_RPDB_Database, 
+																												"Controller",			
 																												rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_DatabaseController, 	"new",														rb_RPDB_DatabaseController_new,											-1 	);

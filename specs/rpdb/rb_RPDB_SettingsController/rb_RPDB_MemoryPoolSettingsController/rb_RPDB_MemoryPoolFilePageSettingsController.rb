@@ -1,6 +1,6 @@
 require_relative '../../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings::MemoryPool::File::Page do
+describe RPDB::Settings::MemoryPool::File::Page do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,77 +26,61 @@ describe RPDB::Environment::Settings::MemoryPool::File::Page do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::MemoryPool::File::Page.new( environment )
+  # RPDB::Settings::MemoryPool::File::Page.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::MemoryPool::File::Page.new( @environment ).should_not == nil
+    RPDB::Settings::MemoryPool::File::Page.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::MemoryPool::File::Page.new( settings_controller )
+  # RPDB::Settings::MemoryPool::File::Page.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::MemoryPool::File::Page.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::MemoryPool::File::Page.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::MemoryPool::File::Page.new( memory_pool_settings_controller )
+  # RPDB::Settings::MemoryPool::File::Page.new( memory_pool_settings_controller )
   it "can be created with a memory pool settings controller" do
-    RPDB::Environment::Settings::MemoryPool::File::Page.new( RPDB::Environment::Settings::MemoryPool.new ).should_not == nil
+    RPDB::Settings::MemoryPool::File::Page.new( RPDB::Settings::MemoryPool.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::MemoryPool::File::Page.new( memory_pool_settings_controller )
+  # RPDB::Settings::MemoryPool::File::Page.new( memory_pool_settings_controller )
   it "can be created with a memory pool file settings controller" do
-    RPDB::Environment::Settings::MemoryPool::File::Page.new( RPDB::Environment::Settings::MemoryPool::File.new ).should_not == nil
+    RPDB::Settings::MemoryPool::File::Page.new( RPDB::Settings::MemoryPool::File.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::MemoryPool::File::Page.new
+  # RPDB::Settings::MemoryPool::File::Page.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::MemoryPool::File::Page.new.should_not == nil
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ################
-  #  initialize  #
-  ################
-
-  it "" do
-    Fail
+    RPDB::Settings::MemoryPool::File::Page.new.should_not == nil
   end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::MemoryPool::File::Page.new.parent_environment.should_not == nil
   end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
-  it "" do
-    Fail
+  it "can return its parent settings controller" do
+    RPDB::Settings::MemoryPool::File::Page.new.parent_settings_controller.should_not == nil
   end
 
   ############################################
   #  parent_memory_pool_settings_controller  #
   ############################################
 
-  it "" do
-    Fail
+  it "can return its parent memory pool settings controller" do
+    RPDB::Settings::MemoryPool::File::Page.new.parent_memory_pool_settings_controller.should_not == nil
   end
 
   #################################################
   #  parent_memory_pool_file_settings_controller  #
   #################################################
 
-  it "" do
-    Fail
+  it "can return its parent memory pool file settings controller" do
+    RPDB::Settings::MemoryPool::File::Page.new.parent_memory_pool_file_settings_controller.should_not == nil
   end
 
   #############################################

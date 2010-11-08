@@ -11,6 +11,7 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_DatabaseCacheSettingsController.h"
+#include "rb_RPDB_DatabaseCachePrioritySettingsController.h"
 #include "rb_RPDB_DatabaseSettingsController.h"
 #include "rb_RPDB_SettingsController.h"
 #include "rb_RPDB_DatabaseController.h"
@@ -56,6 +57,8 @@ void Init_RPDB_DatabaseCacheSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseCacheSettingsController, 	"environment",																	"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseCacheSettingsController, 	"parent_database",															rb_RPDB_DatabaseCacheSettingsController_parentDatabase,									0 	);
 	rb_define_alias(						rb_RPDB_DatabaseCacheSettingsController, 	"database",																			"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseCacheSettingsController, 	"parent_settings_controller",										rb_RPDB_DatabaseCacheSettingsController_parentSettingsController,									0 	);
+	rb_define_method(						rb_RPDB_DatabaseCacheSettingsController, 	"parent_database_settings_controller",					rb_RPDB_DatabaseCacheSettingsController_parentDatabaseSettingsController,									0 	);
 
 	rb_define_method(						rb_RPDB_DatabaseCacheSettingsController, 	"max_size_in_bytes",														rb_RPDB_DatabaseCacheSettingsController_maxSizeInBytes,									0 	);
 	rb_define_method(						rb_RPDB_DatabaseCacheSettingsController, 	"max_size_in_kbytes",														rb_RPDB_DatabaseCacheSettingsController_maxSizeInKBytes,									0 	);
@@ -75,7 +78,7 @@ void Init_RPDB_DatabaseCacheSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseCacheSettingsController, 	"number_cache_regions=",												rb_RPDB_DatabaseCacheSettingsController_setNumberCacheRegions,								1 	);
 	rb_define_alias(						rb_RPDB_DatabaseCacheSettingsController, 	"set_number_cache_regions",											"number_cache_regions=" 	);
                     					
-	rb_define_method(						rb_RPDB_DatabaseCacheSettingsController, 	"priority_controller",													rb_RPDB_DatabaseCacheSettingsController_priorityController,								0 	);
+	rb_define_method(						rb_RPDB_DatabaseCacheSettingsController, 	"priority_controller",													rb_RPDB_DatabaseCacheSettingsController_prioritySettingsController,								0 	);
 	rb_define_alias(						rb_RPDB_DatabaseCacheSettingsController, 	"priority",																			"priority_controller"	);	
 	rb_define_alias(						rb_RPDB_DatabaseCacheSettingsController, 	"priorities",																		"priority_controller"	);	
 }
@@ -175,7 +178,7 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_initialize(	int				argc __attribut
 VALUE rb_RPDB_DatabaseCacheSettingsController_parentEnvironment(	VALUE	rb_database_cache_settings_controller )	{
 
 	VALUE	rb_parent_settings_controller				=	rb_RPDB_DatabaseCacheSettingsController_parentSettingsController( rb_database_cache_settings_controller );
-	VALUE	rb_parent_environment								=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_settings_controller );
+	VALUE	rb_parent_environment								=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
 	
 	return rb_parent_environment;
 }
@@ -467,10 +470,20 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_setNumberCacheRegions(	VALUE	rb_da
 *  priority_controller  *
 ************************/
 
-VALUE rb_RPDB_DatabaseCacheSettingsController_priorityController( VALUE	rb_database_cache_settings_controller )	{
+VALUE rb_RPDB_DatabaseCacheSettingsController_prioritySettingsController( VALUE	rb_database_cache_settings_controller )	{
 
-	RPDB_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-	C_RPDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
-
-	return RUBY_RPDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( RPDB_DatabaseCacheSettingsController_priorityController( c_database_cache_settings_controller ) );
+	VALUE	rb_priority_settings_controller	=	Qnil;
+	
+	if ( ( rb_priority_settings_controller = rb_iv_get(	rb_database_cache_settings_controller,
+																											RPDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_priority_settings_controller	=	rb_RPDB_DatabaseCachePrioritySettingsController_new(	1,
+																																														& rb_database_cache_settings_controller,
+																																														rb_RPDB_DatabaseCachePrioritySettingsController );
+		rb_iv_set(	rb_database_cache_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER,
+								rb_priority_settings_controller );
+	}
+	
+	return rb_priority_settings_controller;
 }

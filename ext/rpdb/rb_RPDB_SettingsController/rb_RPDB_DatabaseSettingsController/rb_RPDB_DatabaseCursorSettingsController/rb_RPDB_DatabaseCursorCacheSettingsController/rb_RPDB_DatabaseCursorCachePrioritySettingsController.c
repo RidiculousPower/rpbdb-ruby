@@ -54,13 +54,17 @@ void Init_RPDB_DatabaseCursorCachePrioritySettingsController()	{
 																																										"Priority",	
 																																										rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"new",											rb_RPDB_DatabaseCursorCachePrioritySettingsController_new,											-1 	);
-	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"initialize",								rb_RPDB_DatabaseCursorCachePrioritySettingsController_initialize,											-1 	);
+	rb_define_singleton_method(	rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"new",																					rb_RPDB_DatabaseCursorCachePrioritySettingsController_new,											-1 	);
+	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"initialize",																		rb_RPDB_DatabaseCursorCachePrioritySettingsController_initialize,											-1 	);
                     					
-	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"parent_environment",				rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentEnvironment,				0 	);
-	rb_define_alias(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"environment",							"parent_environment"	);
-	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"parent_database",					rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabase,						0 	);
-	rb_define_alias(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"database",									"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"parent_environment",														rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentEnvironment,				0 	);
+	rb_define_alias(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"environment",																	"parent_environment"	);
+	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"parent_database",															rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabase,						0 	);
+	rb_define_alias(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"database",																			"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"parent_settings_controller",										rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentSettingsController,						0 	);
+	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"parent_database_settings_controller",					rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabaseSettingsController,						0 	);
+	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"parent_database_cursor_settings_controller",		rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabaseCursorSettingsController,						0 	);
+	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"parent_database_cursor_cache_settings_controller",		rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabaseCursorCacheSettingsController,						0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"priority",									rb_RPDB_DatabaseCursorCachePrioritySettingsController_priority,									0 	);
                     					
@@ -163,7 +167,7 @@ VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_new(	int			argc,
 		rb_parent_database_cursor_settings_controller	=	rb_RPDB_DatabaseSettingsController_cursorSettingsController( rb_parent_database_settings_controller );
 	}
 	if ( rb_parent_database_cursor_settings_controller != Qnil )	{
-		rb_parent_database_cursor_cache_settings_controller = rb_RPDB_DatabaseCursorCacheSettingsController_priorityController( rb_parent_database_cursor_settings_controller );
+		rb_parent_database_cursor_cache_settings_controller = rb_RPDB_DatabaseCursorSettingsController_cacheSettingsController( rb_parent_database_cursor_settings_controller );
 	}
 
 	RPDB_DatabaseCursorCacheSettingsController*	c_database_cursor_cache_settings_controller;
@@ -264,7 +268,7 @@ VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabaseCursor
 VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabaseCursorCacheSettingsController(	VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	VALUE	rb_parent_database_cursor_cache_settings_controller	=	rb_iv_get(	rb_database_cursor_cache_priority_settings_controller,
-																																					RPDB_RB_DATABASE_COMPACT_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																																					RPDB_RB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_cursor_cache_settings_controller;
 }

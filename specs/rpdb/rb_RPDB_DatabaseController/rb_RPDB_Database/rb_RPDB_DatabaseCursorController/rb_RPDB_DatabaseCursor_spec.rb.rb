@@ -1,6 +1,6 @@
 require_relative '../../../../../lib/rpdb/rpdb'
 
-describe RPDB::Environment::DatabaseController::Database::CursorController::Cursor do
+describe RPDB::Database::CursorController::Cursor do
 
   $environment_path                   = '/tmp/rpdb_spec_environment_home/'
 
@@ -41,29 +41,29 @@ describe RPDB::Environment::DatabaseController::Database::CursorController::Curs
   #  initialize  #
   ################
 
-  # RPDB::Environment::DatabaseController::Database::Cursor.new( database_cursor_controller )
+  # RPDB::Database::Cursor.new( database_cursor_controller )
   it "can be created with a parent cursor controller " do
-    RPDB::Environment::DatabaseController::Database::CursorController::Cursor.new( @cursor_controller ).should_not == nil
+    RPDB::Database::CursorController::Cursor.new( @cursor_controller ).should_not == nil
   end
 
-  # RPDB::Environment::DatabaseController::Database::Cursor.new( database )
+  # RPDB::Database::Cursor.new( database )
   it "can be created with a parent database " do
-    RPDB::Environment::DatabaseController::Database::CursorController::Cursor.new( @database ).should_not == nil
+    RPDB::Database::CursorController::Cursor.new( @database ).should_not == nil
   end
 
-  # RPDB::Environment::DatabaseController::Database::Cursor.new( database_controller, database_name ) 
+  # RPDB::Database::Cursor.new( database_controller, database_name ) 
   it "can be created with a database controller and a database name" do
-    RPDB::Environment::DatabaseController::Database::CursorController::Cursor.new( @database_controller, @database.name ).should_not == nil  
+    RPDB::Database::CursorController::Cursor.new( @database_controller, @database.name ).should_not == nil  
   end
 
-  # RPDB::Environment::DatabaseController::Database::Cursor.new( environment, database_name ) 
+  # RPDB::Database::Cursor.new( environment, database_name ) 
   it "can be created with an environment and a database name" do
-    RPDB::Environment::DatabaseController::Database::CursorController::Cursor.new( @environment, @database.name ).should_not == nil  
+    RPDB::Database::CursorController::Cursor.new( @environment, @database.name ).should_not == nil  
   end
 
-  # RPDB::Environment::DatabaseController::Database::Cursor.new( environment_directory, database_name ) 
+  # RPDB::Database::Cursor.new( environment_directory, database_name ) 
   it "can be created with an environment directory and a database name" do
-    RPDB::Environment::DatabaseController::Database::CursorController::Cursor.new( @environment.directory, @database.name ).should_not == nil  
+    RPDB::Database::CursorController::Cursor.new( @environment.directory, @database.name ).should_not == nil  
   end
 
   #########################

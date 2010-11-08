@@ -43,6 +43,7 @@ void Init_RPDB_EnvironmentCacheSettingsController()	{
                         			                                        
 	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"parent_environment",									rb_RPDB_EnvironmentCacheSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(						rb_RPDB_EnvironmentCacheSettingsController, 	"environment",												"parent_environment"	);
+	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"parent_settings_controller",					rb_RPDB_EnvironmentCacheSettingsController_parentSettingsController,								0 	);
 
 	//	FIX - make one max_size and set_max_size function w/dynamic options
 	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"buffering?",														rb_RPDB_EnvironmentCacheSettingsController_buffering,													0 	);
@@ -104,7 +105,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_new(	int			argc,
 
 	rb_iv_set(	rb_environment_cache_settings_controller,
 							RPDB_RB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
-							rb_parent_environment );
+							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_environment_cache_settings_controller,

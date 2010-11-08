@@ -1,6 +1,6 @@
 require_relative '../../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings::Database::Compact do
+describe RPDB::Settings::Database::Compact do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,82 +26,66 @@ describe RPDB::Environment::Settings::Database::Compact do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::Database::Compact.new( environment )
+  # RPDB::Settings::Database::Compact.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::Database::Compact.new( @environment ).should_not == nil
+    RPDB::Settings::Database::Compact.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Compact.new( database_controller )
+  # RPDB::Settings::Database::Compact.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Environment::Settings::Database::Compact.new( @environment.database_controller ).should_not == nil
+    RPDB::Settings::Database::Compact.new( @environment.database_controller ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Compact.new( database )
+  # RPDB::Settings::Database::Compact.new( database )
   it "can be created with a database" do
-    RPDB::Environment::Settings::Database::Compact.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Compact.new( @environment.database_controller.new( $database_name ) ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Compact.new( settings_controller )
+  # RPDB::Settings::Database::Compact.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::Database::Compact.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::Database::Compact.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Compact.new( database_settings_controller )
+  # RPDB::Settings::Database::Compact.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Environment::Settings::Database::Compact.new( RPDB::Environment::Settings::Database.new ).should_not == nil
+    RPDB::Settings::Database::Compact.new( RPDB::Settings::Database.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Compact.new
+  # RPDB::Settings::Database::Compact.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::Database::Compact.new.should_not == nil
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ################
-  #  initialize  #
-  ################
-
-  it "" do
-    Fail
+    RPDB::Settings::Database::Compact.new.should_not == nil
   end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::Database::Compact.new.parent_environment.should_not == nil
   end
 
   #####################
   #  parent_database  #
   #####################
 
-  it "" do
-    Fail
+  it "can return its parent database" do
+    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
   end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
-  it "" do
-    Fail
+  it "can return its parent settings controller" do
+    RPDB::Settings::Database::Compact.new.parent_settings_controller.should_not == nil
   end
 
   #########################################
   #  parent_database_settings_controller  #
   #########################################
 
-  it "" do
-    Fail
+  it "can return its parent database settings controller" do
+    RPDB::Settings::Database::Compact.new.parent_database_settings_controller.should_not == nil
   end
 
   ##################

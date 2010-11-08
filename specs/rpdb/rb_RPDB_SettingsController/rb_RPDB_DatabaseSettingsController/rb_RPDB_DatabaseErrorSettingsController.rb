@@ -1,6 +1,6 @@
 require_relative '../../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings::Database::Error do
+describe RPDB::Settings::Database::Error do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,82 +26,66 @@ describe RPDB::Environment::Settings::Database::Error do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::Database::Error.new( environment )
+  # RPDB::Settings::Database::Error.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::Database::Error.new( @environment ).should_not == nil
+    RPDB::Settings::Database::Error.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Error.new( database_controller )
+  # RPDB::Settings::Database::Error.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Environment::Settings::Database::Error.new( @environment.database_controller ).should_not == nil
+    RPDB::Settings::Database::Error.new( @environment.database_controller ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Error.new( database )
+  # RPDB::Settings::Database::Error.new( database )
   it "can be created with a database" do
-    RPDB::Environment::Settings::Database::Error.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Error.new( @environment.database_controller.new( $database_name ) ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Error.new( settings_controller )
+  # RPDB::Settings::Database::Error.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::Database::Error.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::Database::Error.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Error.new( database_settings_controller )
+  # RPDB::Settings::Database::Error.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Environment::Settings::Database::Error.new( RPDB::Environment::Settings::Database.new ).should_not == nil
+    RPDB::Settings::Database::Error.new( RPDB::Settings::Database.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Error.new
+  # RPDB::Settings::Database::Error.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::Database::Error.new.should_not == nil
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ################
-  #  initialize  #
-  ################
-
-  it "" do
-    Fail
+    RPDB::Settings::Database::Error.new.should_not == nil
   end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::Database::Error.new.parent_environment.should_not == nil
   end
 
   #####################
   #  parent_database  #
   #####################
 
-  it "" do
-    Fail
+  it "can return its parent database" do
+    RPDB::Settings::Database::Error.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
   end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
-  it "" do
-    Fail
+  it "can return its parent settings controller" do
+    RPDB::Settings::Database::Error.new.parent_settings_controller.should_not == nil
   end
 
   #########################################
   #  parent_database_settings_controller  #
   #########################################
 
-  it "" do
-    Fail
+  it "can return its parent database settings controller" do
+    RPDB::Settings::Database::Error.new.parent_database_settings_controller.should_not == nil
   end
 
   ##########

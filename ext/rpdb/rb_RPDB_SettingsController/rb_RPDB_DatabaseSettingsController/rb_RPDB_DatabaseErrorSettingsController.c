@@ -59,6 +59,8 @@ void Init_RPDB_DatabaseErrorSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseErrorSettingsController, 	"environment",						"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseErrorSettingsController, 	"parent_database",				rb_RPDB_DatabaseErrorSettingsController_parentDatabase,					0 	);
 	rb_define_alias(						rb_RPDB_DatabaseErrorSettingsController, 	"database",								"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseErrorSettingsController, 	"parent_settings_controller",				rb_RPDB_DatabaseErrorSettingsController_parentSettingsController,					0 	);
+	rb_define_method(						rb_RPDB_DatabaseErrorSettingsController, 	"parent_database_settings_controller",				rb_RPDB_DatabaseErrorSettingsController_parentDatabaseSettingsController,					0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseErrorSettingsController, 	"file",										rb_RPDB_DatabaseErrorSettingsController_file,										0 	);
 	rb_define_method(						rb_RPDB_DatabaseErrorSettingsController, 	"file=",									rb_RPDB_DatabaseErrorSettingsController_setFile,								1 	);

@@ -1,6 +1,6 @@
 require_relative '../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings::Cache do
+describe RPDB::Settings::Cache do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,51 +26,35 @@ describe RPDB::Environment::Settings::Cache do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::Cache.new( environment )
+  # RPDB::Settings::Cache.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::Cache.new( @environment ).should_not == nil
+    RPDB::Settings::Cache.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Cache.new( settings_controller )
+  # RPDB::Settings::Cache.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::Cache.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::Cache.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Cache.new
+  # RPDB::Settings::Cache.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::Cache.new.should_not == nil
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ################
-  #  initialize  #
-  ################
-
-  it "" do
-    Fail
+    RPDB::Settings::Cache.new.should_not == nil
   end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::Cache.new.parent_environment.should_not == nil
   end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
-  it "" do
-    Fail
+  it "can return its parent settings controller" do
+    RPDB::Settings::Cache.new.parent_settings_controller.should_not == nil
   end
 
   ################

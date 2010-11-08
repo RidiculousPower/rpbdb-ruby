@@ -1,6 +1,6 @@
 require_relative '../../../../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings::Database::Cursor::Cache::Priority do
+describe RPDB::Settings::Database::Cursor::Cache::Priority do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,119 +26,103 @@ describe RPDB::Environment::Settings::Database::Cursor::Cache::Priority do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( environment )
+  # RPDB::Settings::Database::Cursor::Cache::Priority.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( @environment ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( database_controller )
+  # RPDB::Settings::Database::Cursor::Cache::Priority.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( @environment.database_controller ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( @environment.database_controller ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( database )
+  # RPDB::Settings::Database::Cursor::Cache::Priority.new( database )
   it "can be created with a database" do
-    RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( @environment.database_controller.new( $database_name ) ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( database_cursor_controller )
+  # RPDB::Settings::Database::Cursor::Cache::Priority.new( database_cursor_controller )
   it "can be created with a database cursor controller" do
-    RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( @environment.database_controller.new( $database_name ).cursor_controller ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( @environment.database_controller.new( $database_name ).cursor_controller ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( database_cursor )
+  # RPDB::Settings::Database::Cursor::Cache::Priority.new( database_cursor )
   it "can be created with a database cursor" do
-    RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( @environment.database_controller.new( $database_name ).cursor ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( @environment.database_controller.new( $database_name ).cursor ).should_not == nil
   end
 
 
-  # RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( settings_controller )
+  # RPDB::Settings::Database::Cursor::Cache::Priority.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( database_settings_controller )
+  # RPDB::Settings::Database::Cursor::Cache::Priority.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( RPDB::Environment::Settings::Database.new ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Settings::Database.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( database_settings_controller )
+  # RPDB::Settings::Database::Cursor::Cache::Priority.new( database_settings_controller )
   it "can be created with a database cursor settings controller" do
-    RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( RPDB::Environment::Settings::Database::Cursor.new ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Settings::Database::Cursor.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( database_settings_controller )
+  # RPDB::Settings::Database::Cursor::Cache::Priority.new( database_settings_controller )
   it "can be created with a database cursor cache settings controller" do
-    RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new( RPDB::Environment::Settings::Database::Cursor::Cache.new ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Settings::Database::Cursor::Cache.new ).should_not == nil
   end
   
-  # RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new
+  # RPDB::Settings::Database::Cursor::Cache::Priority.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::Database::Cursor::Cache::Priority.new.should_not == nil
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
+    RPDB::Settings::Database::Cursor::Cache::Priority.new.should_not == nil
   end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::Database::Cursor::Cache::Priority.new.parent_environment.should_not == nil
   end
 
   #####################
   #  parent_database  #
   #####################
 
-  it "" do
-    Fail
+  it "can return its parent database" do
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
   end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
-  it "" do
-    Fail
+  it "can return its parent settings controller" do
+    RPDB::Settings::Database::Cursor::Cache::Priority.new.parent_settings_controller.should_not == nil
   end
 
   #########################################
   #  parent_database_settings_controller  #
   #########################################
 
-  it "" do
-    Fail
+  it "can return its parent database settings controller" do
+    RPDB::Settings::Database::Cursor::Cache::Priority.new.parent_database_settings_controller.should_not == nil
   end
 
   ################################################
   #  parent_database_cursor_settings_controller  #
   ################################################
 
-  it "" do
-    Fail
+  it "can return its parent database cursor settings controller" do
+    RPDB::Settings::Database::Cursor::Cache::Priority.new.parent_database_cursor_settings_controller.should_not == nil
   end
 
   ######################################################
   #  parent_database_cursor_cache_settings_controller  #
   ######################################################
 
-  it "" do
-    Fail
+  it "can return its parent database cursor cache settings controller" do
+    RPDB::Settings::Database::Cursor::Cache::Priority.new.parent_database_cursor_cache_settings_controller.should_not == nil
   end
 
   ##############

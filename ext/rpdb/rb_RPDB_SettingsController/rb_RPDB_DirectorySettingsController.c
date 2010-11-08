@@ -42,6 +42,7 @@ void Init_RPDB_DirectorySettingsController()	{
 
 	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"parent_environment",									rb_RPDB_DirectorySettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_DirectorySettingsController, 				"environment",												"parent_environment"	);
+	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"parent_settings_controller",					rb_RPDB_DirectorySettingsController_parentSettingsController,								0 	);
 
 	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"home_directory",											rb_RPDB_DirectorySettingsController_homeDirectory,													0 	);
 	rb_define_alias(			rb_RPDB_DirectorySettingsController, 				"home",																"home_directory"	);
@@ -93,7 +94,7 @@ VALUE rb_RPDB_DirectorySettingsController_new(	int				argc,
 
 	rb_iv_set(	rb_directory_settings_controller,
 							RPDB_RB_DIRECTORY_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
-							rb_parent_environment );
+							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_directory_settings_controller,

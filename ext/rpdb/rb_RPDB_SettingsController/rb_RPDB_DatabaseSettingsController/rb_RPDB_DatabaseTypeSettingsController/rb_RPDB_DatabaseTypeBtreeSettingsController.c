@@ -59,6 +59,9 @@ void Init_RPDB_DatabaseTypeBtreeSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseTypeBtreeSettingsController, 	"environment",													"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseTypeBtreeSettingsController, 	"parent_database",											rb_RPDB_DatabaseTypeBtreeSettingsController_parentDatabase,										0 	);
 	rb_define_alias(						rb_RPDB_DatabaseTypeBtreeSettingsController, 	"database",															"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseTypeBtreeSettingsController, 	"parent_settings_controller",	rb_RPDB_DatabaseTypeBtreeSettingsController_parentSettingsController,										0 	);
+	rb_define_method(						rb_RPDB_DatabaseTypeBtreeSettingsController, 	"parent_database_settings_controller",	rb_RPDB_DatabaseTypeBtreeSettingsController_parentDatabaseSettingsController,										0 	);
+	rb_define_method(						rb_RPDB_DatabaseTypeBtreeSettingsController, 	"parent_database_type_settings_controller",	rb_RPDB_DatabaseTypeBtreeSettingsController_parentDatabaseTypeSettingsController,										0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseTypeBtreeSettingsController, 	"record_number_retrieval?",							rb_RPDB_DatabaseTypeBtreeSettingsController_recordNumberRetrieval,						0 	);
 	rb_define_method(						rb_RPDB_DatabaseTypeBtreeSettingsController, 	"turn_record_number_retrieval_on",			rb_RPDB_DatabaseTypeBtreeSettingsController_turnRecordNumberRetrievalOn,			0 	);

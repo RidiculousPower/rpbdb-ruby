@@ -59,6 +59,9 @@ void Init_RPDB_DatabaseRecordVariableLengthSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"environment",								"parent_environment"	);                                              	
 	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"parent_database",						rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabase,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"database",										"parent_database"	);                                                  	
+	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"parent_settings_controller",						rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentSettingsController,				0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"parent_database_settings_controller",						rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseSettingsController,				0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"parent_database_record_settings_controller",						rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseRecordSettingsController,				0 	);
                     					                                                                                                                                                        	
 	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"record_delimeter",						rb_RPDB_DatabaseRecordVariableLengthSettingsController_recordDelimeter,				0 	);
 	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"record_delimeter=",					rb_RPDB_DatabaseRecordVariableLengthSettingsController_setRecordDelimeter,		1 	);

@@ -274,8 +274,8 @@ void Init_rpdb()	{
 
 		Init_RPDB_Environment();
 		
-		Init_RPDB_DatabaseController();
 		Init_RPDB_Database();
+		Init_RPDB_DatabaseController();
 		Init_RPDB_DatabaseObjectDatabase();
 		Init_RPDB_DatabaseCursorController();
 		Init_RPDB_DatabaseCursor();
@@ -326,6 +326,7 @@ void Init_rpdb()	{
 		Init_RPDB_DatabaseTypeQueueSettingsController();
 		Init_RPDB_DatabaseTypeRecnoSettingsController();
 		Init_RPDB_DatabaseVerificationSettingsController();
+		Init_RPDB_DatabaseVerbositySettingsController();
 
 		Init_RPDB_DebugSettingsController();
 		Init_RPDB_DebugVerbositySettingsController();

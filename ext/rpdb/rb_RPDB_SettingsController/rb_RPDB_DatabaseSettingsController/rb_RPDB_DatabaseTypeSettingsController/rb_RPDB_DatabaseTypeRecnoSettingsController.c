@@ -64,7 +64,10 @@ void Init_RPDB_DatabaseTypeRecnoSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"environment",												"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"parent_database",										rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabase,								0 	);
 	rb_define_alias(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"database",														"parent_database"	);
-                    					
+	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"parent_settings_controller",	rb_RPDB_DatabaseTypeRecnoSettingsController_parentSettingsController,										0 	);
+	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"parent_database_settings_controller",	rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabaseSettingsController,										0 	);
+	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"parent_database_type_settings_controller",	rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabaseTypeSettingsController,										0 	);
+
 	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"record_renumbering?",								rb_RPDB_DatabaseTypeRecnoSettingsController_recordRenumbering,						0 	);
 	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"turn_record_renumbering_on",					rb_RPDB_DatabaseTypeRecnoSettingsController_turnRecordRenumberingOn,			0 	);
 	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"turn_record_renumbering_off",				rb_RPDB_DatabaseTypeRecnoSettingsController_turnRecordRenumberingOff,			0 	);

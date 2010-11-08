@@ -1,6 +1,6 @@
 require_relative '../../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings::Database::Encryption do
+describe RPDB::Settings::Database::Encryption do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,82 +26,66 @@ describe RPDB::Environment::Settings::Database::Encryption do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::Database::Encryption.new( environment )
+  # RPDB::Settings::Database::Encryption.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::Database::Encryption.new( @environment ).should_not == nil
+    RPDB::Settings::Database::Encryption.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Encryption.new( database_controller )
+  # RPDB::Settings::Database::Encryption.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Environment::Settings::Database::Encryption.new( @environment.database_controller ).should_not == nil
+    RPDB::Settings::Database::Encryption.new( @environment.database_controller ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Encryption.new( database )
+  # RPDB::Settings::Database::Encryption.new( database )
   it "can be created with a database" do
-    RPDB::Environment::Settings::Database::Encryption.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Encryption.new( @environment.database_controller.new( $database_name ) ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Encryption.new( settings_controller )
+  # RPDB::Settings::Database::Encryption.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::Database::Encryption.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::Database::Encryption.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Encryption.new( database_settings_controller )
+  # RPDB::Settings::Database::Encryption.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Environment::Settings::Database::Encryption.new( RPDB::Environment::Settings::Database.new ).should_not == nil
+    RPDB::Settings::Database::Encryption.new( RPDB::Settings::Database.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Encryption.new
+  # RPDB::Settings::Database::Encryption.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::Database::Encryption.new.should_not == nil
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ################
-  #  initialize  #
-  ################
-
-  it "" do
-    Fail
+    RPDB::Settings::Database::Encryption.new.should_not == nil
   end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::Database::Encryption.new.parent_environment.should_not == nil
   end
 
   #####################
   #  parent_database  #
   #####################
 
-  it "" do
-    Fail
+  it "can return its parent database" do
+    RPDB::Settings::Database::Encryption.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
   end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
-  it "" do
-    Fail
+  it "can return its parent settings controller" do
+    RPDB::Settings::Database::Encryption.new.parent_settings_controller.should_not == nil
   end
 
   #########################################
   #  parent_database_settings_controller  #
   #########################################
 
-  it "" do
-    Fail
+  it "can return its parent database settings controller" do
+    RPDB::Settings::Database::Encryption.new.parent_database_settings_controller.should_not == nil
   end
 
   ###############

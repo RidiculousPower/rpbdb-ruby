@@ -1,6 +1,6 @@
 require_relative 'lib/rpdb.rb'
 
-describe RPDB::Environment::DatabaseController::Database do
+describe RPDB::Database::Controller do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -21,34 +21,14 @@ describe RPDB::Environment::DatabaseController::Database do
     @environment.close
   end
 
-  ################
-  #  self.new    #
-  #  initialize  #
-  ################
-  # RPDB::Environment::Settings::MemoryPool::File::Cache.new( environment )
-  it "can be created with an environment" do
-    RPDB::Environment::Settings::MemoryPool::File::Cache.new( @environment ).should_not == nil
+
+
+
+
+  it "can return its parent settings controller" do
+    RPDB::Settings::Replication::Verbosity.new.parent_settings_controller.should_not == nil
   end
 
-  # RPDB::Environment::Settings::MemoryPool::File::Cache.new( settings_controller )
-  it "can be created with a settings controller" do
-    RPDB::Environment::Settings::MemoryPool::File::Cache.new( RPDB::Environment::Settings.new ).should_not == nil
-  end
-
-  # RPDB::Environment::Settings::MemoryPool::File::Cache.new( memory_pool_settings_controller )
-  it "can be created with a memory pool settings controller" do
-    RPDB::Environment::Settings::MemoryPool::File::Cache.new( RPDB::Environment::Settings::MemoryPool.new ).should_not == nil
-  end
-
-  # RPDB::Environment::Settings::MemoryPool::File::Cache.new( memory_pool_settings_controller )
-  it "can be created with a memory pool file settings controller" do
-    RPDB::Environment::Settings::MemoryPool::File::Cache.new( RPDB::Environment::Settings::MemoryPool::File.new ).should_not == nil
-  end
-
-  # RPDB::Environment::Settings::MemoryPool::File::Cache.new
-  it "can be created with no argument specified" do
-    RPDB::Environment::Settings::MemoryPool::File::Cache.new.should_not == nil
-  end
 
 
 

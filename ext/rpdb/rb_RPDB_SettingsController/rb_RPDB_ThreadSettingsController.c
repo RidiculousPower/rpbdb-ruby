@@ -43,6 +43,7 @@ void Init_RPDB_ThreadSettingsController()	{
 
 	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"parent_environment",									rb_RPDB_ThreadSettingsController_parentEnvironment,				0 	);
 	rb_define_alias(			rb_RPDB_ThreadSettingsController, 				"environment",												"parent_environment"	);
+	rb_define_method(			rb_RPDB_ThreadSettingsController,					"parent_settings_controller",					rb_RPDB_ThreadSettingsController_parentSettingsController,								0 	);
 
 	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"on?",														rb_RPDB_ThreadSettingsController_on,													0 	);
 	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"off?",														rb_RPDB_ThreadSettingsController_off,													0 	);
@@ -95,7 +96,7 @@ VALUE rb_RPDB_ThreadSettingsController_new(	int			argc,
 	
 	rb_iv_set(	rb_thread_settings_controller,
 							RPDB_RB_THREAD_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
-							rb_parent_environment );
+							rb_parent_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_thread_settings_controller,

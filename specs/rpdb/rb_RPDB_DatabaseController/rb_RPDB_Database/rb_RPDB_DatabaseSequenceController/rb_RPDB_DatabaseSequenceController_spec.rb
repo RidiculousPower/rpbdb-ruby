@@ -1,6 +1,6 @@
 require_relative '../../../../../lib/rpdb/rpdb'
 
-describe RPDB::Environment::DatabaseController::Database::SequenceController do
+describe RPDB::Database::SequenceController do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -25,19 +25,19 @@ describe RPDB::Environment::DatabaseController::Database::SequenceController do
   #  initialize  #
   ################
 
-  # RPDB::Environment::DatabaseController::Database::SequenceController.new( database )
+  # RPDB::Database::SequenceController.new( database )
   it "can be created with a parent database" do
-    RPDB::Environment::DatabaseController::Database::SequenceController.new( @database ).should_not == nil
+    RPDB::Database::SequenceController.new( @database ).should_not == nil
   end
 
-  # RPDB::Environment::DatabaseController::Database::SequenceController.new( environment, database_name ) 
+  # RPDB::Database::SequenceController.new( environment, database_name ) 
   it "can be created with a parent environment and a database name" do
-    RPDB::Environment::DatabaseController::Database::SequenceController.new( @environment, @database.name ).should_not == nil  
+    RPDB::Database::SequenceController.new( @environment, @database.name ).should_not == nil  
   end
 
-  # RPDB::Environment::DatabaseController::Database::SequenceController.new( environment_directory, database_name ) 
+  # RPDB::Database::SequenceController.new( environment_directory, database_name ) 
   it "can be created with a parent environment home directory and a database name" do
-    RPDB::Environment::DatabaseController::Database::SequenceController.new( $environment_path, @database.name ).should_not == nil  
+    RPDB::Database::SequenceController.new( $environment_path, @database.name ).should_not == nil  
   end
 
   #########################

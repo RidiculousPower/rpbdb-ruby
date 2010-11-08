@@ -1,6 +1,6 @@
 require_relative '../../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings::Replication::Timeout do
+describe RPDB::Settings::Replication::Timeout do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,64 +26,48 @@ describe RPDB::Environment::Settings::Replication::Timeout do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::Replication::Timeout.new( environment )
+  # RPDB::Settings::Replication::Timeout.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::Replication::Timeout.new( @environment ).should_not == nil
+    RPDB::Settings::Replication::Timeout.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Replication::Timeout.new( settings_controller )
+  # RPDB::Settings::Replication::Timeout.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::Replication::Timeout.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::Replication::Timeout.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Replication::Timeout.new( replication_settings_controller )
+  # RPDB::Settings::Replication::Timeout.new( replication_settings_controller )
   it "can be created with a replication settings controller" do
-    RPDB::Environment::Settings::Replication::Timeout.new( RPDB::Environment::Settings::Replication.new ).should_not == nil
+    RPDB::Settings::Replication::Timeout.new( RPDB::Settings::Replication.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Replication::Timeout.new
+  # RPDB::Settings::Replication::Timeout.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::Replication::Timeout.new.should_not == nil
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ################
-  #  initialize  #
-  ################
-
-  it "" do
-    Fail
+    RPDB::Settings::Replication::Timeout.new.should_not == nil
   end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::Replication::Timeout.new.parent_environment.should_not == nil
   end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
-  it "" do
-    Fail
+  it "can return its parent settings controller" do
+    RPDB::Settings::Replication::Timeout.new.parent_settings_controller.should_not == nil
   end
 
   ############################################
   #  parent_replication_settings_controller  #
   ############################################
 
-  it "" do
-    Fail
+  it "can return its parent replication settings controller" do
+    RPDB::Settings::Replication::Timeout.new.parent_replication_settings_controller.should_not == nil
   end
 
   #############

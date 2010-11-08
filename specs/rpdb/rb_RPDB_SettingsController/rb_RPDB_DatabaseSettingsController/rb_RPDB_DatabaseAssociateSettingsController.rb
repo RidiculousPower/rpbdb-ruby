@@ -1,6 +1,6 @@
 require_relative '../../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings::Database::Association do
+describe RPDB::Settings::Database::Association do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,82 +26,66 @@ describe RPDB::Environment::Settings::Database::Association do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::Database::Association.new( environment )
+  # RPDB::Settings::Database::Association.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::Database::Association.new( @environment ).should_not == nil
+    RPDB::Settings::Database::Association.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Association.new( database_controller )
+  # RPDB::Settings::Database::Association.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Environment::Settings::Database::Association.new( @environment.database_controller ).should_not == nil
+    RPDB::Settings::Database::Association.new( @environment.database_controller ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Association.new( database )
+  # RPDB::Settings::Database::Association.new( database )
   it "can be created with a database" do
-    RPDB::Environment::Settings::Database::Association.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Association.new( @environment.database_controller.new( $database_name ) ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Association.new( settings_controller )
+  # RPDB::Settings::Database::Association.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::Database::Association.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::Database::Association.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Association.new( database_settings_controller )
+  # RPDB::Settings::Database::Association.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Environment::Settings::Database::Association.new( RPDB::Environment::Settings::Database.new ).should_not == nil
+    RPDB::Settings::Database::Association.new( RPDB::Settings::Database.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database::Association.new
+  # RPDB::Settings::Database::Association.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::Database::Association.new.should_not == nil
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ################
-  #  initialize  #
-  ################
-
-  it "" do
-    Fail
+    RPDB::Settings::Database::Association.new.should_not == nil
   end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::Database::Association.new.parent_environment.should_not == nil
   end
 
   #####################
   #  parent_database  #
   #####################
 
-  it "" do
-    Fail
+  it "can return its parent database" do
+    RPDB::Settings::Database::Association.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
   end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
-  it "" do
-    Fail
+  it "can return its parent settings controller" do
+    RPDB::Settings::Database::Association.new.parent_settings_controller.should_not == nil
   end
 
   #########################################
   #  parent_database_settings_controller  #
   #########################################
 
-  it "" do
-    Fail
+  it "can return its parent database settings controller" do
+    RPDB::Settings::Database::Association.new.parent_database_settings_controller.should_not == nil
   end
 
   ###################

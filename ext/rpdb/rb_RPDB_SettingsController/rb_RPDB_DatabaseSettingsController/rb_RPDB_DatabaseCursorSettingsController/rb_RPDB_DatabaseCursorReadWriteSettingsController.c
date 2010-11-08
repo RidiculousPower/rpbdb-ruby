@@ -58,6 +58,9 @@ void Init_RPDB_DatabaseCursorReadWriteSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseCursorReadWriteSettingsController, 	"environment",																	"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseCursorReadWriteSettingsController, 	"parent_database",															rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabase,													0 	);
 	rb_define_alias(						rb_RPDB_DatabaseCursorReadWriteSettingsController, 	"database",																			"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseCursorReadWriteSettingsController, 	"parent_settings_controller",															rb_RPDB_DatabaseCursorReadWriteSettingsController_parentSettingsController,													0 	);
+	rb_define_method(						rb_RPDB_DatabaseCursorReadWriteSettingsController, 	"parent_database_settings_controller",															rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabaseSettingsController,													0 	);
+	rb_define_method(						rb_RPDB_DatabaseCursorReadWriteSettingsController, 	"parent_database_cursor_settings_controller",															rb_RPDB_DatabaseCursorReadWriteSettingsController_parentDatabaseCursorSettingsController,													0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCursorReadWriteSettingsController, 	"permit_write?",																rb_RPDB_DatabaseCursorReadWriteSettingsController_permitWrite,														0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursorReadWriteSettingsController, 	"turn_permit_write_on",													rb_RPDB_DatabaseCursorReadWriteSettingsController_turnPermitWriteOn,											0 	);

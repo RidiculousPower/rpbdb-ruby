@@ -49,6 +49,8 @@ void Init_RPDB_DatabaseJoinSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseJoinSettingsController, 	"environment",																			"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseJoinSettingsController, 	"parent_database",																	rb_RPDB_DatabaseJoinSettingsController_parentDatabase,						0 	);
 	rb_define_alias(						rb_RPDB_DatabaseJoinSettingsController, 	"database",																					"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseJoinSettingsController, 	"parent_settings_controller",												rb_RPDB_DatabaseJoinSettingsController_parentSettingsController,						0 	);
+	rb_define_method(						rb_RPDB_DatabaseJoinSettingsController, 	"parent_database_settings_controller",							rb_RPDB_DatabaseJoinSettingsController_parentDatabaseSettingsController,						0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseJoinSettingsController, 	"degree_one_isolation?",														rb_RPDB_DatabaseJoinController_degreeOneIsolation,											0 	);
 	rb_define_method(						rb_RPDB_DatabaseJoinSettingsController, 	"turn_degree_one_isolation_on",											rb_RPDB_DatabaseJoinController_turnDegreeOneIsolationOn,								0 	);

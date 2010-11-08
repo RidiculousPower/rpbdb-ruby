@@ -1,6 +1,6 @@
 require_relative '../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings::Transaction do
+describe RPDB::Settings::Transaction do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,51 +26,35 @@ describe RPDB::Environment::Settings::Transaction do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::Transaction.new( environment )
+  # RPDB::Settings::Transaction.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::Transaction.new( @environment ).should_not == nil
+    RPDB::Settings::Transaction.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Transaction.new( settings_controller )
+  # RPDB::Settings::Transaction.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::Transaction.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::Transaction.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Transaction.new
+  # RPDB::Settings::Transaction.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::Transaction.new.should_not == nil
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
+    RPDB::Settings::Transaction.new.should_not == nil
   end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::Transaction.new.parent_environment.should_not == nil
   end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
-  it "" do
-    Fail
+  it "can return its parent settings controller" do
+    RPDB::Settings::Transaction.new.parent_settings_controller.should_not == nil
   end
 
   #########

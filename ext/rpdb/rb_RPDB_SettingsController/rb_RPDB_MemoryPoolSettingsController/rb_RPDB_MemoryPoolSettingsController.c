@@ -11,6 +11,8 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_MemoryPoolSettingsController.h"
+#include "rb_RPDB_MemoryPoolFileSettingsController.h"
+#include "rb_RPDB_MemoryPoolReadWriteSettingsController.h"
 
 #include "rb_RPDB_Environment.h"
 
@@ -49,7 +51,8 @@ void Init_RPDB_MemoryPoolSettingsController()	{
                             
 	rb_define_method(			rb_RPDB_MemoryPoolSettingsController, 				"parent_environment",																rb_RPDB_MemoryPoolSettingsController_parentEnvironment,															0 	);
 	rb_define_alias(			rb_RPDB_MemoryPoolSettingsController, 				"environment",																			"parent_environment"	);
-                                    			                                                                                                    				
+	rb_define_method(			rb_RPDB_MemoryPoolSettingsController,					"parent_settings_controller",												rb_RPDB_MemoryPoolSettingsController_parentSettingsController,								0 	);
+
 	rb_define_method(			rb_RPDB_MemoryPoolSettingsController, 				"on",																								rb_RPDB_MemoryPoolSettingsController_on,																						0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolSettingsController, 				"off",																							rb_RPDB_MemoryPoolSettingsController_off,																						0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolSettingsController, 				"turn_on",																					rb_RPDB_MemoryPoolSettingsController_turnOn,																				0 	);
@@ -121,7 +124,7 @@ VALUE rb_RPDB_MemoryPoolSettingsController_new(	int			argc,
 
 	rb_iv_set(	rb_memory_pool_settings_controller,
 							RPDB_RB_MEMORY_POOL_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
-							rb_parent_environment );
+							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_memory_pool_settings_controller,
@@ -367,12 +370,20 @@ VALUE rb_RPDB_MemoryPoolSettingsController_pagesizeFactorMismatchShouldFail( VAL
 
 VALUE rb_RPDB_MemoryPoolSettingsController_fileSettingsController( VALUE	rb_memory_pool_settings_controller )	{
 
-	RPDB_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-	C_RPDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
-
-	RPDB_MemoryPoolFileSettingsController* c_memory_pool_file_settings_controller	=	RPDB_MemoryPoolSettingsController_fileSettingsController( c_memory_pool_settings_controller );
-
-	return RUBY_RPDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( c_memory_pool_file_settings_controller );
+	VALUE	rb_memory_pool_file_settings_controller	=	Qnil;
+	
+	if ( ( rb_memory_pool_file_settings_controller = rb_iv_get(	rb_memory_pool_settings_controller,
+																															RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+	
+		rb_memory_pool_file_settings_controller	=	rb_RPDB_MemoryPoolFileSettingsController_new(	1,
+																																														& rb_memory_pool_settings_controller,
+																																														rb_RPDB_MemoryPoolFileSettingsController );
+		rb_iv_set(	rb_memory_pool_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,
+								rb_memory_pool_file_settings_controller );
+	}
+	
+	return rb_memory_pool_file_settings_controller;
 }
 
 /***********************************
@@ -381,10 +392,18 @@ VALUE rb_RPDB_MemoryPoolSettingsController_fileSettingsController( VALUE	rb_memo
 
 VALUE rb_RPDB_MemoryPoolSettingsController_readWriteSettingsController( VALUE	rb_memory_pool_settings_controller )	{
 
-	RPDB_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-	C_RPDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
-
-	RPDB_MemoryPoolReadWriteSettingsController* c_memory_pool_read_write_settings_controller	=	RPDB_MemoryPoolSettingsController_readWriteSettingsController( c_memory_pool_settings_controller );
-
-	return RUBY_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( c_memory_pool_read_write_settings_controller );
+	VALUE	rb_memory_pool_read_write_settings_controller	=	Qnil;
+	
+	if ( ( rb_memory_pool_read_write_settings_controller = rb_iv_get(	rb_memory_pool_settings_controller,
+																																		RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+	
+		rb_memory_pool_read_write_settings_controller	=	rb_RPDB_MemoryPoolReadWriteSettingsController_new(	1,
+																																																				& rb_memory_pool_settings_controller,
+																																																				rb_RPDB_MemoryPoolReadWriteSettingsController );
+		rb_iv_set(	rb_memory_pool_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER,
+								rb_memory_pool_read_write_settings_controller );
+	}
+	
+	return rb_memory_pool_read_write_settings_controller;
 }

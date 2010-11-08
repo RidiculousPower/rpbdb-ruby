@@ -1,6 +1,6 @@
 require_relative '../../../../lib/rpdb.rb'
 
-describe RPDB::Environment::Settings::Database do
+describe RPDB::Settings::Database do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,45 +26,45 @@ describe RPDB::Environment::Settings::Database do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::Database.new( environment )
+  # RPDB::Settings::Database.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::Database.new( @environment ).should_not == nil
+    RPDB::Settings::Database.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database.new( database_controller )
+  # RPDB::Settings::Database.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Environment::Settings::Database.new( @environment.database_controller ).should_not == nil
+    RPDB::Settings::Database.new( @environment.database_controller ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database.new( database )
+  # RPDB::Settings::Database.new( database )
   it "can be created with a database" do
-    RPDB::Environment::Settings::Database.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database.new( @environment.database_controller.new( $database_name ) ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database.new( settings_controller )
+  # RPDB::Settings::Database.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::Database.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::Database.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::Database.new
+  # RPDB::Settings::Database.new
   it "can be created with no argument specified" do
-    RPDB::Environment::Settings::Database.new.should_not == nil
+    RPDB::Settings::Database.new.should_not == nil
   end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::Database.new.parent_environment.should_not == nil
   end
 
   #####################
   #  parent_database  #
   #####################
 
-  it "" do
-    Fail
+  it "can return its parent database" do
+    RPDB::Settings::Database.new( RPDB::Database.new( $database_name ) ).parent_environment.should_not == nil
   end
 
   ##############

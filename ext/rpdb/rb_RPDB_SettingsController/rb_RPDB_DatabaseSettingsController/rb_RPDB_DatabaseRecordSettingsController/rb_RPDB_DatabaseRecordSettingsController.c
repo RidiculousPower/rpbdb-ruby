@@ -12,6 +12,9 @@
 
 #include "rb_RPDB.h"
 #include "rb_RPDB_DatabaseRecordSettingsController.h"
+#include "rb_RPDB_DatabaseRecordFixedLengthSettingsController.h"
+#include "rb_RPDB_DatabaseRecordVariableLengthSettingsController.h"
+#include "rb_RPDB_DatabaseRecordReadWriteSettingsController.h"
 #include "rb_RPDB_DatabaseSettingsController.h"
 #include "rb_RPDB_SettingsController.h"
 #include "rb_RPDB_DatabaseController.h"
@@ -54,12 +57,14 @@ void Init_RPDB_DatabaseRecordSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseRecordSettingsController, 	"environment",																				"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseRecordSettingsController, 	"parent_database",																		rb_RPDB_DatabaseRecordSettingsController_parentDatabase,																0 	);
 	rb_define_alias(						rb_RPDB_DatabaseRecordSettingsController, 	"database",																						"parent_database"	);                    					
+	rb_define_method(						rb_RPDB_DatabaseRecordSettingsController, 	"parent_settings_controller",													rb_RPDB_DatabaseRecordSettingsController_parentSettingsController,																0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordSettingsController, 	"parent_database_settings_controller",								rb_RPDB_DatabaseRecordSettingsController_parentDatabaseSettingsController,																0 	);
 
-/*
-	rb_define_method(						rb_RPDB_DatabaseRecordSettingsController, 	"fixed_length_settings_controller",										rb_RPDB_DatabaseRecordSettingsController_fixed,																0 	);
-	rb_define_method(						rb_RPDB_DatabaseRecordSettingsController, 	"variable_length_settings_controller",										rb_RPDB_DatabaseRecordSettingsController_fixed,																0 	);
-	rb_define_method(						rb_RPDB_DatabaseRecordSettingsController, 	"read_write_settings_controller",										rb_RPDB_DatabaseRecordSettingsController_fixed,																0 	);
-*/
+
+	rb_define_method(						rb_RPDB_DatabaseRecordSettingsController, 	"fixed_length_settings_controller",										rb_RPDB_DatabaseRecordSettingsController_fixedLengthSettingsController,																0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordSettingsController, 	"variable_length_settings_controller",										rb_RPDB_DatabaseRecordSettingsController_variableLengthSettingsController,																0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordSettingsController, 	"read_write_settings_controller",										rb_RPDB_DatabaseRecordSettingsController_readWriteSettingsController,																0 	);
+
 }
 	
 /*******************************************************************************************************************************************************************************************
@@ -199,5 +204,71 @@ VALUE rb_RPDB_DatabaseRecordSettingsController_parentDatabaseSettingsController(
 																															RPDB_RB_DATABASE_RECORD_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_settings_controller;
+}
+
+/*************************************
+*  fixed_length_settings_controller  *
+*************************************/
+
+VALUE rb_RPDB_DatabaseRecordSettingsController_fixedLengthSettingsController(	VALUE	rb_database_record_settings_controller )	{
+
+	VALUE	rb_database_record_fixed_length_settings_controller	=	Qnil;
+	
+	if ( ( rb_database_record_fixed_length_settings_controller = rb_iv_get(	rb_database_record_settings_controller,
+																																					RPDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_database_record_fixed_length_settings_controller	=	rb_RPDB_DatabaseRecordFixedLengthSettingsController_new(	1,
+																																																										& rb_database_record_settings_controller,
+																																																										rb_RPDB_DatabaseRecordFixedLengthSettingsController );
+		rb_iv_set(	rb_database_record_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER,
+								rb_database_record_fixed_length_settings_controller );
+	}
+	
+	return rb_database_record_fixed_length_settings_controller;
+}
+
+/****************************************
+*  variable_length_settings_controller  *
+****************************************/
+
+VALUE rb_RPDB_DatabaseRecordSettingsController_variableLengthSettingsController(	VALUE	rb_database_record_settings_controller )	{
+
+	VALUE	rb_database_record_variable_length_settings_controller	=	Qnil;
+	
+	if ( ( rb_database_record_variable_length_settings_controller = rb_iv_get(	rb_database_record_settings_controller,
+																																							RPDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_database_record_variable_length_settings_controller	=	rb_RPDB_DatabaseRecordVariableLengthSettingsController_new(	1,
+																																																													& rb_database_record_settings_controller,
+																																																													rb_RPDB_DatabaseRecordVariableLengthSettingsController );
+		rb_iv_set(	rb_database_record_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER,
+								rb_database_record_variable_length_settings_controller );
+	}
+	
+	return rb_database_record_variable_length_settings_controller;
+}
+
+/****************************************
+*  read_write_settings_controller  *
+****************************************/
+
+VALUE rb_RPDB_DatabaseRecordSettingsController_readWriteSettingsController(	VALUE	rb_database_record_settings_controller )	{
+
+	VALUE	rb_database_record_read_write_settings_controller	=	Qnil;
+	
+	if ( ( rb_database_record_read_write_settings_controller = rb_iv_get(	rb_database_record_settings_controller,
+																																				RPDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_database_record_read_write_settings_controller	=	rb_RPDB_DatabaseRecordReadWriteSettingsController_new(	1,
+																																																								& rb_database_record_settings_controller,
+																																																								rb_RPDB_DatabaseRecordReadWriteSettingsController );
+		rb_iv_set(	rb_database_record_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER,
+								rb_database_record_read_write_settings_controller );
+	}
+	
+	return rb_database_record_read_write_settings_controller;
 }
 

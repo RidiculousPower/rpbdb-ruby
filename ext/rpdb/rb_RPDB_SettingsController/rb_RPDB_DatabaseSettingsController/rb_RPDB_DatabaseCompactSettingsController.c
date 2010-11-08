@@ -56,6 +56,8 @@ void Init_RPDB_DatabaseCompactSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseCompactSettingsController, 	"environment",								"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"parent_database",						rb_RPDB_DatabaseCompactSettingsController_parentDatabase,						0 	);
 	rb_define_alias(						rb_RPDB_DatabaseCompactSettingsController, 	"database",										"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"parent_settings_controller",						rb_RPDB_DatabaseCompactSettingsController_parentSettingsController,						0 	);
+	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"parent_database_settings_controller",						rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController,						0 	);
                     					                                                                      		
 	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"fill_percent",								rb_RPDB_DatabaseCompactSettingsController_fillPercent,							0 	);
 	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"set_fill_percent",						rb_RPDB_DatabaseCompactSettingsController_setFillPercent,						1 	);

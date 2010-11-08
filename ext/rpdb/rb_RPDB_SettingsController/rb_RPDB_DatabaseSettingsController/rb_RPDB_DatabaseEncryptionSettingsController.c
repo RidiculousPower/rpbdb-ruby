@@ -11,8 +11,12 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_DatabaseEncryptionSettingsController.h"
+#include "rb_RPDB_DatabaseController.h"
 #include "rb_RPDB_DatabaseSettingsController.h"
+#include "rb_RPDB_SettingsController.h"
+#include "rb_RPDB_Database.h"
 
+#include "rb_RPDB.h"
 
 #include <rpdb/RPDB_Environment.h>
 #include <rpdb/RPDB_Database.h>
@@ -25,6 +29,7 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_Database;
 extern	VALUE	rb_RPDB_DatabaseController;
@@ -45,6 +50,8 @@ void Init_RPDB_DatabaseEncryptionSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseEncryptionSettingsController, 	"environment",							"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseEncryptionSettingsController, 	"parent_database",					rb_RPDB_DatabaseEncryptionSettingsController_parentDatabase,					0 	);
 	rb_define_alias(						rb_RPDB_DatabaseEncryptionSettingsController, 	"database",									"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseEncryptionSettingsController, 	"parent_settings_controller",					rb_RPDB_DatabaseEncryptionSettingsController_parentSettingsController,					0 	);
+	rb_define_method(						rb_RPDB_DatabaseEncryptionSettingsController, 	"parent_database_settings_controller",					rb_RPDB_DatabaseEncryptionSettingsController_parentDatabaseSettingsController,					0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseEncryptionSettingsController, 	"encrypted?",								rb_RPDB_DatabaseEncryptionSettingsController_encrypted,								0 	);
 	rb_define_alias(						rb_RPDB_DatabaseEncryptionSettingsController, 	"encryption?",							"encrypted?" 	);
@@ -86,6 +93,27 @@ VALUE rb_RPDB_DatabaseEncryptionSettingsController_new(	int			argc,
 			"[ <parent database settings controller> ]"
 		)
 	);
+	
+	if (		rb_parent_environment == Qnil
+			&&	rb_parent_database_controller == Qnil
+			&&	rb_parent_database == Qnil
+			&&	rb_parent_settings_controller == Qnil
+			&&	rb_parent_database_settings_controller == Qnil )	{
+		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
+	
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_settings_controller	=	rb_RPDB_Environment_settingsController( rb_parent_environment );
+	}
+	if ( rb_parent_database != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_Database_settingsController( rb_parent_database );
+	}
+	else if ( rb_parent_settings_controller != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_SettingsController_databaseSettingsController( rb_parent_settings_controller );
+	}
+	else if ( rb_parent_database_controller != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_DatabaseController_settingsController( rb_parent_database_controller );
+	}
 
 	RPDB_DatabaseSettingsController*	c_parent_database_settings_controller;
 	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_parent_database_settings_controller );

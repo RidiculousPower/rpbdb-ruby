@@ -12,6 +12,13 @@
 
 #include "rb_RPDB_SettingsController.h"
 
+#include "rb_RPDB_DebugSettingsController.h"
+#include "rb_RPDB_FileSettingsController.h"
+#include "rb_RPDB_ErrorSettingsController.h"
+#include "rb_RPDB_LogSettingsController.h"
+#include "rb_RPDB_LockSettingsController.h"
+#include "rb_RPDB_ReplicationSettingsController.h"
+
 #include "rb_RPDB.h"
 
 #include "rb_RPDB_DatabaseSettingsController.h"
@@ -37,6 +44,7 @@ extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_SettingsController;
 
+extern	VALUE	rb_RPDB_DebugSettingsController;
 extern	VALUE	rb_RPDB_FileSettingsController;
 extern	VALUE	rb_RPDB_ErrorSettingsController;
 extern	VALUE	rb_RPDB_LogSettingsController;
@@ -48,14 +56,9 @@ extern	VALUE	rb_RPDB_ReplicationSettingsController;
 
 void Init_RPDB_SettingsController()	{
 
-		//	FIX - needs parentEnvironment
-		rb_RPDB_SettingsController		=	rb_define_class_under(	rb_RPDB_Environment, 
+		rb_RPDB_SettingsController		=	rb_define_class_under(	rb_mRPDB, 
 																														"Settings",	
 																														rb_cObject );
-
-																		rb_define_const(				rb_RPDB_Environment, 
-																														"SettingsController", 
-																														rb_RPDB_SettingsController);
 
 		rb_define_singleton_method(	rb_RPDB_SettingsController, 	"new",																rb_RPDB_SettingsController_new,														-1 	);
 		rb_define_method(						rb_RPDB_SettingsController, 	"initialize",													rb_RPDB_SettingsController_initialize,														-1 	);
@@ -115,8 +118,8 @@ VALUE rb_RPDB_SettingsController_new(	int				argc,
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
 			R_ParameterSet(	R_OptionalParameter( R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ) ) ),
-		R_ListOrder( 1 ),
-		"[ <parent environment> ]"
+			R_ListOrder( 1 ),
+			"[ <parent environment> ]"
 		)
 	);
 	
@@ -202,6 +205,29 @@ VALUE rb_RPDB_SettingsController_setSHMkey(	VALUE	rb_settings_controller,
 *******************************************************************************************************************************************************************************************/
 
 /*****************************
+*  debug_settings_controller  *
+*****************************/
+
+VALUE rb_RPDB_SettingsController_debugSettingsController( VALUE	rb_settings_controller )	{
+
+	VALUE	rb_debug_settings_controller	=	Qnil;
+	
+	if ( ( rb_debug_settings_controller = rb_iv_get(	rb_settings_controller,
+																									RPDB_RB_SETTINGS_VARIABLE_DEBUG_SETTINGS_CONTROLLER ) ) == Qnil )	{
+	
+		rb_debug_settings_controller	=	rb_RPDB_DebugSettingsController_new(	1,
+																																					& rb_settings_controller,
+																																					rb_RPDB_DebugSettingsController );
+		
+		rb_iv_set(	rb_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DEBUG_SETTINGS_CONTROLLER,
+								rb_debug_settings_controller );
+	}
+	
+	return rb_debug_settings_controller;
+}
+
+/*****************************
 *  file_settings_controller  *
 *****************************/
 
@@ -212,12 +238,9 @@ VALUE rb_RPDB_SettingsController_fileSettingsController( VALUE	rb_settings_contr
 	if ( ( rb_file_settings_controller = rb_iv_get(	rb_settings_controller,
 																									RPDB_RB_SETTINGS_VARIABLE_FILE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
-		RPDB_SettingsController*	c_settings_controller;
-		C_RPDB_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
-
-		RPDB_FileSettingsController*	c_file_settings_controller	=	RPDB_SettingsController_fileSettingsController( c_settings_controller );
-
-		rb_file_settings_controller	=	RUBY_RPDB_FILE_SETTINGS_CONTROLLER( c_file_settings_controller );
+		rb_file_settings_controller	=	rb_RPDB_FileSettingsController_new(	1,
+																																			& rb_settings_controller,
+																																			rb_RPDB_FileSettingsController );
 		
 		rb_iv_set(	rb_settings_controller,
 								RPDB_RB_SETTINGS_VARIABLE_FILE_SETTINGS_CONTROLLER,
@@ -238,12 +261,9 @@ VALUE rb_RPDB_SettingsController_errorSettingsController( VALUE	rb_settings_cont
 	if ( ( rb_error_settings_controller = rb_iv_get(	rb_settings_controller,
 																										RPDB_RB_SETTINGS_VARIABLE_ERROR_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-		RPDB_SettingsController*	c_settings_controller;
-		C_RPDB_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
-
-		RPDB_ErrorSettingsController*	c_error_settings_controller	=	RPDB_SettingsController_errorSettingsController( c_settings_controller );
-
-		rb_error_settings_controller	=	RUBY_RPDB_ERROR_SETTINGS_CONTROLLER( c_error_settings_controller );
+		rb_error_settings_controller	=	rb_RPDB_ErrorSettingsController_new(	1,
+																																					& rb_settings_controller,
+																																					rb_RPDB_ErrorSettingsController );
 		
 		rb_iv_set(	rb_settings_controller,
 								RPDB_RB_SETTINGS_VARIABLE_ERROR_SETTINGS_CONTROLLER,
@@ -264,12 +284,9 @@ VALUE rb_RPDB_SettingsController_logSettingsController( VALUE	rb_settings_contro
 	if ( ( rb_log_settings_controller = rb_iv_get(	rb_settings_controller,
 																									RPDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-		RPDB_SettingsController*	c_settings_controller;
-		C_RPDB_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
-
-		RPDB_LogSettingsController*	c_log_settings_controller	=	RPDB_SettingsController_logSettingsController( c_settings_controller );
-
-		rb_log_settings_controller	=	RUBY_RPDB_LOG_SETTINGS_CONTROLLER( c_log_settings_controller );
+		rb_log_settings_controller	=	rb_RPDB_LogSettingsController_new(	1,
+																																			& rb_settings_controller,
+																																			rb_RPDB_LogSettingsController );
 		
 		rb_iv_set(	rb_settings_controller,
 								RPDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,
@@ -290,12 +307,9 @@ VALUE rb_RPDB_SettingsController_lockSettingsController( VALUE	rb_settings_contr
 	if ( ( rb_lock_settings_controller = rb_iv_get(	rb_settings_controller,
 																									RPDB_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-		RPDB_SettingsController*	c_settings_controller;
-		C_RPDB_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
-
-		RPDB_LockSettingsController*	c_lock_settings_controller	=	RPDB_SettingsController_lockSettingsController( c_settings_controller );
-
-		rb_lock_settings_controller	=	RUBY_RPDB_LOCK_SETTINGS_CONTROLLER( c_lock_settings_controller );
+		rb_lock_settings_controller	=	rb_RPDB_LockSettingsController_new(	1,
+																																			& rb_settings_controller,
+																																			rb_RPDB_LockSettingsController );
 		
 		rb_iv_set(	rb_settings_controller,
 								RPDB_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER,
@@ -316,12 +330,9 @@ VALUE rb_RPDB_SettingsController_replicationSettingsController( VALUE	rb_setting
 	if ( ( rb_replication_settings_controller = rb_iv_get(	rb_settings_controller,
 																													RPDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-		RPDB_SettingsController*	c_settings_controller;
-		C_RPDB_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
-
-		RPDB_ReplicationSettingsController*	c_replication_settings_controller	=	RPDB_SettingsController_replicationSettingsController( c_settings_controller );
-
-		rb_replication_settings_controller	=	RUBY_RPDB_REPLICATION_SETTINGS_CONTROLLER( c_replication_settings_controller );
+		rb_replication_settings_controller	=	rb_RPDB_ReplicationSettingsController_new(	1,
+																																											& rb_settings_controller,
+																																											rb_RPDB_ReplicationSettingsController );
 		
 		rb_iv_set(	rb_settings_controller,
 								RPDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER,
@@ -388,12 +399,9 @@ VALUE rb_RPDB_SettingsController_directorySettingsController( VALUE	rb_settings_
 	if ( ( rb_directory_settings_controller = rb_iv_get(	rb_settings_controller,
 																												RPDB_RB_SETTINGS_VARIABLE_DIRECTORY_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
-		RPDB_SettingsController*	c_settings_controller;
-		C_RPDB_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
-		
-		RPDB_DirectorySettingsController*	c_directory_settings_controller	=	RPDB_SettingsController_directorySettingsController( c_settings_controller );
-		
-		rb_directory_settings_controller	=	RUBY_RPDB_DIRECTORY_SETTINGS_CONTROLLER( c_directory_settings_controller );
+		rb_directory_settings_controller	=	rb_RPDB_DatabaseSettingsController_new( 1,
+																																								& rb_settings_controller,
+																																								rb_RPDB_DirectorySettingsController );		
 			
 		rb_iv_set(	rb_settings_controller,
 								RPDB_RB_SETTINGS_VARIABLE_DIRECTORY_SETTINGS_CONTROLLER,

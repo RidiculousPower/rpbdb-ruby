@@ -12,6 +12,12 @@
 
 #include "rb_RPDB_DatabaseVerbositySettingsController.h"
 #include "rb_RPDB_DatabaseSettingsController.h"
+#include "rb_RPDB_DatabaseController.h"
+#include "rb_RPDB_Database.h"
+
+#include "rb_RPDB_SettingsController.h"
+
+#include "rb_RPDB.h"
 
 #include "rb_RPDB_Environment.h"
 
@@ -19,6 +25,7 @@
 #include <rpdb/RPDB_Database.h>
 
 #include <rpdb/RPDB_DatabaseVerbositySettingsController.h>
+#include <rpdb/RPDB_DatabaseSettingsController.h>
 
 #include <rargs.h>
 
@@ -26,6 +33,7 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
+extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_Database;
 extern	VALUE	rb_RPDB_DatabaseController;
@@ -46,6 +54,8 @@ void Init_RPDB_DatabaseVerbositySettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseVerbositySettingsController, 	"environment",																							"parent_environment"	);                                              	
 	rb_define_method(						rb_RPDB_DatabaseVerbositySettingsController, 	"parent_database",																					rb_RPDB_DatabaseVerbositySettingsController_parentDatabase,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseVerbositySettingsController, 	"database",																									"parent_database"	);                                                  	
+	rb_define_method(						rb_RPDB_DatabaseVerbositySettingsController, 	"parent_settings_controller",																rb_RPDB_DatabaseVerbositySettingsController_parentSettingsController,				0 	);
+	rb_define_method(						rb_RPDB_DatabaseVerbositySettingsController, 	"parent_database_settings_controller",											rb_RPDB_DatabaseVerbositySettingsController_parentDatabaseSettingsController,				0 	);
 
 	//	FIX - rename functions according to ruby method
 	rb_define_method(						rb_RPDB_DatabaseVerbositySettingsController, 	"display_additional_information_for_register?",							rb_RPDB_DatabaseVerbositySettingsController_displayAdditionalInformationForDBRegisterFlag,				0 	);
@@ -88,11 +98,38 @@ VALUE rb_RPDB_DatabaseVerbositySettingsController_new(	int			argc,
 			"[ <parent database settings controller> ]"
 		)
 	);
+	
+	if (		rb_parent_environment == Qnil
+			&&	rb_parent_database_controller == Qnil
+			&&	rb_parent_database == Qnil
+			&&	rb_parent_settings_controller == Qnil
+			&&	rb_parent_database_settings_controller == Qnil )	{
+		
+		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+	}
+	
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_database_controller	=	rb_RPDB_Environment_databaseController( rb_parent_environment );
+	}
+	if ( rb_parent_settings_controller != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_SettingsController_databaseSettingsController( rb_parent_settings_controller );			
+	}
+	if ( rb_parent_database != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_Database_settingsController( rb_parent_database );	
+	}
+	else if ( rb_parent_database_controller != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_DatabaseController_settingsController( rb_parent_database_controller );
+	}
+	else if ( rb_parent_settings_controller != Qnil )	{
+		rb_parent_database_settings_controller	=	rb_RPDB_SettingsController_databaseSettingsController( rb_parent_settings_controller );	
+	}
 
 	RPDB_DatabaseSettingsController*	c_parent_database_settings_controller;
 	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_parent_database_settings_controller );
 
-	VALUE	rb_database_verbosity_settings_controller	= RUBY_RPDB_DATABASE_VERBOSITY_SETTINGS_CONTROLLER( RPDB_DatabaseVerbositySettingsController_new( c_parent_database_settings_controller ) );
+	RPDB_DatabaseVerbositySettingsController*	c_database_verbosity_settings_controller	=	RPDB_DatabaseSettingsController_verbositySettingsController( c_parent_database_settings_controller );
+
+	VALUE	rb_database_verbosity_settings_controller	= RUBY_RPDB_DATABASE_VERBOSITY_SETTINGS_CONTROLLER( c_database_verbosity_settings_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_verbosity_settings_controller,

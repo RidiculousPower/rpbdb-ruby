@@ -57,6 +57,9 @@ void Init_RPDB_DatabaseRecordReadWriteSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"environment",												"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"parent_database",										rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabase,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"database",														"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"parent_settings_controller",			rb_RPDB_DatabaseRecordReadWriteSettingsController_parentSettingsController,				0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"parent_database_settings_controller",			rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsController,				0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"parent_database_record_settings_controller",			rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseRecordSettingsController,				0 	);
 
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"storage_type",												rb_RPDB_DatabaseRecordReadWriteSettingsController_storageType,															0 	);
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"storage_type=",											rb_RPDB_DatabaseRecordReadWriteSettingsController_setStorageType,														1 	);

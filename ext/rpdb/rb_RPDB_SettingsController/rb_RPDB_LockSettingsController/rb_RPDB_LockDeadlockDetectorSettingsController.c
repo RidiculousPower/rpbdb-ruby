@@ -11,6 +11,7 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_LockDeadlockDetectorSettingsController.h"
+#include "rb_RPDB_LockDeadlockDetectorVerbositySettingsController.h"
 #include "rb_RPDB_LockSettingsController.h"
 #include "rb_RPDB_SettingsController.h"
 #include "rb_RPDB.h"
@@ -47,6 +48,8 @@ void Init_RPDB_LockDeadlockDetectorSettingsController()	{
 
 	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"parent_environment",									rb_RPDB_LockDeadlockDetectorSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"environment",												"parent_environment"	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController,					"parent_settings_controller",					rb_RPDB_LockDeadlockDetectorSettingsController_parentSettingsController,								0 	);
+	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController,					"parent_lock_settings_controller",		rb_RPDB_LockDeadlockDetectorSettingsController_parentLockSettingsController,								0 	);
 
 	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"is_default?",														rb_RPDB_LockDeadlockDetectorSettingsController_isDefault,													0 	);
 	rb_define_method(			rb_RPDB_LockDeadlockDetectorSettingsController, 				"set_to_default",														rb_RPDB_LockDeadlockDetectorSettingsController_setToDefault,													0 	);
@@ -429,8 +432,18 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectRandom( VALUE	rb_lock
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_verbositySettingsController( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
-	RPDB_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-	C_RPDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
-
-	return RUBY_RPDB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER(  RPDB_LockDeadlockDetectorSettingsController_verbositySettingsController( c_lock_deadlock_detector_settings_controller ) );
+	VALUE	rb_deadlock_detector_verbosity_settings_controller	=	Qnil;
+	
+	if ( ( rb_deadlock_detector_verbosity_settings_controller = rb_iv_get(	rb_lock_deadlock_detector_settings_controller,
+																																					RPDB_RB_SETTINGS_VARIABLE_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_deadlock_detector_verbosity_settings_controller	=	rb_RPDB_LockDeadlockDetectorVerbositySettingsController_new(	1,
+																																																												& rb_lock_deadlock_detector_settings_controller,
+																																																												rb_RPDB_LockDeadlockDetectorVerbositySettingsController );
+		rb_iv_set(	rb_lock_deadlock_detector_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER,
+								rb_deadlock_detector_verbosity_settings_controller );
+	}
+	
+	return rb_deadlock_detector_verbosity_settings_controller;
 }

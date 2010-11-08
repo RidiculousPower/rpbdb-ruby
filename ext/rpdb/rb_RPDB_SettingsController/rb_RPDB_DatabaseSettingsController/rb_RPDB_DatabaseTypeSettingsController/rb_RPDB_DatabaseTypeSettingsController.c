@@ -43,6 +43,9 @@ extern	VALUE	rb_RPDB_SettingsController;
 extern	VALUE	rb_RPDB_DatabaseSettingsController;
 extern	VALUE	rb_RPDB_DatabaseTypeSettingsController;
 extern	VALUE	rb_RPDB_DatabaseTypeBtreeSettingsController;
+extern	VALUE	rb_RPDB_DatabaseTypeHashSettingsController;
+extern	VALUE	rb_RPDB_DatabaseTypeQueueSettingsController;
+extern	VALUE	rb_RPDB_DatabaseTypeRecnoSettingsController;
 extern	VALUE	rb_RPDB_DatabaseRecordSettingsController;
 extern	VALUE	rb_RPDB_Record;
 
@@ -61,6 +64,8 @@ void Init_RPDB_DatabaseTypeSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseTypeSettingsController, 	"environment",						"parent_environment"	);
 	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"parent_database",				rb_RPDB_DatabaseTypeSettingsController_parentDatabase,			0 	);
 	rb_define_alias(						rb_RPDB_DatabaseTypeSettingsController, 	"database",								"parent_database"	);
+	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"parent_settings_controller",				rb_RPDB_DatabaseTypeSettingsController_parentSettingsController,			0 	);
+	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"parent_database_settings_controller",				rb_RPDB_DatabaseTypeSettingsController_parentDatabaseSettingsController,			0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"database_type",					rb_RPDB_DatabaseTypeSettingsController_databaseType,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseTypeSettingsController, 	"type",										"database_type"	);
@@ -347,10 +352,20 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_setTypeToQueue( VALUE	rb_database_t
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_btreeController( VALUE	rb_database_type_settings_controller )	{
 	
-	RPDB_DatabaseTypeSettingsController*	c_database_type_settings_controller;
-	C_RPDB_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller );
+	VALUE	rb_database_type_btree_settings_controller	=	Qnil;
 	
-	return RUBY_RPDB_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER( RPDB_DatabaseTypeSettingsController_btreeController( c_database_type_settings_controller ) );
+	if ( ( rb_database_type_btree_settings_controller = rb_iv_get(	rb_database_type_settings_controller,
+																																	RPDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_database_type_btree_settings_controller	=	rb_RPDB_DatabaseTypeSettingsController_new(	1,
+																																															& rb_database_type_settings_controller,
+																																															rb_RPDB_DatabaseTypeBtreeSettingsController );
+		rb_iv_set(	rb_database_type_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER,
+								rb_database_type_btree_settings_controller );
+	}
+	
+	return rb_database_type_btree_settings_controller;
 }
 
 /********************
@@ -359,10 +374,21 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_btreeController( VALUE	rb_database_
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_hashController( VALUE	rb_database_type_settings_controller )	{
 	
-	RPDB_DatabaseTypeSettingsController*	c_database_type_settings_controller;
-	C_RPDB_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller );
+	VALUE	rb_database_type_hash_settings_controller	=	Qnil;
 	
-	return RUBY_RPDB_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER( RPDB_DatabaseTypeSettingsController_hashController( c_database_type_settings_controller ) );
+	if ( ( rb_database_type_hash_settings_controller = rb_iv_get(	rb_database_type_settings_controller,
+																																RPDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_database_type_hash_settings_controller	=	rb_RPDB_DatabaseTypeSettingsController_new(	1,
+																																														& rb_database_type_settings_controller,
+																																														rb_RPDB_DatabaseTypeHashSettingsController );
+
+		rb_iv_set(	rb_database_type_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER,
+								rb_database_type_hash_settings_controller );
+	}
+	
+	return rb_database_type_hash_settings_controller;
 }
 
 /*********************
@@ -371,10 +397,20 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_hashController( VALUE	rb_database_t
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_queueController( VALUE	rb_database_type_settings_controller )	{
 	
-	RPDB_DatabaseTypeSettingsController*	c_database_type_settings_controller;
-	C_RPDB_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller );
+	VALUE	rb_database_type_queue_settings_controller	=	Qnil;
 	
-	return RUBY_RPDB_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER( RPDB_DatabaseTypeSettingsController_queueController( c_database_type_settings_controller ) );
+	if ( ( rb_database_type_queue_settings_controller = rb_iv_get(	rb_database_type_settings_controller,
+																																	RPDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_database_type_queue_settings_controller	=	rb_RPDB_DatabaseTypeSettingsController_new(	1,
+																																															& rb_database_type_settings_controller,
+																																															rb_RPDB_DatabaseTypeQueueSettingsController );
+		rb_iv_set(	rb_database_type_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER,
+								rb_database_type_queue_settings_controller );
+	}
+	
+	return rb_database_type_queue_settings_controller;
 }
 
 /*********************
@@ -383,8 +419,18 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_queueController( VALUE	rb_database_
 
 VALUE rb_RPDB_DatabaseTypeSettingsController_recnoController( VALUE	rb_database_type_settings_controller )	{
 	
-	RPDB_DatabaseTypeSettingsController*	c_database_type_settings_controller;
-	C_RPDB_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller );
+	VALUE	rb_database_type_recno_settings_controller	=	Qnil;
 	
-	return RUBY_RPDB_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER( RPDB_DatabaseTypeSettingsController_recnoController( c_database_type_settings_controller ) );
+	if ( ( rb_database_type_recno_settings_controller = rb_iv_get(	rb_database_type_settings_controller,
+																																	RPDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_database_type_recno_settings_controller	=	rb_RPDB_DatabaseTypeSettingsController_new(	1,
+																																															& rb_database_type_settings_controller,
+																																															rb_RPDB_DatabaseTypeRecnoSettingsController );
+		rb_iv_set(	rb_database_type_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER,
+								rb_database_type_recno_settings_controller );
+	}
+	
+	return rb_database_type_recno_settings_controller;
 }

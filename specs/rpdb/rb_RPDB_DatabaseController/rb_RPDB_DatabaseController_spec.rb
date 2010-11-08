@@ -1,6 +1,6 @@
 require_relative '../../../lib/rpdb.rb'
 
-describe RPDB::Environment::DatabaseController do
+describe RPDB::Database::Controller do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -20,26 +20,26 @@ describe RPDB::Environment::DatabaseController do
   #  initialize  #
   ################
 
-  # RPDB::Environment::DatabaseController.new( environment )
-  # RPDB::Environment::DatabaseController.new( environment_name ) 
-  # RPDB::Environment::DatabaseController.new
+  # RPDB::Database::Controller.new( environment )
+  # RPDB::Database::Controller.new( environment_name ) 
+  # RPDB::Database::Controller.new
   
   it "can be created with a parent environment" do 
-    database_controller = RPDB::Environment::DatabaseController.new( @environment )
+    database_controller = RPDB::Database::Controller.new( @environment )
     database_controller.should_not == nil
-    database_controller.is_a?( RPDB::Environment::DatabaseController ).should == true
+    database_controller.is_a?( RPDB::Database::Controller ).should == true
   end
 
   it "can be created without any arguments, which implies default environment" do 
-    database_controller = RPDB::Environment::DatabaseController.new
+    database_controller = RPDB::Database::Controller.new
     database_controller.should_not == nil
-    database_controller.is_a?( RPDB::Environment::DatabaseController ).should == true
+    database_controller.is_a?( RPDB::Database::Controller ).should == true
   end
   
   it "can be retrieved from an environment instance" do
     database_controller = @environment.database_controller
     database_controller.should_not == nil
-    database_controller.is_a?( RPDB::Environment::DatabaseController ).should == true
+    database_controller.is_a?( RPDB::Database::Controller ).should == true
   end
 
   #########################
@@ -52,7 +52,7 @@ describe RPDB::Environment::DatabaseController do
     # make sure we have a settings controller
     settings_controller = database_controller.settings_controller
     settings_controller.should_not == nil
-    settings_controller.is_a?( RPDB::Environment::Settings::Database ).should == true
+    settings_controller.is_a?( RPDB::Settings::Database ).should == true
     # make sure that our settings controller is the environment's database settings controller
     settings_controller.should == @environment.settings.database
   end
@@ -77,7 +77,7 @@ describe RPDB::Environment::DatabaseController do
     database_controller = @environment.database_controller
     database = database_controller.new( $database_name )
     database.should_not == nil
-    database.is_a?( RPDB::Environment::DatabaseController::Database ).should == true
+    database.is_a?( RPDB::Database ).should == true
     database.handle.should == $database_name
     database.name.should == $database_name.to_s
   end
@@ -86,7 +86,7 @@ describe RPDB::Environment::DatabaseController do
     database_controller = @environment.database_controller
     database = database_controller.new( $database_name.to_s )
     database.should_not == nil
-    database.is_a?( RPDB::Environment::DatabaseController::Database ).should == true
+    database.is_a?( RPDB::Database ).should == true
     database.handle.should == $database_name
     database.name.should == $database_name.to_s
   end

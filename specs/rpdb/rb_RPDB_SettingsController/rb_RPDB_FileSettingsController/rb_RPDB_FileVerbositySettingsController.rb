@@ -1,6 +1,6 @@
 require_relative '../../../../lib/rpdb.rb'
 
-describe RPDB::Environment::DatabaseController::Database do
+describe RPDB::Database do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -26,64 +26,48 @@ describe RPDB::Environment::DatabaseController::Database do
   #  initialize  #
   ################
 
-  # RPDB::Environment::Settings::File::Verbosity.new( environment )
+  # RPDB::Settings::File::Verbosity.new( environment )
   it "can be created with an environment" do
-    RPDB::Environment::Settings::File::Verbosity.new( @environment ).should_not == nil
+    RPDB::Settings::File::Verbosity.new( @environment ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::File::Verbosity.new( settings_controller )
+  # RPDB::Settings::File::Verbosity.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Environment::Settings::File::Verbosity.new( RPDB::Environment::Settings.new ).should_not == nil
+    RPDB::Settings::File::Verbosity.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::File::Verbosity.new( settings_controller )
+  # RPDB::Settings::File::Verbosity.new( settings_controller )
   it "can be created with a file settings controller" do
-    RPDB::Environment::Settings::File::Verbosity.new( RPDB::Environment::Settings::File.new ).should_not == nil
+    RPDB::Settings::File::Verbosity.new( RPDB::Settings::File.new ).should_not == nil
   end
 
-  # RPDB::Environment::Settings::File::Verbosity.new
+  # RPDB::Settings::File::Verbosity.new
   it "can be created with no environment specified" do
-    RPDB::Environment::Settings::File::Verbosity.new.should_not == nil
-  end
-
-  ##############
-  #  self.new  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ################
-  #  initialize  #
-  ################
-
-  it "" do
-    Fail
+    RPDB::Settings::File::Verbosity.new.should_not == nil
   end
 
   ########################
   #  parent_environment  #
   ########################
 
-  it "" do
-    Fail
+  it "can return its parent environment" do
+    RPDB::Settings::File::Verbosity.new.parent_environment.should_not == nil
   end
 
   ################################
   #  parent_settings_controller  #
   ################################
 
-  it "" do
-    Fail
+  it "can return its parent settings controller" do
+    RPDB::Settings::File::Verbosity.new.parent_settings_controller.should_not == nil
   end
 
   #####################################
   #  parent_file_settings_controller  #
   #####################################
 
-  it "" do
-    Fail
+  it "can return its parent file settings controller" do
+    RPDB::Settings::File::Verbosity.new.parent_file_settings_controller.should_not == nil
   end
 
   ##############################################################################

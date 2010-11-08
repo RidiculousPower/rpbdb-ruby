@@ -85,7 +85,7 @@ extern VALUE rb_cFalseClass;
 
 void Init_RPDB_Database()	{
 
-	rb_RPDB_Database		=	rb_define_class_under(	rb_RPDB_DatabaseController, 
+	rb_RPDB_Database		=	rb_define_class_under(	rb_mRPDB, 
 																								"Database",
 																								rb_cObject );
 
@@ -297,13 +297,9 @@ VALUE rb_RPDB_Database_settingsController( VALUE	rb_database )	{
 	if ( ( rb_local_database_settings_controller = rb_iv_get(	rb_database,
 																														RPDB_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
-		RPDB_Database*		c_database;
-		C_RPDB_DATABASE( rb_database, c_database );
-	
-		RPDB_DatabaseSettingsController*	c_local_database_settings_controller	=	RPDB_Database_settingsController( c_database );
-
-		rb_local_database_settings_controller	=	RUBY_RPDB_DATABASE_SETTINGS_CONTROLLER( c_local_database_settings_controller );
-
+		rb_local_database_settings_controller	=	rb_RPDB_DatabaseSettingsController_new(	1,
+																																										& rb_database,
+																																										rb_RPDB_DatabaseSettingsController );
 		rb_iv_set(	rb_database,
 								RPDB_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER,
 								rb_local_database_settings_controller );

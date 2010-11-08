@@ -131,7 +131,7 @@ describe RPDB::Environment do
     environment.open
     database_controller = environment.database_controller
     database_controller.should_not == nil
-    database_controller.is_a?( RPDB::Environment::DatabaseController ).should == true
+    database_controller.is_a?( RPDB::Database::Controller ).should == true
     environment.close
   end
 
@@ -146,7 +146,7 @@ describe RPDB::Environment do
     environment.open
     transaction_controller = environment.transaction_controller
     transaction_controller.should_not == nil
-    transaction_controller.is_a?( RPDB::Environment::TransactionController ).should == true
+    transaction_controller.is_a?( RPDB::TransactionController ).should == true
     environment.close
   end
 
@@ -162,9 +162,9 @@ describe RPDB::Environment do
     settings_controller = environment.settings_controller
     settings_controller.should_not == nil
     # settings controller has two names - primary class name
-    settings_controller.is_a?( RPDB::Environment::Settings ).should == true
+    settings_controller.is_a?( RPDB::Settings ).should == true
     # convenience name
-    settings_controller.is_a?( RPDB::Environment::Settings ).should == true
+    settings_controller.is_a?( RPDB::Settings ).should == true
     environment.close
   end
 

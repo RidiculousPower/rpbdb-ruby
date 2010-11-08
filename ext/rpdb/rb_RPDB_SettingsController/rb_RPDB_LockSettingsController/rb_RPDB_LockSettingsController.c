@@ -11,6 +11,7 @@
 *******************************************************************************************************************************************************************************************/
 
 #include "rb_RPDB_LockSettingsController.h"
+#include "rb_RPDB_LockDeadlockDetectorSettingsController.h"
 #include "rb_RPDB_SettingsController.h"
 #include "rb_RPDB.h"
 
@@ -43,6 +44,7 @@ void Init_RPDB_LockSettingsController()	{
 
 	rb_define_method(			rb_RPDB_LockSettingsController, 				"parent_environment",									rb_RPDB_LockSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_LockSettingsController, 				"environment",												"parent_environment"	);
+	rb_define_method(			rb_RPDB_LockSettingsController,					"parent_settings_controller",					rb_RPDB_LockSettingsController_parentSettingsController,								0 	);
 
 	rb_define_method(			rb_RPDB_LockSettingsController, 				"on?",														rb_RPDB_LockSettingsController_on,													0 	);
 	rb_define_method(			rb_RPDB_LockSettingsController, 				"off?",														rb_RPDB_LockSettingsController_off,													0 	);
@@ -119,7 +121,7 @@ VALUE rb_RPDB_LockSettingsController_new(	int			argc,
 
 	rb_iv_set(	rb_lock_settings_controller,
 							RPDB_RB_LOCK_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
-							rb_parent_environment );
+							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_lock_settings_controller,
@@ -595,8 +597,18 @@ VALUE rb_RPDB_LockSettingsController_numberOfPartitions( VALUE	rb_lock_settings_
 
 VALUE rb_RPDB_LockSettingsController_deadlockDetectorSettingsController( VALUE	rb_lock_settings_controller )	{
 
-	RPDB_LockSettingsController*	c_lock_settings_controller;
-	C_RPDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
-
-	return RUBY_RPDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( RPDB_LockSettingsController_deadlockDetectorSettingsController( c_lock_settings_controller ) );	
+	VALUE	rb_deadlock_detector_settings_controller	=	Qnil;
+	
+	if ( ( rb_deadlock_detector_settings_controller = rb_iv_get(	rb_lock_settings_controller,
+																																RPDB_RB_SETTINGS_VARIABLE_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_deadlock_detector_settings_controller	=	rb_RPDB_LockDeadlockDetectorSettingsController_new(	1,
+																																																		& rb_lock_settings_controller,
+																																																		rb_RPDB_LockDeadlockDetectorSettingsController );
+		rb_iv_set(	rb_lock_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER,
+								rb_deadlock_detector_settings_controller );
+	}
+	
+	return rb_deadlock_detector_settings_controller;
 }

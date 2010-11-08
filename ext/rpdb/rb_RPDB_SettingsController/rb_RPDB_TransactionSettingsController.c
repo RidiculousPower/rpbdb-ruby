@@ -43,6 +43,7 @@ void Init_RPDB_TransactionSettingsController()	{
 
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"parent_environment",									rb_RPDB_TransactionSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_TransactionSettingsController, 				"environment",												"parent_environment"	);
+	rb_define_method(			rb_RPDB_TransactionSettingsController,				"parent_settings_controller",					rb_RPDB_TransactionSettingsController_parentSettingsController,								0 	);
 
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"on?",														rb_RPDB_TransactionSettingsController_on,													0 	);
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"off?",														rb_RPDB_TransactionSettingsController_off,													0 	);
@@ -134,7 +135,7 @@ VALUE rb_RPDB_TransactionSettingsController_new(	int			argc,
 
 	rb_iv_set(	rb_transaction_settings_controller,
 							RPDB_RB_TRANSACTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
-							rb_parent_environment );
+							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_transaction_settings_controller,

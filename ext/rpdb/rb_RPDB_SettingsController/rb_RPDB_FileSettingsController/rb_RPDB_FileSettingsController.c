@@ -12,6 +12,7 @@
 
 #include "rb_RPDB_SettingsController.h"
 #include "rb_RPDB_FileSettingsController.h"
+#include "rb_RPDB_FileVerbositySettingsController.h"
 
 #include "rb_RPDB_Environment.h"
 #include "rb_RPDB.h"
@@ -45,6 +46,7 @@ void Init_RPDB_FileSettingsController()	{
 
 	rb_define_method(			rb_RPDB_FileSettingsController, 				"parent_environment",									rb_RPDB_FileSettingsController_parentEnvironment,								0 	);
 	rb_define_alias(			rb_RPDB_FileSettingsController, 				"environment",												"parent_environment"	);
+	rb_define_method(			rb_RPDB_FileSettingsController,					"parent_settings_controller",					rb_RPDB_FileSettingsController_parentSettingsController,								0 	);
 
 	rb_define_method(			rb_RPDB_FileSettingsController, 				"intermediate_directory_mode",														rb_RPDB_FileSettingsController_intermediateDirectoryMode,													0 	);
 	rb_define_method(			rb_RPDB_FileSettingsController, 				"set_intermediate_directory_mode",														rb_RPDB_FileSettingsController_setIntermediateDirectoryMode,													0 	);
@@ -121,7 +123,7 @@ VALUE rb_RPDB_FileSettingsController_new(	int			argc,
 
 	rb_iv_set(	rb_file_settings_controller,
 							RPDB_RB_FILE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
-							rb_parent_environment );
+							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
 	rb_obj_call_init(	rb_file_settings_controller,
@@ -515,8 +517,18 @@ VALUE rb_RPDB_FileSettingsController_fileCreationMode( VALUE	rb_file_settings_co
 
 VALUE rb_RPDB_FileSettingsController_verbositySettingsController( VALUE	rb_file_settings_controller )	{
 
-	RPDB_FileSettingsController*	c_file_settings_controller;
-	C_RPDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
-
-	return RUBY_RPDB_FILE_VERBOSITY_SETTINGS_CONTROLLER( RPDB_FileSettingsController_verbositySettingsController( c_file_settings_controller ) );
+	VALUE	rb_file_verbosity_settings_controller	=	Qnil;
+	
+	if ( ( rb_file_verbosity_settings_controller = rb_iv_get(	rb_file_settings_controller,
+																														RPDB_RB_SETTINGS_VARIABLE_FILE_VERBOSITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
+	
+		rb_file_verbosity_settings_controller	=	rb_RPDB_FileVerbositySettingsController_new(	1,
+																																													& rb_file_settings_controller,
+																																													rb_RPDB_FileVerbositySettingsController );
+		rb_iv_set(	rb_file_settings_controller,
+								RPDB_RB_SETTINGS_VARIABLE_FILE_VERBOSITY_SETTINGS_CONTROLLER,
+								rb_file_verbosity_settings_controller );
+	}
+	
+	return rb_file_verbosity_settings_controller;
 }
