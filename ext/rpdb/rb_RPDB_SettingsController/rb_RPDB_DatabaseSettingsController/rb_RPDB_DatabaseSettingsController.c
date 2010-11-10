@@ -91,10 +91,10 @@ void Init_RPDB_DatabaseSettingsController()	{
                     					
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"pagesize",														rb_RPDB_DatabaseSettingsController_pagesize,											0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"page_size",													"pagesize"	);
-	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"pagesize=",													rb_RPDB_DatabaseSettingsController_setPagesize,										1 	);
-	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"page_size=",													"pagesize" 	);
-	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"set_pagesize",												"pagesize"	);
-	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"set_page_size",											"pagesize"	);
+	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"set_page_size",													rb_RPDB_DatabaseSettingsController_setPagesize,										1 	);
+	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"page_size=",													"set_page_size" 	);
+	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"set_pagesize",												"set_page_size"	);
+	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"pagesize=",													"set_page_size"	);
 //	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"max_size_page_in",										rb_RPDB_DatabaseSettingsController_maxSizePageIn,									0 	);
 
 	//	FIX - shouldn't this be in the file settings controller?                                	
@@ -109,6 +109,7 @@ void Init_RPDB_DatabaseSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"is_byte_swapped?",										rb_RPDB_DatabaseSettingsController_isByteswapped,									0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"byte_swapped?",											"is_byte_swapped?" 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"byteswapped?",												"is_byte_swapped?" 	);
+	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"is_byteswapped?",												"is_byte_swapped?" 	);
 
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"error_settings_controller",					rb_RPDB_DatabaseSettingsController_errorSettingsController,				0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"errors",															"error_settings_controller"	);
@@ -116,6 +117,8 @@ void Init_RPDB_DatabaseSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"association_settings_controller",		rb_RPDB_DatabaseSettingsController_associationSettingsController,	0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"association",												"association_settings_controller"	);
                     					                                                                        		
+	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"cache_settings_controller",					rb_RPDB_DatabaseSettingsController_cacheSettingsController,			0 	);
+
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"cursor_settings_controller",					rb_RPDB_DatabaseSettingsController_cursorSettingsController,			0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"cursors",														"cursor_settings_controller"	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"cursor",															"cursor_settings_controller"	);
@@ -290,9 +293,9 @@ VALUE rb_RPDB_DatabaseSettingsController_parentSettingsController(	VALUE	rb_data
 																		Switch Settings
 *******************************************************************************************************************************************************************************************/
 
-/*************
-*  checksum  *
-*************/
+/**************
+*  checksum?  *
+**************/
 
 //	DB_CHKSUM				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 VALUE rb_RPDB_DatabaseSettingsController_checksum( VALUE	rb_database_settings_controller )	{
@@ -301,7 +304,7 @@ VALUE rb_RPDB_DatabaseSettingsController_checksum( VALUE	rb_database_settings_co
 	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 	return( RPDB_DatabaseSettingsController_checksum( c_database_settings_controller )	?	Qtrue
-																						:	Qfalse );
+																																											:	Qfalse );
 }
 
 	/*********************
@@ -310,6 +313,12 @@ VALUE rb_RPDB_DatabaseSettingsController_checksum( VALUE	rb_database_settings_co
 
 	//	DB_CHKSUM				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 	VALUE rb_RPDB_DatabaseSettingsController_turnChecksumOn( VALUE	rb_database_settings_controller )	{
+
+		VALUE	rb_parent_database	=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_database_settings_controller );
+		if (rb_parent_database != Qnil
+				&&	rb_RPDB_Database_isOpen( rb_parent_database ) )	{
+			rb_raise( rb_eRuntimeError, "Checksum settings can only be changed before database is opened." );
+		}
 
 		RPDB_DatabaseSettingsController*	c_database_settings_controller;
 		C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
@@ -326,6 +335,12 @@ VALUE rb_RPDB_DatabaseSettingsController_checksum( VALUE	rb_database_settings_co
 	//	DB_CHKSUM				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 	VALUE rb_RPDB_DatabaseSettingsController_turnChecksumOff( VALUE	rb_database_settings_controller )	{
 
+		VALUE	rb_parent_database	=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_database_settings_controller );
+		if (		rb_parent_database != Qnil
+				&&	rb_RPDB_Database_isOpen( rb_parent_database ) )	{
+			rb_raise( rb_eRuntimeError, "Checksum settings can only be changed before database is opened." );
+		}
+
 		RPDB_DatabaseSettingsController*	c_database_settings_controller;
 		C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
@@ -334,9 +349,9 @@ VALUE rb_RPDB_DatabaseSettingsController_checksum( VALUE	rb_database_settings_co
 		return rb_database_settings_controller;
 	}
 
-/*********
-*  logs  *
-*********/
+/****************************
+*  transaction_durability?  *
+****************************/
 
 //	DB_TXN_NOT_DURABLE		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 VALUE rb_RPDB_DatabaseSettingsController_transactionDurability( VALUE	rb_database_settings_controller )	{
@@ -345,13 +360,13 @@ VALUE rb_RPDB_DatabaseSettingsController_transactionDurability( VALUE	rb_databas
 	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 	return( RPDB_DatabaseSettingsController_transactionDurability( c_database_settings_controller )	?	Qtrue
-																										:	Qfalse );
+																																																	:	Qfalse );
 
 }
 
-	/*****************
-	*  turn_logs_on  *
-	*****************/
+	/***********************************
+	*  turn_transaction_durability_on  *
+	***********************************/
 
 	//	DB_TXN_NOT_DURABLE		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 	VALUE rb_RPDB_DatabaseSettingsController_turnTransactionDurabilityOn( VALUE	rb_database_settings_controller )	{
@@ -364,9 +379,9 @@ VALUE rb_RPDB_DatabaseSettingsController_transactionDurability( VALUE	rb_databas
 		return rb_database_settings_controller;
 	}
 
-	/******************
-	*  turn_logs_off  *
-	******************/
+	/************************************
+	*  turn_transaction_durability_off  *
+	************************************/
 
 	//	DB_TXN_NOT_DURABLE		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 	VALUE rb_RPDB_DatabaseSettingsController_turnTransactionDurabilityOff( VALUE	rb_database_settings_controller )	{
@@ -393,8 +408,7 @@ VALUE rb_RPDB_DatabaseSettingsController_pagesize( VALUE	rb_database_settings_co
 	RPDB_DatabaseSettingsController*	c_database_settings_controller;
 	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
-	return ( RPDB_DatabaseSettingsController_pagesize( c_database_settings_controller )	?	Qtrue
-																							:	Qfalse );
+	return INT2NUM( RPDB_DatabaseSettingsController_pagesize( c_database_settings_controller ) );
 }
 
 /*****************
@@ -403,6 +417,12 @@ VALUE rb_RPDB_DatabaseSettingsController_pagesize( VALUE	rb_database_settings_co
 
 VALUE rb_RPDB_DatabaseSettingsController_setPagesize(	VALUE	rb_database_settings_controller, 
 																											VALUE	rb_pagesize )	{
+
+	VALUE	rb_parent_database	=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_database_settings_controller );
+	if (		rb_parent_database != Qnil
+			&&	rb_RPDB_Database_isOpen( rb_parent_database ) )	{
+		rb_raise( rb_eRuntimeError, "Checksum settings can only be changed before database is opened." );
+	}
 
 	RPDB_DatabaseSettingsController*	c_database_settings_controller;
 	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
@@ -438,6 +458,12 @@ VALUE rb_RPDB_DatabaseSettingsController_isBigEndian( VALUE	rb_database_settings
 //	Byte order for stored integers in database
 VALUE rb_RPDB_DatabaseSettingsController_setByteOrderToBigEndian( VALUE	rb_database_settings_controller )	{
 
+	VALUE	rb_parent_database	=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_database_settings_controller );
+	if (		rb_parent_database != Qnil
+			&&	rb_RPDB_Database_isOpen( rb_parent_database ) )	{
+		rb_raise( rb_eRuntimeError, "Endian ordering can only be set before database is opened." );
+	}
+
 	RPDB_DatabaseSettingsController*	c_database_settings_controller;
 	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
@@ -467,6 +493,12 @@ VALUE rb_RPDB_DatabaseSettingsController_isLittleEndian( VALUE	rb_database_setti
 
 VALUE rb_RPDB_DatabaseSettingsController_setByteOrderToLittleEndian( VALUE	rb_database_settings_controller )	{
 
+	VALUE	rb_parent_database	=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_database_settings_controller );
+	if (		rb_parent_database != Qnil
+			&&	rb_RPDB_Database_isOpen( rb_parent_database ) )	{
+		rb_raise( rb_eRuntimeError, "Endian ordering can only be set before database is opened." );
+	}
+
 	RPDB_DatabaseSettingsController*	c_database_settings_controller;
 	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
@@ -482,11 +514,17 @@ VALUE rb_RPDB_DatabaseSettingsController_setByteOrderToLittleEndian( VALUE	rb_da
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_get_byteswapped.html
 VALUE rb_RPDB_DatabaseSettingsController_isByteswapped( VALUE	rb_database_settings_controller )	{
 
+	VALUE	rb_parent_database	=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_database_settings_controller );
+	if (		rb_parent_database == Qnil
+			||	rb_RPDB_Database_isOpen( rb_parent_database ) == Qfalse )	{
+		rb_raise( rb_eRuntimeError, "Can only check whether database is byteswapped after database has been opened." );
+	}
+
 	RPDB_DatabaseSettingsController*	c_database_settings_controller;
 	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 	return ( RPDB_DatabaseSettingsController_isByteswapped( c_database_settings_controller )	?	Qtrue
-																								:	Qfalse );
+																																														:	Qfalse );
 }
 
 /****************
@@ -527,7 +565,7 @@ VALUE rb_RPDB_DatabaseSettingsController_errorSettingsController( VALUE	rb_datab
 								rb_database_error_settings_controller );
 	}
 
-	return rb_database_settings_controller;
+	return rb_database_error_settings_controller;
 }
 
 /************************************
@@ -552,9 +590,9 @@ VALUE rb_RPDB_DatabaseSettingsController_associationSettingsController( VALUE	rb
 	return rb_database_association_settings_controller;
 }
 
-/********************
-*  join_controller  *
-********************/
+/*****************************
+*  join_settings_controller  *
+*****************************/
 
 VALUE rb_RPDB_DatabaseSettingsController_joinSettingsController( VALUE	rb_database_settings_controller )	{
 
@@ -574,9 +612,9 @@ VALUE rb_RPDB_DatabaseSettingsController_joinSettingsController( VALUE	rb_databa
 	return rb_database_join_settings_controller;
 }
 
-/*********************
-*  cache_controller  *
-*********************/
+/******************************
+*  cache_settings_controller  *
+******************************/
 
 VALUE rb_RPDB_DatabaseSettingsController_cacheSettingsController( VALUE	rb_database_settings_controller )	{
 
@@ -596,9 +634,9 @@ VALUE rb_RPDB_DatabaseSettingsController_cacheSettingsController( VALUE	rb_datab
 	return rb_database_cache_settings_controller;
 }
 
-/**********************
-*  cursor_controller  *
-**********************/
+/*******************************
+*  cursor_settings_controller  *
+*******************************/
 
 VALUE rb_RPDB_DatabaseSettingsController_cursorSettingsController( VALUE	rb_database_settings_controller )	{
 

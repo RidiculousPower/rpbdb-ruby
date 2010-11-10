@@ -200,9 +200,9 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_parentDatabaseSettingsContro
 	return rb_parent_database_settings_controller;
 }
 
-/******************
-*  index_primary  *
-******************/
+/*****************************************
+*  secondary_association_creates_index?  *
+*****************************************/
 
 //	DB_CREATE	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_associate.html
 //	If the secondary database is empty, walk through the primary and create an index to it in the empty secondary. This operation is potentially very expensive.
@@ -215,14 +215,16 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesI
 	RPDB_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
 	C_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
 
-	RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesIndex( c_database_association_settings_controller );
+	BOOL	c_secondary_creates_index		= RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesIndex( c_database_association_settings_controller );
 	
-	return rb_database_association_settings_controller;
+	VALUE	rb_secondary_creates_index	=	( c_secondary_creates_index ? Qtrue : Qfalse );
+	
+	return rb_secondary_creates_index;
 }
 
-	/*********************
-	*  index_primary_on  *
-	*********************/
+	/************************************************
+	*  turn_secondary_association_creates_index_on  *
+	************************************************/
 
 	VALUE rb_RPDB_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOn( VALUE	rb_database_association_settings_controller )	{
 
@@ -234,9 +236,9 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesI
 		return rb_database_association_settings_controller;
 	}
 
-	/**********************
-	*  index_primary_off  *
-	**********************/
+	/*************************************************
+	*  turn_secondary_association_creates_index_off  *
+	*************************************************/
 
 	VALUE rb_RPDB_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOff( VALUE	rb_database_association_settings_controller )	{
 
@@ -248,9 +250,9 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesI
 		return rb_database_association_settings_controller;
 	}
 
-/****************************
-*  immutable_secondary_key  *
-****************************/
+/*****************************
+*  immutable_secondary_key?  *
+*****************************/
 
 //	DB_IMMUTABLE_KEY		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_associate.html
 //	This flag can be used to optimize updates when the secondary key in a primary record will never be changed after the primary record is inserted. 
@@ -263,14 +265,16 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_immutableSecondaryKey( VALUE
 	RPDB_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
 	C_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
 
-	RPDB_DatabaseAssociationSettingsController_immutableSecondaryKey( c_database_association_settings_controller );
+	BOOL	c_immutable_secondary_key		=	RPDB_DatabaseAssociationSettingsController_immutableSecondaryKey( c_database_association_settings_controller );
 
-	return rb_database_association_settings_controller;
+	VALUE	rb_immutable_secondary_key	=	( c_immutable_secondary_key ? Qtrue : Qfalse );
+	
+	return rb_immutable_secondary_key;
 }
 
-	/*******************************
-	*  immutable_secondary_key_on  *
-	*******************************/
+	/************************************
+	*  turn_immutable_secondary_key_on  *
+	************************************/
 
 	VALUE rb_RPDB_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOn( VALUE	rb_database_association_settings_controller )	{
 
@@ -282,9 +286,9 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_immutableSecondaryKey( VALUE
 		return rb_database_association_settings_controller;
 	}
 
-	/********************************
-	*  immutable_secondary_key_off  *
-	********************************/
+	/*************************************
+	*  turn_immutable_secondary_key_off  *
+	*************************************/
 
 	VALUE rb_RPDB_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOff( VALUE	rb_database_association_settings_controller )	{
 

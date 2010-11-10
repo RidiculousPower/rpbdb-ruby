@@ -71,147 +71,84 @@ describe RPDB::Settings::Replication::Timeout do
   end
 
   #############
+  #  set_timeout  #
   #  timeout  #
   #############
 
   it "" do
-    Fail
-  end
-
-  #################
-  #  set_timeout  #
-  #################
-
-  it "" do
-    Fail
-  end
-
-  #######################################
-  #  wait_time_before_checkpoint_write  #
-  #######################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ###########################################
   #  set_wait_time_before_checkpoint_write  #
+  #  wait_time_before_checkpoint_write      #
   ###########################################
 
   it "" do
-    Fail
-  end
-
-  #######################################
-  #  wait_time_before_retry_connection  #
-  #######################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ###########################################
   #  set_wait_time_before_retry_connection  #
+  #  wait_time_before_retry_connection      #
   ###########################################
 
   it "" do
-    Fail
-  end
-
-  ######################
-  #  election_timeout  #
-  ######################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ##########################
   #  set_election_timeout  #
+  #  election_timeout      #
   ##########################
 
   it "" do
-    Fail
-  end
-
-  #####################################
-  #  wait_time_before_retry_election  #
-  #####################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #########################################
   #  set_wait_time_before_retry_election  #
+  #  wait_time_before_retry_election      #
   #########################################
 
   it "" do
-    Fail
-  end
-
-  #########################################
-  #  full_election_participation_timeout  #
-  #########################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #############################################
   #  set_full_election_participation_timeout  #
+  #  full_election_participation_timeout      #
   #############################################
 
   it "" do
-    Fail
-  end
-
-  #############################
-  #  heartbeat_monitor_pulse  #
-  #############################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #################################
   #  set_heartbeat_monitor_pulse  #
+  #  heartbeat_monitor_pulse      #
   #################################
 
   it "" do
-    Fail
-  end
-
-  ###############################
-  #  heartbeat_broadcast_pulse  #
-  ###############################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ###################################
   #  set_heartbeat_broadcast_pulse  #
+  #  heartbeat_broadcast_pulse      #
   ###################################
 
   it "" do
-    Fail
-  end
-
-  ###################
-  #  lease_timeout  #
-  ###################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #######################
   #  set_lease_timeout  #
+  #  lease_timeout      #
   #######################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

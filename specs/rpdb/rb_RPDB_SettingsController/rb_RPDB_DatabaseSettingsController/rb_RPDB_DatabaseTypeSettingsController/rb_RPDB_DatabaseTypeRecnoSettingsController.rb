@@ -96,84 +96,42 @@ describe RPDB::Settings::Database::Type::Recno do
     RPDB::Settings::Database::Type::Recno.new.parent_database_type_settings_controller.should_not == nil
   end
 
-  ########################
-  #  record_renumbering  #
-  ########################
+  #################################
+  #  record_renumbering?          #
+	#  turn_record_renumbering_on   #
+	#  turn_record_renumbering_off  #
+  #################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	################################
-  	#  turn_record_renumbering_on  #
-  	################################
-
-    it "" do
-      Fail
-    end
-
-  	#################################
-  	#  turn_record_renumbering_off  #
-  	#################################
-
-    it "" do
-      Fail
-    end
-
-  ########################
-  #  snapshot_isolation  #
-  ########################
+  #################################
+  #  snapshot_isolation?          #
+	#  turn_snapshot_isolation_on   #
+	#  turn_snapshot_isolation_off  #
+  #################################
 
   it "" do
-    Fail
-  end
-
-  	################################
-  	#  turn_snapshot_isolation_on  #
-  	################################
-
-    it "" do
-      Fail
-    end
-
-  	#################################
-  	#  turn_snapshot_isolation_off  #
-  	#################################
-
-    it "" do
-      Fail
-    end
-
-  #################
-  #  source_file  #
-  #################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #####################
   #  set_source_file  #
+  #  source_file      #
   #####################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   ################################
   #  set_append_callback_method  #
+  #  append_callback_method      #
   ################################
 
   it "" do
-    Fail
-  end
-
-  ############################
-  #  append_callback_method  #
-  ############################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
 end

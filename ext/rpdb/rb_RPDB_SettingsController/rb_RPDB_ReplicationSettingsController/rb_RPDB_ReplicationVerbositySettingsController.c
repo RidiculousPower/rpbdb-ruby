@@ -186,9 +186,9 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_parentReplicationSettingsCo
 	return rb_parent_replication_settings_controller;
 }
 
-/****************************************
-*  display_all_replication_information  *
-****************************************/
+/*****************************************
+*  display_all_replication_information?  *
+*****************************************/
 
 //	DB_VERB_REPLICATION     	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
 VALUE rb_RPDB_ReplicationVerbositySettingsController_displayAllReplicationInformation( VALUE	rb_replication_verbosity_settings_controller )	{
@@ -228,9 +228,9 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_displayAllReplicationInform
 		return rb_replication_verbosity_settings_controller;
 	}
 
-/*********************************
-*  display_election_information  *
-*********************************/
+/**********************************
+*  display_election_information?  *
+**********************************/
 
 //	DB_VERB_REP_ELECT    		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
 VALUE rb_RPDB_ReplicationVerbositySettingsController_displayElectionInformation( VALUE	rb_replication_verbosity_settings_controller )	{
@@ -270,9 +270,9 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_displayElectionInformation(
 		return rb_replication_verbosity_settings_controller;
 	}
 
-/*************************************************
-*  display_replication_master_lease_information  *
-*************************************************/
+/**************************************************
+*  display_replication_master_lease_information?  *
+**************************************************/
 
 //	DB_VERB_REP_LEASE       	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
 VALUE rb_RPDB_ReplicationVerbositySettingsController_displayReplicationMasterLeaseInformation( VALUE	rb_replication_verbosity_settings_controller )	{
@@ -312,9 +312,9 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_displayReplicationMasterLea
 		return rb_replication_verbosity_settings_controller;
 	}
 
-/****************************************
-*  display_misc_processing_information  *
-****************************************/
+/*****************************************
+*  display_misc_processing_information?  *
+*****************************************/
 
 //	DB_VERB_REP_MISC        	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
 VALUE rb_RPDB_ReplicationVerbositySettingsController_displayMiscProcessingInformation( VALUE	rb_replication_verbosity_settings_controller )	{
@@ -354,9 +354,9 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_displayMiscProcessingInform
 		return rb_replication_verbosity_settings_controller;
 	}
 
-/*******************************************
-*  display_message_processing_information  *
-*******************************************/
+/********************************************
+*  display_message_processing_information?  *
+********************************************/
 
 //	DB_VERB_REP_MSGS        	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
 VALUE rb_RPDB_ReplicationVerbositySettingsController_displayMessageProcessingInformation( VALUE	rb_replication_verbosity_settings_controller )	{
@@ -396,9 +396,9 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_displayMessageProcessingInf
 		return rb_replication_verbosity_settings_controller;
 	}
 
-/***********************************************
-*  display_client_synchronization_information  *
-***********************************************/
+/************************************************
+*  display_client_synchronization_information?  *
+************************************************/
 
 //	DB_VERB_REP_SYNC        	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
 VALUE rb_RPDB_ReplicationVerbositySettingsController_displayClientSynchronizationInformation( VALUE	rb_replication_verbosity_settings_controller )	{
@@ -438,9 +438,9 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_displayClientSynchronizatio
 		return rb_replication_verbosity_settings_controller;
 	}
 
-/***************************************************
-*  display_manager_connection_failure_information  *
-***************************************************/
+/****************************************************
+*  display_manager_connection_failure_information?  *
+****************************************************/
 
 //	DB_VERB_REPMGR_CONNFAIL 	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
 VALUE rb_RPDB_ReplicationVerbositySettingsController_displayManagerConnectionFailureInformation( VALUE	rb_replication_verbosity_settings_controller )	{
@@ -480,9 +480,9 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_displayManagerConnectionFai
 		return rb_replication_verbosity_settings_controller;
 	}
 
-/************************************
-*  display_manager_misc_processing  *
-************************************/
+/*************************************
+*  display_manager_misc_processing?  *
+*************************************/
 
 //	DB_VERB_REPMGR_MISC     	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
 VALUE rb_RPDB_ReplicationVerbositySettingsController_displayManagerMiscProcessing( VALUE	rb_replication_verbosity_settings_controller )	{
@@ -491,7 +491,7 @@ VALUE rb_RPDB_ReplicationVerbositySettingsController_displayManagerMiscProcessin
 	C_RPDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 
 	return ( RPDB_ReplicationVerbositySettingsController_displayManagerMiscProcessing( c_replication_verbosity_settings_controller )	?	Qtrue
-																																		:	Qfalse );
+																																																																		:	Qfalse );
 }
 
 	/********************************************

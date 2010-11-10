@@ -57,404 +57,200 @@ describe RPDB::Settings::Replication do
     RPDB::Settings::Replication.new.parent_settings_controller.should_not == nil
   end
 
-  #########
-  #  on?  #
-  #########
-
-  it "" do
-    Fail
-  end
-
-  #############
-  #  turn_on  #
-  #############
-
-  it "" do
-    Fail
-  end
-
-  ##########
-  #  off?  #
-  ##########
-
-  it "" do
-    Fail
-  end
-
   ##############
+  #  on?       #
+  #  off?      #
+  #  turn_on   #
   #  turn_off  #
   ##############
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  ######################################
-  #  client_to_client_synchronization  #
-  ######################################
+  ##############################################
+  #  client_to_client_synchronization          #
+	#  turn_client_to_client_synchronization_on  #
+  ##############################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	##############################################
-  	#  turn_client_to_client_synchronization_on  #
-  	##############################################
-
-    it "" do
-      Fail
-    end
-
-  	##############################################
-  	#  turn_client_to_client_synchronization_on  #
-  	##############################################
-
-    it "" do
-      Fail
-    end
-
-  ##########################
-  #  single_bulk_transfer  #
-  ##########################
-
-  it "" do
-    Fail
-  end
-
-  	##################################
-  	#  turn_single_bulk_transfer_on  #
-  	##################################
-
-    it "" do
-      Fail
-    end
-
-  	###################################
-  	#  turn_single_bulk_transfer_off  #
-  	###################################
-
-    it "" do
-      Fail
-    end
-
-  ########################################
-  #  delay_new_sync_until_explicit_call  #
-  ########################################
-
-  it "" do
-    Fail
-  end
-
-  	################################################
-  	#  turn_delay_new_sync_until_explicit_call_on  #
-  	################################################
-
-    it "" do
-      Fail
-    end
-
-  	#################################################
-  	#  turn_delay_new_sync_until_explicit_call_off  #
-  	#################################################
-
-    it "" do
-      Fail
-    end
-
-  #######################
-  #  use_master_leases  #
-  #######################
-
-  it "" do
-    Fail
-  end
-
-  	###############################
-  	#  turn_use_master_leases_on  #
-  	###############################
-
-    it "" do
-      Fail
-    end
-
-  	################################
-  	#  turn_use_master_leases_off  #
-  	################################
-
-    it "" do
-      Fail
-    end
 
   ###################################
-  #  reinitialize_outdated_clients  #
+  #  single_bulk_transfer?          #
+	#  turn_single_bulk_transfer_on   #
+	#  turn_single_bulk_transfer_off  #
   ###################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###########################################
-  	#  turn_reinitialize_outdated_clients_on  #
-  	###########################################
+  #################################################
+  #  delay_new_sync_until_explicit_call?          #
+	#  turn_delay_new_sync_until_explicit_call_on   #
+	#  turn_delay_new_sync_until_explicit_call_off  #
+  #################################################
 
-    it "" do
-      Fail
-    end
+  it "" do
+    raise "Failed."
+  end
 
-  	############################################
-  	#  turn_reinitialize_outdated_clients_off  #
-  	############################################
+  ################################
+  #  use_master_leases?          #
+	#  turn_use_master_leases_on   #
+	#  turn_use_master_leases_off  #
+  ################################
 
-    it "" do
-      Fail
-    end
+  it "" do
+    raise "Failed."
+  end
+
+  ############################################
+  #  reinitialize_outdated_clients?          #
+	#  turn_reinitialize_outdated_clients_on   #
+	#  turn_reinitialize_outdated_clients_off  #
+  ############################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ############################
+  #  prohibit_wait?          #
+	#  turn_prohibit_wait_on   #
+	#  turn_prohibit_wait_off  #
+  ############################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ######################################
+  #  require_strict_majority?          #
+	#  turn_require_strict_majority_on   #
+	#  turn_require_strict_majority_off  #
+  ######################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ###################
+	#  set_is_master  #
+  #  is_master?     #
+  ###################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ###################
+	#  set_is_client  #
+  #  is_client?     #
+  ###################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ###########################################
+	#  set_start_as_client_or_rally_election  #
+  #  start_as_client_or_rally_election      #
+  ###########################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ###############
+	#  set_limit  #
+  #  limit      #
+  ###############
+
+  it "" do
+    raise "Failed."
+  end
+
+  ##############
+	#  set_host  #
+  #  host      #
+  ##############
+
+  it "" do
+    raise "Failed."
+  end
+
+  ##############
+	#  set_port  #
+  #  port      #
+  ##############
+
+  it "" do
+    raise "Failed."
+  end
 
   ####################
-  #  prohibit_wait?  #
+	#  set_site_count  #
+  #  site_count      #
   ####################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###########################
-  	#  turn_prohibit_wait_on  #
-  	###########################
-
-    it "" do
-      Fail
-    end
-
-  	############################
-  	#  turn_prohibit_wait_off  #
-  	############################
-
-    it "" do
-      Fail
-    end
-
-  ##############################
-  #  require_strict_majority?  #
-  ##############################
+  ###############################
+	#  set_priority_order_number  #
+  #  priority_order_number      #
+  ###############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#####################################
-  	#  turn_require_strict_majority_on  #
-  	#####################################
-
-    it "" do
-      Fail
-    end
-
-  	######################################
-  	#  turn_require_strict_majority_off  #
-  	######################################
-
-    it "" do
-      Fail
-    end
-
-  ################
-  #  is_master?  #
-  ################
+  ##########################################
+	#  set_retransmission_threshold_minimum  #
+  #  retransmission_threshold_minimum      #
+  ##########################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###################
-  	#  set_is_master  #
-  	###################
-
-    it "" do
-      Fail
-    end
-
-  ################
-  #  is_client?  #
-  ################
+  ##########################################
+	#  set_retransmission_threshold_maximum  #
+  #  retransmission_threshold_maximum      #
+  ##########################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###################
-  	#  set_is_client  #
-  	###################
-
-    it "" do
-      Fail
-    end
-
-  #######################################
-  #  start_as_client_or_rally_election  #
-  #######################################
+  #############################
+	#  set_slowest_clock_value  #
+  #  slowest_clock_value      #
+  #############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###########################################
-  	#  set_start_as_client_or_rally_election  #
-  	###########################################
-
-    it "" do
-      Fail
-    end
-
-  ###########
-  #  limit  #
-  ###########
+  ##################################
+	#  set_fastest_clock_skew_value  #
+  #  fastest_clock_skew_value      #
+  ##################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	###############
-  	#  set_limit  #
-  	###############
-
-    it "" do
-      Fail
-    end
-
-  ##########
-  #  host  #
-  ##########
-
-  it "" do
-    Fail
-  end
-
-  	##############
-  	#  set_host  #
-  	##############
-
-    it "" do
-      Fail
-    end
-
-  ##########
-  #  port  #
-  ##########
-
-  it "" do
-    Fail
-  end
-
-  	##############
-  	#  set_port  #
-  	##############
-
-    it "" do
-      Fail
-    end
-
-  ################
-  #  site_count  #
-  ################
-
-  it "" do
-    Fail
-  end
-
-  	####################
-  	#  set_site_count  #
-  	####################
-
-    it "" do
-      Fail
-    end
-
-  ###########################
-  #  priority_order_number  #
-  ###########################
-
-  it "" do
-    Fail
-  end
-
-  	###############################
-  	#  set_priority_order_number  #
-  	###############################
-
-    it "" do
-      Fail
-    end
-
-  ######################################
-  #  retransmission_threshold_minimum  #
-  ######################################
-
-  it "" do
-    Fail
-  end
-
-  	##########################################
-  	#  set_retransmission_threshold_minimum  #
-  	##########################################
-
-    it "" do
-      Fail
-    end
-
-  ######################################
-  #  retransmission_threshold_maximum  #
-  ######################################
-
-  it "" do
-    Fail
-  end
-
-  	##########################################
-  	#  set_retransmission_threshold_maximum  #
-  	##########################################
-
-    it "" do
-      Fail
-    end
-
-  #########################
-  #  slowest_clock_value  #
-  #########################
-
-  it "" do
-    Fail
-  end
-
-  	#############################
-  	#  set_slowest_clock_value  #
-  	#############################
-
-    it "" do
-      Fail
-    end
-
-  ##############################
-  #  fastest_clock_skew_value  #
-  ##############################
-
-  it "" do
-    Fail
-  end
-
-  	##################################
-  	#  set_fastest_clock_skew_value  #
-  	##################################
-
-    it "" do
-      Fail
-    end
 
   ##################################
   #  election_settings_controller  #
   ##################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   #################################
@@ -462,9 +258,8 @@ describe RPDB::Settings::Replication do
   #################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
 
 end
 

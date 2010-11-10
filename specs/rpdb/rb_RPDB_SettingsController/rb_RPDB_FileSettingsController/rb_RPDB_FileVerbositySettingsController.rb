@@ -70,53 +70,25 @@ describe RPDB::Database do
     RPDB::Settings::File::Verbosity.new.parent_file_settings_controller.should_not == nil
   end
 
-  ##############################################################################
-  #  display_additional_information_during_open_close_rename_file_operations?  #
-  ##############################################################################
+  ######################################################################################
+  #  display_additional_information_during_open_close_rename_file_operations?          #
+	#  turn_display_additional_information_during_open_close_rename_file_operations_on   #
+	#  turn_display_additional_information_during_open_close_rename_file_operations_off  #
+  ######################################################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#####################################################################################
-  	#  turn_display_additional_information_during_open_close_rename_file_operations_on  #
-  	#####################################################################################
-
-    it "" do
-      Fail
-    end
-
-  	######################################################################################
-  	#  turn_display_additional_information_during_open_close_rename_file_operations_off  #
-  	######################################################################################
-
-    it "" do
-      Fail
-    end
-
-  ################################################################
-  #  display_additional_information_during_all_file_operations?  #
-  ################################################################
+  ########################################################################
+  #  display_additional_information_during_all_file_operations?          #
+	#  turn_display_additional_information_during_all_file_operations_on   #
+	#  turn_display_additional_information_during_all_file_operations_off  #
+  ########################################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	#######################################################################
-  	#  turn_display_additional_information_during_all_file_operations_on  #
-  	#######################################################################
-
-    it "" do
-      Fail
-    end
-
-  	########################################################################
-  	#  turn_display_additional_information_during_all_file_operations_off  #
-  	########################################################################
-
-    it "" do
-      Fail
-    end
 
 end
 

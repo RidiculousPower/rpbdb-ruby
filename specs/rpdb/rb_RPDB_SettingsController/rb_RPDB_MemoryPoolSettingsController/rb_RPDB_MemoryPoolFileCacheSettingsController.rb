@@ -88,7 +88,7 @@ describe RPDB::Settings::MemoryPool::File::Cache do
   #########################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

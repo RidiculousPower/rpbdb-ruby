@@ -70,262 +70,121 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
     RPDB::Settings::MemoryPool::ReadWrite.new.parent_memory_pool_settings_controller.should_not == nil
   end
 
-  ####################
-  #  max_open_files  #
-  ####################
+  ########################
+	#  set_max_open_files  #
+  #  max_open_files      #
+  ########################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	########################
-  	#  set_max_open_files  #
-  	########################
-
-    it "" do
-      Fail
-    end
-
-  ###########################
-  #  max_sequential_writes  #
-  ###########################
-
-  it "" do
-    Fail
-  end
-
-  	###############################
-  	#  set_max_sequential_writes  #
-  	###############################
-
-    it "" do
-      Fail
-    end
-
-  #####################################
-  #  time_to_sleep_before_next_write  #
-  #####################################
-
-  it "" do
-    Fail
-  end
-
-  	#########################################
-  	#  set_time_to_sleep_before_next_write  #
-  	#########################################
-
-    it "" do
-      Fail
-    end
-
-  ##############################
-  #  max_mapped_database_size  #
-  ##############################
-
-  it "" do
-    Fail
-  end
-
-  	##################################
-  	#  set_max_mapped_database_size  #
-  	##################################
-
-    it "" do
-      Fail
-    end
 
   ###############################
-  #  pagefault_shared_regions?  #
+	#  set_max_sequential_writes  #
+  #  max_sequential_writes      #
   ###############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	######################################
-  	#  turn_pagefault_shared_regions_on  #
-  	######################################
-
-    it "" do
-      Fail
-    end
-
-  	#######################################
-  	#  turn_pagefault_shared_regions_off  #
-  	#######################################
-
-    it "" do
-      Fail
-    end
-
-  ############################################
-  #  do_not_write_to_temporary_backing_file  #
-  ############################################
+  #########################################
+	#  set_time_to_sleep_before_next_write  #
+  #  time_to_sleep_before_next_write      #
+  #########################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	####################################################
-  	#  turn_do_not_write_to_temporary_backing_file_on  #
-  	####################################################
-
-    it "" do
-      Fail
-    end
-
-  	#####################################################
-  	#  turn_do_not_write_to_temporary_backing_file_off  #
-  	#####################################################
-
-    it "" do
-      Fail
-    end
-
-  ###################################
-  #  use_system_memory_for_storage  #
-  ###################################
-
-  it "" do
-    Fail
-  end
-
-  	###########################################
-  	#  turn_use_system_memory_for_storage_on  #
-  	###########################################
-
-    it "" do
-      Fail
-    end
-
-  	############################################
-  	#  turn_use_system_memory_for_storage_off  #
-  	############################################
-
-    it "" do
-      Fail
-    end
-
-  #######################################
-  #  application_has_exclusive_access?  #
-  #######################################
-
-  it "" do
-    Fail
-  end
-
-  	##############################################
-  	#  turn_application_has_exclusive_access_on  #
-  	##############################################
-
-    it "" do
-      Fail
-    end
-
-  	###############################################
-  	#  turn_application_has_exclusive_access_off  #
-  	###############################################
-
-    it "" do
-      Fail
-    end
-
-  #############################################
-  #  database_allocates_memory_using_malloc?  #
-  #############################################
-
-  it "" do
-    Fail
-  end
-
-  	####################################################
-  	#  turn_database_allocates_memory_using_malloc_on  #
-  	####################################################
-
-    it "" do
-      Fail
-    end
-
-  	#####################################################
-  	#  turn_database_allocates_memory_using_malloc_off  #
-  	#####################################################
-
-    it "" do
-      Fail
-    end
-
-  #############################################
-  #  database_allocates_memory_using_realloc  #
-  #############################################
-
-  it "" do
-    Fail
-  end
-
-  	#####################################################
-  	#  turn_database_allocates_memory_using_realloc_on  #
-  	#####################################################
-
-    it "" do
-      Fail
-    end
-
-  	######################################################
-  	#  turn_database_allocates_memory_using_realloc_off  #
-  	######################################################
-
-    it "" do
-      Fail
-    end
 
   ##################################
-  #  application_allocates_memory  #
+	#  set_max_mapped_database_size  #
+  #  max_mapped_database_size      #
   ##################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##########################################
-  	#  turn_application_allocates_memory_on  #
-  	##########################################
-
-    it "" do
-      Fail
-    end
-
-  	###########################################
-  	#  turn_application_allocates_memory_off  #
-  	###########################################
-
-    it "" do
-      Fail
-    end
-
-  ###########################
-  #  database_frees_memory  #
-  ###########################
+  #######################################
+  #  pagefault_shared_regions?          #
+	#  turn_pagefault_shared_regions_on   #
+	#  turn_pagefault_shared_regions_off  #
+  #######################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###################################
-  	#  turn_database_frees_memory_on  #
-  	###################################
+  #####################################################
+  #  do_not_write_to_temporary_backing_file           #
+	#  turn_do_not_write_to_temporary_backing_file_on   #
+	#  turn_do_not_write_to_temporary_backing_file_off  #
+  #####################################################
 
-    it "" do
-      Fail
-    end
+  it "" do
+    raise "Failed."
+  end
 
-  	####################################
-  	#  turn_database_frees_memory_off  #
-  	####################################
+  ############################################
+  #  use_system_memory_for_storage?          #
+	#  turn_use_system_memory_for_storage_on   #
+	#  turn_use_system_memory_for_storage_off  #
+  ############################################
 
-    it "" do
-      Fail
-    end
+  it "" do
+    raise "Failed."
+  end
 
+  ###############################################
+  #  application_has_exclusive_access?          #
+	#  turn_application_has_exclusive_access_on   #
+	#  turn_application_has_exclusive_access_off  #
+  ###############################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  #####################################################
+  #  database_allocates_memory_using_malloc?          #
+	#  turn_database_allocates_memory_using_malloc_on   #
+	#  turn_database_allocates_memory_using_malloc_off  #
+  #####################################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ######################################################
+  #  database_allocates_memory_using_realloc           #
+	#  turn_database_allocates_memory_using_realloc_on   #
+	#  turn_database_allocates_memory_using_realloc_off  #
+  ######################################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ###########################################
+  #  application_allocates_memory           #
+	#  turn_application_allocates_memory_on   #
+	#  turn_application_allocates_memory_off  #
+  ###########################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ####################################
+  #  database_frees_memory           #
+	#  turn_database_frees_memory_on   #
+	#  turn_database_frees_memory_off  #
+  ####################################
+
+  it "" do
+    raise "Failed."
+  end
 
 end
 

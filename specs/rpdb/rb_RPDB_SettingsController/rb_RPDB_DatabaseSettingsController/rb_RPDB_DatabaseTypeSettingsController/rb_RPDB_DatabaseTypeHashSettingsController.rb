@@ -96,85 +96,49 @@ describe RPDB::Settings::Database::Type::Hash do
     RPDB::Settings::Database::Type::Hash.new.parent_database_type_settings_controller.should_not == nil
   end
 
-  ################
-  #  table_size  #
-  ################
-
-  it "" do
-    Fail
-  end
-
   ####################
   #  set_table_size  #
+  #  table_size      #
   ####################
 
   it "" do
-    Fail
-  end
-
-  #########################
-  #  hash_density_factor  #
-  #########################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #############################
   #  set_hash_density_factor  #
+  #  hash_density_factor      #
   #############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   #####################
   #  set_hash_method  #
+  #  hash_method      #
   #####################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  #################
-  #  hash_method  #
-  #################
+  #########################
+  #  set_compare_method   #
+  #  compare_method       #
+  #########################
 
   it "" do
-    Fail
-  end
-
-  ########################
-  #  set_compare_method  #
-  ########################
-
-  it "" do
-    Fail
-  end
-
-  ###################
-  #  compareMethod  #
-  ###################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ##################################
   #  set_duplicate_compare_method  #
+  #  duplicate_compare_method      #
   ##################################
 
   it "" do
-    Fail
-  end
-
-  ##############################
-  #  duplicate_compare_method  #
-  ##############################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
 end
-

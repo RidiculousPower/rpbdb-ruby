@@ -96,36 +96,22 @@ describe RPDB::Settings::Database::Record::FixedLength do
     RPDB::Settings::Database::Record::FixedLength.new.parent_database_record_settings_controller.should_not == nil
   end
 
-  ###################
-  #  record_length  #
-  ###################
-
-  it "" do
-    Fail
-  end
-
   #######################
   #  set_record_length  #
+  #  record_length      #
   #######################
 
   it "" do
-    Fail
-  end
-
-  ##################
-  #  padding_byte  #
-  ##################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ######################
   #  set_padding_byte  #
+  #  padding_byte      #
   ######################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

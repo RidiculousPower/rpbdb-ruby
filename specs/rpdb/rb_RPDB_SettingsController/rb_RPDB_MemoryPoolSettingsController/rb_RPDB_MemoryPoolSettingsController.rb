@@ -57,116 +57,53 @@ describe RPDB::Settings::MemoryPool do
     RPDB::Settings::MemoryPool.new.parent_settings_controller.should_not == nil
   end
 
-  #########
-  #  on?  #
-  #########
+  ##############
+  #  on?       #
+  #  off?      #
+	#  turn_on   #
+	#  turn_off  #
+  ##############
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  ##########
-  #  off?  #
-  ##########
+  #############################
+  #  memory_mapping?          #
+	#  turn_memory_mapping_on   #
+	#  turn_memory_mapping_off  #
+  #############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#############
-  	#  turn_on  #
-  	#############
-
-    it "" do
-      Fail
-    end
-
-  	##############
-  	#  turn_off  #
-  	##############
-
-    it "" do
-      Fail
-    end
-
-  ####################
-  #  memory_mapping  #
-  ####################
+  ##############################################
+  #  remove_file_with_last_reference?          #
+	#  turn_remove_file_with_last_reference_on   #
+	#  turn_remove_file_with_last_reference_off  #
+  ##############################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	############################
-  	#  turn_memory_mapping_on  #
-  	############################
-
-    it "" do
-      Fail
-    end
-
-  	#############################
-  	#  turn_memory_mapping_off  #
-  	#############################
-
-    it "" do
-      Fail
-    end
-
-  #####################################
-  #  remove_file_with_last_reference  #
-  #####################################
+  ###################################################
+  #  pagesize_factor_mismatch_should_fail?          #
+	#  turn_pagesize_factor_mismatch_should_fail_on   #
+	#  turn_pagesize_factor_mismatch_should_fail_off  #
+  ###################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	#############################################
-  	#  turn_remove_file_with_last_reference_on  #
-  	#############################################
-
-    it "" do
-      Fail
-    end
-
-  	##############################################
-  	#  turn_remove_file_with_last_reference_off  #
-  	##############################################
-
-    it "" do
-      Fail
-    end
-
-  ##########################################
-  #  pagesize_factor_mismatch_should_fail  #
-  ##########################################
-
-  it "" do
-    Fail
-  end
-
-  	##################################################
-  	#  turn_pagesize_factor_mismatch_should_fail_on  #
-  	##################################################
-
-    it "" do
-      Fail
-    end
-
-  	###################################################
-  	#  turn_pagesize_factor_mismatch_should_fail_off  #
-  	###################################################
-
-    it "" do
-      Fail
-    end
 
   ##############################
   #  file_settings_controller  #
   ##############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   ####################################
@@ -174,7 +111,7 @@ describe RPDB::Settings::MemoryPool do
   ####################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

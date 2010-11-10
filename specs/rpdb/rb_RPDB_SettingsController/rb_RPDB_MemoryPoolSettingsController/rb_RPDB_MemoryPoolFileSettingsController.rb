@@ -70,156 +70,72 @@ describe RPDB::Settings::MemoryPool::File do
     RPDB::Settings::MemoryPool::File.new.parent_memory_pool_settings_controller.should_not == nil
   end
 
-  ##############################################
-  #  create_with_initial_null_bytes_numbering  #
-  ##############################################
+  ##################################################
+	#  set_create_with_initial_null_bytes_numbering  #
+  #  create_with_initial_null_bytes_numbering      #
+  ##################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##############################################
-  	#  create_with_initial_null_bytes_numbering  #
-  	##############################################
-
-    it "" do
-      Fail
-    end
-
-  #############
-  #  file_id  #
-  #############
+  #################
+	#  set_file_id  #
+  #  file_id      #
+  #################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#################
-  	#  set_file_id  #
-  	#################
-
-    it "" do
-      Fail
-    end
-
-  ###############
-  #  file_type  #
-  ###############
+  ###################
+	#  set_file_type  #
+  #  file_type      #
+  ###################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###################
-  	#  set_file_type  #
-  	###################
-
-    it "" do
-      Fail
-    end
-
-  ################################
-  #  log_sequence_number_offset  #
-  ################################
+  ####################################
+	#  set_log_sequence_number_offset  #
+  #  log_sequence_number_offset      #
+  ####################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	####################################
-  	#  set_log_sequence_number_offset  #
-  	####################################
-
-    it "" do
-      Fail
-    end
-
-  ############################
-  #  max_file_size_in_bytes  #
-  ############################
+  #################################
+  #  max_file_size_in_bytes       #
+  #  max_file_size_in_kbytes      #
+  #  max_file_size_in_mbytes      #
+  #  max_file_size_in_gbytes      #
+	#  set_max_file_size_in_bytes   #
+	#  set_max_file_size_in_kbytes  #
+	#  set_max_file_size_in_mbytes  #
+	#  set_max_file_size_in_gbytes  #
+  #################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  #############################
-  #  max_file_size_in_kbytes  #
-  #############################
+  ################
+	#  set_cookie  #
+  #  cookie      #
+  ################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  #############################
-  #  max_file_size_in_mbytes  #
-  #############################
-
-  it "" do
-    Fail
-  end
-
-  #############################
-  #  max_file_size_in_gbytes  #
-  #############################
-
-  it "" do
-    Fail
-  end
-
-  	################################
-  	#  set_max_file_size_in_bytes  #
-  	################################
-
-    it "" do
-      Fail
-    end
-
-  	#################################
-  	#  set_max_file_size_in_kbytes  #
-  	#################################
-
-    it "" do
-      Fail
-    end
-
-  	#################################
-  	#  set_max_file_size_in_mbytes  #
-  	#################################
-
-    it "" do
-      Fail
-    end
-
-  	#################################
-  	#  set_max_file_size_in_gbytes  #
-  	#################################
-
-    it "" do
-      Fail
-    end
-
-  ############
-  #  cookie  #
-  ############
-
-  it "" do
-    Fail
-  end
-
-  	################
-  	#  set_cookie  #
-  	################
-
-    it "" do
-      Fail
-    end
 
   ###############################
   #  cache_settings_controller  #
   ###############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   ##############################
@@ -227,7 +143,7 @@ describe RPDB::Settings::MemoryPool::File do
   ##############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

@@ -57,100 +57,51 @@ describe RPDB::Settings::Thread do
     RPDB::Settings::Thread.new.parent_settings_controller.should_not == nil
   end
 
-  #########
-  #  on?  #
-  #########
-
-  it "" do
-    Fail
-  end
-
-  ##########
-  #  off?  #
-  ##########
-
-  it "" do
-    Fail
-  end
-
-  #############
-  #  turn_on  #
-  #############
-
-  it "" do
-    Fail
-  end
-
   ##############
+  #  on?       #
+  #  off?      #
+  #  turn_on   #
   #  turn_off  #
   ##############
 
   it "" do
-    Fail
-  end
-
-  ##################
-  #  thread_count  #
-  ##################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ######################
   #  set_thread_count  #
+  #  thread_count      #
   ######################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   ##################################################
   #  set_unique_thread_identifier_callback_method  #
+  #  unique_thread_identifier_callback_method      #
   ##################################################
 
   it "" do
-    Fail
-  end
-
-  ##############################################
-  #  unique_thread_identifier_callback_method  #
-  ##############################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ##########################################################################
   #  set_format_thread_and_process_identifier_for_display_callback_method  #
+  #  format_thread_and_process_identifier_for_display_callback_method      #
   ##########################################################################
 
   it "" do
-    Fail
-  end
-
-  ######################################################################
-  #  format_thread_and_process_identifier_for_display_callback_method  #
-  ######################################################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #########################################
   #  set_is_thread_alive_callback_method  #
+  #  is_thread_alive_callback_method      #
   #########################################
 
   it "" do
-    Fail
-  end
-
-  #####################################
-  #  is_thread_alive_callback_method  #
-  #####################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
 end

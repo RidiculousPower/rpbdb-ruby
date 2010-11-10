@@ -57,204 +57,99 @@ describe RPDB::Database do
     RPDB::Settings::File.new.parent_settings_controller.should_not == nil
   end
 
-  #################################
-  #  intermediate_directory_mode  #
-  #################################
+  #####################################
+	#  set_intermediate_directory_mode  #
+  #  intermediate_directory_mode      #
+  #####################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	#####################################
-  	#  set_intermediate_directory_mode  #
-  	#####################################
-
-    it "" do
-      Fail
-    end
-
-  ####################
-  #  temp_directory  #
-  ####################
-
-  it "" do
-    Fail
-  end
-
-  	########################
-  	#  set_temp_directory  #
-  	########################
-
-    it "" do
-      Fail
-    end
-
-  ###############################
-  #  permit_environment_naming  #
-  ###############################
-
-  it "" do
-    Fail
-  end
-
-  	#######################################
-  	#  turn_permit_environment_naming_on  #
-  	#######################################
-
-    it "" do
-      Fail
-    end
-
-  	########################################
-  	#  turn_permit_environment_naming_off  #
-  	########################################
-
-    it "" do
-      Fail
-    end
-
-  ###########################
-  #  use_environment_home?  #
-  ###########################
-
-  it "" do
-    Fail
-  end
-
-  	##################################
-  	#  turn_use_environment_home_on  #
-  	##################################
-
-    it "" do
-      Fail
-    end
-
-  	###################################
-  	#  turn_use_environment_home_off  #
-  	###################################
-
-    it "" do
-      Fail
-    end
-
-  #########################
-  #  create_if_necessary  #
-  #########################
-
-  it "" do
-    Fail
-  end
-
-  	#################################
-  	#  turn_create_if_necessary_on  #
-  	#################################
-
-    it "" do
-      Fail
-    end
-
-  	##################################
-  	#  turn_create_if_necessary_off  #
-  	##################################
-
-    it "" do
-      Fail
-    end
-
-  ###############################################
-  #  is_error_if_database_exists_before_create  #
-  ###############################################
-
-  it "" do
-    Fail
-  end
-
-  	#######################################################
-  	#  turn_is_error_if_database_exists_before_create_on  #
-  	#######################################################
-
-    it "" do
-      Fail
-    end
-
-  	########################################################
-  	#  turn_is_error_if_database_exists_before_create_off  #
-  	########################################################
-
-    it "" do
-      Fail
-    end
-
-  ####################
-  #  open_read_only  #
-  ####################
-
-  it "" do
-    Fail
-  end
-
-  	############################
-  	#  turn_open_read_only_on  #
-  	############################
-
-    it "" do
-      Fail
-    end
-
-  	#############################
-  	#  turn_open_read_only_off  #
-  	#############################
-
-    it "" do
-      Fail
-    end
-
-  ###################
-  #  force_removal  #
-  ###################
-
-  it "" do
-    Fail
-  end
-
-  	###########################
-  	#  turn_force_removal_on  #
-  	###########################
-
-    it "" do
-      Fail
-    end
-
-  	############################
-  	#  turn_force_removal_off  #
-  	############################
-
-    it "" do
-      Fail
-    end
 
   ########################
-  #  file_creation_mode  #
+	#  set_temp_directory  #
+  #  temp_directory      #
   ########################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	############################
-  	#  set_file_creation_mode  #
-  	############################
+  ########################################
+  #  permit_environment_naming?          #
+	#  turn_permit_environment_naming_on   #
+	#  turn_permit_environment_naming_off  #
+  ########################################
 
-    it "" do
-      Fail
-    end
+  it "" do
+    raise "Failed."
+  end
+
+  ###################################
+  #  use_environment_home?          #
+	#  turn_use_environment_home_on   #
+	#  turn_use_environment_home_off  #
+  ###################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ##################################
+  #  create_if_necessary?          #
+	#  turn_create_if_necessary_on   #
+	#  turn_create_if_necessary_off  #
+  ##################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ########################################################
+  #  is_error_if_database_exists_before_create?          #
+	#  turn_is_error_if_database_exists_before_create_on   #
+	#  turn_is_error_if_database_exists_before_create_off  #
+  ########################################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  #############################
+  #  open_read_only?          #
+	#  turn_open_read_only_on   #
+	#  turn_open_read_only_off  #
+  #############################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ############################
+  #  force_removal?          #
+	#  turn_force_removal_on   #
+	#  turn_force_removal_off  #
+  ############################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ############################
+	#  set_file_creation_mode  #
+  #  file_creation_mode      #
+  ############################
+
+  it "" do
+    raise "Failed."
+  end
 
   ###################################
   #  verbosity_settings_controller  #
   ###################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

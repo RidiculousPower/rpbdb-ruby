@@ -58,118 +58,61 @@ describe RPDB::Settings::Mutex do
     RPDB::Settings::Mutex.new.parent_settings_controller.should_not == nil
   end
   
-  ##########################################################
-  #  spin_times_before_blocking_for_test_and_spin_mutexes  #
-  ##########################################################
+  ##############################################################
+	#  set_spin_times_before_blocking_for_test_and_spin_mutexes  #
+  #  spin_times_before_blocking_for_test_and_spin_mutexes      #
+  ##############################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##############################################################
-  	#  set_spin_times_before_blocking_for_test_and_spin_mutexes  #
-  	##############################################################
-
-    it "" do
-      Fail
-    end
-
-  ###########################
-  #  max_allowable_mutexes  #
-  ###########################
+  ###############################
+	#  set_max_allowable_mutexes  #
+  #  max_allowable_mutexes      #
+  ###############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###############################
-  	#  set_max_allowable_mutexes  #
-  	###############################
-
-    it "" do
-      Fail
-    end
-
-  ##################################
-  #  increment_for_adding_mutexes  #
-  ##################################
+  ######################################
+	#  set_increment_for_adding_mutexes  #
+  #  increment_for_adding_mutexes      #
+  ######################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	######################################
-  	#  set_increment_for_adding_mutexes  #
-  	######################################
-
-    it "" do
-      Fail
-    end
-
-  #####################
-  #  mutex_alignment  #
-  #####################
+  #########################
+	#  set_mutex_alignment  #
+  #  mutex_alignment      #
+  #########################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#########################
-  	#  set_mutex_alignment  #
-  	#########################
-
-    it "" do
-      Fail
-    end
-
-  #####################################
-  #  associated_with_single_process?  #
-  #####################################
+  #############################################
+  #  associated_with_single_process?          #
+	#  turn_associated_with_single_process_on   #
+	#  turn_associated_with_single_process_off  #
+  ##############################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	############################################
-  	#  turn_associated_with_single_process_on  #
-  	############################################
-
-    it "" do
-      Fail
-    end
-
-  	#############################################
-  	#  turn_associated_with_single_process_off  #
-  	#############################################
-
-    it "" do
-      Fail
-    end
-
-  ###################
-  #  self_blocking  #
-  ###################
+  ############################
+  #  self_blocking           #
+	#  turn_self_blocking_on   #
+	#  turn_self_blocking_off  #
+  ############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	###########################
-  	#  turn_self_blocking_on  #
-  	###########################
-
-    it "" do
-      Fail
-    end
-
-  	############################
-  	#  turn_self_blocking_off  #
-  	############################
-
-    it "" do
-      Fail
-    end
-
 
 end
 

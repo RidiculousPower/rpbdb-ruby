@@ -57,236 +57,117 @@ describe RPDB::Settings::Lock do
     RPDB::Settings::Lock.new.parent_settings_controller.should_not == nil
   end
 
-  #########
-  #  on?  #
-  #########
+  ##############
+  #  on?       #
+  #  off?      #
+	#  turn_on   #
+	#  turn_off  #
+  ##############
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  ##########
-  #  off?  #
-  ##########
+  ###############################
+  #  prohibit_locking?          #
+	#  turn_prohibit_locking_on   #
+	#  turn_prohibit_locking_off  #
+  ###############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#############
-  	#  turn_on  #
-  	#############
-
-    it "" do
-      Fail
-    end
-
-  	##############
-  	#  turn_off  #
-  	##############
-
-    it "" do
-      Fail
-    end
-
-  #######################
-  #  prohibit_locking?  #
-  #######################
+  #######################################################
+  #  timeout_returns_return_deny_not_deadlock           #
+	#  turn_timeout_returns_return_deny_not_deadlock_on   #
+	#  turn_timeout_returns_return_deny_not_deadlock_off  #
+  #######################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##############################
-  	#  turn_prohibit_locking_on  #
-  	##############################
-
-    it "" do
-      Fail
-    end
-
-  	###############################
-  	#  turn_prohibit_locking_off  #
-  	###############################
-
-    it "" do
-      Fail
-    end
-
-  ##############################################
-  #  timeout_returns_return_deny_not_deadlock  #
-  ##############################################
+  ###################
+  #  wait?          #
+	#  turn_wait_on   #
+	#  turn_wait_off  #
+  ###################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	######################################################
-  	#  turn_timeout_returns_return_deny_not_deadlock_on  #
-  	######################################################
-
-    it "" do
-      Fail
-    end
-
-  	#######################################################
-  	#  turn_timeout_returns_return_deny_not_deadlock_off  #
-  	#######################################################
-
-    it "" do
-      Fail
-    end
-
-  ###########
-  #  wait?  #
-  ###########
+  ################################################
+  #  lock_for_environment_not_database?          #
+	#  turn_lock_for_environment_not_database_on   #
+	#  turn_lock_for_environment_not_database_off  #
+  ################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##################
-  	#  turn_wait_on  #
-  	##################
-
-    it "" do
-      Fail
-    end
-
-  	###################
-  	#  turn_wait_off  #
-  	###################
-
-    it "" do
-      Fail
-    end
-
-  ########################################
-  #  lock_for_environment_not_database?  #
-  ########################################
+  #################
+	#  set_timeout  #
+  #  timeout      #
+  #################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###############################################
-  	#  turn_lock_for_environment_not_database_on  #
-  	###############################################
-
-    it "" do
-      Fail
-    end
-
-  	################################################
-  	#  turn_lock_for_environment_not_database_off  #
-  	################################################
-
-    it "" do
-      Fail
-    end
-
-  #############
-  #  timeout  #
-  #############
+  #########################
+	#  set_conflict_matrix  #
+  #  conflict_matrix      #
+  #########################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	#################
-  	#  set_timeout  #
-  	#################
-
-    it "" do
-      Fail
-    end
 
   #####################
-  #  conflict_matrix  #
+	#  set_max_lockers  #
+  #  max_lockers      #
   #####################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#########################
-  	#  set_conflict_matrix  #
-  	#########################
-
-    it "" do
-      Fail
-    end
-
-  #################
-  #  max_lockers  #
-  #################
+  ###################
+	#  set_max_locks  #
+  #  max_locks      #
+  ###################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#####################
-  	#  set_max_lockers  #
-  	#####################
-
-    it "" do
-      Fail
-    end
-
-  ###############
-  #  max_locks  #
-  ###############
+  #####################
+	#  set_max_objects  #
+  #  max_objects      #
+  #####################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###################
-  	#  set_max_locks  #
-  	###################
-
-    it "" do
-      Fail
-    end
-
-  #################
-  #  max_objects  #
-  #################
+  ##############################
+	#  set_number_of_partitions  #
+  #  number_of_partitions      #
+  ##############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	#####################
-  	#  set_max_objects  #
-  	#####################
-
-    it "" do
-      Fail
-    end
-
-  ##########################
-  #  number_of_partitions  #
-  ##########################
-
-  it "" do
-    Fail
-  end
-
-  	##############################
-  	#  set_number_of_partitions  #
-  	##############################
-
-    it "" do
-      Fail
-    end
 
   ##################################
   #  deadlock_detector_controller  #
   ##################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

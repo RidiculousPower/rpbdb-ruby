@@ -125,172 +125,46 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
     RPDB::Settings::Database::Cursor::Cache::Priority.new.parent_database_cursor_cache_settings_controller.should_not == nil
   end
 
-  ##############
-  #  priority  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ##############
-  #  very_low  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
-  ##################
-  #  set_very_low  #
-  ##################
-
-  it "" do
-    Fail
-  end
-
-  #######################
-  #  at_least_very_low  #
-  #######################
-
-  it "" do
-    Fail
-  end
-
   ######################
-  #  at_most_very_low  #
+  #  current_priority  #
   ######################
 
   it "" do
-    Fail
-  end
-
-  #########
-  #  low  #
-  #########
-
-  it "" do
-    Fail
-  end
-
-  #############
-  #  set_low  #
-  #############
-
-  it "" do
-    Fail
-  end
-
-  ##################
-  #  at_least_low  #
-  ##################
-
-  it "" do
-    Fail
-  end
-
-  #################
-  #  at_most_low  #
-  #################
-
-  it "" do
-    Fail
-  end
-
-  #############
-  #  default  #
-  #############
-
-  it "" do
-    Fail
-  end
-
-  #################
-  #  set_default  #
-  #################
-
-  it "" do
-    Fail
-  end
-
-  ######################
-  #  at_least_default  #
-  ######################
-
-  it "" do
-    Fail
-  end
-
-  ######################
-  #  at_most_default  #
-  ######################
-
-  it "" do
-    Fail
-  end
-
-  ##########
-  #  high  #
-  ##########
-
-  it "" do
-    Fail
-  end
-
-  ##############
-  #  set_high  #
-  ##############
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ###################
-  #  at_least_high  #
+	#  set_very_low   #
+	#  set_low        #
+  #  very_low       #
+  #  low            #
+	#  set_default    #
+  #  default        #
+	#  set_high       #
+  #  high           #
+	#  set_very_high  #
+  #  very_high      #
   ###################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  ##################
-  #  at_most_high  #
-  ##################
+  ########################
+  #  at_least_very_low   #
+  #  at_most_very_low    #
+  #  at_least_low        #
+  #  at_most_low         #
+  #  at_least_default    #
+  #  at_most_default     #
+  #  at_least_high       #
+  #  at_most_high        #
+  #  at_least_very_high  #
+  #  at_most_very_high   #
+  ########################
 
   it "" do
-    Fail
-  end
-
-  ###############
-  #  very_high  #
-  ###############
-
-  it "" do
-    Fail
-  end
-
-  ###################
-  #  set_very_high  #
-  ###################
-
-  it "" do
-    Fail
-  end
-
-  #####################
-  #  atLeastVeryHigh  #
-  #####################
-
-  it "" do
-    Fail
-  end
-
-  #######################
-  #  at_most_very_high  #
-  #######################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
 end

@@ -88,77 +88,35 @@ describe RPDB::Settings::Database::Join do
     RPDB::Settings::Database::Join.new.parent_database_settings_controller.should_not == nil
   end
 
-  ##########################
-  #  degree_one_isolation  #
-  ##########################
+  ###################################
+  #  degree_one_isolation?          #
+	#  turn_degree_one_isolation_on   #
+	#  turn_degree_one_isolation_off  #
+  ###################################
 
-  it "" do
-    Fail
+  it "can return records using degree one isolation, which reads data that has been modified but not yet committed in addition to committed data." do
+    raise "Failed."
   end
 
-  	##################################
-  	#  turn_degree_one_isolation_on  #
-  	##################################
-
-    it "" do
-      Fail
-    end
-
-  	###################################
-  	#  turn_degree_one_isolation_off  #
-  	###################################
-
-    it "" do
-      Fail
-    end
-
-  #######################################
-  #  write_locks_instead_of_read_locks  #
-  #######################################
+  ################################################
+  #  write_locks_instead_of_read_locks?          #
+	#  turn_write_locks_instead_of_read_locks_on   #
+	#  turn_write_locks_instead_of_read_locks_off  #
+  ################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###############################################
-  	#  turn_write_locks_instead_of_read_locks_on  #
-  	###############################################
-
-    it "" do
-      Fail
-    end
-
-  	################################################
-  	#  turn_write_locks_instead_of_read_locks_off  #
-  	################################################
-
-    it "" do
-      Fail
-    end
-
-  #######################################
-  #  write_locks_instead_of_read_locks  #
-  #######################################
+  ################################################
+  #  write_locks_instead_of_read_locks?          #
+	#  turn_write_locks_instead_of_read_locks_on   #
+	#  turn_write_locks_instead_of_read_locks_off  #
+  ################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	###############################################
-  	#  turn_write_locks_instead_of_read_locks_on  #
-  	###############################################
-
-    it "" do
-      Fail
-    end
-
-  	################################################
-  	#  turn_write_locks_instead_of_read_locks_off  #
-  	################################################
-
-    it "" do
-      Fail
-    end
 
 end
 

@@ -27,7 +27,7 @@ describe RPDB::Database::Recno do
   
   # shift
   it "can shift the first record" do
-    Fail
+    raise "Failed."
   end
   
   #############
@@ -36,7 +36,7 @@ describe RPDB::Database::Recno do
 
   # unshift
   it "can unshift to become the first record" do
-    Fail
+    raise "Failed."
   end
 
   #########
@@ -45,7 +45,7 @@ describe RPDB::Database::Recno do
 
   # pop
   it "can pop the last record" do
-    Fail
+    raise "Failed."
   end
 
   ##########
@@ -54,7 +54,7 @@ describe RPDB::Database::Recno do
 
   # push
   it "can push to become the last record" do
-    Fail
+    raise "Failed."
   end
   
 end

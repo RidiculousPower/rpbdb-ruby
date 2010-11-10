@@ -88,29 +88,15 @@ describe RPDB::Settings::Database::Verbosity do
     RPDB::Settings::Database::Verbosity.new.parent_database_settings_controller.should_not == nil
   end
 
-  ###############################################################
-  #  display_additional_information_for_database_register_flag  #
-  ###############################################################
+  ########################################################################
+  #  display_additional_information_for_database_register_flag?          #
+	#  turn_display_additional_information_for_database_register_flag_on   #
+	#  turn_display_additional_information_for_database_register_flag_off  #
+  ########################################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	#######################################################################
-  	#  turn_display_additional_information_for_database_register_flag_on  #
-  	#######################################################################
-
-    it "" do
-      Fail
-    end
-
-  	########################################################################
-  	#  turn_display_additional_information_for_database_register_flag_off  #
-  	########################################################################
-
-    it "" do
-      Fail
-    end
 
 end
 

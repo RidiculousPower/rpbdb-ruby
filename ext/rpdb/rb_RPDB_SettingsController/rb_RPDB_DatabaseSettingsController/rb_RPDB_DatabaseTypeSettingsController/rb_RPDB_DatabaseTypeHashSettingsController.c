@@ -334,7 +334,7 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_setCompareMethod(		VALUE	rb_dat
 }
 */
 /******************
-*  compareMethod  *
+*  compare_method  *
 ******************/
 /*
 VALUE(*compare_method)(	VALUE		database, 

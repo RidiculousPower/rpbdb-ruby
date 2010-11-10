@@ -523,12 +523,12 @@ describe RPDB::Database do
 
   # key_exists?( :index, secondary_key, ... )
   it "can report whether a secondary key exists" do
-    Fail
+    raise "Failed."
   end
   
   # key_exists?( :index => secondary_key, ... )
   it "can report whether a secondary key exists specified with a hash" do
-    Fail
+    raise "Failed."
   end
   
   # key_exists?( :index => [ secondary_key, ... ] )
@@ -545,7 +545,7 @@ describe RPDB::Database do
 
   # key_exists?( [ any_arg_form ], ... )
   it "can use arrays to group sets these argument forms" do
-    Fail
+    raise "Failed."
     database.empty!
   end
 
@@ -555,7 +555,7 @@ describe RPDB::Database do
 
   # keys_exist?( primary key, ... )
   it "can report whether a key exists" do
-    Fail
+    raise "Failed."
     database = @environment.database.new( $database_name ).open
     database.write( "key" => 'some data' )
     database.key_exists?( "key" ).should == true
@@ -564,25 +564,25 @@ describe RPDB::Database do
 
   # keys_exist?( :index, secondary_key, ... )
   it "can report whether a secondary key exists" do
-    Fail
+    raise "Failed."
     database.empty!
   end
 
   # keys_exist?( :index, [ secondary_key, ... ], ... )
   it "can report whether a secondary key exists" do
-    Fail
+    raise "Failed."
     database.empty!
   end  
   
   # keys_exist?( :index => secondary_key, ... )
   it "can report whether a secondary key exists specified with a hash" do
-    Fail
+    raise "Failed."
     database.empty!
   end
   
   # keys_exist?( :index => [ secondary_key, ... ], ... )
   it "can report whether multiple secondary keys exist" do
-    Fail
+    raise "Failed."
     duplicates_database = @environment.database.new( $database_name ).open
     duplicates_database.set_to.read_write.sorted_duplicates
     database.write( "key" => [ 'some data', 'other data' ] )
@@ -592,7 +592,7 @@ describe RPDB::Database do
 
   # keys_exist?( [ any_arg_form ], ... )
   it "can use arrays to group sets these argument forms" do
-    Fail
+    raise "Failed."
     database.empty!
   end
 
@@ -624,19 +624,19 @@ describe RPDB::Database do
   
   # retrieve( :index, [ secondary_key, ... ] )
   it "" do
-    Fail
+    raise "Failed."
     database.empty!
   end
 
   # retrieve( :index => secondary_key, ... )
   it "can retrieve using a secondary index pointing to a secondary key in a hash" do
-    Fail
+    raise "Failed."
     database.empty!
   end
   
   # retrieve( [ any_arg_form ], ... )
   it "can use arrays to group sets these argument forms" do
-    Fail
+    raise "Failed."
     database.empty!
   end
   
@@ -670,17 +670,17 @@ describe RPDB::Database do
   
   # delete( :index => secondary_key, ... )
   it "can delete a record by secondary key specified by a hash" do
-    Fail
+    raise "Failed."
   end
 
   # delete( :index => [ secondary_key, ... ], ... )
   it "can delete records corresponding to multiple secondary keys" do
-    Fail
+    raise "Failed."
   end
   
   # delete( [ any_arg_form ], ... )
   it "can use arrays to group sets these argument forms" do
-    Fail
+    raise "Failed."
   end
 
   #######################

@@ -13,6 +13,7 @@
 
 #include "rb_RPDB_DatabaseCursor.h"
 #include "rb_RPDB_DatabaseCursor_internal.h"
+#include "rb_RPDB_DatabaseCursorSettingsController.h"
 #include "rb_RPDB_DatabaseCursorController.h"
 #include "rb_RPDB_Database.h"
 #include "rb_RPDB_DatabaseController.h"
@@ -50,7 +51,7 @@ extern	VALUE	rb_RPDB_DatabaseController;
 
 void Init_RPDB_DatabaseCursor()	{
 
-	rb_RPDB_DatabaseCursor		=	rb_define_class_under(	rb_RPDB_DatabaseCursorController, 
+	rb_RPDB_DatabaseCursor		=	rb_define_class_under(	rb_RPDB_Database, 
 																											"Cursor",				
 																											rb_cObject );
 
@@ -283,12 +284,9 @@ VALUE rb_RPDB_DatabaseCursor_settingsController(	VALUE	rb_database_cursor )	{
 	if ( ( rb_local_database_cursor_settings_controller = rb_iv_get(	rb_database_cursor,
 																																		RPDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
-	RPDB_DatabaseCursor*		c_database_cursor;
-	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
-	
-		RPDB_DatabaseCursorSettingsController*	c_local_database_cursor_settings_controller	=	RPDB_DatabaseCursor_settingsController( c_database_cursor );
-
-		rb_local_database_cursor_settings_controller	=	RUBY_RPDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( c_local_database_cursor_settings_controller );
+		rb_local_database_cursor_settings_controller	=	rb_RPDB_DatabaseCursorSettingsController_new(	1,
+																																																	& rb_database_cursor,
+																																																	rb_RPDB_DatabaseCursorSettingsController );
 
 		rb_iv_set(	rb_database_cursor,
 								RPDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER,

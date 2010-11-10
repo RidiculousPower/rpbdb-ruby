@@ -62,7 +62,7 @@ describe RPDB::Settings::Lock do
   #########
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   	#############
@@ -70,7 +70,7 @@ describe RPDB::Settings::Lock do
   	#############
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   ##########
@@ -78,7 +78,7 @@ describe RPDB::Settings::Lock do
   ##########
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   	##############
@@ -86,7 +86,7 @@ describe RPDB::Settings::Lock do
   	##############
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   ###############
@@ -94,7 +94,7 @@ describe RPDB::Settings::Lock do
   ###############
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   	#######################
@@ -102,7 +102,7 @@ describe RPDB::Settings::Lock do
   	#######################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   	########################
@@ -110,7 +110,7 @@ describe RPDB::Settings::Lock do
   	########################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   ####################################
@@ -118,7 +118,7 @@ describe RPDB::Settings::Lock do
   ####################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   	############################################
@@ -126,7 +126,7 @@ describe RPDB::Settings::Lock do
   	############################################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   	#############################################
@@ -134,7 +134,7 @@ describe RPDB::Settings::Lock do
   	#############################################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   #####################
@@ -142,7 +142,7 @@ describe RPDB::Settings::Lock do
   #####################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   	########################
@@ -150,7 +150,7 @@ describe RPDB::Settings::Lock do
   	########################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   	#########################
@@ -158,7 +158,7 @@ describe RPDB::Settings::Lock do
   	#########################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   ###################
@@ -166,7 +166,7 @@ describe RPDB::Settings::Lock do
   ###################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   	###########################
@@ -174,7 +174,7 @@ describe RPDB::Settings::Lock do
   	###########################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   	############################
@@ -182,7 +182,7 @@ describe RPDB::Settings::Lock do
   	############################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   #######################
@@ -190,7 +190,7 @@ describe RPDB::Settings::Lock do
   #######################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   	##############################
@@ -198,7 +198,7 @@ describe RPDB::Settings::Lock do
   	##############################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   	###############################
@@ -206,7 +206,7 @@ describe RPDB::Settings::Lock do
   	###############################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   #####################################
@@ -214,7 +214,7 @@ describe RPDB::Settings::Lock do
   #####################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   	############################################
@@ -222,7 +222,7 @@ describe RPDB::Settings::Lock do
   	############################################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   	#############################################
@@ -230,7 +230,7 @@ describe RPDB::Settings::Lock do
   	#############################################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   #################
@@ -238,7 +238,7 @@ describe RPDB::Settings::Lock do
   #################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   	#####################
@@ -246,7 +246,7 @@ describe RPDB::Settings::Lock do
   	#####################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   ###############
@@ -254,7 +254,7 @@ describe RPDB::Settings::Lock do
   ###############
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   	###################
@@ -262,7 +262,7 @@ describe RPDB::Settings::Lock do
   	###################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   ##########
@@ -270,7 +270,7 @@ describe RPDB::Settings::Lock do
   ##########
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   	##############
@@ -278,7 +278,7 @@ describe RPDB::Settings::Lock do
   	##############
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   ##################
@@ -286,7 +286,7 @@ describe RPDB::Settings::Lock do
   ##################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   	######################
@@ -294,7 +294,7 @@ describe RPDB::Settings::Lock do
   	######################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
   #####################
@@ -302,7 +302,7 @@ describe RPDB::Settings::Lock do
   #####################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   	#########################
@@ -310,7 +310,7 @@ describe RPDB::Settings::Lock do
   	#########################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
 end

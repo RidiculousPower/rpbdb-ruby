@@ -83,53 +83,25 @@ describe RPDB::Settings::Lock::DeadlockDetector::Verbosity do
     RPDB::Settings::Lock::DeadlockDetector::Verbosity.new.parent_lock_deadlock_detector_settings_controller.should_not == nil
   end
 
-  ###############################################################
-  #  display_additional_information_during_deadlock_detection?  #
-  ###############################################################
+  #######################################################################
+  #  display_additional_information_during_deadlock_detection?          #
+	#  turn_display_additional_information_during_deadlock_detection_on   #
+	#  turn_display_additional_information_during_deadlock_detection_off  #
+  #######################################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	######################################################################
-  	#  turn_display_additional_information_during_deadlock_detection_on  #
-  	######################################################################
-
-    it "" do
-      Fail
-    end
-
-  	#######################################################################
-  	#  turn_display_additional_information_during_deadlock_detection_off  #
-  	#######################################################################
-
-    it "" do
-      Fail
-    end
-
-  ###################################################
-  #  display_wait_table_during_deadlock_detection?  #
-  ###################################################
+  ###########################################################
+  #  display_wait_table_during_deadlock_detection?          #
+	#  turn_display_wait_table_during_deadlock_detection_on   #
+	#  turn_display_wait_table_during_deadlock_detection_off  #
+  ###########################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	##########################################################
-  	#  turn_display_wait_table_during_deadlock_detection_on  #
-  	##########################################################
-
-    it "" do
-      Fail
-    end
-
-  	###########################################################
-  	#  turn_display_wait_table_during_deadlock_detection_off  #
-  	###########################################################
-
-    it "" do
-      Fail
-    end
 
 end
 

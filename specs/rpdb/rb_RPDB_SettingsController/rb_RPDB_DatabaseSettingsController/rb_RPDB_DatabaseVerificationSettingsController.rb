@@ -89,140 +89,63 @@ describe RPDB::Settings::Database::Verification do
   end
 
   ##########
+  #  set_file  #
   #  file  #
   ##########
 
   it "" do
-    Fail
-  end
-
-  ##############
-  #  set_file  #
-  ##############
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ####################################
   #  aggressive_key_data_pair_dump?  #
+	#  turn_aggressive_key_data_pair_dump_on  #
+	#  turn_aggressive_key_data_pair_dump_off  #
   ####################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###########################################
-  	#  turn_aggressive_key_data_pair_dump_on  #
-  	###########################################
-
-    it "" do
-      Fail
-    end
-
-  	############################################
-  	#  turn_aggressive_key_data_pair_dump_off  #
-  	############################################
-
-    it "" do
-      Fail
-    end
-
-  ###########################
-  #  printable_characters?  #
-  ###########################
+  ###################################
+  #  printable_characters?          #
+	#  turn_printable_characters_on   #
+	#  turn_printable_characters_off  #
+  ###################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##################################
-  	#  turn_printable_characters_on  #
-  	##################################
-
-    it "" do
-      Fail
-    end
-
-  	###################################
-  	#  turn_printable_characters_off  #
-  	###################################
-
-    it "" do
-      Fail
-    end
-
-  #######################
-  #  skip_order_check?  #
-  #######################
+  ###############################
+  #  skip_order_check?          #
+	#  turn_skip_order_check_on   #
+	#  turn_skip_order_check_off  #
+  ###############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##############################
-  	#  turn_skip_order_check_on  #
-  	##############################
-
-    it "" do
-      Fail
-    end
-
-  	###############################
-  	#  turn_skip_order_check_off  #
-  	###############################
-
-    it "" do
-      Fail
-    end
-
-  #######################
-  #  only_order_check?  #
-  #######################
+  ###############################
+  #  only_order_check?          #
+	#  turn_only_order_check_on   #
+	#  turn_only_order_check_off  #
+  ###############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##############################
-  	#  turn_only_order_check_on  #
-  	##############################
-
-    it "" do
-      Fail
-    end
-
-  	###############################
-  	#  turn_only_order_check_off  #
-  	###############################
-
-    it "" do
-      Fail
-    end
-
-  ########################
-  #  force_order_check?  #
-  ########################
+  ################################
+  #  force_order_check?          #
+	#  turn_force_order_check_on   #
+	#  turn_force_order_check_off  #
+  ################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	###############################
-  	#  turn_force_order_check_on  #
-  	###############################
-
-    it "" do
-      Fail
-    end
-
-  	################################
-  	#  turn_force_order_check_off  #
-  	################################
-
-    it "" do
-      Fail
-    end
 
 end
 

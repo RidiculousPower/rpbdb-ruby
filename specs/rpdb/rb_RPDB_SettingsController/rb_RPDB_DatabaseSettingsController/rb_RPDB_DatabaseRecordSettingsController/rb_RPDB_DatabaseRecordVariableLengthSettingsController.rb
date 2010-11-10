@@ -96,20 +96,13 @@ describe RPDB::Settings::Database::Record::VariableLength do
     RPDB::Settings::Database::Record::VariableLength.new.parent_database_record_settings_controller.should_not == nil
   end
 
-  	######################
-  	#  record_delimeter  #
-  	######################
-
-    it "" do
-      Fail
-    end
-
   	##########################
   	#  set_record_delimeter  #
+  	#  record_delimeter      #
   	##########################
 
     it "" do
-      Fail
+      raise "Failed."
     end
 
 end

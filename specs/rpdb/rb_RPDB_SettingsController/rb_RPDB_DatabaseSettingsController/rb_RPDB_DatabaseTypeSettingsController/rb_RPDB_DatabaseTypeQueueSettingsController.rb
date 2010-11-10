@@ -96,44 +96,23 @@ describe RPDB::Settings::Database::Type::Queue do
     RPDB::Settings::Database::Type::Queue.new.parent_database_type_settings_controller.should_not == nil
   end
 
-  ####################################
-  #  return_key_data_pairs_in_order  #
-  ####################################
+  #############################################
+  #  return_key_data_pairs_in_order?          #
+	#  turn_return_key_data_pairs_in_order_on   #
+	#  turn_return_key_data_pairs_in_order_off  #
+  #############################################
 
   it "" do
-    Fail
-  end
-
-  	############################################
-  	#  turn_return_key_data_pairs_in_order_on  #
-  	############################################
-
-    it "" do
-      Fail
-    end
-
-  	########################################
-  	#  return_key_data_pairs_in_order_off  #
-  	########################################
-
-    it "" do
-      Fail
-    end
-
-  #########################################
-  #  number_of_pages_for_underlying_data  #
-  #########################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #############################################
   #  set_number_of_pages_for_underlying_data  #
+  #  number_of_pages_for_underlying_data      #
   #############################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

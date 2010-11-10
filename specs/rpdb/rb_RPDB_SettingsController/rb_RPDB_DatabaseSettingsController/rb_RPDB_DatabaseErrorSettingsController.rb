@@ -88,52 +88,31 @@ describe RPDB::Settings::Database::Error do
     RPDB::Settings::Database::Error.new.parent_database_settings_controller.should_not == nil
   end
 
-  ##########
-  #  file  #
-  ##########
-
-  it "" do
-    Fail
-  end
-
   ##############
   #  set_file  #
+  #  file      #
   ##############
 
   it "" do
-    Fail
-  end
-
-  ############
-  #  prefix  #
-  ############
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ################
   #  set_prefix  #
+  #  prefix      #
   ################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   ###############################
   #  set_error_callback_method  #
+  #  error_callback_method      #
   ###############################
 
   it "" do
-    Fail
-  end
-
-  ###########################
-  #  error_callback_method  #
-  ###########################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
 end

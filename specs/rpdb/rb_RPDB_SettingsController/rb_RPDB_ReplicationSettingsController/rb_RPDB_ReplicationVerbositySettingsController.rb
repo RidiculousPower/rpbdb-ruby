@@ -70,197 +70,85 @@ describe RPDB::Settings::Replication::Verbosity do
     RPDB::Settings::Replication::Verbosity.new.parent_replication_settings_controller.should_not == nil
   end
 
-  #########################################
-  #  display_all_replication_information  #
-  #########################################
-
-  it "" do
-    Fail
-  end
-
-  	#################################################
-  	#  turn_display_all_replication_information_on  #
-  	#################################################
-
-    it "" do
-      Fail
-    end
-
-  	##################################################
-  	#  turn_display_all_replication_information_off  #
-  	##################################################
-
-    it "" do
-      Fail
-    end
-
-  ##################################
-  #  display_election_information  #
-  ##################################
-
-  it "" do
-    Fail
-  end
-
-  	##########################################
-  	#  turn_display_election_information_on  #
-  	##########################################
-
-    it "" do
-      Fail
-    end
-
-  	###########################################
-  	#  turn_display_election_information_off  #
-  	###########################################
-
-    it "" do
-      Fail
-    end
-
   ##################################################
-  #  display_replication_master_lease_information  #
+  #  display_all_replication_information?          #
+	#  turn_display_all_replication_information_on   #
+	#  turn_display_all_replication_information_off  #
   ##################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##########################################################
-  	#  turn_display_replication_master_lease_information_on  #
-  	##########################################################
-
-    it "" do
-      Fail
-    end
-
-  	###########################################################
-  	#  turn_display_replication_master_lease_information_off  #
-  	###########################################################
-
-    it "" do
-      Fail
-    end
-
-  #########################################
-  #  display_misc_processing_information  #
-  #########################################
+  ###########################################
+  #  display_election_information?          #
+	#  turn_display_election_information_on   #
+	#  turn_display_election_information_off  #
+  ###########################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#################################################
-  	#  turn_display_misc_processing_information_on  #
-  	#################################################
-
-    it "" do
-      Fail
-    end
-
-  	##################################################
-  	#  turn_display_misc_processing_information_off  #
-  	##################################################
-
-    it "" do
-      Fail
-    end
-
-  ############################################
-  #  display_message_processing_information  #
-  ############################################
+  ###########################################################
+  #  display_replication_master_lease_information?          #
+	#  turn_display_replication_master_lease_information_on   #
+	#  turn_display_replication_master_lease_information_off  #
+  ###########################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	####################################################
-  	#  turn_display_message_processing_information_on  #
-  	####################################################
-
-    it "" do
-      Fail
-    end
-
-  	#####################################################
-  	#  turn_display_message_processing_information_off  #
-  	#####################################################
-
-    it "" do
-      Fail
-    end
-
-  ################################################
-  #  display_client_synchronization_information  #
-  ################################################
+  ##################################################
+  #  display_misc_processing_information?          #
+	#  turn_display_misc_processing_information_on   #
+	#  turn_display_misc_processing_information_off  #
+  ##################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	########################################################
-  	#  turn_display_client_synchronization_information_on  #
-  	########################################################
-
-    it "" do
-      Fail
-    end
-
-  	#########################################################
-  	#  turn_display_client_synchronization_information_off  #
-  	#########################################################
-
-    it "" do
-      Fail
-    end
-
-  ####################################################
-  #  display_manager_connection_failure_information  #
-  ####################################################
+  #####################################################
+  #  display_message_processing_information?          #
+	#  turn_display_message_processing_information_on   #
+	#  turn_display_message_processing_information_off  #
+  #####################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	############################################################
-  	#  turn_display_manager_connection_failure_information_on  #
-  	############################################################
-
-    it "" do
-      Fail
-    end
-
-  	#############################################################
-  	#  turn_display_manager_connection_failure_information_off  #
-  	#############################################################
-
-    it "" do
-      Fail
-    end
-
-  #####################################
-  #  display_manager_misc_processing  #
-  #####################################
+  #########################################################
+  #  display_client_synchronization_information?          #
+	#  turn_display_client_synchronization_information_on   #
+	#  turn_display_client_synchronization_information_off  #
+  #########################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#############################################
-  	#  turn_display_manager_misc_processing_on  #
-  	#############################################
+  #############################################################
+  #  display_manager_connection_failure_information?          #
+	#  turn_display_manager_connection_failure_information_on   #
+	#  turn_display_manager_connection_failure_information_off  #
+  #############################################################
 
-    it "" do
-      Fail
-    end
+  it "" do
+    raise "Failed."
+  end
 
-  	##############################################
-  	#  turn_display_manager_misc_processing_off  #
-  	##############################################
+  ##############################################
+  #  display_manager_misc_processing           #
+	#  turn_display_manager_misc_processing_on   #
+	#  turn_display_manager_misc_processing_off  #
+  ##############################################
 
-    it "" do
-      Fail
-    end
+  it "" do
+    raise "Failed."
+  end
 
 end
 

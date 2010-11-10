@@ -96,116 +96,60 @@ describe RPDB::Settings::Database::Type::Btree do
     RPDB::Settings::Database::Type::Btree.new.parent_database_type_settings_controller.should_not == nil
   end
 
-  #############################
-  #  record_number_retrieval  #
-  #############################
+  #######################################
+  #  record_number_retrieval?           #
+	#  turn_record_number_retrieval_on    #
+	#  turn_record_number_retrieval_off   #
+  #######################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#####################################
-  	#  turn_record_number_retrieval_on  #
-  	#####################################
-
-    it "" do
-      Fail
-    end
-
-  	######################################
-  	#  turn_record_number_retrieval_off  #
-  	######################################
-
-    it "" do
-      Fail
-    end
-
-  #######################
-  #  reverse_splitting  #
-  #######################
+  #################################
+  #  reverse_splitting?           #
+	#  turn_reverse_splitting_on    #
+	#  turn_reverse_splitting_off   #
+  #################################
 
   it "" do
-    Fail
-  end
-
-  	###############################
-  	#  turn_reverse_splitting_on  #
-  	###############################
-
-    it "" do
-      Fail
-    end
-
-  	################################
-  	#  turn_reverse_splitting_off  #
-  	################################
-
-    it "" do
-      Fail
-    end
-
-  ###########################
-  #  minimum_keys_per_page  #
-  ###########################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ###############################
+  #  minimum_keys_per_page      #
   #  set_minimum_keys_per_page  #
   ###############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   ###############################
   #  set_prefix_compare_method  #
+  #  prefix_compare_method      #
   ###############################
 
   it "" do
-    Fail
-  end
-
-  ###########################
-  #  prefix_compare_method  #
-  ###########################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ########################
   #  set_compare_method  #
+  #  compare_method      #
   ########################
 
   it "" do
-    Fail
-  end
-
-  ####################
-  #  compare_method  #
-  ####################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ##################################
   #  set_duplicate_compare_method  #
+  #  duplicate_compare_method      #
   ##################################
 
   it "" do
-    Fail
-  end
-
-  ##############################
-  #  duplicate_compare_method  #
-  ##############################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
 end

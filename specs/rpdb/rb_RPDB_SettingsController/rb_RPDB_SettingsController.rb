@@ -10,17 +10,6 @@ describe RPDB::Settings do
   $database_extension         = '.db'
   $duplicates_database_name   = :duplicates_db
   
-  before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
-    @environment.open
-    @database_controller = @environment.database_controller
-
-  end
-
-  after( :each ) do
-    @environment.close
-  end
-
   ################
   #  self.new    #
   #  initialize  #
@@ -28,12 +17,16 @@ describe RPDB::Settings do
 
   # RPDB::Settings.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings.new( @environment ).should_not == nil
+    environment = RPDB::Environment.new( $environment_path ).open
+    RPDB::Settings.new( environment ).should_not == nil
+    environment.close
   end
 
   # RPDB::Settings.new
   it "can be created with no argument specified" do
+    environment = RPDB::Environment.new( $environment_path ).open
     RPDB::Settings.new.should_not == nil
+    environment.close
   end
 
   ########################
@@ -41,87 +34,85 @@ describe RPDB::Settings do
   ########################
 
   it "can return its parent environment" do
+    environment = RPDB::Environment.new( $environment_path ).open
     RPDB::Settings.new.parent_environment.should_not == nil
-  end
-
-  #############
-  #  shm_key  #
-  #############
-
-  it "" do
-    Fail
+    environment.close
   end
 
   #################
   #  set_shm_key  #
+  #  shm_key      #
   #################
 
-  it "" do
-    Fail
+  it "can set and return its shm base ID for shared memory spaces" do
+    environment = RPDB::Environment.new( $environment_path )
+    shm_key = 1
+    environment.settings.shm_key         = shm_key
+    environment.settings.shm_key.should == shm_key
   end
 
   ##############################
   #  file_settings_controller  #
   ##############################
 
-  it "" do
-    Fail
+  it "can return its file settings controller" do
+    RPDB::Environment.new( $environment_path ).settings.file_settings_controller.should_not == nil
   end
 
   ###############################
   #  error_settings_controller  #
   ###############################
 
-  it "" do
-    Fail
+  it "can return its error settings controller" do
+    RPDB::Environment.new( $environment_path ).settings.error_settings_controller.should_not == nil
   end
 
   #############################
   #  log_settings_controller  #
   #############################
 
-  it "" do
-    Fail
+  it "can return its log settings controller" do
+    RPDB::Environment.new( $environment_path ).settings.log_settings_controller.should_not == nil
   end
 
   ##############################
   #  lock_settings_controller  #
   ##############################
 
-  it "" do
-    Fail
+  it "can return its lock settings controller" do
+    RPDB::Environment.new( $environment_path ).settings.lock_settings_controller.should_not == nil
   end
 
   #####################################
   #  replication_settings_controller  #
   #####################################
 
-  it "" do
-    Fail
+  it "can return its replication settings controller" do
+    RPDB::Environment.new( $environment_path ).settings.replication_settings_controller.should_not == nil
   end
 
   #####################################
   #  memory_pool_settings_controller  #
   #####################################
 
-  it "" do
-    Fail
+  it "can return its memory pool settings controller" do
+    RPDB::Environment.new( $environment_path ).settings.memory_pool_settings_controller.should_not == nil
   end
 
   ##################################
   #  database_settings_controller  #
   ##################################
 
-  it "" do
-    Fail
+  it "can return its database settings controller" do
+    RPDB::Environment.new( $environment_path ).settings.database_settings_controller.should_not == nil
   end
 
   ###################################
   #  directory_settings_controller  #
   ###################################
 
-  it "" do
-    Fail
+  it "can return its directory settings controller" do
+    RPDB::Environment.new( $environment_path ).settings.directory_settings_controller.should_not == nil
   end
 
 end

@@ -83,125 +83,55 @@ describe RPDB::Settings::MemoryPool::File::Page do
     RPDB::Settings::MemoryPool::File::Page.new.parent_memory_pool_file_settings_controller.should_not == nil
   end
 
-  #############################################
-  #  get_page_creates_page_if_does_not_exist  #
-  #############################################
+  ######################################################
+  #  get_page_creates_page_if_does_not_exist?          #
+	#  turn_get_page_creates_page_if_does_not_exist_on   #
+	#  turn_get_page_creates_page_if_does_not_exist_off  #
+  ######################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#####################################################
-  	#  turn_get_page_creates_page_if_does_not_exist_on  #
-  	#####################################################
-
-    it "" do
-      Fail
-    end
-
-  	######################################################
-  	#  turn_get_page_creates_page_if_does_not_exist_off  #
-  	######################################################
-
-    it "" do
-      Fail
-    end
-
-  ##########################################
-  #  get_page_writes_copy_before_eviction  #
-  ##########################################
+  ###################################################
+  #  get_page_writes_copy_before_eviction?          #
+	#  turn_get_page_writes_copy_before_eviction_on   #
+	#  turn_get_page_writes_copy_before_eviction_off  #
+  ###################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##################################################
-  	#  turn_get_page_writes_copy_before_eviction_on  #
-  	##################################################
-
-    it "" do
-      Fail
-    end
-
-  	###################################################
-  	#  turn_get_page_writes_copy_before_eviction_off  #
-  	###################################################
-
-    it "" do
-      Fail
-    end
-
-  ##################################################
-  #  get_page_writes_before_eviction_without_copy  #
-  ##################################################
+  ###########################################################
+  #  get_page_writes_before_eviction_without_copy?          #
+	#  turn_get_page_writes_before_eviction_without_copy_on   #
+	#  turn_get_page_writes_before_eviction_without_copy_off  #
+  ###########################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##########################################################
-  	#  turn_get_page_writes_before_eviction_without_copy_on  #
-  	##########################################################
-
-    it "" do
-      Fail
-    end
-
-  	###########################################################
-  	#  turn_get_page_writes_before_eviction_without_copy_off  #
-  	###########################################################
-
-    it "" do
-      Fail
-    end
-
-  ################################
-  #  get_page_returns_last_page  #
-  ################################
+  #########################################
+  #  get_page_returns_last_page?          #
+	#  turn_get_page_returns_last_page_on   #
+	#  turn_get_page_returns_last_page_off  #
+  #########################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	########################################
-  	#  turn_get_page_returns_last_page_on  #
-  	########################################
-
-    it "" do
-      Fail
-    end
-
-  	#########################################
-  	#  turn_get_page_returns_last_page_off  #
-  	#########################################
-
-    it "" do
-      Fail
-    end
-
-  ###############################
-  #  get_page_creates_new_page  #
-  ###############################
+  ########################################
+  #  get_page_creates_new_page?          #
+	#  turn_get_page_creates_new_page_on   #
+	#  turn_get_page_creates_new_page_off  #
+  ########################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	#######################################
-  	#  turn_get_page_creates_new_page_on  #
-  	#######################################
-
-    it "" do
-      Fail
-    end
-
-  	########################################
-  	#  turn_get_page_creates_new_page_off  #
-  	########################################
-
-    it "" do
-      Fail
-    end
 
 end
 

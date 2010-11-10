@@ -408,9 +408,9 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions( VALU
 	}
 
 
-/*******************************************
-*  do_not_write_to_temporary_backing_file  *
-*******************************************/
+/********************************************
+*  do_not_write_to_temporary_backing_file?  *
+********************************************/
 
 //	DB_MPOOL_NOFILE			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_set_flags.html
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_doNotWriteToTemporaryBackingFile( VALUE	rb_memory_pool_read_write_settings_controller )	{
@@ -454,9 +454,9 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_doNotWriteToTemporaryBacking
 		return rb_memory_pool_read_write_settings_controller;
 	}
 	
-/**********************************
-*  use_system_memory_for_storage  *
-**********************************/
+/***********************************
+*  use_system_memory_for_storage?  *
+***********************************/
 
 //	DB_SYSTEM_MEM			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_useSystemMemoryForStorage( VALUE	rb_memory_pool_read_write_settings_controller )	{
@@ -586,9 +586,9 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsing
 		return rb_memory_pool_read_write_settings_controller;
 	}
 
-/********************************************
-*  database_allocates_memory_using_realloc  *
-********************************************/
+/*********************************************
+*  database_allocates_memory_using_realloc?  *
+*********************************************/
 
 //	DB_DBT_REALLOC		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsingRealloc( VALUE	rb_memory_pool_read_write_settings_controller )	{
@@ -630,9 +630,9 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsing
 		return rb_memory_pool_read_write_settings_controller;
 	}
 
-/*********************************
-*  application_allocates_memory  *
-*********************************/
+/**********************************
+*  application_allocates_memory?  *
+**********************************/
 
 //	DB_DBT_USERMEM		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_applicationAllocatesMemory( VALUE	rb_memory_pool_read_write_settings_controller )	{
@@ -674,9 +674,9 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_applicationAllocatesMemory( 
 		return rb_memory_pool_read_write_settings_controller;
 	}
 
-/**************************
-*  database_frees_memory  *
-**************************/
+/***************************
+*  database_frees_memory?  *
+***************************/
 
 //	DB_DBT_APPMALLOC	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbt_class.html
 VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_databaseFreesMemory( VALUE	rb_memory_pool_read_write_settings_controller )	{

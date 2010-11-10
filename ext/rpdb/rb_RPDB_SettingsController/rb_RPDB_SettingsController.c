@@ -81,10 +81,14 @@ void Init_RPDB_SettingsController()	{
 		rb_define_alias(						rb_RPDB_SettingsController, 	"errors",															"error_settings_controller"	);
 		rb_define_alias(						rb_RPDB_SettingsController, 	"error",															"error_settings_controller"	);
 
+		rb_define_method(						rb_RPDB_SettingsController, 	"lock_settings_controller",						rb_RPDB_SettingsController_lockSettingsController,						0 	);
+
 		rb_define_method(						rb_RPDB_SettingsController, 	"log_settings_controller",						rb_RPDB_SettingsController_logSettingsController,						0 	);
 		rb_define_alias(						rb_RPDB_SettingsController, 	"logs",																"log_settings_controller"	);
 		rb_define_alias(						rb_RPDB_SettingsController, 	"log",																"log_settings_controller"	);
 		rb_define_alias(						rb_RPDB_SettingsController, 	"logging",														"log_settings_controller"	);
+
+		rb_define_method(						rb_RPDB_SettingsController, 	"replication_settings_controller",		rb_RPDB_SettingsController_replicationSettingsController,						0 	);
                       					
 		rb_define_method(						rb_RPDB_SettingsController, 	"memory_pool_settings_controller",		rb_RPDB_SettingsController_memoryPoolSettingsController,		0 	);
 		rb_define_alias(						rb_RPDB_SettingsController, 	"memory_pool",												"memory_pool_settings_controller"	);
@@ -179,8 +183,12 @@ VALUE rb_RPDB_SettingsController_SHMkey( VALUE	rb_settings_controller )	{
 	RPDB_SettingsController*	c_settings_controller;
 	C_RPDB_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
 	
+	long c_shm_key	=	RPDB_SettingsController_SHMkey( c_settings_controller );
+	
 	//	return a Bignum
-	return INT2NUM( RPDB_SettingsController_SHMkey( c_settings_controller ) );
+	VALUE	rb_shm_key	=	INT2NUM( c_shm_key );
+	
+	return rb_shm_key;
 }
 
 /****************
@@ -189,13 +197,21 @@ VALUE rb_RPDB_SettingsController_SHMkey( VALUE	rb_settings_controller )	{
 
 //	For setting the SHMKey
 VALUE rb_RPDB_SettingsController_setSHMkey(	VALUE	rb_settings_controller, 
-																						VALUE	shm_key )	{
+																						VALUE	rb_shm_key )	{
+
+	VALUE	rb_environment	=	rb_RPDB_SettingsController_parentEnvironment( rb_settings_controller );
+	
+	if ( rb_RPDB_Environment_isOpen( rb_environment ) )	{
+		rb_raise( rb_eRuntimeError, "SHM key can only be specified before environment is opened." );
+	}
 
 	RPDB_SettingsController*	c_settings_controller;
 	C_RPDB_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
 
+	long	c_shm_key	=	NUM2LONG( rb_shm_key );
+
 	RPDB_SettingsController_setSHMkey(	c_settings_controller,
-																			NUM2LONG( shm_key ) );
+																			c_shm_key );
 										
 	return rb_settings_controller;
 }

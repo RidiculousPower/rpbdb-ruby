@@ -70,181 +70,83 @@ describe RPDB::Settings::Replication::Election do
     RPDB::Settings::Replication::Election.new.parent_replication_settings_controller.should_not == nil
   end
 
-  ###########################################
-  #  number_of_sites_required_for_election  #
-  ###########################################
+  ###############################################
+	#  set_number_of_sites_required_for_election  #
+  #  number_of_sites_required_for_election      #
+  ###############################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###############################################
-  	#  set_number_of_sites_required_for_election  #
-  	###############################################
-
-    it "" do
-      Fail
-    end
-
-  ###########################################
-  #  number_of_votes_required_for_election  #
-  ###########################################
+  ###############################################
+	#  set_number_of_votes_required_for_election  #
+  #  number_of_votes_required_for_election      #
+  ###############################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	###############################################
-  	#  set_number_of_votes_required_for_election  #
-  	###############################################
-
-    it "" do
-      Fail
-    end
-
-  ##########################
-  #  wait_for_all_clients  #
-  ##########################
-
-  it "" do
-    Fail
-  end
-
-  	##################################
-  	#  turn_wait_for_all_clients_on  #
-  	##################################
-
-    it "" do
-      Fail
-    end
-
-  	###################################
-  	#  turn_wait_for_all_clients_off  #
-  	###################################
-
-    it "" do
-      Fail
-    end
 
   ###################################
-  #  wait_for_all_electable_peers?  #
+  #  wait_for_all_clients           #
+	#  turn_wait_for_all_clients_on   #
+	#  turn_wait_for_all_clients_off  #
   ###################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	##########################################
-  	#  turn_wait_for_all_electable_peers_on  #
-  	##########################################
-
-    it "" do
-      Fail
-    end
-
-  	###########################################
-  	#  turn_wait_for_all_electable_peers_off  #
-  	###########################################
-
-    it "" do
-      Fail
-    end
-
-  ###################
-  #  wait_for_none  #
-  ###################
-
-  it "" do
-    Fail
-  end
-
-  	###########################
-  	#  turn_wait_for_none_on  #
-  	###########################
-
-    it "" do
-      Fail
-    end
-
-  	############################
-  	#  turn_wait_for_none_off  #
-  	############################
-
-    it "" do
-      Fail
-    end
-
-  ###################################
-  #  wait_for_at_least_one_client?  #
-  ###################################
-
-  it "" do
-    Fail
-  end
-
-  	##########################################
-  	#  turn_wait_for_at_least_one_client_on  #
-  	##########################################
-
-    it "" do
-      Fail
-    end
-
-  	###########################################
-  	#  turn_wait_for_at_least_one_client_off  #
-  	###########################################
-
-    it "" do
-      Fail
-    end
 
   ###########################################
-  #  wait_for_at_least_one_electable_peer?  #
+  #  wait_for_all_electable_peers?          #
+	#  turn_wait_for_all_electable_peers_on   #
+	#  turn_wait_for_all_electable_peers_off  #
   ###########################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##################################################
-  	#  turn_wait_for_at_least_one_electable_peer_on  #
-  	##################################################
-
-    it "" do
-      Fail
-    end
-
-  	###################################################
-  	#  turn_wait_for_at_least_one_electable_peer_off  #
-  	###################################################
-
-    it "" do
-      Fail
-    end
-
-  ############################################################
-  #  wait_for_minimum_electable_peers_for_durable_election?  #
-  ############################################################
+  ############################
+  #  wait_for_none           #
+	#  turn_wait_for_none_on   #
+	#  turn_wait_for_none_off  #
+  ############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###################################################################
-  	#  turn_wait_for_minimum_electable_peers_for_durable_election_on  #
-  	###################################################################
+  ###########################################
+  #  wait_for_at_least_one_client?          #
+	#  turn_wait_for_at_least_one_client_on   #
+	#  turn_wait_for_at_least_one_client_off  #
+  ###########################################
 
-    it "" do
-      Fail
-    end
+  it "" do
+    raise "Failed."
+  end
 
-  	####################################################################
-  	#  turn_wait_for_minimum_electable_peers_for_durable_election_off  #
-  	####################################################################
+  ###################################################
+  #  wait_for_at_least_one_electable_peer?          #
+	#  turn_wait_for_at_least_one_electable_peer_on   #
+	#  turn_wait_for_at_least_one_electable_peer_off  #
+  ###################################################
 
-    it "" do
-      Fail
-    end
+  it "" do
+    raise "Failed."
+  end
+
+  ####################################################################
+  #  wait_for_minimum_electable_peers_for_durable_election?          #
+	#  turn_wait_for_minimum_electable_peers_for_durable_election_on   #
+	#  turn_wait_for_minimum_electable_peers_for_durable_election_off  #
+  ####################################################################
+
+  it "" do
+    raise "Failed."
+  end
 
 end
 

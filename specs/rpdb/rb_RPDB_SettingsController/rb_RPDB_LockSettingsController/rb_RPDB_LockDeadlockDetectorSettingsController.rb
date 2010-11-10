@@ -70,156 +70,93 @@ describe RPDB::Settings::Lock::DeadlockDetector do
     RPDB::Settings::Lock::DeadlockDetector.new.parent_lock_settings_controller.should_not == nil
   end
 
-  #################
-  #  is_default?  #
-  #################
-
-  it "" do
-    Fail
-  end
-
-  	####################
-  	#  set_to_default  #
-  	####################
-
-    it "" do
-      Fail
-    end
-
-  #####################
-  #  reject_expired?  #
-  #####################
-
-  it "" do
-    Fail
-  end
-
-  	###########################
-  	#  set_to_reject_expired  #
-  	###########################
-
-    it "" do
-      Fail
-    end
-
-  ####################################
-  #  reject_locker_with_most_locks?  #
-  ####################################
-
-  it "" do
-    Fail
-  end
-
-  	##########################################
-  	#  set_to_reject_locker_with_most_locks  #
-  	##########################################
-
-    it "" do
-      Fail
-    end
-
-  ##########################################
-  #  reject_locker_with_most_write_locks?  #
-  ##########################################
-
-  it "" do
-    Fail
-  end
-
-  	################################################
-  	#  set_to_reject_locker_with_most_write_locks  #
-  	################################################
-
-    it "" do
-      Fail
-    end
-
-  ######################################
-  #  reject_locker_with_fewest_locks?  #
-  ######################################
-
-  it "" do
-    Fail
-  end
-
-  	############################################
-  	#  set_to_reject_locker_with_fewest_locks  #
-  	############################################
-
-    it "" do
-      Fail
-    end
-
-  ############################################
-  #  reject_locker_with_fewest_write_locks?  #
-  ############################################
-
-  it "" do
-    Fail
-  end
-
-  	##################################################
-  	#  set_to_reject_locker_with_fewest_write_locks  #
-  	##################################################
-
-    it "" do
-      Fail
-    end
-
-  #####################################
-  #  reject_locker_with_oldest_lock?  #
-  #####################################
-
-  it "" do
-    Fail
-  end
-
-  	###########################################
-  	#  set_to_reject_locker_with_oldest_lock  #
-  	###########################################
-
-    it "" do
-      Fail
-    end
-
-  #######################################
-  #  reject_locker_with_youngest_lock?  #
-  #######################################
-
-  it "" do
-    Fail
-  end
-
-  	#############################################
-  	#  set_to_reject_locker_with_youngest_lock  #
-  	#############################################
-
-    it "" do
-      Fail
-    end
-
   ####################
-  #  reject_random?  #
+	#  set_to_default  #
+  #  is_default?     #
   ####################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##########################
-  	#  set_to_reject_random  #
-  	##########################
+  ###########################
+	#  set_to_reject_expired  #
+  #  reject_expired?        #
+  ###########################
 
-    it "" do
-      Fail
-    end
+  it "" do
+    raise "Failed."
+  end
+
+  ##########################################
+	#  set_to_reject_locker_with_most_locks  #
+  #  reject_locker_with_most_locks?        #
+  ##########################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ################################################
+	#  set_to_reject_locker_with_most_write_locks  #
+  #  reject_locker_with_most_write_locks?        #
+  ################################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ############################################
+	#  set_to_reject_locker_with_fewest_locks  #
+  #  reject_locker_with_fewest_locks?        #
+  ############################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ##################################################
+	#  set_to_reject_locker_with_fewest_write_locks  #
+  #  reject_locker_with_fewest_write_locks?        #
+  ##################################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ###########################################
+	#  set_to_reject_locker_with_oldest_lock  #
+  #  reject_locker_with_oldest_lock?        #
+  ###########################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  #############################################
+	#  set_to_reject_locker_with_youngest_lock  #
+  #  reject_locker_with_youngest_lock?        #
+  #############################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ##########################
+	#  set_to_reject_random  #
+  #  reject_random?        #
+  ##########################
+
+  it "" do
+    raise "Failed."
+  end
 
   ###################################
   #  verbosity_settings_controller  #
   ###################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

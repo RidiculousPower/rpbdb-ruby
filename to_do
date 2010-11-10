@@ -5,32 +5,69 @@
 	* refuse write at end
 	
 
-Other stuff
-* insert/weave
-* AbstractObjectSpace
 
-Weaving
-* define module of methods
-* methods can depend on variables
-* methods correspond to init methods (if defined) which are called in the init method
-* thus properties can be created that weave in one or more methods, allowing interfaces to be defined
+*********************
+Storage Possibilities
+*********************
 
-weaving allows class and instance methods to be mixed in as appropriate
-that way not all methods must belong to either
+	* type storage - simple types only, translation implied manually
+	* pipeline storage - storage template, load and dump functions
+	* marshal storage
 
 
-* anonymous object storage - keep index of objects without keeping reference that is live to gc
+**************
+Object Storage
+**************
 
-* meta-class controller modularization with DB delegates
-	grab values from DB and write as necessary
-	DB keeps values in sync so that if one object using value changes its properties all other objects using value also find that property changed
-	then it either has a hook to notify objects of their copy being out of date, or keeps a common ref that all instances share
-	probably a stored ref by default then optionally a notification system
+Overall Logic:
 
+	* Objects consists in state
+	* state is defined by variables
+	* variables can be one of a number of underlying types (objects)
+	* some of these types have additional type information
+	* this type information consists in methods and variables
+	* methods are stored in the meta-object (class or singleton)
+	* the meta-object can be recreated from the source-code, which is presumed to be present
+	* so we only have to address the storage of variables, which we have already said are one of a number of underlying types (objects)
+	* so if we can deal with all objects in one context we can also deal with nested objects in the same way
 
-Garbage Collection:
+Object Specifics:
 
-* immediate collection when variables move out of scope
-* immediate finalization
-* concurrent processing
+	Simple Storage:
+	
+		T_NIL
+		T_TRUE
+		T_FALSE
+		T_FIXNUM
+		T_BIGNUM
+		T_FLOAT
+		T_COMPLEX
+		T_RATIONAL
+		T_SYMBOL
+		T_STRING
+		T_REGEXP
+		T_MATCH
+		T_FILE
+		T_CLASS
+		T_MODULE
 
+	Complex Storage:
+
+		T_OBJECT
+		T_STRUCT
+
+	Iterated Storage:
+
+		T_ARRAY
+		T_HASH
+
+	Can Only be Partially Stored:
+
+		T_DATA
+
+Type Adapters:
+
+	* can be used to specify how a given type is translated for storage
+	* allows expansion of types
+	* allows overriding of type handling for multiple possible handling of specific types
+	* consist in a data storage map, a pipeline dump function, and a pipeline load function

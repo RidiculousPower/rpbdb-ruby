@@ -70,29 +70,15 @@ describe RPDB::Database do
     RPDB::Settings::Debug::Verbosity.new.parent_debug_settings_controller.should_not == nil
   end
 
-  ####################################################
-  #  display_additional_information_during_recovery  #
-  ####################################################
+  #############################################################
+  #  display_additional_information_during_recovery           #
+	#  turn_display_additional_information_during_recovery_on   #
+	#  turn_display_additional_information_during_recovery_off  #
+  #############################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	############################################################
-  	#  turn_display_additional_information_during_recovery_on  #
-  	############################################################
-
-    it "" do
-      Fail
-    end
-
-  	#############################################################
-  	#  turn_display_additional_information_during_recovery_off  #
-  	#############################################################
-
-    it "" do
-      Fail
-    end
 
 end
 

@@ -234,9 +234,9 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_parentDatabaseTypeSettingsCont
 																		Switch Settings
 *******************************************************************************************************************************************************************************************/
 
-/****************************
-*  record_number_retrieval  *
-****************************/
+/*****************************
+*  record_number_retrieval?  *
+*****************************/
 
 //	DB_RECNUM			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_recordNumberRetrieval( VALUE	rb_database_type_btree_settings_controller )	{
@@ -276,9 +276,9 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_recordNumberRetrieval( VALUE	r
 		return rb_database_type_btree_settings_controller;
 	}
 
-/**********************
-*  reverse_splitting  *
-**********************/
+/***********************
+*  reverse_splitting?  *
+***********************/
 
 //	DB_REVSPLITOFF		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_reverseSplitting( VALUE	rb_database_type_btree_settings_controller )	{

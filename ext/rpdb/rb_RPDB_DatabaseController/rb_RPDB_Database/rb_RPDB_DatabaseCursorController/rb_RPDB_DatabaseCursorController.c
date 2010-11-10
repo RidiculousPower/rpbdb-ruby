@@ -37,8 +37,8 @@ VALUE	extern	rb_RPDB_DatabaseCursorSettingsController;
 
 void Init_RPDB_DatabaseCursorController()	{
 
-	rb_RPDB_DatabaseCursorController	=	rb_define_class_under(	rb_RPDB_Database, 
-																															"CursorController",	
+	rb_RPDB_DatabaseCursorController	=	rb_define_class_under(	rb_RPDB_DatabaseCursor, 
+																															"Controller",	
 																															rb_cObject );
 
 	rb_define_singleton_method(	rb_RPDB_DatabaseCursorController, 	"new",													rb_RPDB_DatabaseCursorController_new,												-1 	);

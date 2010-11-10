@@ -93,71 +93,43 @@ describe RPDB::Settings::Database::Type do
   ###################
 
   it "" do
-    Fail
-  end
-
-  ###############
-  #  is_btree?  #
-  ###############
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ##################
   #  set_to_btree  #
+  #  is_btree?     #
   ##################
 
   it "" do
-    Fail
-  end
-
-  ##############
-  #  is_hash?  #
-  ##############
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #################
   #  set_to_hash  #
+  #  is_hash?     #
   #################
 
   it "" do
-    Fail
-  end
-
-  ###############
-  #  is_recno?  #
-  ###############
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ##################
   #  set_to_recno  #
+  #  is_recno?     #
   ##################
 
   it "" do
-    Fail
-  end
-
-  ###############
-  #  is_queue?  #
-  ###############
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ##################
   #  set_to_queue  #
+  #  is_queue?     #
   ##################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   ######################
@@ -165,7 +137,7 @@ describe RPDB::Settings::Database::Type do
   ######################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   #####################
@@ -173,7 +145,7 @@ describe RPDB::Settings::Database::Type do
   #####################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   ######################
@@ -181,7 +153,7 @@ describe RPDB::Settings::Database::Type do
   ######################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   ######################
@@ -189,7 +161,7 @@ describe RPDB::Settings::Database::Type do
   ######################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

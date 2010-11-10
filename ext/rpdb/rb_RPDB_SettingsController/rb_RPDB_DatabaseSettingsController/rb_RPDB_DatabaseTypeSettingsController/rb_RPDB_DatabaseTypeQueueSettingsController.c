@@ -232,9 +232,9 @@ VALUE rb_RPDB_DatabaseTypeQueueSettingsController_parentDatabaseTypeSettingsCont
 																		Switch Settings
 *******************************************************************************************************************************************************************************************/
 
-/***********************************
-*  return_key_data_pairs_in_order  *
-***********************************/
+/************************************
+*  return_key_data_pairs_in_order?  *
+************************************/
 
 //	DB_INORDER					http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
 VALUE rb_RPDB_DatabaseTypeQueueSettingsController_returnKeyDataPairsInOrder( VALUE	rb_database_type_queue_settings_controller )	{
@@ -260,9 +260,9 @@ VALUE rb_RPDB_DatabaseTypeQueueSettingsController_returnKeyDataPairsInOrder( VAL
 		return rb_database_type_queue_settings_controller;
 	}
 
-	/***************************************
-	*  return_key_data_pairs_in_order_off  *
-	***************************************/
+	/********************************************
+	*  turn_return_key_data_pairs_in_order_off  *
+	********************************************/
 
 	VALUE rb_RPDB_DatabaseTypeQueueSettingsController_turnReturnKeyDataPairsInOrderOff( VALUE	rb_database_type_queue_settings_controller )	{
 

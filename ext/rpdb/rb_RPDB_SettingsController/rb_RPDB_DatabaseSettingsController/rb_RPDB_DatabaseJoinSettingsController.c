@@ -202,9 +202,9 @@ VALUE rb_RPDB_DatabaseJoinSettingsController_parentDatabaseSettingsController(	V
 	return rb_parent_database_settings_controller;
 }
 
-/*************************
-*  degree_one_isolation  *
-*************************/
+/**************************
+*  degree_one_isolation?  *
+**************************/
 
 //	DB_READ_UNCOMMITTED				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_join.html
 VALUE rb_RPDB_DatabaseJoinController_degreeOneIsolation( VALUE	rb_join_settings_controller )	{
@@ -244,9 +244,9 @@ VALUE rb_RPDB_DatabaseJoinController_degreeOneIsolation( VALUE	rb_join_settings_
 		return rb_join_settings_controller;
 	}
 
-/**************************************
-*  write_locks_instead_of_read_locks  *
-**************************************/
+/***************************************
+*  write_locks_instead_of_read_locks?  *
+***************************************/
 
 //	DB_RMW						http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_join.html
 VALUE rb_RPDB_DatabaseJoinController_writeLocksInsteadOfReadLocks( VALUE	rb_join_settings_controller )	{
@@ -286,9 +286,9 @@ VALUE rb_RPDB_DatabaseJoinController_writeLocksInsteadOfReadLocks( VALUE	rb_join
 		return rb_join_settings_controller;
 	}
 
-/**************************************
-*  write_locks_instead_of_read_locks  *
-**************************************/
+/***************************************
+*  write_locks_instead_of_read_locks?  *
+***************************************/
 
 //	DB_JOIN_NOSORT			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_join.html
 VALUE rb_RPDB_DatabaseJoinController_noSortBeforeJoin( VALUE	rb_join_settings_controller )	{

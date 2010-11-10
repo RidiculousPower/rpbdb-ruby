@@ -161,6 +161,7 @@
 	
 	//	Database Cursor Settings Controller
 	#define RPDB_RB_DATABASE_CURSOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_settings_controller"
+	#define RPDB_RB_DATABASE_CURSOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR																"@parent_database_cursor"
 	
 	//	Database Cursor Read Write Settings Controller
 	#define RPDB_RB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_SETTINGS_CONTROLLER									"@parent_database_cursor_settings_controller"
@@ -515,7 +516,7 @@
 	#define C_RPDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_database_cursor_settings_controller, c_database_cursor_settings_controller )													  C_RPDB_STRUCT(		rb_database_cursor_settings_controller, c_database_cursor_settings_controller, RPDB_DatabaseCursorSettingsController )
                                                                                                                                                                         					  
 	#define RUBY_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( c_database_cursor_record_read_write_settings_controller )																	  RUBY_RPDB_OBJECT(	c_database_cursor_record_read_write_settings_controller, rb_RPDB_DatabaseCursorReadWriteSettingsController, NULL, NULL )
-	#define C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller )					  C_RPDB_STRUCT(		rb_database_cursor_record_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller, RPDB_DatabaseCursorReadWriteSettingsController )
+	#define C_RPDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller )					  C_RPDB_STRUCT(		rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller, RPDB_DatabaseCursorReadWriteSettingsController )
                                                                                                                                                                                     		  
 	#define RUBY_RPDB_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER( c_database_cursor_cache_settings_controller )																				  RUBY_RPDB_OBJECT(	c_database_cursor_cache_settings_controller, rb_RPDB_DatabaseCursorCacheSettingsController, NULL, NULL )
 	#define C_RPDB_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER( rb_database_cursor_cache_settings_controller, c_database_cursor_cache_settings_controller )									  C_RPDB_STRUCT(		rb_database_cursor_cache_settings_controller, c_database_cursor_cache_settings_controller, RPDB_DatabaseCursorCacheSettingsController )

@@ -231,9 +231,9 @@ VALUE rb_RPDB_FileSettingsController_tempDirectory( VALUE	rb_file_settings_contr
 		return rb_file_settings_controller;
 	}
 
-/******************************
-*  permit_environment_naming  *
-******************************/
+/*******************************
+*  permit_environment_naming?  *
+*******************************/
 
 //	DB_USE_ENVIRON          http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 VALUE rb_RPDB_FileSettingsController_permitEnvironmentBasedFileNaming( VALUE	rb_file_settings_controller )	{
@@ -315,9 +315,9 @@ VALUE rb_RPDB_FileSettingsController_useEnvironmentHomePermissionsForFileNaming(
 		return rb_file_settings_controller;
 	}
 
-/************************
-*  create_if_necessary  *
-************************/
+/*************************
+*  create_if_necessary?  *
+*************************/
 
 //	DB_CREATE               http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 VALUE rb_RPDB_FileSettingsController_createIfNecessary( VALUE	rb_file_settings_controller )	{
@@ -357,9 +357,9 @@ VALUE rb_RPDB_FileSettingsController_createIfNecessary( VALUE	rb_file_settings_c
 		return rb_file_settings_controller;
 	}
 
-/**********************************************
-*  is_error_if_database_exists_before_create  *
-**********************************************/
+/***********************************************
+*  is_error_if_database_exists_before_create?  *
+***********************************************/
 
 //	DB_EXCL					http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_open.html
 VALUE rb_RPDB_FileSettingsController_isErrorIfDBExistsBeforeCreate( VALUE	rb_file_settings_controller )	{
@@ -399,9 +399,9 @@ VALUE rb_RPDB_FileSettingsController_isErrorIfDBExistsBeforeCreate( VALUE	rb_fil
 		return rb_file_settings_controller;
 	}
 
-/*******************
-*  open_read_only  *
-*******************/
+/********************
+*  open_read_only?  *
+********************/
 
 //	DB_RDONLY					http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_open.html
 VALUE rb_RPDB_FileSettingsController_openReadOnly( VALUE	rb_file_settings_controller )	{
@@ -441,9 +441,9 @@ VALUE rb_RPDB_FileSettingsController_openReadOnly( VALUE	rb_file_settings_contro
 		return rb_file_settings_controller;
 	}
 
-/******************
-*  force_removal  *
-******************/
+/*******************
+*  force_removal?  *
+*******************/
 
 //	DB_FORCE				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_remove.html
 VALUE rb_RPDB_FileSettingsController_forceRemoval( VALUE	rb_file_settings_controller )	{

@@ -61,7 +61,12 @@ describe RPDB::Settings::Database::Cursor do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Database::Cursor.new.parent_environment.should_not == nil
+    # with settings controller
+    RPDB::Settings::Database::Cursor.new.parent_environment.class.should == RPDB::Environment
+    # with database
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_environment.class.should == RPDB::Environment
+    # with database cursor
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_environment.class.should == RPDB::Environment
   end
 
   #####################
@@ -69,7 +74,25 @@ describe RPDB::Settings::Database::Cursor do
   #####################
 
   it "can return its parent database" do
-    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
+    # with settings controller
+    RPDB::Settings::Database::Cursor.new.parent_database.should == nil
+    # with database
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_database.class.should == RPDB::Database
+    # with database cursor
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_database.class.should == RPDB::Database
+  end
+
+  ############################
+  #  parent_database_cursor  #
+  ############################
+
+  it "can return its parent database cursor" do
+    # with settings controller
+    RPDB::Settings::Database::Cursor.new.parent_database_cursor.should == nil
+    # with database
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_database_cursor.should == nil
+    # with database cursor
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_database_cursor.class.should == RPDB::Database::Cursor
   end
 
   ################################
@@ -77,7 +100,12 @@ describe RPDB::Settings::Database::Cursor do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Database::Cursor.new.parent_settings_controller.should_not == nil
+    # with settings controller
+    RPDB::Settings::Database::Cursor.new.parent_settings_controller.class.should == RPDB::Settings
+    # with database
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.class.should == RPDB::Settings
+    # with database cursor
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_settings_controller.class.should == RPDB::Settings
   end
 
   #########################################
@@ -85,47 +113,62 @@ describe RPDB::Settings::Database::Cursor do
   #########################################
 
   it "can return its parent database settings controller" do
-    RPDB::Settings::Database::Cursor.new.parent_database_settings_controller.should_not == nil
+    # with settings controller
+    RPDB::Settings::Database::Cursor.new.parent_database_settings_controller.class.should == RPDB::Settings::Database
+    # with database
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.class.should == RPDB::Settings::Database
+    # with database cursor
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_database_settings_controller.class.should == RPDB::Settings::Database
   end
 
-  ################################
-  #  duplicate_retains_location  #
-  ################################
+  #########################################
+  #  duplicate_retains_location?          #
+	#  turn_duplicate_retains_location_on   #
+	#  turn_duplicate_retains_location_off  #
+  #########################################
 
-  it "" do
-    Fail
+  it "can retain cursor position when a cursor is duplicated (on by default)" do
+      
+    # with settings controller
+    cursor_settings = RPDB::Settings::Database::Cursor.new
+    cursor_settings.duplicate_retains_location?.should == true
+    cursor_settings.turn_duplicate_retains_location_off
+    cursor_settings.duplicate_retains_location?.should == false
+    cursor_settings.turn_duplicate_retains_location_on
+    cursor_settings.duplicate_retains_location?.should == true
+
+    # with database
+    cursor_settings = RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) )
+    cursor_settings.duplicate_retains_location?.should == true
+    cursor_settings.turn_duplicate_retains_location_off
+    cursor_settings.duplicate_retains_location?.should == false
+    cursor_settings.turn_duplicate_retains_location_on
+    cursor_settings.duplicate_retains_location?.should == true
+
+    # with database cursor
+    cursor_settings = RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor )
+    cursor_settings.duplicate_retains_location?.should == true
+    cursor_settings.turn_duplicate_retains_location_off
+    cursor_settings.duplicate_retains_location?.should == false
+    cursor_settings.turn_duplicate_retains_location_on
+    cursor_settings.duplicate_retains_location?.should == true
+    
   end
 
-  	########################################
-  	#  turn_duplicate_retains_location_on  #
-  	########################################
+  ###############################
+  #  cache_settings_controller  #
+  ###############################
 
-    it "" do
-      Fail
-    end
-
-  	#########################################
-  	#  turn_duplicate_retains_location_off  #
-  	#########################################
-
-    it "" do
-      Fail
-    end
-
-  ######################
-  #  cache_controller  #
-  ######################
-
-  it "" do
-    Fail
+  it "can return its cache settings controller" do
+    RPDB::Settings::Database::Cursor.new.cache_settings_controller.class.should == RPDB::Settings::Database::Cursor::Cache
   end
 
-  ###########################
-  #  read_write_controller  #
-  ###########################
+  ####################################
+  #  read_write_settings_controller  #
+  ####################################
 
-  it "" do
-    Fail
+  it "can return its read/write settings controller" do
+    RPDB::Settings::Database::Cursor.new.read_write_settings_controller.class.should == RPDB::Settings::Database::Cursor::ReadWrite
   end
 
 end

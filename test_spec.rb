@@ -24,11 +24,12 @@ describe RPDB::Database::Controller do
 
 
 
-
-  it "can return its parent settings controller" do
-    RPDB::Settings::Replication::Verbosity.new.parent_settings_controller.should_not == nil
+  it "can return its parent database" do
+    # with database
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database.class.should == RPDB::Database
+    # with database cursor
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_database.class.should == RPDB::Database
   end
-
 
 
 

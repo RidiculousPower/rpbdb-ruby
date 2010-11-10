@@ -28,42 +28,42 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment ).should_not == nil
+    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment ).class.should == RPDB::Settings::Database::Cursor::ReadWrite
   end
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment.database_controller ).should_not == nil
+    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment.database_controller ).class.should == RPDB::Settings::Database::Cursor::ReadWrite
   end
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment.database_controller.new( $database_name ) ).class.should == RPDB::Settings::Database::Cursor::ReadWrite
   end
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new( database_cursor_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment.database_controller.new( $database_name ).cursor_controller ).should_not == nil
+    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment.database_controller.new( $database_name ).cursor_controller ).class.should == RPDB::Settings::Database::Cursor::ReadWrite
   end
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new( database_cursor )
   it "can be created with a database cursor" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment.database_controller.new( $database_name ).cursor ).should_not == nil
+    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment.database_controller.new( $database_name ).cursor ).class.should == RPDB::Settings::Database::Cursor::ReadWrite
   end
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Settings.new ).should_not == nil
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Settings.new ).class.should == RPDB::Settings::Database::Cursor::ReadWrite
   end
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Settings::Database.new ).should_not == nil
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Settings::Database.new ).class.should == RPDB::Settings::Database::Cursor::ReadWrite
   end
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new.should_not == nil
+    RPDB::Settings::Database::Cursor::ReadWrite.new.class.should == RPDB::Settings::Database::Cursor::ReadWrite
   end
 
   ########################
@@ -71,7 +71,12 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_environment.should_not == nil
+    # with settings controller
+    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_environment.class.should == RPDB::Environment
+    # with database
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_environment.class.should == RPDB::Environment
+    # with database cursor
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_environment.class.should == RPDB::Environment
   end
 
   #####################
@@ -79,7 +84,25 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   #####################
 
   it "can return its parent database" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
+    # with settings controller
+    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_database.should == nil
+    # with database
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database.class.should == RPDB::Database
+    # with database cursor
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_database.class.should == RPDB::Database
+  end
+
+  ############################
+  #  parent_database_cursor  #
+  ############################
+
+  it "can return its parent database cursor" do
+    # with settings controller
+    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_database_cursor.should == nil
+    # with database
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database_cursor.should == nil
+    # with database cursor
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_database_cursor.class.should == RPDB::Database::Cursor
   end
 
   ################################
@@ -87,7 +110,12 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_settings_controller.should_not == nil
+    # with settings controller
+    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_settings_controller.class.should == RPDB::Settings
+    # with database
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.class.should == RPDB::Settings
+    # with database cursor
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_settings_controller.class.should == RPDB::Settings
   end
 
   #########################################
@@ -95,7 +123,12 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   #########################################
 
   it "can return its parent database settings controller" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_database_settings_controller.should_not == nil
+    # with settings controller
+    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_database_settings_controller.class.should == RPDB::Settings::Database
+    # with database
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.class.should == RPDB::Settings::Database
+    # with database cursor
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_database_settings_controller.class.should == RPDB::Settings::Database
   end
 
   ################################################
@@ -103,128 +136,63 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   ################################################
 
   it "can return its parent database cursor settings controller" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_database_cursor_settings_controller.should_not == nil
+    # with settings controller
+    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_database_cursor_settings_controller.class.should == RPDB::Settings::Database::Cursor
+    # with database
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database_cursor_settings_controller.class.should == RPDB::Settings::Database::Cursor
+    # with database cursor
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_database_cursor_settings_controller.class.should == RPDB::Settings::Database::Cursor
   end
 
-  ##################
-  #  permit_write  #
-  ##################
+  ###########################
+  #  permit_write?          #
+	#  turn_permit_write_on   #
+	#  turn_permit_write_off  #
+  ###########################
 
-  it "" do
-    Fail
+  it "can be a read-only cursor or it can permit writing" do
+    raise "Failed."
   end
 
-  	#####################
-  	#  permit_write_on  #
-  	#####################
+  ############################
+  #  ignore_lease?           #
+	#  turn_ignore_lease_on    #
+	#  turn_ignore_lease_off   #
+  ############################
 
-    it "" do
-      Fail
-    end
-
-  	######################
-  	#  permit_write_off  #
-  	######################
-
-    it "" do
-      Fail
-    end
-
-  ##################
-  #  ignore_lease  #
-  ##################
-
-  it "" do
-    Fail
+  it "can be set to ignore its replication status (regarding master leases)" do
+    raise "Failed."
   end
 
-  	#####################
-  	#  ignore_lease_on  #
-  	#####################
+  ################################################
+  #  write_locks_instead_of_read_locks?          #
+	#  turn_write_locks_instead_of_read_locks_on   #
+	#  turn_write_locks_instead_of_read_locks_off  #
+  ################################################
 
-    it "" do
-      Fail
-    end
-
-  	######################
-  	#  ignore_lease_off  #
-  	######################
-
-    it "" do
-      Fail
-    end
-
-  #######################################
-  #  write_locks_instead_of_read_locks  #
-  #######################################
-
-  it "" do
-    Fail
+  it "can use write locks instead of read locks" do
+    raise "Failed."
   end
 
-  	###############################################
-  	#  turn_write_locks_instead_of_read_locks_on  #
-  	###############################################
+  #########################################
+  #  return_multiple_data_items?          #
+	#  turn_return_multiple_data_items_on   #
+	#  turn_return_multiple_data_items_off  #
+  #########################################
 
-    it "" do
-      Fail
-    end
-
-  	################################################
-  	#  turn_write_locks_instead_of_read_locks_off  #
-  	################################################
-
-    it "" do
-      Fail
-    end
-
-  ################################
-  #  return_multiple_data_items  #
-  ################################
-
-  it "" do
-    Fail
+  it "can return multiple data items in a single data parameter" do
+    raise "Failed."
   end
 
-  	########################################
-  	#  turn_return_multiple_data_items_on  #
-  	########################################
+  #############################################
+  #  return_multiple_key_data_pairs?          #
+	#  turn_return_multiple_key_data_pairs_on   #
+	#  turn_return_multiple_key_data_pairs_off  #
+  #############################################
 
-    it "" do
-      Fail
-    end
-
-  	#########################################
-  	#  turn_return_multiple_data_items_off  #
-  	#########################################
-
-    it "" do
-      Fail
-    end
-
-  ####################################
-  #  return_multiple_key_data_pairs  #
-  ####################################
-
-  it "" do
-    Fail
+  it "can return multiple key and data items in a single data parameter" do
+    raise "Failed."
   end
-
-  	############################################
-  	#  turn_return_multiple_key_data_pairs_on  #
-  	############################################
-
-    it "" do
-      Fail
-    end
-
-  	#############################################
-  	#  turn_return_multiple_key_data_pairs_off  #
-  	#############################################
-
-    it "" do
-      Fail
-    end
 
 end
 

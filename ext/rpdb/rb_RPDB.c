@@ -277,8 +277,8 @@ void Init_rpdb()	{
 		Init_RPDB_Database();
 		Init_RPDB_DatabaseController();
 		Init_RPDB_DatabaseObjectDatabase();
-		Init_RPDB_DatabaseCursorController();
 		Init_RPDB_DatabaseCursor();
+		Init_RPDB_DatabaseCursorController();
 		Init_RPDB_DatabaseJoinController();
 		Init_RPDB_DatabaseJoinCursor();
 		Init_RPDB_DatabaseObjectCursor();

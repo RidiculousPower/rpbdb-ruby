@@ -255,9 +255,9 @@ VALUE rb_RPDB_ReplicationSettingsController_turnOff( VALUE	rb_replication_settin
 }
 
 
-/*************************************
-*  client_to_client_synchronization  *
-*************************************/
+/**************************************
+*  client_to_client_synchronization?  *
+**************************************/
 
 //	Currently, the replication manager framework only supports a single client peer, and the last specified peer is used
 VALUE rb_RPDB_ReplicationSettingsController_clientToClientSynchronization( VALUE	rb_replication_settings_controller )	{
@@ -297,9 +297,9 @@ VALUE rb_RPDB_ReplicationSettingsController_clientToClientSynchronization( VALUE
 		return rb_replication_settings_controller;
 	}
 
-/*************************
-*  single_bulk_transfer  *
-*************************/
+/**************************
+*  single_bulk_transfer?  *
+**************************/
 
 //	DB_REP_CONF_BULK				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_config.html
 VALUE rb_RPDB_ReplicationSettingsController_singleBulkTransfer( VALUE	rb_replication_settings_controller )	{
@@ -339,9 +339,9 @@ VALUE rb_RPDB_ReplicationSettingsController_singleBulkTransfer( VALUE	rb_replica
 		return rb_replication_settings_controller;
 	}
 
-/***************************************
-*  delay_new_sync_until_explicit_call  *
-***************************************/
+/****************************************
+*  delay_new_sync_until_explicit_call?  *
+****************************************/
 
 //	DB_REP_CONF_DELAYCLIENT         http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_config.html
 VALUE rb_RPDB_ReplicationSettingsController_delayNewSyncUntilExplicitCall( VALUE	rb_replication_settings_controller )	{
@@ -382,9 +382,9 @@ VALUE rb_RPDB_ReplicationSettingsController_delayNewSyncUntilExplicitCall( VALUE
 		return rb_replication_settings_controller;
 	}
 
-/**********************
-*  use_master_leases  *
-**********************/
+/***********************
+*  use_master_leases?  *
+***********************/
 
 //	DB_REP_CONF_LEASE               http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_config.html
 VALUE rb_RPDB_ReplicationSettingsController_useMasterLeases( VALUE	rb_replication_settings_controller )	{
@@ -424,9 +424,9 @@ VALUE rb_RPDB_ReplicationSettingsController_useMasterLeases( VALUE	rb_replicatio
 		return rb_replication_settings_controller;
 	}
 
-/**********************************
-*  reinitialize_outdated_clients  *
-**********************************/
+/***********************************
+*  reinitialize_outdated_clients?  *
+***********************************/
 
 //	DB_REP_CONF_NOAUTOINIT          http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_config.html
 VALUE rb_RPDB_ReplicationSettingsController_reinitializeOutdatedClients( VALUE	rb_replication_settings_controller )	{
@@ -606,9 +606,9 @@ VALUE rb_RPDB_ReplicationSettingsController_isClient( VALUE	rb_replication_setti
 		return rb_replication_settings_controller;
 	}
 
-/**************************************
-*  start_as_client_or_rally_election  *
-**************************************/
+/***************************************
+*  start_as_client_or_rally_election?  *
+***************************************/
 
 VALUE rb_RPDB_ReplicationSettingsController_startAsClientOrRallyElection( VALUE	rb_replication_settings_controller )	{
 
@@ -652,15 +652,15 @@ VALUE rb_RPDB_ReplicationSettingsController_limit( VALUE	rb_replication_settings
 	**************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_setLimit(	VALUE	rb_replication_settings_controller, 
-															VALUE	rb_limit_in_gbytes, 
-															VALUE	rb_limit_in_bytes )	{
+																												VALUE	rb_limit_in_gbytes, 
+																												VALUE	rb_limit_in_bytes )	{
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		RPDB_ReplicationSettingsController_setLimit(	c_replication_settings_controller,
-		 												FIX2INT( rb_limit_in_gbytes ),
-														FIX2INT( rb_limit_in_bytes ) );
+																									FIX2INT( rb_limit_in_gbytes ),
+																									FIX2INT( rb_limit_in_bytes ) );
 
 		return rb_replication_settings_controller;
 	}

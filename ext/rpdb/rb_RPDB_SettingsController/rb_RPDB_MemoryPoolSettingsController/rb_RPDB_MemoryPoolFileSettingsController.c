@@ -207,9 +207,9 @@ VALUE rb_RPDB_MemoryPoolFileSettingsController_createWithInitialNullBytesNumberi
 	return INT2NUM( RPDB_MemoryPoolFileSettingsController_createWithInitialNullBytesNumbering( c_memory_pool_file_settings_controller ) );
 }
 
-	/*********************************************
-	*  create_with_initial_null_bytes_numbering  *
-	*********************************************/
+	/*************************************************
+	*  set_create_with_initial_null_bytes_numbering  *
+	*************************************************/
 
 	VALUE rb_RPDB_MemoryPoolFileSettingsController_setCreateWithInitialNullBytesNumbering( VALUE	rb_memory_pool_file_settings_controller, 
 																								VALUE	rb_initial_null_bytes )	{

@@ -88,108 +88,31 @@ describe RPDB::Settings::Database::Cache do
     RPDB::Settings::Database::Cache.new.parent_database_settings_controller.should_not == nil
   end
 
-  #######################
-  #  max_size_in_bytes  #
-  #######################
+  ################################################
+  #  set_max_size_in_bytes                       #
+	#  set_max_size_in_kbytes                      #
+	#  set_max_size_in_mbytes                      #
+	#  set_max_size_in_gbytes                      #
+	#  set_max_size_in_gbytes_mbytes_kbytes_bytes  #
+	#  set_max_size_in_mbytes_kbytes_bytes         #
+	#  set_max_size_in_kbytes_bytes                #
+  #  max_size_in_bytes                           #
+	#  max_size_in_kbytes                          #
+	#  max_size_in_mbytes                          #
+	#  max_size_in_gbytes                          #
+  ################################################
 
   it "" do
-    Fail
-  end
-
-  	########################
-  	#  max_size_in_kbytes  #
-  	########################
-
-    it "" do
-      Fail
-    end
-
-  	########################
-  	#  max_size_in_mbytes  #
-  	########################
-
-    it "" do
-      Fail
-    end
-
-  	########################
-  	#  max_size_in_gbytes  #
-  	########################
-
-    it "" do
-      Fail
-    end
-
-  ###########################
-  #  set_max_size_in_bytes  #
-  ###########################
-
-  it "" do
-    Fail
-  end
-
-  	############################
-  	#  set_max_size_in_kbytes  #
-  	############################
-
-    it "" do
-      Fail
-    end
-
-  	############################
-  	#  set_max_size_in_mbytes  #
-  	############################
-
-    it "" do
-      Fail
-    end
-
-  	############################
-  	#  set_max_size_in_gbytes  #
-  	############################
-
-    it "" do
-      Fail
-    end
-
-  	################################################
-  	#  set_max_size_in_gbytes_mbytes_kbytes_bytes  #
-  	################################################
-
-    it "" do
-      Fail
-    end
-
-  	#########################################
-  	#  set_max_size_in_mbytes_kbytes_bytes  #
-  	#########################################
-
-    it "" do
-      Fail
-    end
-
-  	##################################
-  	#  set_max_size_in_kbytes_bytes  #
-  	##################################
-
-    it "" do
-      Fail
-    end
-
-  ##########################
-  #  number_cache_regions  #
-  ##########################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ##############################
   #  set_number_cache_regions  #
+  #  number_cache_regions      #
   ##############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   ##################
@@ -197,7 +120,7 @@ describe RPDB::Settings::Database::Cache do
   ##################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   #########################
@@ -205,7 +128,7 @@ describe RPDB::Settings::Database::Cache do
   #########################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

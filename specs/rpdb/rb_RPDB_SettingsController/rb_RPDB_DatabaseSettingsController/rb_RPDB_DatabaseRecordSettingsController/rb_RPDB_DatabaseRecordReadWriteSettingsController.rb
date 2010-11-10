@@ -96,516 +96,229 @@ describe RPDB::Settings::Database::Record::ReadWrite do
     RPDB::Settings::Database::Record::ReadWrite.new.parent_database_record_settings_controller.should_not == nil
   end
 
-  ##############
-  #  filename  #
-  ##############
-
-  it "" do
-    Fail
-  end
-
   ##################
   #  set_filename  #
+  #  filename      #
   ##################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  ############################
-  #  prohibit_sync_on_close  #
-  ############################
+  #####################################
+  #  prohibit_sync_on_close?          #
+	#  turn_prohibit_sync_on_close_on   #
+	#  turn_prohibit_sync_on_close_off  #
+  #####################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	####################################
-  	#  turn_prohibit_sync_on_close_on  #
-  	####################################
-
-    it "" do
-      Fail
-    end
-
-  	#####################################
-  	#  turn_prohibit_sync_on_close_off  #
-  	#####################################
-
-    it "" do
-      Fail
-    end
-
-  ##################
-  #  ignore_lease  #
-  ##################
+  ###########################
+  #  ignore_lease           #
+	#  turn_ignore_lease_on   #
+	#  turn_ignore_lease_off  #
+  ###########################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	##########################
-  	#  turn_ignore_lease_on  #
-  	##########################
-
-    it "" do
-      Fail
-    end
-
-  	###########################
-  	#  turn_ignore_lease_off  #
-  	###########################
-
-    it "" do
-      Fail
-    end
-
-  #####################
-  #  return_multiple  #
-  #####################
-
-  it "" do
-    Fail
-  end
-
-  	###############################
-  	#  turn_return_multiple_on  #
-  	###############################
-
-    it "" do
-      Fail
-    end
-
-  	##############################
-  	#  turn_return_multiple_off  #
-  	##############################
-
-    it "" do
-      Fail
-    end
-
-  #############################
-  #  prohibit_duplicate_data  #
-  #############################
-
-  it "" do
-    Fail
-  end
-
-  	#####################################
-  	#  turn_prohibit_duplicate_data_on  #
-  	#####################################
-
-    it "" do
-      Fail
-    end
-
-  	######################################
-  	#  turn_prohibit_duplicate_data_off  #
-  	######################################
-
-    it "" do
-      Fail
-    end
-
-  ########################
-  #  prohibit_overwrite  #
-  ########################
-
-  it "" do
-    Fail
-  end
-
-  	################################
-  	#  turn_prohibit_overwrite_on  #
-  	################################
-
-    it "" do
-      Fail
-    end
-
-  	#################################
-  	#  turn_prohibit_overwrite_off  #
-  	#################################
-
-    it "" do
-      Fail
-    end
 
   ##############################
-  #  prohibit_page_compaction  #
+  #  return_multiple           #
+	#  turn_return_multiple_on   #
+	#  turn_return_multiple_off  #
   ##############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	######################################
-  	#  turn_prohibit_page_compaction_on  #
-  	######################################
-
-    it "" do
-      Fail
-    end
-
-  	#######################################
-  	#  turn_prohibit_page_compaction_off  #
-  	#######################################
-
-    it "" do
-      Fail
-    end
-
-  ################################
-  #  return_pages_to_filesystem  #
-  ################################
+  ######################################
+  #  prohibit_duplicate_data           #
+	#  turn_prohibit_duplicate_data_on   #
+	#  turn_prohibit_duplicate_data_off  #
+  ######################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	########################################
-  	#  turn_return_pages_to_filesystem_on  #
-  	########################################
-
-    it "" do
-      Fail
-    end
-
-  	#########################################
-  	#  turn_return_pages_to_filesystem_off  #
-  	#########################################
-
-    it "" do
-      Fail
-    end
-
-  ###########################
-  #  truncate_file_on_open  #
-  ###########################
+  #################################
+  #  prohibit_overwrite           #
+	#  turn_prohibit_overwrite_on   #
+	#  turn_prohibit_overwrite_off  #
+  #################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	###################################
-  	#  turn_truncate_file_on_open_on  #
-  	###################################
-
-    it "" do
-      Fail
-    end
-
-  	####################################
-  	#  turn_truncate_file_on_open_off  #
-  	####################################
-
-    it "" do
-      Fail
-    end
 
   #######################################
-  #  write_locks_instead_of_read_locks  #
+  #  prohibit_page_compaction           #
+	#  turn_prohibit_page_compaction_on   #
+	#  turn_prohibit_page_compaction_off  #
   #######################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###############################################
-  	#  turn_write_locks_instead_of_read_locks_on  #
-  	###############################################
-
-    it "" do
-      Fail
-    end
-
-  	################################################
-  	#  turn_write_locks_instead_of_read_locks_off  #
-  	################################################
-
-    it "" do
-      Fail
-    end
-
-  ####################
-  #  partial_access  #
-  ####################
+  #########################################
+  #  return_pages_to_filesystem           #
+	#  turn_return_pages_to_filesystem_on   #
+	#  turn_return_pages_to_filesystem_off  #
+  #########################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	############################
-  	#  turn_partial_access_on  #
-  	############################
-
-    it "" do
-      Fail
-    end
-
-  	#############################
-  	#  turn_partial_access_off  #
-  	#############################
-
-    it "" do
-      Fail
-    end
-
-  ############################################
-  #  database_allocates_memory_using_malloc  #
-  ############################################
+  ####################################
+  #  truncate_file_on_open           #
+	#  turn_truncate_file_on_open_on   #
+	#  turn_truncate_file_on_open_off  #
+  ####################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	####################################################
-  	#  turn_database_allocates_memory_using_malloc_on  #
-  	####################################################
-
-    it "" do
-      Fail
-    end
-
-  	#####################################################
-  	#  turn_database_allocates_memory_using_malloc_off  #
-  	#####################################################
-
-    it "" do
-      Fail
-    end
-
-  #############################################
-  #  database_allocates_memory_using_realloc  #
-  #############################################
+  ################################################
+  #  write_locks_instead_of_read_locks           #
+	#  turn_write_locks_instead_of_read_locks_on   #
+	#  turn_write_locks_instead_of_read_locks_off  #
+  ################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#####################################################
-  	#  turn_database_allocates_memory_using_realloc_on  #
-  	#####################################################
-
-    it "" do
-      Fail
-    end
-
-  	######################################################
-  	#  turn_database_allocates_memory_using_realloc_off  #
-  	######################################################
-
-    it "" do
-      Fail
-    end
-
-  ##################################
-  #  application_allocates_memory  #
-  ##################################
+  #############################
+  #  partial_access           #
+	#  turn_partial_access_on   #
+	#  turn_partial_access_off  #
+  #############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##########################################
-  	#  turn_application_allocates_memory_on  #
-  	##########################################
-
-    it "" do
-      Fail
-    end
-
-  	###########################################
-  	#  turn_application_allocates_memory_off  #
-  	###########################################
-
-    it "" do
-      Fail
-    end
-
-  ###########################
-  #  database_frees_memory  #
-  ###########################
+  #####################################################
+  #  database_allocates_memory_using_malloc           #
+	#  turn_database_allocates_memory_using_malloc_on   #
+	#  turn_database_allocates_memory_using_malloc_off  #
+  #####################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###################################
-  	#  turn_database_frees_memory_on  #
-  	###################################
-
-    it "" do
-      Fail
-    end
-
-  	####################################
-  	#  turn_database_frees_memory_off  #
-  	####################################
-
-    it "" do
-      Fail
-    end
-
-  ################################
-  #  sync_prior_to_write_return  #
-  ################################
+  ######################################################
+  #  database_allocates_memory_using_realloc           #
+	#  turn_database_allocates_memory_using_realloc_on   #
+	#  turn_database_allocates_memory_using_realloc_off  #
+  ######################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	########################################
-  	#  turn_sync_prior_to_write_return_on  #
-  	########################################
-
-    it "" do
-      Fail
-    end
-
-  	#########################################
-  	#  turn_sync_prior_to_write_return_off  #
-  	#########################################
-
-    it "" do
-      Fail
-    end
-
-  ######################
-  #  data_buffer_size  #
-  ######################
+  ###########################################
+  #  application_allocates_memory           #
+	#  turn_application_allocates_memory_on   #
+	#  turn_application_allocates_memory_off  #
+  ###########################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
+
+  ####################################
+  #  database_frees_memory           #
+	#  turn_database_frees_memory_on   #
+	#  turn_database_frees_memory_off  #
+  ####################################
+
+  it "" do
+    raise "Failed."
+  end
+
+  #########################################
+  #  sync_prior_to_write_return           #
+	#  turn_sync_prior_to_write_return_on   #
+	#  turn_sync_prior_to_write_return_off  #
+  #########################################
+
+  it "" do
+    raise "Failed."
+  end
+
+    ################################
+    #  permit_duplicates           #
+    #  turn_permit_duplicates_on   #
+    #  turn_permit_duplicates_off  #
+    ################################
+
+    it "" do
+      raise "Failed."
+    end
+
+    ##############################
+    #  sort_duplicates           #
+  	#  turn_sort_duplicates_on   #
+  	#  turn_sort_duplicates_off  #
+    ##############################
+
+    it "" do
+      raise "Failed."
+    end
+
+    #############################
+    #  serialize_data           #
+  	#  turn_serialize_data_on   #
+  	#  turn_serialize_data_off  #
+    #############################
+
+    it "" do
+      raise "Failed."
+    end
 
   ##########################
   #  set_data_buffer_size  #
+  #  data_buffer_size      #
   ##########################
 
   it "" do
-    Fail
-  end
-
-  #############################
-  #  partial_read_write_size  #
-  #############################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #################################
   #  set_partial_read_write_size  #
+  #  partial_read_write_size      #
   #################################
 
   it "" do
-    Fail
-  end
-
-  ##############################
-  #  partial_read_write_offset  #
-  ##############################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ###################################
   #  set_partial_read_write_offset  #
+  #  partial_read_write_offset      #
   ###################################
 
   it "" do
-    Fail
-  end
-
-  #######################
-  #  permit_duplicates  #
-  #######################
-
-  it "" do
-    Fail
-  end
-
-  	################################
-  	 #  turn_permit_duplicates_on  #
-  	 ###############################
-
-     it "" do
-       Fail
-     end
-
-  	#################################
-  	 #  turn_permit_duplicates_off  #
-  	 ################################
-
-     it "" do
-       Fail
-     end
-
-  #####################
-  #  sort_duplicates  #
-  #####################
-
-  it "" do
-    Fail
-  end
-
-  	##############################
-  	 #  turn_sort_duplicates_on  #
-  	 #############################
-
-     it "" do
-       Fail
-     end
-
-  	###############################
-  	 #  turn_sort_duplicates_off  #
-  	 ##############################
-
-     it "" do
-       Fail
-     end
-
-  ####################
-  #  serialize_data  #
-  ####################
-
-  it "" do
-    Fail
-  end
-
-  	#############################
-  	 #  turn_serialize_data_on  #
-  	 ############################
-
-     it "" do
-       Fail
-     end
-
-  	##############################
-  	 #  turn_serialize_data_off  #
-  	 #############################
-
-     it "" do
-       Fail
-     end
-
-  ##################
-  #  storage_type  #
-  ##################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ######################
   #  set_storage_type  #
+  #  storage_type      #
   ######################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

@@ -62,7 +62,7 @@ describe RPDB::Settings::Directory do
   ####################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   ######################
@@ -70,7 +70,7 @@ describe RPDB::Settings::Directory do
   ######################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   ########################
@@ -78,7 +78,7 @@ describe RPDB::Settings::Directory do
   ########################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

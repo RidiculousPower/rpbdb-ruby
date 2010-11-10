@@ -28,32 +28,32 @@ describe RPDB::Settings::Database::Compact do
 
   # RPDB::Settings::Database::Compact.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Compact.new( @environment ).should_not == nil
+    RPDB::Settings::Database::Compact.new( @environment ).class.should == RPDB::Settings::Database::Compact
   end
 
   # RPDB::Settings::Database::Compact.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Compact.new( @environment.database_controller ).should_not == nil
+    RPDB::Settings::Database::Compact.new( @environment.database_controller ).class.should == RPDB::Settings::Database::Compact
   end
 
   # RPDB::Settings::Database::Compact.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Compact.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Compact.new( @environment.database_controller.new( $database_name ) ).class.should == RPDB::Settings::Database::Compact
   end
 
   # RPDB::Settings::Database::Compact.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Compact.new( RPDB::Settings.new ).should_not == nil
+    RPDB::Settings::Database::Compact.new( RPDB::Settings.new ).class.should == RPDB::Settings::Database::Compact
   end
 
   # RPDB::Settings::Database::Compact.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Compact.new( RPDB::Settings::Database.new ).should_not == nil
+    RPDB::Settings::Database::Compact.new( RPDB::Settings::Database.new ).class.should == RPDB::Settings::Database::Compact
   end
 
   # RPDB::Settings::Database::Compact.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Compact.new.should_not == nil
+    RPDB::Settings::Database::Compact.new.class.should == RPDB::Settings::Database::Compact
   end
 
   ########################
@@ -61,7 +61,8 @@ describe RPDB::Settings::Database::Compact do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Database::Compact.new.parent_environment.should_not == nil
+    RPDB::Settings::Database::Compact.new.parent_environment.class.should == RPDB::Environment
+    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_environment.class.should == RPDB::Environment
   end
 
   #####################
@@ -69,7 +70,8 @@ describe RPDB::Settings::Database::Compact do
   #####################
 
   it "can return its parent database" do
-    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
+    RPDB::Settings::Database::Compact.new.parent_database.class.should == RPDB::Database
+    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_database.class.should == RPDB::Database
   end
 
   ################################
@@ -77,7 +79,8 @@ describe RPDB::Settings::Database::Compact do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Database::Compact.new.parent_settings_controller.should_not == nil
+    RPDB::Settings::Database::Compact.new.parent_settings_controller.class.should == RPDB::Settings
+    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.class.should == RPDB::Settings
   end
 
   #########################################
@@ -85,55 +88,35 @@ describe RPDB::Settings::Database::Compact do
   #########################################
 
   it "can return its parent database settings controller" do
-    RPDB::Settings::Database::Compact.new.parent_database_settings_controller.should_not == nil
-  end
-
-  ##################
-  #  fill_percent  #
-  ##################
-
-  it "" do
-    Fail
+    RPDB::Settings::Database::Compact.new.parent_database_settings_controller.class.should == RPDB::Settings::Database
+    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.class.should == RPDB::Settings::Database
   end
 
   ######################
   #  set_fill_percent  #
+  #  fill_percent      #
   ######################
 
   it "" do
-    Fail
-  end
-
-  ##########################
-  #  max_pages_to_compact  #
-  ##########################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ##############################
   #  set_max_pages_to_compact  #
+  #  max_pages_to_compact      #
   ##############################
 
   it "" do
-    Fail
-  end
-
-  #############
-  #  timeout  #
-  #############
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #################
   #  set_timeout  #
+  #  timeout      #
   #################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

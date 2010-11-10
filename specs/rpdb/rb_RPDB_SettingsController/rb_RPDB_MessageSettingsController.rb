@@ -57,164 +57,94 @@ describe RPDB::Settings::Message do
     RPDB::Settings::Message.new.parent_settings_controller.should_not == nil
   end
 
-  ##########
-  #  file  #
-  ##########
-
-  it "" do
-    Fail
-  end
-
   ##############
   #  set_file  #
+  #  file      #
   ##############
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   ##########################
   #  set_message_callback  #
+  #  message_callback      #
   ##########################
 
   it "" do
-    Fail
-  end
-
-  ######################
-  #  message_callback  #
-  ######################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ###############################
   #  set_panic_callback_method  #
+  #  panic_callback_method      #
   ###############################
 
   it "" do
-    Fail
-  end
-
-  ###########################
-  #  panic_callback_method  #
-  ###########################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ########################################################
   #  set_site_is_now_replication_client_callback_method  #
+  #  site_is_now_replication_client_callback_method      #
   ########################################################
 
   it "" do
-    Fail
-  end
-
-  ####################################################
-  #  site_is_now_replication_client_callback_method  #
-  ####################################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #######################################################
   #  set_site_won_replication_election_callback_method  #
+  #  site_won_replication_election_callback_method      #
   #######################################################
 
   it "" do
-    Fail
-  end
-
-  ###################################################
-  #  site_won_replication_election_callback_method  #
-  ###################################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #################################################################
   #  set_site_is_now_master_of_replication_group_callback_method  #
+  #  site_is_now_master_of_replication_group_callback_method      #
   #################################################################
 
   it "" do
-    Fail
-  end
-
-  #############################################################
-  #  site_is_now_master_of_replication_group_callback_method  #
-  #############################################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ##########################################################
   #  set_replication_group_has_new_master_callback_method  #
+  #  replication_group_has_new_master_callback_method      #
   ##########################################################
 
   it "" do
-    Fail
-  end
-
-  ######################################################
-  #  replication_group_has_new_master_callback_method  #
-  ######################################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ############################################################
   #  set_replication_acknowledgement_failed_callback_method  #
+  #  replication_acknowledgement_failed_callback_method      #
   ############################################################
 
   it "" do
-    Fail
-  end
-
-  ########################################################
-  #  replication_acknowledgement_failed_callback_method  #
-  ########################################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #######################################################
   #  set_replication_startup_completed_callback_method  #
+  #  replication_startup_completed_callback_method      #
   #######################################################
 
   it "" do
-    Fail
-  end
-
-  ###################################################
-  #  replication_startup_completed_callback_method  #
-  ###################################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ######################################
   #  set_write_failed_callback_method  #
+  #  write_failed_callback_method      #
   ######################################
 
   it "" do
-    Fail
-  end
-
-  ##################################
-  #  write_failed_callback_method  #
-  ##################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
 end

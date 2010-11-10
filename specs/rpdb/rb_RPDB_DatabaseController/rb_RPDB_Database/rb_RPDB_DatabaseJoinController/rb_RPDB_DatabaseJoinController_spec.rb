@@ -97,7 +97,7 @@ pp     cursor.first
   ##########################
   
   it "can perform a join and return a join cursor" do
-    Fail
+    raise "Failed."
   end
 
   #######################
@@ -106,7 +106,7 @@ pp     cursor.first
   #######################
 
   it "can close all join" do
-    Fail
+    raise "Failed."
   end
   
 end

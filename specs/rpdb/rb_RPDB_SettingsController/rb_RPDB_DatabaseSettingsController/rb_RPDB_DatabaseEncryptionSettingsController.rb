@@ -88,29 +88,15 @@ describe RPDB::Settings::Database::Encryption do
     RPDB::Settings::Database::Encryption.new.parent_database_settings_controller.should_not == nil
   end
 
-  ###############
-  #  encrypted  #
-  ###############
+  #########################
+  #  encrypted            #
+	#  turn_encryption_on   #
+	#  turn_encryption_off  #
+  #########################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	########################
-  	#  turn_encryption_on  #
-  	########################
-
-    it "" do
-      Fail
-    end
-
-  	#########################
-  	#  turn_encryption_off  #
-  	#########################
-
-    it "" do
-      Fail
-    end
 
 end
 

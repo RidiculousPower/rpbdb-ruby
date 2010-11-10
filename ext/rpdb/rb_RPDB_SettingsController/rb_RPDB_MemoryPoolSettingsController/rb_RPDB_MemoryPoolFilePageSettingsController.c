@@ -197,9 +197,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_parentMemoryPoolFileSettingsC
 	return rb_parent_memory_pool_file_settings_controller;
 }
 
-/********************************************
-*  get_page_creates_page_if_does_not_exist  *
-********************************************/
+/*********************************************
+*  get_page_creates_page_if_does_not_exist?  *
+*********************************************/
 
 //	The DB_MPOOL_CREATE, DB_MPOOL_LAST, and DB_MPOOL_NEW flags are mutually exclusive.
 //	DB_MPOOL_CREATE		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/memp_fget.html
@@ -240,9 +240,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageCreatesPageIfDoesNotEx
 		return rb_memory_pool_file_page_settings_controller;
 	}
 
-/*****************************************
-*  get_page_writes_copy_before_eviction  *
-*****************************************/
+/******************************************
+*  get_page_writes_copy_before_eviction?  *
+******************************************/
 
 //	The page will be modified and must be written to the source file before being evicted from the pool. 
 //	For files open with the DB_MULTIVERSION flag set, a new copy of the page will be made if this is the first time the specified transaction is modifying it.
@@ -284,9 +284,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageWritesCopyBeforeEvicti
 		return rb_memory_pool_file_page_settings_controller;
 	}
 
-/*************************************************
-*  get_page_writes_before_eviction_without_copy  *
-*************************************************/
+/**************************************************
+*  get_page_writes_before_eviction_without_copy?  *
+**************************************************/
 
 //	The page will be modified and must be written to the source file before being evicted from the pool. 
 //	No copy of the page will be made, regardless of the DB_MULTIVERSION setting. 
@@ -329,9 +329,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageWritesBeforeEvictionWi
 		return rb_memory_pool_file_page_settings_controller;
 	}
 	
-/*******************************
-*  get_page_returns_last_page  *
-*******************************/
+/********************************
+*  get_page_returns_last_page?  *
+********************************/
 
 //	The DB_MPOOL_CREATE, DB_MPOOL_LAST, and DB_MPOOL_NEW flags are mutually exclusive.
 //	Return the last page of the source file, and copy its page number into the memory location to which pgnoaddr refers.
@@ -373,9 +373,9 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageReturnsLastPage( VALUE
 		return rb_memory_pool_file_page_settings_controller;
 	}	
 	
-/******************************
-*  get_page_creates_new_page  *
-******************************/
+/*******************************
+*  get_page_creates_new_page?  *
+*******************************/
 
 //	The DB_MPOOL_CREATE, DB_MPOOL_LAST, and DB_MPOOL_NEW flags are mutually exclusive.
 //	Create a new page in the file, and copy its page number into the memory location to which pgnoaddr refers. 
@@ -387,7 +387,7 @@ VALUE rb_RPDB_MemoryPoolFilePageSettingsController_getPageCreatesNewPage( VALUE	
 	C_RPDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 	return ( RPDB_MemoryPoolFilePageSettingsController_getPageCreatesNewPage( c_memory_pool_file_page_settings_controller )	?	Qtrue
-																																:	Qfalse );
+																																																													:	Qfalse );
 }
 
 	/**************************************

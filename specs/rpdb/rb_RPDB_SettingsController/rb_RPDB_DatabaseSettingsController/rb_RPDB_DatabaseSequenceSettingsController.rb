@@ -88,132 +88,76 @@ describe RPDB::Settings::Database::Sequence do
     RPDB::Settings::Database::Sequence.new.parent_database_settings_controller.should_not == nil
   end
 
-  ################
-  #  increasing  #
-  ################
-
-  it "" do
-    Fail
-  end
-
   #######################
   #  set_as_increasing  #
+  #  increasing         #
   #######################
 
   it "" do
-    Fail
-  end
-
-  ################
-  #  decreasing  #
-  ################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #######################
   #  set_as_decreasing  #
+  #  decreasing         #
   #######################
 
   it "" do
-    Fail
-  end
-
-  ##########
-  #  wrap  #
-  ##########
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #################
   #  set_to_wrap  #
+  #  wrap         #
   #################
 
   it "" do
-    Fail
-  end
-
-  ###################
-  #  range_minimum  #
-  ###################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #######################
   #  set_range_minimum  #
+  #  range_minimum      #
   #######################
 
   it "" do
-    Fail
-  end
-
-  ###################
-  #  range_maximum  #
-  ###################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #######################
   #  set_range_maximum  #
+  #  range_maximum      #
   #######################
 
   it "" do
-    Fail
-  end
-
-  ################
-  #  cache_size  #
-  ################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ####################
   #  set_cache_size  #
+  #  cache_size      #
   ####################
 
   it "" do
-    Fail
-  end
-
-  ###################
-  #  initial_value  #
-  ###################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #######################
   #  set_initial_value  #
+  #  initial_value      #
   #######################
 
   it "" do
-    Fail
-  end
-
-  ########################
-  #  default_step_value  #
-  ########################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ############################
   #  set_default_step_value  #
+  #  default_step_value      #
   ############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

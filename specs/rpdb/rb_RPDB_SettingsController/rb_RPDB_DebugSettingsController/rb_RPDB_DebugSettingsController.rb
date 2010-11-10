@@ -57,180 +57,82 @@ describe RPDB::Database do
     RPDB::Settings::Debug.new.parent_settings_controller.should_not == nil
   end
 
-  #####################################################
-  #  run_normal_recovery_before_opening_environment?  #
-  #####################################################
+  #############################################################
+  #  run_normal_recovery_before_opening_environment?          #
+	#  turn_run_normal_recovery_before_opening_environment_on   #
+	#  turn_run_normal_recovery_before_opening_environment_off  #
+  #############################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	############################################################
-  	#  turn_run_normal_recovery_before_opening_environment_on  #
-  	############################################################
-
-    it "" do
-      Fail
-    end
-
-  	#############################################################
-  	#  turn_run_normal_recovery_before_opening_environment_off  #
-  	#############################################################
-
-    it "" do
-      Fail
-    end
-
-  ###########################################################
-  #  run_catastrophic_recovery_before_opening_environment?  #
-  ###########################################################
+  ###################################################################
+  #  run_catastrophic_recovery_before_opening_environment?          #
+	#  turn_run_catastrophic_recovery_before_opening_environment_on   #
+	#  turn_run_catastrophic_recovery_before_opening_environment_off  #
+  ###################################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	##################################################################
-  	#  turn_run_catastrophic_recovery_before_opening_environment_on  #
-  	##################################################################
-
-    it "" do
-      Fail
-    end
-
-  	###################################################################
-  	#  turn_run_catastrophic_recovery_before_opening_environment_off  #
-  	###################################################################
-
-    it "" do
-      Fail
-    end
-
-  #######################
-  #  open_in_lockdown?  #
-  #######################
-
-  it "" do
-    Fail
-  end
-
-  	##############################
-  	#  turn_open_in_lockdown_on  #
-  	##############################
-
-    it "" do
-      Fail
-    end
-
-  	###############################
-  	#  turn_open_in_lockdown_off  #
-  	###############################
-
-    it "" do
-      Fail
-    end
-
-  ####################################################
-  #  check_for_recovery_before_opening_environment?  #
-  ####################################################
-
-  it "" do
-    Fail
-  end
-
-  	###########################################################
-  	#  turn_check_for_recovery_before_opening_environment_on  #
-  	###########################################################
-
-    it "" do
-      Fail
-    end
-
-  	############################################################
-  	#  turn_check_for_recovery_before_opening_environment_off  #
-  	############################################################
-
-    it "" do
-      Fail
-    end
-
-  #####################
-  #  prohibit_panic?  #
-  #####################
-
-  it "" do
-    Fail
-  end
-
-  	############################
-  	#  turn_prohibit_panic_on  #
-  	############################
-
-    it "" do
-      Fail
-    end
-
-  	#############################
-  	#  turn_prohibit_panic_off  #
-  	#############################
-
-    it "" do
-      Fail
-    end
-
-  ############
-  #  panic?  #
-  ############
-
-  it "" do
-    Fail
-  end
-
-  	###################
-  	#  turn_panic_on  #
-  	###################
-
-    it "" do
-      Fail
-    end
-
-  	####################
-  	#  turn_panic_off  #
-  	####################
-
-    it "" do
-      Fail
-    end
 
   ###############################
-  #  yield_cpu_for_stress_test  #
+  #  open_in_lockdown?          #
+	#  turn_open_in_lockdown_on   #
+	#  turn_open_in_lockdown_off  #
   ###############################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#######################################
-  	#  turn_yield_cpu_for_stress_test_on  #
-  	#######################################
+  ############################################################
+  #  check_for_recovery_before_opening_environment?          #
+	#  turn_check_for_recovery_before_opening_environment_on   #
+	#  turn_check_for_recovery_before_opening_environment_off  #
+  ############################################################
 
-    it "" do
-      Fail
-    end
+  it "" do
+    raise "Failed."
+  end
 
-  	########################################
-  	#  turn_yield_cpu_for_stress_test_off  #
-  	########################################
+  #############################
+  #  prohibit_panic?          #
+	#  turn_prohibit_panic_on   #
+	#  turn_prohibit_panic_off  #
+  #############################
 
-    it "" do
-      Fail
-    end
+  it "" do
+    raise "Failed."
+  end
+
+  ####################
+  #  panic?          #
+	#  turn_panic_on   #
+	#  turn_panic_off  #
+  ####################
+
+  it "" do
+    raise "Failed."
+  end
+
+  ########################################
+  #  yield_cpu_for_stress_test           #
+	#  turn_yield_cpu_for_stress_test_on   #
+	#  turn_yield_cpu_for_stress_test_off  #
+  ########################################
+
+  it "" do
+    raise "Failed."
+  end
 
   ###################################
   #  verbosity_settings_controller  #
   ###################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
 end

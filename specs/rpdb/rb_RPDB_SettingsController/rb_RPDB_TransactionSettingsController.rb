@@ -57,444 +57,206 @@ describe RPDB::Settings::Transaction do
     RPDB::Settings::Transaction.new.parent_settings_controller.should_not == nil
   end
 
-  #########
-  #  on?  #
-  #########
+  ##############
+  #  on?       #
+  #  off?      #
+	#  turn_on   #
+	#  turn_off  #
+  ##############
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  ##########
-  #  off?  #
-  ##########
+  #####################################
+  #  prohibit_sync_on_write?          #
+	#  turn_prohibit_sync_on_write_on   #
+	#  turn_prohibit_sync_on_write_off  #
+  #####################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#############
-  	#  turn_on  #
-  	#############
-
-    it "" do
-      Fail
-    end
-
-  	##############
-  	#  turn_off  #
-  	##############
-
-    it "" do
-      Fail
-    end
-
-  #############################
-  #  prohibit_sync_on_write?  #
-  #############################
+  ##################################################
+  #  prohibit_sync_on_commit_transaction?          #
+	#  turn_prohibit_sync_on_commit_transaction_on   #
+	#  turn_prohibit_sync_on_commit_transaction_off  #
+  ##################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	####################################
-  	#  turn_prohibit_sync_on_write_on  #
-  	####################################
-
-    it "" do
-      Fail
-    end
-
-  	#####################################
-  	#  turn_prohibit_sync_on_write_off  #
-  	#####################################
-
-    it "" do
-      Fail
-    end
-
-  ##########################################
-  #  prohibit_sync_on_commit_transaction?  #
-  ##########################################
+  ################################################
+  #  timeout_returns_deny_not_deadlock?          #
+	#  turn_timeout_returns_deny_not_deadlock_on   #
+	#  turn_timeout_returns_deny_not_deadlock_off  #
+  ################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	#################################################
-  	#  turn_prohibit_sync_on_commit_transaction_on  #
-  	#################################################
-
-    it "" do
-      Fail
-    end
-
-  	##################################################
-  	#  turn_prohibit_sync_on_commit_transaction_off  #
-  	##################################################
-
-    it "" do
-      Fail
-    end
-
-  ########################################
-  #  timeout_returns_deny_not_deadlock?  #
-  ########################################
+  ############################################
+  #  concurrent_data_store_locking?          #
+	#  turn_concurrent_data_store_locking_on   #
+	#  turn_concurrent_data_store_locking_off  #
+  ############################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###############################################
-  	#  turn_timeout_returns_deny_not_deadlock_on  #
-  	###############################################
-
-    it "" do
-      Fail
-    end
-
-  	################################################
-  	#  turn_timeout_returns_deny_not_deadlock_off  #
-  	################################################
-
-    it "" do
-      Fail
-    end
-
-  ####################################
-  #  concurrent_data_store_locking?  #
-  ####################################
+  #################################
+  #  snapshot_isolation?          #
+	#  turn_snapshot_isolation_on   #
+	#  turn_snapshot_isolation_off  #
+  #################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	###########################################
-  	#  turn_concurrent_data_store_locking_on  #
-  	###########################################
-
-    it "" do
-      Fail
-    end
-
-  	############################################
-  	#  turn_concurrent_data_store_locking_off  #
-  	############################################
-
-    it "" do
-      Fail
-    end
-
-  #########################
-  #  snapshot_isolation?  #
-  #########################
+  ###################################
+  #  degree_one_isolation?          #
+	#  turn_degree_one_isolation_on   #
+	#  turn_degree_one_isolation_off  #
+  ###################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	################################
-  	#  turn_snapshot_isolation_on  #
-  	################################
-
-    it "" do
-      Fail
-    end
-
-  	#################################
-  	#  turn_snapshot_isolation_off  #
-  	#################################
-
-    it "" do
-      Fail
-    end
-
-  ###########################
-  #  degree_one_isolation?  #
-  ###########################
+  ###################################
+  #  degree_two_isolation?          #
+	#  turn_degree_two_isolation_on   #
+	#  turn_degree_two_isolation_off  #
+  ###################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
-  	##################################
-  	#  turn_degree_one_isolation_on  #
-  	##################################
-
-    it "" do
-      Fail
-    end
-
-  	###################################
-  	#  turn_degree_one_isolation_off  #
-  	###################################
-
-    it "" do
-      Fail
-    end
-
-  ###########################
-  #  degree_two_isolation?  #
-  ###########################
+  ##################################################
+  #  enclose_all_activity_in_transaction?          #
+	#  turn_enclose_all_activity_in_transaction_on   #
+	#  turn_enclose_all_activity_in_transaction_off  #
+  ##################################################
 
   it "" do
-    Fail
+    raise "Failed."
   end
-
-  	##################################
-  	#  turn_degree_two_isolation_on  #
-  	##################################
-
-    it "" do
-      Fail
-    end
-
-  	###################################
-  	#  turn_degree_two_isolation_off  #
-  	###################################
-
-    it "" do
-      Fail
-    end
-
-  ##########################################
-  #  enclose_all_activity_in_transaction?  #
-  ##########################################
-
-  it "" do
-    Fail
-  end
-
-  	#################################################
-  	#  turn_enclose_all_activity_in_transaction_on  #
-  	#################################################
-
-    it "" do
-      Fail
-    end
-
-  	##################################################
-  	#  turn_enclose_all_activity_in_transaction_off  #
-  	##################################################
-
-    it "" do
-      Fail
-    end
-
-  #######################################
-  #  environmental_snapshot_isolation?  #
-  #######################################
-
-  it "" do
-    Fail
-  end
-
-  	##############################################
-  	#  turn_environmental_snapshot_isolation_on  #
-  	##############################################
-
-    it "" do
-      Fail
-    end
-
-  	###############################################
-  	#  turn_environmental_snapshot_isolation_off  #
-  	###############################################
-
-    it "" do
-      Fail
-    end
-
-  ####################
-  #  sync_on_commit  #
-  ####################
-
-  it "" do
-    Fail
-  end
-
-  	############################
-  	#  turn_sync_on_commit_on  #
-  	############################
-
-    it "" do
-      Fail
-    end
-
-  	#############################
-  	#  turn_sync_on_commit_off  #
-  	#############################
-
-    it "" do
-      Fail
-    end
-
-  ####################
-  #  wait_for_locks  #
-  ####################
-
-  it "" do
-    Fail
-  end
-
-  	############################
-  	#  turn_wait_for_locks_on  #
-  	############################
-
-    it "" do
-      Fail
-    end
-
-  	#############################
-  	#  turn_wait_for_locks_off  #
-  	#############################
-
-    it "" do
-      Fail
-    end
 
   ###############################################
-  #  maximum_number_of_transactions_to_recover  #
+  #  environmental_snapshot_isolation?          #
+	#  turn_environmental_snapshot_isolation_on   #
+	#  turn_environmental_snapshot_isolation_off  #
   ###############################################
 
   it "" do
-    Fail
+    raise "Failed."
+  end
+
+  #############################
+  #  sync_on_commit           #
+	#  turn_sync_on_commit_on   #
+	#  turn_sync_on_commit_off  #
+  #############################
+
+  it "" do
+    raise "Failed."
+  end
+
+  #############################
+  #  wait_for_locks           #
+	#  turn_wait_for_locks_on   #
+	#  turn_wait_for_locks_off  #
+  #############################
+
+  it "" do
+    raise "Failed."
   end
 
   ###################################################
   #  set_maximum_number_of_transactions_to_recover  #
+  #  maximum_number_of_transactions_to_recover      #
   ###################################################
 
   it "" do
-    Fail
-  end
-
-  #############
-  #  timeout  #
-  #############
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #################
   #  set_timeout  #
+  #  timeout      #
   #################
 
   it "" do
-    Fail
-  end
-
-  ##############
-  #  max_open  #
-  ##############
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ##################
   #  set_max_open  #
+  #  max_open      #
   ##################
 
   it "" do
-    Fail
-  end
-
-  ###############
-  #  timestamp  #
-  ###############
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ###################
   #  set_timestamp  #
+  #  timestamp      #
   ###################
 
   it "" do
-    Fail
+    raise "Failed."
   end
 
   ######################################
   #  set_rollbackward_callback_method  #
+  #  rollbackward_callback_method      #
   ######################################
 
   it "" do
-    Fail
-  end
-
-  ##################################
-  #  rollbackward_callback_method  #
-  ##################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   #####################################
   #  set_rollforward_callback_method  #
+  #  rollforward_callback_method      #
   #####################################
 
   it "" do
-    Fail
-  end
-
-  #################################
-  #  rollforward_callback_method  #
-  #################################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ###############################
   #  set_abort_callback_method  #
+  #  abort_callback_method      #
   ###############################
 
   it "" do
-    Fail
-  end
-
-  ###########################
-  #  abort_callback_method  #
-  ###########################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ###############################
   #  set_apply_callback_method  #
+  #  apply_callback_method      #
   ###############################
 
   it "" do
-    Fail
-  end
-
-  ###########################
-  #  apply_callback_method  #
-  ###########################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
   ###############################
   #  set_print_callback_method  #
+  #  print_callback_method      #
   ###############################
 
   it "" do
-    Fail
-  end
-
-  ###########################
-  #  print_callback_method  #
-  ###########################
-
-  it "" do
-    Fail
+    raise "Failed."
   end
 
 end
