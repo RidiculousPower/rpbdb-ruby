@@ -64,16 +64,17 @@ describe RPDB::Settings::Replication do
   #  turn_off  #
   ##############
 
-  it "" do
+  it "can be turned on or off and report whether it is on or off" do
     raise "Failed."
   end
 
-  ##############################################
-  #  client_to_client_synchronization          #
-	#  turn_client_to_client_synchronization_on  #
-  ##############################################
+  ###############################################
+  #  client_to_client_synchronization           #
+	#  turn_client_to_client_synchronization_on   #
+	#  turn_client_to_client_synchronization_off  #
+  ###############################################
 
-  it "" do
+  it "can be set for client-to-client synchronization" do
     raise "Failed."
   end
 
@@ -83,7 +84,7 @@ describe RPDB::Settings::Replication do
 	#  turn_single_bulk_transfer_off  #
   ###################################
 
-  it "" do
+  it "can be set for single bulk transfer" do
     raise "Failed."
   end
 
@@ -93,7 +94,7 @@ describe RPDB::Settings::Replication do
 	#  turn_delay_new_sync_until_explicit_call_off  #
   #################################################
 
-  it "" do
+  it "can be set to delay new sync until an explicit sync call is made" do
     raise "Failed."
   end
 
@@ -103,7 +104,7 @@ describe RPDB::Settings::Replication do
 	#  turn_use_master_leases_off  #
   ################################
 
-  it "" do
+  it "can be set to use master leases or not" do
     raise "Failed."
   end
 
@@ -113,7 +114,7 @@ describe RPDB::Settings::Replication do
 	#  turn_reinitialize_outdated_clients_off  #
   ############################################
 
-  it "" do
+  it "can be set to reinitialize any outdated clients" do
     raise "Failed."
   end
 
@@ -123,7 +124,7 @@ describe RPDB::Settings::Replication do
 	#  turn_prohibit_wait_off  #
   ############################
 
-  it "" do
+  it "can be set to prohibit waiting" do
     raise "Failed."
   end
 
@@ -133,7 +134,7 @@ describe RPDB::Settings::Replication do
 	#  turn_require_strict_majority_off  #
   ######################################
 
-  it "" do
+  it "can be set to require a strict majority" do
     raise "Failed."
   end
 
@@ -142,7 +143,7 @@ describe RPDB::Settings::Replication do
   #  is_master?     #
   ###################
 
-  it "" do
+  it "can be set as master and report whether it is currently master" do
     raise "Failed."
   end
 
@@ -151,7 +152,7 @@ describe RPDB::Settings::Replication do
   #  is_client?     #
   ###################
 
-  it "" do
+  it "can be set as client and report whether it is currently client" do
     raise "Failed."
   end
 
@@ -160,7 +161,7 @@ describe RPDB::Settings::Replication do
   #  start_as_client_or_rally_election      #
   ###########################################
 
-  it "" do
+  it "can be set to start as client or to rally an election" do
     raise "Failed."
   end
 
@@ -169,7 +170,7 @@ describe RPDB::Settings::Replication do
   #  limit      #
   ###############
 
-  it "" do
+  it "can set its limit" do
     raise "Failed."
   end
 
@@ -178,7 +179,7 @@ describe RPDB::Settings::Replication do
   #  host      #
   ##############
 
-  it "" do
+  it "can set its host" do
     raise "Failed."
   end
 
@@ -187,7 +188,7 @@ describe RPDB::Settings::Replication do
   #  port      #
   ##############
 
-  it "" do
+  it "can set its port" do
     raise "Failed."
   end
 
@@ -196,7 +197,7 @@ describe RPDB::Settings::Replication do
   #  site_count      #
   ####################
 
-  it "" do
+  it "can set and return its site count" do
     raise "Failed."
   end
 
@@ -205,7 +206,7 @@ describe RPDB::Settings::Replication do
   #  priority_order_number      #
   ###############################
 
-  it "" do
+  it "can set and return its priority order number" do
     raise "Failed."
   end
 
@@ -214,7 +215,7 @@ describe RPDB::Settings::Replication do
   #  retransmission_threshold_minimum      #
   ##########################################
 
-  it "" do
+  it "can set and return its retransmission minimum threshold" do
     raise "Failed."
   end
 
@@ -223,7 +224,7 @@ describe RPDB::Settings::Replication do
   #  retransmission_threshold_maximum      #
   ##########################################
 
-  it "" do
+  it "can set and return its retransmission maximum threshold" do
     raise "Failed."
   end
 
@@ -232,7 +233,8 @@ describe RPDB::Settings::Replication do
   #  slowest_clock_value      #
   #############################
 
-  it "" do
+  # FIX - name of fastest/slowest should probably correspond
+  it "can set and return the slowest clock value" do
     raise "Failed."
   end
 
@@ -241,7 +243,7 @@ describe RPDB::Settings::Replication do
   #  fastest_clock_skew_value      #
   ##################################
 
-  it "" do
+  it "can set and return the fastest clock skew value" do
     raise "Failed."
   end
 
@@ -249,7 +251,7 @@ describe RPDB::Settings::Replication do
   #  election_settings_controller  #
   ##################################
 
-  it "" do
+  it "can return its election settings controller" do
     raise "Failed."
   end
 
@@ -257,7 +259,7 @@ describe RPDB::Settings::Replication do
   #  timeout_settings_controller  #
   #################################
 
-  it "" do
+  it "can return its timeout settings controller" do
     raise "Failed."
   end
 

@@ -75,7 +75,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   #  max_open_files      #
   ########################
 
-  it "" do
+  it "can set and return its maximum open file limit" do
     raise "Failed."
   end
 
@@ -84,7 +84,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   #  max_sequential_writes      #
   ###############################
 
-  it "" do
+  it "can set and return its maximum sequential write limit" do
     raise "Failed."
   end
 
@@ -93,7 +93,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   #  time_to_sleep_before_next_write      #
   #########################################
 
-  it "" do
+  it "can set and return its maximum time to sleep before next write" do
     raise "Failed."
   end
 
@@ -102,7 +102,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   #  max_mapped_database_size      #
   ##################################
 
-  it "" do
+  it "can set maximum mapped database size limit" do
     raise "Failed."
   end
 
@@ -112,17 +112,17 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
 	#  turn_pagefault_shared_regions_off  #
   #######################################
 
-  it "" do
+  it "can be set to pagefault shared regions" do
     raise "Failed."
   end
 
   #####################################################
-  #  do_not_write_to_temporary_backing_file           #
+  #  do_not_write_to_temporary_backing_file?          #
 	#  turn_do_not_write_to_temporary_backing_file_on   #
 	#  turn_do_not_write_to_temporary_backing_file_off  #
   #####################################################
 
-  it "" do
+  it "can be set not to write temporary backing file" do
     raise "Failed."
   end
 
@@ -132,7 +132,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
 	#  turn_use_system_memory_for_storage_off  #
   ############################################
 
-  it "" do
+  it "can be set to use system memory for storage" do
     raise "Failed."
   end
 
@@ -142,7 +142,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
 	#  turn_application_has_exclusive_access_off  #
   ###############################################
 
-  it "" do
+  it "can declare that application has exclusive access to permit optimizations" do
     raise "Failed."
   end
 
@@ -152,7 +152,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
 	#  turn_database_allocates_memory_using_malloc_off  #
   #####################################################
 
-  it "" do
+  it "can allocate memory using malloc" do
     raise "Failed."
   end
 
@@ -162,7 +162,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
 	#  turn_database_allocates_memory_using_realloc_off  #
   ######################################################
 
-  it "" do
+  it "can allocate memory using realloc" do
     raise "Failed."
   end
 
@@ -172,7 +172,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
 	#  turn_application_allocates_memory_off  #
   ###########################################
 
-  it "" do
+  it "can depend on application to allocate memory" do
     raise "Failed."
   end
 
@@ -182,7 +182,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
 	#  turn_database_frees_memory_off  #
   ####################################
 
-  it "" do
+  it "can depend on database to free memory when finished with it" do
     raise "Failed."
   end
 

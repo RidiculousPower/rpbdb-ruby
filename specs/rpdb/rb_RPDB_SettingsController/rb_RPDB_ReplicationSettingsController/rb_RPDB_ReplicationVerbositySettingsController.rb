@@ -76,7 +76,7 @@ describe RPDB::Settings::Replication::Verbosity do
 	#  turn_display_all_replication_information_off  #
   ##################################################
 
-  it "" do
+  it "can be set to display all replication information" do
     raise "Failed."
   end
 
@@ -86,7 +86,7 @@ describe RPDB::Settings::Replication::Verbosity do
 	#  turn_display_election_information_off  #
   ###########################################
 
-  it "" do
+  it "can be set to display election information" do
     raise "Failed."
   end
 
@@ -96,7 +96,7 @@ describe RPDB::Settings::Replication::Verbosity do
 	#  turn_display_replication_master_lease_information_off  #
   ###########################################################
 
-  it "" do
+  it "can be set to display replication master lease information" do
     raise "Failed."
   end
 
@@ -106,7 +106,7 @@ describe RPDB::Settings::Replication::Verbosity do
 	#  turn_display_misc_processing_information_off  #
   ##################################################
 
-  it "" do
+  it "can be set to display miscellaneous processing information" do
     raise "Failed."
   end
 
@@ -116,7 +116,7 @@ describe RPDB::Settings::Replication::Verbosity do
 	#  turn_display_message_processing_information_off  #
   #####################################################
 
-  it "" do
+  it "can be set to display message processing information" do
     raise "Failed."
   end
 
@@ -126,7 +126,7 @@ describe RPDB::Settings::Replication::Verbosity do
 	#  turn_display_client_synchronization_information_off  #
   #########################################################
 
-  it "" do
+  it "can be set to display client synchronization information" do
     raise "Failed."
   end
 
@@ -136,7 +136,7 @@ describe RPDB::Settings::Replication::Verbosity do
 	#  turn_display_manager_connection_failure_information_off  #
   #############################################################
 
-  it "" do
+  it "can be set to display manager connection failure information" do
     raise "Failed."
   end
 
@@ -146,7 +146,7 @@ describe RPDB::Settings::Replication::Verbosity do
 	#  turn_display_manager_misc_processing_off  #
   ##############################################
 
-  it "" do
+  it "can be set to display manager miscellaneous processing" do
     raise "Failed."
   end
 

@@ -108,11 +108,11 @@ describe RPDB::Settings::Database::Join do
     raise "Failed."
   end
 
-  ################################################
-  #  write_locks_instead_of_read_locks?          #
-	#  turn_write_locks_instead_of_read_locks_on   #
-	#  turn_write_locks_instead_of_read_locks_off  #
-  ################################################
+  ##################################
+  #  no_sort_before_join?          #
+	#  turn_no_sort_before_join_on   #
+	#  turn_no_sort_before_join_off  #
+  ##################################
 
   it "" do
     raise "Failed."

@@ -62,7 +62,7 @@ describe RPDB::Database do
   #  intermediate_directory_mode      #
   #####################################
 
-  it "" do
+  it "can be set to create intermediate directories needed for recovery" do
     raise "Failed."
   end
 
@@ -71,7 +71,7 @@ describe RPDB::Database do
   #  temp_directory      #
   ########################
 
-  it "" do
+  it "can specify its temp directory" do
     raise "Failed."
   end
 
@@ -81,7 +81,7 @@ describe RPDB::Database do
 	#  turn_permit_environment_naming_off  #
   ########################################
 
-  it "" do
+  it "can permit the use of environment information in the naming of files" do
     raise "Failed."
   end
 
@@ -91,7 +91,8 @@ describe RPDB::Database do
 	#  turn_use_environment_home_off  #
   ###################################
 
-  it "" do
+  # FIX - create file permissions controller
+  it "can permit root users the use of environment information in the naming of files" do
     raise "Failed."
   end
 
@@ -101,7 +102,7 @@ describe RPDB::Database do
 	#  turn_create_if_necessary_off  #
   ##################################
 
-  it "" do
+  it "can be set to create files if necessary" do
     raise "Failed."
   end
 
@@ -111,7 +112,7 @@ describe RPDB::Database do
 	#  turn_is_error_if_database_exists_before_create_off  #
   ########################################################
 
-  it "" do
+  it "can be set to throw an error if a database exists before create is called" do
     raise "Failed."
   end
 
@@ -121,7 +122,7 @@ describe RPDB::Database do
 	#  turn_open_read_only_off  #
   #############################
 
-  it "" do
+  it "can be set to open read-only" do
     raise "Failed."
   end
 
@@ -131,7 +132,7 @@ describe RPDB::Database do
 	#  turn_force_removal_off  #
   ############################
 
-  it "" do
+  it "can be set to force environment removal" do
     raise "Failed."
   end
 
@@ -140,7 +141,7 @@ describe RPDB::Database do
   #  file_creation_mode      #
   ############################
 
-  it "" do
+  it "can set the file creation mode" do
     raise "Failed."
   end
 
@@ -148,7 +149,7 @@ describe RPDB::Database do
   #  verbosity_settings_controller  #
   ###################################
 
-  it "" do
+  it "can return its verbosity settings controller" do
     raise "Failed."
   end
 

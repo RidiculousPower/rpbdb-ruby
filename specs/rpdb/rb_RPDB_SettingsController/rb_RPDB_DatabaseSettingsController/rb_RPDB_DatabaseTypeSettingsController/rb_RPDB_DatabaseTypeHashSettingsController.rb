@@ -101,7 +101,7 @@ describe RPDB::Settings::Database::Type::Hash do
   #  table_size      #
   ####################
 
-  it "" do
+  it "can set and return its table size" do
     raise "Failed."
   end
 
@@ -110,7 +110,7 @@ describe RPDB::Settings::Database::Type::Hash do
   #  hash_density_factor      #
   #############################
 
-  it "" do
+  it "can set and return its hash density factor" do
     raise "Failed."
   end
 
@@ -119,7 +119,7 @@ describe RPDB::Settings::Database::Type::Hash do
   #  hash_method      #
   #####################
 
-  it "" do
+  it "can set and return a method for hashing" do
     raise "Failed."
   end
 
@@ -128,7 +128,7 @@ describe RPDB::Settings::Database::Type::Hash do
   #  compare_method       #
   #########################
 
-  it "" do
+  it "can set and return a comparison method" do
     raise "Failed."
   end
 
@@ -137,7 +137,7 @@ describe RPDB::Settings::Database::Type::Hash do
   #  duplicate_compare_method      #
   ##################################
 
-  it "" do
+  it "can set and return a duplicate comparison method" do
     raise "Failed."
   end
 

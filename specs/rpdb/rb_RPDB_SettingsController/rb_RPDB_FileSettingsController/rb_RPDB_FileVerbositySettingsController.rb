@@ -76,7 +76,7 @@ describe RPDB::Database do
 	#  turn_display_additional_information_during_open_close_rename_file_operations_off  #
   ######################################################################################
 
-  it "" do
+  it "can be set to display additional information during open/close/rename file operations" do
     raise "Failed."
   end
 
@@ -86,7 +86,7 @@ describe RPDB::Database do
 	#  turn_display_additional_information_during_all_file_operations_off  #
   ########################################################################
 
-  it "" do
+  it "can display additional information during all file operations" do
     raise "Failed."
   end
 

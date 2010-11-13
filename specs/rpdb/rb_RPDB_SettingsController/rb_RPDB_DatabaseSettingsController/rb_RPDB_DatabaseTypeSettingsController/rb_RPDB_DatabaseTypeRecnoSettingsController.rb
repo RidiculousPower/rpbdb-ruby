@@ -102,7 +102,7 @@ describe RPDB::Settings::Database::Type::Recno do
 	#  turn_record_renumbering_off  #
   #################################
 
-  it "" do
+  it "can allow renumbering of record numbers" do
     raise "Failed."
   end
 
@@ -112,7 +112,7 @@ describe RPDB::Settings::Database::Type::Recno do
 	#  turn_snapshot_isolation_off  #
   #################################
 
-  it "" do
+  it "can provide snapshot isolation, which forces the record source file to be read in its entirety" do
     raise "Failed."
   end
 
@@ -121,7 +121,7 @@ describe RPDB::Settings::Database::Type::Recno do
   #  source_file      #
   #####################
 
-  it "" do
+  it "can set and return the record source file that will be read during database opening" do
     raise "Failed."
   end
 
@@ -130,7 +130,7 @@ describe RPDB::Settings::Database::Type::Recno do
   #  append_callback_method      #
   ################################
 
-  it "" do
+  it "can set and return a callback method to use for appending records" do
     raise "Failed."
   end
 

@@ -89,7 +89,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
 	#  turn_get_page_creates_page_if_does_not_exist_off  #
   ######################################################
 
-  it "" do
+  it "can be set so get page creates the given memory page if it does not already exist" do
     raise "Failed."
   end
 
@@ -99,7 +99,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
 	#  turn_get_page_writes_copy_before_eviction_off  #
   ###################################################
 
-  it "" do
+  it "can be set so get page writes a copy before eviction" do
     raise "Failed."
   end
 
@@ -109,7 +109,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
 	#  turn_get_page_writes_before_eviction_without_copy_off  #
   ###########################################################
 
-  it "" do
+  it "can be set so get page writes before evicting pages without copying" do
     raise "Failed."
   end
 
@@ -119,7 +119,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
 	#  turn_get_page_returns_last_page_off  #
   #########################################
 
-  it "" do
+  it "can be set so get page returns the last page" do
     raise "Failed."
   end
 
@@ -129,7 +129,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
 	#  turn_get_page_creates_new_page_off  #
   ########################################
 
-  it "" do
+  it "can be set so get page creates a new page" do
     raise "Failed."
   end
 

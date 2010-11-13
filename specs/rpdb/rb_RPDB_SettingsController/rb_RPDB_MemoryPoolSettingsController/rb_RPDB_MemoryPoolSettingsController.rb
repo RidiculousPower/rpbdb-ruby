@@ -64,7 +64,7 @@ describe RPDB::Settings::MemoryPool do
 	#  turn_off  #
   ##############
 
-  it "" do
+  it "it can turn on and off and report whether it is on or off" do
     raise "Failed."
   end
 
@@ -74,7 +74,7 @@ describe RPDB::Settings::MemoryPool do
 	#  turn_memory_mapping_off  #
   #############################
 
-  it "" do
+  it "can turn memory mapping on and off" do
     raise "Failed."
   end
 
@@ -84,7 +84,7 @@ describe RPDB::Settings::MemoryPool do
 	#  turn_remove_file_with_last_reference_off  #
   ##############################################
 
-  it "" do
+  it "can be set to remove file with last reference" do
     raise "Failed."
   end
 
@@ -94,7 +94,7 @@ describe RPDB::Settings::MemoryPool do
 	#  turn_pagesize_factor_mismatch_should_fail_off  #
   ###################################################
 
-  it "" do
+  it "can be set to fail in the event of a pagesize factor mismatch" do
     raise "Failed."
   end
 
@@ -102,7 +102,7 @@ describe RPDB::Settings::MemoryPool do
   #  file_settings_controller  #
   ##############################
 
-  it "" do
+  it "can return its file settings controller" do
     raise "Failed."
   end
 
@@ -110,7 +110,7 @@ describe RPDB::Settings::MemoryPool do
   #  read_write_settings_controller  #
   ####################################
 
-  it "" do
+  it "can return its read/write settings controller" do
     raise "Failed."
   end
 

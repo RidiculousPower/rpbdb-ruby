@@ -62,7 +62,7 @@ describe RPDB::Settings::Error do
   #  file      #
   ##############
 
-  it "" do
+  it "can set and return an error file" do
     raise "Failed."
   end
 
@@ -71,7 +71,7 @@ describe RPDB::Settings::Error do
   #  prefix      #
   ################
 
-  it "" do
+  it "can set and return an error prefix" do
     raise "Failed."
   end
 
@@ -80,9 +80,19 @@ describe RPDB::Settings::Error do
   #  error_callback_method      #
   ###############################
 
-  it "" do
+  it "can set and return an error callback method" do
     raise "Failed."
   end
+
+   ###############################
+   #  set_panic_callback_method  #
+   #  panic_callback_method      #
+   ###############################
+
+   # FIX - panic should move to error settings
+   it "can set and return its panic callback method" do
+     raise "Failed."
+   end
 
 end
 

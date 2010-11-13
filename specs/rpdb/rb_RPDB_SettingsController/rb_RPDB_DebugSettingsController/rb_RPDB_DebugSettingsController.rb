@@ -63,7 +63,7 @@ describe RPDB::Database do
 	#  turn_run_normal_recovery_before_opening_environment_off  #
   #############################################################
 
-  it "" do
+  it "can run normal recovery processes during environment open before actually opening environment" do
     raise "Failed."
   end
 
@@ -73,7 +73,7 @@ describe RPDB::Database do
 	#  turn_run_catastrophic_recovery_before_opening_environment_off  #
   ###################################################################
 
-  it "" do
+  it "can run catastrophic recovery processes during environment open before actually opening environment" do
     raise "Failed."
   end
 
@@ -83,7 +83,7 @@ describe RPDB::Database do
 	#  turn_open_in_lockdown_off  #
   ###############################
 
-  it "" do
+  it "can open in lockdown" do
     raise "Failed."
   end
 
@@ -93,7 +93,7 @@ describe RPDB::Database do
 	#  turn_check_for_recovery_before_opening_environment_off  #
   ############################################################
 
-  it "" do
+  it "can check whether it should run recovery processes during environment open before actually opening environment" do
     raise "Failed."
   end
 
@@ -103,7 +103,7 @@ describe RPDB::Database do
 	#  turn_prohibit_panic_off  #
   #############################
 
-  it "" do
+  it "can prohibit panic" do
     raise "Failed."
   end
 
@@ -113,7 +113,7 @@ describe RPDB::Database do
 	#  turn_panic_off  #
   ####################
 
-  it "" do
+  it "can panic" do
     raise "Failed."
   end
 
@@ -123,7 +123,7 @@ describe RPDB::Database do
 	#  turn_yield_cpu_for_stress_test_off  #
   ########################################
 
-  it "" do
+  it "can yield cpu for stress test" do
     raise "Failed."
   end
 
@@ -131,7 +131,7 @@ describe RPDB::Database do
   #  verbosity_settings_controller  #
   ###################################
 
-  it "" do
+  it "can return its verbosity settings controller" do
     raise "Failed."
   end
 

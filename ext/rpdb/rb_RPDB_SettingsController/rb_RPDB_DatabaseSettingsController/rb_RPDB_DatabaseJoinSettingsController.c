@@ -286,9 +286,9 @@ VALUE rb_RPDB_DatabaseJoinController_writeLocksInsteadOfReadLocks( VALUE	rb_join
 		return rb_join_settings_controller;
 	}
 
-/***************************************
-*  write_locks_instead_of_read_locks?  *
-***************************************/
+/*************************
+*  no_sort_before_join?  *
+*************************/
 
 //	DB_JOIN_NOSORT			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_join.html
 VALUE rb_RPDB_DatabaseJoinController_noSortBeforeJoin( VALUE	rb_join_settings_controller )	{
@@ -300,9 +300,9 @@ VALUE rb_RPDB_DatabaseJoinController_noSortBeforeJoin( VALUE	rb_join_settings_co
 																					:	Qfalse );
 }
 
-	/**********************************************
-	*  turn_write_locks_instead_of_read_locks_on  *
-	**********************************************/
+	/********************************
+	*  turn_no_sort_before_join_on  *
+	********************************/
 
 	VALUE rb_RPDB_DatabaseJoinController_turnNoSortBeforeJoinOn( VALUE	rb_join_settings_controller )	{
 
@@ -314,9 +314,9 @@ VALUE rb_RPDB_DatabaseJoinController_noSortBeforeJoin( VALUE	rb_join_settings_co
 		return rb_join_settings_controller;
 	}
 
-	/***********************************************
-	*  turn_write_locks_instead_of_read_locks_off  *
-	***********************************************/
+	/*********************************
+	*  turn_no_sort_before_join_off  *
+	*********************************/
 
 	VALUE rb_RPDB_DatabaseJoinController_turnNoSortBeforeJoinOff( VALUE	rb_join_settings_controller )	{
 

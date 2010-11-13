@@ -87,7 +87,7 @@ describe RPDB::Settings::MemoryPool::File::Cache do
   #  priority_controller  #
   #########################
 
-  it "" do
+  it "can return its priority controller" do
     raise "Failed."
   end
 

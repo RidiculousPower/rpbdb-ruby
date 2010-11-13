@@ -101,7 +101,7 @@ describe RPDB::Settings::Database::Record::VariableLength do
   	#  record_delimeter      #
   	##########################
 
-    it "" do
+    it "can set and return its record delimiter" do
       raise "Failed."
     end
 

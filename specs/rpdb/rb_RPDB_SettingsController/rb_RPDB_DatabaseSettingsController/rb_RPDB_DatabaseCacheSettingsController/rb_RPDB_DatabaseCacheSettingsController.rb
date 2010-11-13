@@ -2,7 +2,7 @@ require_relative '../../../../../lib/rpdb.rb'
 
 describe RPDB::Settings::Database::Cache do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  # Database cache is only relevant when a database is opened without an environment
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -10,50 +10,20 @@ describe RPDB::Settings::Database::Cache do
   $database_extension         = '.db'
   $duplicates_database_name   = :duplicates_db
   
-  before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
-    @environment.open
-    @database_controller = @environment.database_controller
-
-  end
-
-  after( :each ) do
-    @environment.close
-  end
 
   ################
   #  self.new    #
   #  initialize  #
   ################
 
-  # RPDB::Settings::Database::Cache.new( environment )
-  it "can be created with an environment" do
-    RPDB::Settings::Database::Cache.new( @environment ).should_not == nil
-  end
-
-  # RPDB::Settings::Database::Cache.new( database_controller )
-  it "can be created with a database controller" do
-    RPDB::Settings::Database::Cache.new( @environment.database_controller ).should_not == nil
-  end
-
-  # RPDB::Settings::Database::Cache.new( database )
-  it "can be created with a database" do
-    RPDB::Settings::Database::Cache.new( @environment.database_controller.new( $database_name ) ).should_not == nil
-  end
-
-  # RPDB::Settings::Database::Cache.new( settings_controller )
-  it "can be created with a settings controller" do
-    RPDB::Settings::Database::Cache.new( RPDB::Settings.new ).should_not == nil
+  # RPDB::Settings::Database::Cache.new
+  it "can be created with no argument specified and no current working environment" do
+    RPDB::Settings::Database::Cache.new.should_not == nil
   end
 
   # RPDB::Settings::Database::Cache.new( database_settings_controller )
-  it "can be created with a database settings controller" do
+  it "can be created with a current working environment (of which the database is not part) by passing false" do
     RPDB::Settings::Database::Cache.new( RPDB::Settings::Database.new ).should_not == nil
-  end
-
-  # RPDB::Settings::Database::Cache.new
-  it "can be created with no argument specified" do
-    RPDB::Settings::Database::Cache.new.should_not == nil
   end
 
   ########################
@@ -102,8 +72,30 @@ describe RPDB::Settings::Database::Cache do
 	#  max_size_in_gbytes                          #
   ################################################
 
-  it "" do
-    raise "Failed."
+  it "can set its cache size according to various measures" do
+    database_cache_settings = RPDB::Settings::Database::Cache.new( RPDB::Database( $database_name ) )
+
+    database_cache_settings.set_max_size_in_bytes( 12 )
+    database_cache_settings.max_size_in_bytes.should == 12
+
+    database_cache_settings.set_max_size_in_kbytes( 42 )
+    database_cache_settings.max_size_in_kbytes.should == 42 * 1024
+
+    database_cache_settings.set_max_size_in_mbytes( 37 )
+    database_cache_settings.max_size_in_mbytes.should == 37 * ( 1024 * 1024 )
+
+    database_cache_settings.set_max_size_in_gbytes( 420 )
+    database_cache_settings.max_size_in_gbytes.should == 420 * ( 1024 * 1024 * 1024 )
+
+    database_cache_settings.set_max_size_in_gbytes_mbytes_kbytes_bytes( 420, 37, 42, 12 )
+    database_cache_settings.max_size_in_bytes.should == 420 * ( 1024 * 1024 * 1024 ) + 37 * ( 1024 * 1024 ) + 42 * 1024 + 12
+
+    database_cache_settings.set_max_size_in_mbytes_kbytes_bytes( 37, 42, 12 )
+    database_cache_settings.max_size_in_bytes.should == 37 * ( 1024 * 1024 )
+
+    database_cache_settings.set_max_size_in_kbytes_bytes( 42, 12 )
+    database_cache_settings.max_size_in_bytes.should == 42 * 1024 + 12
+    
   end
 
   ##############################
@@ -111,24 +103,18 @@ describe RPDB::Settings::Database::Cache do
   #  number_cache_regions      #
   ##############################
 
-  it "" do
-    raise "Failed."
-  end
-
-  ##################
-  #  cache_update  #
-  ##################
-
-  it "" do
-    raise "Failed."
+  it "can specify how many regions to divide cache into" do
+    database_cache_settings = RPDB::Settings::Database::Cache.new( RPDB::Database( $database_name ) )
+    database_cache_settings.set_number_cache_regions( 12 )
+    database_cache_settings.number_cache_regions.should == 12
   end
 
   #########################
   #  priority_controller  #
   #########################
 
-  it "" do
-    raise "Failed."
+  it "can return its priority controller" do
+    RPDB::Settings::Database::Cache.new.priority_controller.is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
   end
 
 end

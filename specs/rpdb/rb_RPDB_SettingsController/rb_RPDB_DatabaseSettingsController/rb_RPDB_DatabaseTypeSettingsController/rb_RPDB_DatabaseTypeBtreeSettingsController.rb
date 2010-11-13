@@ -102,7 +102,7 @@ describe RPDB::Settings::Database::Type::Btree do
 	#  turn_record_number_retrieval_off   #
   #######################################
 
-  it "" do
+  it "can be set for record number retrieval (restricted in type from general key retrieval)" do
     raise "Failed."
   end
 
@@ -112,7 +112,7 @@ describe RPDB::Settings::Database::Type::Btree do
 	#  turn_reverse_splitting_off   #
   #################################
 
-  it "" do
+  it "can perform reverse splitting of b-tree nodes" do
     raise "Failed."
   end
 
@@ -121,7 +121,7 @@ describe RPDB::Settings::Database::Type::Btree do
   #  set_minimum_keys_per_page  #
   ###############################
 
-  it "" do
+  it "can set and return the minimum number of keys per page" do
     raise "Failed."
   end
 
@@ -130,7 +130,7 @@ describe RPDB::Settings::Database::Type::Btree do
   #  prefix_compare_method      #
   ###############################
 
-  it "" do
+  it "can set and return a prefix comparison method" do
     raise "Failed."
   end
 
@@ -139,7 +139,7 @@ describe RPDB::Settings::Database::Type::Btree do
   #  compare_method      #
   ########################
 
-  it "" do
+  it "can set and return a comparison method" do
     raise "Failed."
   end
 
@@ -148,7 +148,7 @@ describe RPDB::Settings::Database::Type::Btree do
   #  duplicate_compare_method      #
   ##################################
 
-  it "" do
+  it "can set and return a duplicate comparison method" do
     raise "Failed."
   end
 

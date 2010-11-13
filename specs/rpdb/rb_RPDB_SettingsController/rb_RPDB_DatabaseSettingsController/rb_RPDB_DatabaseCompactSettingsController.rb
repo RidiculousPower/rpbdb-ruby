@@ -97,7 +97,7 @@ describe RPDB::Settings::Database::Compact do
   #  fill_percent      #
   ######################
 
-  it "" do
+  it "can set and report the level at which compaction should occur" do
     raise "Failed."
   end
 
@@ -106,7 +106,7 @@ describe RPDB::Settings::Database::Compact do
   #  max_pages_to_compact      #
   ##############################
 
-  it "" do
+  it "can set and report the maximum amount of pages to be compacted at any time" do
     raise "Failed."
   end
 
@@ -115,7 +115,7 @@ describe RPDB::Settings::Database::Compact do
   #  timeout      #
   #################
 
-  it "" do
+  it "can set and report compaction timeout" do
     raise "Failed."
   end
 

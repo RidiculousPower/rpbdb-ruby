@@ -64,7 +64,7 @@ describe RPDB::Settings::Thread do
   #  turn_off  #
   ##############
 
-  it "" do
+  it "can be turned on or off as well as report whether it is on or off" do
     raise "Failed."
   end
 
@@ -73,7 +73,7 @@ describe RPDB::Settings::Thread do
   #  thread_count      #
   ######################
 
-  it "" do
+  it "can set and return its thread count" do
     raise "Failed."
   end
 
@@ -82,7 +82,7 @@ describe RPDB::Settings::Thread do
   #  unique_thread_identifier_callback_method      #
   ##################################################
 
-  it "" do
+  it "can set and return its callback method to provide a unique thread identifier" do
     raise "Failed."
   end
 
@@ -91,7 +91,7 @@ describe RPDB::Settings::Thread do
   #  format_thread_and_process_identifier_for_display_callback_method      #
   ##########################################################################
 
-  it "" do
+  it "can set and return its callback method to format thread and process identifier for display" do
     raise "Failed."
   end
 
@@ -100,7 +100,7 @@ describe RPDB::Settings::Thread do
   #  is_thread_alive_callback_method      #
   #########################################
 
-  it "" do
+  it "can set and return its callback method to determine whether thread is alive" do
     raise "Failed."
   end
 

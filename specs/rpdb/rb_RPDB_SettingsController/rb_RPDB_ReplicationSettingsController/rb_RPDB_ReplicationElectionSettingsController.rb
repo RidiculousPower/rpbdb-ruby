@@ -75,7 +75,7 @@ describe RPDB::Settings::Replication::Election do
   #  number_of_sites_required_for_election      #
   ###############################################
 
-  it "" do
+  it "can set and return the number of sites required for election" do
     raise "Failed."
   end
 
@@ -84,7 +84,7 @@ describe RPDB::Settings::Replication::Election do
   #  number_of_votes_required_for_election      #
   ###############################################
 
-  it "" do
+  it "can set and return the number of votes required for election" do
     raise "Failed."
   end
 
@@ -94,7 +94,7 @@ describe RPDB::Settings::Replication::Election do
 	#  turn_wait_for_all_clients_off  #
   ###################################
 
-  it "" do
+  it "can be set to wait for all clients to respond to election" do
     raise "Failed."
   end
 
@@ -104,7 +104,7 @@ describe RPDB::Settings::Replication::Election do
 	#  turn_wait_for_all_electable_peers_off  #
   ###########################################
 
-  it "" do
+  it "can be set to wait for all electable peers" do
     raise "Failed."
   end
 
@@ -114,7 +114,7 @@ describe RPDB::Settings::Replication::Election do
 	#  turn_wait_for_none_off  #
   ############################
 
-  it "" do
+  it "can be set not to wait" do
     raise "Failed."
   end
 
@@ -124,7 +124,7 @@ describe RPDB::Settings::Replication::Election do
 	#  turn_wait_for_at_least_one_client_off  #
   ###########################################
 
-  it "" do
+  it "can be set to wait for at least one client" do
     raise "Failed."
   end
 
@@ -134,7 +134,7 @@ describe RPDB::Settings::Replication::Election do
 	#  turn_wait_for_at_least_one_electable_peer_off  #
   ###################################################
 
-  it "" do
+  it "can be set to wait for at least one electable peer" do
     raise "Failed."
   end
 
@@ -144,7 +144,61 @@ describe RPDB::Settings::Replication::Election do
 	#  turn_wait_for_minimum_electable_peers_for_durable_election_off  #
   ####################################################################
 
-  it "" do
+  it "can be set to wait for a minimum number of electable peers for durable election" do
+    raise "Failed."
+  end
+
+  ########################################################
+  #  set_site_is_now_replication_client_callback_method  #
+  #  site_is_now_replication_client_callback_method      #
+  ########################################################
+
+  it "can set and return its callback method called when site becomes replication client" do
+    raise "Failed."
+  end
+
+  #######################################################
+  #  set_site_won_replication_election_callback_method  #
+  #  site_won_replication_election_callback_method      #
+  #######################################################
+
+  it "can set and return its callback method called when site won replication election" do
+    raise "Failed."
+  end
+
+  #################################################################
+  #  set_site_is_now_master_of_replication_group_callback_method  #
+  #  site_is_now_master_of_replication_group_callback_method      #
+  #################################################################
+
+  it "can set and return its callback method called when site becomes master of its replication group" do
+    raise "Failed."
+  end
+
+  ##########################################################
+  #  set_replication_group_has_new_master_callback_method  #
+  #  replication_group_has_new_master_callback_method      #
+  ##########################################################
+
+  it "can set and return its callback method called when its replication group has a new master" do
+    raise "Failed."
+  end
+
+  ############################################################
+  #  set_replication_acknowledgement_failed_callback_method  #
+  #  replication_acknowledgement_failed_callback_method      #
+  ############################################################
+
+  it "can set and return its callback method called when its replication acknowledement fails" do
+    raise "Failed."
+  end
+
+  #######################################################
+  #  set_replication_startup_completed_callback_method  #
+  #  replication_startup_completed_callback_method      #
+  #######################################################
+
+  it "can set and return its callback method called when its replication startup completed" do
     raise "Failed."
   end
 

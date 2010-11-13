@@ -88,22 +88,22 @@ describe RPDB::Settings::Database::Verification do
     RPDB::Settings::Database::Verification.new.parent_database_settings_controller.should_not == nil
   end
 
-  ##########
+  ##############
   #  set_file  #
-  #  file  #
-  ##########
+  #  file      #
+  ##############
 
-  it "" do
+  it "can set its verification file" do
     raise "Failed."
   end
 
-  ####################################
-  #  aggressive_key_data_pair_dump?  #
-	#  turn_aggressive_key_data_pair_dump_on  #
+  ############################################
+  #  aggressive_key_data_pair_dump?          #
+	#  turn_aggressive_key_data_pair_dump_on   #
 	#  turn_aggressive_key_data_pair_dump_off  #
-  ####################################
+  ############################################
 
-  it "" do
+  it "can be set to do an aggressive key/data pair dump" do
     raise "Failed."
   end
 
@@ -113,7 +113,7 @@ describe RPDB::Settings::Database::Verification do
 	#  turn_printable_characters_off  #
   ###################################
 
-  it "" do
+  it "can specify that key and data are printable characters" do
     raise "Failed."
   end
 
@@ -123,7 +123,7 @@ describe RPDB::Settings::Database::Verification do
 	#  turn_skip_order_check_off  #
   ###############################
 
-  it "" do
+  it "can skip order checking" do
     raise "Failed."
   end
 
@@ -133,7 +133,7 @@ describe RPDB::Settings::Database::Verification do
 	#  turn_only_order_check_off  #
   ###############################
 
-  it "" do
+  it "can perform order checking alone" do
     raise "Failed."
   end
 
@@ -143,7 +143,7 @@ describe RPDB::Settings::Database::Verification do
 	#  turn_force_order_check_off  #
   ################################
 
-  it "" do
+  it "can force an order check to be performed" do
     raise "Failed."
   end
 

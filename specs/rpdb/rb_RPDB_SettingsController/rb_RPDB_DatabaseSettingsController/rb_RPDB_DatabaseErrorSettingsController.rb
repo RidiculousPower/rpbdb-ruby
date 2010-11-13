@@ -93,7 +93,7 @@ describe RPDB::Settings::Database::Error do
   #  file      #
   ##############
 
-  it "" do
+  it "can set and return a file for error output" do
     raise "Failed."
   end
 
@@ -102,7 +102,7 @@ describe RPDB::Settings::Database::Error do
   #  prefix      #
   ################
 
-  it "" do
+  it "can set and return a prefix to prepend to all errors" do
     raise "Failed."
   end
 
@@ -111,7 +111,7 @@ describe RPDB::Settings::Database::Error do
   #  error_callback_method      #
   ###############################
 
-  it "" do
+  it "can set and return a callback method for error handling" do
     raise "Failed."
   end
 

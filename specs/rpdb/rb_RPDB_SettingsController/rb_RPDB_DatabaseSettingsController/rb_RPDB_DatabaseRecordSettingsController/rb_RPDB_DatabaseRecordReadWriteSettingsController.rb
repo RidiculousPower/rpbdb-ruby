@@ -96,201 +96,201 @@ describe RPDB::Settings::Database::Record::ReadWrite do
     RPDB::Settings::Database::Record::ReadWrite.new.parent_database_record_settings_controller.should_not == nil
   end
 
-  ##################
-  #  set_filename  #
-  #  filename      #
-  ##################
-
-  it "" do
-    raise "Failed."
-  end
-
   #####################################
   #  prohibit_sync_on_close?          #
 	#  turn_prohibit_sync_on_close_on   #
 	#  turn_prohibit_sync_on_close_off  #
   #####################################
 
-  it "" do
+  it "can prohibit syncing on database close" do
     raise "Failed."
   end
 
   ###########################
-  #  ignore_lease           #
+  #  ignore_lease?          #
 	#  turn_ignore_lease_on   #
 	#  turn_ignore_lease_off  #
   ###########################
 
-  it "" do
+  it "can return data regardless of master leases" do
     raise "Failed."
   end
 
   ##############################
-  #  return_multiple           #
+  #  return_multiple?          #
 	#  turn_return_multiple_on   #
 	#  turn_return_multiple_off  #
   ##############################
 
-  it "" do
+  it "can return multiple data items in the record's data" do
     raise "Failed."
   end
 
   ######################################
-  #  prohibit_duplicate_data           #
+  #  prohibit_duplicate_data?          #
 	#  turn_prohibit_duplicate_data_on   #
 	#  turn_prohibit_duplicate_data_off  #
   ######################################
 
-  it "" do
+  it "can prohibit duplicate data items" do
     raise "Failed."
   end
 
   #################################
-  #  prohibit_overwrite           #
+  #  prohibit_overwrite?          #
 	#  turn_prohibit_overwrite_on   #
 	#  turn_prohibit_overwrite_off  #
   #################################
 
-  it "" do
+  it "can prohibit overwriting existing items" do
     raise "Failed."
   end
 
   #######################################
-  #  prohibit_page_compaction           #
+  #  prohibit_page_compaction?          #
 	#  turn_prohibit_page_compaction_on   #
 	#  turn_prohibit_page_compaction_off  #
   #######################################
 
-  it "" do
+  it "can prohibit page compaction" do
     raise "Failed."
   end
 
   #########################################
-  #  return_pages_to_filesystem           #
+  #  return_pages_to_filesystem?          #
 	#  turn_return_pages_to_filesystem_on   #
 	#  turn_return_pages_to_filesystem_off  #
   #########################################
 
-  it "" do
+  it "can return pages to the filesystem" do
     raise "Failed."
   end
 
   ####################################
-  #  truncate_file_on_open           #
+  #  truncate_file_on_open?          #
 	#  turn_truncate_file_on_open_on   #
 	#  turn_truncate_file_on_open_off  #
   ####################################
 
-  it "" do
+  it "can truncate the database file upon opening" do
     raise "Failed."
   end
 
   ################################################
-  #  write_locks_instead_of_read_locks           #
+  #  write_locks_instead_of_read_locks?          #
 	#  turn_write_locks_instead_of_read_locks_on   #
 	#  turn_write_locks_instead_of_read_locks_off  #
   ################################################
 
-  it "" do
+  it "can use write locks instead of read locks" do
     raise "Failed."
   end
 
   #############################
-  #  partial_access           #
+  #  partial_access?          #
 	#  turn_partial_access_on   #
 	#  turn_partial_access_off  #
   #############################
 
-  it "" do
+  it "can write and retrieve data based on partial information" do
     raise "Failed."
   end
 
   #####################################################
-  #  database_allocates_memory_using_malloc           #
+  #  database_allocates_memory_using_malloc?          #
 	#  turn_database_allocates_memory_using_malloc_on   #
 	#  turn_database_allocates_memory_using_malloc_off  #
   #####################################################
 
-  it "" do
+  it "can use malloc to allocate memory" do
     raise "Failed."
   end
 
   ######################################################
-  #  database_allocates_memory_using_realloc           #
+  #  database_allocates_memory_using_realloc?          #
 	#  turn_database_allocates_memory_using_realloc_on   #
 	#  turn_database_allocates_memory_using_realloc_off  #
   ######################################################
 
-  it "" do
+  it "can use realloc to allocate memory" do
     raise "Failed."
   end
 
   ###########################################
-  #  application_allocates_memory           #
+  #  application_allocates_memory?          #
 	#  turn_application_allocates_memory_on   #
 	#  turn_application_allocates_memory_off  #
   ###########################################
 
-  it "" do
+  it "can require that the application allocates memory" do
     raise "Failed."
   end
 
   ####################################
-  #  database_frees_memory           #
+  #  database_frees_memory?          #
 	#  turn_database_frees_memory_on   #
 	#  turn_database_frees_memory_off  #
   ####################################
 
-  it "" do
+  it "can have the database free memory when finished with it" do
     raise "Failed."
   end
 
   #########################################
-  #  sync_prior_to_write_return           #
+  #  sync_prior_to_write_return?          #
 	#  turn_sync_prior_to_write_return_on   #
 	#  turn_sync_prior_to_write_return_off  #
   #########################################
 
-  it "" do
+  it "can force sync prior to returning from write" do
     raise "Failed."
   end
 
     ################################
-    #  permit_duplicates           #
+    #  permit_duplicates?          #
     #  turn_permit_duplicates_on   #
     #  turn_permit_duplicates_off  #
     ################################
 
-    it "" do
+    it "can permit duplicates" do
       raise "Failed."
     end
 
     ##############################
-    #  sort_duplicates           #
+    #  sort_duplicates?          #
   	#  turn_sort_duplicates_on   #
   	#  turn_sort_duplicates_off  #
     ##############################
 
-    it "" do
+    it "can permit sorted duplicates" do
       raise "Failed."
     end
 
     #############################
-    #  serialize_data           #
+    #  serialize_data?          #
   	#  turn_serialize_data_on   #
   	#  turn_serialize_data_off  #
     #############################
 
-    it "" do
+    it "can automatically serialize data to permit implicit storage of objects" do
       raise "Failed."
     end
+
+  ##################
+  #  set_filename  #
+  #  filename      #
+  ##################
+
+  it "can set the database filename" do
+    raise "Failed."
+  end
 
   ##########################
   #  set_data_buffer_size  #
   #  data_buffer_size      #
   ##########################
 
-  it "" do
+  it "can set its data buffer size" do
     raise "Failed."
   end
 
@@ -299,7 +299,7 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   #  partial_read_write_size      #
   #################################
 
-  it "" do
+  it "can set partial read/write size" do
     raise "Failed."
   end
 
@@ -308,7 +308,7 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   #  partial_read_write_offset      #
   ###################################
 
-  it "" do
+  it "can set partial read/write offset" do
     raise "Failed."
   end
 
@@ -317,7 +317,17 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   #  storage_type      #
   ######################
 
-  it "" do
+  it "can set the type stored in database" do
+    raise "Failed."
+  end
+
+  ######################################
+  #  set_write_failed_callback_method  #
+  #  write_failed_callback_method      #
+  ######################################
+  
+  # FIX - move to read-write settings controller
+  it "can set its write-failed callback method" do
     raise "Failed."
   end
 

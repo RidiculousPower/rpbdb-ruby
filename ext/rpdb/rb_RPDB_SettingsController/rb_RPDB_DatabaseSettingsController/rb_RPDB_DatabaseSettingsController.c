@@ -116,7 +116,8 @@ void Init_RPDB_DatabaseSettingsController()	{
 
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"association_settings_controller",		rb_RPDB_DatabaseSettingsController_associationSettingsController,	0 	);
 	rb_define_alias(						rb_RPDB_DatabaseSettingsController, 	"association",												"association_settings_controller"	);
-                    					                                                                        		
+	
+	//	any names set for cache controller should be duplicated below in _new to undef on environment-based controllers
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"cache_settings_controller",					rb_RPDB_DatabaseSettingsController_cacheSettingsController,			0 	);
 
 	rb_define_method(						rb_RPDB_DatabaseSettingsController, 	"cursor_settings_controller",					rb_RPDB_DatabaseSettingsController_cursorSettingsController,			0 	);
@@ -233,6 +234,12 @@ VALUE rb_RPDB_DatabaseSettingsController_new(	int			argc,
 	else {
 		VALUE args[] =	{ rb_parent_settings_controller };
 		argv = args;
+	}
+	
+	//	if we have a parent environment, undefine database cache controller in instance
+	if ( rb_parent_environment != Qnil )	{
+		VALUE	rb_database_settings_controller_singleton_class	=	rb_singleton_class( rb_database_settings_controller );
+		rb_remove_method( rb_database_settings_controller_singleton_class, "cache_settings_controllers" );
 	}
 
 	rb_obj_call_init(	rb_database_settings_controller,
@@ -616,6 +623,7 @@ VALUE rb_RPDB_DatabaseSettingsController_joinSettingsController( VALUE	rb_databa
 *  cache_settings_controller  *
 ******************************/
 
+//	this is only defined on databases opened without an environment
 VALUE rb_RPDB_DatabaseSettingsController_cacheSettingsController( VALUE	rb_database_settings_controller )	{
 
 	VALUE	rb_database_cache_settings_controller	=	Qnil;

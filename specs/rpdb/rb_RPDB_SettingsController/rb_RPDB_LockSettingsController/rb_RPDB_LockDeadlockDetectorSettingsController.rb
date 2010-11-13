@@ -75,7 +75,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   #  is_default?     #
   ####################
 
-  it "" do
+  it "can be set to default settings and report whether it is currently set to default" do
     raise "Failed."
   end
 
@@ -84,7 +84,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   #  reject_expired?        #
   ###########################
 
-  it "" do
+  it "can be set to reject expired locks and report whether it is currently set to reject all expired locks" do
     raise "Failed."
   end
 
@@ -93,7 +93,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   #  reject_locker_with_most_locks?        #
   ##########################################
 
-  it "" do
+  it "can be set to reject locker with most locks and report whether it is currently set to reject locker with most locks locks" do
     raise "Failed."
   end
 
@@ -102,7 +102,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   #  reject_locker_with_most_write_locks?        #
   ################################################
 
-  it "" do
+  it "can be set to reject locker with most write locks and report whether it is currently set to reject locker with most write locks locks" do
     raise "Failed."
   end
 
@@ -111,7 +111,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   #  reject_locker_with_fewest_locks?        #
   ############################################
 
-  it "" do
+  it "can be set to reject locker with fewest locks and report whether it is currently set to reject locker with fewest locks" do
     raise "Failed."
   end
 
@@ -120,7 +120,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   #  reject_locker_with_fewest_write_locks?        #
   ##################################################
 
-  it "" do
+  it "can be set to reject locker with fewest write locks and report whether it is currently set to reject locker with fewest locks" do
     raise "Failed."
   end
 
@@ -129,7 +129,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   #  reject_locker_with_oldest_lock?        #
   ###########################################
 
-  it "" do
+  it "can be set to reject locker with oldest lock and report whether it is currently set to reject locker with oldest lock" do
     raise "Failed."
   end
 
@@ -138,7 +138,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   #  reject_locker_with_youngest_lock?        #
   #############################################
 
-  it "" do
+  it "can be set to reject locker with youngest lock and report whether it is currently set to reject locker with youngest lock" do
     raise "Failed."
   end
 
@@ -147,7 +147,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   #  reject_random?        #
   ##########################
 
-  it "" do
+  it "can be set to reject random lock and report whether it is currently set to reject random lock" do
     raise "Failed."
   end
 
@@ -155,7 +155,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   #  verbosity_settings_controller  #
   ###################################
 
-  it "" do
+  it "can return its verbosity settings controller" do
     raise "Failed."
   end
 

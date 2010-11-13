@@ -235,3 +235,24 @@ void (*error_callback_method)(	VALUE			environment,
 	
 }
 */
+
+/******************************
+*  set_panic_callback_method  *
+******************************/
+/*
+VALUE rb_RPDB_MessageSettingsController_setPanicCallbackMethod(	VALUE	rb_message_settings_controller,
+ 																void *(panic_callback_method)( VALUE	environment ) )	{
+	RPDB_MessageSettingsController_setPanicCallbackMethod();
+	
+
+}
+*/
+/**************************
+*  panic_callback_method  *
+**************************/
+/*
+void *(panic_callback_method)( VALUE	environment ) RPDB_MessageSettingsController_panicCallbackMethod(	VALUE	rb_message_settings_controller )	{
+	
+
+}
+*/

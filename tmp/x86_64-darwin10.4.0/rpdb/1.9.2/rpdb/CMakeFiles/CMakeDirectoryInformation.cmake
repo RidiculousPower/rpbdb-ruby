@@ -11,8 +11,8 @@ SET(CMAKE_FORCE_UNIX_PATHS 1)
 # The C and CXX include file search paths:
 SET(CMAKE_C_INCLUDE_PATH
   "/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/include"
-  "/Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1"
-  "/Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0"
+  "/usr/local/include/ruby-1.9.1"
+  "/usr/local/include/ruby-1.9.1/x86_64-darwin10.4.0"
   "/usr/local/include"
   )
 SET(CMAKE_CXX_INCLUDE_PATH ${CMAKE_C_INCLUDE_PATH})

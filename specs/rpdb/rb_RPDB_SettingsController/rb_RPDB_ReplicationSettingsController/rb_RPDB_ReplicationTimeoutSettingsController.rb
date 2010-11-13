@@ -70,12 +70,12 @@ describe RPDB::Settings::Replication::Timeout do
     RPDB::Settings::Replication::Timeout.new.parent_replication_settings_controller.should_not == nil
   end
 
-  #############
+  #################
   #  set_timeout  #
-  #  timeout  #
-  #############
+  #  timeout      #
+  #################
 
-  it "" do
+  it "can set and report its timeout" do
     raise "Failed."
   end
 
@@ -84,7 +84,7 @@ describe RPDB::Settings::Replication::Timeout do
   #  wait_time_before_checkpoint_write      #
   ###########################################
 
-  it "" do
+  it "can set and report its wait time before writing a checkpoint" do
     raise "Failed."
   end
 
@@ -93,7 +93,7 @@ describe RPDB::Settings::Replication::Timeout do
   #  wait_time_before_retry_connection      #
   ###########################################
 
-  it "" do
+  it "can set and report its wait time before retrying a connection" do
     raise "Failed."
   end
 
@@ -102,7 +102,7 @@ describe RPDB::Settings::Replication::Timeout do
   #  election_timeout      #
   ##########################
 
-  it "" do
+  it "can set and report its election timeout" do
     raise "Failed."
   end
 
@@ -111,7 +111,7 @@ describe RPDB::Settings::Replication::Timeout do
   #  wait_time_before_retry_election      #
   #########################################
 
-  it "" do
+  it "can set and report its wait time before retrying election" do
     raise "Failed."
   end
 
@@ -120,7 +120,7 @@ describe RPDB::Settings::Replication::Timeout do
   #  full_election_participation_timeout      #
   #############################################
 
-  it "" do
+  it "can set and report its timeout for full election participation" do
     raise "Failed."
   end
 
@@ -129,7 +129,7 @@ describe RPDB::Settings::Replication::Timeout do
   #  heartbeat_monitor_pulse      #
   #################################
 
-  it "" do
+  it "can set and report its heartbeat monitor pulse rate" do
     raise "Failed."
   end
 
@@ -138,7 +138,7 @@ describe RPDB::Settings::Replication::Timeout do
   #  heartbeat_broadcast_pulse      #
   ###################################
 
-  it "" do
+  it "can set and report its heartbeat broadcast pulse" do
     raise "Failed."
   end
 
@@ -147,7 +147,7 @@ describe RPDB::Settings::Replication::Timeout do
   #  lease_timeout      #
   #######################
 
-  it "" do
+  it "can set and report its lease timeout" do
     raise "Failed."
   end
 

@@ -73,7 +73,8 @@ void Init_RPDB_DatabaseCacheSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseCacheSettingsController, 	"set_max_size_in_gbytes_mbytes_kbytes_bytes",		rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInGBytesMBytesKBytesBytes,				4 	);
 	rb_define_method(						rb_RPDB_DatabaseCacheSettingsController, 	"set_max_size_in_mbytes_kbytes_bytes",					rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInMBytesKBytesBytes,						3 	);
 	rb_define_method(						rb_RPDB_DatabaseCacheSettingsController, 	"set_max_size_in_kbytes_bytes",									rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInKBytesBytes,							2 	);
-                    					
+
+	//	FIX - make sure these are all unset in environment-based dbs
 	rb_define_method(						rb_RPDB_DatabaseCacheSettingsController, 	"number_cache_regions",													rb_RPDB_DatabaseCacheSettingsController_numberCacheRegions,								0 	);
 	rb_define_method(						rb_RPDB_DatabaseCacheSettingsController, 	"number_cache_regions=",												rb_RPDB_DatabaseCacheSettingsController_setNumberCacheRegions,								1 	);
 	rb_define_alias(						rb_RPDB_DatabaseCacheSettingsController, 	"set_number_cache_regions",											"number_cache_regions=" 	);
@@ -104,17 +105,17 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_new(	int			argc,
 	VALUE	rb_parent_database_settings_controller								=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
-			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
-																						R_MatchAncestorInstance( rb_parent_database_controller, rb_RPDB_DatabaseController ),
-																						R_MatchAncestorInstance( rb_parent_database, rb_RPDB_Database ),
-																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
-																						R_MatchAncestorInstance( rb_parent_database_settings_controller, rb_RPDB_DatabaseSettingsController ) ) ),
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance(		rb_parent_environment,													rb_RPDB_Environment ),
+																						R_MatchAncestorInstance(		rb_parent_database_controller,									rb_RPDB_DatabaseController ),
+																						R_MatchAncestorInstance(		rb_parent_database,															rb_RPDB_Database ),
+																						R_MatchAncestorInstance(		rb_parent_settings_controller,									rb_RPDB_SettingsController ),
+																						R_MatchAncestorInstance(		rb_parent_database_settings_controller,					rb_RPDB_DatabaseSettingsController ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent environment> ]",
-			"[ <parent database controller> ]",
-			"[ <parent database> ]",
-			"[ <parent settings controller> ]",
-			"[ <parent database settings controller> ]"
+			"<parent environment>",
+			"<parent database controller>",
+			"<parent database>",
+			"<parent settings controller>",
+			"<parent database settings controller>"
 		)
 	);
 
@@ -153,6 +154,29 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_new(	int			argc,
 							RPDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller);
 
+	//	if we have an environment, unset methods corresponding to cache size
+	if (		rb_parent_environment != Qnil
+			||	( rb_parent_environment = rb_RPDB_DatabaseCacheSettingsController_parentEnvironment( rb_database_cache_settings_controller ) ) != Qnil )	{
+		
+		VALUE	rb_database_cache_settings_controller_singleton_class	=	rb_singleton_class( rb_database_cache_settings_controller );
+
+		rb_undef_method(	rb_database_cache_settings_controller_singleton_class, "set_number_of_cache_regions" );
+		rb_undef_method(	rb_database_cache_settings_controller_singleton_class, "number_of_cache_regions" );
+		
+		rb_undef_method(	rb_database_cache_settings_controller_singleton_class, "set_max_size_in_bytes" );
+		rb_undef_method(	rb_database_cache_settings_controller_singleton_class, "set_max_size_in_kbytes" );
+		rb_undef_method(	rb_database_cache_settings_controller_singleton_class, "set_max_size_in_mbytes" );
+		rb_undef_method(	rb_database_cache_settings_controller_singleton_class, "set_max_size_in_gbytes" );
+		rb_undef_method(	rb_database_cache_settings_controller_singleton_class, "set_max_size_in_gbytes_mbytes_kbytes_bytes" );
+		rb_undef_method(	rb_database_cache_settings_controller_singleton_class, "set_max_size_in_mbytes_kbytes_bytes" );
+		rb_undef_method(	rb_database_cache_settings_controller_singleton_class, "set_max_size_in_kbytes_bytes" );
+		rb_undef_method(	rb_database_cache_settings_controller_singleton_class, "max_size_in_bytes" );
+		rb_undef_method(	rb_database_cache_settings_controller_singleton_class, "max_size_in_kbytes" );
+		rb_undef_method(	rb_database_cache_settings_controller_singleton_class, "max_size_in_mbytes" );
+		rb_undef_method(	rb_database_cache_settings_controller_singleton_class, "max_size_in_gbytes" );
+
+	}
+
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
 	rb_obj_call_init(	rb_database_cache_settings_controller,
 					 					1, 
@@ -166,8 +190,8 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_new(	int			argc,
 ***************/
 
 VALUE rb_RPDB_DatabaseCacheSettingsController_initialize(	int				argc __attribute__ ((unused)),
-																										VALUE*		args __attribute__ ((unused)),
-																										VALUE			rb_self )	{
+																													VALUE*		args __attribute__ ((unused)),
+																													VALUE			rb_self )	{
 
 	return rb_self;
 }
@@ -390,15 +414,15 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
 	VALUE rb_RPDB_DatabaseCacheSettingsController_setMaxSizeInKBytesBytes(	VALUE	rb_database_cache_settings_controller, 
-																			VALUE	rb_max_size_kbytes, 
-																			VALUE	rb_additional_max_size_bytes )	{
+																																					VALUE	rb_max_size_kbytes, 
+																																					VALUE	rb_additional_max_size_bytes )	{
 
 		RPDB_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
 		C_RPDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 
 		RPDB_DatabaseCacheSettingsController_setMaxSizeInKBytesBytes(	c_database_cache_settings_controller,
-																		FIX2INT( rb_max_size_kbytes ),
-																		FIX2INT( rb_additional_max_size_bytes ) );
+																																	FIX2INT( rb_max_size_kbytes ),
+																																	FIX2INT( rb_additional_max_size_bytes ) );
 
 		return rb_database_cache_settings_controller;
 	}
@@ -420,13 +444,13 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_numberCacheRegions( VALUE	rb_datab
 *****************************/
 
 VALUE rb_RPDB_DatabaseCacheSettingsController_setNumberCacheRegions(	VALUE	rb_database_cache_settings_controller, 
-																		VALUE	rb_number_cache_regions )	{
+																																			VALUE	rb_number_cache_regions )	{
 
 	RPDB_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
 	C_RPDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 
 	RPDB_DatabaseCacheSettingsController_setNumberCacheRegions(	c_database_cache_settings_controller,
-	 																FIX2INT( rb_number_cache_regions ) );
+																															FIX2INT( rb_number_cache_regions ) );
 	
 	return rb_database_cache_settings_controller;
 }

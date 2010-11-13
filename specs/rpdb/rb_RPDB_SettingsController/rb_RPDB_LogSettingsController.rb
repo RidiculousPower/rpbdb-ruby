@@ -57,261 +57,121 @@ describe RPDB::Settings::Lock do
     RPDB::Settings::Log.new.parent_settings_controller.should_not == nil
   end
 
-  #########
-  #  on?  #
-  #########
+  ##############
+  #  on?       #
+  #  off?      #
+	#  turn_on   #
+	#  turn_off  #
+  ##############
 
-  it "" do
+  it "can turn on and off and report whether it is on or off" do
     raise "Failed."
   end
 
-  	#############
-  	#  turn_on  #
-  	#############
+  ########################
+  #  buffering           #
+	#  turn_buffering_on   #
+	#  turn_buffering_off  #
+  ########################
 
-    it "" do
-      raise "Failed."
-    end
-
-  ##########
-  #  off?  #
-  ##########
-
-  it "" do
+  it "can turn buffering on and off" do
     raise "Failed."
   end
 
-  	##############
-  	#  turn_off  #
-  	##############
+  #############################################
+  #  flush_before_return_from_write           #
+	#  turn_flush_before_return_from_write_on   #
+	#  turn_flush_before_return_from_write_off  #
+  #############################################
 
-    it "" do
-      raise "Failed."
-    end
-
-  ###############
-  #  buffering  #
-  ###############
-
-  it "" do
+  it "can be set to flush before returning from a write" do
     raise "Failed."
   end
 
-  	#######################
-  	#  turn_buffering_on  #
-  	#######################
+  #########################
+  #  autoremove_logs      #
+	#  turn_autoremove_on   #
+	#  turn_autoremove_off  #
+  #########################
 
-    it "" do
-      raise "Failed."
-    end
-
-  	########################
-  	#  turn_buffering_off  #
-  	########################
-
-    it "" do
-      raise "Failed."
-    end
-
-  ####################################
-  #  flush_before_return_from_write  #
-  ####################################
-
-  it "" do
+  it "can be set to autoremove logs" do
     raise "Failed."
   end
 
-  	############################################
-  	#  turn_flush_before_return_from_write_on  #
-  	############################################
+  ############################
+  #  log_in_memory           #
+	#  turn_log_in_memory_on   #
+	#  turn_log_in_memory_off  #
+  ############################
 
-    it "" do
-      raise "Failed."
-    end
+  it "can be set to log in memory rather than on disk" do
+    raise "Failed."
+  end
 
-  	#############################################
-  	#  turn_flush_before_return_from_write_off  #
-  	#############################################
+  ###############################
+  #  zero_at_creation?          #
+	#  turn_zero_at_creation_on   #
+	#  turn_zero_at_creation_off  #
+  ###############################
 
-    it "" do
-      raise "Failed."
-    end
+  it "can be set to zero the log at creation" do
+    raise "Failed."
+  end
+
+  #############################################
+  #  force_flush_after_record_write?          #
+	#  turn_force_flush_after_record_write_on   #
+	#  turn_force_flush_after_record_write_off  #
+  #############################################
+
+  it "can be set to force a flush after record write" do
+    raise "Failed."
+  end
 
   #####################
-  #  autoremove_logs  #
+	#  set_buffer_size  #
+  #  buffer_size      #
   #####################
 
-  it "" do
+  it "can set and return its buffer size" do
     raise "Failed."
   end
-
-  	########################
-  	#  turn_autoremove_on  #
-  	########################
-
-    it "" do
-      raise "Failed."
-    end
-
-  	#########################
-  	#  turn_autoremove_off  #
-  	#########################
-
-    it "" do
-      raise "Failed."
-    end
 
   ###################
-  #  log_in_memory  #
+	#  set_directory  #
+  #  directory      #
   ###################
 
-  it "" do
+  it "can set and return its directory" do
     raise "Failed."
   end
 
-  	###########################
-  	#  turn_log_in_memory_on  #
-  	###########################
+  ##############
+	#  set_mode  #
+  #  mode      #
+  ##############
 
-    it "" do
-      raise "Failed."
-    end
-
-  	############################
-  	#  turn_log_in_memory_off  #
-  	############################
-
-    it "" do
-      raise "Failed."
-    end
-
-  #######################
-  #  zero_at_creation?  #
-  #######################
-
-  it "" do
+  it "can set and return its mode" do
     raise "Failed."
   end
 
-  	##############################
-  	#  turn_zero_at_creation_on  #
-  	##############################
+  ######################
+	#  set_max_log_size  #
+  #  max_log_size      #
+  ######################
 
-    it "" do
-      raise "Failed."
-    end
-
-  	###############################
-  	#  turn_zero_at_creation_off  #
-  	###############################
-
-    it "" do
-      raise "Failed."
-    end
-
-  #####################################
-  #  force_flush_after_record_write?  #
-  #####################################
-
-  it "" do
+  it "can set and return its maximum log size" do
     raise "Failed."
   end
 
-  	############################################
-  	#  turn_force_flush_after_record_write_on  #
-  	############################################
+  #########################
+	#  set_max_region_size  #
+  #  max_region_size      #
+  #########################
 
-    it "" do
-      raise "Failed."
-    end
-
-  	#############################################
-  	#  turn_force_flush_after_record_write_off  #
-  	#############################################
-
-    it "" do
-      raise "Failed."
-    end
-
-  #################
-  #  buffer_size  #
-  #################
-
-  it "" do
+  it "can set and return its maximum region size" do
     raise "Failed."
   end
-
-  	#####################
-  	#  set_buffer_size  #
-  	#####################
-
-    it "" do
-      raise "Failed."
-    end
-
-  ###############
-  #  directory  #
-  ###############
-
-  it "" do
-    raise "Failed."
-  end
-
-  	###################
-  	#  set_directory  #
-  	###################
-
-    it "" do
-      raise "Failed."
-    end
-
-  ##########
-  #  mode  #
-  ##########
-
-  it "" do
-    raise "Failed."
-  end
-
-  	##############
-  	#  set_mode  #
-  	##############
-
-    it "" do
-      raise "Failed."
-    end
-
-  ##################
-  #  max_log_size  #
-  ##################
-
-  it "" do
-    raise "Failed."
-  end
-
-  	######################
-  	#  set_max_log_size  #
-  	######################
-
-    it "" do
-      raise "Failed."
-    end
-
-  #####################
-  #  max_region_size  #
-  #####################
-
-  it "" do
-    raise "Failed."
-  end
-
-  	#########################
-  	#  set_max_region_size  #
-  	#########################
-
-    it "" do
-      raise "Failed."
-    end
 
 end
 

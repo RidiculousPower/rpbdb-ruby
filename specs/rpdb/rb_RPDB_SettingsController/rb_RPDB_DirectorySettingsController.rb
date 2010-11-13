@@ -61,15 +61,7 @@ describe RPDB::Settings::Directory do
   #  home_directory  #
   ####################
 
-  it "" do
-    raise "Failed."
-  end
-
-  ######################
-  #  data_directories  #
-  ######################
-
-  it "" do
+  it "can return its home directory" do
     raise "Failed."
   end
 
@@ -77,7 +69,15 @@ describe RPDB::Settings::Directory do
   #  add_data_directory  #
   ########################
 
-  it "" do
+  it "can add a data directory to the data directories array" do
+    raise "Failed."
+  end
+
+  ######################
+  #  data_directories  #
+  ######################
+
+  it "can return an array of current data directories" do
     raise "Failed."
   end
 

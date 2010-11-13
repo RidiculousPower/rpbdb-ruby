@@ -2266,7 +2266,7 @@ rpdb/../rpdb.bundle: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Tra
 rpdb/../rpdb.bundle: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_TransactionController.c.o
 rpdb/../rpdb.bundle: rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB.c.o
 rpdb/../rpdb.bundle: /usr/local/lib/librpdb.dylib
-rpdb/../rpdb.bundle: /Users/asher/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.dylib
+rpdb/../rpdb.bundle: /usr/local/lib/libruby-static.a
 rpdb/../rpdb.bundle: /usr/local/lib/librargs.dylib
 rpdb/../rpdb.bundle: rpdb/CMakeFiles/rb_rpdb.dir/build.make
 rpdb/../rpdb.bundle: rpdb/CMakeFiles/rb_rpdb.dir/link.txt

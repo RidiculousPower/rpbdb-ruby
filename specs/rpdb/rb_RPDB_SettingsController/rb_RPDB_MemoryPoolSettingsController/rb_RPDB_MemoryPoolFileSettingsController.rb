@@ -75,7 +75,7 @@ describe RPDB::Settings::MemoryPool::File do
   #  create_with_initial_null_bytes_numbering      #
   ##################################################
 
-  it "" do
+  it "can be set to create file with initial null bytes numbering ______" do
     raise "Failed."
   end
 
@@ -84,7 +84,7 @@ describe RPDB::Settings::MemoryPool::File do
   #  file_id      #
   #################
 
-  it "" do
+  it "can set and return its file id" do
     raise "Failed."
   end
 
@@ -93,7 +93,7 @@ describe RPDB::Settings::MemoryPool::File do
   #  file_type      #
   ###################
 
-  it "" do
+  it "can set and return its file type" do
     raise "Failed."
   end
 
@@ -102,23 +102,48 @@ describe RPDB::Settings::MemoryPool::File do
   #  log_sequence_number_offset      #
   ####################################
 
-  it "" do
+  it "can set and return its log sequence number offset" do
     raise "Failed."
   end
 
-  #################################
-  #  max_file_size_in_bytes       #
-  #  max_file_size_in_kbytes      #
-  #  max_file_size_in_mbytes      #
-  #  max_file_size_in_gbytes      #
-	#  set_max_file_size_in_bytes   #
-	#  set_max_file_size_in_kbytes  #
-	#  set_max_file_size_in_mbytes  #
-	#  set_max_file_size_in_gbytes  #
-  #################################
+  ################################################
+  #  set_max_size_in_bytes                       #
+	#  set_max_size_in_kbytes                      #
+	#  set_max_size_in_mbytes                      #
+	#  set_max_size_in_gbytes                      #
+	#  set_max_size_in_gbytes_mbytes_kbytes_bytes  #
+	#  set_max_size_in_mbytes_kbytes_bytes         #
+	#  set_max_size_in_kbytes_bytes                #
+  #  max_size_in_bytes                           #
+	#  max_size_in_kbytes                          #
+	#  max_size_in_mbytes                          #
+	#  max_size_in_gbytes                          #
+  ################################################
 
-  it "" do
-    raise "Failed."
+  it "can set its cache size according to various measures" do
+    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new( RPDB::Database( $database_name ) )
+
+    memory_pool_file_settings.set_max_size_in_bytes( 12 )
+    memory_pool_file_settings.max_size_in_bytes.should == 12
+
+    memory_pool_file_settings.set_max_size_in_kbytes( 42 )
+    memory_pool_file_settings.max_size_in_kbytes.should == 42 * 1024
+
+    memory_pool_file_settings.set_max_size_in_mbytes( 37 )
+    memory_pool_file_settings.max_size_in_mbytes.should == 37 * ( 1024 * 1024 )
+
+    memory_pool_file_settings.set_max_size_in_gbytes( 420 )
+    memory_pool_file_settings.max_size_in_gbytes.should == 420 * ( 1024 * 1024 * 1024 )
+
+    memory_pool_file_settings.set_max_size_in_gbytes_mbytes_kbytes_bytes( 420, 37, 42, 12 )
+    memory_pool_file_settings.max_size_in_bytes.should == 420 * ( 1024 * 1024 * 1024 ) + 37 * ( 1024 * 1024 ) + 42 * 1024 + 12
+
+    memory_pool_file_settings.set_max_size_in_mbytes_kbytes_bytes( 37, 42, 12 )
+    memory_pool_file_settings.max_size_in_bytes.should == 37 * ( 1024 * 1024 )
+
+    memory_pool_file_settings.set_max_size_in_kbytes_bytes( 42, 12 )
+    memory_pool_file_settings.max_size_in_bytes.should == 42 * 1024 + 12
+    
   end
 
   ################
@@ -126,7 +151,7 @@ describe RPDB::Settings::MemoryPool::File do
   #  cookie      #
   ################
 
-  it "" do
+  it "can set and return its cookie" do
     raise "Failed."
   end
 
@@ -134,7 +159,7 @@ describe RPDB::Settings::MemoryPool::File do
   #  cache_settings_controller  #
   ###############################
 
-  it "" do
+  it "can return its cache settings controller" do
     raise "Failed."
   end
 
@@ -142,7 +167,7 @@ describe RPDB::Settings::MemoryPool::File do
   #  page_settings_controller  #
   ##############################
 
-  it "" do
+  it "can return its page settings controller" do
     raise "Failed."
   end
 

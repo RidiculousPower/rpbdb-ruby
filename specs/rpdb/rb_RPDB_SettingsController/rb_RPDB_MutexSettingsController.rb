@@ -63,7 +63,7 @@ describe RPDB::Settings::Mutex do
   #  spin_times_before_blocking_for_test_and_spin_mutexes      #
   ##############################################################
 
-  it "" do
+  it "can set and return its blcoking time for test and spin mutexes" do
     raise "Failed."
   end
 
@@ -72,7 +72,7 @@ describe RPDB::Settings::Mutex do
   #  max_allowable_mutexes      #
   ###############################
 
-  it "" do
+  it "can set its maximum allowable mutex limit" do
     raise "Failed."
   end
 
@@ -81,7 +81,7 @@ describe RPDB::Settings::Mutex do
   #  increment_for_adding_mutexes      #
   ######################################
 
-  it "" do
+  it "can set and return its increment for adding mutexes" do
     raise "Failed."
   end
 
@@ -90,7 +90,7 @@ describe RPDB::Settings::Mutex do
   #  mutex_alignment      #
   #########################
 
-  it "" do
+  it "can set and return its mutex alignment" do
     raise "Failed."
   end
 
@@ -100,7 +100,7 @@ describe RPDB::Settings::Mutex do
 	#  turn_associated_with_single_process_off  #
   ##############################################
 
-  it "" do
+  it "can be set to associate with a single process" do
     raise "Failed."
   end
 
@@ -110,7 +110,7 @@ describe RPDB::Settings::Mutex do
 	#  turn_self_blocking_off  #
   ############################
 
-  it "" do
+  it "can be set to be self-blocking" do
     raise "Failed."
   end
 

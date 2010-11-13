@@ -64,7 +64,7 @@ describe RPDB::Settings::Transaction do
 	#  turn_off  #
   ##############
 
-  it "" do
+  it "can be turned on and off as well as report whether it is on or off" do
     raise "Failed."
   end
 
@@ -74,7 +74,7 @@ describe RPDB::Settings::Transaction do
 	#  turn_prohibit_sync_on_write_off  #
   #####################################
 
-  it "" do
+  it "can prohibit sync on writing" do
     raise "Failed."
   end
 
@@ -84,7 +84,7 @@ describe RPDB::Settings::Transaction do
 	#  turn_prohibit_sync_on_commit_transaction_off  #
   ##################################################
 
-  it "" do
+  it "can prohibit sync on commiting a transaction" do
     raise "Failed."
   end
 
@@ -94,7 +94,7 @@ describe RPDB::Settings::Transaction do
 	#  turn_timeout_returns_deny_not_deadlock_off  #
   ################################################
 
-  it "" do
+  it "can return deny instead of deadlock on timeout" do
     raise "Failed."
   end
 
@@ -104,7 +104,7 @@ describe RPDB::Settings::Transaction do
 	#  turn_concurrent_data_store_locking_off  #
   ############################################
 
-  it "" do
+  it "can be set as a concurrent data store for locking strategies" do
     raise "Failed."
   end
 
@@ -114,7 +114,7 @@ describe RPDB::Settings::Transaction do
 	#  turn_snapshot_isolation_off  #
   #################################
 
-  it "" do
+  it "can be set for snapshot isolation, ..." do
     raise "Failed."
   end
 
@@ -124,7 +124,7 @@ describe RPDB::Settings::Transaction do
 	#  turn_degree_one_isolation_off  #
   ###################################
 
-  it "" do
+  it "can be set for degree one isolation, ..." do
     raise "Failed."
   end
 
@@ -134,7 +134,7 @@ describe RPDB::Settings::Transaction do
 	#  turn_degree_two_isolation_off  #
   ###################################
 
-  it "" do
+  it "can be set for degree two isolation, ..." do
     raise "Failed."
   end
 
@@ -144,7 +144,7 @@ describe RPDB::Settings::Transaction do
 	#  turn_enclose_all_activity_in_transaction_off  #
   ##################################################
 
-  it "" do
+  it "can be set to enclose all activity in a transaction" do
     raise "Failed."
   end
 
@@ -154,7 +154,7 @@ describe RPDB::Settings::Transaction do
 	#  turn_environmental_snapshot_isolation_off  #
   ###############################################
 
-  it "" do
+  it "can be set for environmental snapshot isolation" do
     raise "Failed."
   end
 
@@ -164,7 +164,7 @@ describe RPDB::Settings::Transaction do
 	#  turn_sync_on_commit_off  #
   #############################
 
-  it "" do
+  it "can be set to sync on commit" do
     raise "Failed."
   end
 
@@ -174,7 +174,7 @@ describe RPDB::Settings::Transaction do
 	#  turn_wait_for_locks_off  #
   #############################
 
-  it "" do
+  it "can be set to wait for locks" do
     raise "Failed."
   end
 
@@ -183,7 +183,7 @@ describe RPDB::Settings::Transaction do
   #  maximum_number_of_transactions_to_recover      #
   ###################################################
 
-  it "" do
+  it "can set and return its maximum number of transactions to recover" do
     raise "Failed."
   end
 
@@ -192,7 +192,7 @@ describe RPDB::Settings::Transaction do
   #  timeout      #
   #################
 
-  it "" do
+  it "can set and return its timeout" do
     raise "Failed."
   end
 
@@ -201,7 +201,7 @@ describe RPDB::Settings::Transaction do
   #  max_open      #
   ##################
 
-  it "" do
+  it "can set and return its maximum number of open transactions" do
     raise "Failed."
   end
 
@@ -210,7 +210,7 @@ describe RPDB::Settings::Transaction do
   #  timestamp      #
   ###################
 
-  it "" do
+  it "can set and return its timestamp" do
     raise "Failed."
   end
 
@@ -219,7 +219,7 @@ describe RPDB::Settings::Transaction do
   #  rollbackward_callback_method      #
   ######################################
 
-  it "" do
+  it "can set and return its calback method for rolling a transaction backward" do
     raise "Failed."
   end
 
@@ -228,7 +228,7 @@ describe RPDB::Settings::Transaction do
   #  rollforward_callback_method      #
   #####################################
 
-  it "" do
+  it "can set and return its calback method for rolling a transaction forward" do
     raise "Failed."
   end
 
@@ -237,7 +237,7 @@ describe RPDB::Settings::Transaction do
   #  abort_callback_method      #
   ###############################
 
-  it "" do
+  it "can set and return its callback method for aborting" do
     raise "Failed."
   end
 
@@ -246,7 +246,7 @@ describe RPDB::Settings::Transaction do
   #  apply_callback_method      #
   ###############################
 
-  it "" do
+  it "can set and return its callback method for applying" do
     raise "Failed."
   end
 
@@ -255,7 +255,7 @@ describe RPDB::Settings::Transaction do
   #  print_callback_method      #
   ###############################
 
-  it "" do
+  it "can set and return its callback method for printing" do
     raise "Failed."
   end
 

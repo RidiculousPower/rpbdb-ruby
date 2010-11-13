@@ -28,7 +28,7 @@ CMAKE_COLOR_MAKEFILE:BOOL=ON
 CMAKE_C_COMPILER:FILEPATH=/usr/bin/clang
 
 //Flags used by the compiler during all build types.
-CMAKE_C_FLAGS:STRING='-march=x86-64 -gfull -fcatch-undefined-behavior -fno-common -fsigned-char -pipe -Wall -Wextra '
+CMAKE_C_FLAGS:STRING='-march=x86-64 -g -fno-common -fsigned-char -pipe -Wall -Wextra -fcatch-undefined-behavior '
 
 //Flags used by the compiler during debug builds.
 CMAKE_C_FLAGS_DEBUG:STRING=-g
@@ -69,7 +69,7 @@ CMAKE_INSTALL_PREFIX:PATH=/usr/local
 CMAKE_LINKER:FILEPATH=/usr/bin/ld
 
 //Path to a program.
-CMAKE_MAKE_PROGRAM:FILEPATH=/Developer/usr/bin/make
+CMAKE_MAKE_PROGRAM:FILEPATH=/usr/bin/make
 
 //Flags used by the linker during the creation of modules.
 CMAKE_MODULE_LINKER_FLAGS:STRING=
@@ -100,7 +100,7 @@ CMAKE_OSX_ARCHITECTURES:STRING=
 
 //Minimum OS X version to target for deployment (at runtime); newer
 // APIs weak linked. Set to empty string for default value.
-CMAKE_OSX_DEPLOYMENT_TARGET:STRING=10.6
+CMAKE_OSX_DEPLOYMENT_TARGET:STRING=
 
 //The product will be built against the headers and libraries located
 // inside the indicated SDK.
@@ -155,37 +155,37 @@ RPDB_INCLUDE_DIR:PATH=/usr/local/include
 RPDB_LIBRARY:FILEPATH=/usr/local/lib/librpdb.dylib
 
 //The Ruby arch dir
-RUBY_ARCH_DIR:PATH=/Users/asher/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/1.9.1/x86_64-darwin10.4.0
+RUBY_ARCH_DIR:PATH=/usr/local/lib/ruby/1.9.1/x86_64-darwin10.4.0
 
 //Path to a file.
-RUBY_CONFIG_INCLUDE_DIR:PATH=/Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0
+RUBY_CONFIG_INCLUDE_DIR:PATH=/usr/local/include/ruby-1.9.1/x86_64-darwin10.4.0
 
 //Path to a program.
-RUBY_EXECUTABLE:FILEPATH=/Users/asher/.rvm/rubies/ruby-1.9.2-p0/bin/ruby
+RUBY_EXECUTABLE:FILEPATH=/usr/local/bin/ruby
 
 //Vendor Ruby is available
 RUBY_HAS_VENDOR_RUBY:BOOL=
 
 //The Ruby header dir (1.9)
-RUBY_HDR_DIR:PATH=/Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1
+RUBY_HDR_DIR:PATH=/usr/local/include/ruby-1.9.1
 
 //Path to a file.
-RUBY_INCLUDE_DIR:PATH=/Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1
+RUBY_INCLUDE_DIR:PATH=/usr/local/include/ruby-1.9.1
 
 //Path to a library.
-RUBY_LIBRARY:FILEPATH=/Users/asher/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.dylib
+RUBY_LIBRARY:FILEPATH=/usr/local/lib/libruby-static.a
 
 //The Ruby lib dir
-RUBY_POSSIBLE_LIB_DIR:PATH=/Users/asher/.rvm/rubies/ruby-1.9.2-p0/lib
+RUBY_POSSIBLE_LIB_DIR:PATH=/usr/local/lib
 
 //The Ruby ruby-lib dir
-RUBY_RUBY_LIB_DIR:PATH=/Users/asher/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/1.9.1
+RUBY_RUBY_LIB_DIR:PATH=/usr/local/lib/ruby/1.9.1
 
 //The Ruby site arch dir
-RUBY_SITEARCH_DIR:PATH=/Users/asher/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/site_ruby/1.9.1/x86_64-darwin10.4.0
+RUBY_SITEARCH_DIR:PATH=/usr/local/lib/ruby/site_ruby/1.9.1/x86_64-darwin10.4.0
 
 //The Ruby site lib dir
-RUBY_SITELIB_DIR:PATH=/Users/asher/.rvm/rubies/ruby-1.9.2-p0/lib/ruby/site_ruby/1.9.1
+RUBY_SITELIB_DIR:PATH=/usr/local/lib/ruby/site_ruby/1.9.1
 
 //The Ruby vendor arch dir
 RUBY_VENDORARCH_DIR:PATH=
@@ -206,7 +206,7 @@ RUBY_VERSION_PATCH:PATH=1
 rb_rpdb_BINARY_DIR:STATIC=/Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2
 
 //Dependencies for the target
-rb_rpdb_LIB_DEPENDS:STATIC=general;/usr/local/lib/librpdb.dylib;general;/Users/asher/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.dylib;general;/usr/local/lib/librargs.dylib;
+rb_rpdb_LIB_DEPENDS:STATIC=general;/usr/local/lib/librpdb.dylib;general;/usr/local/lib/libruby-static.a;general;/usr/local/lib/librargs.dylib;
 
 //Value Computed by CMake
 rb_rpdb_SOURCE_DIR:STATIC=/Users/asher/Projects/rp/ruby/rpdb/ext
@@ -221,7 +221,7 @@ CMAKE_AR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_BUILD_TOOL
 CMAKE_BUILD_TOOL-ADVANCED:INTERNAL=1
 //What is the target build tool cmake is generating for.
-CMAKE_BUILD_TOOL:INTERNAL=/Developer/usr/bin/make
+CMAKE_BUILD_TOOL:INTERNAL=/usr/bin/make
 //This is the directory where this CMakeCache.txt was created
 CMAKE_CACHEFILE_DIR:INTERNAL=/Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2
 //Major version of cmake used to create the current loaded cache
@@ -321,7 +321,7 @@ CMAKE_USE_RELATIVE_PATHS-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: CMAKE_VERBOSE_MAKEFILE
 CMAKE_VERBOSE_MAKEFILE-ADVANCED:INTERNAL=1
 //Details about finding Ruby
-FIND_PACKAGE_MESSAGE_DETAILS_Ruby:INTERNAL=[/Users/asher/.rvm/rubies/ruby-1.9.2-p0/bin/ruby][/Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1][/Users/asher/.rvm/rubies/ruby-1.9.2-p0/lib/libruby.dylib][/Users/asher/.rvm/rubies/ruby-1.9.2-p0/include/ruby-1.9.1/x86_64-darwin10.4.0]
+FIND_PACKAGE_MESSAGE_DETAILS_Ruby:INTERNAL=[/usr/local/bin/ruby][/usr/local/include/ruby-1.9.1][/usr/local/lib/libruby-static.a][/usr/local/include/ruby-1.9.1/x86_64-darwin10.4.0]
 //ADVANCED property for variable: RARGS_INCLUDE_DIR
 RARGS_INCLUDE_DIR-ADVANCED:INTERNAL=1
 //ADVANCED property for variable: RARGS_LIBRARY

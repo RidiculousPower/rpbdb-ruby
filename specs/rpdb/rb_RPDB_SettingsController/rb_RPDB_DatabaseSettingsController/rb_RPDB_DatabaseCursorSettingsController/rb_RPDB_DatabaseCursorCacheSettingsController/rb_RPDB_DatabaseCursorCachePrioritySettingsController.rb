@@ -129,24 +129,24 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
   #  current_priority  #
   ######################
 
-  it "" do
+  it "can report its current priority" do
     raise "Failed."
   end
 
   ###################
 	#  set_very_low   #
 	#  set_low        #
-  #  very_low       #
-  #  low            #
 	#  set_default    #
-  #  default        #
 	#  set_high       #
-  #  high           #
 	#  set_very_high  #
-  #  very_high      #
+  #  very_low       #
+  #  low?           #
+  #  default?       #
+  #  high?          #
+  #  very_high?     #
   ###################
 
-  it "" do
+  it "can set priority and report whether a priority level is currently set" do
     raise "Failed."
   end
 
@@ -163,7 +163,7 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
   #  at_most_very_high   #
   ########################
 
-  it "" do
+  it "can report on relative priority levels" do
     raise "Failed."
   end
 

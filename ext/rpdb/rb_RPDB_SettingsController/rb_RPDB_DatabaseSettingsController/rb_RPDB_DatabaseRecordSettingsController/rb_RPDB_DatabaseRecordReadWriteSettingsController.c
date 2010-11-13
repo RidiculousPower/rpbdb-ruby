@@ -323,40 +323,6 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_parentDatabaseRecordSett
 }
 
 /*******************************************************************************************************************************************************************************************
-																		File Settings
-*******************************************************************************************************************************************************************************************/
-
-/*************
-*  filename  *
-*************/
-
-//	In-memory databases never intended to be preserved on disk may be created by setting the file parameter to NULL.
-//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_open.html
-VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_filename( VALUE	rb_database_record_read_write_settings_controller )	{
-
-	RPDB_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
-
-	return rb_str_new2( RPDB_DatabaseRecordReadWriteSettingsController_filename( c_database_record_read_write_settings_controller ) );
-}
-
-/*****************
-*  set_filename  *
-*****************/
-
-VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_setFilename(	VALUE	rb_database_record_read_write_settings_controller,
-																VALUE	rb_filename	)	{
-
-	RPDB_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
-
-	RPDB_DatabaseRecordReadWriteSettingsController_setFilename(	c_database_record_read_write_settings_controller,
-															StringValuePtr( rb_filename ) );
-	
-	return rb_database_record_read_write_settings_controller;
-}
-
-/*******************************************************************************************************************************************************************************************
 																		Switch Settings
 *******************************************************************************************************************************************************************************************/
 
@@ -420,9 +386,9 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_ignoreLease( VALUE	rb_da
 
 }
 
-	/*************************
-	*  turn_ignore_lease_on  *
-	*************************/
+	/**************************
+	*  turn_ignore_lease_on?  *
+	**************************/
 
 	//	DB_IGNORE_LEASE			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_get.html
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnIgnoreLeaseOn( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -1241,6 +1207,37 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_setPartialReadWriteOffse
 	return rb_database_record_read_write_settings_controller;
 }
 
+/*************
+*  filename  *
+*************/
+
+//	In-memory databases never intended to be preserved on disk may be created by setting the file parameter to NULL.
+//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_open.html
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_filename( VALUE	rb_database_record_read_write_settings_controller )	{
+
+	RPDB_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+	C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+
+	return rb_str_new2( RPDB_DatabaseRecordReadWriteSettingsController_filename( c_database_record_read_write_settings_controller ) );
+}
+
+/*****************
+*  set_filename  *
+*****************/
+
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_setFilename(	VALUE	rb_database_record_read_write_settings_controller,
+																VALUE	rb_filename	)	{
+
+	RPDB_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+	C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+
+	RPDB_DatabaseRecordReadWriteSettingsController_setFilename(	c_database_record_read_write_settings_controller,
+															StringValuePtr( rb_filename ) );
+	
+	return rb_database_record_read_write_settings_controller;
+}
+
+
 /*****************
 *  storage_type  *
 *****************/
@@ -1266,3 +1263,24 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_setStorageType(	VALUE rb
 	
 	return rb_database_record_read_write_settings_controller;
 }
+
+
+/*************************************
+*  set_write_failed_callback_method  *
+*************************************/
+/*
+VALUE rb_RPDB_MessageSettingsController_setWriteFailedCallbackMethod(	VALUE	rb_message_settings_controller,
+ 																	void *(write_failed_callback_method)( VALUE	environment ) )	{
+	RPDB_MessageSettingsController_setWriteFailedCallbackMethod();
+	
+
+}
+*/
+/*********************************
+*  write_failed_callback_method  *
+*********************************/
+/*
+void *(write_failed_callback_method)( VALUE	environment ) RPDB_MessageSettingsController_writeFailedCallbackMethod(	VALUE	rb_message_settings_controller )	{
+	
+}
+*/

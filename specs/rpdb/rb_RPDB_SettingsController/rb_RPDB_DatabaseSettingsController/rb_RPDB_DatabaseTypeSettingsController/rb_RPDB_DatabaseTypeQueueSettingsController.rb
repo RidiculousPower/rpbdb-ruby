@@ -102,7 +102,7 @@ describe RPDB::Settings::Database::Type::Queue do
 	#  turn_return_key_data_pairs_in_order_off  #
   #############################################
 
-  it "" do
+  it "can be set to return key/data pairs in order" do
     raise "Failed."
   end
 
@@ -111,7 +111,7 @@ describe RPDB::Settings::Database::Type::Queue do
   #  number_of_pages_for_underlying_data      #
   #############################################
 
-  it "" do
+  it "can set the number of pages used for underlying data" do
     raise "Failed."
   end
 

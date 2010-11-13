@@ -92,7 +92,7 @@ describe RPDB::Settings::Database::Type do
   #  database_type  #
   ###################
 
-  it "" do
+  it "can return its database type" do
     raise "Failed."
   end
 
@@ -101,7 +101,7 @@ describe RPDB::Settings::Database::Type do
   #  is_btree?     #
   ##################
 
-  it "" do
+  it "can set the default type to btree and report whether the type is btree" do
     raise "Failed."
   end
 
@@ -110,7 +110,7 @@ describe RPDB::Settings::Database::Type do
   #  is_hash?     #
   #################
 
-  it "" do
+  it "can set the default type to hash and report whether the type is hash" do
     raise "Failed."
   end
 
@@ -119,7 +119,7 @@ describe RPDB::Settings::Database::Type do
   #  is_recno?     #
   ##################
 
-  it "" do
+  it "can set the default type to queue and report whether the type is queue" do
     raise "Failed."
   end
 
@@ -128,7 +128,7 @@ describe RPDB::Settings::Database::Type do
   #  is_queue?     #
   ##################
 
-  it "" do
+  it "can set the default type to recno and report whether the type is recno" do
     raise "Failed."
   end
 
@@ -136,7 +136,7 @@ describe RPDB::Settings::Database::Type do
   #  btree_controller  #
   ######################
 
-  it "" do
+  it "can return its btree settings controller" do
     raise "Failed."
   end
 
@@ -144,7 +144,7 @@ describe RPDB::Settings::Database::Type do
   #  hash_controller  #
   #####################
 
-  it "" do
+  it "can return its hash settings controller" do
     raise "Failed."
   end
 
@@ -152,7 +152,7 @@ describe RPDB::Settings::Database::Type do
   #  queue_controller  #
   ######################
 
-  it "" do
+  it "can return its queue settings controller" do
     raise "Failed."
   end
 
@@ -160,7 +160,7 @@ describe RPDB::Settings::Database::Type do
   #  recno_controller  #
   ######################
 
-  it "" do
+  it "can return its recno settings controller" do
     raise "Failed."
   end
 

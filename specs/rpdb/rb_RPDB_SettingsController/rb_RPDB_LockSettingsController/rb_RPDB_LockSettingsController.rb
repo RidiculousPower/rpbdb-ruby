@@ -64,7 +64,7 @@ describe RPDB::Settings::Lock do
 	#  turn_off  #
   ##############
 
-  it "" do
+  it "can be turned on and off and report whether it is on or off" do
     raise "Failed."
   end
 
@@ -74,7 +74,7 @@ describe RPDB::Settings::Lock do
 	#  turn_prohibit_locking_off  #
   ###############################
 
-  it "" do
+  it "can prohibit locking" do
     raise "Failed."
   end
 
@@ -84,7 +84,7 @@ describe RPDB::Settings::Lock do
 	#  turn_timeout_returns_return_deny_not_deadlock_off  #
   #######################################################
 
-  it "" do
+  it "can return deny rather than deadlock on timeout" do
     raise "Failed."
   end
 
@@ -94,7 +94,7 @@ describe RPDB::Settings::Lock do
 	#  turn_wait_off  #
   ###################
 
-  it "" do
+  it "can be set to wait on deadlock" do
     raise "Failed."
   end
 
@@ -104,7 +104,7 @@ describe RPDB::Settings::Lock do
 	#  turn_lock_for_environment_not_database_off  #
   ################################################
 
-  it "" do
+  it "can lock for environment rather than for database" do
     raise "Failed."
   end
 
@@ -113,7 +113,7 @@ describe RPDB::Settings::Lock do
   #  timeout      #
   #################
 
-  it "" do
+  it "can set and return its deadlock timeout" do
     raise "Failed."
   end
 
@@ -122,7 +122,7 @@ describe RPDB::Settings::Lock do
   #  conflict_matrix      #
   #########################
 
-  it "" do
+  it "can set and return its conflict matrix" do
     raise "Failed."
   end
 
@@ -131,7 +131,7 @@ describe RPDB::Settings::Lock do
   #  max_lockers      #
   #####################
 
-  it "" do
+  it "can set and return its maximum locker limit" do
     raise "Failed."
   end
 
@@ -140,7 +140,7 @@ describe RPDB::Settings::Lock do
   #  max_locks      #
   ###################
 
-  it "" do
+  it "can set and return it maximum lock limit" do
     raise "Failed."
   end
 
@@ -149,7 +149,7 @@ describe RPDB::Settings::Lock do
   #  max_objects      #
   #####################
 
-  it "" do
+  it "can set and return its maximum object limit" do
     raise "Failed."
   end
 
@@ -158,15 +158,15 @@ describe RPDB::Settings::Lock do
   #  number_of_partitions      #
   ##############################
 
-  it "" do
+  it "can set and return its number of partitions" do
     raise "Failed."
   end
 
-  ##################################
-  #  deadlock_detector_controller  #
-  ##################################
+  ###########################################
+  #  deadlock_detector_settings_controller  #
+  ###########################################
 
-  it "" do
+  it "can return its deadlock detector settings controller" do
     raise "Failed."
   end
 

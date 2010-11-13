@@ -93,7 +93,7 @@ describe RPDB::Settings::Database::Sequence do
   #  increasing         #
   #######################
 
-  it "" do
+  it "can be set as an increasing sequence" do
     raise "Failed."
   end
 
@@ -102,7 +102,7 @@ describe RPDB::Settings::Database::Sequence do
   #  decreasing         #
   #######################
 
-  it "" do
+  it "can be set as a decreasing sequence" do
     raise "Failed."
   end
 
@@ -111,7 +111,7 @@ describe RPDB::Settings::Database::Sequence do
   #  wrap         #
   #################
 
-  it "" do
+  it "can be set to wrap at a given value" do
     raise "Failed."
   end
 
@@ -120,7 +120,7 @@ describe RPDB::Settings::Database::Sequence do
   #  range_minimum      #
   #######################
 
-  it "" do
+  it "can set the minimum value for a sequence range" do
     raise "Failed."
   end
 
@@ -129,7 +129,7 @@ describe RPDB::Settings::Database::Sequence do
   #  range_maximum      #
   #######################
 
-  it "" do
+  it "can set the maximum value for a sequence range" do
     raise "Failed."
   end
 
@@ -138,7 +138,7 @@ describe RPDB::Settings::Database::Sequence do
   #  cache_size      #
   ####################
 
-  it "" do
+  it "can set the sequence cache size" do
     raise "Failed."
   end
 
@@ -147,7 +147,7 @@ describe RPDB::Settings::Database::Sequence do
   #  initial_value      #
   #######################
 
-  it "" do
+  it "can set the initial sequence value" do
     raise "Failed."
   end
 
@@ -156,7 +156,7 @@ describe RPDB::Settings::Database::Sequence do
   #  default_step_value      #
   ############################
 
-  it "" do
+  it "can set the default step value" do
     raise "Failed."
   end
 

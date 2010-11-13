@@ -76,7 +76,7 @@ describe RPDB::Database do
 	#  turn_display_additional_information_during_recovery_off  #
   #############################################################
 
-  it "" do
+  it "can display additional information during recovery" do
     raise "Failed."
   end
 

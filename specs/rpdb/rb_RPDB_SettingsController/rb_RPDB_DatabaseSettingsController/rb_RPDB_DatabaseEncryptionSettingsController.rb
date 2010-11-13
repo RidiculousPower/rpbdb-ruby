@@ -89,12 +89,12 @@ describe RPDB::Settings::Database::Encryption do
   end
 
   #########################
-  #  encrypted            #
+  #  encrypted?           #
 	#  turn_encryption_on   #
 	#  turn_encryption_off  #
   #########################
 
-  it "" do
+  it "can turn encryption on and off and report whether it is encrypted" do
     raise "Failed."
   end
 

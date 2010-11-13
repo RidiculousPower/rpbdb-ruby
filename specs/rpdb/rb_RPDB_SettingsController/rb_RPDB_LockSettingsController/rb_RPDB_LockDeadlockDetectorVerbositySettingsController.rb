@@ -89,7 +89,7 @@ describe RPDB::Settings::Lock::DeadlockDetector::Verbosity do
 	#  turn_display_additional_information_during_deadlock_detection_off  #
   #######################################################################
 
-  it "" do
+  it "can display additional information during deadlock detection" do
     raise "Failed."
   end
 
@@ -99,7 +99,7 @@ describe RPDB::Settings::Lock::DeadlockDetector::Verbosity do
 	#  turn_display_wait_table_during_deadlock_detection_off  #
   ###########################################################
 
-  it "" do
+  it "can display wait table during deadlock detection" do
     raise "Failed."
   end
 
