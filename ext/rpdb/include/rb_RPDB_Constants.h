@@ -204,15 +204,19 @@
 	
 	//	Database Btree Type Settings Controller
 	#define RPDB_RB_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER									"@parent_database_type_settings_controller"
+	#define RPDB_RB_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE																					"@parent_database"
 	
 	//	Database Hash Type Settings Controller
 	#define RPDB_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER									"@parent_database_type_settings_controller"
+	#define RPDB_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE																						"@parent_database"
 
 	//	Database Recno Type Settings Controller
 	#define RPDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER									"@parent_database_type_settings_controller"
+	#define RPDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE																					"@parent_database"
 
 	//	Database Queue Type Settings Controller
 	#define RPDB_RB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER									"@parent_database_type_settings_controller"
+	#define RPDB_RB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE																					"@parent_database"
 
 	//	Database Verbosity Settings Controller
 	#define RPDB_RB_DATABASE_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER									"@parent_database_settings_controller"

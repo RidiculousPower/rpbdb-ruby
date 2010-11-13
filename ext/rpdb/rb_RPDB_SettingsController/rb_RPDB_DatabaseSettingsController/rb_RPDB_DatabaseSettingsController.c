@@ -698,7 +698,7 @@ VALUE rb_RPDB_DatabaseSettingsController_typeSettingsController( VALUE	rb_databa
 
 		rb_database_type_settings_controller	=	rb_RPDB_DatabaseTypeSettingsController_new(	1,
 																																												& rb_database_settings_controller,
-																																												rb_RPDB_DatabaseErrorSettingsController );		
+																																												rb_RPDB_DatabaseTypeSettingsController );
 
 		rb_iv_set(	rb_database_settings_controller,
 								RPDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_SETTINGS_CONTROLLER,

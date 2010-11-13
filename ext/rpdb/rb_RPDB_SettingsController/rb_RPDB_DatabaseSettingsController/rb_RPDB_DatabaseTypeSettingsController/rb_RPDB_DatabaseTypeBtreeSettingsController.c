@@ -151,6 +151,19 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_new(	int			argc,
 							RPDB_RB_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER,
 							rb_parent_database_type_settings_controller );
 
+	//	if we have a parent database in addition to our parent environmental settings controller, set it as parent as well
+	//	it's possible we were passed a database settings controller with a parent database
+	if (		rb_parent_database == Qnil
+			&&	rb_parent_database_settings_controller != Qnil )	{
+		
+		rb_parent_database	=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
+	}
+	if ( rb_parent_database != Qnil )	{
+		rb_iv_set(	rb_database_type_btree_settings_controller,
+								RPDB_RB_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE,
+								rb_parent_database );	
+	}
+	
 	VALUE	argv[]	=	{ rb_parent_database_type_settings_controller };
 	rb_obj_call_init(	rb_database_type_btree_settings_controller,
 										 1, 
@@ -164,8 +177,8 @@ VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_new(	int			argc,
 ***************/
 
 VALUE rb_RPDB_DatabaseTypeBtreeSettingsController_initialize(	int				argc __attribute__ ((unused)),
-																												VALUE*		args __attribute__ ((unused)),
-																												VALUE			rb_self )	{
+																															VALUE*		args __attribute__ ((unused)),
+																															VALUE			rb_self )	{
 	
 	return rb_self;
 }

@@ -143,6 +143,19 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_new(	int			argc,
 	rb_iv_set(	rb_database_type_hash_settings_controller,
 							RPDB_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER,
 							rb_parent_database_type_settings_controller );
+
+	//	if we have a parent database in addition to our parent environmental settings controller, set it as parent as well
+	//	it's possible we were passed a database settings controller with a parent database
+	if (		rb_parent_database == Qnil
+			&&	rb_parent_database_settings_controller != Qnil )	{
+		
+		rb_parent_database	=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
+	}
+	if ( rb_parent_database != Qnil )	{
+		rb_iv_set(	rb_database_type_hash_settings_controller,
+								RPDB_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE,
+								rb_parent_database );	
+	}
 	
 	VALUE	argv[]	=	{ rb_parent_database_type_settings_controller };
 	rb_obj_call_init(	rb_database_type_hash_settings_controller,
