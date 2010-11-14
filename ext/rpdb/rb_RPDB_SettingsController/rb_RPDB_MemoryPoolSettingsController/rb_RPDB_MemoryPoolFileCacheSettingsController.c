@@ -57,7 +57,7 @@ void Init_RPDB_MemoryPoolFileCacheSettingsController()	{
 	rb_define_method(						rb_RPDB_MemoryPoolFileCacheSettingsController,				"parent_memory_pool_settings_controller",					rb_RPDB_MemoryPoolFileCacheSettingsController_parentMemoryPoolSettingsController,								0 	);
 	rb_define_method(						rb_RPDB_MemoryPoolFileCacheSettingsController,				"parent_memory_pool_file_settings_controller",					rb_RPDB_MemoryPoolFileCacheSettingsController_parentMemoryPoolFileSettingsController,								0 	);
                                     			                                                                                                    				
-	rb_define_method(						rb_RPDB_MemoryPoolFileCacheSettingsController, 				"priority",														rb_RPDB_MemoryPoolFileCacheSettingsController_prioritySettingsController,			0 	);
+	rb_define_method(						rb_RPDB_MemoryPoolFileCacheSettingsController, 				"priority_settings_controller",									rb_RPDB_MemoryPoolFileCacheSettingsController_prioritySettingsController,			0 	);
 
 }
 

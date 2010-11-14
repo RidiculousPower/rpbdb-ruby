@@ -12,9 +12,6 @@ describe RPDB::Settings::Replication::Election do
   
   before( :each ) do
     @environment = RPDB::Environment.new( $environment_path )
-    @environment.open
-    @database_controller = @environment.database_controller
-
   end
 
   after( :each ) do
@@ -33,16 +30,19 @@ describe RPDB::Settings::Replication::Election do
 
   # RPDB::Settings::Replication::Election.new( settings_controller )
   it "can be created with a settings controller" do
+    @environment.open
     RPDB::Settings::Replication::Election.new( RPDB::Settings.new ).should_not == nil
   end
 
   # RPDB::Settings::Replication::Election.new( election_settings_controller )
   it "can be created with a replication settings controller" do
+    @environment.open
     RPDB::Settings::Replication::Election.new( RPDB::Settings::Replication.new ).should_not == nil
   end
 
   # RPDB::Settings::Replication::Election.new
   it "can be created with no argument specified" do
+    @environment.open
     RPDB::Settings::Replication::Election.new.should_not == nil
   end
 
@@ -51,6 +51,7 @@ describe RPDB::Settings::Replication::Election do
   ########################
 
   it "can return its parent environment" do
+    @environment.open
     RPDB::Settings::Replication::Election.new.parent_environment.should_not == nil
   end
 
@@ -59,15 +60,17 @@ describe RPDB::Settings::Replication::Election do
   ################################
 
   it "can return its parent settings controller" do
+    @environment.open
     RPDB::Settings::Replication::Election.new.parent_settings_controller.should_not == nil
   end
 
   ############################################
-  #  parent_election_settings_controller  #
+  #  parent_replication_settings_controller  #
   ############################################
 
   it "can return its parent replication settings controller" do
-    RPDB::Settings::Replication::Election.new.parent_election_settings_controller.should_not == nil
+    @environment.open
+    RPDB::Settings::Replication::Election.new.parent_replication_settings_controller.should_not == nil
   end
 
   ###################################
@@ -77,7 +80,8 @@ describe RPDB::Settings::Replication::Election do
   ###################################
 
   it "can be set to wait for all clients to respond to election" do
-    election_settings  = RPDB::Settings::Replication::Election.new
+    election_settings  = RPDB::Settings::Replication::Election.new( @environment )
+    election_settings.parent_replication_settings_controller.turn_on
     election_settings.wait_for_all_clients?.should == false
     election_settings.turn_wait_for_all_clients_on
     election_settings.wait_for_all_clients?.should == true
@@ -92,7 +96,7 @@ describe RPDB::Settings::Replication::Election do
   ###########################################
 
   it "can be set to wait for all electable peers" do
-    election_settings  = RPDB::Settings::Replication::Election.new
+    election_settings  = RPDB::Settings::Replication::Election.new( @environment )
     election_settings.wait_for_all_electable_peers?.should == false
     election_settings.turn_wait_for_all_electable_peers_on
     election_settings.wait_for_all_electable_peers?.should == true
@@ -107,7 +111,7 @@ describe RPDB::Settings::Replication::Election do
   ############################
 
   it "can be set not to wait" do
-    election_settings  = RPDB::Settings::Replication::Election.new
+    election_settings  = RPDB::Settings::Replication::Election.new( @environment )
     election_settings.wait_for_none?.should == false
     election_settings.turn_wait_for_none_on
     election_settings.wait_for_none?.should == true
@@ -122,7 +126,7 @@ describe RPDB::Settings::Replication::Election do
   ###########################################
 
   it "can be set to wait for at least one client" do
-    election_settings  = RPDB::Settings::Replication::Election.new
+    election_settings  = RPDB::Settings::Replication::Election.new( @environment )
     election_settings.wait_for_at_least_one_client?.should == false
     election_settings.turn_wait_for_at_least_one_client_on
     election_settings.wait_for_at_least_one_client?.should == true
@@ -137,7 +141,7 @@ describe RPDB::Settings::Replication::Election do
   ###################################################
 
   it "can be set to wait for at least one electable peer" do
-    election_settings  = RPDB::Settings::Replication::Election.new
+    election_settings  = RPDB::Settings::Replication::Election.new( @environment )
     election_settings.wait_for_at_least_one_electable_peer?.should == false
     election_settings.turn_wait_for_at_least_one_electable_peer_on
     election_settings.wait_for_at_least_one_electable_peer?.should == true
@@ -152,7 +156,7 @@ describe RPDB::Settings::Replication::Election do
   ####################################################################
 
   it "can be set to wait for a minimum number of electable peers for durable election" do
-    election_settings  = RPDB::Settings::Replication::Election.new
+    election_settings  = RPDB::Settings::Replication::Election.new( @environment )
     election_settings.wait_for_minimum_electable_peers_for_durable_election?.should == false
     election_settings.turn_wait_for_minimum_electable_peers_for_durable_election_on
     election_settings.wait_for_minimum_electable_peers_for_durable_election?.should == true
@@ -166,6 +170,7 @@ describe RPDB::Settings::Replication::Election do
   ###############################################
 
   it "can set and return the number of sites required for election" do
+    @environment.open
     election_settings  = RPDB::Settings::Replication::Election.new
     election_settings.set_number_of_sites_required_for_election( 42 )
     election_settings.number_of_sites_required_for_election.should == 42
@@ -177,6 +182,7 @@ describe RPDB::Settings::Replication::Election do
   ###############################################
 
   it "can set and return the number of votes required for election" do
+    @environment.open
     election_settings  = RPDB::Settings::Replication::Election.new
     election_settings.set_number_of_votes_required_for_election( 42 )
     election_settings.number_of_votes_required_for_election.should == 42
@@ -188,6 +194,7 @@ describe RPDB::Settings::Replication::Election do
   ########################################################
 
   it "can set and return its callback method called when site becomes replication client" do
+    @environment.open
     raise "Callback."
   end
 
@@ -197,6 +204,7 @@ describe RPDB::Settings::Replication::Election do
   #######################################################
 
   it "can set and return its callback method called when site won replication election" do
+    @environment.open
     raise "Callback."
   end
 
@@ -206,6 +214,7 @@ describe RPDB::Settings::Replication::Election do
   #################################################################
 
   it "can set and return its callback method called when site becomes master of its replication group" do
+    @environment.open
     raise "Callback."
   end
 
@@ -215,6 +224,7 @@ describe RPDB::Settings::Replication::Election do
   ##########################################################
 
   it "can set and return its callback method called when its replication group has a new master" do
+    @environment.open
     raise "Callback."
   end
 
@@ -224,6 +234,7 @@ describe RPDB::Settings::Replication::Election do
   ############################################################
 
   it "can set and return its callback method called when its replication acknowledement fails" do
+    @environment.open
     raise "Callback."
   end
 
@@ -233,6 +244,7 @@ describe RPDB::Settings::Replication::Election do
   #######################################################
 
   it "can set and return its callback method called when its replication startup completed" do
+    @environment.open
     raise "Callback."
   end
 

@@ -85,7 +85,7 @@ describe RPDB::Settings::MemoryPool::File do
   ################################################
 
   it "can set its cache size according to various measures" do
-    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new( RPDB::Database( $database_name ) )
+    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new( @environment )
 
     memory_pool_file_settings.set_max_size_in_bytes( 12 )
     memory_pool_file_settings.max_size_in_bytes.should == 12

@@ -80,11 +80,11 @@ describe RPDB::Database do
 
   it "can run catastrophic recovery processes during environment open before actually opening environment" do
     debug_settings  = RPDB::Settings::Debug.new
-    debug_settings.run_normal_recovery_before_opening_environment?.should == false
-    debug_settings.turn_run_normal_recovery_before_opening_environment_on
-    debug_settings.run_normal_recovery_before_opening_environment?.should == true
-    debug_settings.turn_run_normal_recovery_before_opening_environment_off
-    debug_settings.run_normal_recovery_before_opening_environment?.should == false
+    debug_settings.run_catastrophic_recovery_before_opening_environment?.should == false
+    debug_settings.turn_run_catastrophic_recovery_before_opening_environment_on
+    debug_settings.run_catastrophic_recovery_before_opening_environment?.should == true
+    debug_settings.turn_run_catastrophic_recovery_before_opening_environment_off
+    debug_settings.run_catastrophic_recovery_before_opening_environment?.should == false
   end
 
   ###############################
@@ -95,26 +95,26 @@ describe RPDB::Database do
 
   it "can open in lockdown" do
     debug_settings  = RPDB::Settings::Debug.new
-    debug_settings.run_normal_recovery_before_opening_environment?.should == false
-    debug_settings.turn_run_normal_recovery_before_opening_environment_on
-    debug_settings.run_normal_recovery_before_opening_environment?.should == true
-    debug_settings.turn_run_normal_recovery_before_opening_environment_off
-    debug_settings.run_normal_recovery_before_opening_environment?.should == false
+    debug_settings.open_in_lockdown?.should == false
+    debug_settings.turn_open_in_lockdown_on
+    debug_settings.open_in_lockdown?.should == true
+    debug_settings.turn_open_in_lockdown_off
+    debug_settings.open_in_lockdown?.should == false
   end
 
-  ############################################################
-  #  check_for_recovery_before_opening_environment?          #
-	#  turn_check_for_recovery_before_opening_environment_on   #
-	#  turn_check_for_recovery_before_opening_environment_off  #
-  ############################################################
+  ####################################
+  #  register_for_recovery?          #
+	#  turn_register_for_recovery_on   #
+	#  turn_register_for_recovery_off  #
+  ####################################
 
   it "can check whether it should run recovery processes during environment open before actually opening environment" do
     debug_settings  = RPDB::Settings::Debug.new
-    debug_settings.run_normal_recovery_before_opening_environment?.should == false
-    debug_settings.turn_run_normal_recovery_before_opening_environment_on
-    debug_settings.run_normal_recovery_before_opening_environment?.should == true
-    debug_settings.turn_run_normal_recovery_before_opening_environment_off
-    debug_settings.run_normal_recovery_before_opening_environment?.should == false
+    debug_settings.register_for_recovery?.should == false
+    debug_settings.turn_register_for_recovery_on
+    debug_settings.register_for_recovery?.should == true
+    debug_settings.turn_register_for_recovery_off
+    debug_settings.register_for_recovery?.should == false
   end
 
   #############################
@@ -125,11 +125,11 @@ describe RPDB::Database do
 
   it "can prohibit panic" do
     debug_settings  = RPDB::Settings::Debug.new
-    debug_settings.run_normal_recovery_before_opening_environment?.should == false
-    debug_settings.turn_run_normal_recovery_before_opening_environment_on
-    debug_settings.run_normal_recovery_before_opening_environment?.should == true
-    debug_settings.turn_run_normal_recovery_before_opening_environment_off
-    debug_settings.run_normal_recovery_before_opening_environment?.should == false
+    debug_settings.prohibit_panic?.should == false
+    debug_settings.turn_prohibit_panic_on
+    debug_settings.prohibit_panic?.should == true
+    debug_settings.turn_prohibit_panic_off
+    debug_settings.prohibit_panic?.should == false
   end
 
   ####################
@@ -140,26 +140,26 @@ describe RPDB::Database do
 
   it "can panic" do
     debug_settings  = RPDB::Settings::Debug.new
-    debug_settings.run_normal_recovery_before_opening_environment?.should == false
-    debug_settings.turn_run_normal_recovery_before_opening_environment_on
-    debug_settings.run_normal_recovery_before_opening_environment?.should == true
-    debug_settings.turn_run_normal_recovery_before_opening_environment_off
-    debug_settings.run_normal_recovery_before_opening_environment?.should == false
+    debug_settings.panic?.should == false
+    debug_settings.turn_panic_on
+    debug_settings.panic?.should == true
+    debug_settings.turn_panic_off
+    debug_settings.panic?.should == false
   end
 
   ########################################
-  #  yield_cpu_for_stress_test           #
+  #  yield_cpu_for_stress_test?          #
 	#  turn_yield_cpu_for_stress_test_on   #
 	#  turn_yield_cpu_for_stress_test_off  #
   ########################################
 
   it "can yield cpu for stress test" do
     debug_settings  = RPDB::Settings::Debug.new
-    debug_settings.run_normal_recovery_before_opening_environment?.should == false
-    debug_settings.turn_run_normal_recovery_before_opening_environment_on
-    debug_settings.run_normal_recovery_before_opening_environment?.should == true
-    debug_settings.turn_run_normal_recovery_before_opening_environment_off
-    debug_settings.run_normal_recovery_before_opening_environment?.should == false
+    debug_settings.yield_cpu_for_stress_test?.should == false
+    debug_settings.turn_yield_cpu_for_stress_test_on
+    debug_settings.yield_cpu_for_stress_test?.should == true
+    debug_settings.turn_yield_cpu_for_stress_test_off
+    debug_settings.yield_cpu_for_stress_test?.should == false
   end
 
   ###################################

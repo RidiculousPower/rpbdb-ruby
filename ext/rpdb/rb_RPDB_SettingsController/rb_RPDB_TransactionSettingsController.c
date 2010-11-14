@@ -52,9 +52,9 @@ void Init_RPDB_TransactionSettingsController()	{
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"prohibit_sync_on_write?",														rb_RPDB_TransactionSettingsController_prohibitSyncOnWrite,													0 	);
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"turn_prohibit_sync_on_write_on",														rb_RPDB_TransactionSettingsController_turnProhibitSyncOnWriteTransactionOn,													0 	);
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"turn_prohibit_sync_on_write_off",														rb_RPDB_TransactionSettingsController_turnProhibitSyncOnWriteTransactionOff,													0 	);
-	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"prohibit_sync_on_commit?",														rb_RPDB_TransactionSettingsController_prohibitSyncOnCommit,													0 	);
-	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"turn_prohibit_sync_on_commit_on",														rb_RPDB_TransactionSettingsController_turnProhibitSyncOnCommitOn,													0 	);
-	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"turn_prohibit_sync_on_commit_off",														rb_RPDB_TransactionSettingsController_turnProhibitSyncOnCommitOff,													0 	);
+	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"prohibit_sync_on_commit_transaction?",														rb_RPDB_TransactionSettingsController_prohibitSyncOnCommit,													0 	);
+	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"turn_prohibit_sync_on_commit_transaction_on",														rb_RPDB_TransactionSettingsController_turnProhibitSyncOnCommitOn,													0 	);
+	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"turn_prohibit_sync_on_commit_transaction_off",														rb_RPDB_TransactionSettingsController_turnProhibitSyncOnCommitOff,													0 	);
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"timeout_in_microseconds_returns_deny_not_deadlock?",														rb_RPDB_TransactionSettingsController_timeoutInMicrosecondsReturnsDenyNotDeadlock,													0 	);
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"turn_timeout_in_microseconds_returns_deny_not_deadlock_on",														rb_RPDB_TransactionSettingsController_turnTimeoutInMicrosecondsReturnsDenyNotDeadlockOn,													0 	);
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"turn_timeout_in_microseconds_returns_deny_not_deadlock_off",														rb_RPDB_TransactionSettingsController_turnTimeoutInMicrosecondsReturnsDenyNotDeadlockOff,													0 	);
@@ -83,13 +83,13 @@ void Init_RPDB_TransactionSettingsController()	{
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"turn_wait_for_locks_on",														rb_RPDB_TransactionSettingsController_turnWaitForLocksOn,													0 	);
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"turn_wait_for_locks_off",														rb_RPDB_TransactionSettingsController_turnWaitForLocksOff,													0 	);
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"maximum_number_of_transactions_to_recover",														rb_RPDB_TransactionSettingsController_maximumNumberOfTransactionsToRecover,													0 	);
-	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"set_maximum_number_of_transactions_to_recover",														rb_RPDB_TransactionSettingsController_setMaximumNumberOfTransactionsToRecover,													0 	);
+	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"set_maximum_number_of_transactions_to_recover",														rb_RPDB_TransactionSettingsController_setMaximumNumberOfTransactionsToRecover,													1 	);
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"timeout_in_microseconds",														rb_RPDB_TransactionSettingsController_timeoutInMicroseconds,													0 	);
-	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"set_timeout_in_microseconds",														rb_RPDB_TransactionSettingsController_setTimeoutInMicroseconds,													0 	);
+	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"set_timeout_in_microseconds",														rb_RPDB_TransactionSettingsController_setTimeoutInMicroseconds,													1 	);
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"max_open",														rb_RPDB_TransactionSettingsController_maxOpen,													0 	);
-	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"set_max_open",														rb_RPDB_TransactionSettingsController_setMaxOpen,													0 	);
+	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"set_max_open",														rb_RPDB_TransactionSettingsController_setMaxOpen,													1 	);
 	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"recovery_timestamp",														rb_RPDB_TransactionSettingsController_recoveryTimestamp,													0 	);
-	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"set_recovery_timestamp",														rb_RPDB_TransactionSettingsController_setRecoveryTimestamp,													0 	);
+	rb_define_method(			rb_RPDB_TransactionSettingsController, 				"set_recovery_timestamp",														rb_RPDB_TransactionSettingsController_setRecoveryTimestamp,													1 	);
 
 }
 
@@ -333,9 +333,9 @@ VALUE rb_RPDB_TransactionSettingsController_prohibitSyncOnCommit( VALUE	rb_trans
 		return rb_transaction_settings_controller;
 	}
 
-/***************************************
-*  timeout_returns_deny_not_deadlock?  *
-***************************************/
+/*******************************************************
+*  timeout_in_microseconds_returns_deny_not_deadlock?  *
+*******************************************************/
 
 //	DB_TIME_NOTGRANTED      http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 VALUE rb_RPDB_TransactionSettingsController_timeoutInMicrosecondsReturnsDenyNotDeadlock( VALUE	rb_transaction_settings_controller )	{
@@ -347,9 +347,9 @@ VALUE rb_RPDB_TransactionSettingsController_timeoutInMicrosecondsReturnsDenyNotD
 																																	:	Qfalse );
 }
 
-	/**********************************************
-	*  turn_timeout_returns_deny_not_deadlock_on  *
-	**********************************************/
+	/**************************************************************
+	*  turn_timeout_in_microseconds_returns_deny_not_deadlock_on  *
+	**************************************************************/
 
 	//	DB_TIME_NOTGRANTED      http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 	VALUE rb_RPDB_TransactionSettingsController_turnTimeoutInMicrosecondsReturnsDenyNotDeadlockOn( VALUE	rb_transaction_settings_controller )	{
@@ -362,9 +362,9 @@ VALUE rb_RPDB_TransactionSettingsController_timeoutInMicrosecondsReturnsDenyNotD
 		return rb_transaction_settings_controller;
 	}
 
-	/***********************************************
-	*  turn_timeout_returns_deny_not_deadlock_off  *
-	***********************************************/
+	/***************************************************************
+	*  turn_timeout_in_microseconds_returns_deny_not_deadlock_off  *
+	***************************************************************/
 
 	//	DB_TIME_NOTGRANTED      http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
 	VALUE rb_RPDB_TransactionSettingsController_turnTimeoutInMicrosecondsReturnsDenyNotDeadlockOff( VALUE	rb_transaction_settings_controller )	{
@@ -743,13 +743,18 @@ VALUE rb_RPDB_TransactionSettingsController_maximumNumberOfTransactionsToRecover
 **************************************************/
 
 VALUE rb_RPDB_TransactionSettingsController_setMaximumNumberOfTransactionsToRecover(	VALUE	rb_transaction_settings_controller,
-																						VALUE	rb_maximum_number_of_transactions_to_recover )	{
+																																											VALUE	rb_maximum_number_of_transactions_to_recover )	{
 
+	VALUE	rb_parent_environment	=	rb_RPDB_TransactionSettingsController_parentEnvironment( rb_transaction_settings_controller );
+	if (		rb_parent_environment != Qnil
+			&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+		rb_raise( rb_eRuntimeError, "Maximum number of transactions can only be specified before environment is opened." );	
+	}
 	RPDB_TransactionSettingsController*	c_transaction_settings_controller;
 	C_RPDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	RPDB_TransactionSettingsController_setMaximumNumberOfTransactionsToRecover(	c_transaction_settings_controller,
-	 																				FIX2INT( rb_maximum_number_of_transactions_to_recover ) );
+																																							FIX2INT( rb_maximum_number_of_transactions_to_recover ) );
 
 	return rb_transaction_settings_controller;
 }
@@ -794,7 +799,11 @@ VALUE rb_RPDB_TransactionSettingsController_maxOpen( VALUE	rb_transaction_settin
 	RPDB_TransactionSettingsController*	c_transaction_settings_controller;
 	C_RPDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
-	return FIX2INT( RPDB_TransactionSettingsController_maxOpen( c_transaction_settings_controller ) );
+	int		c_max_open	=	RPDB_TransactionSettingsController_maxOpen( c_transaction_settings_controller );
+
+	VALUE	rb_max_open	=	INT2FIX( c_max_open );
+
+	return rb_max_open;
 }
 
 /*****************
@@ -803,20 +812,25 @@ VALUE rb_RPDB_TransactionSettingsController_maxOpen( VALUE	rb_transaction_settin
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_tx_max.html
 VALUE rb_RPDB_TransactionSettingsController_setMaxOpen(	VALUE	rb_transaction_settings_controller, 
-															VALUE	rb_max_open )	{
+																												VALUE	rb_max_open )	{
 
+	VALUE	rb_parent_environment	=	rb_RPDB_TransactionSettingsController_parentEnvironment( rb_transaction_settings_controller );
+	if (		rb_parent_environment != Qnil
+			&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+		rb_raise( rb_eRuntimeError, "Maximum number of open transactions can only be specified before environment is opened." );	
+	}
 	RPDB_TransactionSettingsController*	c_transaction_settings_controller;
 	C_RPDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	RPDB_TransactionSettingsController_setMaxOpen(	c_transaction_settings_controller,
-	 												FIX2INT( rb_max_open ) );
+																									FIX2INT( rb_max_open ) );
 
 	return rb_transaction_settings_controller;
 }
 
-/**************
-*  timestamp  *
-**************/
+/***********************
+*  recovery_timestamp  *
+***********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_tx_timestamp.html
 VALUE rb_RPDB_TransactionSettingsController_recoveryTimestamp( VALUE	rb_transaction_settings_controller )	{
@@ -824,24 +838,33 @@ VALUE rb_RPDB_TransactionSettingsController_recoveryTimestamp( VALUE	rb_transact
 	RPDB_TransactionSettingsController*	c_transaction_settings_controller;
 	C_RPDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
-	return FIX2INT( RPDB_TransactionSettingsController_recoveryTimestamp( c_transaction_settings_controller ) );
+	time_t	c_recovery_timestamp	=	RPDB_TransactionSettingsController_recoveryTimestamp( c_transaction_settings_controller );
+	
+	VALUE		rb_recovery_timestamp	=	INT2FIX( c_recovery_timestamp );
+
+	return rb_recovery_timestamp;
 }
 
-/******************
-*  set_timestamp  *
-******************/
+/***************************
+*  set_recovery_timestamp  *
+***************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_tx_timestamp.html
 VALUE rb_RPDB_TransactionSettingsController_setRecoveryTimestamp(	VALUE	rb_transaction_settings_controller, 
-																	VALUE	rb_recovery_timestamp )	{
+																																	VALUE	rb_recovery_timestamp )	{
 
+	VALUE	rb_parent_environment	=	rb_RPDB_TransactionSettingsController_parentEnvironment( rb_transaction_settings_controller );
+	if (		rb_parent_environment != Qnil
+			&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+		rb_raise( rb_eRuntimeError, "Recovery timestamp can only be specified before environment is opened." );	
+	}
 	RPDB_TransactionSettingsController*	c_transaction_settings_controller;
 	C_RPDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	time_t		c_recovery_timestamp	=	FIX2INT( rb_recovery_timestamp );
 
 	RPDB_TransactionSettingsController_setRecoveryTimestamp(	c_transaction_settings_controller,
-	 															& c_recovery_timestamp );
+																														c_recovery_timestamp );
 
 	return rb_transaction_settings_controller;
 }

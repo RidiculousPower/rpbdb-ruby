@@ -53,13 +53,13 @@ void Init_RPDB_EnvironmentCacheSettingsController()	{
 	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"max_size_in_kbytes",														rb_RPDB_EnvironmentCacheSettingsController_maxSizeInKBytes,													0 	);
 	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"max_size_in_mbytes",														rb_RPDB_EnvironmentCacheSettingsController_maxSizeInMBytes,													0 	);
 	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"max_size_in_gbytes",														rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes,													0 	);
-	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"max_size_in_bytes=",														rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInBytes,													0 	);
-	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"max_size_in_kbytes=",														rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInKBytes,													0 	);
-	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"max_size_in_mbytes=",														rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInMBytes,													0 	);
-	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"max_size_in_gbytes=",														rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInGBytes,													0 	);
-	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"max_size_in_gbytes_mbytes_kbytes_bytes=",														rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInGBytesMBytesKBytesBytes,													0 	);
-	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"max_size_in_mbytes_kbytes_bytes=",														rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInMBytesKBytesBytes,													0 	);
-	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"max_size_in_kbytes_bytes=",														rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInKBytesBytes,													0 	);
+	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"set_max_size_in_bytes",														rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInBytes,													1 	);
+	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"set_max_size_in_kbytes",														rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInKBytes,													1 	);
+	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"set_max_size_in_mbytes",														rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInMBytes,													1 	);
+	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"set_max_size_in_gbytes",														rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInGBytes,													1 	);
+	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"set_max_size_in_gbytes_mbytes_kbytes_bytes",														rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInGBytesMBytesKBytesBytes,													4 	);
+	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"set_max_size_in_mbytes_kbytes_bytes",														rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInMBytesKBytesBytes,													3 	);
+	rb_define_method(						rb_RPDB_EnvironmentCacheSettingsController, 	"set_max_size_in_kbytes_bytes",														rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInKBytesBytes,													2 	);
 
 }
 
@@ -249,7 +249,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 
 	//http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
 	VALUE rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_environment_cache_settings_controller, 
-																			VALUE	rb_max_size_in_bytes )	{
+																																			VALUE	rb_max_size_in_bytes )	{
 
 		RPDB_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
 		C_RPDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );

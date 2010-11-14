@@ -46,16 +46,16 @@ void Init_RPDB_MutexSettingsController()	{
 	rb_define_method(			rb_RPDB_MutexSettingsController,				"parent_settings_controller",					rb_RPDB_MutexSettingsController_parentSettingsController,								0 	);
 
 	rb_define_method(			rb_RPDB_MutexSettingsController, 				"spin_time_before_blocking_for_test_and_spin_mutexes",														rb_RPDB_MutexSettingsController_spinTimesBeforeBlockingForTestAndSpinMutexes,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"set_spin_time_before_blocking_for_test_and_spin_mutexes",														rb_RPDB_MutexSettingsController_setSpinTimesBeforeBlockingForTestAndSpinMutexes,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"set_spin_time_before_blocking_for_test_and_spin_mutexes",														rb_RPDB_MutexSettingsController_setSpinTimesBeforeBlockingForTestAndSpinMutexes,													1 	);
 	rb_define_method(			rb_RPDB_MutexSettingsController, 				"max_allowable_mutexes",														rb_RPDB_MutexSettingsController_maxAllowableMutexes,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"set_max_allowable_mutexes",														rb_RPDB_MutexSettingsController_setMaxAllowableMutexes,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"set_max_allowable_mutexes",														rb_RPDB_MutexSettingsController_setMaxAllowableMutexes,													1 	);
 	rb_define_method(			rb_RPDB_MutexSettingsController, 				"increment_for_adding_mutexes",														rb_RPDB_MutexSettingsController_incrementForAddingMutexes,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"set_increment_for_adding_mutexes",														rb_RPDB_MutexSettingsController_setIncrementForAddingMutexes,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"set_increment_for_adding_mutexes",														rb_RPDB_MutexSettingsController_setIncrementForAddingMutexes,													1 	);
 	rb_define_method(			rb_RPDB_MutexSettingsController, 				"mutex_alignment",														rb_RPDB_MutexSettingsController_mutexAlignment,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"set_mutex_alignment",														rb_RPDB_MutexSettingsController_setMutexAlignment,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"associate_with_single_process?",														rb_RPDB_MutexSettingsController_associatedWithSingleProcess,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"turn_associate_with_single_process_on",														rb_RPDB_MutexSettingsController_turnAssociatedWithSingleProcessOn,													0 	);
-	rb_define_method(			rb_RPDB_MutexSettingsController, 				"turn_associate_with_single_process_off",														rb_RPDB_MutexSettingsController_turnAssociatedWithSingleProcessOff,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"set_mutex_alignment",														rb_RPDB_MutexSettingsController_setMutexAlignment,													1 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"associated_with_single_process?",														rb_RPDB_MutexSettingsController_associatedWithSingleProcess,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"turn_associated_with_single_process_on",														rb_RPDB_MutexSettingsController_turnAssociatedWithSingleProcessOn,													0 	);
+	rb_define_method(			rb_RPDB_MutexSettingsController, 				"turn_associated_with_single_process_off",														rb_RPDB_MutexSettingsController_turnAssociatedWithSingleProcessOff,													0 	);
 	rb_define_method(			rb_RPDB_MutexSettingsController, 				"self_blocking?",														rb_RPDB_MutexSettingsController_selfBlocking,													0 	);
 	rb_define_method(			rb_RPDB_MutexSettingsController, 				"turn_self_blocking_on",														rb_RPDB_MutexSettingsController_turnSelfBlockingOn,													0 	);
 	rb_define_method(			rb_RPDB_MutexSettingsController, 				"turn_self_blocking_off",														rb_RPDB_MutexSettingsController_turnSelfBlockingOff,													0 	);
@@ -150,9 +150,9 @@ VALUE rb_RPDB_MutexSettingsController_parentSettingsController(	VALUE	rb_mutex_s
 	return rb_parent_settings_controller;
 }
 
-/*********************************************************
-*  spin_times_before_blocking_for_test_and_spin_mutexes  *
-*********************************************************/
+/********************************************************
+*  spin_time_before_blocking_for_test_and_spin_mutexes  *
+********************************************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/mutex_set_tas_spins.html
 VALUE rb_RPDB_MutexSettingsController_spinTimesBeforeBlockingForTestAndSpinMutexes( VALUE	rb_mutex_settings_controller )	{
@@ -163,9 +163,9 @@ VALUE rb_RPDB_MutexSettingsController_spinTimesBeforeBlockingForTestAndSpinMutex
 	return INT2FIX( RPDB_MutexSettingsController_spinTimesBeforeBlockingForTestAndSpinMutexes( c_mutex_settings_controller ) );
 }
 
-	/*************************************************************
-	*  set_spin_times_before_blocking_for_test_and_spin_mutexes  *
-	*************************************************************/
+	/************************************************************
+	*  set_spin_time_before_blocking_for_test_and_spin_mutexes  *
+	************************************************************/
 
 	VALUE rb_RPDB_MutexSettingsController_setSpinTimesBeforeBlockingForTestAndSpinMutexes(	VALUE	rb_mutex_settings_controller, 
 																							VALUE	rb_spin_times_before_blocking_for_test_and_spin_mutexes )	{
@@ -198,7 +198,13 @@ VALUE rb_RPDB_MutexSettingsController_maxAllowableMutexes( VALUE	rb_mutex_settin
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/mutex_set_max.html
 	VALUE rb_RPDB_MutexSettingsController_setMaxAllowableMutexes(	VALUE	rb_mutex_settings_controller, 
-																	VALUE	rb_max_allowable_mutexes )	{
+																																VALUE	rb_max_allowable_mutexes )	{
+
+		VALUE	rb_parent_environment	=	rb_RPDB_MutexSettingsController_parentEnvironment( rb_mutex_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Maximum allowable mutexes can only be set before environment is opened." );	
+		}
 
 		RPDB_MutexSettingsController*	c_mutex_settings_controller;
 		C_RPDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
@@ -230,6 +236,12 @@ VALUE rb_RPDB_MutexSettingsController_incrementForAddingMutexes( VALUE	rb_mutex_
 	VALUE rb_RPDB_MutexSettingsController_setIncrementForAddingMutexes(	VALUE	rb_mutex_settings_controller, 
 																			VALUE	rb_increment_for_adding_mutexes )	{
 
+		VALUE	rb_parent_environment	=	rb_RPDB_MutexSettingsController_parentEnvironment( rb_mutex_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Increment for adding mutexes can only be set before environment is opened." );	
+		}
+
 		RPDB_MutexSettingsController*	c_mutex_settings_controller;
 		C_RPDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
@@ -260,11 +272,17 @@ VALUE rb_RPDB_MutexSettingsController_mutexAlignment( VALUE	rb_mutex_settings_co
 	VALUE rb_RPDB_MutexSettingsController_setMutexAlignment(	VALUE	rb_mutex_settings_controller, 
 																VALUE	rb_increment_for_adding_mutexes )	{
 
+		VALUE	rb_parent_environment	=	rb_RPDB_MutexSettingsController_parentEnvironment( rb_mutex_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Mutex alignment can only be set before environment is opened." );	
+		}
+
 		RPDB_MutexSettingsController*	c_mutex_settings_controller;
 		C_RPDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 		RPDB_MutexSettingsController_setMutexAlignment(	c_mutex_settings_controller,
-															FIX2INT( rb_increment_for_adding_mutexes ) );
+																										FIX2INT( rb_increment_for_adding_mutexes ) );
 	
 		return rb_mutex_settings_controller;
 	}

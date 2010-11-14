@@ -1,6 +1,6 @@
 require_relative '../../../lib/rpdb.rb'
 
-describe RPDB::Settings::Lock do
+describe RPDB::Settings::Log do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -12,9 +12,6 @@ describe RPDB::Settings::Lock do
   
   before( :each ) do
     @environment = RPDB::Environment.new( $environment_path )
-    @environment.open
-    @database_controller = @environment.database_controller
-
   end
 
   after( :each ) do
@@ -26,19 +23,22 @@ describe RPDB::Settings::Lock do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Lock.new( environment )
+  # RPDB::Settings::Log.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Lock.new( @environment ).should_not == nil
+    @environment.open
+    RPDB::Settings::Log.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::Lock.new( settings_controller )
+  # RPDB::Settings::Log.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Lock.new( RPDB::Settings.new ).should_not == nil
+    @environment.open
+    RPDB::Settings::Log.new( RPDB::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::Lock.new
+  # RPDB::Settings::Log.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Lock.new.should_not == nil
+    @environment.open
+    RPDB::Settings::Log.new.should_not == nil
   end
 
   ########################
@@ -46,6 +46,7 @@ describe RPDB::Settings::Lock do
   ########################
 
   it "can return its parent environment" do
+    @environment.open
     RPDB::Settings::Log.new.parent_environment.should_not == nil
   end
 
@@ -54,6 +55,7 @@ describe RPDB::Settings::Lock do
   ################################
 
   it "can return its parent settings controller" do
+    @environment.open
     RPDB::Settings::Log.new.parent_settings_controller.should_not == nil
   end
 
@@ -65,7 +67,8 @@ describe RPDB::Settings::Lock do
   ##############
 
   it "can turn on and off and report whether it is on or off" do
-    log_settings  = RPDB::Settings::Lock.new
+    @environment.open
+    log_settings  = RPDB::Settings::Log.new
     log_settings.on?.should == true
     log_settings.turn_off
     log_settings.on?.should == false
@@ -74,19 +77,20 @@ describe RPDB::Settings::Lock do
     log_settings.off?.should == false
   end
 
-  ########################
-  #  buffering?          #
-	#  turn_buffering_on   #
-	#  turn_buffering_off  #
-  ########################
+  #######################################
+  #  disable_system_buffering?          #
+	#  turn_disable_system_buffering_on   #
+	#  turn_disable_system_buffering_off  #
+  #######################################
 
-  it "can turn buffering on and off" do
-    log_settings  = RPDB::Settings::Lock.new
-    log_settings.buffering?.should == false
-    log_settings.turn_buffering_on
-    log_settings.buffering?.should == true
-    log_settings.turn_buffering_off
-    log_settings.buffering?.should == false
+  it "can turn system buffering on and off" do
+    @environment.open
+    log_settings  = RPDB::Settings::Log.new
+    log_settings.disable_system_buffering?.should == false
+    log_settings.turn_disable_system_buffering_on
+    log_settings.disable_system_buffering?.should == true
+    log_settings.turn_disable_system_buffering_off
+    log_settings.disable_system_buffering?.should == false
   end
 
   #############################################
@@ -96,7 +100,8 @@ describe RPDB::Settings::Lock do
   #############################################
 
   it "can be set to flush before returning from a write" do
-    log_settings  = RPDB::Settings::Lock.new
+    @environment.open
+    log_settings  = RPDB::Settings::Log.new
     log_settings.flush_before_return_from_write?.should == false
     log_settings.turn_flush_before_return_from_write_on
     log_settings.flush_before_return_from_write?.should == true
@@ -111,7 +116,8 @@ describe RPDB::Settings::Lock do
   #########################
 
   it "can be set to autoremove logs" do
-    log_settings  = RPDB::Settings::Lock.new
+    @environment.open
+    log_settings  = RPDB::Settings::Log.new
     log_settings.autoremove_logs?.should == false
     log_settings.turn_autoremove_on
     log_settings.autoremove_logs?.should == true
@@ -126,7 +132,7 @@ describe RPDB::Settings::Lock do
   ############################
 
   it "can be set to log in memory rather than on disk" do
-    log_settings  = RPDB::Settings::Lock.new
+    log_settings  = RPDB::Settings::Log.new( @environment )
     log_settings.log_in_memory?.should == false
     log_settings.turn_log_in_memory_on
     log_settings.log_in_memory?.should == true
@@ -141,7 +147,8 @@ describe RPDB::Settings::Lock do
   ###############################
 
   it "can be set to zero the log at creation" do
-    log_settings  = RPDB::Settings::Lock.new
+    @environment.open
+    log_settings  = RPDB::Settings::Log.new
     log_settings.zero_at_creation?.should == false
     log_settings.turn_zero_at_creation_on
     log_settings.zero_at_creation?.should == true
@@ -156,7 +163,8 @@ describe RPDB::Settings::Lock do
   #############################################
 
   it "can be set to force a flush after record write" do
-    log_settings  = RPDB::Settings::Lock.new
+    @environment.open
+    log_settings  = RPDB::Settings::Log.new
     log_settings.force_flush_after_record_write?.should == false
     log_settings.turn_force_flush_after_record_write_on
     log_settings.force_flush_after_record_write?.should == true
@@ -170,7 +178,8 @@ describe RPDB::Settings::Lock do
   #####################
 
   it "can set and return its buffer size" do
-    log_settings  = RPDB::Settings::Lock.new
+    @environment.open
+    log_settings  = RPDB::Settings::Log.new
     log_settings.set_buffer_size( 42 )
     log_settings.buffer_size.should == 42
   end
@@ -181,7 +190,8 @@ describe RPDB::Settings::Lock do
   ###################
 
   it "can set and return its directory" do
-    log_settings  = RPDB::Settings::Lock.new
+    @environment.open
+    log_settings  = RPDB::Settings::Log.new
     log_settings.set_directory( '/tmp/file.tmp' )
     log_settings.directory.should == '/tmp/file.tmp'
   end
@@ -192,7 +202,8 @@ describe RPDB::Settings::Lock do
   ##############
 
   it "can set and return its mode" do
-    log_settings  = RPDB::Settings::Lock.new
+    @environment.open
+    log_settings  = RPDB::Settings::Log.new
     log_settings.set_mode( 0 )
     log_settings.mode.should == 0
   end
@@ -203,7 +214,8 @@ describe RPDB::Settings::Lock do
   ######################
 
   it "can set and return its maximum log size" do
-    log_settings  = RPDB::Settings::Lock.new
+    @environment.open
+    log_settings  = RPDB::Settings::Log.new
     log_settings.set_max_log_size( 42 )
     log_settings.max_log_size.should == 42
   end
@@ -214,7 +226,8 @@ describe RPDB::Settings::Lock do
   #########################
 
   it "can set and return its maximum region size" do
-    log_settings  = RPDB::Settings::Lock.new
+    @environment.open
+    log_settings  = RPDB::Settings::Log.new
     log_settings.set_max_region_size( 42 )
     log_settings.max_region_size.should == 42
   end

@@ -12,9 +12,6 @@ describe RPDB::Settings::Thread do
   
   before( :each ) do
     @environment = RPDB::Environment.new( $environment_path )
-    @environment.open
-    @database_controller = @environment.database_controller
-
   end
 
   after( :each ) do
@@ -28,16 +25,19 @@ describe RPDB::Settings::Thread do
 
   # RPDB::Settings::Thread.new( environment )
   it "can be created with an environment" do
+    @environment.open
     RPDB::Settings::Thread.new( @environment ).should_not == nil
   end
 
   # RPDB::Settings::Thread.new( settings_controller )
   it "can be created with a settings controller" do
+    @environment.open
     RPDB::Settings::Thread.new( RPDB::Settings.new ).should_not == nil
   end
 
   # RPDB::Settings::Thread.new
   it "can be created with no argument specified" do
+    @environment.open
     RPDB::Settings::Thread.new.should_not == nil
   end
 
@@ -46,6 +46,7 @@ describe RPDB::Settings::Thread do
   ########################
 
   it "can return its parent environment" do
+    @environment.open
     RPDB::Settings::Thread.new.parent_environment.should_not == nil
   end
 
@@ -54,6 +55,7 @@ describe RPDB::Settings::Thread do
   ################################
 
   it "can return its parent settings controller" do
+    @environment.open
     RPDB::Settings::Thread.new.parent_settings_controller.should_not == nil
   end
 
@@ -65,13 +67,13 @@ describe RPDB::Settings::Thread do
   ##############
 
   it "can be turned on or off as well as report whether it is on or off" do
-    thread_settings  = RPDB::Settings::Thread.new
-    thread_settings.on?.should == true
-    thread_settings.turn_off
+    thread_settings  = RPDB::Settings::Thread.new( @environment )
     thread_settings.on?.should == false
-    thread_settings.off?.should == true
     thread_settings.turn_on
+    thread_settings.on?.should == true
     thread_settings.off?.should == false
+    thread_settings.turn_off
+    thread_settings.off?.should == true
   end
 
   ######################
@@ -80,7 +82,7 @@ describe RPDB::Settings::Thread do
   ######################
 
   it "can set and return its thread count" do
-    thread_settings  = RPDB::Settings::Thread.new
+    thread_settings  = RPDB::Settings::Thread.new( @environment )
     thread_settings.set_thread_count( 42 )
     thread_settings.thread_count.should == 42
   end
@@ -91,6 +93,7 @@ describe RPDB::Settings::Thread do
   ##################################################
 
   it "can set and return its callback method to provide a unique thread identifier" do
+    @environment.open
     raise "Callback."
   end
 
@@ -100,6 +103,7 @@ describe RPDB::Settings::Thread do
   ##########################################################################
 
   it "can set and return its callback method to format thread and process identifier for display" do
+    @environment.open
     raise "Callback."
   end
 
@@ -109,6 +113,7 @@ describe RPDB::Settings::Thread do
   #########################################
 
   it "can set and return its callback method to determine whether thread is alive" do
+    @environment.open
     raise "Callback."
   end
 

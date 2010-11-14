@@ -99,7 +99,7 @@ describe RPDB::Settings::Database::Compact do
 
   it "can set and report the level at which compaction should occur" do
     compact_settings  = RPDB::Settings::Database::Compact.new
-    compact_settings.set_fill_percent = 42
+    compact_settings.set_fill_percent( 42 )
     compact_settings.fill_percent.should == 42
   end
 
@@ -110,7 +110,7 @@ describe RPDB::Settings::Database::Compact do
 
   it "can set and report the maximum amount of pages to be compacted at any time" do
     compact_settings  = RPDB::Settings::Database::Compact.new
-    compact_settings.set_max_pages_to_compact = 42
+    compact_settings.set_max_pages_to_compact( 42 )
     compact_settings.max_pages_to_compact.should == 42
   end
 
@@ -121,7 +121,7 @@ describe RPDB::Settings::Database::Compact do
 
   it "can set and report compaction timeout" do
     compact_settings  = RPDB::Settings::Database::Compact.new
-    compact_settings.set_timeout = 42
+    compact_settings.set_timeout( 42 )
     compact_settings.timeout.should == 42
   end
 

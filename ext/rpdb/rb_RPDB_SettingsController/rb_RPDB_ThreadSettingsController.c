@@ -50,7 +50,7 @@ void Init_RPDB_ThreadSettingsController()	{
 	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"turn_on",														rb_RPDB_ThreadSettingsController_turnOn,											0 	);
 	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"turn_off",														rb_RPDB_ThreadSettingsController_turnOff,											0 	);
 	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"thread_count",														rb_RPDB_ThreadSettingsController_threadCount,									0 	);
-	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"set_thread_count",														rb_RPDB_ThreadSettingsController_setThreadCount,							0 	);
+	rb_define_method(			rb_RPDB_ThreadSettingsController, 				"set_thread_count",														rb_RPDB_ThreadSettingsController_setThreadCount,							1 	);
 
 }
 	
@@ -174,6 +174,12 @@ VALUE rb_RPDB_ThreadSettingsController_off( VALUE	rb_thread_settings_controller 
 
 VALUE rb_RPDB_ThreadSettingsController_turnOn( VALUE	rb_thread_settings_controller )	{
 
+	VALUE	rb_parent_environment	=	rb_RPDB_ThreadSettingsController_parentEnvironment( rb_thread_settings_controller );
+	if (		rb_parent_environment != Qnil
+			&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+		rb_raise( rb_eRuntimeError, "Threads can only be enabled before environment is opened." );	
+	}
+
 	RPDB_ThreadSettingsController*	c_thread_settings_controller;
 	C_RPDB_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
 
@@ -206,7 +212,10 @@ VALUE rb_RPDB_ThreadSettingsController_threadCount( VALUE	rb_thread_settings_con
 	RPDB_ThreadSettingsController*	c_thread_settings_controller;
 	C_RPDB_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
 
-	return FIX2INT( RPDB_ThreadSettingsController_threadCount( c_thread_settings_controller ) );
+	int		c_thread_count	=	RPDB_ThreadSettingsController_threadCount( c_thread_settings_controller );
+	VALUE	rb_thread_count	=	INT2FIX( c_thread_count );
+
+	return rb_thread_count;
 }
 
 /*********************
@@ -214,13 +223,19 @@ VALUE rb_RPDB_ThreadSettingsController_threadCount( VALUE	rb_thread_settings_con
 *********************/
 
 VALUE rb_RPDB_ThreadSettingsController_setThreadCount(	VALUE	rb_thread_settings_controller, 
-														VALUE	rb_thread_count )	{
+																												VALUE	rb_thread_count )	{
+
+	VALUE	rb_parent_environment	=	rb_RPDB_ThreadSettingsController_parentEnvironment( rb_thread_settings_controller );
+	if (		rb_parent_environment != Qnil
+			&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+		rb_raise( rb_eRuntimeError, "Thread count can only be set before environment is opened." );	
+	}
 
 	RPDB_ThreadSettingsController*	c_thread_settings_controller;
 	C_RPDB_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
 
 	RPDB_ThreadSettingsController_setThreadCount(	c_thread_settings_controller,
-													FIX2INT( rb_thread_count ) );
+																								FIX2INT( rb_thread_count ) );
 
 	return rb_thread_settings_controller;
 }

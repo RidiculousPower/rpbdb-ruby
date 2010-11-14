@@ -66,30 +66,30 @@ void Init_RPDB_DatabaseCursorCachePrioritySettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"parent_database_cursor_settings_controller",		rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabaseCursorSettingsController,						0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"parent_database_cursor_cache_settings_controller",		rb_RPDB_DatabaseCursorCachePrioritySettingsController_parentDatabaseCursorCacheSettingsController,						0 	);
                     					
-	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"priority",									rb_RPDB_DatabaseCursorCachePrioritySettingsController_priority,									0 	);
+	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"current_priority",									rb_RPDB_DatabaseCursorCachePrioritySettingsController_priority,									0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"very_low?",								rb_RPDB_DatabaseCursorCachePrioritySettingsController_veryLow,									0 	);
-	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"set_very_low",							rb_RPDB_DatabaseCursorCachePrioritySettingsController_setVeryLow,								0 	);
+	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"set_to_very_low",							rb_RPDB_DatabaseCursorCachePrioritySettingsController_setVeryLow,								0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"is_at_least_very_low?",		rb_RPDB_DatabaseCursorCachePrioritySettingsController_isAtLeastVeryLow,					0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"is_at_most_very_low?",			rb_RPDB_DatabaseCursorCachePrioritySettingsController_isAtMostVeryLow,					0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"low?",											rb_RPDB_DatabaseCursorCachePrioritySettingsController_low,											0 	);
-	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"set_low",									rb_RPDB_DatabaseCursorCachePrioritySettingsController_setLow,										0 	);
+	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"set_to_low",									rb_RPDB_DatabaseCursorCachePrioritySettingsController_setLow,										0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"is_at_least_low?",					rb_RPDB_DatabaseCursorCachePrioritySettingsController_isAtLeastLow,							0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"is_at_most_low?",					rb_RPDB_DatabaseCursorCachePrioritySettingsController_isAtMostLow,							0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"default?",									rb_RPDB_DatabaseCursorCachePrioritySettingsController_default,									0 	);
-	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"set_default",							rb_RPDB_DatabaseCursorCachePrioritySettingsController_setDefault,								0 	);
+	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"set_to_default",							rb_RPDB_DatabaseCursorCachePrioritySettingsController_setDefault,								0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"is_at_least_default?",			rb_RPDB_DatabaseCursorCachePrioritySettingsController_isAtLeastDefault,					0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"is_at_most_default?",			rb_RPDB_DatabaseCursorCachePrioritySettingsController_isAtMostDefault,					0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"high?",										rb_RPDB_DatabaseCursorCachePrioritySettingsController_high,											0 	);
-	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"set_high",									rb_RPDB_DatabaseCursorCachePrioritySettingsController_setHigh,									0 	);
+	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"set_to_high",									rb_RPDB_DatabaseCursorCachePrioritySettingsController_setHigh,									0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"is_at_least_high?",				rb_RPDB_DatabaseCursorCachePrioritySettingsController_isAtLeastHigh,						0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"is_at_most_high?",					rb_RPDB_DatabaseCursorCachePrioritySettingsController_isAtMostHigh,							0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"very_high?",								rb_RPDB_DatabaseCursorCachePrioritySettingsController_veryHigh,									0 	);
-	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"set_very_high",						rb_RPDB_DatabaseCursorCachePrioritySettingsController_setVeryHigh,							0 	);
+	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"set_to_very_high",						rb_RPDB_DatabaseCursorCachePrioritySettingsController_setVeryHigh,							0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"is_at_least_very_high?",		rb_RPDB_DatabaseCursorCachePrioritySettingsController_isAtLeastVeryHigh,				0 	);
 	rb_define_method(						rb_RPDB_DatabaseCursorCachePrioritySettingsController, 	"is_at_most_very_high?",		rb_RPDB_DatabaseCursorCachePrioritySettingsController_isAtMostVeryHigh,					0 	);
 }

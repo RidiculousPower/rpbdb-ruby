@@ -315,7 +315,7 @@ VALUE rb_RPDB_DebugSettingsController_openInLockdown( VALUE	rb_debug_settings_co
 	}
 
 /***************************************************
-*  check_for_recovery_before_opening_environment?  *
+*  register_for_recovery?  *
 ***************************************************/
 
 //	DB_REGISTER             http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
@@ -335,7 +335,7 @@ VALUE rb_RPDB_DebugSettingsController_registerForRecovery( VALUE	rb_debug_settin
 }
 
 	/**********************************************************
-	*  turn_check_for_recovery_before_opening_environment_on  *
+	*  turn_register_for_recovery_on  *
 	**********************************************************/
 
 	VALUE rb_RPDB_DebugSettingsController_turnRegisterForRecoveryOn( VALUE	rb_debug_settings_controller )	{
@@ -349,7 +349,7 @@ VALUE rb_RPDB_DebugSettingsController_registerForRecovery( VALUE	rb_debug_settin
 	}
 
 	/***********************************************************
-	*  turn_check_for_recovery_before_opening_environment_off  *
+	*  turn_register_for_recovery_off  *
 	***********************************************************/
 
 	VALUE rb_RPDB_DebugSettingsController_turnRegisterForRecoveryOff( VALUE	rb_debug_settings_controller )	{

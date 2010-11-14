@@ -76,7 +76,9 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ########################
 
   it "can set and return its maximum open file limit" do
-    raise "Failed."
+    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings.set_max_open_files( 42 )
+    read_write_settings.max_open_files.should == 42
   end
 
   ###############################
@@ -85,7 +87,9 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ###############################
 
   it "can set and return its maximum sequential write limit" do
-    raise "Failed."
+    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings.set_max_sequential_writes( 42 )
+    read_write_settings.max_sequential_writes.should == 42
   end
 
   #########################################
@@ -94,7 +98,9 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   #########################################
 
   it "can set and return its maximum time to sleep before next write" do
-    raise "Failed."
+    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings.set_time_to_sleep_before_next_write( 42 )
+    read_write_settings.time_to_sleep_before_next_write.should == 42
   end
 
   ##################################
@@ -103,7 +109,9 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ##################################
 
   it "can set maximum mapped database size limit" do
-    raise "Failed."
+    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings.set_max_mapped_database_size( 42 )
+    read_write_settings.max_mapped_database_size.should == 42
   end
 
   #######################################

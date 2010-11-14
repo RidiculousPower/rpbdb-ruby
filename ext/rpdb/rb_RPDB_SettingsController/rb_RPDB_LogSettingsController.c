@@ -18,6 +18,7 @@
 
 #include <rpdb/RPDB_Environment.h>
 
+#include <rpdb/RPDB_SettingsController.h>
 #include <rpdb/RPDB_LogSettingsController.h>
 
 #include <rargs.h>
@@ -80,17 +81,17 @@ void Init_RPDB_LogSettingsController()	{
 	rb_define_method(			rb_RPDB_LogSettingsController, 				"turn_force_flush_after_record_write_off",		rb_RPDB_LogSettingsController_turnForceFlushAfterRecordWriteOff,													0 	);
 	rb_define_alias(			rb_RPDB_LogSettingsController, 				"turn_flush_after_write_off",									"turn_force_flush_after_record_write_off"	);
 	rb_define_method(			rb_RPDB_LogSettingsController, 				"buffer_size",																rb_RPDB_LogSettingsController_bufferSize,													0 	);
-	rb_define_method(			rb_RPDB_LogSettingsController, 				"set_buffer_size",														rb_RPDB_LogSettingsController_setBufferSize,													0 	);
+	rb_define_method(			rb_RPDB_LogSettingsController, 				"set_buffer_size",														rb_RPDB_LogSettingsController_setBufferSize,													1 	);
 	rb_define_method(			rb_RPDB_LogSettingsController, 				"directory",																	rb_RPDB_LogSettingsController_directory,													0 	);
-	rb_define_method(			rb_RPDB_LogSettingsController, 				"set_directory",															rb_RPDB_LogSettingsController_setDirectory,													0 	);
+	rb_define_method(			rb_RPDB_LogSettingsController, 				"set_directory",															rb_RPDB_LogSettingsController_setDirectory,													1 	);
 	rb_define_method(			rb_RPDB_LogSettingsController, 				"mode",																				rb_RPDB_LogSettingsController_mode,													0 	);
-	rb_define_method(			rb_RPDB_LogSettingsController, 				"set_mode",																		rb_RPDB_LogSettingsController_setMode,													0 	);
+	rb_define_method(			rb_RPDB_LogSettingsController, 				"set_mode",																		rb_RPDB_LogSettingsController_setMode,													1 	);
 	rb_define_method(			rb_RPDB_LogSettingsController, 				"max_log_size",																rb_RPDB_LogSettingsController_maxLogSize,													0 	);
 	rb_define_alias(			rb_RPDB_LogSettingsController, 				"max_size",																		"max_log_size"	);
-	rb_define_method(			rb_RPDB_LogSettingsController, 				"set_max_log_size",														rb_RPDB_LogSettingsController_setMaxLogSize,													0 	);
+	rb_define_method(			rb_RPDB_LogSettingsController, 				"set_max_log_size",														rb_RPDB_LogSettingsController_setMaxLogSize,													1 	);
 	rb_define_alias(			rb_RPDB_LogSettingsController, 				"set_max_size",																"set_max_log_size"	);
 	rb_define_method(			rb_RPDB_LogSettingsController, 				"max_region_size",														rb_RPDB_LogSettingsController_maxRegionSize,													0 	);
-	rb_define_method(			rb_RPDB_LogSettingsController, 				"set_max_region_size",												rb_RPDB_LogSettingsController_setMaxRegionSize,													0 	);
+	rb_define_method(			rb_RPDB_LogSettingsController, 				"set_max_region_size",												rb_RPDB_LogSettingsController_setMaxRegionSize,													1 	);
 
 }
 
@@ -133,7 +134,9 @@ VALUE rb_RPDB_LogSettingsController_new(	int			argc,
 	RPDB_SettingsController*	c_parent_settings_controller;
 	C_RPDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
-	VALUE	rb_log_settings_controller	= RUBY_RPDB_LOG_SETTINGS_CONTROLLER( RPDB_LogSettingsController_new( c_parent_settings_controller ) );
+	RPDB_LogSettingsController*	c_log_settings_controller	=	RPDB_SettingsController_logSettingsController( c_parent_settings_controller );
+
+	VALUE	rb_log_settings_controller	= RUBY_RPDB_LOG_SETTINGS_CONTROLLER( c_log_settings_controller );
 
 	rb_iv_set(	rb_log_settings_controller,
 							RPDB_RB_LOG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
@@ -237,9 +240,9 @@ VALUE rb_RPDB_LogSettingsController_off( VALUE	rb_log_settings_controller )	{
 		return rb_log_settings_controller;
 	}
 
-/**************
-*  buffering  *
-**************/
+/******************************
+*  disable_system_buffering?  *
+******************************/
 
 //	DB_LOG_DIRECT		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_log_set_config.html
 //	Inverted from BDB Default
@@ -252,9 +255,9 @@ VALUE rb_RPDB_LogSettingsController_disableSystemBuffering( VALUE	rb_log_setting
 																				:	Qfalse );
 }
 
-	/**********************
-	*  turn_buffering_on  *
-	**********************/
+	/*************************************
+	*  turn_disable_system_buffering_on  *
+	*************************************/
 
 	VALUE rb_RPDB_LogSettingsController_turnDisableSystemBufferingOn( VALUE	rb_log_settings_controller )	{
 
@@ -266,9 +269,9 @@ VALUE rb_RPDB_LogSettingsController_disableSystemBuffering( VALUE	rb_log_setting
 		return rb_log_settings_controller;
 	}
 
-	/***********************
-	*  turn_buffering_off  *
-	***********************/
+	/**************************************
+	*  turn_disable_system_buffering_off  *
+	**************************************/
 
 	VALUE rb_RPDB_LogSettingsController_turnDisableSystemBufferingOff( VALUE	rb_log_settings_controller )	{
 

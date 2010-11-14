@@ -47,7 +47,7 @@ void Init_RPDB_DirectorySettingsController()	{
 	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"home_directory",											rb_RPDB_DirectorySettingsController_homeDirectory,													0 	);
 	rb_define_alias(			rb_RPDB_DirectorySettingsController, 				"home",																"home_directory"	);
 	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"data_directories",										rb_RPDB_DirectorySettingsController_dataDirectories,													0 	);
-	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"add_data_directory",									rb_RPDB_DirectorySettingsController_addDataDirectory,													0 	);
+	rb_define_method(			rb_RPDB_DirectorySettingsController, 				"add_data_directory",									rb_RPDB_DirectorySettingsController_addDataDirectory,													1 	);
 	rb_define_alias(			rb_RPDB_DirectorySettingsController, 				"add_data_directories",								"add_data_directory"	);
 
 }

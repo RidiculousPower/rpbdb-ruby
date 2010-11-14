@@ -399,9 +399,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectLockerWithYoungestLoc
 		return rb_lock_deadlock_detector_settings_controller;
 	}
 
-/*******************
-*  reject_random?  *
-*******************/
+/************************
+*  reject_random_lock?  *
+************************/
 
 VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectRandom( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
@@ -412,9 +412,9 @@ VALUE rb_RPDB_LockDeadlockDetectorSettingsController_rejectRandom( VALUE	rb_lock
 																														:	Qfalse );
 }
 
-	/*************************
-	*  set_to_reject_random  *
-	*************************/
+	/******************************
+	*  set_to_reject_random_lock  *
+	******************************/
 
 	VALUE rb_RPDB_LockDeadlockDetectorSettingsController_setToRejectRandom( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 

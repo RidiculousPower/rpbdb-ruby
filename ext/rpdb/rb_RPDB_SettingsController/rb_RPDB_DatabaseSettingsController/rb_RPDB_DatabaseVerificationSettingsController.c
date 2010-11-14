@@ -58,8 +58,7 @@ void Init_RPDB_DatabaseVerificationSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseVerificationSettingsController, 	"parent_database_settings_controller",				rb_RPDB_DatabaseVerificationSettingsController_parentDatabaseSettingsController,							0 	);
                     					                                                                                        				
 	rb_define_method(						rb_RPDB_DatabaseVerificationSettingsController, 	"file",																				rb_RPDB_DatabaseVerificationSettingsController_file,									0 	);
-	rb_define_method(						rb_RPDB_DatabaseVerificationSettingsController, 	"file=",																			rb_RPDB_DatabaseVerificationSettingsController_setFile,								1 	);
-	rb_define_alias(						rb_RPDB_DatabaseVerificationSettingsController, 	"setFile",																		"file="	);
+	rb_define_method(						rb_RPDB_DatabaseVerificationSettingsController, 	"set_file",																			rb_RPDB_DatabaseVerificationSettingsController_setFile,								1 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseVerificationSettingsController, 	"aggressive_key_data_pair_dump?",							rb_RPDB_DatabaseVerificationSettingsController_aggressiveKeyDataPairDump,				0 	);
 	rb_define_method(						rb_RPDB_DatabaseVerificationSettingsController, 	"turn_aggressive_key_data_pair_dump_on",			rb_RPDB_DatabaseVerificationSettingsController_turnAggressiveKeyDataPairDumpOn,		0 	);
@@ -156,8 +155,8 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_new(	int			argc,
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
 	rb_obj_call_init(	rb_database_verification_settings_controller,
-					 1, 
-					 argv );
+										 1, 
+										 argv );
 	
 	return rb_database_verification_settings_controller;		
 }
@@ -167,8 +166,8 @@ VALUE rb_RPDB_DatabaseVerificationSettingsController_new(	int			argc,
 ***************/
 
 VALUE rb_RPDB_DatabaseVerificationSettingsController_initialize(	int				argc __attribute__ ((unused)),
-																														VALUE*		args __attribute__ ((unused)),
-																														VALUE			rb_self )	{
+																																	VALUE*		args __attribute__ ((unused)),
+																																	VALUE			rb_self )	{
 	
 	return rb_self;
 }

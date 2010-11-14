@@ -158,15 +158,15 @@ describe RPDB::Settings::Lock::DeadlockDetector do
     deadlock_detector_settings.reject_locker_with_youngest_lock?.should == true
   end
 
-  ##########################
-	#  set_to_reject_random  #
-  #  reject_random?        #
-  ##########################
+  ###############################
+	#  set_to_reject_random_lock  #
+  #  reject_random_lock?        #
+  ###############################
 
   it "can be set to reject random lock and report whether it is currently set to reject random lock" do
     deadlock_detector_settings  = RPDB::Settings::Lock::DeadlockDetector.new
-    deadlock_detector_settings.set_to_reject_random
-    deadlock_detector_settings.reject_random?.should == true
+    deadlock_detector_settings.set_to_reject_random_lock
+    deadlock_detector_settings.reject_random_lock?.should == true
   end
 
   ###################################

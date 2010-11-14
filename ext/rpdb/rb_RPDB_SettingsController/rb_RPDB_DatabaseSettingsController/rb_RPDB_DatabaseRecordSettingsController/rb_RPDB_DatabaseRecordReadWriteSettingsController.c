@@ -74,11 +74,11 @@ void Init_RPDB_DatabaseRecordReadWriteSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_prohibit_sync_on_close_on",								rb_RPDB_DatabaseRecordReadWriteSettingsController_turnProhibitSyncOnCloseOn,						0 	);
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_prohibit_sync_on_close_off",							rb_RPDB_DatabaseRecordReadWriteSettingsController_turnProhibitSyncOnCloseOff,						0 	);
                     					                                                                                    					                                                                          				
-	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"ignoreLease?",																	rb_RPDB_DatabaseRecordReadWriteSettingsController_ignoreLease,													0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"ignore_lease?",																	rb_RPDB_DatabaseRecordReadWriteSettingsController_ignoreLease,													0 	);
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_ignore_lease_on",													rb_RPDB_DatabaseRecordReadWriteSettingsController_turnIgnoreLeaseOn,										0 	);
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_ignore_lease_off",												rb_RPDB_DatabaseRecordReadWriteSettingsController_turnIgnoreLeaseOff,										0 	);
                     					                                                                                    					                                                                          				
-	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"returnMultiple?",															rb_RPDB_DatabaseRecordReadWriteSettingsController_returnMultiple,												0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"return_multiple?",															rb_RPDB_DatabaseRecordReadWriteSettingsController_returnMultiple,												0 	);
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_return_multiple_on",											rb_RPDB_DatabaseRecordReadWriteSettingsController_turnReturnMultipleOn,									0 	);
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_return_multiple_off",											rb_RPDB_DatabaseRecordReadWriteSettingsController_turnReturnMultipleOff,								0 	);
                     					                                                                                            	                                                                          				
@@ -149,17 +149,17 @@ void Init_RPDB_DatabaseRecordReadWriteSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_sync_prior_to_write_return_off",								rb_RPDB_DatabaseRecordReadWriteSettingsController_turnSyncPriorToWriteReturnOff,									0 	);
                     					                                                                                                                                                                                					
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"data_buffer_size",																		rb_RPDB_DatabaseRecordReadWriteSettingsController_dataBufferSize,																0 	);
-
-	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"data_buffer_size=",																	rb_RPDB_DatabaseRecordReadWriteSettingsController_setDataBufferSize,															0 	);
-	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"set_data_buffer_size",																rb_RPDB_DatabaseRecordReadWriteSettingsController_setDataBufferSize,															0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"set_data_buffer_size",																rb_RPDB_DatabaseRecordReadWriteSettingsController_setDataBufferSize,															1 	);
                     					                                                                                                                                                                                					
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"partial_read_write_size",														rb_RPDB_DatabaseRecordReadWriteSettingsController_partialReadWriteSize,													0 	);
-	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"partial_read_write_size=",														rb_RPDB_DatabaseRecordReadWriteSettingsController_setPartialReadWriteSize,												0 	);
-	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"set_partial_read_write_size",												rb_RPDB_DatabaseRecordReadWriteSettingsController_setPartialReadWriteSize,												0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"set_partial_read_write_size",												rb_RPDB_DatabaseRecordReadWriteSettingsController_setPartialReadWriteSize,												1 	);
                     					                                                                                                                                                                                					
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"partial_read_write_offset",													rb_RPDB_DatabaseRecordReadWriteSettingsController_partialReadWriteOffset,												0 	);
-	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"partial_read_write_offset=",													rb_RPDB_DatabaseRecordReadWriteSettingsController_setPartialReadWriteOffset,											0 	);
-	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"set_partial_read_write_offset",											rb_RPDB_DatabaseRecordReadWriteSettingsController_setPartialReadWriteOffset,											0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"set_partial_read_write_offset",											rb_RPDB_DatabaseRecordReadWriteSettingsController_setPartialReadWriteOffset,											1 	);
+
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"serialize_data?",																		rb_RPDB_DatabaseRecordReadWriteSettingsController_serializeData,											0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_serialize_data_on",															rb_RPDB_DatabaseRecordReadWriteSettingsController_turnSerializeDataOn,											0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_serialize_data_off",														rb_RPDB_DatabaseRecordReadWriteSettingsController_turnSerializeDataOff,											0 	);
 	
 }
 
@@ -987,7 +987,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_syncPriorToWriteReturn( 
 	}
 
 /***********************
-*  permit_duplicates?  *
+*  unsorted_duplicates?  *
 ***********************/
 
 //	DB_DUP				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
@@ -1001,7 +1001,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_unsortedDuplicates( VALU
 }
 
 	/*******************************
-	 *  turn_permit_duplicates_on  *
+	 *  turn_unsorted_duplicates_on  *
 	 ******************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnUnsortedDuplicatesOn( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -1015,7 +1015,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_unsortedDuplicates( VALU
 	}
 
 	/********************************
-	 *  turn_permit_duplicates_off  *
+	 *  turn_unsorted_duplicates_on  *
 	 *******************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnUnsortedDuplicatesOff( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -1029,7 +1029,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_unsortedDuplicates( VALU
 	}
 
 /*********************
-*  sort_duplicates?  *
+*  sorted_duplicates?  *
 *********************/
 
 //	DB_DUPSORT			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_flags.html
@@ -1043,7 +1043,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_sortedDuplicates( VALUE	
 }
 
 	/*****************************
-	 *  turn_sort_duplicates_on  *
+	 *  turn_sorted_duplicates_on  *
 	 ****************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnSortedDuplicatesOn( VALUE	rb_database_record_read_write_settings_controller )	{
@@ -1057,7 +1057,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_sortedDuplicates( VALUE	
 	}
 
 	/******************************
-	 *  turn_sort_duplicates_off  *
+	 *  turn_sorted_duplicates_off  *
 	 *****************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnSortedDuplicatesOff( VALUE	rb_database_record_read_write_settings_controller )	{

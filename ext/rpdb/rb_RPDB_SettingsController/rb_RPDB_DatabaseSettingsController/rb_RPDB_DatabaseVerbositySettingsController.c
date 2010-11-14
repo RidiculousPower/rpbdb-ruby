@@ -58,9 +58,9 @@ void Init_RPDB_DatabaseVerbositySettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseVerbositySettingsController, 	"parent_database_settings_controller",											rb_RPDB_DatabaseVerbositySettingsController_parentDatabaseSettingsController,				0 	);
 
 	//	FIX - rename functions according to ruby method
-	rb_define_method(						rb_RPDB_DatabaseVerbositySettingsController, 	"display_additional_information_for_register?",							rb_RPDB_DatabaseVerbositySettingsController_displayAdditionalInformationForDBRegisterFlag,				0 	);
-	rb_define_method(						rb_RPDB_DatabaseVerbositySettingsController, 	"turn_display_additional_information_for_register_on",			rb_RPDB_DatabaseVerbositySettingsController_turnDisplayAdditionalInformationForDBRegisterFlagOn,				0 	);
-	rb_define_method(						rb_RPDB_DatabaseVerbositySettingsController, 	"turn_display_additional_information_for_register_off",			rb_RPDB_DatabaseVerbositySettingsController_turnDisplayAdditionalInformationForDBRegisterFlagOff,				0 	);
+	rb_define_method(						rb_RPDB_DatabaseVerbositySettingsController, 	"display_additional_information_for_database_register_flag?",							rb_RPDB_DatabaseVerbositySettingsController_displayAdditionalInformationForDBRegisterFlag,				0 	);
+	rb_define_method(						rb_RPDB_DatabaseVerbositySettingsController, 	"turn_display_additional_information_for_database_register_flag_on",			rb_RPDB_DatabaseVerbositySettingsController_turnDisplayAdditionalInformationForDBRegisterFlagOn,				0 	);
+	rb_define_method(						rb_RPDB_DatabaseVerbositySettingsController, 	"turn_display_additional_information_for_database_register_flag_off",			rb_RPDB_DatabaseVerbositySettingsController_turnDisplayAdditionalInformationForDBRegisterFlagOff,				0 	);
 
 }
 

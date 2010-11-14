@@ -170,8 +170,8 @@ VALUE rb_RPDB_DatabaseTypeHashSettingsController_new(	int			argc,
 ***************/
 
 VALUE rb_RPDB_DatabaseTypeHashSettingsController_initialize(	int				argc __attribute__ ((unused)),
-																												VALUE*		args __attribute__ ((unused)),
-																												VALUE			rb_self )	{
+																															VALUE*		args __attribute__ ((unused)),
+																															VALUE			rb_self )	{
 
 	return rb_self;
 }

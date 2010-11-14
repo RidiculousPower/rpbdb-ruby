@@ -77,7 +77,7 @@ describe RPDB::Database do
   #############################################################
 
   it "can display additional information during recovery" do
-    verbosity__settings  = RPDB::Settings::Debug.new
+    verbosity__settings  = RPDB::Settings::Debug::Verbosity.new
     verbosity__settings.display_additional_information_during_recovery?.should == false
     verbosity__settings.turn_display_additional_information_during_recovery_on
     verbosity__settings.display_additional_information_during_recovery?.should == true

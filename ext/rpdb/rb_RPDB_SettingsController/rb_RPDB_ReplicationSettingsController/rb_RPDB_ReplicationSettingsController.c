@@ -63,9 +63,9 @@ void Init_RPDB_ReplicationSettingsController()	{
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"single_bulk_transfer?",														rb_RPDB_ReplicationSettingsController_singleBulkTransfer,													0 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"turn_single_bulk_transfer_on",														rb_RPDB_ReplicationSettingsController_turnSingleBulkTransferOn,													0 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"turn_single_bulk_transfer_off",														rb_RPDB_ReplicationSettingsController_turnSingleBulkTransferOff,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"delay_new_sync_unti_explicit_call?",														rb_RPDB_ReplicationSettingsController_delayNewSyncUntilExplicitCall,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"turn_delay_new_sync_unti_explicit_call_on",														rb_RPDB_ReplicationSettingsController_turnDelayNewSyncUntilExplicitCallOn,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"turn_delay_new_sync_unti_explicit_call_off",														rb_RPDB_ReplicationSettingsController_turnDelayNewSyncUntilExplicitCallOff,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"delay_new_sync_until_explicit_call?",														rb_RPDB_ReplicationSettingsController_delayNewSyncUntilExplicitCall,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"turn_delay_new_sync_until_explicit_call_on",														rb_RPDB_ReplicationSettingsController_turnDelayNewSyncUntilExplicitCallOn,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"turn_delay_new_sync_until_explicit_call_off",														rb_RPDB_ReplicationSettingsController_turnDelayNewSyncUntilExplicitCallOff,													0 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"use_master_leases?",														rb_RPDB_ReplicationSettingsController_useMasterLeases,													0 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"turn_use_master_leases_on",														rb_RPDB_ReplicationSettingsController_turnUseMasterLeasesOn,													0 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"turn_use_master_leases_off",														rb_RPDB_ReplicationSettingsController_turnUseMasterLeasesOff,													0 	);
@@ -85,23 +85,23 @@ void Init_RPDB_ReplicationSettingsController()	{
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"start_as_client_or_rally_election?",														rb_RPDB_ReplicationSettingsController_startAsClientOrRallyElection,													0 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_start_as_client_or_rally_election",														rb_RPDB_ReplicationSettingsController_setStartAsClientOrRallyElection,													0 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"limit",														rb_RPDB_ReplicationSettingsController_limit,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_limit",														rb_RPDB_ReplicationSettingsController_setLimit,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_limit",														rb_RPDB_ReplicationSettingsController_setLimit,													2 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"host",														rb_RPDB_ReplicationSettingsController_host,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_host",														rb_RPDB_ReplicationSettingsController_setHost,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_host",														rb_RPDB_ReplicationSettingsController_setHost,													1 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"port",														rb_RPDB_ReplicationSettingsController_port,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_port",														rb_RPDB_ReplicationSettingsController_setPort,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_port",														rb_RPDB_ReplicationSettingsController_setPort,													2 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"site_count",														rb_RPDB_ReplicationSettingsController_siteCount,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_site_count",														rb_RPDB_ReplicationSettingsController_setSiteCount,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_site_count",														rb_RPDB_ReplicationSettingsController_setSiteCount,													1 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"priority_order_number",														rb_RPDB_ReplicationSettingsController_priorityOrderNumber,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_priority_order_number",														rb_RPDB_ReplicationSettingsController_setPriorityOrderNumber,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_priority_order_number",														rb_RPDB_ReplicationSettingsController_setPriorityOrderNumber,													1 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"retransmission_threshold_minimum",														rb_RPDB_ReplicationSettingsController_retransmissionThresholdMinimum,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_retransmission_threshold_minimum",														rb_RPDB_ReplicationSettingsController_setRetransmissionThresholdMinimum,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_retransmission_threshold_minimum",														rb_RPDB_ReplicationSettingsController_setRetransmissionThresholdMinimum,													1 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"retransmission_threshold_maximum",														rb_RPDB_ReplicationSettingsController_retransmissionThresholdMaximum,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_retransmission_threshold_maximum",														rb_RPDB_ReplicationSettingsController_setRetransmissionThresholdMaximum,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_retransmission_threshold_maximum",														rb_RPDB_ReplicationSettingsController_setRetransmissionThresholdMaximum,													1 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"slowest_clock_value",														rb_RPDB_ReplicationSettingsController_slowestClockValue,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_slowest_clock_value",														rb_RPDB_ReplicationSettingsController_setSlowestClockValue,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_slowest_clock_value",														rb_RPDB_ReplicationSettingsController_setSlowestClockValue,													1 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"fastest_clock_skew_value",														rb_RPDB_ReplicationSettingsController_fastestClockSkewValue,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_fastest_clock_skew_value",														rb_RPDB_ReplicationSettingsController_setFastestClockSkewValue,													0 	);
+	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_fastest_clock_skew_value",														rb_RPDB_ReplicationSettingsController_setFastestClockSkewValue,													1 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"election_settings_controller",														rb_RPDB_ReplicationSettingsController_electionSettingsController,													0 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"timeout_settings_controller",														rb_RPDB_ReplicationSettingsController_timeoutSettingsController,													0 	);
 
@@ -219,6 +219,12 @@ VALUE rb_RPDB_ReplicationSettingsController_on( VALUE	rb_replication_settings_co
 
 VALUE rb_RPDB_ReplicationSettingsController_turnOn( VALUE	rb_replication_settings_controller )	{
 
+	VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+	if (		rb_parent_environment != Qnil
+			&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+		rb_raise( rb_eRuntimeError, "Replication can only be turned on before environment is opened." );	
+	}
+
 	RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 	C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
@@ -275,6 +281,12 @@ VALUE rb_RPDB_ReplicationSettingsController_clientToClientSynchronization( VALUE
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnClientToClientSynchronizationOn( VALUE	rb_replication_settings_controller )	{
 
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Client to client synchronization can only be turned on before environment is opened." );	
+		}
+
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
@@ -288,6 +300,12 @@ VALUE rb_RPDB_ReplicationSettingsController_clientToClientSynchronization( VALUE
 	*********************************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnClientToClientSynchronizationOff( VALUE	rb_replication_settings_controller )	{
+
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Client to client synchronization can only be turned off before environment is opened." );	
+		}
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
@@ -317,6 +335,12 @@ VALUE rb_RPDB_ReplicationSettingsController_singleBulkTransfer( VALUE	rb_replica
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnSingleBulkTransferOn( VALUE	rb_replication_settings_controller )	{
 
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Single bulk transfer can only be turned on before environment is opened." );	
+		}
+
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
@@ -330,6 +354,12 @@ VALUE rb_RPDB_ReplicationSettingsController_singleBulkTransfer( VALUE	rb_replica
 	**********************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnSingleBulkTransferOff( VALUE	rb_replication_settings_controller )	{
+
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Single bulk transfer can only be turned off before environment is opened." );	
+		}
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
@@ -360,6 +390,12 @@ VALUE rb_RPDB_ReplicationSettingsController_delayNewSyncUntilExplicitCall( VALUE
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnDelayNewSyncUntilExplicitCallOn( VALUE	rb_replication_settings_controller )	{
 
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Delay new sync until explicit call can only be turned on before environment is opened." );	
+		}
+
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
@@ -373,6 +409,12 @@ VALUE rb_RPDB_ReplicationSettingsController_delayNewSyncUntilExplicitCall( VALUE
 	************************************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnDelayNewSyncUntilExplicitCallOff( VALUE	rb_replication_settings_controller )	{
+
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Delay new sync until explicit call can only be turned off before environment is opened." );	
+		}
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
@@ -402,6 +444,12 @@ VALUE rb_RPDB_ReplicationSettingsController_useMasterLeases( VALUE	rb_replicatio
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnUseMasterLeasesOn( VALUE	rb_replication_settings_controller )	{
 
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Master leases can only be turned on before environment is opened." );	
+		}
+
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
@@ -415,6 +463,12 @@ VALUE rb_RPDB_ReplicationSettingsController_useMasterLeases( VALUE	rb_replicatio
 	*******************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnUseMasterLeasesOff( VALUE	rb_replication_settings_controller )	{
+
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Master leases can only be turned off before environment is opened." );	
+		}
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
@@ -444,6 +498,12 @@ VALUE rb_RPDB_ReplicationSettingsController_reinitializeOutdatedClients( VALUE	r
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnReinitializeOutdatedClientsOn( VALUE	rb_replication_settings_controller )	{
 
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Reinitializing outdated clients can only be turned on before environment is opened." );	
+		}
+
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
@@ -457,6 +517,12 @@ VALUE rb_RPDB_ReplicationSettingsController_reinitializeOutdatedClients( VALUE	r
 	*******************************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnReinitializeOutdatedClientsOff( VALUE	rb_replication_settings_controller )	{
+
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Reinitializing outdated clients can only be turned off before environment is opened." );	
+		}
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
@@ -486,6 +552,12 @@ VALUE rb_RPDB_ReplicationSettingsController_prohibitWait( VALUE	rb_replication_s
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnProhibitWaitOn( VALUE	rb_replication_settings_controller )	{
 
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Prohibiting waiting can only be turned on before environment is opened." );	
+		}
+
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
@@ -499,6 +571,12 @@ VALUE rb_RPDB_ReplicationSettingsController_prohibitWait( VALUE	rb_replication_s
 	***************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnProhibitWaitOff( VALUE	rb_replication_settings_controller )	{
+
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Prohibiting waiting can only be turned off before environment is opened." );	
+		}
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
@@ -528,6 +606,12 @@ VALUE rb_RPDB_ReplicationSettingsController_requireStrictMajority( VALUE	rb_repl
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnRequireStrictMajorityOn( VALUE	rb_replication_settings_controller )	{
 
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Requiring strict majority can only be turned on before environment is opened." );	
+		}
+
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
@@ -541,6 +625,12 @@ VALUE rb_RPDB_ReplicationSettingsController_requireStrictMajority( VALUE	rb_repl
 	*************************************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_turnRequireStrictMajorityOff( VALUE	rb_replication_settings_controller )	{
+
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Requiring strict majority can only be turned off before environment is opened." );	
+		}
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
@@ -561,7 +651,7 @@ VALUE rb_RPDB_ReplicationSettingsController_isMaster( VALUE	rb_replication_setti
 	C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return ( RPDB_ReplicationSettingsController_isMaster( c_replication_settings_controller )	?	Qtrue
-																								:	Qfalse );
+																																														:	Qfalse );
 }
 
 	/******************
@@ -569,6 +659,12 @@ VALUE rb_RPDB_ReplicationSettingsController_isMaster( VALUE	rb_replication_setti
 	******************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_setIsMaster( VALUE	rb_replication_settings_controller )	{
+
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Site can only be set as master before environment is opened." );	
+		}
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
@@ -598,6 +694,12 @@ VALUE rb_RPDB_ReplicationSettingsController_isClient( VALUE	rb_replication_setti
 
 	VALUE rb_RPDB_ReplicationSettingsController_setIsClient( VALUE	rb_replication_settings_controller )	{
 
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Site can only be set as client before environment is opened." );	
+		}
+
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
@@ -625,6 +727,12 @@ VALUE rb_RPDB_ReplicationSettingsController_startAsClientOrRallyElection( VALUE	
 
 	//	DB_REP_ELECTION		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/repmgr_start.html
 	VALUE rb_RPDB_ReplicationSettingsController_setStartAsClientOrRallyElection( VALUE	rb_replication_settings_controller )	{
+
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Site can only be set to start as client or rally election before environment is opened." );	
+		}
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
@@ -655,12 +763,21 @@ VALUE rb_RPDB_ReplicationSettingsController_limit( VALUE	rb_replication_settings
 																												VALUE	rb_limit_in_gbytes, 
 																												VALUE	rb_limit_in_bytes )	{
 
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Replication limit can only be set before environment is opened." );	
+		}
+
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
+		int		c_limit_in_gbytes	=	FIX2INT( rb_limit_in_gbytes );
+		int		c_limit_in_bytes	=	FIX2INT( rb_limit_in_bytes );
+
 		RPDB_ReplicationSettingsController_setLimit(	c_replication_settings_controller,
-																									FIX2INT( rb_limit_in_gbytes ),
-																									FIX2INT( rb_limit_in_bytes ) );
+																									c_limit_in_gbytes,
+																									c_limit_in_bytes );
 
 		return rb_replication_settings_controller;
 	}
@@ -712,15 +829,18 @@ VALUE rb_RPDB_ReplicationSettingsController_port( VALUE	rb_replication_settings_
 	*************/
 
 	VALUE rb_RPDB_ReplicationSettingsController_setPort(	VALUE	rb_replication_settings_controller,
-															VALUE	rb_host, 
-															VALUE	rb_port )	{
+																												VALUE	rb_host, 
+																												VALUE	rb_port )	{
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
+		int		c_port	=	FIX2INT( rb_port );
+		char*	c_host	=	StringValuePtr( rb_host );
+
 		RPDB_ReplicationSettingsController_setPort(	c_replication_settings_controller,
-		 												StringValuePtr( rb_host ),
-														FIX2INT( rb_port ) );
+																								c_host,
+																								c_port );
 
 		return rb_replication_settings_controller;
 	}
@@ -744,6 +864,12 @@ VALUE rb_RPDB_ReplicationSettingsController_siteCount( VALUE	rb_replication_sett
 
 	VALUE rb_RPDB_ReplicationSettingsController_setSiteCount(	VALUE	rb_replication_settings_controller, 
 																VALUE	rb_site_count )	{
+
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Site count can only be set before environment is opened." );	
+		}
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
@@ -774,6 +900,12 @@ VALUE rb_RPDB_ReplicationSettingsController_priorityOrderNumber( VALUE	rb_replic
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/rep_priority.html
 	VALUE rb_RPDB_ReplicationSettingsController_setPriorityOrderNumber(	VALUE	rb_replication_settings_controller,
 																			VALUE	rb_priority_order_number)	{
+
+		VALUE	rb_parent_environment	=	rb_RPDB_ReplicationSettingsController_parentEnvironment( rb_replication_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Priority order number can only be set before environment is opened." );	
+		}
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );

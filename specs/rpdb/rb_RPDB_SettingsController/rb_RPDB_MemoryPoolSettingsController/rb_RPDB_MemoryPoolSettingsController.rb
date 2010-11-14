@@ -134,7 +134,7 @@ describe RPDB::Settings::MemoryPool do
   ####################################
 
   it "can return its read/write settings controller" do
-    RPDB::Settings::MemoryPool.new.file_settings_controller.is_a?( RPDB::Settings::MemoryPool::ReadWrite ).should == true
+    RPDB::Settings::MemoryPool.new.read_write_settings_controller.is_a?( RPDB::Settings::MemoryPool::ReadWrite ).should == true
   end
 
 end

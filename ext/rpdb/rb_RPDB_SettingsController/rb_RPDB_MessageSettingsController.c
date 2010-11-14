@@ -47,7 +47,7 @@ void Init_RPDB_MessageSettingsController()	{
 	rb_define_method(			rb_RPDB_MessageSettingsController,				"parent_settings_controller",					rb_RPDB_MessageSettingsController_parentSettingsController,								0 	);
 
 	rb_define_method(			rb_RPDB_MessageSettingsController, 				"file",														rb_RPDB_MessageSettingsController_file,													0 	);
-	rb_define_method(			rb_RPDB_MessageSettingsController, 				"set_file",														rb_RPDB_MessageSettingsController_setFile,													0 	);
+	rb_define_method(			rb_RPDB_MessageSettingsController, 				"set_file",														rb_RPDB_MessageSettingsController_setFile,													1 	);
 
 }
 

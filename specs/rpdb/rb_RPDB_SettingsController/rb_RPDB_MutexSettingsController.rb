@@ -12,9 +12,6 @@ describe RPDB::Settings::Mutex do
   
   before( :each ) do
     @environment = RPDB::Environment.new( $environment_path )
-    @environment.open
-    @database_controller = @environment.database_controller
-
   end
 
   after( :each ) do
@@ -28,16 +25,19 @@ describe RPDB::Settings::Mutex do
 
   # RPDB::Settings::Mutex.new( environment )
   it "can be created with an environment" do
+    @environment.open
     RPDB::Settings::Mutex.new( @environment ).should_not == nil
   end
 
   # RPDB::Settings::Mutex.new( settings_controller )
   it "can be created with a settings controller" do
+    @environment.open
     RPDB::Settings::Mutex.new( RPDB::Settings.new ).should_not == nil
   end
 
   # RPDB::Settings::Mutex.new
   it "can be created with no argument specified" do
+    @environment.open
     RPDB::Settings::Mutex.new.should_not == nil
   end
 
@@ -47,6 +47,7 @@ describe RPDB::Settings::Mutex do
   ########################
 
   it "can return its parent environment" do
+    @environment.open
     RPDB::Settings::Mutex.new.parent_environment.should_not == nil
   end
 
@@ -55,18 +56,20 @@ describe RPDB::Settings::Mutex do
   ################################
 
   it "can return its parent settings controller" do
+    @environment.open
     RPDB::Settings::Mutex.new.parent_settings_controller.should_not == nil
   end
   
-  ##############################################################
-	#  set_spin_times_before_blocking_for_test_and_spin_mutexes  #
-  #  spin_times_before_blocking_for_test_and_spin_mutexes      #
-  ##############################################################
+  #############################################################
+	#  set_spin_time_before_blocking_for_test_and_spin_mutexes  #
+  #  spin_time_before_blocking_for_test_and_spin_mutexes      #
+  #############################################################
 
   it "can set and return its blcoking time for test and spin mutexes" do
+    @environment.open
     mutex_settings  = RPDB::Settings::Mutex.new
-    mutex_settings.set_spin_times_before_blocking_for_test_and_spin_mutexes( 42 )
-    mutex_settings.spin_times_before_blocking_for_test_and_spin_mutexes.should == 42
+    mutex_settings.set_spin_time_before_blocking_for_test_and_spin_mutexes( 42 )
+    mutex_settings.spin_time_before_blocking_for_test_and_spin_mutexes.should == 42
   end
 
   ###############################
@@ -75,7 +78,7 @@ describe RPDB::Settings::Mutex do
   ###############################
 
   it "can set its maximum allowable mutex limit" do
-    mutex_settings  = RPDB::Settings::Mutex.new
+    mutex_settings  = RPDB::Settings::Mutex.new( @environment )
     mutex_settings.set_max_allowable_mutexes( 42 )
     mutex_settings.max_allowable_mutexes.should == 42
   end
@@ -86,7 +89,7 @@ describe RPDB::Settings::Mutex do
   ######################################
 
   it "can set and return its increment for adding mutexes" do
-    mutex_settings  = RPDB::Settings::Mutex.new
+    mutex_settings  = RPDB::Settings::Mutex.new( @environment )
     mutex_settings.set_increment_for_adding_mutexes( 42 )
     mutex_settings.increment_for_adding_mutexes.should == 42
   end
@@ -97,7 +100,7 @@ describe RPDB::Settings::Mutex do
   #########################
 
   it "can set and return its mutex alignment" do
-    mutex_settings  = RPDB::Settings::Mutex.new
+    mutex_settings  = RPDB::Settings::Mutex.new( @environment )
     mutex_settings.set_mutex_alignment( 42 )
     mutex_settings.mutex_alignment.should == 42
   end
@@ -109,6 +112,7 @@ describe RPDB::Settings::Mutex do
   ##############################################
 
   it "can be set to associate with a single process" do
+    @environment.open
     mutex_settings  = RPDB::Settings::Mutex.new
     mutex_settings.associated_with_single_process?.should == false
     mutex_settings.turn_associated_with_single_process_on
@@ -124,6 +128,7 @@ describe RPDB::Settings::Mutex do
   ############################
 
   it "can be set to be self-blocking" do
+    @environment.open
     mutex_settings  = RPDB::Settings::Mutex.new
     mutex_settings.self_blocking?.should == false
     mutex_settings.turn_self_blocking_on

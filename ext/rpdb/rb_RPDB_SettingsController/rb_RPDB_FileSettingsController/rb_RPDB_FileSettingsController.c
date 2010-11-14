@@ -49,12 +49,12 @@ void Init_RPDB_FileSettingsController()	{
 	rb_define_method(			rb_RPDB_FileSettingsController,					"parent_settings_controller",					rb_RPDB_FileSettingsController_parentSettingsController,								0 	);
 
 	rb_define_method(			rb_RPDB_FileSettingsController, 				"intermediate_directory_mode",														rb_RPDB_FileSettingsController_intermediateDirectoryMode,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"set_intermediate_directory_mode",														rb_RPDB_FileSettingsController_setIntermediateDirectoryMode,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"set_intermediate_directory_mode",														rb_RPDB_FileSettingsController_setIntermediateDirectoryMode,													1 	);
 	rb_define_method(			rb_RPDB_FileSettingsController, 				"temp_directory",														rb_RPDB_FileSettingsController_tempDirectory,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"set_temp_directory",														rb_RPDB_FileSettingsController_setTempDirectory,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"permit_environment_based_naming?",														rb_RPDB_FileSettingsController_permitEnvironmentBasedFileNaming,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_permit_environment_based_naming_on",														rb_RPDB_FileSettingsController_turnPermitEnvironmentBasedFileNamingOn,													0 	);
-	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_permit_environment_based_naming_off",														rb_RPDB_FileSettingsController_turnPermitEnvironmentBasedFileNamingOff,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"set_temp_directory",														rb_RPDB_FileSettingsController_setTempDirectory,													1 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"permit_environment_based_file_naming?",														rb_RPDB_FileSettingsController_permitEnvironmentBasedFileNaming,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_permit_environment_based_file_naming_on",														rb_RPDB_FileSettingsController_turnPermitEnvironmentBasedFileNamingOn,													0 	);
+	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_permit_environment_based_file_naming_off",														rb_RPDB_FileSettingsController_turnPermitEnvironmentBasedFileNamingOff,													0 	);
 	rb_define_method(			rb_RPDB_FileSettingsController, 				"use_environment_home_permissions_for_file_naming?",														rb_RPDB_FileSettingsController_useEnvironmentHomePermissionsForFileNaming,													0 	);
 	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_use_environment_home_permissions_for_file_naming_on",														rb_RPDB_FileSettingsController_turnUseEnvironmentHomePermissionsForFileNamingOn,													0 	);
 	rb_define_method(			rb_RPDB_FileSettingsController, 				"turn_use_environment_home_permissions_for_file_naming_off",														rb_RPDB_FileSettingsController_turnUseEnvironmentHomePermissionsForFileNamingOff,													0 	);
@@ -231,9 +231,9 @@ VALUE rb_RPDB_FileSettingsController_tempDirectory( VALUE	rb_file_settings_contr
 		return rb_file_settings_controller;
 	}
 
-/*******************************
-*  permit_environment_naming?  *
-*******************************/
+/******************************************
+*  permit_environment_based_file_naming?  *
+******************************************/
 
 //	DB_USE_ENVIRON          http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 VALUE rb_RPDB_FileSettingsController_permitEnvironmentBasedFileNaming( VALUE	rb_file_settings_controller )	{
@@ -245,9 +245,9 @@ VALUE rb_RPDB_FileSettingsController_permitEnvironmentBasedFileNaming( VALUE	rb_
 																											:	Qfalse );
 }
 
-	/**************************************
-	*  turn_permit_environment_naming_on  *
-	**************************************/
+	/*************************************************
+	*  turn_permit_environment_based_file_naming_on  *
+	*************************************************/
 
 	VALUE rb_RPDB_FileSettingsController_turnPermitEnvironmentBasedFileNamingOn( VALUE	rb_file_settings_controller )	{
 
@@ -259,9 +259,9 @@ VALUE rb_RPDB_FileSettingsController_permitEnvironmentBasedFileNaming( VALUE	rb_
 		return rb_file_settings_controller;
 	}
 
-	/***************************************
-	*  turn_permit_environment_naming_off  *
-	***************************************/
+	/**************************************************
+	*  turn_permit_environment_based_file_naming_off  *
+	**************************************************/
 
 	VALUE rb_RPDB_FileSettingsController_turnPermitEnvironmentBasedFileNamingOff( VALUE	rb_file_settings_controller )	{
 
@@ -273,9 +273,9 @@ VALUE rb_RPDB_FileSettingsController_permitEnvironmentBasedFileNaming( VALUE	rb_
 		return rb_file_settings_controller;
 	}
 
-/**************************
-*  use_environment_home?  *
-**************************/
+/******************************************************
+*  use_environment_home_permissions_for_file_naming?  *
+******************************************************/
 
 //	DB_USE_ENVIRON_ROOT     http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 VALUE rb_RPDB_FileSettingsController_useEnvironmentHomePermissionsForFileNaming( VALUE	rb_file_settings_controller )	{
@@ -287,9 +287,9 @@ VALUE rb_RPDB_FileSettingsController_useEnvironmentHomePermissionsForFileNaming(
 																													:	Qfalse );
 }
 
-	/*********************************
-	*  turn_use_environment_home_on  *
-	*********************************/
+	/*************************************************************
+	*  turn_use_environment_home_permissions_for_file_naming_on  *
+	*************************************************************/
 
 	VALUE rb_RPDB_FileSettingsController_turnUseEnvironmentHomePermissionsForFileNamingOn( VALUE	rb_file_settings_controller )	{
 
@@ -301,9 +301,9 @@ VALUE rb_RPDB_FileSettingsController_useEnvironmentHomePermissionsForFileNaming(
 		return rb_file_settings_controller;
 	}
 
-	/**********************************
-	*  turn_use_environment_home_off  *
-	**********************************/
+	/**************************************************************
+	*  turn_use_environment_home_permissions_for_file_naming_off  *
+	**************************************************************/
 
 	VALUE rb_RPDB_FileSettingsController_turnUseEnvironmentHomePermissionsForFileNamingOff( VALUE	rb_file_settings_controller )	{
 

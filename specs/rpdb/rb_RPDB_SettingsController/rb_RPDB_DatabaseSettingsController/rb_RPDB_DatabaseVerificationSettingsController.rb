@@ -13,8 +13,6 @@ describe RPDB::Settings::Database::Verification do
   before( :each ) do
     @environment = RPDB::Environment.new( $environment_path )
     @environment.open
-    @database_controller = @environment.database_controller
-
   end
 
   after( :each ) do
@@ -38,7 +36,7 @@ describe RPDB::Settings::Database::Verification do
 
   # RPDB::Settings::Database::Verification.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Verification.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Verification.new( RPDB::Database.new( $database_name ) ).should_not == nil
   end
 
   # RPDB::Settings::Database::Verification.new( settings_controller )

@@ -239,7 +239,7 @@ VALUE rb_RPDB_DatabaseSettingsController_new(	int			argc,
 	//	if we have a parent environment, undefine database cache controller in instance
 	if ( rb_parent_environment != Qnil )	{
 		VALUE	rb_database_settings_controller_singleton_class	=	rb_singleton_class( rb_database_settings_controller );
-		rb_remove_method( rb_database_settings_controller_singleton_class, "cache_settings_controllers" );
+		rb_undef_method( rb_database_settings_controller_singleton_class, "cache_settings_controllers" );
 	}
 
 	rb_obj_call_init(	rb_database_settings_controller,

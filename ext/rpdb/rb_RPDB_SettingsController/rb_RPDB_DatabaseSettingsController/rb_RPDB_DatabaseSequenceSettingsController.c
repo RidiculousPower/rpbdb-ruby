@@ -53,13 +53,13 @@ void Init_RPDB_DatabaseSequenceSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"parent_settings_controller",					rb_RPDB_DatabaseSequenceSettingsController_parentSettingsController,				0 	);
 	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"parent_database_settings_controller",					rb_RPDB_DatabaseSequenceSettingsController_parentDatabaseSettingsController,				0 	);
                     					
-	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"increasing",								rb_RPDB_DatabaseSequenceSettingsController_increasing,						0 	);
+	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"increasing?",								rb_RPDB_DatabaseSequenceSettingsController_increasing,						0 	);
 	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"set_as_increasing",				rb_RPDB_DatabaseSequenceSettingsController_setAsIncreasing,				0 	);
                     					
-	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"decreasing",								rb_RPDB_DatabaseSequenceSettingsController_decreasing,						0 	);
+	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"decreasing?",								rb_RPDB_DatabaseSequenceSettingsController_decreasing,						0 	);
 	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"set_as_decreasing",				rb_RPDB_DatabaseSequenceSettingsController_setAsDecreasing,				0 	);
                     					
-	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"wrap",											rb_RPDB_DatabaseSequenceSettingsController_wrap,									0 	);
+	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"wrap?",											rb_RPDB_DatabaseSequenceSettingsController_wrap,									0 	);
 	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"set_to_wrap",							rb_RPDB_DatabaseSequenceSettingsController_setToWrap,							0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"range_minimum",						rb_RPDB_DatabaseSequenceSettingsController_rangeMinimum,					0 	);
@@ -74,16 +74,13 @@ void Init_RPDB_DatabaseSequenceSettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseSequenceSettingsController, 	"set_range_max",						"range_maximum=" 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"cache_size",								rb_RPDB_DatabaseSequenceSettingsController_cacheSize,							0 	);
-	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"cache_size=",							rb_RPDB_DatabaseSequenceSettingsController_setCacheSize,					1 	);
-	rb_define_alias(						rb_RPDB_DatabaseSequenceSettingsController, 	"set_cache_size",						"cache_size=" 	);
+	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"set_cache_size",							rb_RPDB_DatabaseSequenceSettingsController_setCacheSize,					1 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"initial_value",						rb_RPDB_DatabaseSequenceSettingsController_initialValue,					0 	);
-	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"initial_value=",						rb_RPDB_DatabaseSequenceSettingsController_setInitialValue,				1 	);
-	rb_define_alias(						rb_RPDB_DatabaseSequenceSettingsController, 	"set_initial_value",				"initial_value="	);
+	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"set_to_initial_value",						rb_RPDB_DatabaseSequenceSettingsController_setInitialValue,				1 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"default_step_value",				rb_RPDB_DatabaseSequenceSettingsController_defaultStepValue,			0 	);
-	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"default_step_value=",			rb_RPDB_DatabaseSequenceSettingsController_setDefaultStepValue,		1 	);
-	rb_define_alias(						rb_RPDB_DatabaseSequenceSettingsController, 	"set_default_step_value",		"default_step_value=" 	);
+	rb_define_method(						rb_RPDB_DatabaseSequenceSettingsController, 	"set_to_default_step_value",			rb_RPDB_DatabaseSequenceSettingsController_setDefaultStepValue,		1 	);
 
 }
 

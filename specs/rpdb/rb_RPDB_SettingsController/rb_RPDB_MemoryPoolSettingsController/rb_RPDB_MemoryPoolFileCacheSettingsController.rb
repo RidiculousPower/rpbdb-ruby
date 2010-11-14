@@ -83,12 +83,12 @@ describe RPDB::Settings::MemoryPool::File::Cache do
     RPDB::Settings::MemoryPool::File::Cache.new.parent_memory_pool_file_settings_controller.should_not == nil
   end
 
-  #########################
-  #  priority_controller  #
-  #########################
+  ##################################
+  #  priority_settings_controller  #
+  ##################################
 
   it "can return its priority controller" do
-    RPDB::Settings::MemoryPool::File::Cache.new.priority_controller.is_a?( RPDB::Settings::MemoryPool::File::Cache::Settings ).should == true
+    RPDB::Settings::MemoryPool::File::Cache.new.priority_settings_controller.is_a?( RPDB::Settings::MemoryPool::File::Cache::Priority ).should == true
   end
 
 end

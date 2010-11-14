@@ -67,12 +67,12 @@ void Init_RPDB_MemoryPoolFileCachePrioritySettingsController()	{
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"is_at_most_very_low?",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtMostVeryLow,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"low?",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_low,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"set_to_low",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_setLow,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"is_at_least_low",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtLeastLow,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"is_at_most_low",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtMostLow,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"is_at_least_low?",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtLeastLow,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"is_at_most_low?",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtMostLow,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"default?",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_default,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"set_to_default",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_setDefault,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"is_at_least_default?",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtLeastDefault,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"is_at_most_default",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtMostDefault,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"is_at_most_default?",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtMostDefault,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"high?",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_high,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"set_to_high",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_setHigh,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"is_at_least_high?",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtLeastHigh,													0 	);

@@ -90,33 +90,33 @@ describe RPDB::Settings::Lock do
   end
 
   #######################################################
-  #  timeout_returns_return_deny_not_deadlock?          #
-	#  turn_timeout_returns_return_deny_not_deadlock_on   #
-	#  turn_timeout_returns_return_deny_not_deadlock_off  #
+  #  timeout_returns_deny_not_deadlock?          #
+	#  turn_timeout_returns_deny_not_deadlock_on   #
+	#  turn_timeout_returns_deny_not_deadlock_off  #
   #######################################################
 
   it "can return deny rather than deadlock on timeout" do
     lock_settings  = RPDB::Settings::Lock.new
-    lock_settings.timeout_returns_return_deny_not_deadlock?.should == false
-    lock_settings.turn_timeout_returns_return_deny_not_deadlock_on
-    lock_settings.timeout_returns_return_deny_not_deadlock?.should == true
-    lock_settings.turn_timeout_returns_return_deny_not_deadlock_off
-    lock_settings.timeout_returns_return_deny_not_deadlock?.should == false
+    lock_settings.timeout_returns_deny_not_deadlock?.should == false
+    lock_settings.turn_timeout_returns_deny_not_deadlock_on
+    lock_settings.timeout_returns_deny_not_deadlock?.should == true
+    lock_settings.turn_timeout_returns_deny_not_deadlock_off
+    lock_settings.timeout_returns_deny_not_deadlock?.should == false
   end
 
-  ###################
-  #  wait?          #
-	#  turn_wait_on   #
-	#  turn_wait_off  #
-  ###################
+  #######################################
+  #  no_waiting_for_conflicts?          #
+	#  turn_no_waiting_for_conflicts_on   #
+	#  turn_no_waiting_for_conflicts_off  #
+  #######################################
 
   it "can be set to wait on deadlock" do
     lock_settings  = RPDB::Settings::Lock.new
-    lock_settings.wait?.should == false
-    lock_settings.turn_wait_on
-    lock_settings.wait?.should == true
-    lock_settings.turn_wait_off
-    lock_settings.wait?.should == false
+    lock_settings.no_waiting_for_conflicts?.should == false
+    lock_settings.turn_no_waiting_for_conflicts_on
+    lock_settings.no_waiting_for_conflicts?.should == true
+    lock_settings.turn_no_waiting_for_conflicts_off
+    lock_settings.no_waiting_for_conflicts?.should == false
   end
 
   ################################################

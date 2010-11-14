@@ -128,7 +128,7 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can set the minimum value for a sequence range" do
     sequence_settings = RPDB::Settings::Database::Sequence.new
-    sequence_settings.set_range_minimum = 42
+    sequence_settings.set_range_minimum( 42 )
     sequence_settings.range_minimum.should == 42
   end
 
@@ -139,7 +139,7 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can set the maximum value for a sequence range" do
     sequence_settings = RPDB::Settings::Database::Sequence.new
-    sequence_settings.set_range_maximum = 42
+    sequence_settings.set_range_maximum( 42 )
     sequence_settings.range_maximum.should == 42
   end
 
@@ -150,29 +150,29 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can set the sequence cache size" do
     sequence_settings = RPDB::Settings::Database::Sequence.new
-    sequence_settings.set_cache_size = 42
+    sequence_settings.set_cache_size( 42 )
     sequence_settings.cache_size.should == 42
   end
 
-  #######################
-  #  set_initial_value  #
-  #  initial_value      #
-  #######################
+  ##########################
+  #  set_to_initial_value  #
+  #  initial_value         #
+  ##########################
 
   it "can set the initial sequence value" do
     sequence_settings = RPDB::Settings::Database::Sequence.new
-    sequence_settings.set_initial_value = 42
+    sequence_settings.set_to_initial_value( 42 )
     sequence_settings.initial_value.should == 42
   end
 
   ############################
-  #  set_default_step_value  #
+  #  set_to_default_step_value  #
   #  default_step_value      #
   ############################
 
   it "can set the default step value" do
     sequence_settings = RPDB::Settings::Database::Sequence.new
-    sequence_settings.set_default_step_value = 42
+    sequence_settings.set_to_default_step_value( 42 )
     sequence_settings.default_step_value.should == 42
   end
 

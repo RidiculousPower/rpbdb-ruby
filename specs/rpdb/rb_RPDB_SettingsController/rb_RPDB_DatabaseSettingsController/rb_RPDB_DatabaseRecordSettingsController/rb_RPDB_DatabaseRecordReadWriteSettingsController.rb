@@ -321,34 +321,34 @@ describe RPDB::Settings::Database::Record::ReadWrite do
     read_write_settings.sync_prior_to_write_return?.should == false
   end
 
-    ################################
-    #  permit_duplicates?          #
-    #  turn_permit_duplicates_on   #
-    #  turn_permit_duplicates_off  #
-    ################################
+    ##################################
+    #  unsorted_duplicates?          #
+    #  turn_unsorted_duplicates_on   #
+    #  turn_unsorted_duplicates_off  #
+    ##################################
 
     it "can permit duplicates" do
       read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
-      read_write_settings.permit_duplicates?.should == false
-      read_write_settings.turn_permit_duplicates_on
-      read_write_settings.permit_duplicates?.should == true
-      read_write_settings.turn_permit_duplicates_off
-      read_write_settings.permit_duplicates?.should == false
+      read_write_settings.unsorted_duplicates?.should == false
+      read_write_settings.turn_unsorted_duplicates_on
+      read_write_settings.unsorted_duplicates?.should == true
+      read_write_settings.turn_unsorted_duplicates_off
+      read_write_settings.unsorted_duplicates?.should == false
     end
 
-    ##############################
-    #  sort_duplicates?          #
-  	#  turn_sort_duplicates_on   #
-  	#  turn_sort_duplicates_off  #
-    ##############################
+    ################################
+    #  sorted_duplicates?          #
+  	#  turn_sorted_duplicates_on   #
+  	#  turn_sorted_duplicates_off  #
+    ################################
 
     it "can permit sorted duplicates" do
       read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
-      read_write_settings.sort_duplicates?.should == false
-      read_write_settings.turn_sort_duplicates_on
-      read_write_settings.sort_duplicates?.should == true
-      read_write_settings.turn_sort_duplicates_off
-      read_write_settings.sort_duplicates?.should == false
+      read_write_settings.sorted_duplicates?.should == false
+      read_write_settings.turn_sorted_duplicates_on
+      read_write_settings.sorted_duplicates?.should == true
+      read_write_settings.turn_sorted_duplicates_off
+      read_write_settings.sorted_duplicates?.should == false
     end
 
     #############################

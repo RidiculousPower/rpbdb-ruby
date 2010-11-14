@@ -53,8 +53,8 @@ void Init_RPDB_MemoryPoolSettingsController()	{
 	rb_define_alias(			rb_RPDB_MemoryPoolSettingsController, 				"environment",																			"parent_environment"	);
 	rb_define_method(			rb_RPDB_MemoryPoolSettingsController,					"parent_settings_controller",												rb_RPDB_MemoryPoolSettingsController_parentSettingsController,								0 	);
 
-	rb_define_method(			rb_RPDB_MemoryPoolSettingsController, 				"on",																								rb_RPDB_MemoryPoolSettingsController_on,																						0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolSettingsController, 				"off",																							rb_RPDB_MemoryPoolSettingsController_off,																						0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolSettingsController, 				"on?",																								rb_RPDB_MemoryPoolSettingsController_on,																						0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolSettingsController, 				"off?",																							rb_RPDB_MemoryPoolSettingsController_off,																						0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolSettingsController, 				"turn_on",																					rb_RPDB_MemoryPoolSettingsController_turnOn,																				0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolSettingsController, 				"turn_off",																					rb_RPDB_MemoryPoolSettingsController_turnOff,																				0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolSettingsController, 				"memory_mapping?",																	rb_RPDB_MemoryPoolSettingsController_memoryMapping,																	0 	);

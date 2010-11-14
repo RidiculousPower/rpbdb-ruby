@@ -11,9 +11,7 @@ describe RPDB::Database::Controller do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
-    @environment.open
-    @database_controller = @environment.database_controller
+    @environment = RPDB::Environment.new( $environment_path ).open
 
   end
 
@@ -21,13 +19,13 @@ describe RPDB::Database::Controller do
     @environment.close
   end
 
-
-
-
-  it "can report its current priority" do
-    RPDB::Settings::Database::Cache::Priority.new.current_priority.should_not == 0    
+  it "can turn encryption on and off and report whether it is encrypted" do
+    encryption_settings = RPDB::Settings::Database::Encryption.new
+    encryption_settings.encrypted?.should == false
+    encryption_settings.turn_encryption_on
+    encryption_settings.encrypted?.should == true
+    encryption_settings.turn_encryption_off
+    encryption_settings.encrypted?.should == false
   end
-
-
 
 end

@@ -51,23 +51,23 @@ void Init_RPDB_ReplicationTimeoutSettingsController()	{
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController,				"parent_replication_settings_controller",					rb_RPDB_ReplicationTimeoutSettingsController_parentReplicationSettingsController,								0 	);
 
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"timeout",														rb_RPDB_ReplicationTimeoutSettingsController_timeout,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_setTimeout,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_setTimeout,													1 	);
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"wait_time_before_checkpoint_write",														rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeCheckpointWrite,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_wait_time_before_checkpoint_write",														rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeCheckpointWrite,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_wait_time_before_checkpoint_write",														rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeCheckpointWrite,													1 	);
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"wait_time_before_retry_connection",														rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeRetryConnection,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_wait_time_before_retry_connection",														rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryConnection,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_wait_time_before_retry_connection",														rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryConnection,													1 	);
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"election_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_electionTimeout,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_election_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_setElectionTimeout,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_election_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_setElectionTimeout,													1 	);
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"wait_time_before_retry_election",														rb_RPDB_ReplicationTimeoutSettingsController_waitTimeBeforeRetryElection,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_wait_time_before_retry_election",														rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryElection,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_wait_time_before_retry_election",														rb_RPDB_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryElection,													1 	);
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"full_election_participation_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_fullElectionParticipationTimeout,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_full_election_participation_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_setFullElectionParticipationTimeout,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_full_election_participation_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_setFullElectionParticipationTimeout,													1 	);
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"heartbeat_monitor_pulse",														rb_RPDB_ReplicationTimeoutSettingsController_heartbeatMonitorPulse,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_heartbeat_monitor_pulse",														rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatMonitorPulse,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_heartbeat_monitor_pulse",														rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatMonitorPulse,													1 	);
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"heartbeat_broadcast_pulse",														rb_RPDB_ReplicationTimeoutSettingsController_heartbeatBroadcastPulse,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_heartbeat_broadcast_pulse",														rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatBroadcastPulse,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_heartbeat_broadcast_pulse",														rb_RPDB_ReplicationTimeoutSettingsController_setHeartbeatBroadcastPulse,													1 	);
 	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"lease_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_leaseTimeout,													0 	);
-	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_lease_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_setLeaseTimeout,													0 	);
+	rb_define_method(						rb_RPDB_ReplicationTimeoutSettingsController, 	"set_lease_timeout",														rb_RPDB_ReplicationTimeoutSettingsController_setLeaseTimeout,													1 	);
 
 }
 
@@ -102,7 +102,8 @@ VALUE rb_RPDB_ReplicationTimeoutSettingsController_new(	int			argc,
 	);
 	
 	if (		rb_parent_environment == Qnil
-			&&	rb_parent_settings_controller == Qnil )	{			
+			&&	rb_parent_settings_controller == Qnil
+			&&	rb_parent_replication_settings_controller == Qnil )	{			
 
 		rb_parent_environment = rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
 	}

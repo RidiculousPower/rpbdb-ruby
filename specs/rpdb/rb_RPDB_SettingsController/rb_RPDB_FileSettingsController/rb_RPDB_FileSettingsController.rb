@@ -90,35 +90,35 @@ describe RPDB::Database do
     file_settings.temp_directory.should == '/tmp/file.tmp'
   end
 
-  ########################################
-  #  permit_environment_naming?          #
-	#  turn_permit_environment_naming_on   #
-	#  turn_permit_environment_naming_off  #
-  ########################################
+  ###################################################
+  #  permit_environment_based_file_naming?          #
+	#  turn_permit_environment_based_file_naming_on   #
+	#  turn_permit_environment_based_file_naming_off  #
+  ###################################################
 
   it "can permit the use of environment information in the naming of files" do
     file_settings  = RPDB::Settings::File.new
-    file_settings.permit_environment_naming?.should == false
-    file_settings.turn_permit_environment_naming_on
-    file_settings.permit_environment_naming?.should == true
-    file_settings.turn_permit_environment_naming_off
-    file_settings.permit_environment_naming?.should == false
+    file_settings.permit_environment_based_file_naming?.should == false
+    file_settings.turn_permit_environment_based_file_naming_on
+    file_settings.permit_environment_based_file_naming?.should == true
+    file_settings.turn_permit_environment_based_file_naming_off
+    file_settings.permit_environment_based_file_naming?.should == false
   end
 
-  ###################################
-  #  use_environment_home?          #
-	#  turn_use_environment_home_on   #
-	#  turn_use_environment_home_off  #
-  ###################################
+  ###############################################################
+  #  use_environment_home_permissions_for_file_naming?          #
+	#  turn_use_environment_home_permissions_for_file_naming_on   #
+	#  turn_use_environment_home_permissions_for_file_naming_off  #
+  ###############################################################
 
   # FIX - create file permissions controller
   it "can permit root users the use of environment information in the naming of files" do
     file_settings  = RPDB::Settings::File.new
-    file_settings.use_environment_home?.should == false
-    file_settings.turn_use_environment_home_on
-    file_settings.use_environment_home?.should == true
-    file_settings.turn_use_environment_home_off
-    file_settings.use_environment_home?.should == false
+    file_settings.use_environment_home_permissions_for_file_naming?.should == false
+    file_settings.turn_use_environment_home_permissions_for_file_naming_on
+    file_settings.use_environment_home_permissions_for_file_naming?.should == true
+    file_settings.turn_use_environment_home_permissions_for_file_naming_off
+    file_settings.use_environment_home_permissions_for_file_naming?.should == false
   end
 
   ##################################

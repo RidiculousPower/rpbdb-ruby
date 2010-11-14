@@ -66,27 +66,27 @@ void Init_RPDB_DatabaseCachePrioritySettingsController()	{
 	rb_define_alias(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"priority",									"current_priority"	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"very_low?",								rb_RPDB_DatabaseCachePrioritySettingsController_veryLow,								0 	);
-	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"set_very_low",							rb_RPDB_DatabaseCachePrioritySettingsController_setVeryLow,							0 	);
+	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"set_to_very_low",							rb_RPDB_DatabaseCachePrioritySettingsController_setVeryLow,							0 	);
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"is_at_least_very_low?",		rb_RPDB_DatabaseCachePrioritySettingsController_isAtLeastVeryLow,				0 	);
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"is_at_most_very_low?",			rb_RPDB_DatabaseCachePrioritySettingsController_isAtMostVeryLow,				0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"low?",											rb_RPDB_DatabaseCachePrioritySettingsController_low,										0 	);
-	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"set_low",									rb_RPDB_DatabaseCachePrioritySettingsController_setLow,									0 	);
+	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"set_to_low",									rb_RPDB_DatabaseCachePrioritySettingsController_setLow,									0 	);
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"is_at_least_low?",					rb_RPDB_DatabaseCachePrioritySettingsController_isAtLeastLow,						0 	);
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"is_at_most_low?",					rb_RPDB_DatabaseCachePrioritySettingsController_isAtMostLow,						0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"default?",									rb_RPDB_DatabaseCachePrioritySettingsController_default,								0 	);
-	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"set_default",							rb_RPDB_DatabaseCachePrioritySettingsController_setDefault,							0 	);
+	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"set_to_default",							rb_RPDB_DatabaseCachePrioritySettingsController_setDefault,							0 	);
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"is_at_least_default?",			rb_RPDB_DatabaseCachePrioritySettingsController_isAtLeastDefault,				0 	);
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"is_at_most_default?",			rb_RPDB_DatabaseCachePrioritySettingsController_isAtMostDefault,				0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"high?",										rb_RPDB_DatabaseCachePrioritySettingsController_high,										0 	);
-	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"set_high",									rb_RPDB_DatabaseCachePrioritySettingsController_setHigh,								0 	);
+	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"set_to_high",									rb_RPDB_DatabaseCachePrioritySettingsController_setHigh,								0 	);
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"is_at_least_high?",				rb_RPDB_DatabaseCachePrioritySettingsController_isAtLeastHigh,					0 	);
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"is_at_most_high?",					rb_RPDB_DatabaseCachePrioritySettingsController_isAtMostHigh,						0 	);
                     					
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"very_high?",								rb_RPDB_DatabaseCachePrioritySettingsController_veryHigh,								0 	);
-	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"set_very_high",						rb_RPDB_DatabaseCachePrioritySettingsController_setVeryHigh,						0 	);
+	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"set_to_very_high",						rb_RPDB_DatabaseCachePrioritySettingsController_setVeryHigh,						0 	);
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"is_at_least_very_high?",		rb_RPDB_DatabaseCachePrioritySettingsController_isAtLeastVeryHigh,			0 	);
 	rb_define_method(						rb_RPDB_DatabaseCachePrioritySettingsController, 	"is_at_most_very_high?",		rb_RPDB_DatabaseCachePrioritySettingsController_isAtMostVeryHigh,				0 	);
 }
