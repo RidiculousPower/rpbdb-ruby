@@ -88,7 +88,7 @@ describe RPDB::Settings::MemoryPool::File::Cache do
   #########################
 
   it "can return its priority controller" do
-    raise "Failed."
+    RPDB::Settings::MemoryPool::File::Cache.new.priority_controller.is_a?( RPDB::Settings::MemoryPool::File::Cache::Settings ).should == true
   end
 
 end

@@ -102,7 +102,9 @@ describe RPDB::Settings::Database::Record::FixedLength do
   #######################
 
   it "can set and return a fixed length for records" do
-    raise "Failed."
+    fixed_length_settings = RPDB::Settings::Database::Record::FixedLength.new
+    fixed_length_settings.set_record_length = 42
+    fixed_length_settings.record_length.should == 42
   end
 
   ######################
@@ -111,7 +113,9 @@ describe RPDB::Settings::Database::Record::FixedLength do
   ######################
 
   it "can set and return which character will be used for padding records shorter than fixed length" do
-    raise "Failed."
+    fixed_length_settings = RPDB::Settings::Database::Record::FixedLength.new
+    fixed_length_settings.set_padding_byte = '.'
+    fixed_length_settings.padding_byte.should == '.'
   end
 
 end

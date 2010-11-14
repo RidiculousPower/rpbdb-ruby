@@ -93,8 +93,20 @@ describe RPDB::Settings::Database::Error do
   #  file      #
   ##############
 
-  it "can set and return a file for error output" do
-    raise "Failed."
+  it "can set and return a file for error output by path" do
+    error_settings  = RPDB::Settings::Database::Error.new
+    error_settings.file.should == nil
+    error_settings.set_file( '/tmp/tmp.file' )
+    error_settings.file.is_a?( File ).should == true
+  end
+
+  it "can set and return a file for error output by file object" do
+    error_settings  = RPDB::Settings::Database::Error.new
+    error_settings.file.should == nil
+    file_object = File.open( '/tmp/tmp.file', 'r' )
+    error_settings.set_file( file_object )
+    error_settings.file.should == file_object
+    file_object.close
   end
 
   ################
@@ -103,7 +115,10 @@ describe RPDB::Settings::Database::Error do
   ################
 
   it "can set and return a prefix to prepend to all errors" do
-    raise "Failed."
+    error_settings  = RPDB::Settings::Database::Error.new
+    error_settings.prefix.should == nil
+    error_settings.set_prefix( 'error prefix' )
+    error_settings.prefix.should == 'error prefix'
   end
 
   ###############################
@@ -112,7 +127,7 @@ describe RPDB::Settings::Database::Error do
   ###############################
 
   it "can set and return a callback method for error handling" do
-    raise "Failed."
+    raise "Callback."
   end
 
 end

@@ -97,46 +97,110 @@ describe RPDB::Settings::MemoryPool::File::Cache::Priority do
   end
 
   ######################
+	#  set_very_low      #
+	#  set_low           #
+	#  set_default       #
+	#  set_high          #
+	#  set_very_high     #
+  #  very_low?         #
+  #  low?              #
+  #  default?          #
+  #  high?             #
+  #  very_high?        #
   #  current_priority  #
   ######################
 
-  it "can return its current priority" do
-    raise "Failed."
+  it "can set priority and report whether a priority level is currently set as well as report its current priority" do
+    priority_settings_controller  = RPDB::Settings::MemoryPool::File::Cache::Priority.new
+    priority_settings_controller.current_priority.should == 0
+    priority_settings_controller.set_very_low
+    priority_settings_controller.very_low?.should == true
+    priority_settings_controller.set_low
+    priority_settings_controller.low?.should == true
+    priority_settings_controller.set_default
+    priority_settings_controller.default?.should == true
+    priority_settings_controller.set_high
+    priority_settings_controller.high?.should == true
+    priority_settings_controller.set_very_high
+    priority_settings_controller.very_high?.should == true
   end
 
-  ###################
-	#  set_very_low   #
-	#  set_low        #
-  #  very_low       #
-  #  low            #
-	#  set_default    #
-  #  default        #
-	#  set_high       #
-  #  high           #
-	#  set_very_high  #
-  #  very_high      #
-  ###################
-
-  it "can set priority and report whether a priority level is currently set" do
-    raise "Failed."
-  end
-
-  ########################
-  #  at_least_very_low   #
-  #  at_most_very_low    #
-  #  at_least_low        #
-  #  at_most_low         #
-  #  at_least_default    #
-  #  at_most_default     #
-  #  at_least_high       #
-  #  at_most_high        #
-  #  at_least_very_high  #
-  #  at_most_very_high   #
-  ########################
+  #########################
+  #  at_least_very_low?   #
+  #  at_most_very_low?    #
+  #  at_least_low?        #
+  #  at_most_low?         #
+  #  at_least_default?    #
+  #  at_most_default?     #
+  #  at_least_high?       #
+  #  at_most_high?        #
+  #  at_least_very_high?  #
+  #  at_most_very_high?   #
+  #########################
 
   it "can report on relative priority levels" do
-    raise "Failed."
+    priority_settings_controller  = RPDB::Settings::MemoryPool::File::Cache::Priority.new
+    priority_settings_controller.set_very_low
+    priority_settings_controller.at_least_very_low?.should == true
+    priority_settings_controller.at_most_very_low?.should == true
+    priority_settings_controller.at_least_low?.should == false
+    priority_settings_controller.at_most_low?.should == true
+    priority_settings_controller.at_least_default?.should == false
+    priority_settings_controller.at_most_default?.should == true
+    priority_settings_controller.at_least_high?.should == false
+    priority_settings_controller.at_most_high?.should == true
+    priority_settings_controller.at_least_very_high?.should == false
+    priority_settings_controller.at_most_very_high?.should == true
+
+    priority_settings_controller.set_low
+    priority_settings_controller.at_least_very_low?.should == true
+    priority_settings_controller.at_most_very_low?.should == false
+    priority_settings_controller.at_least_low?.should == true
+    priority_settings_controller.at_most_low?.should == true
+    priority_settings_controller.at_least_default?.should == false
+    priority_settings_controller.at_most_default?.should == true
+    priority_settings_controller.at_least_high?.should == false
+    priority_settings_controller.at_most_high?.should == true
+    priority_settings_controller.at_least_very_high?.should == false
+    priority_settings_controller.at_most_very_high?.should == true
+
+    priority_settings_controller.set_default
+    priority_settings_controller.at_least_very_low?.should == true
+    priority_settings_controller.at_most_very_low?.should == false
+    priority_settings_controller.at_least_low?.should == true
+    priority_settings_controller.at_most_low?.should == false
+    priority_settings_controller.at_least_default?.should == true
+    priority_settings_controller.at_most_default?.should == true
+    priority_settings_controller.at_least_high?.should == false
+    priority_settings_controller.at_most_high?.should == true
+    priority_settings_controller.at_least_very_high?.should == false
+    priority_settings_controller.at_most_very_high?.should == true
+
+    priority_settings_controller.set_high
+    priority_settings_controller.at_least_very_low?.should == true
+    priority_settings_controller.at_most_very_low?.should == false
+    priority_settings_controller.at_least_low?.should == true
+    priority_settings_controller.at_most_low?.should == false
+    priority_settings_controller.at_least_default?.should == true
+    priority_settings_controller.at_most_default?.should == false
+    priority_settings_controller.at_least_high?.should == true
+    priority_settings_controller.at_most_high?.should == true
+    priority_settings_controller.at_least_very_high?.should == false
+    priority_settings_controller.at_most_very_high?.should == true
+
+    priority_settings_controller.set_very_high
+    priority_settings_controller.at_least_very_low?.should == true
+    priority_settings_controller.at_most_very_low?.should == false
+    priority_settings_controller.at_least_low?.should == true
+    priority_settings_controller.at_most_low?.should == false
+    priority_settings_controller.at_least_default?.should == true
+    priority_settings_controller.at_most_default?.should == false
+    priority_settings_controller.at_least_high?.should == true
+    priority_settings_controller.at_most_high?.should == false
+    priority_settings_controller.at_least_very_high?.should == true
+    priority_settings_controller.at_most_very_high?.should == true
+
   end
-  
+
 end
 

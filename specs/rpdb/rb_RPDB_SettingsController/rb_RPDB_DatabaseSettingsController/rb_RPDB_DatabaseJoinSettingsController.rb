@@ -95,7 +95,12 @@ describe RPDB::Settings::Database::Join do
   ###################################
 
   it "can return records using degree one isolation, which reads data that has been modified but not yet committed in addition to committed data." do
-    raise "Failed."
+    join_settings = RPDB::Settings::Database::Join.new
+    join_settings.degree_one_isolation?.should == false
+    join_settings.turn_degree_one_isolation_on
+    join_settings.degree_one_isolation?.should == true
+    join_settings.turn_degree_one_isolation_off
+    join_settings.degree_one_isolation?.should == false
   end
 
   ################################################
@@ -104,8 +109,13 @@ describe RPDB::Settings::Database::Join do
 	#  turn_write_locks_instead_of_read_locks_off  #
   ################################################
 
-  it "" do
-    raise "Failed."
+  it "can use write locks instead of read locks" do
+    join_settings = RPDB::Settings::Database::Join.new
+    join_settings.write_locks_instead_of_read_locks?.should == false
+    join_settings.turn_write_locks_instead_of_read_locks_on
+    join_settings.write_locks_instead_of_read_locks?.should == true
+    join_settings.turn_write_locks_instead_of_read_locks_off
+    join_settings.write_locks_instead_of_read_locks?.should == false
   end
 
   ##################################
@@ -114,8 +124,13 @@ describe RPDB::Settings::Database::Join do
 	#  turn_no_sort_before_join_off  #
   ##################################
 
-  it "" do
-    raise "Failed."
+  it "can skip sorting before joining" do
+    join_settings = RPDB::Settings::Database::Join.new
+    join_settings.no_sort_before_join?.should == false
+    join_settings.turn_no_sort_before_join_on
+    join_settings.no_sort_before_join?.should == true
+    join_settings.turn_no_sort_before_join_off
+    join_settings.no_sort_before_join?.should == false
   end
 
 end

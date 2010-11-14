@@ -63,7 +63,9 @@ describe RPDB::Settings::Message do
   ##############
 
   it "can set and return its message file" do
-    raise "Failed."
+    message_settings  = RPDB::Settings::Message.new
+    message_settings.set_file( '/tmp/file.tmp' )
+    message_settings.file.should == '/tmp/file.tmp'
   end
 
   #################################
@@ -72,7 +74,7 @@ describe RPDB::Settings::Message do
   #################################
 
   it "can set and return its message callback method" do
-    raise "Failed."
+    raise "Callback."
   end
 
  

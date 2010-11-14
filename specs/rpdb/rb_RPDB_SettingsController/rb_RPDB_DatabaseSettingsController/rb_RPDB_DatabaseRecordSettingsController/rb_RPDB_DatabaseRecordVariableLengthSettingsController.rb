@@ -92,7 +92,7 @@ describe RPDB::Settings::Database::Record::VariableLength do
   #  parent_database_record_settings_controller  #
   ################################################
 
-  it "can return its parent database settings controller" do
+  it "can return its parent database record settings controller" do
     RPDB::Settings::Database::Record::VariableLength.new.parent_database_record_settings_controller.should_not == nil
   end
 
@@ -102,7 +102,9 @@ describe RPDB::Settings::Database::Record::VariableLength do
   	##########################
 
     it "can set and return its record delimiter" do
-      raise "Failed."
+      variable_length_settings  = RPDB::Settings::Database::Record::VariableLength.new
+      variable_length_settings.set_record_delimeter( '$$$$' )
+      variable_length_settings.record_delimeter.should == '$$$$'
     end
 
 end

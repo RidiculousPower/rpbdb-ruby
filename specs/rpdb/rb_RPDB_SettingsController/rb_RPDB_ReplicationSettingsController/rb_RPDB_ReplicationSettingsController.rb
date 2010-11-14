@@ -65,17 +65,28 @@ describe RPDB::Settings::Replication do
   ##############
 
   it "can be turned on or off and report whether it is on or off" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.on?.should == true
+    replication_settings.turn_off
+    replication_settings.on?.should == false
+    replication_settings.off?.should == true
+    replication_settings.turn_on
+    replication_settings.off?.should == false
   end
 
   ###############################################
-  #  client_to_client_synchronization           #
+  #  client_to_client_synchronization?          #
 	#  turn_client_to_client_synchronization_on   #
 	#  turn_client_to_client_synchronization_off  #
   ###############################################
 
   it "can be set for client-to-client synchronization" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.client_to_client_synchronization?.should == false
+    replication_settings.turn_client_to_client_synchronization_on
+    replication_settings.client_to_client_synchronization?.should == true
+    replication_settings.turn_client_to_client_synchronization_off
+    replication_settings.client_to_client_synchronization?.should == false
   end
 
   ###################################
@@ -85,7 +96,12 @@ describe RPDB::Settings::Replication do
   ###################################
 
   it "can be set for single bulk transfer" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.single_bulk_transfer?.should == false
+    replication_settings.turn_single_bulk_transfer_on
+    replication_settings.single_bulk_transfer?.should == true
+    replication_settings.turn_single_bulk_transfer_off
+    replication_settings.single_bulk_transfer?.should == false
   end
 
   #################################################
@@ -95,7 +111,12 @@ describe RPDB::Settings::Replication do
   #################################################
 
   it "can be set to delay new sync until an explicit sync call is made" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.delay_new_sync_until_explicit_call?.should == false
+    replication_settings.turn_delay_new_sync_until_explicit_call_on
+    replication_settings.delay_new_sync_until_explicit_call?.should == true
+    replication_settings.turn_delay_new_sync_until_explicit_call_off
+    replication_settings.delay_new_sync_until_explicit_call?.should == false
   end
 
   ################################
@@ -105,7 +126,12 @@ describe RPDB::Settings::Replication do
   ################################
 
   it "can be set to use master leases or not" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.use_master_leases?.should == false
+    replication_settings.turn_use_master_leases_on
+    replication_settings.use_master_leases?.should == true
+    replication_settings.turn_use_master_leases_off
+    replication_settings.use_master_leases?.should == false
   end
 
   ############################################
@@ -115,7 +141,12 @@ describe RPDB::Settings::Replication do
   ############################################
 
   it "can be set to reinitialize any outdated clients" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.reinitialize_outdated_clients?.should == false
+    replication_settings.turn_reinitialize_outdated_clients_on
+    replication_settings.reinitialize_outdated_clients?.should == true
+    replication_settings.turn_reinitialize_outdated_clients_off
+    replication_settings.reinitialize_outdated_clients?.should == false
   end
 
   ############################
@@ -125,7 +156,12 @@ describe RPDB::Settings::Replication do
   ############################
 
   it "can be set to prohibit waiting" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.prohibit_wait?.should == false
+    replication_settings.turn_prohibit_wait_on
+    replication_settings.prohibit_wait?.should == true
+    replication_settings.turn_prohibit_wait_off
+    replication_settings.prohibit_wait?.should == false
   end
 
   ######################################
@@ -135,7 +171,12 @@ describe RPDB::Settings::Replication do
   ######################################
 
   it "can be set to require a strict majority" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.require_strict_majority?.should == false
+    replication_settings.turn_require_strict_majority_on
+    replication_settings.require_strict_majority?.should == true
+    replication_settings.turn_require_strict_majority_off
+    replication_settings.require_strict_majority?.should == false
   end
 
   ###################
@@ -144,7 +185,9 @@ describe RPDB::Settings::Replication do
   ###################
 
   it "can be set as master and report whether it is currently master" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.set_is_master
+    replication_settings.is_master?.should == true
   end
 
   ###################
@@ -153,16 +196,20 @@ describe RPDB::Settings::Replication do
   ###################
 
   it "can be set as client and report whether it is currently client" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.set_is_client
+    replication_settings.is_client?.should == true
   end
 
   ###########################################
 	#  set_start_as_client_or_rally_election  #
-  #  start_as_client_or_rally_election      #
+  #  start_as_client_or_rally_election?     #
   ###########################################
 
   it "can be set to start as client or to rally an election" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.set_start_as_client_or_rally_election
+    replication_settings.start_as_client_or_rally_election?.should == true
   end
 
   ###############
@@ -171,7 +218,9 @@ describe RPDB::Settings::Replication do
   ###############
 
   it "can set its limit" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.set_limit( 42 )
+    replication_settings.limit.should == 42
   end
 
   ##############
@@ -180,7 +229,9 @@ describe RPDB::Settings::Replication do
   ##############
 
   it "can set its host" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.set_host( 'host.com' )
+    replication_settings.host.should == 'host.com'
   end
 
   ##############
@@ -189,7 +240,9 @@ describe RPDB::Settings::Replication do
   ##############
 
   it "can set its port" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.set_port( 42 )
+    replication_settings.port.should == 42
   end
 
   ####################
@@ -198,7 +251,9 @@ describe RPDB::Settings::Replication do
   ####################
 
   it "can set and return its site count" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.set_site_count( 42 )
+    replication_settings.site_count.should == 42
   end
 
   ###############################
@@ -207,7 +262,9 @@ describe RPDB::Settings::Replication do
   ###############################
 
   it "can set and return its priority order number" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.set_priority_order_number( 42 )
+    replication_settings.priority_order_number.should == 42
   end
 
   ##########################################
@@ -216,7 +273,9 @@ describe RPDB::Settings::Replication do
   ##########################################
 
   it "can set and return its retransmission minimum threshold" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.set_retransmission_threshold_minimum( 42 )
+    replication_settings.retransmission_threshold_minimum.should == 42
   end
 
   ##########################################
@@ -225,7 +284,9 @@ describe RPDB::Settings::Replication do
   ##########################################
 
   it "can set and return its retransmission maximum threshold" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.set_retransmission_threshold_maximum( 42 )
+    replication_settings.retransmission_threshold_maximum.should == 42
   end
 
   #############################
@@ -235,7 +296,9 @@ describe RPDB::Settings::Replication do
 
   # FIX - name of fastest/slowest should probably correspond
   it "can set and return the slowest clock value" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.set_slowest_clock_value( 42 )
+    replication_settings.slowest_clock_value.should == 42
   end
 
   ##################################
@@ -244,7 +307,9 @@ describe RPDB::Settings::Replication do
   ##################################
 
   it "can set and return the fastest clock skew value" do
-    raise "Failed."
+    replication_settings  = RPDB::Settings::Replication.new
+    replication_settings.set_fastest_clock_skew_value( 42 )
+    replication_settings.fastest_clock_skew_value.should == 42
   end
 
   ##################################
@@ -252,7 +317,7 @@ describe RPDB::Settings::Replication do
   ##################################
 
   it "can return its election settings controller" do
-    raise "Failed."
+    RPDB::Settings::Replication.new.election_settings_controller.is_a?( RPDB::Settings::Replication::Election ).should == true
   end
 
   #################################
@@ -260,7 +325,7 @@ describe RPDB::Settings::Replication do
   #################################
 
   it "can return its timeout settings controller" do
-    raise "Failed."
+    RPDB::Settings::Replication.new.timeout_settings_controller.is_a?( RPDB::Settings::Replication::Timeout ).should == true
   end
 
 end

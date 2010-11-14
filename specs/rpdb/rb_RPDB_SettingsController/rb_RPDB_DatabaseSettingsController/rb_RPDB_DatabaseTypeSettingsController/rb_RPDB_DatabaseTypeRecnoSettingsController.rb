@@ -96,6 +96,46 @@ describe RPDB::Settings::Database::Type::Recno do
     RPDB::Settings::Database::Type::Recno.new.parent_database_type_settings_controller.should_not == nil
   end
 
+  ###################
+  #  database_type  #
+  ###################
+
+  it "can return its database type" do
+    RPDB::Settings::Database::Type::Recno.new.database_type.should == RPDB::Database::Type::Recno
+  end
+
+  ##################
+  #  is_btree?     #
+  ##################
+
+  it "can report whether the type is btree" do
+    RPDB::Settings::Database::Type::Recno.new.is_btree?.should == false
+  end
+
+  #################
+  #  is_hash?     #
+  #################
+
+  it "can report whether the type is hash" do
+    RPDB::Settings::Database::Type::Recno.new.is_hash?.should == false
+  end
+
+  ##################
+  #  is_recno?     #
+  ##################
+
+  it "can report whether the type is queue" do
+    RPDB::Settings::Database::Type::Recno.new.is_recno?.should == true
+  end
+
+  ##################
+  #  is_queue?     #
+  ##################
+
+  it "can report whether the type is recno" do
+    RPDB::Settings::Database::Type::Recno.new.is_queue?.should == false
+  end
+
   #################################
   #  record_renumbering?          #
 	#  turn_record_renumbering_on   #
@@ -103,7 +143,12 @@ describe RPDB::Settings::Database::Type::Recno do
   #################################
 
   it "can allow renumbering of record numbers" do
-    raise "Failed."
+    recno_settings  = RPDB::Settings::Database::Type::Recno.new
+    recno_settings.record_renumbering?.should == false
+    recno_settings.turn_record_renumbering_on
+    recno_settings.record_renumbering?.should == true
+    recno_settings.turn_record_renumbering_off
+    recno_settings.record_renumbering?.should == false
   end
 
   #################################
@@ -113,7 +158,12 @@ describe RPDB::Settings::Database::Type::Recno do
   #################################
 
   it "can provide snapshot isolation, which forces the record source file to be read in its entirety" do
-    raise "Failed."
+    recno_settings  = RPDB::Settings::Database::Type::Recno.new
+    recno_settings.snapshot_isolation?.should == false
+    recno_settings.turn_snapshot_isolation_on
+    recno_settings.snapshot_isolation?.should == true
+    recno_settings.turn_snapshot_isolation_off
+    recno_settings.snapshot_isolation?.should == false
   end
 
   #####################
@@ -122,7 +172,9 @@ describe RPDB::Settings::Database::Type::Recno do
   #####################
 
   it "can set and return the record source file that will be read during database opening" do
-    raise "Failed."
+    recno_settings  = RPDB::Settings::Database::Type::Recno.new
+    recno_settings.set_source_file( '/tmp/file.tmp' )
+    recno_settings.source_file.should == '/tmp/file.tmp'
   end
 
   ################################
@@ -130,8 +182,9 @@ describe RPDB::Settings::Database::Type::Recno do
   #  append_callback_method      #
   ################################
 
+  # fix name for callback
   it "can set and return a callback method to use for appending records" do
-    raise "Failed."
+    raise "Callback."
   end
 
 end

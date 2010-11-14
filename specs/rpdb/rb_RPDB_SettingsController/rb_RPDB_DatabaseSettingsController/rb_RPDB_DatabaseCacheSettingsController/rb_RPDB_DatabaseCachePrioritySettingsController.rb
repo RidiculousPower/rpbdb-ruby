@@ -28,32 +28,32 @@ describe RPDB::Settings::Database::Cache::Priority do
 
   # RPDB::Settings::Database::Cache::Priority.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Cache::Priority.new( @environment ).should_not == nil
+    RPDB::Settings::Database::Cache::Priority.new( @environment ).is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
   end
 
   # RPDB::Settings::Database::Cache::Priority.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Cache::Priority.new( @environment.database_controller ).should_not == nil
+    RPDB::Settings::Database::Cache::Priority.new( @environment.database_controller ).is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
   end
 
   # RPDB::Settings::Database::Cache::Priority.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Cache::Priority.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Cache::Priority.new( @environment.database_controller.new( $database_name ) ).is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
   end
 
   # RPDB::Settings::Database::Cache::Priority.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Cache::Priority.new( RPDB::Settings.new ).should_not == nil
+    RPDB::Settings::Database::Cache::Priority.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
   end
 
   # RPDB::Settings::Database::Cache::Priority.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Cache::Priority.new( RPDB::Settings::Database.new ).should_not == nil
+    RPDB::Settings::Database::Cache::Priority.new( RPDB::Settings::Database.new ).is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
   end
 
   # RPDB::Settings::Database::Cache::Priority.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Cache::Priority.new.should_not == nil
+    RPDB::Settings::Database::Cache::Priority.new.is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
   end
 
   ########################
@@ -61,7 +61,7 @@ describe RPDB::Settings::Database::Cache::Priority do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Database::Cache::Priority.new.parent_environment.should_not == nil
+    RPDB::Settings::Database::Cache::Priority.new.parent_environment..is_a?( RPDB::Environment ).should == true
   end
 
   #####################
@@ -69,7 +69,7 @@ describe RPDB::Settings::Database::Cache::Priority do
   #####################
 
   it "can return its parent database" do
-    RPDB::Settings::Database::Cache::Priority.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
+    RPDB::Settings::Database::Cache::Priority.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
   end
 
   ################################
@@ -77,7 +77,7 @@ describe RPDB::Settings::Database::Cache::Priority do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Database::Cache::Priority.new.parent_settings_controller.should_not == nil
+    RPDB::Settings::Database::Cache::Priority.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
   end
 
   #########################################
@@ -85,7 +85,7 @@ describe RPDB::Settings::Database::Cache::Priority do
   #########################################
 
   it "can return its parent database settings controller" do
-    RPDB::Settings::Database::Cache::Priority.new.parent_database_settings_controller.should_not == nil
+    RPDB::Settings::Database::Cache::Priority.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
   end
 
   ###############################################
@@ -93,49 +93,113 @@ describe RPDB::Settings::Database::Cache::Priority do
   ###############################################
 
   it "can return its parent database cache settings controller" do
-    RPDB::Settings::Database::Cache::Priority.new.parent_database_cache_settings_controller
+    RPDB::Settings::Database::Cache::Priority.new.parent_database_cache_settings_controller.is_a?( RPDB::Settings::Database::Cache ).should == true
   end
 
   ######################
+	#  set_very_low      #
+	#  set_low           #
+	#  set_default       #
+	#  set_high          #
+	#  set_very_high     #
+  #  very_low?         #
+  #  low?              #
+  #  default?          #
+  #  high?             #
+  #  very_high?        #
   #  current_priority  #
   ######################
 
-  it "can report its current priority" do
-    raise "Failed."
+  it "can set priority and report whether a priority level is currently set as well as report its current priority" do
+    priority_settings_controller  = RPDB::Settings::Database::Cache::Priority.new
+    priority_settings_controller.current_priority.should == 0
+    priority_settings_controller.set_very_low
+    priority_settings_controller.very_low?.should == true
+    priority_settings_controller.set_low
+    priority_settings_controller.low?.should == true
+    priority_settings_controller.set_default
+    priority_settings_controller.default?.should == true
+    priority_settings_controller.set_high
+    priority_settings_controller.high?.should == true
+    priority_settings_controller.set_very_high
+    priority_settings_controller.very_high?.should == true
   end
 
-  ###################
-	#  set_very_low   #
-	#  set_low        #
-	#  set_default    #
-	#  set_high       #
-	#  set_very_high  #
-  #  very_low       #
-  #  low?           #
-  #  default?       #
-  #  high?          #
-  #  very_high?     #
-  ###################
-
-  it "can set priority and report whether a priority level is currently set" do
-    raise "Failed."
-  end
-
-  ########################
-  #  at_least_very_low   #
-  #  at_most_very_low    #
-  #  at_least_low        #
-  #  at_most_low         #
-  #  at_least_default    #
-  #  at_most_default     #
-  #  at_least_high       #
-  #  at_most_high        #
-  #  at_least_very_high  #
-  #  at_most_very_high   #
-  ########################
+  #########################
+  #  at_least_very_low?   #
+  #  at_most_very_low?    #
+  #  at_least_low?        #
+  #  at_most_low?         #
+  #  at_least_default?    #
+  #  at_most_default?     #
+  #  at_least_high?       #
+  #  at_most_high?        #
+  #  at_least_very_high?  #
+  #  at_most_very_high?   #
+  #########################
 
   it "can report on relative priority levels" do
-    raise "Failed."
+    priority_settings_controller  = RPDB::Settings::Database::Cache::Priority.new
+    priority_settings_controller.set_very_low
+    priority_settings_controller.at_least_very_low?.should == true
+    priority_settings_controller.at_most_very_low?.should == true
+    priority_settings_controller.at_least_low?.should == false
+    priority_settings_controller.at_most_low?.should == true
+    priority_settings_controller.at_least_default?.should == false
+    priority_settings_controller.at_most_default?.should == true
+    priority_settings_controller.at_least_high?.should == false
+    priority_settings_controller.at_most_high?.should == true
+    priority_settings_controller.at_least_very_high?.should == false
+    priority_settings_controller.at_most_very_high?.should == true
+
+    priority_settings_controller.set_low
+    priority_settings_controller.at_least_very_low?.should == true
+    priority_settings_controller.at_most_very_low?.should == false
+    priority_settings_controller.at_least_low?.should == true
+    priority_settings_controller.at_most_low?.should == true
+    priority_settings_controller.at_least_default?.should == false
+    priority_settings_controller.at_most_default?.should == true
+    priority_settings_controller.at_least_high?.should == false
+    priority_settings_controller.at_most_high?.should == true
+    priority_settings_controller.at_least_very_high?.should == false
+    priority_settings_controller.at_most_very_high?.should == true
+
+    priority_settings_controller.set_default
+    priority_settings_controller.at_least_very_low?.should == true
+    priority_settings_controller.at_most_very_low?.should == false
+    priority_settings_controller.at_least_low?.should == true
+    priority_settings_controller.at_most_low?.should == false
+    priority_settings_controller.at_least_default?.should == true
+    priority_settings_controller.at_most_default?.should == true
+    priority_settings_controller.at_least_high?.should == false
+    priority_settings_controller.at_most_high?.should == true
+    priority_settings_controller.at_least_very_high?.should == false
+    priority_settings_controller.at_most_very_high?.should == true
+
+    priority_settings_controller.set_high
+    priority_settings_controller.at_least_very_low?.should == true
+    priority_settings_controller.at_most_very_low?.should == false
+    priority_settings_controller.at_least_low?.should == true
+    priority_settings_controller.at_most_low?.should == false
+    priority_settings_controller.at_least_default?.should == true
+    priority_settings_controller.at_most_default?.should == false
+    priority_settings_controller.at_least_high?.should == true
+    priority_settings_controller.at_most_high?.should == true
+    priority_settings_controller.at_least_very_high?.should == false
+    priority_settings_controller.at_most_very_high?.should == true
+
+    priority_settings_controller.set_very_high
+    priority_settings_controller.at_least_very_low?.should == true
+    priority_settings_controller.at_most_very_low?.should == false
+    priority_settings_controller.at_least_low?.should == true
+    priority_settings_controller.at_most_low?.should == false
+    priority_settings_controller.at_least_default?.should == true
+    priority_settings_controller.at_most_default?.should == false
+    priority_settings_controller.at_least_high?.should == true
+    priority_settings_controller.at_most_high?.should == false
+    priority_settings_controller.at_least_very_high?.should == true
+    priority_settings_controller.at_most_very_high?.should == true
+
   end
 
 end

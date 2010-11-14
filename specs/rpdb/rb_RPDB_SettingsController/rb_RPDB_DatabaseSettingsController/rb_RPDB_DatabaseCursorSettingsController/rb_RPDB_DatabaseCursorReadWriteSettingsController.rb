@@ -151,7 +151,12 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   ###########################
 
   it "can be a read-only cursor or it can permit writing" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new
+    read_write_settings.permit_write?.should == true
+    read_write_settings.turn_permit_write_off
+    read_write_settings.permit_write?.should == false
+    read_write_settings.turn_permit_write_on
+    read_write_settings.permit_write?.should == true
   end
 
   ############################
@@ -161,7 +166,12 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   ############################
 
   it "can be set to ignore its replication status (regarding master leases)" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new
+    read_write_settings.ignore_lease?.should == false
+    read_write_settings.turn_ignore_lease_on
+    read_write_settings.ignore_lease?.should == true
+    read_write_settings.turn_ignore_lease_off
+    read_write_settings.ignore_lease?.should == false
   end
 
   ################################################
@@ -171,7 +181,12 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   ################################################
 
   it "can use write locks instead of read locks" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new
+    read_write_settings.write_locks_instead_of_read_locks?.should == false
+    read_write_settings.turn_write_locks_instead_of_read_locks_on
+    read_write_settings.write_locks_instead_of_read_locks?.should == true
+    read_write_settings.turn_write_locks_instead_of_read_locks_off
+    read_write_settings.write_locks_instead_of_read_locks?.should == false
   end
 
   #########################################
@@ -181,7 +196,12 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   #########################################
 
   it "can return multiple data items in a single data parameter" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new
+    read_write_settings.return_multiple_data_items?.should == false
+    read_write_settings.turn_return_multiple_data_items_on
+    read_write_settings.return_multiple_data_items?.should == true
+    read_write_settings.turn_return_multiple_data_items_off
+    read_write_settings.return_multiple_data_items?.should == false
   end
 
   #############################################
@@ -191,7 +211,12 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   #############################################
 
   it "can return multiple key and data items in a single data parameter" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new
+    read_write_settings.return_multiple_key_data_pairs?.should == false
+    read_write_settings.turn_return_multiple_key_data_pairs_on
+    read_write_settings.return_multiple_key_data_pairs?.should == true
+    read_write_settings.turn_return_multiple_key_data_pairs_off
+    read_write_settings.return_multiple_key_data_pairs?.should == false
   end
 
 end

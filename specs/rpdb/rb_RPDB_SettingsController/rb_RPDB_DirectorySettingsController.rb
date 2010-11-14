@@ -62,23 +62,19 @@ describe RPDB::Settings::Directory do
   ####################
 
   it "can return its home directory" do
-    raise "Failed."
+    directory_settings  = RPDB::Settings::Directory.new
+    directory_settings.home_directory.should_not == nil
   end
 
   ########################
   #  add_data_directory  #
+  #  data_directories    #
   ########################
 
   it "can add a data directory to the data directories array" do
-    raise "Failed."
-  end
-
-  ######################
-  #  data_directories  #
-  ######################
-
-  it "can return an array of current data directories" do
-    raise "Failed."
+    directory_settings  = RPDB::Settings::Directory.new
+    directory_settings.add_data_directory( '/tmp' )
+    directory_settings.data_directories.include?( '/tmp' ).should == true
   end
 
 end

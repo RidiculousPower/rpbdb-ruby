@@ -65,7 +65,15 @@ describe RPDB::Settings::MemoryPool do
   ##############
 
   it "it can turn on and off and report whether it is on or off" do
-    raise "Failed."
+    memory_pool_settings  = RPDB::Settings::MemoryPool.new
+    memory_pool_settings.on?.should == true
+    memory_pool_settings.off?.should == false
+    memory_pool_settings.turn_off
+    memory_pool_settings.on?.should == false
+    memory_pool_settings.off?.should == true
+    memory_pool_settings.turn_on
+    memory_pool_settings.on?.should == true
+    memory_pool_settings.off?.should == false
   end
 
   #############################
@@ -75,7 +83,12 @@ describe RPDB::Settings::MemoryPool do
   #############################
 
   it "can turn memory mapping on and off" do
-    raise "Failed."
+    memory_pool_settings  = RPDB::Settings::MemoryPool.new
+    memory_pool_settings.memory_mapping?.should == false
+    memory_pool_settings.turn_memory_mapping_on
+    memory_pool_settings.memory_mapping?.should == true
+    memory_pool_settings.turn_memory_mapping_off
+    memory_pool_settings.memory_mapping?.should == false
   end
 
   ##############################################
@@ -85,7 +98,12 @@ describe RPDB::Settings::MemoryPool do
   ##############################################
 
   it "can be set to remove file with last reference" do
-    raise "Failed."
+    memory_pool_settings  = RPDB::Settings::MemoryPool.new
+    memory_pool_settings.remove_file_with_last_reference?.should == false
+    memory_pool_settings.turn_remove_file_with_last_reference_on
+    memory_pool_settings.remove_file_with_last_reference?.should == true
+    memory_pool_settings.turn_remove_file_with_last_reference_off
+    memory_pool_settings.remove_file_with_last_reference?.should == false
   end
 
   ###################################################
@@ -95,7 +113,12 @@ describe RPDB::Settings::MemoryPool do
   ###################################################
 
   it "can be set to fail in the event of a pagesize factor mismatch" do
-    raise "Failed."
+    memory_pool_settings  = RPDB::Settings::MemoryPool.new
+    memory_pool_settings.pagesize_factor_mismatch_should_fail?.should == false
+    memory_pool_settings.turn_pagesize_factor_mismatch_should_fail_on
+    memory_pool_settings.pagesize_factor_mismatch_should_fail?.should == true
+    memory_pool_settings.turn_pagesize_factor_mismatch_should_fail_off
+    memory_pool_settings.pagesize_factor_mismatch_should_fail?.should == false
   end
 
   ##############################
@@ -103,7 +126,7 @@ describe RPDB::Settings::MemoryPool do
   ##############################
 
   it "can return its file settings controller" do
-    raise "Failed."
+    RPDB::Settings::MemoryPool.new.file_settings_controller.is_a?( RPDB::Settings::MemoryPool::File ).should == true
   end
 
   ####################################
@@ -111,7 +134,7 @@ describe RPDB::Settings::MemoryPool do
   ####################################
 
   it "can return its read/write settings controller" do
-    raise "Failed."
+    RPDB::Settings::MemoryPool.new.file_settings_controller.is_a?( RPDB::Settings::MemoryPool::ReadWrite ).should == true
   end
 
 end

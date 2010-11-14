@@ -90,7 +90,12 @@ describe RPDB::Settings::Lock::DeadlockDetector::Verbosity do
   #######################################################################
 
   it "can display additional information during deadlock detection" do
-    raise "Failed."
+    verbosity_settings  = RPDB::Settings::Lock::DeadlockDetector::Verbosity.new
+    verbosity_settings.display_additional_information_during_deadlock_detection?.should == false
+    verbosity_settings.turn_display_additional_information_during_deadlock_detection_on
+    verbosity_settings.display_additional_information_during_deadlock_detection?.should == true
+    verbosity_settings.turn_display_additional_information_during_deadlock_detection_off
+    verbosity_settings.display_additional_information_during_deadlock_detection?.should == false
   end
 
   ###########################################################
@@ -100,7 +105,12 @@ describe RPDB::Settings::Lock::DeadlockDetector::Verbosity do
   ###########################################################
 
   it "can display wait table during deadlock detection" do
-    raise "Failed."
+    verbosity_settings  = RPDB::Settings::Lock::DeadlockDetector::Verbosity.new
+    verbosity_settings.display_wait_table_during_deadlock_detection?.should == false
+    verbosity_settings.turn_display_wait_table_during_deadlock_detection_on
+    verbosity_settings.display_wait_table_during_deadlock_detection?.should == true
+    verbosity_settings.turn_display_wait_table_during_deadlock_detection_off
+    verbosity_settings.display_wait_table_during_deadlock_detection?.should == false
   end
 
 end

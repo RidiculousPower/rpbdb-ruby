@@ -64,7 +64,12 @@ describe RPDB::Database do
   #############################################################
 
   it "can run normal recovery processes during environment open before actually opening environment" do
-    raise "Failed."
+    debug_settings  = RPDB::Settings::Debug.new
+    debug_settings.run_normal_recovery_before_opening_environment?.should == false
+    debug_settings.turn_run_normal_recovery_before_opening_environment_on
+    debug_settings.run_normal_recovery_before_opening_environment?.should == true
+    debug_settings.turn_run_normal_recovery_before_opening_environment_off
+    debug_settings.run_normal_recovery_before_opening_environment?.should == false
   end
 
   ###################################################################
@@ -74,7 +79,12 @@ describe RPDB::Database do
   ###################################################################
 
   it "can run catastrophic recovery processes during environment open before actually opening environment" do
-    raise "Failed."
+    debug_settings  = RPDB::Settings::Debug.new
+    debug_settings.run_normal_recovery_before_opening_environment?.should == false
+    debug_settings.turn_run_normal_recovery_before_opening_environment_on
+    debug_settings.run_normal_recovery_before_opening_environment?.should == true
+    debug_settings.turn_run_normal_recovery_before_opening_environment_off
+    debug_settings.run_normal_recovery_before_opening_environment?.should == false
   end
 
   ###############################
@@ -84,7 +94,12 @@ describe RPDB::Database do
   ###############################
 
   it "can open in lockdown" do
-    raise "Failed."
+    debug_settings  = RPDB::Settings::Debug.new
+    debug_settings.run_normal_recovery_before_opening_environment?.should == false
+    debug_settings.turn_run_normal_recovery_before_opening_environment_on
+    debug_settings.run_normal_recovery_before_opening_environment?.should == true
+    debug_settings.turn_run_normal_recovery_before_opening_environment_off
+    debug_settings.run_normal_recovery_before_opening_environment?.should == false
   end
 
   ############################################################
@@ -94,7 +109,12 @@ describe RPDB::Database do
   ############################################################
 
   it "can check whether it should run recovery processes during environment open before actually opening environment" do
-    raise "Failed."
+    debug_settings  = RPDB::Settings::Debug.new
+    debug_settings.run_normal_recovery_before_opening_environment?.should == false
+    debug_settings.turn_run_normal_recovery_before_opening_environment_on
+    debug_settings.run_normal_recovery_before_opening_environment?.should == true
+    debug_settings.turn_run_normal_recovery_before_opening_environment_off
+    debug_settings.run_normal_recovery_before_opening_environment?.should == false
   end
 
   #############################
@@ -104,7 +124,12 @@ describe RPDB::Database do
   #############################
 
   it "can prohibit panic" do
-    raise "Failed."
+    debug_settings  = RPDB::Settings::Debug.new
+    debug_settings.run_normal_recovery_before_opening_environment?.should == false
+    debug_settings.turn_run_normal_recovery_before_opening_environment_on
+    debug_settings.run_normal_recovery_before_opening_environment?.should == true
+    debug_settings.turn_run_normal_recovery_before_opening_environment_off
+    debug_settings.run_normal_recovery_before_opening_environment?.should == false
   end
 
   ####################
@@ -114,7 +139,12 @@ describe RPDB::Database do
   ####################
 
   it "can panic" do
-    raise "Failed."
+    debug_settings  = RPDB::Settings::Debug.new
+    debug_settings.run_normal_recovery_before_opening_environment?.should == false
+    debug_settings.turn_run_normal_recovery_before_opening_environment_on
+    debug_settings.run_normal_recovery_before_opening_environment?.should == true
+    debug_settings.turn_run_normal_recovery_before_opening_environment_off
+    debug_settings.run_normal_recovery_before_opening_environment?.should == false
   end
 
   ########################################
@@ -124,7 +154,12 @@ describe RPDB::Database do
   ########################################
 
   it "can yield cpu for stress test" do
-    raise "Failed."
+    debug_settings  = RPDB::Settings::Debug.new
+    debug_settings.run_normal_recovery_before_opening_environment?.should == false
+    debug_settings.turn_run_normal_recovery_before_opening_environment_on
+    debug_settings.run_normal_recovery_before_opening_environment?.should == true
+    debug_settings.turn_run_normal_recovery_before_opening_environment_off
+    debug_settings.run_normal_recovery_before_opening_environment?.should == false
   end
 
   ###################################
@@ -132,7 +167,7 @@ describe RPDB::Database do
   ###################################
 
   it "can return its verbosity settings controller" do
-    raise "Failed."
+    RPDB::Settings::Debug.new.verbosity_settings_controller.is_a?( RPDB::Settings::Debug::Verbosity ).should == true
   end
 
 end

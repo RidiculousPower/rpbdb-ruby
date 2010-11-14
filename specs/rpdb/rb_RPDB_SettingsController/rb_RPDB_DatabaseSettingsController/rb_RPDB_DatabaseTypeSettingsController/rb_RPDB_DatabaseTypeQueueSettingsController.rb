@@ -96,6 +96,46 @@ describe RPDB::Settings::Database::Type::Queue do
     RPDB::Settings::Database::Type::Queue.new.parent_database_type_settings_controller.should_not == nil
   end
 
+  ###################
+  #  database_type  #
+  ###################
+
+  it "can return its database type" do
+    RPDB::Settings::Database::Type::Queue.new.database_type.should == RPDB::Database::Type::Queue
+  end
+
+  ##################
+  #  is_btree?     #
+  ##################
+
+  it "can report whether the type is btree" do
+    RPDB::Settings::Database::Type::Queue.new.is_btree?.should == false
+  end
+
+  #################
+  #  is_hash?     #
+  #################
+
+  it "can report whether the type is hash" do
+    RPDB::Settings::Database::Type::Queue.new.is_hash?.should == false
+  end
+
+  ##################
+  #  is_recno?     #
+  ##################
+
+  it "can report whether the type is queue" do
+    RPDB::Settings::Database::Type::Queue.new.is_recno?.should == false
+  end
+
+  ##################
+  #  is_queue?     #
+  ##################
+
+  it "can report whether the type is recno" do
+    RPDB::Settings::Database::Type::Queue.new.is_queue?.should == true
+  end
+
   #############################################
   #  return_key_data_pairs_in_order?          #
 	#  turn_return_key_data_pairs_in_order_on   #
@@ -103,7 +143,12 @@ describe RPDB::Settings::Database::Type::Queue do
   #############################################
 
   it "can be set to return key/data pairs in order" do
-    raise "Failed."
+    queue_settings  = RPDB::Settings::Database::Type::Queue.new
+    queue_settings.return_key_data_pairs_in_order?.should == false
+    queue_settings.turn_return_key_data_pairs_in_order_on
+    queue_settings.return_key_data_pairs_in_order?.should == true
+    queue_settings.turn_return_key_data_pairs_in_order_off
+    queue_settings.return_key_data_pairs_in_order?.should == false
   end
 
   #############################################
@@ -112,7 +157,9 @@ describe RPDB::Settings::Database::Type::Queue do
   #############################################
 
   it "can set the number of pages used for underlying data" do
-    raise "Failed."
+    queue_settings = RPDB::Settings::Database::Type::Queue.new
+    queue_settings.set_number_of_pages_for_underlying_data  = 42
+    queue_settings.number_of_pages_for_underlying_data.should == 42
   end
 
 end

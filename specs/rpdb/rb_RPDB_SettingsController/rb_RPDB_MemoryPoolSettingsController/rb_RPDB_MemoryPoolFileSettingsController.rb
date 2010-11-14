@@ -70,42 +70,6 @@ describe RPDB::Settings::MemoryPool::File do
     RPDB::Settings::MemoryPool::File.new.parent_memory_pool_settings_controller.should_not == nil
   end
 
-  ##################################################
-	#  set_create_with_initial_null_bytes_numbering  #
-  #  create_with_initial_null_bytes_numbering      #
-  ##################################################
-
-  it "can be set to create file with initial null bytes numbering ______" do
-    raise "Failed."
-  end
-
-  #################
-	#  set_file_id  #
-  #  file_id      #
-  #################
-
-  it "can set and return its file id" do
-    raise "Failed."
-  end
-
-  ###################
-	#  set_file_type  #
-  #  file_type      #
-  ###################
-
-  it "can set and return its file type" do
-    raise "Failed."
-  end
-
-  ####################################
-	#  set_log_sequence_number_offset  #
-  #  log_sequence_number_offset      #
-  ####################################
-
-  it "can set and return its log sequence number offset" do
-    raise "Failed."
-  end
-
   ################################################
   #  set_max_size_in_bytes                       #
 	#  set_max_size_in_kbytes                      #
@@ -146,13 +110,59 @@ describe RPDB::Settings::MemoryPool::File do
     
   end
 
+  ##################################################
+	#  set_create_with_initial_null_bytes_numbering  #
+  #  create_with_initial_null_bytes_numbering      #
+  ##################################################
+
+  it "can be set to create file with initial null bytes numbering ______" do
+    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
+    memory_pool_file_settings.set_create_with_initial_null_bytes_numbering( 42 )
+    memory_pool_file_settings.create_with_initial_null_bytes_numbering.should == 42
+  end
+
+  #################
+	#  set_file_id  #
+  #  file_id      #
+  #################
+
+  it "can set and return its file id" do
+    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
+    memory_pool_file_settings.set_file_id( 42 )
+    memory_pool_file_settings.file_id.should == 42
+  end
+
+  ###################
+	#  set_file_type  #
+  #  file_type      #
+  ###################
+
+  it "can set and return its file type" do
+    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
+    memory_pool_file_settings.set_file_type( 'txt' )
+    memory_pool_file_settings.file_type.should == 'txt'
+  end
+
+  ####################################
+	#  set_log_sequence_number_offset  #
+  #  log_sequence_number_offset      #
+  ####################################
+
+  it "can set and return its log sequence number offset" do
+    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
+    memory_pool_file_settings.set_log_sequence_number_offset( 42 )
+    memory_pool_file_settings.log_sequence_number_offset.should == 42
+  end
+
   ################
 	#  set_cookie  #
   #  cookie      #
   ################
 
   it "can set and return its cookie" do
-    raise "Failed."
+    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
+    memory_pool_file_settings.set_cookie( 42 )
+    memory_pool_file_settings.cookie.should == 42
   end
 
   ###############################
@@ -160,7 +170,7 @@ describe RPDB::Settings::MemoryPool::File do
   ###############################
 
   it "can return its cache settings controller" do
-    raise "Failed."
+    RPDB::Settings::MemoryPool::File.new.cache_settings_controller.is_a?( RPDB::Settings::MemoryPool::File::Cache ).should == true
   end
 
   ##############################
@@ -168,7 +178,7 @@ describe RPDB::Settings::MemoryPool::File do
   ##############################
 
   it "can return its page settings controller" do
-    raise "Failed."
+    RPDB::Settings::MemoryPool::File.new.page_settings_controller.is_a?( RPDB::Settings::MemoryPool::File::Page ).should == true
   end
 
 end

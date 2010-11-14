@@ -71,13 +71,18 @@ describe RPDB::Database do
   end
 
   #############################################################
-  #  display_additional_information_during_recovery           #
+  #  display_additional_information_during_recovery?          #
 	#  turn_display_additional_information_during_recovery_on   #
 	#  turn_display_additional_information_during_recovery_off  #
   #############################################################
 
   it "can display additional information during recovery" do
-    raise "Failed."
+    verbosity__settings  = RPDB::Settings::Debug.new
+    verbosity__settings.display_additional_information_during_recovery?.should == false
+    verbosity__settings.turn_display_additional_information_during_recovery_on
+    verbosity__settings.display_additional_information_during_recovery?.should == true
+    verbosity__settings.turn_display_additional_information_during_recovery_off
+    verbosity__settings.display_additional_information_during_recovery?.should == false
   end
 
 end

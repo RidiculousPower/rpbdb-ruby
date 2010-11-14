@@ -103,7 +103,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   #####################################
 
   it "can prohibit syncing on database close" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.prohibit_sync_on_close?.should == false
+    read_write_settings.turn_prohibit_sync_on_close_on
+    read_write_settings.prohibit_sync_on_close?.should == true
+    read_write_settings.turn_prohibit_sync_on_close_off
+    read_write_settings.prohibit_sync_on_close?.should == false
   end
 
   ###########################
@@ -113,7 +118,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ###########################
 
   it "can return data regardless of master leases" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.ignore_lease?.should == false
+    read_write_settings.turn_ignore_lease_on
+    read_write_settings.ignore_lease?.should == true
+    read_write_settings.turn_ignore_lease_off
+    read_write_settings.ignore_lease?.should == false
   end
 
   ##############################
@@ -123,7 +133,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ##############################
 
   it "can return multiple data items in the record's data" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.return_multiple?.should == false
+    read_write_settings.turn_return_multiple_on
+    read_write_settings.return_multiple?.should == true
+    read_write_settings.turn_return_multiple_off
+    read_write_settings.return_multiple?.should == false
   end
 
   ######################################
@@ -133,7 +148,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ######################################
 
   it "can prohibit duplicate data items" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.prohibit_duplicate_data?.should == false
+    read_write_settings.turn_prohibit_duplicate_data_on
+    read_write_settings.prohibit_duplicate_data?.should == true
+    read_write_settings.turn_prohibit_duplicate_data_off
+    read_write_settings.prohibit_duplicate_data?.should == false
   end
 
   #################################
@@ -143,7 +163,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   #################################
 
   it "can prohibit overwriting existing items" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.prohibit_overwrite?.should == false
+    read_write_settings.turn_prohibit_overwrite_on
+    read_write_settings.prohibit_overwrite?.should == true
+    read_write_settings.turn_prohibit_overwrite_off
+    read_write_settings.prohibit_overwrite?.should == false
   end
 
   #######################################
@@ -153,7 +178,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   #######################################
 
   it "can prohibit page compaction" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.prohibit_page_compaction?.should == false
+    read_write_settings.turn_prohibit_page_compaction_on
+    read_write_settings.prohibit_page_compaction?.should == true
+    read_write_settings.turn_prohibit_page_compaction_off
+    read_write_settings.prohibit_page_compaction?.should == false
   end
 
   #########################################
@@ -163,7 +193,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   #########################################
 
   it "can return pages to the filesystem" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.return_pages_to_filesystem?.should == false
+    read_write_settings.turn_return_pages_to_filesystem_on
+    read_write_settings.return_pages_to_filesystem?.should == true
+    read_write_settings.turn_return_pages_to_filesystem_off
+    read_write_settings.return_pages_to_filesystem?.should == false
   end
 
   ####################################
@@ -173,7 +208,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ####################################
 
   it "can truncate the database file upon opening" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.truncate_file_on_open?.should == false
+    read_write_settings.turn_truncate_file_on_open_on
+    read_write_settings.truncate_file_on_open?.should == true
+    read_write_settings.turn_truncate_file_on_open_off
+    read_write_settings.truncate_file_on_open?.should == false
   end
 
   ################################################
@@ -183,7 +223,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ################################################
 
   it "can use write locks instead of read locks" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.write_locks_instead_of_read_locks?.should == false
+    read_write_settings.turn_write_locks_instead_of_read_locks_on
+    read_write_settings.write_locks_instead_of_read_locks?.should == true
+    read_write_settings.turn_write_locks_instead_of_read_locks_off
+    read_write_settings.write_locks_instead_of_read_locks?.should == false
   end
 
   #############################
@@ -193,7 +238,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   #############################
 
   it "can write and retrieve data based on partial information" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.partial_access?.should == false
+    read_write_settings.turn_partial_access_on
+    read_write_settings.partial_access?.should == true
+    read_write_settings.turn_partial_access_off
+    read_write_settings.partial_access?.should == false
   end
 
   #####################################################
@@ -203,7 +253,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   #####################################################
 
   it "can use malloc to allocate memory" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.database_allocates_memory_using_malloc?.should == false
+    read_write_settings.turn_database_allocates_memory_using_malloc_on
+    read_write_settings.database_allocates_memory_using_malloc?.should == true
+    read_write_settings.turn_database_allocates_memory_using_malloc_off
+    read_write_settings.database_allocates_memory_using_malloc?.should == false
   end
 
   ######################################################
@@ -213,7 +268,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ######################################################
 
   it "can use realloc to allocate memory" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.database_allocates_memory_using_realloc?.should == false
+    read_write_settings.turn_database_allocates_memory_using_realloc_on
+    read_write_settings.database_allocates_memory_using_realloc?.should == true
+    read_write_settings.turn_database_allocates_memory_using_realloc_off
+    read_write_settings.database_allocates_memory_using_realloc?.should == false
   end
 
   ###########################################
@@ -223,7 +283,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ###########################################
 
   it "can require that the application allocates memory" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.application_allocates_memory?.should == false
+    read_write_settings.turn_application_allocates_memory_on
+    read_write_settings.application_allocates_memory?.should == true
+    read_write_settings.turn_application_allocates_memory_off
+    read_write_settings.application_allocates_memory?.should == false
   end
 
   ####################################
@@ -233,7 +298,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ####################################
 
   it "can have the database free memory when finished with it" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.database_frees_memory?.should == false
+    read_write_settings.turn_database_frees_memory_on
+    read_write_settings.database_frees_memory?.should == true
+    read_write_settings.turn_database_frees_memory_off
+    read_write_settings.database_frees_memory?.should == false
   end
 
   #########################################
@@ -243,7 +313,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   #########################################
 
   it "can force sync prior to returning from write" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.sync_prior_to_write_return?.should == false
+    read_write_settings.turn_sync_prior_to_write_return_on
+    read_write_settings.sync_prior_to_write_return?.should == true
+    read_write_settings.turn_sync_prior_to_write_return_off
+    read_write_settings.sync_prior_to_write_return?.should == false
   end
 
     ################################
@@ -253,7 +328,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
     ################################
 
     it "can permit duplicates" do
-      raise "Failed."
+      read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+      read_write_settings.permit_duplicates?.should == false
+      read_write_settings.turn_permit_duplicates_on
+      read_write_settings.permit_duplicates?.should == true
+      read_write_settings.turn_permit_duplicates_off
+      read_write_settings.permit_duplicates?.should == false
     end
 
     ##############################
@@ -263,7 +343,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
     ##############################
 
     it "can permit sorted duplicates" do
-      raise "Failed."
+      read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+      read_write_settings.sort_duplicates?.should == false
+      read_write_settings.turn_sort_duplicates_on
+      read_write_settings.sort_duplicates?.should == true
+      read_write_settings.turn_sort_duplicates_off
+      read_write_settings.sort_duplicates?.should == false
     end
 
     #############################
@@ -273,7 +358,12 @@ describe RPDB::Settings::Database::Record::ReadWrite do
     #############################
 
     it "can automatically serialize data to permit implicit storage of objects" do
-      raise "Failed."
+      read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+      read_write_settings.serialize_data?.should == false
+      read_write_settings.turn_serialize_data_on
+      read_write_settings.serialize_data?.should == true
+      read_write_settings.turn_serialize_data_off
+      read_write_settings.serialize_data?.should == false
     end
 
   ##################
@@ -282,7 +372,9 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ##################
 
   it "can set the database filename" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.set_filename( '/tmp/file.tmp' )
+    read_write_settings.filename.should == '/tmp/file.tmp'
   end
 
   ##########################
@@ -291,7 +383,9 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ##########################
 
   it "can set its data buffer size" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.set_data_buffer_size( 42 )
+    read_write_settings.data_buffer_size.should == 42
   end
 
   #################################
@@ -300,7 +394,9 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   #################################
 
   it "can set partial read/write size" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.set_partial_read_write_size( 42 )
+    read_write_settings.partial_read_write_size.should == 42
   end
 
   ###################################
@@ -309,7 +405,9 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ###################################
 
   it "can set partial read/write offset" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.set_partial_read_write_offset( 42 )
+    read_write_settings.partial_read_write_offset.should == 42
   end
 
   ######################
@@ -318,7 +416,9 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ######################
 
   it "can set the type stored in database" do
-    raise "Failed."
+    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings.set_storage_type( 42 )
+    read_write_settings.storage_type.should == 42
   end
 
   ######################################
@@ -328,7 +428,7 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   
   # FIX - move to read-write settings controller
   it "can set its write-failed callback method" do
-    raise "Failed."
+    raise "Callback."
   end
 
 end

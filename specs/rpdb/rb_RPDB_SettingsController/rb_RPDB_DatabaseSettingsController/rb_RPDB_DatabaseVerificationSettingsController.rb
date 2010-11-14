@@ -94,7 +94,9 @@ describe RPDB::Settings::Database::Verification do
   ##############
 
   it "can set its verification file" do
-    raise "Failed."
+    verification_settings = RPDB::Settings::Database::Verification.new
+    verification_settings.set_file( '/tmp/file.tmp' )
+    verification_settings.file.should == '/tmp/file.tmp'
   end
 
   ############################################
@@ -104,7 +106,12 @@ describe RPDB::Settings::Database::Verification do
   ############################################
 
   it "can be set to do an aggressive key/data pair dump" do
-    raise "Failed."
+    verification_settings  = RPDB::Settings::Database::Verification.new
+    verification_settings.aggressive_key_data_pair_dump?.should == false
+    verification_settings.turn_aggressive_key_data_pair_dump_on
+    verification_settings.aggressive_key_data_pair_dump?.should == true
+    verification_settings.turn_aggressive_key_data_pair_dump_off
+    verification_settings.aggressive_key_data_pair_dump?.should == false
   end
 
   ###################################
@@ -114,7 +121,12 @@ describe RPDB::Settings::Database::Verification do
   ###################################
 
   it "can specify that key and data are printable characters" do
-    raise "Failed."
+    verification_settings  = RPDB::Settings::Database::Verification.new
+    verification_settings.printable_characters?.should == false
+    verification_settings.turn_printable_characters_on
+    verification_settings.printable_characters?.should == true
+    verification_settings.turn_printable_characters_off
+    verification_settings.printable_characters?.should == false
   end
 
   ###############################
@@ -124,7 +136,12 @@ describe RPDB::Settings::Database::Verification do
   ###############################
 
   it "can skip order checking" do
-    raise "Failed."
+    verification_settings  = RPDB::Settings::Database::Verification.new
+    verification_settings.skip_order_check?.should == false
+    verification_settings.turn_skip_order_check_on
+    verification_settings.skip_order_check?.should == true
+    verification_settings.turn_skip_order_check_off
+    verification_settings.skip_order_check?.should == false
   end
 
   ###############################
@@ -134,7 +151,12 @@ describe RPDB::Settings::Database::Verification do
   ###############################
 
   it "can perform order checking alone" do
-    raise "Failed."
+    verification_settings  = RPDB::Settings::Database::Verification.new
+    verification_settings.only_order_check?.should == false
+    verification_settings.turn_only_order_check_on
+    verification_settings.only_order_check?.should == true
+    verification_settings.turn_only_order_check_off
+    verification_settings.only_order_check?.should == false
   end
 
   ################################
@@ -144,7 +166,12 @@ describe RPDB::Settings::Database::Verification do
   ################################
 
   it "can force an order check to be performed" do
-    raise "Failed."
+    verification_settings  = RPDB::Settings::Database::Verification.new
+    verification_settings.force_order_check?.should == false
+    verification_settings.turn_force_order_check_on
+    verification_settings.force_order_check?.should == true
+    verification_settings.turn_force_order_check_off
+    verification_settings.force_order_check?.should == false
   end
 
 end

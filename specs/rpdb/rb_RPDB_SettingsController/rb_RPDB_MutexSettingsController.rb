@@ -64,7 +64,9 @@ describe RPDB::Settings::Mutex do
   ##############################################################
 
   it "can set and return its blcoking time for test and spin mutexes" do
-    raise "Failed."
+    mutex_settings  = RPDB::Settings::Mutex.new
+    mutex_settings.set_spin_times_before_blocking_for_test_and_spin_mutexes( 42 )
+    mutex_settings.spin_times_before_blocking_for_test_and_spin_mutexes.should == 42
   end
 
   ###############################
@@ -73,7 +75,9 @@ describe RPDB::Settings::Mutex do
   ###############################
 
   it "can set its maximum allowable mutex limit" do
-    raise "Failed."
+    mutex_settings  = RPDB::Settings::Mutex.new
+    mutex_settings.set_max_allowable_mutexes( 42 )
+    mutex_settings.max_allowable_mutexes.should == 42
   end
 
   ######################################
@@ -82,7 +86,9 @@ describe RPDB::Settings::Mutex do
   ######################################
 
   it "can set and return its increment for adding mutexes" do
-    raise "Failed."
+    mutex_settings  = RPDB::Settings::Mutex.new
+    mutex_settings.set_increment_for_adding_mutexes( 42 )
+    mutex_settings.increment_for_adding_mutexes.should == 42
   end
 
   #########################
@@ -91,7 +97,9 @@ describe RPDB::Settings::Mutex do
   #########################
 
   it "can set and return its mutex alignment" do
-    raise "Failed."
+    mutex_settings  = RPDB::Settings::Mutex.new
+    mutex_settings.set_mutex_alignment( 42 )
+    mutex_settings.mutex_alignment.should == 42
   end
 
   #############################################
@@ -101,17 +109,27 @@ describe RPDB::Settings::Mutex do
   ##############################################
 
   it "can be set to associate with a single process" do
-    raise "Failed."
+    mutex_settings  = RPDB::Settings::Mutex.new
+    mutex_settings.associated_with_single_process?.should == false
+    mutex_settings.turn_associated_with_single_process_on
+    mutex_settings.associated_with_single_process?.should == true
+    mutex_settings.turn_associated_with_single_process_off
+    mutex_settings.associated_with_single_process?.should == false
   end
 
   ############################
-  #  self_blocking           #
+  #  self_blocking?          #
 	#  turn_self_blocking_on   #
 	#  turn_self_blocking_off  #
   ############################
 
   it "can be set to be self-blocking" do
-    raise "Failed."
+    mutex_settings  = RPDB::Settings::Mutex.new
+    mutex_settings.self_blocking?.should == false
+    mutex_settings.turn_self_blocking_on
+    mutex_settings.self_blocking?.should == true
+    mutex_settings.turn_self_blocking_off
+    mutex_settings.self_blocking?.should == false
   end
 
 end

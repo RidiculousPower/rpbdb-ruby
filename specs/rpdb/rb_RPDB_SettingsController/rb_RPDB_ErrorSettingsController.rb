@@ -63,7 +63,9 @@ describe RPDB::Settings::Error do
   ##############
 
   it "can set and return an error file" do
-    raise "Failed."
+    error_settings  = RPDB::Settings::Error.new
+    error_settings.set_file( '/tmp/file.tmp' )
+    error_settings.file.should == '/tmp/file.tmp'
   end
 
   ################
@@ -72,7 +74,9 @@ describe RPDB::Settings::Error do
   ################
 
   it "can set and return an error prefix" do
-    raise "Failed."
+    error_settings  = RPDB::Settings::Error.new
+    error_settings.set_prefix( 'prefix' )
+    error_settings.prefix.should == 'prefix'
   end
 
   ###############################
@@ -81,7 +85,7 @@ describe RPDB::Settings::Error do
   ###############################
 
   it "can set and return an error callback method" do
-    raise "Failed."
+    raise "Callback."
   end
 
    ###############################
@@ -91,7 +95,7 @@ describe RPDB::Settings::Error do
 
    # FIX - panic should move to error settings
    it "can set and return its panic callback method" do
-     raise "Failed."
+     raise "Callback."
    end
 
 end

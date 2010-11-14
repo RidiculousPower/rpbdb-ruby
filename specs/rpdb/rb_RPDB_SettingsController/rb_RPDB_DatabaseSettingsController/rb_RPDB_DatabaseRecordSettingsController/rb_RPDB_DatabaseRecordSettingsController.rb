@@ -88,5 +88,29 @@ describe RPDB::Settings::Database::Record do
     RPDB::Settings::Database::Record.new.parent_database_settings_controller.should_not == nil
   end
 
+  ####################################
+  #  read_write_settings_controller  #
+  ####################################
+
+  it "can return its parent database settings controller" do
+    RPDB::Settings::Database::Record.new.read_write_settings_controller.should_not == nil
+  end
+
+  ######################################
+  #  fixed_length_settings_controller  #
+  ######################################
+
+  it "can return its parent database settings controller" do
+    RPDB::Settings::Database::Record.new.fixed_length_settings_controller.should_not == nil
+  end
+
+  #########################################
+  #  variable_length_settings_controller  #
+  #########################################
+
+  it "can return its parent database settings controller" do
+    RPDB::Settings::Database::Record.new.variable_length_settings_controller.should_not == nil
+  end
+
 end
 

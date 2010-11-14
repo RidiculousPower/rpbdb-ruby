@@ -64,7 +64,12 @@ describe RPDB::Settings::Cache do
   ########################
 
   it "can turn buffering on and off" do
-    raise "Failed."
+    cache_settings  = RPDB::Settings::Cache.new
+    cache_settings.buffering?.should == false
+    cache_settings.turn_buffering_on
+    cache_settings.buffering?.should == true
+    cache_settings.turn_buffering_off
+    cache_settings.buffering?.should == false
   end
 
   ################################################
@@ -82,28 +87,28 @@ describe RPDB::Settings::Cache do
   ################################################
 
   it "can set its cache size according to various measures" do
-    database_cache_settings = RPDB::Settings::Cache.new
+    cache_settings = RPDB::Settings::Cache.new
 
-    database_cache_settings.set_max_size_in_bytes( 12 )
-    database_cache_settings.max_size_in_bytes.should == 12
+    cache_settings.set_max_size_in_bytes( 12 )
+    cache_settings.max_size_in_bytes.should == 12
 
-    database_cache_settings.set_max_size_in_kbytes( 42 )
-    database_cache_settings.max_size_in_kbytes.should == 42 * 1024
+    cache_settings.set_max_size_in_kbytes( 42 )
+    cache_settings.max_size_in_kbytes.should == 42 * 1024
 
-    database_cache_settings.set_max_size_in_mbytes( 37 )
-    database_cache_settings.max_size_in_mbytes.should == 37 * ( 1024 * 1024 )
+    cache_settings.set_max_size_in_mbytes( 37 )
+    cache_settings.max_size_in_mbytes.should == 37 * ( 1024 * 1024 )
 
-    database_cache_settings.set_max_size_in_gbytes( 420 )
-    database_cache_settings.max_size_in_gbytes.should == 420 * ( 1024 * 1024 * 1024 )
+    cache_settings.set_max_size_in_gbytes( 420 )
+    cache_settings.max_size_in_gbytes.should == 420 * ( 1024 * 1024 * 1024 )
 
-    database_cache_settings.set_max_size_in_gbytes_mbytes_kbytes_bytes( 420, 37, 42, 12 )
-    database_cache_settings.max_size_in_bytes.should == 420 * ( 1024 * 1024 * 1024 ) + 37 * ( 1024 * 1024 ) + 42 * 1024 + 12
+    cache_settings.set_max_size_in_gbytes_mbytes_kbytes_bytes( 420, 37, 42, 12 )
+    cache_settings.max_size_in_bytes.should == 420 * ( 1024 * 1024 * 1024 ) + 37 * ( 1024 * 1024 ) + 42 * 1024 + 12
 
-    database_cache_settings.set_max_size_in_mbytes_kbytes_bytes( 37, 42, 12 )
-    database_cache_settings.max_size_in_bytes.should == 37 * ( 1024 * 1024 )
+    cache_settings.set_max_size_in_mbytes_kbytes_bytes( 37, 42, 12 )
+    cache_settings.max_size_in_bytes.should == 37 * ( 1024 * 1024 )
 
-    database_cache_settings.set_max_size_in_kbytes_bytes( 42, 12 )
-    database_cache_settings.max_size_in_bytes.should == 42 * 1024 + 12
+    cache_settings.set_max_size_in_kbytes_bytes( 42, 12 )
+    cache_settings.max_size_in_bytes.should == 42 * 1024 + 12
     
   end
 

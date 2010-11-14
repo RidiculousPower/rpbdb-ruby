@@ -113,7 +113,12 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   #######################################
 
   it "can be set to pagefault shared regions" do
-    raise "Failed."
+    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings.pagefault_shared_regions?.should == false
+    read_write_settings.turn_pagefault_shared_regions_on
+    read_write_settings.pagefault_shared_regions?.should == true
+    read_write_settings.turn_pagefault_shared_regions_off
+    read_write_settings.pagefault_shared_regions?.should == false
   end
 
   #####################################################
@@ -123,7 +128,12 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   #####################################################
 
   it "can be set not to write temporary backing file" do
-    raise "Failed."
+    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings.do_not_write_to_temporary_backing_file?.should == false
+    read_write_settings.turn_do_not_write_to_temporary_backing_file_on
+    read_write_settings.do_not_write_to_temporary_backing_file?.should == true
+    read_write_settings.turn_do_not_write_to_temporary_backing_file_off
+    read_write_settings.do_not_write_to_temporary_backing_file?.should == false
   end
 
   ############################################
@@ -133,7 +143,12 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ############################################
 
   it "can be set to use system memory for storage" do
-    raise "Failed."
+    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings.use_system_memory_for_storage?.should == false
+    read_write_settings.turn_use_system_memory_for_storage_on
+    read_write_settings.use_system_memory_for_storage?.should == true
+    read_write_settings.turn_use_system_memory_for_storage_off
+    read_write_settings.use_system_memory_for_storage?.should == false
   end
 
   ###############################################
@@ -143,7 +158,12 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ###############################################
 
   it "can declare that application has exclusive access to permit optimizations" do
-    raise "Failed."
+    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings.application_has_exclusive_access?.should == false
+    read_write_settings.turn_application_has_exclusive_access_on
+    read_write_settings.application_has_exclusive_access?.should == true
+    read_write_settings.turn_application_has_exclusive_access_off
+    read_write_settings.application_has_exclusive_access?.should == false
   end
 
   #####################################################
@@ -153,37 +173,57 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   #####################################################
 
   it "can allocate memory using malloc" do
-    raise "Failed."
+    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings.database_allocates_memory_using_malloc?.should == false
+    read_write_settings.turn_database_allocates_memory_using_malloc_on
+    read_write_settings.database_allocates_memory_using_malloc?.should == true
+    read_write_settings.turn_database_allocates_memory_using_malloc_off
+    read_write_settings.database_allocates_memory_using_malloc?.should == false
   end
 
   ######################################################
-  #  database_allocates_memory_using_realloc           #
+  #  database_allocates_memory_using_realloc?          #
 	#  turn_database_allocates_memory_using_realloc_on   #
 	#  turn_database_allocates_memory_using_realloc_off  #
   ######################################################
 
   it "can allocate memory using realloc" do
-    raise "Failed."
+    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings.database_allocates_memory_using_realloc?.should == false
+    read_write_settings.turn_database_allocates_memory_using_realloc_on
+    read_write_settings.database_allocates_memory_using_realloc?.should == true
+    read_write_settings.turn_database_allocates_memory_using_realloc_off
+    read_write_settings.database_allocates_memory_using_realloc?.should == false
   end
 
   ###########################################
-  #  application_allocates_memory           #
+  #  application_allocates_memory?          #
 	#  turn_application_allocates_memory_on   #
 	#  turn_application_allocates_memory_off  #
   ###########################################
 
   it "can depend on application to allocate memory" do
-    raise "Failed."
+    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings.application_allocates_memory?.should == false
+    read_write_settings.turn_application_allocates_memory_on
+    read_write_settings.application_allocates_memory?.should == true
+    read_write_settings.turn_application_allocates_memory_off
+    read_write_settings.application_allocates_memory?.should == false
   end
 
   ####################################
-  #  database_frees_memory           #
+  #  database_frees_memory?          #
 	#  turn_database_frees_memory_on   #
 	#  turn_database_frees_memory_off  #
   ####################################
 
   it "can depend on database to free memory when finished with it" do
-    raise "Failed."
+    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings.database_frees_memory?.should == false
+    read_write_settings.turn_database_frees_memory_on
+    read_write_settings.database_frees_memory?.should == true
+    read_write_settings.turn_database_frees_memory_off
+    read_write_settings.database_frees_memory?.should == false
   end
 
 end

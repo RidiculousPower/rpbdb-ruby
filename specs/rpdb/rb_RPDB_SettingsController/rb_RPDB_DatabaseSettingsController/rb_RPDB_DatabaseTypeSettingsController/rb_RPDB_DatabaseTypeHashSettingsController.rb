@@ -96,13 +96,55 @@ describe RPDB::Settings::Database::Type::Hash do
     RPDB::Settings::Database::Type::Hash.new.parent_database_type_settings_controller.should_not == nil
   end
 
+  ###################
+  #  database_type  #
+  ###################
+
+  it "can return its database type" do
+    RPDB::Settings::Database::Type::Hash.new.database_type.should == RPDB::Database::Type::Hash
+  end
+
+  ##################
+  #  is_btree?     #
+  ##################
+
+  it "can report whether the type is btree" do
+    RPDB::Settings::Database::Type::Hash.new.is_btree?.should == false
+  end
+
+  #################
+  #  is_hash?     #
+  #################
+
+  it "can report whether the type is hash" do
+    RPDB::Settings::Database::Type::Hash.new.is_hash?.should == true
+  end
+
+  ##################
+  #  is_recno?     #
+  ##################
+
+  it "can report whether the type is queue" do
+    RPDB::Settings::Database::Type::Hash.new.is_recno?.should == false
+  end
+
+  ##################
+  #  is_queue?     #
+  ##################
+
+  it "can report whether the type is recno" do
+    RPDB::Settings::Database::Type::Hash.new.is_queue?.should == false
+  end
+
   ####################
   #  set_table_size  #
   #  table_size      #
   ####################
 
   it "can set and return its table size" do
-    raise "Failed."
+    hash_settings = RPDB::Settings::Database::Type::Hash.new
+    hash_settings.set_table_size  = 42
+    hash_settings.table_size.should == 42
   end
 
   #############################
@@ -111,7 +153,9 @@ describe RPDB::Settings::Database::Type::Hash do
   #############################
 
   it "can set and return its hash density factor" do
-    raise "Failed."
+    hash_settings = RPDB::Settings::Database::Type::Hash.new
+    hash_settings.set_hash_density_factor  = 42
+    hash_settings.hash_density_factor.should == 42
   end
 
   #####################
@@ -119,8 +163,9 @@ describe RPDB::Settings::Database::Type::Hash do
   #  hash_method      #
   #####################
 
+  # fix name for callback
   it "can set and return a method for hashing" do
-    raise "Failed."
+    raise "Callback."
   end
 
   #########################
@@ -128,8 +173,9 @@ describe RPDB::Settings::Database::Type::Hash do
   #  compare_method       #
   #########################
 
+  # fix name for callback
   it "can set and return a comparison method" do
-    raise "Failed."
+    raise "Callback."
   end
 
   ##################################
@@ -137,8 +183,9 @@ describe RPDB::Settings::Database::Type::Hash do
   #  duplicate_compare_method      #
   ##################################
 
+  # fix name for callback
   it "can set and return a duplicate comparison method" do
-    raise "Failed."
+    raise "Callback."
   end
 
 end

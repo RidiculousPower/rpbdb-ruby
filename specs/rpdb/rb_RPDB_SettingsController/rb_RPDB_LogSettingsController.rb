@@ -65,47 +65,73 @@ describe RPDB::Settings::Lock do
   ##############
 
   it "can turn on and off and report whether it is on or off" do
-    raise "Failed."
+    log_settings  = RPDB::Settings::Lock.new
+    log_settings.on?.should == true
+    log_settings.turn_off
+    log_settings.on?.should == false
+    log_settings.off?.should == true
+    log_settings.turn_on
+    log_settings.off?.should == false
   end
 
   ########################
-  #  buffering           #
+  #  buffering?          #
 	#  turn_buffering_on   #
 	#  turn_buffering_off  #
   ########################
 
   it "can turn buffering on and off" do
-    raise "Failed."
+    log_settings  = RPDB::Settings::Lock.new
+    log_settings.buffering?.should == false
+    log_settings.turn_buffering_on
+    log_settings.buffering?.should == true
+    log_settings.turn_buffering_off
+    log_settings.buffering?.should == false
   end
 
   #############################################
-  #  flush_before_return_from_write           #
+  #  flush_before_return_from_write?          #
 	#  turn_flush_before_return_from_write_on   #
 	#  turn_flush_before_return_from_write_off  #
   #############################################
 
   it "can be set to flush before returning from a write" do
-    raise "Failed."
+    log_settings  = RPDB::Settings::Lock.new
+    log_settings.flush_before_return_from_write?.should == false
+    log_settings.turn_flush_before_return_from_write_on
+    log_settings.flush_before_return_from_write?.should == true
+    log_settings.turn_flush_before_return_from_write_off
+    log_settings.flush_before_return_from_write?.should == false
   end
 
   #########################
-  #  autoremove_logs      #
+  #  autoremove_logs?     #
 	#  turn_autoremove_on   #
 	#  turn_autoremove_off  #
   #########################
 
   it "can be set to autoremove logs" do
-    raise "Failed."
+    log_settings  = RPDB::Settings::Lock.new
+    log_settings.autoremove_logs?.should == false
+    log_settings.turn_autoremove_on
+    log_settings.autoremove_logs?.should == true
+    log_settings.turn_autoremove_off
+    log_settings.autoremove_logs?.should == false
   end
 
   ############################
-  #  log_in_memory           #
+  #  log_in_memory?          #
 	#  turn_log_in_memory_on   #
 	#  turn_log_in_memory_off  #
   ############################
 
   it "can be set to log in memory rather than on disk" do
-    raise "Failed."
+    log_settings  = RPDB::Settings::Lock.new
+    log_settings.log_in_memory?.should == false
+    log_settings.turn_log_in_memory_on
+    log_settings.log_in_memory?.should == true
+    log_settings.turn_log_in_memory_off
+    log_settings.log_in_memory?.should == false
   end
 
   ###############################
@@ -115,7 +141,12 @@ describe RPDB::Settings::Lock do
   ###############################
 
   it "can be set to zero the log at creation" do
-    raise "Failed."
+    log_settings  = RPDB::Settings::Lock.new
+    log_settings.zero_at_creation?.should == false
+    log_settings.turn_zero_at_creation_on
+    log_settings.zero_at_creation?.should == true
+    log_settings.turn_zero_at_creation_off
+    log_settings.zero_at_creation?.should == false
   end
 
   #############################################
@@ -125,7 +156,12 @@ describe RPDB::Settings::Lock do
   #############################################
 
   it "can be set to force a flush after record write" do
-    raise "Failed."
+    log_settings  = RPDB::Settings::Lock.new
+    log_settings.force_flush_after_record_write?.should == false
+    log_settings.turn_force_flush_after_record_write_on
+    log_settings.force_flush_after_record_write?.should == true
+    log_settings.turn_force_flush_after_record_write_off
+    log_settings.force_flush_after_record_write?.should == false
   end
 
   #####################
@@ -134,7 +170,9 @@ describe RPDB::Settings::Lock do
   #####################
 
   it "can set and return its buffer size" do
-    raise "Failed."
+    log_settings  = RPDB::Settings::Lock.new
+    log_settings.set_buffer_size( 42 )
+    log_settings.buffer_size.should == 42
   end
 
   ###################
@@ -143,7 +181,9 @@ describe RPDB::Settings::Lock do
   ###################
 
   it "can set and return its directory" do
-    raise "Failed."
+    log_settings  = RPDB::Settings::Lock.new
+    log_settings.set_directory( '/tmp/file.tmp' )
+    log_settings.directory.should == '/tmp/file.tmp'
   end
 
   ##############
@@ -152,7 +192,9 @@ describe RPDB::Settings::Lock do
   ##############
 
   it "can set and return its mode" do
-    raise "Failed."
+    log_settings  = RPDB::Settings::Lock.new
+    log_settings.set_mode( 0 )
+    log_settings.mode.should == 0
   end
 
   ######################
@@ -161,7 +203,9 @@ describe RPDB::Settings::Lock do
   ######################
 
   it "can set and return its maximum log size" do
-    raise "Failed."
+    log_settings  = RPDB::Settings::Lock.new
+    log_settings.set_max_log_size( 42 )
+    log_settings.max_log_size.should == 42
   end
 
   #########################
@@ -170,7 +214,9 @@ describe RPDB::Settings::Lock do
   #########################
 
   it "can set and return its maximum region size" do
-    raise "Failed."
+    log_settings  = RPDB::Settings::Lock.new
+    log_settings.set_max_region_size( 42 )
+    log_settings.max_region_size.should == 42
   end
 
 end

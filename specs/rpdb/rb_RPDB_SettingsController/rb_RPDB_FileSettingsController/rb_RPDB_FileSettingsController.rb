@@ -63,7 +63,20 @@ describe RPDB::Database do
   #####################################
 
   it "can be set to create intermediate directories needed for recovery" do
-    raise "Failed."
+    file_settings = RPDB::Settings::File.new
+    file_settings.set_intermediate_directory_mode( 0 )
+    file_settings.intermediate_directory_mode.should == 0
+  end
+
+  ############################
+	#  set_file_creation_mode  #
+  #  file_creation_mode      #
+  ############################
+
+  it "can set the file creation mode" do
+    file_settings = RPDB::Settings::File.new
+    file_settings.set_intermediate_directory_mode( 0 )
+    file_settings.intermediate_directory_mode.should == 0
   end
 
   ########################
@@ -72,7 +85,9 @@ describe RPDB::Database do
   ########################
 
   it "can specify its temp directory" do
-    raise "Failed."
+    file_settings = RPDB::Settings::File.new
+    file_settings.set_temp_directory( '/tmp/file.tmp' )
+    file_settings.temp_directory.should == '/tmp/file.tmp'
   end
 
   ########################################
@@ -82,7 +97,12 @@ describe RPDB::Database do
   ########################################
 
   it "can permit the use of environment information in the naming of files" do
-    raise "Failed."
+    file_settings  = RPDB::Settings::File.new
+    file_settings.permit_environment_naming?.should == false
+    file_settings.turn_permit_environment_naming_on
+    file_settings.permit_environment_naming?.should == true
+    file_settings.turn_permit_environment_naming_off
+    file_settings.permit_environment_naming?.should == false
   end
 
   ###################################
@@ -93,7 +113,12 @@ describe RPDB::Database do
 
   # FIX - create file permissions controller
   it "can permit root users the use of environment information in the naming of files" do
-    raise "Failed."
+    file_settings  = RPDB::Settings::File.new
+    file_settings.use_environment_home?.should == false
+    file_settings.turn_use_environment_home_on
+    file_settings.use_environment_home?.should == true
+    file_settings.turn_use_environment_home_off
+    file_settings.use_environment_home?.should == false
   end
 
   ##################################
@@ -103,7 +128,12 @@ describe RPDB::Database do
   ##################################
 
   it "can be set to create files if necessary" do
-    raise "Failed."
+    file_settings  = RPDB::Settings::File.new
+    file_settings.create_if_necessary?.should == false
+    file_settings.turn_create_if_necessary_on
+    file_settings.create_if_necessary?.should == true
+    file_settings.turn_create_if_necessary_off
+    file_settings.create_if_necessary?.should == false
   end
 
   ########################################################
@@ -113,7 +143,12 @@ describe RPDB::Database do
   ########################################################
 
   it "can be set to throw an error if a database exists before create is called" do
-    raise "Failed."
+    file_settings  = RPDB::Settings::File.new
+    file_settings.is_error_if_database_exists_before_create?.should == false
+    file_settings.turn_is_error_if_database_exists_before_create_on
+    file_settings.is_error_if_database_exists_before_create?.should == true
+    file_settings.turn_is_error_if_database_exists_before_create_off
+    file_settings.is_error_if_database_exists_before_create?.should == false
   end
 
   #############################
@@ -123,7 +158,12 @@ describe RPDB::Database do
   #############################
 
   it "can be set to open read-only" do
-    raise "Failed."
+    file_settings  = RPDB::Settings::File.new
+    file_settings.open_read_only?.should == false
+    file_settings.turn_open_read_only_on
+    file_settings.open_read_only?.should == true
+    file_settings.turn_open_read_only_off
+    file_settings.open_read_only?.should == false
   end
 
   ############################
@@ -133,16 +173,12 @@ describe RPDB::Database do
   ############################
 
   it "can be set to force environment removal" do
-    raise "Failed."
-  end
-
-  ############################
-	#  set_file_creation_mode  #
-  #  file_creation_mode      #
-  ############################
-
-  it "can set the file creation mode" do
-    raise "Failed."
+    file_settings  = RPDB::Settings::File.new
+    file_settings.force_removal?.should == false
+    file_settings.turn_force_removal_on
+    file_settings.force_removal?.should == true
+    file_settings.turn_force_removal_off
+    file_settings.force_removal?.should == false
   end
 
   ###################################
@@ -150,7 +186,7 @@ describe RPDB::Database do
   ###################################
 
   it "can return its verbosity settings controller" do
-    raise "Failed."
+    RPDB::Settings::File.new.verbosity_settings_controller.is_a?( RPDB::Settings::File::Verbosity ).should == true
   end
 
 end

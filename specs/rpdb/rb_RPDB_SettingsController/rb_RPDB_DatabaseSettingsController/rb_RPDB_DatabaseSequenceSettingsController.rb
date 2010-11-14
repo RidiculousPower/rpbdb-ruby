@@ -90,29 +90,35 @@ describe RPDB::Settings::Database::Sequence do
 
   #######################
   #  set_as_increasing  #
-  #  increasing         #
+  #  increasing?        #
   #######################
 
   it "can be set as an increasing sequence" do
-    raise "Failed."
+    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings.set_as_increasing
+    sequence_settings.increasing?.should == true
   end
 
   #######################
   #  set_as_decreasing  #
-  #  decreasing         #
+  #  decreasing?        #
   #######################
 
   it "can be set as a decreasing sequence" do
-    raise "Failed."
+    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings.set_as_decreasing
+    sequence_settings.decreasing?.should == true
   end
 
   #################
   #  set_to_wrap  #
-  #  wrap         #
+  #  wrap?         #
   #################
 
   it "can be set to wrap at a given value" do
-    raise "Failed."
+    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings.set_to_wrap
+    sequence_settings.wrap?.should == true
   end
 
   #######################
@@ -121,7 +127,9 @@ describe RPDB::Settings::Database::Sequence do
   #######################
 
   it "can set the minimum value for a sequence range" do
-    raise "Failed."
+    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings.set_range_minimum = 42
+    sequence_settings.range_minimum.should == 42
   end
 
   #######################
@@ -130,7 +138,9 @@ describe RPDB::Settings::Database::Sequence do
   #######################
 
   it "can set the maximum value for a sequence range" do
-    raise "Failed."
+    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings.set_range_maximum = 42
+    sequence_settings.range_maximum.should == 42
   end
 
   ####################
@@ -139,7 +149,9 @@ describe RPDB::Settings::Database::Sequence do
   ####################
 
   it "can set the sequence cache size" do
-    raise "Failed."
+    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings.set_cache_size = 42
+    sequence_settings.cache_size.should == 42
   end
 
   #######################
@@ -148,7 +160,9 @@ describe RPDB::Settings::Database::Sequence do
   #######################
 
   it "can set the initial sequence value" do
-    raise "Failed."
+    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings.set_initial_value = 42
+    sequence_settings.initial_value.should == 42
   end
 
   ############################
@@ -157,7 +171,9 @@ describe RPDB::Settings::Database::Sequence do
   ############################
 
   it "can set the default step value" do
-    raise "Failed."
+    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings.set_default_step_value = 42
+    sequence_settings.default_step_value.should == 42
   end
 
 end

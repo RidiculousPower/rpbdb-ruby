@@ -77,7 +77,12 @@ describe RPDB::Database do
   ######################################################################################
 
   it "can be set to display additional information during open/close/rename file operations" do
-    raise "Failed."
+    verbosity_settings  = RPDB::Settings::File::Verbosity.new
+    verbosity_settings.display_additional_information_during_open_close_rename_file_operations?.should == false
+    verbosity_settings.turn_display_additional_information_during_open_close_rename_file_operations_on
+    verbosity_settings.display_additional_information_during_open_close_rename_file_operations?.should == true
+    verbosity_settings.turn_display_additional_information_during_open_close_rename_file_operations_off
+    verbosity_settings.display_additional_information_during_open_close_rename_file_operations?.should == false
   end
 
   ########################################################################
@@ -87,7 +92,12 @@ describe RPDB::Database do
   ########################################################################
 
   it "can display additional information during all file operations" do
-    raise "Failed."
+    verbosity_settings  = RPDB::Settings::File::Verbosity.new
+    verbosity_settings.display_additional_information_during_all_file_operations?.should == false
+    verbosity_settings.turn_display_additional_information_during_all_file_operations_on
+    verbosity_settings.display_additional_information_during_all_file_operations?.should == true
+    verbosity_settings.turn_display_additional_information_during_all_file_operations_off
+    verbosity_settings.display_additional_information_during_all_file_operations?.should == false
   end
 
 end

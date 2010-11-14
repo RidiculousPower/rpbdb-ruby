@@ -95,7 +95,12 @@ describe RPDB::Settings::Database::Verbosity do
   ########################################################################
 
   it "can be set to display additional information while handling database registration" do
-    raise "Failed."
+    verbosity_settings  = RPDB::Settings::Database::Verbosity.new
+    verbosity_settings.display_additional_information_for_database_register_flag?.should == false
+    verbosity_settings.turn_display_additional_information_for_database_register_flag_on
+    verbosity_settings.display_additional_information_for_database_register_flag?.should == true
+    verbosity_settings.turn_display_additional_information_for_database_register_flag_off
+    verbosity_settings.display_additional_information_for_database_register_flag?.should == false
   end
 
 end

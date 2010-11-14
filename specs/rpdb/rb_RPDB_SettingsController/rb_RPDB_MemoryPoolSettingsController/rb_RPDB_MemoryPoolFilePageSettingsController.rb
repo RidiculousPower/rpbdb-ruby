@@ -90,7 +90,12 @@ describe RPDB::Settings::MemoryPool::File::Page do
   ######################################################
 
   it "can be set so get page creates the given memory page if it does not already exist" do
-    raise "Failed."
+    memory_page_settings  = RPDB::Settings::MemoryPool::File::Page.new
+    memory_page_settings.get_page_creates_page_if_does_not_exist?.should == false
+    memory_page_settings.turn_get_page_creates_page_if_does_not_exist_on
+    memory_page_settings.get_page_creates_page_if_does_not_exist?.should == true
+    memory_page_settings.turn_get_page_creates_page_if_does_not_exist_off
+    memory_page_settings.get_page_creates_page_if_does_not_exist?.should == false
   end
 
   ###################################################
@@ -100,7 +105,12 @@ describe RPDB::Settings::MemoryPool::File::Page do
   ###################################################
 
   it "can be set so get page writes a copy before eviction" do
-    raise "Failed."
+    memory_page_settings  = RPDB::Settings::MemoryPool::File::Page.new
+    memory_page_settings.get_page_writes_copy_before_eviction?.should == false
+    memory_page_settings.turn_get_page_writes_copy_before_eviction_on
+    memory_page_settings.get_page_writes_copy_before_eviction?.should == true
+    memory_page_settings.turn_get_page_writes_copy_before_eviction_off
+    memory_page_settings.get_page_writes_copy_before_eviction?.should == false
   end
 
   ###########################################################
@@ -110,7 +120,12 @@ describe RPDB::Settings::MemoryPool::File::Page do
   ###########################################################
 
   it "can be set so get page writes before evicting pages without copying" do
-    raise "Failed."
+    memory_page_settings  = RPDB::Settings::MemoryPool::File::Page.new
+    memory_page_settings.get_page_writes_before_eviction_without_copy?.should == false
+    memory_page_settings.turn_get_page_writes_before_eviction_without_copy_on
+    memory_page_settings.get_page_writes_before_eviction_without_copy?.should == true
+    memory_page_settings.turn_get_page_writes_before_eviction_without_copy_off
+    memory_page_settings.get_page_writes_before_eviction_without_copy?.should == false
   end
 
   #########################################
@@ -120,7 +135,12 @@ describe RPDB::Settings::MemoryPool::File::Page do
   #########################################
 
   it "can be set so get page returns the last page" do
-    raise "Failed."
+    memory_page_settings  = RPDB::Settings::MemoryPool::File::Page.new
+    memory_page_settings.get_page_returns_last_page?.should == false
+    memory_page_settings.turn_get_page_returns_last_page_on
+    memory_page_settings.get_page_returns_last_page?.should == true
+    memory_page_settings.turn_get_page_returns_last_page_off
+    memory_page_settings.get_page_returns_last_page?.should == false
   end
 
   ########################################
@@ -130,7 +150,12 @@ describe RPDB::Settings::MemoryPool::File::Page do
   ########################################
 
   it "can be set so get page creates a new page" do
-    raise "Failed."
+    memory_page_settings  = RPDB::Settings::MemoryPool::File::Page.new
+    memory_page_settings.get_page_creates_new_page?.should == false
+    memory_page_settings.turn_get_page_creates_new_page_on
+    memory_page_settings.get_page_creates_new_page?.should == true
+    memory_page_settings.turn_get_page_creates_new_page_off
+    memory_page_settings.get_page_creates_new_page?.should == false
   end
 
 end

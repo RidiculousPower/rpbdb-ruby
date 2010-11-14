@@ -65,7 +65,13 @@ describe RPDB::Settings::Transaction do
   ##############
 
   it "can be turned on and off as well as report whether it is on or off" do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Transaction.new
+    transaction_settings.on?.should == true
+    transaction_settings.turn_off
+    transaction_settings.on?.should == false
+    transaction_settings.off?.should == true
+    transaction_settings.turn_on
+    transaction_settings.off?.should == false
   end
 
   #####################################
@@ -75,7 +81,12 @@ describe RPDB::Settings::Transaction do
   #####################################
 
   it "can prohibit sync on writing" do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.prohibit_sync_on_write?.should == false
+    transaction_settings.turn_prohibit_sync_on_write_on
+    transaction_settings.prohibit_sync_on_write?.should == true
+    transaction_settings.turn_prohibit_sync_on_write_off
+    transaction_settings.prohibit_sync_on_write?.should == false
   end
 
   ##################################################
@@ -85,7 +96,12 @@ describe RPDB::Settings::Transaction do
   ##################################################
 
   it "can prohibit sync on commiting a transaction" do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.prohibit_sync_on_commit_transaction?.should == false
+    transaction_settings.turn_prohibit_sync_on_commit_transaction_on
+    transaction_settings.prohibit_sync_on_commit_transaction?.should == true
+    transaction_settings.turn_prohibit_sync_on_commit_transaction_off
+    transaction_settings.prohibit_sync_on_commit_transaction?.should == false
   end
 
   ################################################
@@ -95,7 +111,12 @@ describe RPDB::Settings::Transaction do
   ################################################
 
   it "can return deny instead of deadlock on timeout" do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.timeout_returns_deny_not_deadlock?.should == false
+    transaction_settings.turn_timeout_returns_deny_not_deadlock_on
+    transaction_settings.timeout_returns_deny_not_deadlock?.should == true
+    transaction_settings.turn_timeout_returns_deny_not_deadlock_off
+    transaction_settings.timeout_returns_deny_not_deadlock?.should == false
   end
 
   ############################################
@@ -105,7 +126,12 @@ describe RPDB::Settings::Transaction do
   ############################################
 
   it "can be set as a concurrent data store for locking strategies" do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.concurrent_data_store_locking?.should == false
+    transaction_settings.turn_concurrent_data_store_locking_on
+    transaction_settings.concurrent_data_store_locking?.should == true
+    transaction_settings.turn_concurrent_data_store_locking_off
+    transaction_settings.concurrent_data_store_locking?.should == false
   end
 
   #################################
@@ -115,7 +141,12 @@ describe RPDB::Settings::Transaction do
   #################################
 
   it "can be set for snapshot isolation, ..." do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.snapshot_isolation?.should == false
+    transaction_settings.turn_snapshot_isolation_on
+    transaction_settings.snapshot_isolation?.should == true
+    transaction_settings.turn_snapshot_isolation_off
+    transaction_settings.snapshot_isolation?.should == false
   end
 
   ###################################
@@ -125,7 +156,12 @@ describe RPDB::Settings::Transaction do
   ###################################
 
   it "can be set for degree one isolation, ..." do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.degree_one_isolation?.should == false
+    transaction_settings.turn_degree_one_isolation_on
+    transaction_settings.degree_one_isolation?.should == true
+    transaction_settings.turn_degree_one_isolation_off
+    transaction_settings.degree_one_isolation?.should == false
   end
 
   ###################################
@@ -135,7 +171,12 @@ describe RPDB::Settings::Transaction do
   ###################################
 
   it "can be set for degree two isolation, ..." do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.degree_two_isolation?.should == false
+    transaction_settings.turn_degree_two_isolation_on
+    transaction_settings.degree_two_isolation?.should == true
+    transaction_settings.turn_degree_two_isolation_off
+    transaction_settings.degree_two_isolation?.should == false
   end
 
   ##################################################
@@ -145,7 +186,12 @@ describe RPDB::Settings::Transaction do
   ##################################################
 
   it "can be set to enclose all activity in a transaction" do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.enclose_all_activity_in_transaction?.should == false
+    transaction_settings.turn_enclose_all_activity_in_transaction_on
+    transaction_settings.enclose_all_activity_in_transaction?.should == true
+    transaction_settings.turn_enclose_all_activity_in_transaction_off
+    transaction_settings.enclose_all_activity_in_transaction?.should == false
   end
 
   ###############################################
@@ -155,27 +201,42 @@ describe RPDB::Settings::Transaction do
   ###############################################
 
   it "can be set for environmental snapshot isolation" do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.environmental_snapshot_isolation?.should == false
+    transaction_settings.turn_environmental_snapshot_isolation_on
+    transaction_settings.environmental_snapshot_isolation?.should == true
+    transaction_settings.turn_environmental_snapshot_isolation_off
+    transaction_settings.environmental_snapshot_isolation?.should == false
   end
 
   #############################
-  #  sync_on_commit           #
+  #  sync_on_commit?          #
 	#  turn_sync_on_commit_on   #
 	#  turn_sync_on_commit_off  #
   #############################
 
   it "can be set to sync on commit" do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.sync_on_commit?.should == false
+    transaction_settings.turn_sync_on_commit_on
+    transaction_settings.sync_on_commit?.should == true
+    transaction_settings.turn_sync_on_commit_off
+    transaction_settings.sync_on_commit?.should == false
   end
 
   #############################
-  #  wait_for_locks           #
+  #  wait_for_locks?          #
 	#  turn_wait_for_locks_on   #
 	#  turn_wait_for_locks_off  #
   #############################
 
   it "can be set to wait for locks" do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.wait_for_locks?.should == false
+    transaction_settings.turn_wait_for_locks_on
+    transaction_settings.wait_for_locks?.should == true
+    transaction_settings.turn_wait_for_locks_off
+    transaction_settings.wait_for_locks?.should == false
   end
 
   ###################################################
@@ -184,7 +245,9 @@ describe RPDB::Settings::Transaction do
   ###################################################
 
   it "can set and return its maximum number of transactions to recover" do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.set_maximum_number_of_transactions_to_recover( 42 )
+    transaction_settings.maximum_number_of_transactions_to_recover.should == 42
   end
 
   #################
@@ -193,7 +256,9 @@ describe RPDB::Settings::Transaction do
   #################
 
   it "can set and return its timeout" do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.set_timeout( 42 )
+    transaction_settings.timeout.should == 42
   end
 
   ##################
@@ -202,7 +267,9 @@ describe RPDB::Settings::Transaction do
   ##################
 
   it "can set and return its maximum number of open transactions" do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.set_max_open( 42 )
+    transaction_settings.max_open.should == 42
   end
 
   ###################
@@ -211,7 +278,9 @@ describe RPDB::Settings::Transaction do
   ###################
 
   it "can set and return its timestamp" do
-    raise "Failed."
+    transaction_settings  = RPDB::Settings::Replication::Transaction.new
+    transaction_settings.set_timestamp( 42 )
+    transaction_settings.timestamp.should == 42
   end
 
   ######################################
@@ -220,7 +289,7 @@ describe RPDB::Settings::Transaction do
   ######################################
 
   it "can set and return its calback method for rolling a transaction backward" do
-    raise "Failed."
+    raise "Callback."
   end
 
   #####################################
@@ -229,7 +298,7 @@ describe RPDB::Settings::Transaction do
   #####################################
 
   it "can set and return its calback method for rolling a transaction forward" do
-    raise "Failed."
+    raise "Callback."
   end
 
   ###############################
@@ -238,7 +307,7 @@ describe RPDB::Settings::Transaction do
   ###############################
 
   it "can set and return its callback method for aborting" do
-    raise "Failed."
+    raise "Callback."
   end
 
   ###############################
@@ -247,7 +316,7 @@ describe RPDB::Settings::Transaction do
   ###############################
 
   it "can set and return its callback method for applying" do
-    raise "Failed."
+    raise "Callback."
   end
 
   ###############################
@@ -256,7 +325,7 @@ describe RPDB::Settings::Transaction do
   ###############################
 
   it "can set and return its callback method for printing" do
-    raise "Failed."
+    raise "Callback."
   end
 
 end

@@ -77,7 +77,12 @@ describe RPDB::Settings::Replication::Verbosity do
   ##################################################
 
   it "can be set to display all replication information" do
-    raise "Failed."
+    verbosity_settings  = RPDB::Settings::Replication::Verbosity.new
+    verbosity_settings.display_all_replication_information?.should == false
+    verbosity_settings.turn_display_all_replication_information_on
+    verbosity_settings.display_all_replication_information?.should == true
+    verbosity_settings.turn_display_all_replication_information_off
+    verbosity_settings.display_all_replication_information?.should == false
   end
 
   ###########################################
@@ -87,7 +92,12 @@ describe RPDB::Settings::Replication::Verbosity do
   ###########################################
 
   it "can be set to display election information" do
-    raise "Failed."
+    verbosity_settings  = RPDB::Settings::Replication::Verbosity.new
+    verbosity_settings.display_election_information?.should == false
+    verbosity_settings.turn_display_election_information_on
+    verbosity_settings.display_election_information?.should == true
+    verbosity_settings.turn_display_election_information_off
+    verbosity_settings.display_election_information?.should == false
   end
 
   ###########################################################
@@ -97,7 +107,12 @@ describe RPDB::Settings::Replication::Verbosity do
   ###########################################################
 
   it "can be set to display replication master lease information" do
-    raise "Failed."
+    verbosity_settings  = RPDB::Settings::Replication::Verbosity.new
+    verbosity_settings.display_replication_master_lease_information?.should == false
+    verbosity_settings.turn_display_replication_master_lease_information_on
+    verbosity_settings.display_replication_master_lease_information?.should == true
+    verbosity_settings.turn_display_replication_master_lease_information_off
+    verbosity_settings.display_replication_master_lease_information?.should == false
   end
 
   ##################################################
@@ -107,7 +122,12 @@ describe RPDB::Settings::Replication::Verbosity do
   ##################################################
 
   it "can be set to display miscellaneous processing information" do
-    raise "Failed."
+    verbosity_settings  = RPDB::Settings::Replication::Verbosity.new
+    verbosity_settings.display_misc_processing_information?.should == false
+    verbosity_settings.turn_display_misc_processing_information_on
+    verbosity_settings.display_misc_processing_information?.should == true
+    verbosity_settings.turn_display_misc_processing_information_off
+    verbosity_settings.display_misc_processing_information?.should == false
   end
 
   #####################################################
@@ -117,7 +137,12 @@ describe RPDB::Settings::Replication::Verbosity do
   #####################################################
 
   it "can be set to display message processing information" do
-    raise "Failed."
+    verbosity_settings  = RPDB::Settings::Replication::Verbosity.new
+    verbosity_settings.display_message_processing_information?.should == false
+    verbosity_settings.turn_display_message_processing_information_on
+    verbosity_settings.display_message_processing_information?.should == true
+    verbosity_settings.turn_display_message_processing_information_off
+    verbosity_settings.display_message_processing_information?.should == false
   end
 
   #########################################################
@@ -127,7 +152,12 @@ describe RPDB::Settings::Replication::Verbosity do
   #########################################################
 
   it "can be set to display client synchronization information" do
-    raise "Failed."
+    verbosity_settings  = RPDB::Settings::Replication::Verbosity.new
+    verbosity_settings.display_client_synchronization_information?.should == false
+    verbosity_settings.turn_display_client_synchronization_information_on
+    verbosity_settings.display_client_synchronization_information?.should == true
+    verbosity_settings.turn_display_client_synchronization_information_off
+    verbosity_settings.display_client_synchronization_information?.should == false
   end
 
   #############################################################
@@ -137,17 +167,27 @@ describe RPDB::Settings::Replication::Verbosity do
   #############################################################
 
   it "can be set to display manager connection failure information" do
-    raise "Failed."
+    verbosity_settings  = RPDB::Settings::Replication::Verbosity.new
+    verbosity_settings.display_manager_connection_failure_information?.should == false
+    verbosity_settings.turn_display_manager_connection_failure_information_on
+    verbosity_settings.display_manager_connection_failure_information?.should == true
+    verbosity_settings.turn_display_manager_connection_failure_information_off
+    verbosity_settings.display_manager_connection_failure_information?.should == false
   end
 
   ##############################################
-  #  display_manager_misc_processing           #
+  #  display_manager_misc_processing?          #
 	#  turn_display_manager_misc_processing_on   #
 	#  turn_display_manager_misc_processing_off  #
   ##############################################
 
   it "can be set to display manager miscellaneous processing" do
-    raise "Failed."
+    verbosity_settings  = RPDB::Settings::Replication::Verbosity.new
+    verbosity_settings.display_manager_misc_processing?.should == false
+    verbosity_settings.turn_display_manager_misc_processing_on
+    verbosity_settings.display_manager_misc_processing?.should == true
+    verbosity_settings.turn_display_manager_misc_processing_off
+    verbosity_settings.display_manager_misc_processing?.should == false
   end
 
 end

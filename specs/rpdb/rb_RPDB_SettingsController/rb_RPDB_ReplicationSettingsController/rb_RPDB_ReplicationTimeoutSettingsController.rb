@@ -76,7 +76,9 @@ describe RPDB::Settings::Replication::Timeout do
   #################
 
   it "can set and report its timeout" do
-    raise "Failed."
+    timeout_settings  = RPDB::Settings::Replication::Timeout.new
+    timeout_settings.set_timeout( 42 )
+    timeout_settings.timeout.should == 42
   end
 
   ###########################################
@@ -85,7 +87,9 @@ describe RPDB::Settings::Replication::Timeout do
   ###########################################
 
   it "can set and report its wait time before writing a checkpoint" do
-    raise "Failed."
+    timeout_settings  = RPDB::Settings::Replication::Timeout.new
+    timeout_settings.set_wait_time_before_checkpoint_write( 42 )
+    timeout_settings.wait_time_before_checkpoint_write.should == 42
   end
 
   ###########################################
@@ -94,7 +98,9 @@ describe RPDB::Settings::Replication::Timeout do
   ###########################################
 
   it "can set and report its wait time before retrying a connection" do
-    raise "Failed."
+    timeout_settings  = RPDB::Settings::Replication::Timeout.new
+    timeout_settings.set_wait_time_before_retry_connection( 42 )
+    timeout_settings.wait_time_before_retry_connection.should == 42
   end
 
   ##########################
@@ -103,7 +109,9 @@ describe RPDB::Settings::Replication::Timeout do
   ##########################
 
   it "can set and report its election timeout" do
-    raise "Failed."
+    timeout_settings  = RPDB::Settings::Replication::Timeout.new
+    timeout_settings.set_election_timeout( 42 )
+    timeout_settings.election_timeout.should == 42
   end
 
   #########################################
@@ -112,7 +120,9 @@ describe RPDB::Settings::Replication::Timeout do
   #########################################
 
   it "can set and report its wait time before retrying election" do
-    raise "Failed."
+    timeout_settings  = RPDB::Settings::Replication::Timeout.new
+    timeout_settings.set_wait_time_before_retry_election( 42 )
+    timeout_settings.wait_time_before_retry_election.should == 42
   end
 
   #############################################
@@ -121,7 +131,9 @@ describe RPDB::Settings::Replication::Timeout do
   #############################################
 
   it "can set and report its timeout for full election participation" do
-    raise "Failed."
+    timeout_settings  = RPDB::Settings::Replication::Timeout.new
+    timeout_settings.set_full_election_participation_timeout( 42 )
+    timeout_settings.full_election_participation_timeout.should == 42
   end
 
   #################################
@@ -130,7 +142,9 @@ describe RPDB::Settings::Replication::Timeout do
   #################################
 
   it "can set and report its heartbeat monitor pulse rate" do
-    raise "Failed."
+    timeout_settings  = RPDB::Settings::Replication::Timeout.new
+    timeout_settings.set_heartbeat_monitor_pulse( 42 )
+    timeout_settings.heartbeat_monitor_pulse.should == 42
   end
 
   ###################################
@@ -139,7 +153,9 @@ describe RPDB::Settings::Replication::Timeout do
   ###################################
 
   it "can set and report its heartbeat broadcast pulse" do
-    raise "Failed."
+    timeout_settings  = RPDB::Settings::Replication::Timeout.new
+    timeout_settings.set_heartbeat_broadcast_pulse( 42 )
+    timeout_settings.heartbeat_broadcast_pulse.should == 42
   end
 
   #######################
@@ -148,7 +164,9 @@ describe RPDB::Settings::Replication::Timeout do
   #######################
 
   it "can set and report its lease timeout" do
-    raise "Failed."
+    timeout_settings  = RPDB::Settings::Replication::Timeout.new
+    timeout_settings.set_lease_timeout( 42 )
+    timeout_settings.lease_timeout.should == 42
   end
 
 end
