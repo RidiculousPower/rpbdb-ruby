@@ -62,6 +62,7 @@ describe RPDB::Settings::Error do
   #  file      #
   ##############
 
+  # FIX - FILE
   it "can set and return an error file" do
     error_settings  = RPDB::Settings::Error.new
     error_settings.set_file( '/tmp/file.tmp' )

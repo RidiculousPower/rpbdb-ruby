@@ -173,7 +173,7 @@ describe RPDB::Settings::Database::Type::Btree do
 
   it "can set and return the minimum number of keys per page" do
     btree_settings  = RPDB::Settings::Database::Type::Btree.new
-    btree_settings.set_minimum_keys_per_page  = 42
+    btree_settings.set_minimum_keys_per_page( 42 )
     btree_settings.minimum_keys_per_page.should == 42
   end
 

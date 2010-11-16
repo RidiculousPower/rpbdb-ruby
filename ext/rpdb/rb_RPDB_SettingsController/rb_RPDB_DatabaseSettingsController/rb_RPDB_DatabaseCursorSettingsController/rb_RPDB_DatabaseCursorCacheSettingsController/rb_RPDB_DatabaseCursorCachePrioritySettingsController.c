@@ -379,7 +379,7 @@ VALUE rb_RPDB_DatabaseCursorCachePrioritySettingsController_isAtLeastLow( VALUE	
 	C_RPDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( RPDB_DatabaseCursorCachePrioritySettingsController_isAtLeastLow( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
-																																		:	Qfalse );
+																																																																		:	Qfalse );
 }
 
 /****************

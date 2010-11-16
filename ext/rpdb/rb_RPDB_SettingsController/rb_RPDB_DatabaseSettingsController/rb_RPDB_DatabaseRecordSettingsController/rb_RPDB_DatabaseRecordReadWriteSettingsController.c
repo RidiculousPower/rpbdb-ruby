@@ -742,8 +742,10 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_partialAccess( VALUE	rb_
 	RPDB_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
 	C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
-	return ( RPDB_DatabaseRecordReadWriteSettingsController_partialAccess( c_database_record_read_write_settings_controller )	?	Qtrue
-																													:	Qfalse );
+	BOOL	c_partial_access	=	RPDB_DatabaseRecordReadWriteSettingsController_partialAccess( c_database_record_read_write_settings_controller );
+	VALUE	rb_partial_access	=	( c_partial_access ? Qtrue : Qfalse );
+
+	return rb_partial_access;
 }
 
 	/***************************
@@ -827,8 +829,10 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryU
 	RPDB_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
 	C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
-	return ( RPDB_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryUsingRealloc( c_database_record_settings_controller )	?	Qtrue
-																																	:	Qfalse );	
+	BOOL	c_database_allocates_memory_using_realloc		=	RPDB_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryUsingRealloc( c_database_record_settings_controller );
+	VALUE	rb_database_allocates_memory_using_realloc	=	( c_database_allocates_memory_using_realloc ? Qtrue : Qfalse );
+
+	return rb_database_allocates_memory_using_realloc;
 }
 
 	/****************************************************
@@ -854,7 +858,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryU
 		RPDB_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
 		C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
-		RPDB_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOn( c_database_record_settings_controller );
+		RPDB_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOff( c_database_record_settings_controller );
 	
 		return rb_database_record_read_write_settings_controller;
 	}
@@ -1015,7 +1019,7 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_unsortedDuplicates( VALU
 	}
 
 	/********************************
-	 *  turn_unsorted_duplicates_on  *
+	 *  turn_unsorted_duplicates_off  *
 	 *******************************/
 
 	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnUnsortedDuplicatesOff( VALUE	rb_database_record_read_write_settings_controller )	{

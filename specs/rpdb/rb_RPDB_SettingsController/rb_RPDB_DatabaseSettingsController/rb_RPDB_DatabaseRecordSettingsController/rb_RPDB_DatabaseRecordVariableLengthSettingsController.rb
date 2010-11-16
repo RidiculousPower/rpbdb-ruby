@@ -96,15 +96,15 @@ describe RPDB::Settings::Database::Record::VariableLength do
     RPDB::Settings::Database::Record::VariableLength.new.parent_database_record_settings_controller.should_not == nil
   end
 
-  	##########################
-  	#  set_record_delimeter  #
-  	#  record_delimeter      #
-  	##########################
+  	########################
+  	#  set_delimeter_byte  #
+  	#  delimeter_byte      #
+  	########################
 
     it "can set and return its record delimiter" do
       variable_length_settings  = RPDB::Settings::Database::Record::VariableLength.new
-      variable_length_settings.set_record_delimeter( '$$$$' )
-      variable_length_settings.record_delimeter.should == '$$$$'
+      variable_length_settings.set_delimeter_byte( '$' )
+      variable_length_settings.delimeter_byte.should == '$'
     end
 
 end

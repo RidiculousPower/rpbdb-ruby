@@ -281,7 +281,7 @@ describe RPDB::Settings::Database do
     RPDB::Settings::Database.new.type_settings_controller.class.should == RPDB::Settings::Database::Type
     # with a database
     RPDB::Database.new( $database_name ).settings.type_settings_controller.should_not == nil
-    RPDB::Database.new( $database_name ).settings.type_settings_controller.class.should == RPDB::Settings::Database::Type
+    RPDB::Database.new( $database_name ).settings.type_settings_controller.class.should == RPDB::Settings::Database::Type::Btree
   end
 
   ################################

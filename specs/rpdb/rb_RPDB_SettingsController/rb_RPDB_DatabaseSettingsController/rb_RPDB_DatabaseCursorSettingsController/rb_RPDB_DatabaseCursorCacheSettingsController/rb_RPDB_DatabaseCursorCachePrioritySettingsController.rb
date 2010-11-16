@@ -126,11 +126,11 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
   end
 
   ######################
-	#  set_to_very_low      #
-	#  set_to_low           #
-	#  set_to_default       #
-	#  set_to_high          #
-	#  set_to_very_high     #
+	#  set_to_very_low   #
+	#  set_to_low        #
+	#  set_to_default    #
+	#  set_to_high       #
+	#  set_to_very_high  #
   #  very_low?         #
   #  low?              #
   #  default?          #
@@ -140,7 +140,7 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
   ######################
 
   it "can set priority and report whether a priority level is currently set as well as report its current priority" do
-    priority_settings_controller  = RPDB::Settings::Database::Cursor::Cache::Priority.new
+    priority_settings_controller  = RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ) )
     priority_settings_controller.current_priority.should == 0
     priority_settings_controller.set_to_very_low
     priority_settings_controller.very_low?.should == true
@@ -230,5 +230,6 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
     priority_settings_controller.is_at_most_very_high?.should == true
 
   end
+  
 end
 

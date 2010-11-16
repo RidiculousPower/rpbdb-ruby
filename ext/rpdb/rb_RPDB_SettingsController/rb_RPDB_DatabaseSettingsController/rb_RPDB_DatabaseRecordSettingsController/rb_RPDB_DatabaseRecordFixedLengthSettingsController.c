@@ -269,7 +269,19 @@ VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_paddingByte( VALUE	rb_
 	RPDB_DatabaseRecordFixedLengthSettingsController*	c_database_record_fixed_length_settings_controller;
 	C_RPDB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( rb_database_record_fixed_length_settings_controller, c_database_record_fixed_length_settings_controller );
 
-	return INT2FIX( RPDB_DatabaseRecordFixedLengthSettingsController_paddingByte( c_database_record_fixed_length_settings_controller ) );
+	int		c_padding_byte	=	RPDB_DatabaseRecordFixedLengthSettingsController_paddingByte( c_database_record_fixed_length_settings_controller );
+
+	VALUE	rb_padding_byte	=	Qnil;
+
+	if ( c_padding_byte )	{
+		rb_padding_byte = INT2FIX( c_padding_byte );
+	}
+	
+	rb_padding_byte	=	rb_funcall(	rb_padding_byte,
+																rb_intern( "chr" ),
+																0 );
+
+	return rb_padding_byte;
 }
 
 /*********************
@@ -278,13 +290,34 @@ VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_paddingByte( VALUE	rb_
 	
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_re_pad.html
 VALUE rb_RPDB_DatabaseRecordFixedLengthSettingsController_setPaddingByte(	VALUE	rb_database_record_fixed_length_settings_controller, 
-																		VALUE	rb_record_padding_byte )	{
+																																					VALUE	rb_record_padding_byte )	{
 
 	RPDB_DatabaseRecordFixedLengthSettingsController*	c_database_record_fixed_length_settings_controller;
 	C_RPDB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( rb_database_record_fixed_length_settings_controller, c_database_record_fixed_length_settings_controller );
 
+	int	c_padding_byte	=	0;
+	
+	//	rb_record_padding_byte should be a 1-char string or a number
+	if (		TYPE( rb_record_padding_byte ) == T_STRING
+			&&	RSTRING_LEN( rb_record_padding_byte ) == 1 )	{
+
+		char*	c_char_padding_byte	=	StringValuePtr( rb_record_padding_byte );
+
+		c_padding_byte	= (int)	*c_char_padding_byte;
+
+	}
+	else if ( TYPE( rb_record_padding_byte ) == T_FIXNUM )	{
+	
+		c_padding_byte	=	FIX2INT( rb_record_padding_byte );
+	
+	}
+	else	{
+		rb_raise( rb_eArgError, "Padding byte must be either integer or character." );
+	}
+
+
 	RPDB_DatabaseRecordFixedLengthSettingsController_setPaddingByte(	c_database_record_fixed_length_settings_controller,
-	 															FIX2INT( rb_record_padding_byte ) );
+																																		c_padding_byte );
 
 	return rb_database_record_fixed_length_settings_controller;
 }

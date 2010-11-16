@@ -68,6 +68,13 @@ void Init_RPDB_DatabaseTypeRecnoSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"parent_database_settings_controller",	rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabaseSettingsController,										0 	);
 	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"parent_database_type_settings_controller",	rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabaseTypeSettingsController,										0 	);
 
+	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"database_type",													rb_RPDB_DatabaseTypeSettingsController_databaseType,				0 	);
+	rb_define_alias(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"type",																		"database_type"	);
+	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"is_btree?",															rb_RPDB_DatabaseTypeSettingsController_isBTree,							0 	);
+	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"is_hash?",																rb_RPDB_DatabaseTypeSettingsController_isHash,							0 	);
+	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"is_recno?",															rb_RPDB_DatabaseTypeSettingsController_isRecno,							0 	);
+	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"is_queue?",															rb_RPDB_DatabaseTypeSettingsController_isQueue,							0 	);
+
 	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"record_renumbering?",								rb_RPDB_DatabaseTypeRecnoSettingsController_recordRenumbering,						0 	);
 	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"turn_record_renumbering_on",					rb_RPDB_DatabaseTypeRecnoSettingsController_turnRecordRenumberingOn,			0 	);
 	rb_define_method(						rb_RPDB_DatabaseTypeRecnoSettingsController, 	"turn_record_renumbering_off",				rb_RPDB_DatabaseTypeRecnoSettingsController_turnRecordRenumberingOff,			0 	);
@@ -135,7 +142,22 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_new(	int			argc,
 		rb_parent_database_settings_controller	=	rb_RPDB_Database_settingsController( rb_parent_database );
 	}
 	if ( rb_parent_database_settings_controller != Qnil )	{
-		rb_parent_database_type_settings_controller	=	rb_RPDB_DatabaseSettingsController_typeSettingsController( rb_parent_database_settings_controller );
+
+		//	if we have a parent_database we need to get the environment database type settings controller so we don't loop
+		if ( ( rb_parent_database = rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller ) ) != Qnil )	{
+			
+			RPDB_DatabaseSettingsController*	c_database_settings_controller;
+			C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );			
+			
+			RPDB_DatabaseTypeSettingsController*	c_database_type_settings_controller	=	RPDB_DatabaseSettingsController_typeSettingsController( c_database_settings_controller );
+
+			rb_parent_database_type_settings_controller	=	RUBY_RPDB_DATABASE_TYPE_SETTINGS_CONTROLLER( c_database_type_settings_controller );
+		}
+		else {
+			
+			rb_parent_database_type_settings_controller	=	rb_RPDB_DatabaseSettingsController_typeSettingsController( rb_parent_database_settings_controller );
+		}
+
 	}
 
 	RPDB_DatabaseTypeSettingsController*	c_database_type_settings_controller;
@@ -145,10 +167,25 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_new(	int			argc,
 
 	VALUE	rb_database_type_recno_settings_controller	= RUBY_RPDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( c_database_type_recno_settings_controller );
 
-	//	store reference to parent
-	rb_iv_set(	rb_database_type_recno_settings_controller,
-							RPDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER,
-							rb_parent_database_type_settings_controller );
+	if ( rb_parent_database == Qnil )	{
+
+		//	store reference to parent type settings controller
+		rb_iv_set(	rb_database_type_recno_settings_controller,
+								RPDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER,
+								rb_parent_database_type_settings_controller );
+	}
+	else {
+
+		if ( rb_parent_database_settings_controller == Qnil )	{
+			rb_parent_database_settings_controller = rb_RPDB_Database_settingsController( rb_parent_database );
+		}
+
+		//	store reference to parent database settings controller
+		rb_iv_set(	rb_database_type_recno_settings_controller,
+								RPDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+								rb_parent_database_settings_controller );
+
+	}
 
 	//	if we have a parent database in addition to our parent environmental settings controller, set it as parent as well
 	//	it's possible we were passed a database settings controller with a parent database
@@ -224,9 +261,17 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentSettingsController(	VALU
 
 VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_type_recno_settings_controller )	{
 
-	VALUE	rb_parent_database_type_settings_controller		=	rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabaseTypeSettingsController( rb_database_type_recno_settings_controller );
-	VALUE	rb_parent_database_settings_controller				=	rb_RPDB_DatabaseRecordSettingsController_parentDatabaseSettingsController( rb_parent_database_type_settings_controller );
+	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_type_recno_settings_controller,
+																															RPDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+
+	if ( rb_parent_database_settings_controller == Qnil )	{
 	
+		VALUE	rb_parent_database_type_settings_controller		=	rb_RPDB_DatabaseTypeRecnoSettingsController_parentDatabaseTypeSettingsController( rb_database_type_recno_settings_controller );
+		
+		rb_parent_database_settings_controller							=	rb_RPDB_DatabaseTypeSettingsController_parentDatabaseSettingsController( rb_parent_database_type_settings_controller );
+
+	}
+		
 	return rb_parent_database_settings_controller;
 }
 

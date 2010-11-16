@@ -51,7 +51,7 @@ void Init_RPDB_DebugSettingsController()	{
 	rb_define_method(						rb_RPDB_DebugSettingsController, 	"parent_settings_controller",																						rb_RPDB_DebugSettingsController_parentSettingsController,							0 	);
                     					                                                                                        				
 	rb_define_method(						rb_RPDB_DebugSettingsController, 	"run_normal_recovery_before_opening_environment?",											rb_RPDB_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment,									0 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_run_normal_recovery_before_opening_environment_on",								rb_RPDB_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOn,								1 	);
+	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_run_normal_recovery_before_opening_environment_on",								rb_RPDB_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOn,								0 	);
 	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_run_normal_recovery_before_opening_environment_off",							rb_RPDB_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOff,				0 	);
 
 	rb_define_method(						rb_RPDB_DebugSettingsController, 	"run_catastrophic_recovery_before_opening_environment?",								rb_RPDB_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnvironment,		0 	);
@@ -189,7 +189,7 @@ VALUE rb_RPDB_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment(
 	C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 	return ( RPDB_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment( c_debug_settings_controller )	?	Qtrue
-																													:	Qfalse );
+																																																									:	Qfalse );
 }
 
 	/***********************************************************

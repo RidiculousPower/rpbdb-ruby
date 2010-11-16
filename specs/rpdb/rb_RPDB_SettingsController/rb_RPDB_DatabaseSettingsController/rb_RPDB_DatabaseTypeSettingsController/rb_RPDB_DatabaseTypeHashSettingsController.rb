@@ -143,7 +143,7 @@ describe RPDB::Settings::Database::Type::Hash do
 
   it "can set and return its table size" do
     hash_settings = RPDB::Settings::Database::Type::Hash.new
-    hash_settings.set_table_size  = 42
+    hash_settings.set_table_size( 42 )
     hash_settings.table_size.should == 42
   end
 
@@ -154,7 +154,7 @@ describe RPDB::Settings::Database::Type::Hash do
 
   it "can set and return its hash density factor" do
     hash_settings = RPDB::Settings::Database::Type::Hash.new
-    hash_settings.set_hash_density_factor  = 42
+    hash_settings.set_hash_density_factor( 42 )
     hash_settings.hash_density_factor.should == 42
   end
 

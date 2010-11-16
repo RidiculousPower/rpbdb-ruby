@@ -158,7 +158,7 @@ describe RPDB::Settings::Database::Type::Queue do
 
   it "can set the number of pages used for underlying data" do
     queue_settings = RPDB::Settings::Database::Type::Queue.new
-    queue_settings.set_number_of_pages_for_underlying_data  = 42
+    queue_settings.set_number_of_pages_for_underlying_data( 42 )
     queue_settings.number_of_pages_for_underlying_data.should == 42
   end
 

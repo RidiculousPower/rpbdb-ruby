@@ -96,47 +96,47 @@ describe RPDB::Settings::Database::Type do
     RPDB::Settings::Database::Type.new.database_type.should_not == 0
   end
 
-  ##################
-  #  set_to_btree  #
-  #  is_btree?     #
-  ##################
+  #######################
+  #  set_type_to_btree  #
+  #  is_btree?          #
+  #######################
 
   it "can set the default type to btree and report whether the type is btree" do
     type_settings = RPDB::Settings::Database::Type.new
-    type_settings.set_to_btree
+    type_settings.set_type_to_btree
     type_settings.is_btree?.should == true
   end
 
-  #################
-  #  set_to_hash  #
-  #  is_hash?     #
-  #################
+  ######################
+  #  set_type_to_hash  #
+  #  is_hash?          #
+  ######################
 
   it "can set the default type to hash and report whether the type is hash" do
     type_settings = RPDB::Settings::Database::Type.new
-    type_settings.set_to_hash
+    type_settings.set_type_to_hash
     type_settings.is_hash?.should == true
   end
 
-  ##################
-  #  set_to_recno  #
-  #  is_recno?     #
-  ##################
+  #######################
+  #  set_type_to_recno  #
+  #  is_recno?          #
+  #######################
 
   it "can set the default type to queue and report whether the type is queue" do
     type_settings = RPDB::Settings::Database::Type.new
-    type_settings.set_to_recno
+    type_settings.set_type_to_recno
     type_settings.is_recno?.should == true
   end
 
-  ##################
-  #  set_to_queue  #
-  #  is_queue?     #
-  ##################
+  #######################
+  #  set_type_to_queue  #
+  #  is_queue?          #
+  #######################
 
   it "can set the default type to recno and report whether the type is recno" do
     type_settings = RPDB::Settings::Database::Type.new
-    type_settings.set_to_queue
+    type_settings.set_type_to_queue
     type_settings.is_queue?.should == true
   end
 

@@ -63,9 +63,9 @@ void Init_RPDB_DatabaseRecordVariableLengthSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"parent_database_settings_controller",						rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseSettingsController,				0 	);
 	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"parent_database_record_settings_controller",						rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseRecordSettingsController,				0 	);
                     					                                                                                                                                                        	
-	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"record_delimeter",						rb_RPDB_DatabaseRecordVariableLengthSettingsController_recordDelimeter,				0 	);
-	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"record_delimeter=",					rb_RPDB_DatabaseRecordVariableLengthSettingsController_setRecordDelimeter,		1 	);
-	rb_define_alias(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"set_record_delimeter",				"record_delimeter="	);
+	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"delimeter_byte",						rb_RPDB_DatabaseRecordVariableLengthSettingsController_delimeterByte,				0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"delimeter_byte=",					rb_RPDB_DatabaseRecordVariableLengthSettingsController_setDelimeterByte,		1 	);
+	rb_define_alias(						rb_RPDB_DatabaseRecordVariableLengthSettingsController, 	"set_delimeter_byte",				"delimeter_byte="	);
 }
 
 /*******************************************************************************************************************************************************************************************
@@ -227,30 +227,57 @@ VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_parentDatabaseRecor
 	return rb_parent_database_record_settings_controller;
 }
 	/*********************
-	*  record_delimeter  *
+	*  delimeter_byte  *
 	*********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_set_re_delim.html
-VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_recordDelimeter( VALUE	rb_database_record_variable_length_settings_controller )	{
+VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_delimeterByte( VALUE	rb_database_record_variable_length_settings_controller )	{
 
 	RPDB_DatabaseRecordVariableLengthSettingsController*	c_database_record_variable_length_settings_controller;
 	C_RPDB_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER( rb_database_record_variable_length_settings_controller, c_database_record_variable_length_settings_controller );
 
-	return INT2FIX( RPDB_DatabaseRecordVariableLengthSettingsController_recordDelimeter( c_database_record_variable_length_settings_controller ) );
+	int		c_delimeter_byte	=	RPDB_DatabaseRecordVariableLengthSettingsController_delimeterByte( c_database_record_variable_length_settings_controller );
+	VALUE	rb_delimeter_byte	=	INT2FIX( c_delimeter_byte );
+
+	rb_delimeter_byte	=	rb_funcall(	rb_delimeter_byte,
+																	rb_intern( "chr" ),
+																	0 );
+
+	return rb_delimeter_byte;
 }
 
 	/*************************
-	*  set_record_delimeter  *
+	*  set_delimeter_byte  *
 	*************************/
 
-VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_setRecordDelimeter(	VALUE	rb_database_record_variable_length_settings_controller, 
-																																									VALUE	rb_record_delimeter )	{
+VALUE rb_RPDB_DatabaseRecordVariableLengthSettingsController_setDelimeterByte(	VALUE	rb_database_record_variable_length_settings_controller, 
+																																								VALUE	rb_delimeter_byte )	{
 
 	RPDB_DatabaseRecordVariableLengthSettingsController*	c_database_record_variable_length_settings_controller;
 	C_RPDB_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER( rb_database_record_variable_length_settings_controller, c_database_record_variable_length_settings_controller );
 
-	RPDB_DatabaseRecordVariableLengthSettingsController_setRecordDelimeter(	c_database_record_variable_length_settings_controller,
-																		FIX2INT( rb_record_delimeter ) );
+	int	c_delimeter_byte	=	0;
+	
+	//	rb_delimeter_byte should be a 1-char string or a number
+	if (		TYPE( rb_delimeter_byte ) == T_STRING
+			&&	RSTRING_LEN( rb_delimeter_byte ) == 1 )	{
+
+		char*	c_char_delimeter_byte	=	StringValuePtr( rb_delimeter_byte );
+
+		c_delimeter_byte	= (int)	*c_char_delimeter_byte;
+
+	}
+	else if ( TYPE( rb_delimeter_byte ) == T_FIXNUM )	{
+	
+		c_delimeter_byte	=	FIX2INT( rb_delimeter_byte );
+	
+	}
+	else	{
+		rb_raise( rb_eArgError, "Padding byte must be either integer or character." );
+	}
+
+	RPDB_DatabaseRecordVariableLengthSettingsController_setDelimeterByte(	c_database_record_variable_length_settings_controller,
+																																				c_delimeter_byte );
 	
 	return rb_database_record_variable_length_settings_controller;
 }

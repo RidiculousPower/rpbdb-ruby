@@ -19,13 +19,18 @@ describe RPDB::Database::Controller do
     @environment.close
   end
 
-  it "can turn encryption on and off and report whether it is encrypted" do
-    encryption_settings = RPDB::Settings::Database::Encryption.new
-    encryption_settings.encrypted?.should == false
-    encryption_settings.turn_encryption_on
-    encryption_settings.encrypted?.should == true
-    encryption_settings.turn_encryption_off
-    encryption_settings.encrypted?.should == false
+
+  it "can perform order checking alone" do
+    verification_settings  = RPDB::Settings::Database::Verification.new( RPDB::Database.new( $database_name ) )
+    verification_settings.only_order_check?.should == false
+    verification_settings.turn_skip_order_check_on
+    verification_settings.parent_database.verify
+    verification_settings.turn_only_order_check_on
+    verification_settings.only_order_check?.should == true
+    verification_settings.turn_only_order_check_off
+    verification_settings.only_order_check?.should == false
   end
+
+ 
 
 end

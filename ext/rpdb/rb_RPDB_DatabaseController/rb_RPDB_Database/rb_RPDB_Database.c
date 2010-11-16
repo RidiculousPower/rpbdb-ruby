@@ -75,6 +75,12 @@ extern VALUE rb_cFloat;
 extern VALUE rb_cTrueClass;
 extern VALUE rb_cFalseClass;
 
+extern VALUE rb_RPDB_DatabaseType_const_module;
+extern VALUE rb_RPDB_DatabaseBtreeType_const;
+extern VALUE rb_RPDB_DatabaseHashType_const;
+extern VALUE rb_RPDB_DatabaseQueueType_const;
+extern VALUE rb_RPDB_DatabaseRecnoType_const;
+
 #define RPDB_RUBY_ERROR_INVALID_DATABASE_DATA			"Provided data was invalid. Database requires object that can be automatically converted to string."
 
 /*******************************************************************************************************************************************************************************************
@@ -88,6 +94,29 @@ void Init_RPDB_Database()	{
 	rb_RPDB_Database		=	rb_define_class_under(	rb_mRPDB, 
 																								"Database",
 																								rb_cObject );
+
+	rb_RPDB_DatabaseType_const_module			=	rb_define_module_under(	rb_RPDB_Database,
+																																	"Type" );
+	rb_define_const(	rb_RPDB_DatabaseType_const_module,
+										"Btree",
+										rb_str_new2( "Btree" ) );
+	rb_RPDB_DatabaseBtreeType_const	=	rb_const_get(	rb_RPDB_DatabaseType_const_module,
+																									rb_intern( "Btree" ) );
+	rb_define_const(	rb_RPDB_DatabaseType_const_module,
+										"Hash",
+										rb_str_new2( "Hash" ) );
+	rb_RPDB_DatabaseHashType_const	=	rb_const_get(	rb_RPDB_DatabaseType_const_module,
+																									rb_intern( "Hash" ) );
+	rb_define_const(	rb_RPDB_DatabaseType_const_module,
+										"Queue",
+										rb_str_new2( "Queue" ) );
+	rb_RPDB_DatabaseQueueType_const	=	rb_const_get(	rb_RPDB_DatabaseType_const_module,
+																									rb_intern( "Queue" ) );
+	rb_define_const(	rb_RPDB_DatabaseType_const_module,
+										"Recno",
+										rb_str_new2( "Recno" ) );
+	rb_RPDB_DatabaseRecnoType_const	=	rb_const_get(	rb_RPDB_DatabaseType_const_module,
+																									rb_intern( "Recno" ) );
 
 	rb_define_singleton_method(	rb_RPDB_Database, 	"new",																					rb_RPDB_Database_new,																				-1 	);
 	rb_define_method(						rb_RPDB_Database, 	"initialize",																		rb_RPDB_Database_initialize,																			-1 	);
@@ -150,6 +179,8 @@ void Init_RPDB_Database()	{
 	rb_define_alias(						rb_RPDB_Database, 	"secondary",																		"secondary_database_with_index"	);
 	rb_define_alias(						rb_RPDB_Database, 	"index",																				"secondary_database_with_index"	);
                     					
+	rb_define_method(						rb_RPDB_Database, 	"verify",																				rb_RPDB_Database_verify,																		0 	);
+
 	rb_define_method(						rb_RPDB_Database, 	"cursor_controller",														rb_RPDB_Database_cursorController,													0 	);
 	rb_define_alias(						rb_RPDB_Database, 	"cursors",																			"cursor_controller"	);
 	rb_define_method(						rb_RPDB_Database, 	"cursor",																				rb_RPDB_Database_cursor,																		0 	);

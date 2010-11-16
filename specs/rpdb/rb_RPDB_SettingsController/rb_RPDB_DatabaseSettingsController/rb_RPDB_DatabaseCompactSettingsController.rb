@@ -70,7 +70,7 @@ describe RPDB::Settings::Database::Compact do
   #####################
 
   it "can return its parent database" do
-    RPDB::Settings::Database::Compact.new.parent_database.class.should == RPDB::Database
+    RPDB::Settings::Database::Compact.new.parent_database.should == nil
     RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_database.class.should == RPDB::Database
   end
 

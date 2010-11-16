@@ -259,7 +259,15 @@ VALUE rb_RPDB_DatabaseErrorSettingsController_prefix( VALUE	rb_database_error_se
 	RPDB_DatabaseErrorSettingsController*	c_database_error_settings_controller;
 	C_RPDB_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
 
-	return rb_str_new2( RPDB_DatabaseErrorSettingsController_prefix( c_database_error_settings_controller ) );
+	char*	c_error_prefix	=	RPDB_DatabaseErrorSettingsController_prefix( c_database_error_settings_controller );
+
+	VALUE	rb_error_prefix	=	Qnil;
+
+	if ( c_error_prefix != NULL )	{
+		rb_error_prefix	=	rb_str_new2( c_error_prefix );
+	}
+
+	return rb_error_prefix;
 }
 
 /***************
@@ -267,13 +275,15 @@ VALUE rb_RPDB_DatabaseErrorSettingsController_prefix( VALUE	rb_database_error_se
 ***************/
 
 VALUE rb_RPDB_DatabaseErrorSettingsController_setPrefix(	VALUE			rb_database_error_settings_controller, 
-															VALUE		rb_error_prefix )	{
+																													VALUE		rb_error_prefix )	{
 
 	RPDB_DatabaseErrorSettingsController*	c_database_error_settings_controller;
 	C_RPDB_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
 
+	char*	c_error_prefix	=	StringValuePtr( rb_error_prefix );
+
 	RPDB_DatabaseErrorSettingsController_setPrefix(	c_database_error_settings_controller,
-	 													StringValuePtr( rb_error_prefix ) );
+																									c_error_prefix );
 
 	return rb_database_error_settings_controller;
 }

@@ -97,9 +97,11 @@ describe RPDB::Settings::Database::Encryption do
   it "can turn encryption on and off and report whether it is encrypted" do
     encryption_settings = RPDB::Settings::Database::Encryption.new
     encryption_settings.encrypted?.should == false
-    encryption_settings.turn_encryption_on
+    encryption_settings.turn_encryption_on( 'password!' )
     encryption_settings.encrypted?.should == true
-    encryption_settings.turn_encryption_off
+    encryption_settings.turn_encryption_off( 'not the password!' )
+    encryption_settings.encrypted?.should == true
+    encryption_settings.turn_encryption_off( 'password!' )
     encryption_settings.encrypted?.should == false
   end
 

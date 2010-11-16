@@ -152,11 +152,11 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
 
   it "can be a read-only cursor or it can permit writing" do
     read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new
-    read_write_settings.permit_write?.should == true
-    read_write_settings.turn_permit_write_off
     read_write_settings.permit_write?.should == false
     read_write_settings.turn_permit_write_on
     read_write_settings.permit_write?.should == true
+    read_write_settings.turn_permit_write_off
+    read_write_settings.permit_write?.should == false
   end
 
   ############################

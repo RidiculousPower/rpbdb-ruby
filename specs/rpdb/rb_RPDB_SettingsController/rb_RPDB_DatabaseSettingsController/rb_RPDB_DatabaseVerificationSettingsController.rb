@@ -91,6 +91,7 @@ describe RPDB::Settings::Database::Verification do
   #  file      #
   ##############
 
+  # FIX - FILE
   it "can set its verification file" do
     verification_settings = RPDB::Settings::Database::Verification.new
     verification_settings.set_file( '/tmp/file.tmp' )
@@ -149,8 +150,10 @@ describe RPDB::Settings::Database::Verification do
   ###############################
 
   it "can perform order checking alone" do
-    verification_settings  = RPDB::Settings::Database::Verification.new
+    verification_settings  = RPDB::Settings::Database::Verification.new( RPDB::Database.new( $database_name ) )
     verification_settings.only_order_check?.should == false
+    verification_settings.turn_skip_order_check_on
+    verification_settings.parent_database.verify
     verification_settings.turn_only_order_check_on
     verification_settings.only_order_check?.should == true
     verification_settings.turn_only_order_check_off

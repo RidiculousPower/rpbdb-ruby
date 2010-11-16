@@ -171,7 +171,9 @@ describe RPDB::Settings::Database::Type::Recno do
   #  source_file      #
   #####################
 
+  # FIX - FILE
   it "can set and return the record source file that will be read during database opening" do
+    raise "File"
     recno_settings  = RPDB::Settings::Database::Type::Recno.new
     recno_settings.set_source_file( '/tmp/file.tmp' )
     recno_settings.source_file.should == '/tmp/file.tmp'
