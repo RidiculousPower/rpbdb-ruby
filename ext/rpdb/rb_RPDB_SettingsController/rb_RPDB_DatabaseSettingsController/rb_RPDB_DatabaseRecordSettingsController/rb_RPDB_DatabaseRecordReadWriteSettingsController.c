@@ -82,9 +82,9 @@ void Init_RPDB_DatabaseRecordReadWriteSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_return_multiple_on",											rb_RPDB_DatabaseRecordReadWriteSettingsController_turnReturnMultipleOn,									0 	);
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_return_multiple_off",											rb_RPDB_DatabaseRecordReadWriteSettingsController_turnReturnMultipleOff,								0 	);
                     					                                                                                            	                                                                          				
-	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"prohibit_duplicate_data?",											rb_RPDB_DatabaseRecordReadWriteSettingsController_prohibitDuplicateData,								0 	);
-	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_prohibit_duplicate_data_on",							rb_RPDB_DatabaseRecordReadWriteSettingsController_turnProhibitDuplicateDataOn,					0 	);
-	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_prohibit_duplicate_data_off",							rb_RPDB_DatabaseRecordReadWriteSettingsController_turnProhibitDuplicateDataOff,					0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"write_data_only_if_non_duplicate?",											rb_RPDB_DatabaseRecordReadWriteSettingsController_writeDataOnlyIfNonDuplicate,								0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_write_data_only_if_non_duplicate_on",							rb_RPDB_DatabaseRecordReadWriteSettingsController_turnWriteDataOnlyIfNonDuplicateOn,					0 	);
+	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_write_data_only_if_non_duplicate_off",							rb_RPDB_DatabaseRecordReadWriteSettingsController_turnWriteDataOnlyIfNonDuplicateOff,					0 	);
                     					                                                                                        			                                                                          				
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"prohibit_overwrite?",													rb_RPDB_DatabaseRecordReadWriteSettingsController_prohibitOverwrite,										0 	);
 	rb_define_method(						rb_RPDB_DatabaseRecordReadWriteSettingsController, 	"turn_prohibit_overwrite_on",										rb_RPDB_DatabaseRecordReadWriteSettingsController_turnProhibitOverwriteOn,							0 	);
@@ -462,48 +462,48 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_returnMultiple( VALUE	rb
 	}
 
 /*****************************
-*  prohibit_duplicate_data?  *
+*  write_data_only_if_non_duplicate?  *
 *****************************/
 
 //	DB_NODUPDATA			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_put.html
 //	Btree and Hash only
-VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_prohibitDuplicateData( VALUE	rb_database_record_read_write_settings_controller )	{
+VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_writeDataOnlyIfNonDuplicate( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	RPDB_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
 	C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
-	return ( RPDB_DatabaseRecordReadWriteSettingsController_prohibitDuplicateData( c_database_record_read_write_settings_controller )	?	Qtrue
+	return ( RPDB_DatabaseRecordReadWriteSettingsController_writeDataOnlyIfNonDuplicate( c_database_record_read_write_settings_controller )	?	Qtrue
 																															:	Qfalse );
 }
 
 	/************************************
-	*  turn_prohibit_duplicate_data_on  *
+	*  turn_write_data_only_if_non_duplicate_on  *
 	************************************/
 
 	//	DB_NODUPDATA			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_put.html
 	//	Btree and Hash only
-	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnProhibitDuplicateDataOn( VALUE	rb_database_record_read_write_settings_controller )	{
+	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnWriteDataOnlyIfNonDuplicateOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		RPDB_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
 		C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
-		RPDB_DatabaseRecordReadWriteSettingsController_turnProhibitDuplicateDataOn( c_database_record_read_write_settings_controller );
+		RPDB_DatabaseRecordReadWriteSettingsController_turnWriteDataOnlyIfNonDuplicateOn( c_database_record_read_write_settings_controller );
 
 		return rb_database_record_read_write_settings_controller;
 	}
 
 	/*************************************
-	*  turn_prohibit_duplicate_data_off  *
+	*  turn_write_data_only_if_non_duplicate_off  *
 	*************************************/
 
 	//	DB_NODUPDATA			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_put.html
 	//	Btree and Hash only
-	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnProhibitDuplicateDataOff( VALUE	rb_database_record_read_write_settings_controller )	{
+	VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_turnWriteDataOnlyIfNonDuplicateOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		RPDB_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
 		C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
-		RPDB_DatabaseRecordReadWriteSettingsController_turnProhibitDuplicateDataOff( c_database_record_read_write_settings_controller );
+		RPDB_DatabaseRecordReadWriteSettingsController_turnWriteDataOnlyIfNonDuplicateOff( c_database_record_read_write_settings_controller );
 
 		return rb_database_record_read_write_settings_controller;
 	}
@@ -1083,9 +1083,13 @@ VALUE rb_RPDB_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_
 	RPDB_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
 	C_RPDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 	
-	return rb_iv_get(	rb_database_record_read_write_settings_controller,
-										RPDB_RB_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA ) == Qtrue ? Qtrue
-																																																												:	Qfalse;
+	VALUE	rb_should_serialize	=	rb_iv_get(	rb_database_record_read_write_settings_controller,
+																					RPDB_RB_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA );
+	
+	if ( rb_should_serialize == Qnil )	{
+		rb_should_serialize = Qfalse;
+	}
+	return rb_should_serialize;
 }
 
 	/****************************

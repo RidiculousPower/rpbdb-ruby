@@ -61,7 +61,8 @@ describe RPDB::Settings::Database::Record::FixedLength do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Database::Record::FixedLength.new.parent_environment.should_not == nil
+    RPDB::Settings::Database::Record::FixedLength.new.parent_environment.is_a?( RPDB::Environment ).should == true
+    RPDB::Settings::Database::Record::FixedLength.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
   end
 
   #####################
@@ -69,7 +70,8 @@ describe RPDB::Settings::Database::Record::FixedLength do
   #####################
 
   it "can return its parent database" do
-    RPDB::Settings::Database::Record::FixedLength.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
+    RPDB::Settings::Database::Record::FixedLength.new.parent_database.should == nil
+    RPDB::Settings::Database::Record::FixedLength.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
   end
 
   ################################
@@ -77,7 +79,8 @@ describe RPDB::Settings::Database::Record::FixedLength do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Database::Record::FixedLength.new.parent_settings_controller.should_not == nil
+    RPDB::Settings::Database::Record::FixedLength.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    RPDB::Settings::Database::Record::FixedLength.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
   end
 
   #########################################
@@ -85,7 +88,8 @@ describe RPDB::Settings::Database::Record::FixedLength do
   #########################################
 
   it "can return its parent database settings controller" do
-    RPDB::Settings::Database::Record::FixedLength.new.parent_database_settings_controller.should_not == nil
+    RPDB::Settings::Database::Record::FixedLength.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    RPDB::Settings::Database::Record::FixedLength.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
   end
 
   ################################################
@@ -93,7 +97,8 @@ describe RPDB::Settings::Database::Record::FixedLength do
   ################################################
 
   it "can return its parent database settings controller" do
-    RPDB::Settings::Database::Record::FixedLength.new.parent_database_record_settings_controller.should_not == nil
+    RPDB::Settings::Database::Record::FixedLength.new.parent_database_record_settings_controller.is_a?( RPDB::Settings::Database::Record ).should == true
+    RPDB::Settings::Database::Record::FixedLength.new( RPDB::Database.new( $database_name ) ).parent_database_record_settings_controller.is_a?( RPDB::Settings::Database::Record ).should == true
   end
 
   #######################

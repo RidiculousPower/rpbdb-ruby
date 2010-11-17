@@ -307,7 +307,7 @@ VALUE rb_RPDB_DatabaseCursorSettingsController_cacheSettingsController( VALUE	rb
 	VALUE	rb_database_cursor_cache_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_cursor_cache_settings_controller = rb_iv_get(	rb_database_cursor_settings_controller,
-																																		RPDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																		RPDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
 		rb_database_cursor_cache_settings_controller	=	rb_RPDB_DatabaseCursorCacheSettingsController_new(	1,
 																																																				& rb_database_cursor_settings_controller,
@@ -329,7 +329,7 @@ VALUE rb_RPDB_DatabaseCursorSettingsController_readWriteSettingsController( VALU
 	VALUE	rb_database_cursor_read_write_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_cursor_read_write_settings_controller = rb_iv_get(	rb_database_cursor_settings_controller,
-																																				RPDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																				RPDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
 		rb_database_cursor_read_write_settings_controller	=	rb_RPDB_DatabaseCursorReadWriteSettingsController_new(	1,
 																																																								& rb_database_cursor_settings_controller,

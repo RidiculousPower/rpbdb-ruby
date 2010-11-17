@@ -237,7 +237,7 @@ VALUE rb_RPDB_DatabaseRecordSettingsController_variableLengthSettingsController(
 	VALUE	rb_database_record_variable_length_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_record_variable_length_settings_controller = rb_iv_get(	rb_database_record_settings_controller,
-																																							RPDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																							RPDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
 		rb_database_record_variable_length_settings_controller	=	rb_RPDB_DatabaseRecordVariableLengthSettingsController_new(	1,
 																																																													& rb_database_record_settings_controller,
@@ -259,7 +259,7 @@ VALUE rb_RPDB_DatabaseRecordSettingsController_readWriteSettingsController(	VALU
 	VALUE	rb_database_record_read_write_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_record_read_write_settings_controller = rb_iv_get(	rb_database_record_settings_controller,
-																																				RPDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																				RPDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
 		rb_database_record_read_write_settings_controller	=	rb_RPDB_DatabaseRecordReadWriteSettingsController_new(	1,
 																																																								& rb_database_record_settings_controller,

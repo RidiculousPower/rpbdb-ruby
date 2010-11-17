@@ -61,7 +61,7 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Database::Record::ReadWrite.new.parent_environment.should_not == nil
+    RPDB::Settings::Database::Record::ReadWrite.new.parent_environment.is_a?( RPDB::Environment ).should == true
   end
 
   #####################
@@ -69,7 +69,8 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   #####################
 
   it "can return its parent database" do
-    RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
+    RPDB::Settings::Database::Record::ReadWrite.new.parent_database.should == nil
+    RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
   end
 
   ################################
@@ -77,7 +78,8 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Database::Record::ReadWrite.new.parent_settings_controller.should_not == nil
+    RPDB::Settings::Database::Record::ReadWrite.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
   end
 
   #########################################
@@ -85,7 +87,8 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   #########################################
 
   it "can return its parent database settings controller" do
-    RPDB::Settings::Database::Record::ReadWrite.new.parent_database_settings_controller.should_not == nil
+    RPDB::Settings::Database::Record::ReadWrite.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
   end
 
   ################################################
@@ -93,7 +96,8 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   ################################################
 
   it "can return its parent database settings controller" do
-    RPDB::Settings::Database::Record::ReadWrite.new.parent_database_record_settings_controller.should_not == nil
+    RPDB::Settings::Database::Record::ReadWrite.new.parent_database_record_settings_controller.is_a?( RPDB::Settings::Database::Record ).should == true
+    RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database_record_settings_controller.is_a?( RPDB::Settings::Database::Record ).should == true
   end
 
   #####################################
@@ -142,18 +146,18 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   end
 
   ######################################
-  #  prohibit_duplicate_data?          #
-	#  turn_prohibit_duplicate_data_on   #
-	#  turn_prohibit_duplicate_data_off  #
+  #  write_data_only_if_non_duplicate?          #
+	#  turn_write_data_only_if_non_duplicate_on   #
+	#  turn_write_data_only_if_non_duplicate_off  #
   ######################################
 
   it "can prohibit duplicate data items" do
     read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
-    read_write_settings.prohibit_duplicate_data?.should == false
-    read_write_settings.turn_prohibit_duplicate_data_on
-    read_write_settings.prohibit_duplicate_data?.should == true
-    read_write_settings.turn_prohibit_duplicate_data_off
-    read_write_settings.prohibit_duplicate_data?.should == false
+    read_write_settings.write_data_only_if_non_duplicate?.should == false
+    read_write_settings.turn_write_data_only_if_non_duplicate_on
+    read_write_settings.write_data_only_if_non_duplicate?.should == true
+    read_write_settings.turn_write_data_only_if_non_duplicate_off
+    read_write_settings.write_data_only_if_non_duplicate?.should == false
   end
 
   #################################

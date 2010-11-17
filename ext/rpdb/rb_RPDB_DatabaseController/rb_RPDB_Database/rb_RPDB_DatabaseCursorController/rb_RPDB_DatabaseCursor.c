@@ -334,7 +334,7 @@ VALUE rb_RPDB_DatabaseCursor_parentDatabaseCursorController(	VALUE	rb_database_c
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_cursor.html
 VALUE rb_RPDB_DatabaseCursor_open( VALUE	rb_database_cursor )	{
-
+	
 	RPDB_DatabaseCursor*		c_database_cursor;
 	C_RPDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 

@@ -948,13 +948,11 @@ VALUE rb_RPDB_Database_iterate( VALUE	rb_database )	{
 	VALUE	rb_database_cursor						=	rb_RPDB_Database_cursor( rb_database );
 
 	//	set the cursor position
-	/*
+	
 	rb_funcall(	rb_database_cursor,
 							rb_intern( "first" ),
 							0 );
-*/
-	rb_RPDB_DatabaseCursor_retrieveFirst( rb_database_cursor );
-	
+
 	//	if we have a block we can simply let our function iterate and return self
 	if ( rb_block_given_p() )	{
 		rb_RPDB_DatabaseCursor_iterate(	rb_database_cursor	);		

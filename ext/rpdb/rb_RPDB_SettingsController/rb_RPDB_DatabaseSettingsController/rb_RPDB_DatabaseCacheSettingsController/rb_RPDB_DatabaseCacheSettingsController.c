@@ -499,7 +499,7 @@ VALUE rb_RPDB_DatabaseCacheSettingsController_prioritySettingsController( VALUE	
 	VALUE	rb_priority_settings_controller	=	Qnil;
 	
 	if ( ( rb_priority_settings_controller = rb_iv_get(	rb_database_cache_settings_controller,
-																											RPDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																											RPDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
 		rb_priority_settings_controller	=	rb_RPDB_DatabaseCachePrioritySettingsController_new(	1,
 																																														& rb_database_cache_settings_controller,
