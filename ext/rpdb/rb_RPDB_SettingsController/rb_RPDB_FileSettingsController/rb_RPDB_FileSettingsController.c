@@ -138,8 +138,8 @@ VALUE rb_RPDB_FileSettingsController_new(	int			argc,
 ***************/
 
 VALUE rb_RPDB_FileSettingsController_initialize(	int				argc __attribute__ ((unused)),
-																						VALUE*		args __attribute__ ((unused)),
-																						VALUE			rb_self )	{
+																									VALUE*		args __attribute__ ((unused)),
+																									VALUE			rb_self )	{
 	
 	return rb_self;
 }
@@ -178,8 +178,10 @@ VALUE rb_RPDB_FileSettingsController_intermediateDirectoryMode( VALUE	rb_file_se
 	RPDB_FileSettingsController*	c_file_settings_controller;
 	C_RPDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
-	return ( RPDB_FileSettingsController_intermediateDirectoryMode( c_file_settings_controller )	?	Qtrue
-																									:	Qfalse );
+	char*	c_intermediate_directory_mode		=	RPDB_FileSettingsController_intermediateDirectoryMode( c_file_settings_controller );
+	VALUE	rb_intermediate_directory_mode	=	rb_str_new2( c_intermediate_directory_mode );
+
+	return rb_intermediate_directory_mode;
 }
 
 	/************************************
@@ -187,13 +189,21 @@ VALUE rb_RPDB_FileSettingsController_intermediateDirectoryMode( VALUE	rb_file_se
 	************************************/
 
 	VALUE rb_RPDB_FileSettingsController_setIntermediateDirectoryMode(	VALUE	rb_file_settings_controller, 
-																		VALUE	rb_mode )	{
+																																			VALUE	rb_mode )	{
+
+		VALUE	rb_parent_environment	=	rb_RPDB_FileSettingsController_parentEnvironment( rb_file_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "Intermediate directory mode can only be set before environment is opened." );	
+		}
 
 		RPDB_FileSettingsController*	c_file_settings_controller;
 		C_RPDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
+		char*	c_mode	=	StringValuePtr( rb_mode );
+
 		RPDB_FileSettingsController_setIntermediateDirectoryMode(	c_file_settings_controller,
-																	StringValuePtr( rb_mode ) );
+																															c_mode );
 
 		return rb_file_settings_controller;
 	}
@@ -501,6 +511,12 @@ VALUE rb_RPDB_FileSettingsController_fileCreationMode( VALUE	rb_file_settings_co
 
 	VALUE rb_RPDB_FileSettingsController_setFileCreationMode(	VALUE	rb_file_settings_controller,
 	 															VALUE	rb_mode	)	{
+
+		VALUE	rb_parent_environment	=	rb_RPDB_FileSettingsController_parentEnvironment( rb_file_settings_controller );
+		if (		rb_parent_environment != Qnil
+				&&	rb_RPDB_Environment_isOpen( rb_parent_environment ) == Qtrue )	{
+			rb_raise( rb_eRuntimeError, "File creation mode can only be set before environment is opened." );	
+		}
 
 		RPDB_FileSettingsController*	c_file_settings_controller;
 		C_RPDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );

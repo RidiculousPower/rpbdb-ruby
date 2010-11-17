@@ -117,7 +117,9 @@ VALUE rb_RPDB_LockSettingsController_new(	int			argc,
 	RPDB_SettingsController*	c_parent_settings_controller;
 	C_RPDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
-	VALUE	rb_lock_settings_controller	= RUBY_RPDB_LOCK_SETTINGS_CONTROLLER( RPDB_LockSettingsController_new( c_parent_settings_controller ) );
+	RPDB_LockSettingsController*	c_lock_settings_controller	=	RPDB_SettingsController_lockSettingsController( c_parent_settings_controller );
+
+	VALUE	rb_lock_settings_controller	= RUBY_RPDB_LOCK_SETTINGS_CONTROLLER( c_lock_settings_controller );
 
 	rb_iv_set(	rb_lock_settings_controller,
 							RPDB_RB_LOCK_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
@@ -433,6 +435,7 @@ VALUE rb_RPDB_LockSettingsController_timeout( VALUE	rb_lock_settings_controller 
 ********************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_lk_conflicts.html
+//	conflicts[requested_mode][held_mode] 
 VALUE rb_RPDB_LockSettingsController_conflictMatrix( VALUE	rb_lock_settings_controller )	{
 
 	RPDB_LockSettingsController*	c_lock_settings_controller;

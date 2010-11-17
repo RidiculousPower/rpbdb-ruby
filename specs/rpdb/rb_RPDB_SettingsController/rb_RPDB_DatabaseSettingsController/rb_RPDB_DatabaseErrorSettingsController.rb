@@ -95,6 +95,7 @@ describe RPDB::Settings::Database::Error do
 
   # FIX - FILE
   it "can set and return a file for error output by path" do
+    raise "File"
     error_settings  = RPDB::Settings::Database::Error.new
     error_settings.file.should == nil
     error_settings.set_file( '/tmp/file.tmp' )
@@ -102,6 +103,7 @@ describe RPDB::Settings::Database::Error do
   end
 
   it "can set and return a file for error output by file object" do
+    raise "File"
     error_settings  = RPDB::Settings::Database::Error.new
     error_settings.file.should == nil
     file_object = File.open( '/tmp/file.tmp', 'r' )

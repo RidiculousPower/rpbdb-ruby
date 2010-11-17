@@ -55,8 +55,8 @@ void Init_RPDB_MemoryPoolReadWriteSettingsController()	{
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"set_max_sequential_writes",														rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxSequentialWrites,													1 	);
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"time_to_sleep_before_next_write",														rb_RPDB_MemoryPoolReadWriteSettingsController_timeToSleepBeforeNextWrite,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"set_time_to_sleep_before_next_write",														rb_RPDB_MemoryPoolReadWriteSettingsController_setTimeToSleepBeforeNextWrite,													1 	);
-	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"max_mapped_database_size",														rb_RPDB_MemoryPoolReadWriteSettingsController_maxMappedDBSize,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"set_max_mapped_database_size",														rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxMappedDBSize,													1 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"max_mapped_database_size",														rb_RPDB_MemoryPoolReadWriteSettingsController_maxMappedDatabaseSize,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"set_max_mapped_database_size",														rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxMappedDatabaseSize,													1 	);
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"pagefault_shared_regions?",														rb_RPDB_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_pagefault_shared_regions_on",														rb_RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOn,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolReadWriteSettingsController, 				"turn_pagefault_shared_regions_off",														rb_RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOff,													0 	);
@@ -340,26 +340,31 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_timeToSleepBeforeNextWrite( 
 *****************************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_mp_mmapsize.html
-VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_maxMappedDBSize( VALUE	rb_memory_pool_read_write_settings_controller )	{
+VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_maxMappedDatabaseSize( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
 	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-	return INT2FIX( RPDB_MemoryPoolReadWriteSettingsController_maxMappedDBSize( c_memory_pool_record_read_write_settings_controller ) );
+	size_t	c_max_mapped_db_size	=	RPDB_MemoryPoolReadWriteSettingsController_maxMappedDatabaseSize( c_memory_pool_record_read_write_settings_controller );
+	VALUE		rb_max_mapped_db_size	=	LONG2NUM( c_max_mapped_db_size );
+
+	return rb_max_mapped_db_size;
 }
 
 	/*********************************
 	*  set_max_mapped_database_size  *
 	*********************************/
 
-	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxMappedDBSize(	VALUE	rb_memory_pool_read_write_settings_controller, 
-																				VALUE	rb_max_mapped_db_size )	{
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxMappedDatabaseSize(	VALUE	rb_memory_pool_read_write_settings_controller, 
+																																					VALUE	rb_max_mapped_db_size )	{
 
 		RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
 		C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-		RPDB_MemoryPoolReadWriteSettingsController_setMaxMappedDBSize(	c_memory_pool_record_read_write_settings_controller,
-																		FIX2INT( rb_max_mapped_db_size ) );
+		size_t	c_max_mapped_db_size	=	NUM2LONG( rb_max_mapped_db_size );
+
+		RPDB_MemoryPoolReadWriteSettingsController_setMaxMappedDatabaseSize(	c_memory_pool_record_read_write_settings_controller,
+																																					c_max_mapped_db_size );
 
 		return rb_memory_pool_read_write_settings_controller;
 	}
@@ -374,7 +379,10 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions( VALU
 	RPDB_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
 	C_RPDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
-	return INT2FIX( RPDB_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions(	c_memory_pool_record_read_write_settings_controller ) );
+	BOOL	c_pagefault_shared_regions	=	RPDB_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions(	c_memory_pool_record_read_write_settings_controller );
+	VALUE	rb_pagefault_shared_regions	=	( c_pagefault_shared_regions ? Qtrue : Qfalse );
+
+	return rb_pagefault_shared_regions;
 }
 
 	/*************************************

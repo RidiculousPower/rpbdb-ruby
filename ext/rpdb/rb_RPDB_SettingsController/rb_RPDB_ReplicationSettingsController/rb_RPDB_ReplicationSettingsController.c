@@ -87,9 +87,9 @@ void Init_RPDB_ReplicationSettingsController()	{
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"limit",														rb_RPDB_ReplicationSettingsController_limit,													0 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_limit",														rb_RPDB_ReplicationSettingsController_setLimit,													2 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"host",														rb_RPDB_ReplicationSettingsController_host,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_host",														rb_RPDB_ReplicationSettingsController_setHost,													1 	);
+	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_host",														rb_RPDB_ReplicationSettingsController_setHost,													-1 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"port",														rb_RPDB_ReplicationSettingsController_port,													0 	);
-	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_port",														rb_RPDB_ReplicationSettingsController_setPort,													2 	);
+	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_port",														rb_RPDB_ReplicationSettingsController_setPort,													1 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"site_count",														rb_RPDB_ReplicationSettingsController_siteCount,													0 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"set_site_count",														rb_RPDB_ReplicationSettingsController_setSiteCount,													1 	);
 	rb_define_method(			rb_RPDB_ReplicationSettingsController, 				"priority_order_number",														rb_RPDB_ReplicationSettingsController_priorityOrderNumber,													0 	);
@@ -752,13 +752,17 @@ VALUE rb_RPDB_ReplicationSettingsController_limit( VALUE	rb_replication_settings
 	RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 	C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
-	return INT2FIX( RPDB_ReplicationSettingsController_limit( c_replication_settings_controller ) );
+	double	c_limit		=	RPDB_ReplicationSettingsController_limit( c_replication_settings_controller );
+	VALUE		rb_limit	=	LONG2NUM( c_limit );
+
+	return rb_limit;
 }
 
 	/**************
 	*  set_limit  *
 	**************/
 
+	//	FIX - modify to follow pattern of other numeric setters
 	VALUE rb_RPDB_ReplicationSettingsController_setLimit(	VALUE	rb_replication_settings_controller, 
 																												VALUE	rb_limit_in_gbytes, 
 																												VALUE	rb_limit_in_bytes )	{
@@ -772,8 +776,8 @@ VALUE rb_RPDB_ReplicationSettingsController_limit( VALUE	rb_replication_settings
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
-		int		c_limit_in_gbytes	=	FIX2INT( rb_limit_in_gbytes );
-		int		c_limit_in_bytes	=	FIX2INT( rb_limit_in_bytes );
+		uint64_t		c_limit_in_gbytes	=	NUM2LONG( rb_limit_in_gbytes );
+		uint64_t		c_limit_in_bytes	=	NUM2LONG( rb_limit_in_bytes );
 
 		RPDB_ReplicationSettingsController_setLimit(	c_replication_settings_controller,
 																									c_limit_in_gbytes,
@@ -800,14 +804,31 @@ VALUE rb_RPDB_ReplicationSettingsController_host( VALUE	rb_replication_settings_
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/repmgr_local_site.html
 	//	specifies the host identification string and port number for the local system.
-	VALUE rb_RPDB_ReplicationSettingsController_setHost(	VALUE	rb_replication_settings_controller, 
-															VALUE 	rb_host )	{
+	VALUE rb_RPDB_ReplicationSettingsController_setHost(	int			argc,
+																												VALUE*	args,
+																												VALUE		rb_replication_settings_controller )	{
+
+		VALUE	rb_host	=	Qnil;
+		VALUE	rb_port	=	Qnil;
+		R_DefineAndParse( argc, args, rb_replication_settings_controller,
+			R_DescribeParameterSet(
+				R_ParameterSet(
+					R_Parameter(					R_MatchString( rb_host ) ),
+					R_OptionalParameter(	R_MatchFixNum( rb_port ) )
+				),
+				1,
+				"<host>",
+				"<host>, [<port>]"
+			)
+		);
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
+		char*	c_host	=	StringValuePtr( rb_host );
+
 		RPDB_ReplicationSettingsController_setHost(	c_replication_settings_controller,
-		 												StringValuePtr( rb_host ) );
+																								c_host );
 
 		return rb_replication_settings_controller;
 	}
@@ -821,25 +842,29 @@ VALUE rb_RPDB_ReplicationSettingsController_port( VALUE	rb_replication_settings_
 	RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 	C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
-	return INT2FIX( RPDB_ReplicationSettingsController_port( c_replication_settings_controller ) );
+	int		c_port	=	RPDB_ReplicationSettingsController_port( c_replication_settings_controller );
+	VALUE	rb_port	=	INT2FIX( c_port );
+
+	return rb_port;
 }
 
 	/*************
 	*  set_port  *
 	*************/
 
-	VALUE rb_RPDB_ReplicationSettingsController_setPort(	VALUE	rb_replication_settings_controller,
-																												VALUE	rb_host, 
-																												VALUE	rb_port )	{
+	VALUE rb_RPDB_ReplicationSettingsController_setPort(	VALUE		rb_replication_settings_controller,
+																												VALUE		rb_port )	{
+
+		if ( TYPE( rb_port ) != T_FIXNUM )	{
+			rb_raise( rb_eArgError, "Port must be specified as numeric." );
+		}
 
 		RPDB_ReplicationSettingsController*	c_replication_settings_controller;
 		C_RPDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		int		c_port	=	FIX2INT( rb_port );
-		char*	c_host	=	StringValuePtr( rb_host );
 
 		RPDB_ReplicationSettingsController_setPort(	c_replication_settings_controller,
-																								c_host,
 																								c_port );
 
 		return rb_replication_settings_controller;

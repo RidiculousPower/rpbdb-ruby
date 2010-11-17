@@ -91,22 +91,23 @@ describe RPDB::Settings::MemoryPool::File do
     memory_pool_file_settings.max_size_in_bytes.should == 12
 
     memory_pool_file_settings.set_max_size_in_kbytes( 42 )
-    memory_pool_file_settings.max_size_in_kbytes.should == 42 * 1024
+    memory_pool_file_settings.max_size_in_kbytes.should == 42
 
     memory_pool_file_settings.set_max_size_in_mbytes( 37 )
-    memory_pool_file_settings.max_size_in_mbytes.should == 37 * ( 1024 * 1024 )
+    memory_pool_file_settings.max_size_in_mbytes.should == 37
 
     memory_pool_file_settings.set_max_size_in_gbytes( 420 )
-    memory_pool_file_settings.max_size_in_gbytes.should == 420 * ( 1024 * 1024 * 1024 )
+    memory_pool_file_settings.max_size_in_gbytes.should == 420
 
-    memory_pool_file_settings.set_max_size_in_gbytes_mbytes_kbytes_bytes( 420, 37, 42, 12 )
-    memory_pool_file_settings.max_size_in_bytes.should == 420 * ( 1024 * 1024 * 1024 ) + 37 * ( 1024 * 1024 ) + 42 * 1024 + 12
-
-    memory_pool_file_settings.set_max_size_in_mbytes_kbytes_bytes( 37, 42, 12 )
-    memory_pool_file_settings.max_size_in_bytes.should == 37 * ( 1024 * 1024 )
-
-    memory_pool_file_settings.set_max_size_in_kbytes_bytes( 42, 12 )
-    memory_pool_file_settings.max_size_in_bytes.should == 42 * 1024 + 12
+    # FIX - implement
+#    memory_pool_file_settings.set_max_size_in_gbytes_mbytes_kbytes_bytes( 420, 37, 42, 12 )
+#    memory_pool_file_settings.max_size_in_bytes.should == 420 * ( 1024 * 1024 * 1024 ) + 37 * ( 1024 * 1024 ) + 42 * 1024 + 12
+#
+#    memory_pool_file_settings.set_max_size_in_mbytes_kbytes_bytes( 37, 42, 12 )
+#    memory_pool_file_settings.max_size_in_bytes.should == 37 * ( 1024 * 1024 )
+#
+#    memory_pool_file_settings.set_max_size_in_kbytes_bytes( 42, 12 )
+#    memory_pool_file_settings.max_size_in_bytes.should == 42 * 1024 + 12
     
   end
 
@@ -126,10 +127,16 @@ describe RPDB::Settings::MemoryPool::File do
   #  file_id      #
   #################
 
-  it "can set and return its file id" do
+  it "can set and return its file id, which is a 20-byte string" do
     memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
-    memory_pool_file_settings.set_file_id( 42 )
-    memory_pool_file_settings.file_id.should == 42
+    memory_pool_file_settings.set_file_id( "42000000000000000000" )
+    memory_pool_file_settings.file_id.should == "42000000000000000000"
+  end
+
+  it "can set and return its file id, which can be anything shorter than a 20-byte string and will be padded with '.'" do
+    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
+    memory_pool_file_settings.set_file_id( "42" )
+    memory_pool_file_settings.file_id.should == "42"
   end
 
   ###################
@@ -137,7 +144,9 @@ describe RPDB::Settings::MemoryPool::File do
   #  file_type      #
   ###################
 
+  # FIX - FILE
   it "can set and return its file type" do
+    raise "File"
     memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
     memory_pool_file_settings.set_file_type( 'txt' )
     memory_pool_file_settings.file_type.should == 'txt'
@@ -159,10 +168,10 @@ describe RPDB::Settings::MemoryPool::File do
   #  cookie      #
   ################
 
-  it "can set and return its cookie" do
+  it "can set and return its cookie (a byte string)" do
     memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
-    memory_pool_file_settings.set_cookie( 42 )
-    memory_pool_file_settings.cookie.should == 42
+    memory_pool_file_settings.set_cookie( "42" )
+    memory_pool_file_settings.cookie.should == "42"
   end
 
   ###############################

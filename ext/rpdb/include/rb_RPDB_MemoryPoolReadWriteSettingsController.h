@@ -24,8 +24,8 @@ VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_parentMemoryPoolSettingsCont
 	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_timeToSleepBeforeNextWrite( VALUE	rb_memory_pool_record_read_write_settings_controller );
 		VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_setTimeToSleepBeforeNextWrite(	VALUE	rb_memory_pool_record_read_write_settings_controller, 
 																							VALUE	rb_time_to_sleep_before_next_write );
-	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_maxMappedDBSize( VALUE	rb_memory_pool_record_read_write_settings_controller );
-		VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxMappedDBSize(	VALUE	rb_memory_pool_record_read_write_settings_controller, 
+	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_maxMappedDatabaseSize( VALUE	rb_memory_pool_record_read_write_settings_controller );
+		VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_setMaxMappedDatabaseSize(	VALUE	rb_memory_pool_record_read_write_settings_controller, 
 																					VALUE	rb_max_mapped_db_size );
 	VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions( VALUE	rb_memory_pool_record_read_write_settings_controller );
 		VALUE rb_RPDB_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOn( VALUE	rb_memory_pool_record_read_write_settings_controller );

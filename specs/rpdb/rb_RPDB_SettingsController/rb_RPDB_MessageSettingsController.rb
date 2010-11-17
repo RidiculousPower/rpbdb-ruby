@@ -62,7 +62,9 @@ describe RPDB::Settings::Message do
   #  file      #
   ##############
 
+  # FIX - FILE
   it "can set and return its message file" do
+    raise "File"
     message_settings  = RPDB::Settings::Message.new
     message_settings.set_file( '/tmp/file.tmp' )
     message_settings.file.should == '/tmp/file.tmp'

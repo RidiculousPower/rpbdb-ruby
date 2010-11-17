@@ -50,12 +50,12 @@ VALUE rb_RPDB_ReplicationSettingsController_parentSettingsController(	VALUE	rb_r
 																VALUE	rb_limit_in_gbytes, 
 																VALUE	rb_limit_in_bytes );
 	VALUE rb_RPDB_ReplicationSettingsController_host( VALUE	rb_replication_settings_controller );
-		VALUE rb_RPDB_ReplicationSettingsController_setHost(	VALUE	rb_replication_settings_controller, 
-																VALUE 	rb_host );
+		VALUE rb_RPDB_ReplicationSettingsController_setHost(	int			argc,
+																												VALUE*	args,
+																												VALUE		rb_replication_settings_controller );
 	VALUE rb_RPDB_ReplicationSettingsController_port( VALUE	rb_replication_settings_controller );
-		VALUE rb_RPDB_ReplicationSettingsController_setPort(	VALUE	rb_replication_settings_controller,
-																VALUE	rb_host, 
-																VALUE	rb_port );
+		VALUE rb_RPDB_ReplicationSettingsController_setPort(	VALUE		rb_replication_settings_controller,
+																												VALUE		rb_port );
 	VALUE rb_RPDB_ReplicationSettingsController_siteCount( VALUE	rb_replication_settings_controller );
 		VALUE rb_RPDB_ReplicationSettingsController_setSiteCount(	VALUE	rb_replication_settings_controller, 
 																	VALUE	rb_site_count );

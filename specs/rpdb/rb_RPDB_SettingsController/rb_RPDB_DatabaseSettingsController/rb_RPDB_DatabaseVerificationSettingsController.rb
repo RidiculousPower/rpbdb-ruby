@@ -93,6 +93,7 @@ describe RPDB::Settings::Database::Verification do
 
   # FIX - FILE
   it "can set its verification file" do
+    raise "File"
     verification_settings = RPDB::Settings::Database::Verification.new
     verification_settings.set_file( '/tmp/file.tmp' )
     verification_settings.file.should == '/tmp/file.tmp'

@@ -76,6 +76,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   ####################
 
   it "can be set to default settings and report whether it is currently set to default" do
+    raise "Lock priority"
     deadlock_detector_settings  = RPDB::Settings::Lock::DeadlockDetector.new
     deadlock_detector_settings.set_to_default
     deadlock_detector_settings.is_default?.should == true
@@ -87,6 +88,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   ###########################
 
   it "can be set to reject expired locks and report whether it is currently set to reject all expired locks" do
+    raise "Lock priority"
     deadlock_detector_settings  = RPDB::Settings::Lock::DeadlockDetector.new
     deadlock_detector_settings.set_to_reject_expired
     deadlock_detector_settings.reject_expired?.should == true
@@ -98,6 +100,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   ##########################################
 
   it "can be set to reject locker with most locks and report whether it is currently set to reject locker with most locks locks" do
+    raise "Lock priority"
     deadlock_detector_settings  = RPDB::Settings::Lock::DeadlockDetector.new
     deadlock_detector_settings.set_to_reject_locker_with_most_locks
     deadlock_detector_settings.reject_locker_with_most_locks?.should == true
@@ -109,6 +112,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   ################################################
 
   it "can be set to reject locker with most write locks and report whether it is currently set to reject locker with most write locks locks" do
+    raise "Lock priority"
     deadlock_detector_settings  = RPDB::Settings::Lock::DeadlockDetector.new
     deadlock_detector_settings.set_to_reject_locker_with_most_write_locks
     deadlock_detector_settings.reject_locker_with_most_write_locks?.should == true
@@ -120,6 +124,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   ############################################
 
   it "can be set to reject locker with fewest locks and report whether it is currently set to reject locker with fewest locks" do
+    raise "Lock priority"
     deadlock_detector_settings  = RPDB::Settings::Lock::DeadlockDetector.new
     deadlock_detector_settings.set_to_reject_locker_with_fewest_locks
     deadlock_detector_settings.reject_locker_with_fewest_locks?.should == true
@@ -131,6 +136,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   ##################################################
 
   it "can be set to reject locker with fewest write locks and report whether it is currently set to reject locker with fewest locks" do
+    raise "Lock priority"
     deadlock_detector_settings  = RPDB::Settings::Lock::DeadlockDetector.new
     deadlock_detector_settings.set_to_reject_locker_with_fewest_write_locks
     deadlock_detector_settings.reject_locker_with_fewest_write_locks?.should == true
@@ -142,6 +148,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   ###########################################
 
   it "can be set to reject locker with oldest lock and report whether it is currently set to reject locker with oldest lock" do
+    raise "Lock priority"
     deadlock_detector_settings  = RPDB::Settings::Lock::DeadlockDetector.new
     deadlock_detector_settings.set_to_reject_locker_with_oldest_lock
     deadlock_detector_settings.reject_locker_with_oldest_lock?.should == true
@@ -153,6 +160,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   #############################################
 
   it "can be set to reject locker with youngest lock and report whether it is currently set to reject locker with youngest lock" do
+    raise "Lock priority"
     deadlock_detector_settings  = RPDB::Settings::Lock::DeadlockDetector.new
     deadlock_detector_settings.set_to_reject_locker_with_youngest_lock
     deadlock_detector_settings.reject_locker_with_youngest_lock?.should == true
@@ -164,6 +172,7 @@ describe RPDB::Settings::Lock::DeadlockDetector do
   ###############################
 
   it "can be set to reject random lock and report whether it is currently set to reject random lock" do
+    raise "Lock priority"
     deadlock_detector_settings  = RPDB::Settings::Lock::DeadlockDetector.new
     deadlock_detector_settings.set_to_reject_random_lock
     deadlock_detector_settings.reject_random_lock?.should == true

@@ -229,8 +229,8 @@ describe RPDB::Settings::Replication do
 
   it "can set its limit" do
     replication_settings  = RPDB::Settings::Replication.new( @environment )
-    replication_settings.set_limit( 42 )
-    replication_settings.limit.should == 42
+    replication_settings.set_limit( 42, 0 )
+    replication_settings.limit.should == 42 * ( 1024 * 1024 * 1024 )
   end
 
   ##############

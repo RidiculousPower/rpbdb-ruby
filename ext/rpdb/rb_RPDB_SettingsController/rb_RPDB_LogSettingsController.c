@@ -252,7 +252,7 @@ VALUE rb_RPDB_LogSettingsController_disableSystemBuffering( VALUE	rb_log_setting
 	C_RPDB_LOG_SETTINGS_CONTROLLER( rb_log_settings_controller, c_log_settings_controller );
 
 	return ( RPDB_LogSettingsController_disableSystemBuffering( c_log_settings_controller )	?	Qtrue
-																				:	Qfalse );
+																																													:	Qfalse );
 }
 
 	/*************************************

@@ -84,8 +84,8 @@ describe RPDB::Settings::Log do
   #######################################
 
   it "can turn system buffering on and off" do
-    @environment.open
-    log_settings  = RPDB::Settings::Log.new
+    raise "Log config (log_get_config always returning 0)"
+    log_settings  = RPDB::Settings::Log.new( @environment )
     log_settings.disable_system_buffering?.should == false
     log_settings.turn_disable_system_buffering_on
     log_settings.disable_system_buffering?.should == true
@@ -132,6 +132,7 @@ describe RPDB::Settings::Log do
   ############################
 
   it "can be set to log in memory rather than on disk" do
+    raise "Log config (log_get_config always returning 0)"
     log_settings  = RPDB::Settings::Log.new( @environment )
     log_settings.log_in_memory?.should == false
     log_settings.turn_log_in_memory_on
@@ -178,8 +179,7 @@ describe RPDB::Settings::Log do
   #####################
 
   it "can set and return its buffer size" do
-    @environment.open
-    log_settings  = RPDB::Settings::Log.new
+    log_settings  = RPDB::Settings::Log.new( @environment )
     log_settings.set_buffer_size( 42 )
     log_settings.buffer_size.should == 42
   end
@@ -226,8 +226,7 @@ describe RPDB::Settings::Log do
   #########################
 
   it "can set and return its maximum region size" do
-    @environment.open
-    log_settings  = RPDB::Settings::Log.new
+    log_settings  = RPDB::Settings::Log.new( @environment )
     log_settings.set_max_region_size( 42 )
     log_settings.max_region_size.should == 42
   end

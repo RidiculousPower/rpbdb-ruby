@@ -12,9 +12,6 @@ describe RPDB::Settings::Lock do
   
   before( :each ) do
     @environment = RPDB::Environment.new( $environment_path )
-    @environment.open
-    @database_controller = @environment.database_controller
-
   end
 
   after( :each ) do
@@ -28,16 +25,19 @@ describe RPDB::Settings::Lock do
 
   # RPDB::Settings::Lock.new( environment )
   it "can be created with an environment" do
+    @environment.open
     RPDB::Settings::Lock.new( @environment ).should_not == nil
   end
 
   # RPDB::Settings::Lock.new( settings_controller )
   it "can be created with a settings controller" do
+    @environment.open
     RPDB::Settings::Lock.new( RPDB::Settings.new ).should_not == nil
   end
 
   # RPDB::Settings::Lock.new
   it "can be created with no argument specified" do
+    @environment.open
     RPDB::Settings::Lock.new.should_not == nil
   end
 
@@ -46,6 +46,7 @@ describe RPDB::Settings::Lock do
   ########################
 
   it "can return its parent environment" do
+    @environment.open
     RPDB::Settings::Lock.new.parent_environment.should_not == nil
   end
 
@@ -54,6 +55,7 @@ describe RPDB::Settings::Lock do
   ################################
 
   it "can return its parent settings controller" do
+    @environment.open
     RPDB::Settings::Lock.new.parent_settings_controller.should_not == nil
   end
 
@@ -65,6 +67,7 @@ describe RPDB::Settings::Lock do
   ##############
 
   it "can be turned on and off and report whether it is on or off" do
+    @environment.open
     lock_settings  = RPDB::Settings::Lock.new
     lock_settings.on?.should == true
     lock_settings.turn_off
@@ -81,6 +84,7 @@ describe RPDB::Settings::Lock do
   ###############################
 
   it "can prohibit locking" do
+    @environment.open
     lock_settings  = RPDB::Settings::Lock.new
     lock_settings.prohibit_locking?.should == false
     lock_settings.turn_prohibit_locking_on
@@ -96,6 +100,7 @@ describe RPDB::Settings::Lock do
   #######################################################
 
   it "can return deny rather than deadlock on timeout" do
+    @environment.open
     lock_settings  = RPDB::Settings::Lock.new
     lock_settings.timeout_returns_deny_not_deadlock?.should == false
     lock_settings.turn_timeout_returns_deny_not_deadlock_on
@@ -111,6 +116,7 @@ describe RPDB::Settings::Lock do
   #######################################
 
   it "can be set to wait on deadlock" do
+    @environment.open
     lock_settings  = RPDB::Settings::Lock.new
     lock_settings.no_waiting_for_conflicts?.should == false
     lock_settings.turn_no_waiting_for_conflicts_on
@@ -126,6 +132,7 @@ describe RPDB::Settings::Lock do
   ################################################
 
   it "can lock for environment rather than for database" do
+    @environment.open
     lock_settings  = RPDB::Settings::Lock.new
     lock_settings.lock_for_environment_not_database?.should == false
     lock_settings.turn_lock_for_environment_not_database_on
@@ -140,6 +147,7 @@ describe RPDB::Settings::Lock do
   #################
 
   it "can set and return its deadlock timeout" do
+    @environment.open
     lock_settings  = RPDB::Settings::Lock.new
     lock_settings.set_timeout( 42 )
     lock_settings.timeout.should == 42
@@ -151,6 +159,8 @@ describe RPDB::Settings::Lock do
   #########################
 
   it "can set and return its conflict matrix" do
+    raise "Lock"
+    @environment.open
     lock_settings  = RPDB::Settings::Lock.new
     lock_settings.set_conflict_matrix( 42 )
     lock_settings.conflict_matrix.should == 42
@@ -162,7 +172,7 @@ describe RPDB::Settings::Lock do
   #####################
 
   it "can set and return its maximum locker limit" do
-    lock_settings  = RPDB::Settings::Lock.new
+    lock_settings  = RPDB::Settings::Lock.new( @environment )
     lock_settings.set_max_lockers( 42 )
     lock_settings.max_lockers.should == 42
   end
@@ -173,7 +183,7 @@ describe RPDB::Settings::Lock do
   ###################
 
   it "can set and return it maximum lock limit" do
-    lock_settings  = RPDB::Settings::Lock.new
+    lock_settings  = RPDB::Settings::Lock.new( @environment )
     lock_settings.set_max_locks( 42 )
     lock_settings.max_locks.should == 42
   end
@@ -184,7 +194,7 @@ describe RPDB::Settings::Lock do
   #####################
 
   it "can set and return its maximum object limit" do
-    lock_settings  = RPDB::Settings::Lock.new
+    lock_settings  = RPDB::Settings::Lock.new( @environment )
     lock_settings.set_max_objects( 42 )
     lock_settings.max_objects.should == 42
   end
@@ -195,7 +205,7 @@ describe RPDB::Settings::Lock do
   ##############################
 
   it "can set and return its number of partitions" do
-    lock_settings  = RPDB::Settings::Lock.new
+    lock_settings  = RPDB::Settings::Lock.new( @environment )
     lock_settings.set_number_of_partitions( 42 )
     lock_settings.number_of_partitions.should == 42
   end
@@ -205,6 +215,7 @@ describe RPDB::Settings::Lock do
   ###########################################
 
   it "can return its deadlock detector settings controller" do
+    @environment.open
     RPDB::Settings::Lock.new.deadlock_detector_settings_controller.is_a?( RPDB::Settings::Lock::DeadlockDetector ).should == true
   end
 

@@ -723,6 +723,11 @@
 																										RPDB_Record_dataSize( c_record ) )														\
 																									: Qnil )
 
+	#define RUBY_STRING_FOR_RPDB_DATA( c_data )																													\
+		( ( RPDB_Data_rawData( c_data ) != NULL ) ? rb_str_new(	(char*) RPDB_Data_rawData( c_data ),					\
+																										RPDB_Data_size( c_data ) )														\
+																									: Qnil )
+
 	#define RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RPDB_RECORD( rb_key, rb_data, c_record )																\
 		rb_key	= RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record );																											\
 		rb_data	= RUBY_STRING_FOR_DATA_IN_RPDB_RECORD( c_record );		

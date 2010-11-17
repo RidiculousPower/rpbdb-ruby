@@ -73,6 +73,7 @@ describe RPDB::Settings::Directory do
 
   # FIX - FILE
   it "can add a data directory to the data directories array" do
+    raise "File"
     directory_settings  = RPDB::Settings::Directory.new
     directory_settings.add_data_directory( '/tmp' )
     directory_settings.data_directories.include?( '/tmp' ).should == true

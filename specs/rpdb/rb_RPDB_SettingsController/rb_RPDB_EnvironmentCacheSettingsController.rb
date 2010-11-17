@@ -12,9 +12,6 @@ describe RPDB::Settings::Cache do
   
   before( :each ) do
     @environment = RPDB::Environment.new( $environment_path )
-    @environment.open
-    @database_controller = @environment.database_controller
-
   end
 
   after( :each ) do
@@ -28,16 +25,19 @@ describe RPDB::Settings::Cache do
 
   # RPDB::Settings::Cache.new( environment )
   it "can be created with an environment" do
+    @environment.open
     RPDB::Settings::Cache.new( @environment ).should_not == nil
   end
 
   # RPDB::Settings::Cache.new( settings_controller )
   it "can be created with a settings controller" do
+    @environment.open
     RPDB::Settings::Cache.new( RPDB::Settings.new ).should_not == nil
   end
 
   # RPDB::Settings::Cache.new
   it "can be created with no argument specified" do
+    @environment.open
     RPDB::Settings::Cache.new.should_not == nil
   end
 
@@ -46,6 +46,7 @@ describe RPDB::Settings::Cache do
   ########################
 
   it "can return its parent environment" do
+    @environment.open
     RPDB::Settings::Cache.new.parent_environment.should_not == nil
   end
 
@@ -54,6 +55,7 @@ describe RPDB::Settings::Cache do
   ################################
 
   it "can return its parent settings controller" do
+    @environment.open
     RPDB::Settings::Cache.new.parent_settings_controller.should_not == nil
   end
 
@@ -64,6 +66,7 @@ describe RPDB::Settings::Cache do
   ########################
 
   it "can turn buffering on and off" do
+    @environment.open
     cache_settings  = RPDB::Settings::Cache.new
     cache_settings.buffering?.should == false
     cache_settings.turn_buffering_on
@@ -87,28 +90,20 @@ describe RPDB::Settings::Cache do
   ################################################
 
   it "can set its cache size according to various measures" do
-    cache_settings = RPDB::Settings::Cache.new
 
-    cache_settings.set_max_size_in_bytes( 12 )
-    cache_settings.max_size_in_bytes.should == 12
-
-    cache_settings.set_max_size_in_kbytes( 42 )
-    cache_settings.max_size_in_kbytes.should == 42 * 1024
-
-    cache_settings.set_max_size_in_mbytes( 37 )
-    cache_settings.max_size_in_mbytes.should == 37 * ( 1024 * 1024 )
+    cache_settings = RPDB::Settings::Cache.new( @environment )
 
     cache_settings.set_max_size_in_gbytes( 420 )
-    cache_settings.max_size_in_gbytes.should == 420 * ( 1024 * 1024 * 1024 )
+    cache_settings.max_size_in_gbytes.should == 420
 
     cache_settings.set_max_size_in_gbytes_mbytes_kbytes_bytes( 420, 37, 42, 12 )
-    cache_settings.max_size_in_bytes.should == 420 * ( 1024 * 1024 * 1024 ) + 37 * ( 1024 * 1024 ) + 42 * 1024 + 12
+    cache_settings.max_size_in_bytes.should == ( 420 * ( 1024 * 1024 * 1024 ) ) + ( 37 * ( 1024 * 1024 ) ) + ( 42 * 1024 ) + 12
 
     cache_settings.set_max_size_in_mbytes_kbytes_bytes( 37, 42, 12 )
-    cache_settings.max_size_in_bytes.should == 37 * ( 1024 * 1024 )
+    cache_settings.max_size_in_bytes.should == ( 37 * ( 1024 * 1024 ) ) + ( 42 * 1024 ) + 12
 
     cache_settings.set_max_size_in_kbytes_bytes( 42, 12 )
-    cache_settings.max_size_in_bytes.should == 42 * 1024 + 12
+    cache_settings.max_size_in_bytes.should == ( 42 * 1024 ) + 12
     
   end
 

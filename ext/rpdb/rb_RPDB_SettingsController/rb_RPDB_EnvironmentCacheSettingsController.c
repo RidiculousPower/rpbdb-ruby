@@ -201,7 +201,10 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInBytes( VALUE	rb_enviro
 	RPDB_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
 	C_RPDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
-	return INT2NUM( RPDB_EnvironmentCacheSettingsController_maxSizeInBytes( c_environment_cache_settings_controller ) );
+	uint64_t	c_max_size_in_bytes		=	RPDB_EnvironmentCacheSettingsController_maxSizeInBytes( c_environment_cache_settings_controller );
+	VALUE			rb_max_size_in_bytes	= ULL2NUM( c_max_size_in_bytes );
+
+	return rb_max_size_in_bytes;
 }
 
 /***********************
@@ -214,7 +217,10 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInKBytes( VALUE	rb_envir
 	RPDB_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
 	C_RPDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
-	return INT2NUM( RPDB_EnvironmentCacheSettingsController_maxSizeInKBytes( c_environment_cache_settings_controller ) );
+	uint32_t	c_max_size_in_kbytes		=	RPDB_EnvironmentCacheSettingsController_maxSizeInKBytes( c_environment_cache_settings_controller );
+	VALUE			rb_max_size_in_kbytes	= LONG2NUM( c_max_size_in_kbytes );
+
+	return rb_max_size_in_kbytes;
 }
 
 /***********************
@@ -227,7 +233,10 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInMBytes( VALUE	rb_envir
 	RPDB_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
 	C_RPDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
-	return INT2NUM( RPDB_EnvironmentCacheSettingsController_maxSizeInMBytes( c_environment_cache_settings_controller ) );
+	uint32_t	c_max_size_in_mbytes		=	RPDB_EnvironmentCacheSettingsController_maxSizeInMBytes( c_environment_cache_settings_controller );
+	VALUE			rb_max_size_in_mbytes		= LONG2NUM( c_max_size_in_mbytes );
+
+	return rb_max_size_in_mbytes;
 }
 
 /***********************
@@ -240,7 +249,10 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 	RPDB_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
 	C_RPDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
-	return INT2NUM( RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( c_environment_cache_settings_controller ) );
+	uint32_t	c_max_size_in_gbytes		=	RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( c_environment_cache_settings_controller );
+	VALUE			rb_max_size_in_gbytes		= LONG2NUM( c_max_size_in_gbytes );
+
+	return rb_max_size_in_gbytes;
 }
 
 	/**************************
@@ -255,7 +267,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 		C_RPDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 		RPDB_EnvironmentCacheSettingsController_setMaxSizeInBytes(	c_environment_cache_settings_controller,
-		 															NUM2LONG( rb_max_size_in_bytes ) );
+																																NUM2LONG( rb_max_size_in_bytes ) );
 
 		return rb_environment_cache_settings_controller;
 	}
@@ -272,7 +284,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 		C_RPDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 		RPDB_EnvironmentCacheSettingsController_setMaxSizeInKBytes(	c_environment_cache_settings_controller,
-		 																NUM2LONG( rb_max_size_kbytes ) );
+																																NUM2LONG( rb_max_size_kbytes ) );
 
 		return rb_environment_cache_settings_controller;
 	}
@@ -289,7 +301,7 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 		C_RPDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 		RPDB_EnvironmentCacheSettingsController_setMaxSizeInMBytes(	c_environment_cache_settings_controller,
-																		NUM2LONG( rb_max_size_mbytes ) );
+																																NUM2LONG( rb_max_size_mbytes ) );
 
 		return rb_environment_cache_settings_controller;
 	}
@@ -300,13 +312,13 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
 	VALUE rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInGBytes(	VALUE	rb_environment_cache_settings_controller, 
-																			VALUE	rb_max_size_gbytes )	{
+																																				VALUE	rb_max_size_gbytes )	{
 
 		RPDB_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
 		C_RPDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 		RPDB_EnvironmentCacheSettingsController_setMaxSizeInGBytes(	c_environment_cache_settings_controller,
-																		FIX2INT( rb_max_size_gbytes ) );
+																																FIX2INT( rb_max_size_gbytes ) );
 
 		return rb_environment_cache_settings_controller;
 	}
@@ -325,11 +337,16 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 		RPDB_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
 		C_RPDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
+		uint32_t	c_max_size_in_gbytes	=	NUM2LONG( rb_max_size_gbytes );
+		uint32_t	c_max_size_in_mbytes	=	NUM2LONG( rb_additional_max_size_mbytes );
+		uint32_t	c_max_size_in_kbytes	=	NUM2LONG( rb_additional_max_size_kbytes );
+		uint32_t	c_max_size_in_bytes		=	NUM2LONG( rb_additional_max_size_bytes );
+
 		RPDB_EnvironmentCacheSettingsController_setMaxSizeInGBytesMBytesKBytesBytes(	c_environment_cache_settings_controller,
-																						FIX2INT( rb_max_size_gbytes ),
-																						FIX2INT( rb_additional_max_size_mbytes ),
-																						FIX2INT( rb_additional_max_size_kbytes ),
-																						FIX2INT( rb_additional_max_size_bytes ) );
+																																									c_max_size_in_gbytes,
+																																									c_max_size_in_mbytes,
+																																									c_max_size_in_kbytes,
+																																									c_max_size_in_bytes );
 
 		return rb_environment_cache_settings_controller;
 	}
@@ -340,17 +357,21 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 
 	//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_cache_max.html
 	VALUE rb_RPDB_EnvironmentCacheSettingsController_setMaxSizeInMBytesKBytesBytes(	VALUE	rb_environment_cache_settings_controller, 
-																						VALUE	rb_max_size_mbytes, 
-																						VALUE	rb_additional_max_size_kbytes, 
-																						VALUE	rb_additional_max_size_bytes )	{
+																																									VALUE	rb_max_size_mbytes, 
+																																									VALUE	rb_additional_max_size_kbytes, 
+																																									VALUE	rb_additional_max_size_bytes )	{
 
 		RPDB_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
 		C_RPDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
+		uint32_t	c_max_size_in_mbytes	=	NUM2ULONG( rb_max_size_mbytes );
+		uint32_t	c_max_size_in_kbytes	=	NUM2ULONG( rb_additional_max_size_kbytes );
+		uint32_t	c_max_size_in_bytes		=	NUM2ULONG( rb_additional_max_size_bytes );
+
 		RPDB_EnvironmentCacheSettingsController_setMaxSizeInMBytesKBytesBytes(	c_environment_cache_settings_controller,
-																				FIX2INT( rb_max_size_mbytes ),
-																				FIX2INT( rb_additional_max_size_kbytes ),
-																				FIX2INT( rb_additional_max_size_bytes ) );
+																																						c_max_size_in_mbytes,
+																																						c_max_size_in_kbytes,
+																																						c_max_size_in_bytes );
 
 		return rb_environment_cache_settings_controller;
 	}
@@ -368,8 +389,8 @@ VALUE rb_RPDB_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 		C_RPDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 		RPDB_EnvironmentCacheSettingsController_setMaxSizeInKBytesBytes(	c_environment_cache_settings_controller,
-																			FIX2INT( rb_max_size_kbytes ),
-																			FIX2INT( rb_additional_max_size_bytes ));
+																																			FIX2INT( rb_max_size_kbytes ),
+																																			FIX2INT( rb_additional_max_size_bytes ));
 
 		return rb_environment_cache_settings_controller;
 	}

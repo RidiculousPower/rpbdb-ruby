@@ -261,7 +261,10 @@ VALUE rb_RPDB_MutexSettingsController_mutexAlignment( VALUE	rb_mutex_settings_co
 	RPDB_MutexSettingsController*	c_mutex_settings_controller;
 	C_RPDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
-	return INT2FIX( RPDB_MutexSettingsController_mutexAlignment( c_mutex_settings_controller ) );
+	uint32_t	c_mutex_alignment		=	RPDB_MutexSettingsController_mutexAlignment( c_mutex_settings_controller );
+	VALUE			rb_mutex_alignment	=	LONG2NUM( c_mutex_alignment );
+
+	return rb_mutex_alignment;
 }
 
 	/************************
@@ -281,8 +284,10 @@ VALUE rb_RPDB_MutexSettingsController_mutexAlignment( VALUE	rb_mutex_settings_co
 		RPDB_MutexSettingsController*	c_mutex_settings_controller;
 		C_RPDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
+		uint32_t		c_mutex_alignment	=	NUM2LONG( rb_increment_for_adding_mutexes );
+
 		RPDB_MutexSettingsController_setMutexAlignment(	c_mutex_settings_controller,
-																										FIX2INT( rb_increment_for_adding_mutexes ) );
+																										c_mutex_alignment );
 	
 		return rb_mutex_settings_controller;
 	}

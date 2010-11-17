@@ -78,7 +78,7 @@ void Init_RPDB_MemoryPoolFileCachePrioritySettingsController()	{
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"is_at_least_high?",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtLeastHigh,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"is_at_most_high?",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtMostHigh,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"very_high?",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_veryHigh,													0 	);
-	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"set_very_high",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_setVeryHigh,													0 	);
+	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"set_to_very_high",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_setVeryHigh,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"is_at_least_very_high?",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtLeastVeryHigh,													0 	);
 	rb_define_method(			rb_RPDB_MemoryPoolFileCachePrioritySettingsController, 				"is_at_most_very_high?",														rb_RPDB_MemoryPoolFileCachePrioritySettingsController_isAtMostVeryHigh,													0 	);
 
@@ -162,8 +162,8 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_new(	int			argc,
 ***************/
 
 VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_initialize(	int				argc __attribute__ ((unused)),
-																																	VALUE*		args __attribute__ ((unused)),
-																																	VALUE			rb_self )	{
+																																				VALUE*		args __attribute__ ((unused)),
+																																				VALUE			rb_self )	{
 	
 	return rb_self;
 }
@@ -238,8 +238,11 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_currentPriority( VAL
 	RPDB_MemoryPoolFileCachePrioritySettingsController*	c_memory_pool_file_cache_priority_settings_controller;
 	C_RPDB_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_memory_pool_file_cache_priority_settings_controller, c_memory_pool_file_cache_priority_settings_controller );
 
-														//	FIX - constant
-	return INT2FIX( RPDB_MemoryPoolFileCachePrioritySettingsController_currentPriority( c_memory_pool_file_cache_priority_settings_controller ) );
+	int		c_current_priority	=	RPDB_MemoryPoolFileCachePrioritySettingsController_currentPriority( c_memory_pool_file_cache_priority_settings_controller );
+
+	VALUE	rb_current_priority	=	INT2FIX( c_current_priority );
+	
+	return rb_current_priority;
 }
 
 /*************
@@ -252,8 +255,11 @@ VALUE rb_RPDB_MemoryPoolFileCachePrioritySettingsController_veryLow( VALUE	rb_me
 	RPDB_MemoryPoolFileCachePrioritySettingsController*	c_memory_pool_file_cache_priority_settings_controller;
 	C_RPDB_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_memory_pool_file_cache_priority_settings_controller, c_memory_pool_file_cache_priority_settings_controller );
 
-	return ( RPDB_MemoryPoolFileCachePrioritySettingsController_veryLow( c_memory_pool_file_cache_priority_settings_controller )	?	Qtrue
-																																	:	Qfalse );
+	BOOL	c_is_very_low	=	RPDB_MemoryPoolFileCachePrioritySettingsController_veryLow( c_memory_pool_file_cache_priority_settings_controller );
+
+	VALUE	rb_is_very_low	=	( c_is_very_low ? Qtrue : Qfalse );
+
+	return rb_is_very_low;
 }
 
 	/*****************
