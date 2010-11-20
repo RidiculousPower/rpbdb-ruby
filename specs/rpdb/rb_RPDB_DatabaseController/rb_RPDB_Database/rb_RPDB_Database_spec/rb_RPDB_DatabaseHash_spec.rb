@@ -21,4 +21,29 @@ describe RPDB::Database::Hash do
     @environment.close
   end
 
+  ################
+  #  self.new    #
+  #  initialize  #
+  ################
+
+  # RPDB::Database.new( name, environment )
+  it "can be created with a name and a parent environment" do
+    RPDB::Database::Hash.new( $database_name, @environment ).is_a?( RPDB::Database::Hash ).should == true
+  end
+
+  # RPDB::Database.new( name, environment_name ) 
+  it "can be created with a name and a parent environment directory" do
+    RPDB::Database::Hash.new( $database_name, $environment_path ).is_a?( RPDB::Database::Hash ).should == true  
+  end
+
+  # RPDB::Database.new( name, database_controller ) 
+  it "can be created with a name and a parent database controller" do
+    RPDB::Database::Hash.new( $database_name, @database_controller ).is_a?( RPDB::Database::Hash ).should == true
+  end
+
+  # RPDB::Database.new( name )  
+  it "can be created with a name (using the default environment)" do
+    RPDB::Database::Hash.new( $database_name ).is_a?( RPDB::Database::Hash ).should == true
+  end
+
 end

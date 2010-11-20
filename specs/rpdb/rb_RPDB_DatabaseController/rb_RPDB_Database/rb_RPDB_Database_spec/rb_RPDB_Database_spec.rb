@@ -29,37 +29,21 @@ describe RPDB::Database do
   # RPDB::Database.new( name, environment )
   it "can be created with a name and a parent environment" do
     RPDB::Database.new( $database_name, @environment ).is_a?( RPDB::Database ).should == true
-    RPDB::Database::Btree.new( $database_name, @environment ).is_a?( RPDB::Database::Btree ).should == true
-    RPDB::Database::Hash.new( $database_name, @environment ).is_a?( RPDB::Database::Hash ).should == true
-    RPDB::Database::Queue.new( $database_name, @environment ).is_a?( RPDB::Database::Queue ).should == true
-    RPDB::Database::Recno.new( $database_name, @environment ).is_a?( RPDB::Database::Recno ).should == true
   end
 
   # RPDB::Database.new( name, environment_name ) 
   it "can be created with a name and a parent environment directory" do
     RPDB::Database.new( $database_name, $environment_path ).is_a?( RPDB::Database ).should == true  
-    RPDB::Database::Btree.new( $database_name, $environment_path ).is_a?( RPDB::Database::Btree ).should == true  
-    RPDB::Database::Hash.new( $database_name, $environment_path ).is_a?( RPDB::Database::Hash ).should == true  
-    RPDB::Database::Queue.new( $database_name, $environment_path ).is_a?( RPDB::Database::Queue ).should == true  
-    RPDB::Database::Recno.new( $database_name, $environment_path ).is_a?( RPDB::Database::Recno ).should == true  
   end
 
   # RPDB::Database.new( name, database_controller ) 
   it "can be created with a name and a parent database controller" do
     RPDB::Database.new( $database_name, @database_controller ).is_a?( RPDB::Database ).should == true
-    RPDB::Database::Btree.new( $database_name, @database_controller ).is_a?( RPDB::Database::Btree ).should == true
-    RPDB::Database::Hash.new( $database_name, @database_controller ).is_a?( RPDB::Database::Hash ).should == true
-    RPDB::Database::Queue.new( $database_name, @database_controller ).is_a?( RPDB::Database::Queue ).should == true
-    RPDB::Database::Recno.new( $database_name, @database_controller ).is_a?( RPDB::Database::Recno ).should == true
   end
 
   # RPDB::Database.new( name )  
   it "can be created with a name (using the default environment)" do
     RPDB::Database.new( $database_name ).is_a?( RPDB::Database ).should == true
-    RPDB::Database::Btree.new( $database_name ).is_a?( RPDB::Database::Btree ).should == true
-    RPDB::Database::Hash.new( $database_name ).is_a?( RPDB::Database::Hash ).should == true
-    RPDB::Database::Queue.new( $database_name ).is_a?( RPDB::Database::Queue ).should == true
-    RPDB::Database::Recno.new( $database_name ).is_a?( RPDB::Database::Recno ).should == true
   end
 
   #########################
