@@ -1065,7 +1065,7 @@ VALUE rb_RPDB_DatabaseCursor_retrievePreviousNonDuplicate( VALUE	rb_database_cur
 VALUE rb_RPDB_DatabaseCursor_iterate( VALUE		rb_database_cursor	)	{
 		
 	//	If we don't have a block, we return an enumerator
-	RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_database_cursor,
+	R_ReturnEnumeratorIfNoBlock(	rb_database_cursor,
 																	0,
 																	NULL );
 	
@@ -1097,7 +1097,7 @@ VALUE rb_RPDB_DatabaseCursor_iterate( VALUE		rb_database_cursor	)	{
 //	iterates all records with one or more duplicates
 VALUE rb_RPDB_DatabaseCursor_iterateDuplicates(	VALUE		rb_database_cursor )	{
 	
-	RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_database_cursor,
+	R_ReturnEnumeratorIfNoBlock(	rb_database_cursor,
 																	0,
 																	NULL );
 
@@ -1130,7 +1130,7 @@ VALUE rb_RPDB_DatabaseCursor_iterateDuplicates(	VALUE		rb_database_cursor )	{
 //	iterates all keys without iterating duplicate records
 VALUE rb_RPDB_DatabaseCursor_iterateKeys(	VALUE		rb_database_cursor )	{
 
-	RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_database_cursor,
+	R_ReturnEnumeratorIfNoBlock(	rb_database_cursor,
 																	0,
 																	NULL );
 
@@ -1165,7 +1165,7 @@ VALUE rb_RPDB_DatabaseCursor_slice( int			argc,
 																		VALUE		rb_database_cursor	)	{
 		
 	//	If we don't have a block, we return an enumerator
-	RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_database_cursor,
+	R_ReturnEnumeratorIfNoBlock(	rb_database_cursor,
 																	0,
 																	NULL );
 	
@@ -1205,7 +1205,7 @@ VALUE rb_RPDB_DatabaseCursor_sliceDuplicates(	int			argc,
 																							VALUE*	args,
 																							VALUE		rb_database_cursor )	{
 	
-	RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_database_cursor,
+	R_ReturnEnumeratorIfNoBlock(	rb_database_cursor,
 																	0,
 																	NULL );
 
@@ -1246,7 +1246,7 @@ VALUE rb_RPDB_DatabaseCursor_sliceKeys(	int			argc,
 																				VALUE*	args,
 																				VALUE		rb_database_cursor )	{
 
-	RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_database_cursor,
+	R_ReturnEnumeratorIfNoBlock(	rb_database_cursor,
 																	0,
 																	NULL );
 

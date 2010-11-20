@@ -140,8 +140,6 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
-//	FIX - fixed record, variable record should be moved under record controller
-
 VALUE	rb_mRPDB;
 
 VALUE	rb_RPDB_Environment;
@@ -168,6 +166,7 @@ VALUE	rb_RPDB_DatabaseSequence;
 
 	VALUE	rb_RPDB_Error;
 	VALUE	rb_RPDB_ErrorController;
+	VALUE	rb_RPDB_DatabaseJoinContainer;
 	VALUE	rb_RPDB_DatabaseJoinController;
 	VALUE	rb_RPDB_DatabaseJoinCursor;
 	VALUE	rb_RPDB_Lock;

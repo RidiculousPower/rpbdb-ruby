@@ -687,37 +687,6 @@
 	*  Returning  *
 	**************/
 
-	#define SIMPLIFIED_RUBY_ARRAY( rb_return )																																\
-		( rb_return == Qnil ?																																										\
-				Qnil																																																			\
-				: ( TYPE( rb_return ) == T_ARRAY ) ?																																	\
-						( RARRAY_LEN( rb_return ) == 0 ?																																	\
-							Qnil																																																		\
-							: ( RARRAY_LEN( rb_return ) == 1 ?																																\
-								rb_ary_entry( rb_return, 0 )																																		\
-								: rb_return ) )																																								\
-						: rb_return )
-
-	#define SIMPLIFIED_RUBY_HASH( rb_return )																																\
-		( rb_return == Qnil ?																																										\
-				Qnil																																																			\
-				: ( TYPE( rb_return ) == T_HASH ) ?																																	\
-						( RHASH_SIZE( rb_return ) == 0 ?																																	\
-							Qnil																																																		\
-							: ( RHASH_SIZE( rb_return ) == 1 ?																																\
-								rb_funcall( rb_funcall(	rb_return,																													\
-																				rb_intern( "first" ),																											\
-																				0 ),																																	\
-														rb_intern( "last" ),																														\
-														0 )																																							\
-								: rb_return ) )																																								\
-						: rb_return )
-
-	#define RETURN_ENUMERATOR_IF_NO_BLOCK( obj, argc, argv ) \
-		RETURN_ENUMERATOR( obj, argc, argv );
-
-	/*-----------------------------------------------------------------*/
-	
 	#define RUBY_STRING_FOR_KEY_IN_RPDB_RECORD( c_record )																						\
 		( ( RPDB_Record_rawKey( c_record ) != NULL ) ? rb_str_new(	(char*) RPDB_Record_rawKey( c_record ),						\
 																										RPDB_Record_keySize( c_record ) )															\

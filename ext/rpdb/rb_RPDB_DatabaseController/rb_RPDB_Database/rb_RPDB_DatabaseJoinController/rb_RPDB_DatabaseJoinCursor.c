@@ -41,10 +41,11 @@ extern	VALUE	rb_RPDB_Key;
 extern	VALUE	rb_RPDB_DatabaseJoinController;
 extern	VALUE	rb_RPDB_Database;
 extern	VALUE	rb_RPDB_DatabaseController;
+extern	VALUE	rb_RPDB_DatabaseJoinContainer;
 
 void Init_RPDB_DatabaseJoinCursor()	{
-	
-	rb_RPDB_DatabaseJoinCursor		=	rb_define_class_under(	rb_RPDB_DatabaseJoinController, 
+		
+	rb_RPDB_DatabaseJoinCursor		=	rb_define_class_under(	rb_RPDB_DatabaseJoinContainer, 
 																													"Cursor",				
 																													rb_cObject );
 	
@@ -251,7 +252,7 @@ VALUE rb_RPDB_DatabaseJoinCursor_iterate(	int	argc,
 				&&	( rb_record_data = rb_RPDB_DatabaseObject_internal_extractRetrievalData( c_record ) ) )	{
 		
 		//	If we don't have a block, we return an enumerator
-		RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_join_cursor,
+		R_ReturnEnumeratorIfNoBlock(	rb_join_cursor,
 							1,
 							& rb_record_data );
 		

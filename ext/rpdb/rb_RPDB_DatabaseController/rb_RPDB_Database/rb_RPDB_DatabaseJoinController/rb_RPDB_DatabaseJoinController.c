@@ -30,17 +30,20 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
-VALUE	extern	rb_RPDB_Environment;
-VALUE	extern	rb_RPDB_DatabaseJoinController;
-VALUE	extern	rb_RPDB_DatabaseJoinCursor;
-VALUE	extern	rb_RPDB_DatabaseJoinSettingsController;
-VALUE	extern	rb_RPDB_DatabaseCursor;
-VALUE	extern	rb_RPDB_Database;
+extern	VALUE	rb_RPDB_Environment;
+extern	VALUE	rb_RPDB_DatabaseJoinController;
+extern	VALUE	rb_RPDB_DatabaseJoinCursor;
+extern	VALUE	rb_RPDB_DatabaseJoinSettingsController;
+extern	VALUE	rb_RPDB_DatabaseCursor;
+extern	VALUE	rb_RPDB_Database;
+extern	VALUE	rb_RPDB_DatabaseJoinContainer;
 
 void Init_RPDB_DatabaseJoinController()	{
 
-	rb_RPDB_DatabaseJoinController		=	rb_define_class_under(	rb_RPDB_Database,				
-																															"JoinController",				
+	rb_RPDB_DatabaseJoinContainer	=	rb_define_module_under(	rb_RPDB_Database, "Join" );
+
+	rb_RPDB_DatabaseJoinController		=	rb_define_class_under(	rb_RPDB_DatabaseJoinContainer,				
+																															"Controller",		
 																															rb_cObject );
 	
 	rb_define_singleton_method(	rb_RPDB_DatabaseJoinController, 	"new",													rb_RPDB_DatabaseJoinController_new,											-1 	);
@@ -302,7 +305,7 @@ VALUE rb_RPDB_DatabaseJoinController_join(	int			argc,
 		}
 	}
 
-	return SIMPLIFIED_RUBY_ARRAY( rb_join_cursors_return_array );
+	return R_SimplifyArray( rb_join_cursors_return_array );
 }
 
 

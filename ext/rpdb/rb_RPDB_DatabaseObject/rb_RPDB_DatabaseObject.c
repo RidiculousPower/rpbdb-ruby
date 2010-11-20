@@ -1343,7 +1343,7 @@ VALUE rb_RPDB_DatabaseObject_retrieve(	int	argc,
 	}
 
 	//	Failure - we return nil (which does not change rb_self)
-	return SIMPLIFIED_RUBY_ARRAY( return_object );
+	return R_SimplifyArray( return_object );
 }
 
 /*******************************************************************************************************************************************************************************************
@@ -2237,7 +2237,7 @@ VALUE rb_RPDB_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataFromParamet
 						rb_RPDB_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataPrimaryKey(	rb_klass_self,
 																									rb_unique_key_parameter ) );
 	}
-	return SIMPLIFIED_RUBY_ARRAY( rb_return_array );
+	return R_SimplifyArray( rb_return_array );
 }
 
 /************************************************

@@ -141,6 +141,8 @@ void Init_RPDB_Database()	{
 
 	rb_define_method(						rb_RPDB_Database, 	"key_exists?",																	rb_RPDB_Database_keyExists,																	-1 	);
 	rb_define_alias(						rb_RPDB_Database, 	"exists?",																			"key_exists?" );                                    				
+	rb_define_method(						rb_RPDB_Database, 	"all_keys_exist?",															rb_RPDB_Database_keysExist,																	-1 	);
+	rb_define_alias(						rb_RPDB_Database, 	"keys_exist?",																	"all_keys_exist?" );                                    				
 	rb_define_method(						rb_RPDB_Database, 	"write",																				rb_RPDB_Database_write,																			-1 	);
 	rb_define_method(						rb_RPDB_Database, 	"retrieve",																			rb_RPDB_Database_retrieve,																	-1 	);
 	rb_define_method(						rb_RPDB_Database, 	"delete",																				rb_RPDB_Database_delete,																		-1 	);
@@ -252,6 +254,7 @@ VALUE rb_RPDB_Database_new(	int			argc,
 				)
 			),
 			1,
+			"<database name>",
 			"<database name>, <environment>",
 			"<database name>, <database controller>",
 			"<database name>, <environment>, <database type>",
@@ -1303,7 +1306,6 @@ VALUE rb_RPDB_Database_append(	VALUE	rb_database,
 
 /***************
 *  key_exists  *
-*  keys_exist  *
 ***************/
 
 //	returns if the specified key appears in the database
@@ -1334,20 +1336,19 @@ VALUE rb_RPDB_Database_keyExists(	int			argc,
 		//----------------------------------------------//
 
 		R_DescribeParameterSet(	
-			R_ParameterSet(		R_Parameter(	R_MatchType(		rb_index,		
-																											R_SYMBOL ) ),
-												R_Parameter(	R_MatchAny(			rb_key ) ) ),
-			R_ListOrder( 2 ),
-			":index, <key, ...>"
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(		rb_index ) ),
+												R_Parameter(	R_MatchArray(			rb_args_array ) ) ),
+			R_ListOrder( 4 ),
+			":index,  [ <arg> ], ..."
 		),
 
 		//----------------------------------------------//
 
 		R_DescribeParameterSet(	
-			R_ParameterSet(		R_Parameter(	R_MatchSymbol(		rb_key ) ),
-												R_Parameter(	R_MatchArray(			rb_args_array ) ) ),
-			R_ListOrder( 4 ),
-			":index,  [ <arg> ], ..."
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(	rb_index ) ),
+												R_Parameter(	R_MatchAny(			rb_key ) ) ),
+			R_ListOrder( 2 ),
+			":index, <key, ...>"
 		),
 		
 		//----------------------------------------------//
@@ -1412,10 +1413,137 @@ VALUE rb_RPDB_Database_keyExists(	int			argc,
 			//	remaining args are keys
 		} while ( R_Arg( rb_key ) );
 		
-		rb_return = SIMPLIFIED_RUBY_ARRAY( rb_return_array );
+		rb_return = R_SimplifyArray( rb_return_array );
 	}
 	
-	return SIMPLIFIED_RUBY_ARRAY( rb_return );
+	return R_SimplifyArray( rb_return );
+}
+
+/***************
+*  keys_exist  *
+***************/
+
+//	returns if the specified keys all appear in the database
+VALUE rb_RPDB_Database_keysExist(	int			argc,
+																	VALUE*	args,
+																	VALUE		rb_database )	{
+
+	//	we need at least one key
+	VALUE	rb_index																		=	Qnil;
+	VALUE	rb_key																			=	Qnil;
+	VALUE	rb_hash_descriptor_index_key_or_keys_array	=	Qnil;
+	VALUE	rb_args_array																= Qnil;
+
+	R_DefineAndParse( argc, args, rb_database,
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchHash(	rb_hash_descriptor_index_key_or_keys_array,
+																										R_HashKey(	R_Type(	R_SYMBOL ) ),
+																										R_HashData(	R_Type( R_ANY ) ) ) ) ),
+			R_ListOrder( 3 ),
+			"{ :index   =>  <key>, ... }, ...",
+			"{ :index   =>  [ <keys> ], ... }, ..."
+			 
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(		rb_index ) ),
+												R_Parameter(	R_MatchArray(			rb_args_array ) ) ),
+			R_ListOrder( 4 ),
+			":index,  [ <arg> ], ..."
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(	rb_index ) ),
+												R_Parameter(	R_MatchAny(			rb_key ) ) ),
+			R_ListOrder( 2 ),
+			":index, <key, ...>"
+		),
+		
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
+			R_ListOrder( 5 ),
+			"[ <arg> ], ..."
+		),
+		
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchAny(			rb_key ) ) ),
+			R_ListOrder( 1 ),
+			"<key>, ..."
+		)
+
+		//----------------------------------------------//
+
+	)
+
+	VALUE	rb_return	=	Qnil;
+
+	if (				rb_hash_descriptor_index_key_or_keys_array != Qnil ) {
+
+		rb_return	=	R_IterateHashDescriptor(	rb_hash_descriptor_index_key_or_keys_array, 
+																					rb_RPDB_Database_keysExist );
+
+	}
+	else if (		rb_args_array != Qnil )	{
+		
+		rb_return	=	rb_ary_new();
+		
+		VALUE	rb_secondary_database	=	Qnil;
+		if ( rb_index != Qnil )	{
+			rb_secondary_database	=	rb_RPDB_Database_secondaryDatabaseWithIndex(	rb_database,
+																																						rb_index );
+		}
+		
+		do {
+		
+			VALUE rb_key_exists	=	rb_RPDB_Database_keysExist(	RARRAY_LEN( rb_args_array ),
+																												RARRAY_PTR( rb_args_array ),
+																												( rb_secondary_database == Qnil ? rb_database : rb_secondary_database ) );
+			rb_ary_push(	rb_return,
+										rb_key_exists );
+
+		}	while ( R_Arg( rb_args_array ) );
+		
+	}
+	//	rb_index, rb_key and rb_key
+	else if (		rb_key != Qnil )	{
+				
+		VALUE	rb_args_with_index[]	=	{ rb_index, rb_key };
+
+		VALUE	rb_keys_exist	=	Qtrue;
+
+		//	for each key
+		do	{
+			//	check if key exists
+			if ( rb_index != Qnil )	{
+				if ( ( rb_keys_exist	=	rb_RPDB_Database_keyExists(	2,
+																														rb_args_with_index,
+																														rb_database ) ) == Qfalse )	{
+					break;
+				}
+			}
+			else if ( ( rb_keys_exist	=	rb_RPDB_Database_keyExists(	1,
+																															& rb_key,
+																															rb_database ) ) == Qfalse )	{
+				//	if any key does not exist, break and return false
+				break;
+			}
+		} while ( R_Arg( rb_key ) );
+		
+		rb_return = rb_keys_exist;
+	}
+
+	return rb_return;
 }
 
 /*******************************************************************************************************************************************************************************************
@@ -1449,8 +1577,8 @@ VALUE rb_RPDB_Database_retrieve(	int			argc,
 
 		R_DescribeParameterSet(	
 			R_ParameterSet(		R_Parameter(	R_MatchHash(	rb_hash_descriptor_index_key_or_keys_array,
-																										R_HashKey(	R_Type(	R_SYMBOL ) ),
-																										R_HashData(	R_Type( R_ANY ) ) ) ) ),
+																										R_HashKey(	R_Symbol() ),
+																										R_HashData(	R_Any() ) ) ) ),
 			R_ListOrder( 3 ),
 			"{ :index   =>  <key>, ... }, ...",
 			"{ :index   =>  [ <keys> ], ... }, ..."
@@ -1460,27 +1588,26 @@ VALUE rb_RPDB_Database_retrieve(	int			argc,
 		//----------------------------------------------//
 
 		R_DescribeParameterSet(	
-			R_ParameterSet(		R_Parameter(	R_MatchType(		rb_index,		
-																											R_SYMBOL ) ),
-												R_Parameter(	R_MatchAny(			rb_key ) ) ),
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(	rb_index ) ),
+												R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
 			R_ListOrder( 2 ),
+			":index, [ <arg> ], ..."
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(	rb_index ) ),
+												R_Parameter(	R_MatchAny(			rb_key ) ) ),
+			R_ListOrder( 3 ),
 			":index, <key, ...>"
 		),
 
 		//----------------------------------------------//
 
 		R_DescribeParameterSet(	
-			R_ParameterSet(		R_Parameter(	R_MatchAny(			rb_key ) ),
-												R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
-			R_ListOrder( 3 ),
-			"key, [ <arg> ], ..."
-		),
-		
-		//----------------------------------------------//
-
-		R_DescribeParameterSet(	
 			R_ParameterSet(		R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
-			R_ListOrder( 4 ),
+			R_ListOrder( 5 ),
 			"[ <arg> ], ..."
 		),
 		
@@ -1503,13 +1630,31 @@ VALUE rb_RPDB_Database_retrieve(	int			argc,
 		rb_return	=	R_IterateHashDescriptor(	rb_hash_descriptor_index_key_or_keys_array, 
 																					rb_RPDB_Database_retrieve );
 
-		rb_return =	SIMPLIFIED_RUBY_HASH( rb_return );
+		rb_return =	R_SimplifyHash( rb_return );
 
 	}
-	else if (		rb_args_array != Qnil )	{
+	//	index or key plus args array
+	else if ( rb_args_array != Qnil )	{
 
-		rb_return	=	R_IterateArrayDescriptor(	rb_args_array,
-																					rb_RPDB_Database_retrieve  );
+		if ( rb_index != Qnil )	{
+
+			do {
+
+				rb_return	=	R_IterateArrayDescriptor(	rb_args_array,
+																							rb_RPDB_Database_retrieve,
+																							rb_index );
+
+			}	while ( R_Arg( rb_args_array ) );
+
+			rb_return =	R_SimplifyArray( rb_return );
+
+		}
+		else {
+			
+			rb_return = R_SplatArrayDescriptor(	rb_args_array,
+																					rb_RPDB_Database_retrieve	);
+
+		}
 		
 	}
 	//	rb_index, rb_key and rb_key
@@ -1539,7 +1684,7 @@ VALUE rb_RPDB_Database_retrieve(	int			argc,
 			//	remaining args are keys
 		} while ( R_Arg( rb_key ) );
 		
-		rb_return =	SIMPLIFIED_RUBY_ARRAY( rb_return );
+		rb_return =	R_SimplifyArray( rb_return );
 		
 	}
 	
@@ -1723,9 +1868,9 @@ VALUE rb_RPDB_Database_delete(	int			argc,
 
 		R_DescribeParameterSet(	
 			R_ParameterSet(		R_Parameter(	R_MatchHash(	rb_hash_descriptor_index_key_or_keys_array,
-																										R_HashKey(	R_Type(	R_SYMBOL ) ),
-																										R_HashData(	R_Type( R_ANY ) ) ) ) ),
-			R_ListOrder( 3 ),
+																										R_HashKey(	R_Symbol() ),
+																										R_HashData(	R_Any() ) ) ) ),
+			R_ListOrder( 4 ),
 			"{ :index   =>  <key>, ... }, ...",
 			"{ :index   =>  [ <keys> ], ... }, ..."
 			 
@@ -1734,22 +1879,21 @@ VALUE rb_RPDB_Database_delete(	int			argc,
 		//----------------------------------------------//
 
 		R_DescribeParameterSet(	
-			R_ParameterSet(		R_Parameter(	R_MatchType(		rb_index,		
-																											R_SYMBOL ) ),
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(	rb_index ) ),
+												R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
+			R_ListOrder( 3 ),
+			":index, [ <keys> ], ..."
+		),
+		
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(	rb_index ) ),
 												R_Parameter(	R_MatchAny(			rb_key ) ) ),
 			R_ListOrder( 2 ),
 			":index, <key, ...>"
 		),
 
-		//----------------------------------------------//
-
-		R_DescribeParameterSet(	
-			R_ParameterSet(		R_Parameter(	R_MatchAny(			rb_key ) ),
-												R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
-			R_ListOrder( 4 ),
-			"key, [ <arg> ], ..."
-		),
-		
 		//----------------------------------------------//
 
 		R_DescribeParameterSet(	
@@ -1777,11 +1921,30 @@ VALUE rb_RPDB_Database_delete(	int			argc,
 		rb_return	=	R_IterateHashDescriptor(	rb_hash_descriptor_index_key_or_keys_array, 
 																					rb_RPDB_Database_delete );
 
+		rb_return =	R_SimplifyHash( rb_return );
+
 	}
 	else if (		rb_args_array != Qnil )	{
 
-		rb_return	=	R_IterateArrayDescriptor(	rb_args_array,
-																					rb_RPDB_Database_retrieve  );
+		if ( rb_index != Qnil )	{
+
+			do {
+
+				rb_return	=	R_IterateArrayDescriptor(	rb_args_array,
+																							rb_RPDB_Database_delete,
+																							rb_index );
+
+			}	while ( R_Arg( rb_args_array ) );
+
+			rb_return =	R_SimplifyArray( rb_return );
+
+		}
+		else {
+			
+			rb_return = R_SplatArrayDescriptor(	rb_args_array,
+																					rb_RPDB_Database_delete	);
+
+		}
 		
 	}
 	//	rb_index, rb_key and rb_key
@@ -1802,7 +1965,7 @@ VALUE rb_RPDB_Database_delete(	int			argc,
 			//	remaining args are keys
 		} while ( R_Arg( rb_key ) );
 		
-		rb_return =	SIMPLIFIED_RUBY_ARRAY( rb_return );
+		rb_return =	R_SimplifyArray( rb_return );
 		
 	}
 	

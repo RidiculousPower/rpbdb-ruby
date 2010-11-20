@@ -25,9 +25,20 @@ describe RPDB::Database::Controller do
   end
 
 
-  it "can return its parent database" do
-    RPDB::Settings::Database::Type.new( RPDB::Database::Hash.new( $database_name ) ).is_a?( RPDB::Settings::Database::Type::Hash ).should == true
+
+
+  it "can delete records specified by multiple secondary keys in an array" do
+    database = @environment.database.new( $database_name )
+
+    database.create_secondary_index( :value ) do |key, value|
+      return value
+    end
+    database.write( "key" => 'some data',
+                    "another key" => 'other data' )
+    database.delete( :value, [ 'some data', 'other data' ] )
+    database.retrieve( "key" ).should == nil    
   end
+  
 
 
 end

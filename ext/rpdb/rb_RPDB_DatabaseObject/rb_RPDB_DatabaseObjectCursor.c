@@ -22,6 +22,8 @@
 
 #include <rpdb/RPDB_DatabaseCursor.h>
 
+#include <rargs.h>
+
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
@@ -38,7 +40,7 @@ extern	VALUE	rb_RPDB_DatabaseObjectCursor;
 
 void Init_RPDB_DatabaseObjectCursor()	{
 
-	rb_RPDB_DatabaseObjectCursor		=	rb_define_class_under(	rb_RPDB_DatabaseCursorController, 
+	rb_RPDB_DatabaseObjectCursor		=	rb_define_class_under(	rb_RPDB_DatabaseCursor, 
 																														"ObjectCursor",				
 																														rb_RPDB_DatabaseCursor );
 	
@@ -661,9 +663,9 @@ VALUE rb_RPDB_DatabaseObjectCursor_iterate( int	argc,
 		VALUE	rb_record_data	=	rb_RPDB_DatabaseObject_internal_extractRetrievalData( c_record );
 		
 		//	If we don't have a block, we return an enumerator
-		RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_database_cursor,
-							0,
-							NULL );
+		R_ReturnEnumeratorIfNoBlock(	rb_database_cursor,
+																		0,
+																		NULL );
 		//	Otherwise we iterate the block
 		rb_yield( rb_record_data );
 	}
@@ -741,7 +743,7 @@ VALUE rb_RPDB_DatabaseObjectCursor_iterateAll( int	argc,
 		VALUE	rb_record_data	=	rb_RPDB_DatabaseObject_internal_extractRetrievalData( c_record );
 		
 		//	If we don't have a block, we return an enumerator
-		RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_database_cursor,
+		R_ReturnEnumeratorIfNoBlock(	rb_database_cursor,
 							0,
 							NULL );
 		//	Otherwise we iterate the block
@@ -822,7 +824,7 @@ VALUE rb_RPDB_DatabaseObjectCursor_iterateDuplicates( int	argc,
 		VALUE	rb_record_data	=	rb_RPDB_DatabaseObject_internal_extractRetrievalData( c_record );
 		
 		//	If we don't have a block, we return an enumerator
-		RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_database_cursor,
+		R_ReturnEnumeratorIfNoBlock(	rb_database_cursor,
 							0,
 							NULL );
 		//	Otherwise we iterate the block
@@ -907,7 +909,7 @@ VALUE rb_RPDB_DatabaseObjectCursor_iterateKeys( int	argc,
 		enumerator_args[ 1 ]	=	rb_database_cursor;
 		
 		//	If we don't have a block, we return an enumerator
-		RETURN_ENUMERATOR_IF_NO_BLOCK(	rb_database_cursor,
+		R_ReturnEnumeratorIfNoBlock(	rb_database_cursor,
 												2, 
 												enumerator_args );
 		//	Otherwise we iterate the block
