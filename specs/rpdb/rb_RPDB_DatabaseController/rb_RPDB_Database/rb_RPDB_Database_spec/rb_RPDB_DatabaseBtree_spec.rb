@@ -1,6 +1,6 @@
-require_relative '../../../../lib/rpdb/rpdb'
+require_relative '../../../../../lib/rpdb/rpdb'
 
-describe RPDB::Database::Hash do
+describe RPDB::Database::Btree do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 

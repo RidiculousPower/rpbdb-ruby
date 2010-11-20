@@ -1,4 +1,4 @@
-require_relative '../../../../lib/rpdb/rpdb'
+require_relative '../../../../../lib/rpdb/rpdb'
 
 describe RPDB::Database do
 
