@@ -28,32 +28,32 @@ describe RPDB::Settings::Database::Cursor do
 
   # RPDB::Settings::Database::Cursor.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Cursor.new( @environment ).should_not == nil
+    RPDB::Settings::Database::Cursor.new( @environment ).is_a?( RPDB::Settings::Database::Cursor ).should == true
   end
 
   # RPDB::Settings::Database::Cursor.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Cursor.new( @environment.database_controller ).should_not == nil
+    RPDB::Settings::Database::Cursor.new( @environment.database_controller ).is_a?( RPDB::Settings::Database::Cursor ).should == true
   end
 
   # RPDB::Settings::Database::Cursor.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Cursor.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Cursor ).should == true
   end
 
   # RPDB::Settings::Database::Cursor.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Cursor.new( RPDB::Settings.new ).should_not == nil
+    RPDB::Settings::Database::Cursor.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database::Cursor ).should == true
   end
 
   # RPDB::Settings::Database::Cursor.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Cursor.new( RPDB::Settings::Database.new ).should_not == nil
+    RPDB::Settings::Database::Cursor.new( RPDB::Settings::Database.new ).is_a?( RPDB::Settings::Database::Cursor ).should == true
   end
 
   # RPDB::Settings::Database::Cursor.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Cursor.new.should_not == nil
+    RPDB::Settings::Database::Cursor.new.is_a?( RPDB::Settings::Database::Cursor ).should == true
   end
 
   ########################
@@ -62,11 +62,11 @@ describe RPDB::Settings::Database::Cursor do
 
   it "can return its parent environment" do
     # with settings controller
-    RPDB::Settings::Database::Cursor.new.parent_environment.class.should == RPDB::Environment
+    RPDB::Settings::Database::Cursor.new.parent_environment.is_a?( RPDB::Environment ).should == true
     # with database
-    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_environment.class.should == RPDB::Environment
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
     # with database cursor
-    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_environment.class.should == RPDB::Environment
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_environment.is_a?( RPDB::Environment ).should == true
   end
 
   #####################
@@ -77,9 +77,9 @@ describe RPDB::Settings::Database::Cursor do
     # with settings controller
     RPDB::Settings::Database::Cursor.new.parent_database.should == nil
     # with database
-    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_database.class.should == RPDB::Database
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
     # with database cursor
-    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_database.class.should == RPDB::Database
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_database.is_a?( RPDB::Database ).should == true
   end
 
   ############################
@@ -92,7 +92,7 @@ describe RPDB::Settings::Database::Cursor do
     # with database
     RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_database_cursor.should == nil
     # with database cursor
-    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_database_cursor.class.should == RPDB::Database::Cursor
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_database_cursor.is_a?( RPDB::Database::Cursor ).should == true
   end
 
   ################################
@@ -101,11 +101,11 @@ describe RPDB::Settings::Database::Cursor do
 
   it "can return its parent settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Cursor.new.parent_settings_controller.class.should == RPDB::Settings
+    RPDB::Settings::Database::Cursor.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
     # with database
-    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.class.should == RPDB::Settings
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
     # with database cursor
-    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_settings_controller.class.should == RPDB::Settings
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
   end
 
   #########################################
@@ -114,11 +114,11 @@ describe RPDB::Settings::Database::Cursor do
 
   it "can return its parent database settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Cursor.new.parent_database_settings_controller.class.should == RPDB::Settings::Database
+    RPDB::Settings::Database::Cursor.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
     # with database
-    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.class.should == RPDB::Settings::Database
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
     # with database cursor
-    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_database_settings_controller.class.should == RPDB::Settings::Database
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
   end
 
   #########################################
@@ -160,7 +160,12 @@ describe RPDB::Settings::Database::Cursor do
   ###############################
 
   it "can return its cache settings controller" do
-    RPDB::Settings::Database::Cursor.new.cache_settings_controller.class.should == RPDB::Settings::Database::Cursor::Cache
+    # with settings controller
+    RPDB::Settings::Database::Cursor.new.cache_settings_controller.is_a?( RPDB::Settings::Database::Cursor::Cache ).should == true
+    # with database
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).cache_settings_controller.is_a?( RPDB::Settings::Database::Cursor::Cache ).should == true
+    # with database cursor
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).cache_settings_controller.is_a?( RPDB::Settings::Database::Cursor::Cache ).should == true
   end
 
   ####################################
@@ -168,7 +173,12 @@ describe RPDB::Settings::Database::Cursor do
   ####################################
 
   it "can return its read/write settings controller" do
-    RPDB::Settings::Database::Cursor.new.read_write_settings_controller.class.should == RPDB::Settings::Database::Cursor::ReadWrite
+    # with settings controller
+    RPDB::Settings::Database::Cursor.new.read_write_settings_controller.is_a?( RPDB::Settings::Database::Cursor::ReadWrite ).should == true
+    # with database
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).read_write_settings_controller.is_a?( RPDB::Settings::Database::Cursor::ReadWrite ).should == true
+    # with database cursor
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ).cursor ).read_write_settings_controller.is_a?( RPDB::Settings::Database::Cursor::ReadWrite ).should == true
   end
 
 end

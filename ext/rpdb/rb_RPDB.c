@@ -153,6 +153,11 @@ VALUE	rb_RPDB_Environment;
 			VALUE	rb_RPDB_DatabaseHashType_const;
 			VALUE	rb_RPDB_DatabaseQueueType_const;
 			VALUE	rb_RPDB_DatabaseRecnoType_const;
+
+			VALUE	rb_RPDB_BtreeDatabase;
+			VALUE	rb_RPDB_HashDatabase;
+			VALUE	rb_RPDB_QueueDatabase;
+			VALUE	rb_RPDB_RecnoDatabase;
 		
 		VALUE	rb_RPDB_DatabaseObjectDatabase;
 			VALUE	rb_RPDB_DatabaseCursorController;

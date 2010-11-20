@@ -28,27 +28,27 @@ describe RPDB::Settings::Database do
 
   # RPDB::Settings::Database.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database.new( @environment ).class.should == RPDB::Settings::Database
+    RPDB::Settings::Database.new( @environment ).is_a?( RPDB::Settings::Database ).should == true
   end
 
   # RPDB::Settings::Database.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database.new( @environment.database_controller ).class.should == RPDB::Settings::Database
+    RPDB::Settings::Database.new( @environment.database_controller ).is_a?( RPDB::Settings::Database ).should == true
   end
 
   # RPDB::Settings::Database.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database.new( @environment.database_controller.new( $database_name ) ).class.should == RPDB::Settings::Database
+    RPDB::Settings::Database.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database ).should == true
   end
 
   # RPDB::Settings::Database.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database.new( RPDB::Settings.new ).class.should == RPDB::Settings::Database
+    RPDB::Settings::Database.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database ).should == true
   end
 
   # RPDB::Settings::Database.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database.new.class.should == RPDB::Settings::Database
+    RPDB::Settings::Database.new.is_a?( RPDB::Settings::Database ).should == true
   end
 
   ########################
@@ -56,7 +56,7 @@ describe RPDB::Settings::Database do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Database.new.parent_environment.class.should == RPDB::Environment
+    RPDB::Settings::Database.new.parent_environment.is_a?( RPDB::Environment ).should == true
   end
 
   #####################
@@ -64,7 +64,7 @@ describe RPDB::Settings::Database do
   #####################
 
   it "can return its parent database" do
-    RPDB::Settings::Database.new( RPDB::Database.new( $database_name ) ).parent_database.class.should == RPDB::Database
+    RPDB::Settings::Database.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
     RPDB::Settings::Database.new.parent_database.should == nil
   end
 
@@ -78,21 +78,22 @@ describe RPDB::Settings::Database do
     
     # with a settings controller
     database_settings = RPDB::Settings::Database.new
-    database_settings.checksum?.should == false
-    database_settings.turn_checksum_on
-    database_settings.checksum?.should == true
-    database_settings.turn_checksum_off
-    database_settings.checksum?.should == false
-    
+    test_checksum( database_settings )
+
     # with a database
     database_settings = RPDB::Database.new( $database_name ).settings
+    test_checksum( database_settings )    
+    
+  end
+
+  def test_checksum( database_settings )
+    
     database_settings.checksum?.should == false
     database_settings.turn_checksum_on
     database_settings.checksum?.should == true
     database_settings.turn_checksum_off
     database_settings.checksum?.should == false
-    
-    
+
   end
 
   #####################################
@@ -105,14 +106,16 @@ describe RPDB::Settings::Database do
     
     # with a settings controller
     database_settings = RPDB::Settings::Database.new
-    database_settings.transaction_durability?.should == false
-    database_settings.turn_transaction_durability_on
-    database_settings.transaction_durability?.should == true
-    database_settings.turn_transaction_durability_off
-    database_settings.transaction_durability?.should == false
+    test_transaction_durability( database_settings )
 
     # with a database
     database_settings = RPDB::Database.new( $database_name ).settings
+    test_transaction_durability( database_settings )
+
+  end
+
+  def test_transaction_durability( database_settings )
+    
     database_settings.transaction_durability?.should == false
     database_settings.turn_transaction_durability_on
     database_settings.transaction_durability?.should == true
@@ -130,14 +133,17 @@ describe RPDB::Settings::Database do
 
     # with a settings controller
     database_settings = RPDB::Settings::Database.new
-    database_settings.set_pagesize( 1024 )
-    database_settings.pagesize.should == 1024
+    test_pagesize( database_settings )
 
     # with a database
     database_settings = RPDB::Database.new( $database_name ).settings
+    test_pagesize( database_settings )
+  end
+
+  def test_pagesize( database_settings )
+    
     database_settings.set_pagesize( 1024 )
     database_settings.pagesize.should == 1024
-    
 
   end
 
@@ -199,11 +205,9 @@ describe RPDB::Settings::Database do
 
   it "can return its join settings controller" do
     # with a settings controller
-    RPDB::Settings::Database.new.join_settings_controller.should_not == nil
-    RPDB::Settings::Database.new.join_settings_controller.class.should == RPDB::Settings::Database::Join
+    RPDB::Settings::Database.new.join_settings_controller.is_a?( RPDB::Settings::Database::Join ).should == true
     # with a database
-    RPDB::Database.new( $database_name ).settings.join_settings_controller.should_not == nil
-    RPDB::Database.new( $database_name ).settings.join_settings_controller.class.should == RPDB::Settings::Database::Join
+    RPDB::Settings::Database::Join.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Join ).should == true
   end
 
   ###############################
@@ -212,11 +216,9 @@ describe RPDB::Settings::Database do
 
   it "can return its cache settings controller" do
     # with a settings controller
-    RPDB::Settings::Database.new.cache_settings_controller.should_not == nil
-    RPDB::Settings::Database.new.cache_settings_controller.class.should == RPDB::Settings::Database::Cache
+    RPDB::Settings::Database.new.cache_settings_controller.is_a?( RPDB::Settings::Database::Cache ).should == true
     # with a database
-    RPDB::Database.new( $database_name ).settings.cache_settings_controller.should_not == nil
-    RPDB::Database.new( $database_name ).settings.cache_settings_controller.class.should == RPDB::Settings::Database::Cache
+    RPDB::Settings::Database::Cache.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Cache ).should == true
   end
 
   ################################
@@ -225,11 +227,9 @@ describe RPDB::Settings::Database do
 
   it "can return its cursor settings controller" do
     # with a settings controller
-    RPDB::Settings::Database.new.cursor_settings_controller.should_not == nil
-    RPDB::Settings::Database.new.cursor_settings_controller.class.should == RPDB::Settings::Database::Cursor
+    RPDB::Settings::Database.new.cursor_settings_controller.is_a?( RPDB::Settings::Database::Cursor ).should == true
     # with a database
-    RPDB::Database.new( $database_name ).settings.cursor_settings_controller.should_not == nil
-    RPDB::Database.new( $database_name ).settings.cursor_settings_controller.class.should == RPDB::Settings::Database::Cursor
+    RPDB::Settings::Database::Cursor.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Cursor ).should == true
   end
   
   ###############################
@@ -238,11 +238,9 @@ describe RPDB::Settings::Database do
 
   it "can return its error settings controller" do
     # with a settings controller
-    RPDB::Settings::Database.new.error_settings_controller.should_not == nil
-    RPDB::Settings::Database.new.error_settings_controller.class.should == RPDB::Settings::Database::Error
+    RPDB::Settings::Database.new.error_settings_controller.is_a?( RPDB::Settings::Database::Error ).should == true
     # with a database
-    RPDB::Database.new( $database_name ).settings.error_settings_controller.should_not == nil
-    RPDB::Database.new( $database_name ).settings.error_settings_controller.class.should == RPDB::Settings::Database::Error
+    RPDB::Settings::Database::Error.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Error ).should == true
   end
 
   #####################################
@@ -251,11 +249,9 @@ describe RPDB::Settings::Database do
 
   it "can return its association settings controller" do
     # with a settings controller
-    RPDB::Settings::Database.new.association_settings_controller.should_not == nil
-    RPDB::Settings::Database.new.association_settings_controller.class.should == RPDB::Settings::Database::Association
+    RPDB::Settings::Database.new.association_settings_controller.is_a?( RPDB::Settings::Database::Association ).should == true
     # with a database
-    RPDB::Database.new( $database_name ).settings.association_settings_controller.should_not == nil
-    RPDB::Database.new( $database_name ).settings.association_settings_controller.class.should == RPDB::Settings::Database::Association
+    RPDB::Settings::Database::Association.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Association ).should == true
   end
  
   ##################################
@@ -264,11 +260,9 @@ describe RPDB::Settings::Database do
 
   it "can return its sequence settings controller" do
     # with a settings controller
-    RPDB::Settings::Database.new.sequence_settings_controller.should_not == nil
-    RPDB::Settings::Database.new.sequence_settings_controller.class.should == RPDB::Settings::Database::Sequence
+    RPDB::Settings::Database.new.sequence_settings_controller.is_a?( RPDB::Settings::Database::Sequence ).should == true
     # with a database
-    RPDB::Database.new( $database_name ).settings.sequence_settings_controller.should_not == nil
-    RPDB::Database.new( $database_name ).settings.sequence_settings_controller.class.should == RPDB::Settings::Database::Sequence
+    RPDB::Settings::Database::Sequence.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Sequence ).should == true
   end
 
   ##############################
@@ -277,11 +271,9 @@ describe RPDB::Settings::Database do
 
   it "can return its type settings controller" do
     # with a settings controller
-    RPDB::Settings::Database.new.type_settings_controller.should_not == nil
-    RPDB::Settings::Database.new.type_settings_controller.class.should == RPDB::Settings::Database::Type
+    RPDB::Settings::Database.new.type_settings_controller.is_a?( RPDB::Settings::Database::Type ).should == true
     # with a database
-    RPDB::Database.new( $database_name ).settings.type_settings_controller.should_not == nil
-    RPDB::Database.new( $database_name ).settings.type_settings_controller.class.should == RPDB::Settings::Database::Type::Btree
+    RPDB::Settings::Database::Type.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Type::Btree ).should == true
   end
 
   ################################
@@ -290,11 +282,9 @@ describe RPDB::Settings::Database do
 
   it "can return its record settings controller" do
     # with a settings controller
-    RPDB::Settings::Database.new.record_settings_controller.should_not == nil
-    RPDB::Settings::Database.new.record_settings_controller.class.should == RPDB::Settings::Database::Record
+    RPDB::Settings::Database.new.record_settings_controller.is_a?( RPDB::Settings::Database::Record ).should == true
     # with a database
-    RPDB::Database.new( $database_name ).settings.record_settings_controller.should_not == nil
-    RPDB::Database.new( $database_name ).settings.record_settings_controller.class.should == RPDB::Settings::Database::Record
+    RPDB::Settings::Database::Record.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Record ).should == true
   end
 
 end

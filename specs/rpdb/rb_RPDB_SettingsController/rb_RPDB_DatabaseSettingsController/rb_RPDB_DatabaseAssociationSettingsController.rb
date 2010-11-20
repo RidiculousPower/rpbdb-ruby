@@ -28,32 +28,32 @@ describe RPDB::Settings::Database::Association do
 
   # RPDB::Settings::Database::Association.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Association.new( @environment ).class.should == RPDB::Settings::Database::Association
+    RPDB::Settings::Database::Association.new( @environment ).is_a?( RPDB::Settings::Database::Association ).should == true
   end
 
   # RPDB::Settings::Database::Association.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Association.new( @environment ).class.should == RPDB::Settings::Database::Association
+    RPDB::Settings::Database::Association.new( @environment ).is_a?( RPDB::Settings::Database::Association ).should == true
   end
 
   # RPDB::Settings::Database::Association.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Association.new( @environment.database_controller.new( $database_name ) ).class.should == RPDB::Settings::Database::Association
+    RPDB::Settings::Database::Association.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Association ).should == true
   end
 
   # RPDB::Settings::Database::Association.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Association.new( RPDB::Settings.new ).class.should == RPDB::Settings::Database::Association
+    RPDB::Settings::Database::Association.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database::Association ).should == true
   end
 
   # RPDB::Settings::Database::Association.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Association.new( RPDB::Settings::Database.new ).class.should == RPDB::Settings::Database::Association
+    RPDB::Settings::Database::Association.new( RPDB::Settings::Database.new ).is_a?( RPDB::Settings::Database::Association ).should == true
   end
 
   # RPDB::Settings::Database::Association.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Association.new.class.should == RPDB::Settings::Database::Association
+    RPDB::Settings::Database::Association.new.is_a?( RPDB::Settings::Database::Association ).should == true
   end
 
   ########################
@@ -62,9 +62,9 @@ describe RPDB::Settings::Database::Association do
 
   it "can return its parent environment" do
     # with a settings controller
-    RPDB::Settings::Database::Association.new.parent_environment.class.should == RPDB::Environment
+    RPDB::Settings::Database::Association.new.parent_environment.is_a?( RPDB::Environment ).should == true
     # with a database
-    RPDB::Settings::Database::Association.new( RPDB::Database.new( $database_name ) ).parent_environment.class.should == RPDB::Environment
+    RPDB::Settings::Database::Association.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
   end
 
   #####################
@@ -75,7 +75,7 @@ describe RPDB::Settings::Database::Association do
     # with a settings controller - none exists
     RPDB::Settings::Database::Association.new.parent_database.should == nil
     # with a database
-    RPDB::Settings::Database::Association.new( RPDB::Database.new( $database_name ) ).parent_database.class.should == RPDB::Database
+    RPDB::Settings::Database::Association.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
   end
 
   ################################
@@ -84,9 +84,9 @@ describe RPDB::Settings::Database::Association do
 
   it "can return its parent settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Association.new.parent_settings_controller.class.should == RPDB::Settings
+    RPDB::Settings::Database::Association.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
     # with a database
-    RPDB::Settings::Database::Association.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.class.should == RPDB::Settings
+    RPDB::Settings::Database::Association.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
   end
 
   #########################################
@@ -95,9 +95,9 @@ describe RPDB::Settings::Database::Association do
 
   it "can return its parent database settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Association.new.parent_database_settings_controller.class.should == RPDB::Settings::Database
+    RPDB::Settings::Database::Association.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
     # with a database
-    RPDB::Settings::Database::Association.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.class.should == RPDB::Settings::Database
+    RPDB::Settings::Database::Association.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
   end
 
   ##################################################
@@ -107,23 +107,22 @@ describe RPDB::Settings::Database::Association do
   ##################################################
 
   it "can automatically create the contents of a secondary index upon initial association" do
-
     # with a settings controller
     association_settings = RPDB::Settings::Database::Association.new
-    association_settings.secondary_association_creates_index?.should == false
-    association_settings.turn_secondary_association_creates_index_on
-    association_settings.secondary_association_creates_index?.should == true
-    association_settings.turn_secondary_association_creates_index_off
-    association_settings.secondary_association_creates_index?.should == false
-
+    test_secondary_association_creates_index( association_settings )
     # with a database
     association_settings = RPDB::Database.new( $database_name ).settings_controller.association_settings_controller
+    test_secondary_association_creates_index( association_settings )
+  end
+
+  def test_secondary_association_creates_index( association_settings )
+
     association_settings.secondary_association_creates_index?.should == false
     association_settings.turn_secondary_association_creates_index_on
     association_settings.secondary_association_creates_index?.should == true
     association_settings.turn_secondary_association_creates_index_off
     association_settings.secondary_association_creates_index?.should == false
-
+    
   end
 
   ######################################
@@ -133,23 +132,22 @@ describe RPDB::Settings::Database::Association do
   ######################################
 
   it "can specify that it has an immutable secondary key (which permits internal optimizations)" do
-
     # with a settings controller
     association_settings = RPDB::Settings::Database::Association.new
-    association_settings.immutable_secondary_key?.should == false
-    association_settings.turn_immutable_secondary_key_on
-    association_settings.immutable_secondary_key?.should == true
-    association_settings.turn_immutable_secondary_key_off
-    association_settings.immutable_secondary_key?.should == false
-
+    test_immutable_secondary_key( association_settings )
     # with a database
     association_settings = RPDB::Database.new( $database_name ).settings_controller.association_settings_controller
+    test_immutable_secondary_key( association_settings )
+  end
+
+  def test_immutable_secondary_key( association_settings )
+
     association_settings.immutable_secondary_key?.should == false
     association_settings.turn_immutable_secondary_key_on
     association_settings.immutable_secondary_key?.should == true
     association_settings.turn_immutable_secondary_key_off
     association_settings.immutable_secondary_key?.should == false
-
+    
   end
 
 end

@@ -38,7 +38,7 @@ describe RPDB::Settings::Database::Cache::Priority do
 
   # RPDB::Settings::Database::Cache::Priority.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Cache::Priority.new( @environment.database_controller.new( $database_name ) ).is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
+    RPDB::Settings::Database::Cache::Priority.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
   end
 
   # RPDB::Settings::Database::Cache::Priority.new( settings_controller )

@@ -139,7 +139,10 @@ VALUE rb_RPDB_DatabaseCursorCacheSettingsController_new(	int			argc,
 	else if ( rb_parent_settings_controller != Qnil )	{
 		rb_parent_database_settings_controller	=	rb_RPDB_SettingsController_databaseSettingsController( rb_parent_settings_controller );
 	}
-	if ( rb_parent_database_settings_controller != Qnil )	{
+	if ( rb_parent_database_cursor != Qnil )	{
+		rb_parent_database_cursor_settings_controller = rb_RPDB_DatabaseSettingsController_cursorSettingsController( rb_parent_database_cursor );	
+	}
+	else if ( rb_parent_database_settings_controller != Qnil )	{
 		rb_parent_database_cursor_settings_controller	=	rb_RPDB_DatabaseSettingsController_cursorSettingsController( rb_parent_database_settings_controller );
 	}
 

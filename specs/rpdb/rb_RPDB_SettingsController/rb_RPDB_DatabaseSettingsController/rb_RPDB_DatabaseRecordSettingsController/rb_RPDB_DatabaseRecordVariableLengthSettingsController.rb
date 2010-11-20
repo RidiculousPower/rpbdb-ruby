@@ -38,7 +38,7 @@ describe RPDB::Settings::Database::Record::VariableLength do
 
   # RPDB::Settings::Database::Record::VariableLength.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Record::VariableLength.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Record::VariableLength.new( RPDB::Database.new( $database_name ) ).should_not == nil
   end
 
   # RPDB::Settings::Database::Record::VariableLength.new( settings_controller )
@@ -61,7 +61,10 @@ describe RPDB::Settings::Database::Record::VariableLength do
   ########################
 
   it "can return its parent environment" do
+    # with settings controller
     RPDB::Settings::Database::Record::VariableLength.new.parent_environment.is_a?( RPDB::Environment ).should == true
+    # with database
+    RPDB::Settings::Database::Record::VariableLength.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
   end
 
   #####################
@@ -69,7 +72,9 @@ describe RPDB::Settings::Database::Record::VariableLength do
   #####################
 
   it "can return its parent database" do
+    # with settings controller
     RPDB::Settings::Database::Record::VariableLength.new.parent_database.should == nil
+    # with database
     RPDB::Settings::Database::Record::VariableLength.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
   end
 
@@ -78,7 +83,9 @@ describe RPDB::Settings::Database::Record::VariableLength do
   ################################
 
   it "can return its parent settings controller" do
+    # with settings controller
     RPDB::Settings::Database::Record::VariableLength.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    # with database
     RPDB::Settings::Database::Record::VariableLength.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
   end
 
@@ -87,7 +94,9 @@ describe RPDB::Settings::Database::Record::VariableLength do
   #########################################
 
   it "can return its parent database settings controller" do
+    # with settings controller
     RPDB::Settings::Database::Record::VariableLength.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    # with database
     RPDB::Settings::Database::Record::VariableLength.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
   end
 
@@ -96,7 +105,9 @@ describe RPDB::Settings::Database::Record::VariableLength do
   ################################################
 
   it "can return its parent database record settings controller" do
+    # with settings controller
     RPDB::Settings::Database::Record::VariableLength.new.parent_database_record_settings_controller.is_a?( RPDB::Settings::Database::Record ).should == true
+    # with database
     RPDB::Settings::Database::Record::VariableLength.new.parent_database_record_settings_controller.is_a?( RPDB::Settings::Database::Record ).should == true
   end
 
@@ -106,9 +117,19 @@ describe RPDB::Settings::Database::Record::VariableLength do
   	########################
 
     it "can set and return its record delimiter" do
+      # with settings controller
       variable_length_settings  = RPDB::Settings::Database::Record::VariableLength.new
+      test_delimeter_byte( variable_length_settings )
+      # with database
+      variable_length_settings  = RPDB::Settings::Database::Record::VariableLength.new( RPDB::Database.new( $database_name ) )
+      test_delimeter_byte( variable_length_settings )
+    end
+    
+    def test_delimeter_byte( variable_length_settings )
+
       variable_length_settings.set_delimeter_byte( '$' )
       variable_length_settings.delimeter_byte.should == '$'
+      
     end
 
 end

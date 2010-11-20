@@ -4,8 +4,6 @@
  *
  */
 
-#include <rargs.h>
-
 #include "rb_RPDB.h"
 #include "rb_RPDB_internal.h"
 #include "rb_RPDB_Database.h"
@@ -46,10 +44,18 @@
 #include <rpdb/RPDB_DatabaseSettingsController.h>
 #include <rpdb/RPDB_DatabaseTypeSettingsController.h>
 
+#include <rargs.h>
+
+#include <string.h>
+
 extern	VALUE	rb_mRPDB;
 extern	VALUE	rb_RPDB_Environment;
 extern	VALUE	rb_RPDB_DatabaseController;
 extern	VALUE	rb_RPDB_Database;
+extern	VALUE	rb_RPDB_BtreeDatabase;
+extern	VALUE	rb_RPDB_HashDatabase;
+extern	VALUE	rb_RPDB_QueueDatabase;
+extern	VALUE	rb_RPDB_RecnoDatabase;
 extern	VALUE	rb_RPDB_DatabaseCursor;
 extern	VALUE	rb_RPDB_DatabaseObjectCursor;
 extern	VALUE	rb_RPDB_DatabaseCursorController;
@@ -97,26 +103,15 @@ void Init_RPDB_Database()	{
 
 	rb_RPDB_DatabaseType_const_module			=	rb_define_module_under(	rb_RPDB_Database,
 																																	"Type" );
-	rb_define_const(	rb_RPDB_DatabaseType_const_module,
-										"Btree",
-										rb_str_new2( "Btree" ) );
-	rb_RPDB_DatabaseBtreeType_const	=	rb_const_get(	rb_RPDB_DatabaseType_const_module,
-																									rb_intern( "Btree" ) );
-	rb_define_const(	rb_RPDB_DatabaseType_const_module,
-										"Hash",
-										rb_str_new2( "Hash" ) );
-	rb_RPDB_DatabaseHashType_const	=	rb_const_get(	rb_RPDB_DatabaseType_const_module,
-																									rb_intern( "Hash" ) );
-	rb_define_const(	rb_RPDB_DatabaseType_const_module,
-										"Queue",
-										rb_str_new2( "Queue" ) );
-	rb_RPDB_DatabaseQueueType_const	=	rb_const_get(	rb_RPDB_DatabaseType_const_module,
-																									rb_intern( "Queue" ) );
-	rb_define_const(	rb_RPDB_DatabaseType_const_module,
-										"Recno",
-										rb_str_new2( "Recno" ) );
-	rb_RPDB_DatabaseRecnoType_const	=	rb_const_get(	rb_RPDB_DatabaseType_const_module,
-																									rb_intern( "Recno" ) );
+																																	
+	rb_define_const(						rb_RPDB_DatabaseType_const_module,		"Btree",						rb_str_new2( "Btree" ) );
+	rb_RPDB_DatabaseBtreeType_const	=	rb_const_get(	rb_RPDB_DatabaseType_const_module,		rb_intern( "Btree" ) );
+	rb_define_const(						rb_RPDB_DatabaseType_const_module,		"Hash",							rb_str_new2( "Hash" ) );
+	rb_RPDB_DatabaseHashType_const	=	rb_const_get(	rb_RPDB_DatabaseType_const_module,		rb_intern( "Hash" ) );
+	rb_define_const(						rb_RPDB_DatabaseType_const_module,		"Queue",						rb_str_new2( "Queue" ) );
+	rb_RPDB_DatabaseQueueType_const	=	rb_const_get(	rb_RPDB_DatabaseType_const_module,		rb_intern( "Queue" ) );
+	rb_define_const(						rb_RPDB_DatabaseType_const_module,		"Recno",						rb_str_new2( "Recno" ) );
+	rb_RPDB_DatabaseRecnoType_const	=	rb_const_get(	rb_RPDB_DatabaseType_const_module,		rb_intern( "Recno" ) );
 
 	rb_define_singleton_method(	rb_RPDB_Database, 	"new",																					rb_RPDB_Database_new,																				-1 	);
 	rb_define_method(						rb_RPDB_Database, 	"initialize",																		rb_RPDB_Database_initialize,																			-1 	);
@@ -200,6 +195,31 @@ void Init_RPDB_Database()	{
 	rb_define_method(						rb_RPDB_Database, 	"join_controller",															rb_RPDB_Database_joinController,													0 	);
 	rb_define_alias(						rb_RPDB_Database, 	"joins",																				"join_controller"	);
 	rb_define_alias(						rb_RPDB_Database, 	"join",																					"join_controller"	);
+
+	rb_RPDB_BtreeDatabase		=	rb_define_class_under(		rb_RPDB_Database, 
+																											"Btree",
+																											rb_RPDB_Database );
+	rb_define_singleton_method(	rb_RPDB_BtreeDatabase, 	"new",																					rb_RPDB_Database_new,																					-1 	);
+	rb_define_method(						rb_RPDB_BtreeDatabase, 	"initialize",																		rb_RPDB_Database_initialize,																	-1 	);
+
+	rb_RPDB_HashDatabase		=	rb_define_class_under(		rb_RPDB_Database, 
+																											"Hash",
+																											rb_RPDB_Database );
+	rb_define_singleton_method(	rb_RPDB_HashDatabase, 	"new",																					rb_RPDB_Database_new,																					-1 	);
+	rb_define_method(						rb_RPDB_HashDatabase, 	"initialize",																		rb_RPDB_Database_initialize,																	-1 	);
+
+	rb_RPDB_RecnoDatabase		=	rb_define_class_under(		rb_RPDB_Database, 
+																											"Recno",
+																											rb_RPDB_Database );
+	rb_define_singleton_method(	rb_RPDB_RecnoDatabase, 	"new",																					rb_RPDB_Database_new,																					-1 	);
+	rb_define_method(						rb_RPDB_RecnoDatabase, 	"initialize",																		rb_RPDB_Database_initialize,																	-1 	);
+
+	rb_RPDB_QueueDatabase		=	rb_define_class_under(		rb_RPDB_Database, 
+																											"Queue",
+																											rb_RPDB_Database );
+	rb_define_singleton_method(	rb_RPDB_QueueDatabase, 	"new",																					rb_RPDB_Database_new,																					-1 	);
+	rb_define_method(						rb_RPDB_QueueDatabase, 	"initialize",																		rb_RPDB_Database_initialize,																	-1 	);
+
 }
 
 /*************
@@ -209,73 +229,51 @@ void Init_RPDB_Database()	{
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_class.html
 VALUE rb_RPDB_Database_new(	int			argc,
 														VALUE*	args,
-														VALUE		rb_klass_self __attribute__((unused)) )	{
+														VALUE		rb_klass_self )	{
 
 	VALUE	rb_database_name							=	Qnil;
 	VALUE	rb_parent_database_controller	=	Qnil;
 	VALUE	rb_parent_environment					=	Qnil;
-	
-	/*------------------------------------------------------*/
+	VALUE	rb_parent_environment_path		=	Qnil;
+	VALUE	rb_database_type							=	Qnil;
 
-	VALUE	rb_parent_environment_or_directory_or_database_controller	=	Qnil;
-	rb_scan_args(	argc,
-								args,
-								"11",
-								& rb_database_name,
-								& rb_parent_environment_or_directory_or_database_controller );
+	R_DefineAndParse( argc, args, rb_klass_self,
+		R_DescribeParameterSet(
+			R_ParameterSet(
+				R_Parameter(					R_MatchStringSymbol(							rb_database_name )				
+				),
+				R_OptionalParameter(	R_MatchAncestorInstance(					rb_parent_environment,							rb_RPDB_Environment ),
+															R_MatchAncestorInstance(					rb_parent_database_controller,			rb_RPDB_DatabaseController ),
+															R_MatchString(										rb_parent_environment_path ),
+															R_MatchSymbol(										rb_database_type )
+				),
+				R_OptionalParameter(	R_IfElse( R_IfValueEquals(				rb_database_type,										Qnil,
+																				R_MatchSymbol(					rb_database_type ) ) )
+				)
+			),
+			1,
+			"<database name>, <environment>",
+			"<database name>, <database controller>",
+			"<database name>, <environment>, <database type>",
+			"<database name>, <database controller>, <database type>"
+		)
+	);
 	
-	//	if we have a second parameter, figure out what it is
-	if ( rb_parent_environment_or_directory_or_database_controller != Qnil ) {
-		
-		//	if we have a path, initialize environment
-		if ( TYPE( rb_parent_environment_or_directory_or_database_controller ) == T_STRING )	{
-			rb_parent_environment	=	rb_RPDB_Environment_new(	1,
-																												& rb_parent_environment_or_directory_or_database_controller,
-																												rb_RPDB_Environment );
-			rb_parent_database_controller	=	rb_RPDB_Environment_databaseController( rb_parent_environment );
-		}
-		//	otherwise see if we have an environment or database controller
-		else {
-			
-			VALUE	rb_arg_klass			=	rb_class_of( rb_parent_environment_or_directory_or_database_controller );
-			VALUE	rb_arg_ancestors	=	rb_mod_ancestors( rb_arg_klass );
-			//	database controller
-			if ( rb_ary_includes(	rb_arg_ancestors,
-														rb_RPDB_DatabaseController ) == Qtrue )	{
-
-				rb_parent_database_controller	=	rb_parent_environment_or_directory_or_database_controller;
-			}
-			//	environment
-			else if ( rb_ary_includes(	rb_arg_ancestors,
-																	rb_RPDB_Environment ) == Qtrue )	{
-				
-				rb_parent_environment					=	rb_parent_environment_or_directory_or_database_controller;
-			}
-		}
-	}
-	else {
+	if (		rb_parent_environment == Qnil
+			&&	rb_parent_database_controller == Qnil
+			&&	rb_parent_environment_path == Qnil )	{
 		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
-		rb_parent_database_controller	=	rb_RPDB_Environment_databaseController( rb_parent_environment );
 	}
-
 	
-	//	Raise exceptions if we can't find a parent database controller
-	if (		rb_parent_database_controller == Qnil )	{
-		
-		if ( rb_parent_environment == Qnil )	{
-			rb_raise( rb_eArgError, RPDB_RUBY_ERROR_MESSAGE_ENVIRONMENT_NOT_FOUND );
-		}
-		else {
-			rb_parent_database_controller	=	rb_RPDB_Environment_databaseController( rb_parent_environment );
-		}
-		
-		if ( rb_parent_database_controller == Qnil )	{
-			rb_raise( rb_eArgError, RPDB_RUBY_ERROR_MESSAGE_DATABASE_CONTROLLER_NOT_FOUND );
-		}
+	if ( rb_parent_environment_path != Qnil )	{
+		rb_parent_environment	=	rb_RPDB_Environment_new(	1,
+																											& rb_parent_environment_path,
+																											rb_RPDB_Environment );
 	}
-
-	/*------------------------------------------------------*/
-
+	if ( rb_parent_environment != Qnil )	{
+		rb_parent_database_controller = rb_RPDB_Environment_databaseController( rb_parent_environment );
+	}
+	
 	RPDB_DatabaseController*	c_parent_database_controller;
 	char*	c_database_name		=	NULL;
 	if ( rb_database_name != Qnil )	{
@@ -287,7 +285,86 @@ VALUE rb_RPDB_Database_new(	int			argc,
 	RPDB_Database*	c_database	=	RPDB_DatabaseController_newDatabase(	c_parent_database_controller,
 																																			c_database_name );
 	
-	VALUE	rb_database	=	RUBY_RPDB_DATABASE( c_database );
+	RPDB_DatabaseSettingsController*			c_database_settings_controller				=	RPDB_Database_settingsController( c_database );
+	RPDB_DatabaseTypeSettingsController*	c_database_type_settings_controller		=	RPDB_DatabaseSettingsController_typeSettingsController( c_database_settings_controller );
+
+	DBTYPE	c_database_type	=	DB_UNKNOWN;
+
+	if ( rb_database_type != Qnil )	{
+		
+		if ( TYPE( rb_database_type ) != T_STRING )	{
+			rb_database_type = rb_obj_as_string( rb_database_type );
+		}
+		char*	c_database_type_string	=	StringValuePtr( rb_database_type );
+
+		if (			strcmp( c_database_type_string, "Btree" ) == 0 )	{
+			RPDB_DatabaseTypeSettingsController_setTypeToBTree( c_database_type_settings_controller );
+			c_database_type	=	DB_BTREE;
+		}
+		else if ( strcmp( c_database_type_string, "Hash" ) == 0 )	{
+			RPDB_DatabaseTypeSettingsController_setTypeToHash( c_database_type_settings_controller );
+			c_database_type	=	DB_HASH;
+		}
+		else if ( strcmp( c_database_type_string, "Queue" ) == 0 )	{
+			RPDB_DatabaseTypeSettingsController_setTypeToQueue( c_database_type_settings_controller );
+			c_database_type	=	DB_QUEUE;
+		}
+		else if ( strcmp( c_database_type_string, "Recno" ) == 0 )	{
+			RPDB_DatabaseTypeSettingsController_setTypeToRecno( c_database_type_settings_controller );
+			c_database_type	=	DB_RECNO;
+		}
+	}
+	else if ( rb_klass_self != rb_RPDB_Database )	{
+		
+		if (			rb_klass_self == rb_RPDB_BtreeDatabase )	{
+			RPDB_DatabaseTypeSettingsController_setTypeToBTree( c_database_type_settings_controller );
+			c_database_type	=	DB_BTREE;
+		}
+		else if (	rb_klass_self == rb_RPDB_HashDatabase )	{
+			RPDB_DatabaseTypeSettingsController_setTypeToHash( c_database_type_settings_controller );
+			c_database_type	=	DB_HASH;
+		}
+		else if (	rb_klass_self == rb_RPDB_QueueDatabase )	{
+			RPDB_DatabaseTypeSettingsController_setTypeToQueue( c_database_type_settings_controller );
+			c_database_type	=	DB_QUEUE;
+		}
+		else if (	rb_klass_self == rb_RPDB_RecnoDatabase )	{
+			RPDB_DatabaseTypeSettingsController_setTypeToRecno( c_database_type_settings_controller );
+			c_database_type	=	DB_RECNO;
+		}
+		else {
+			c_database_type	=	DB_UNKNOWN;
+		}
+
+	}
+	else {
+		c_database_type	=	RPDB_DatabaseTypeSettingsController_databaseType( c_database_type_settings_controller );
+	}
+
+	VALUE	rb_database	=	Qnil;
+	switch ( c_database_type )	{
+		
+		case DB_BTREE:
+			rb_database	=	RUBY_RPDB_BTREE_DATABASE( c_database );
+			break;
+			
+		case DB_HASH:
+			rb_database	=	RUBY_RPDB_HASH_DATABASE( c_database );
+			break;
+
+		case DB_QUEUE:
+			rb_database	=	RUBY_RPDB_QUEUE_DATABASE( c_database );
+			break;
+
+		case DB_RECNO:
+			rb_database	=	RUBY_RPDB_RECNO_DATABASE( c_database );
+			break;
+
+		default:
+			rb_raise( rb_eArgError, "Unknown database type." );
+			break;
+		
+	}
 
 	//	store reference to parent
 	rb_iv_set(	rb_database,
@@ -311,8 +388,8 @@ VALUE rb_RPDB_Database_new(	int			argc,
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_class.html
 VALUE rb_RPDB_Database_initialize(	int			argc __attribute__((unused)),
-															VALUE*	args __attribute__((unused)),
-															VALUE		rb_database_self )	{
+																		VALUE*	args __attribute__((unused)),
+																		VALUE		rb_database_self )	{
 		
 	return rb_database_self;
 }

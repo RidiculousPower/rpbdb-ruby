@@ -92,17 +92,18 @@ void Init_RPDB_DatabaseTypeSettingsController()	{
 	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"is_queue?",							rb_RPDB_DatabaseTypeSettingsController_isQueue,							0 	);
 	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"set_type_to_queue",			rb_RPDB_DatabaseTypeSettingsController_setTypeToQueue,			0 	);
                     					
-	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"btree_controller",				rb_RPDB_DatabaseTypeSettingsController_btreeController,			0 	);
-	rb_define_alias(						rb_RPDB_DatabaseTypeSettingsController, 	"btree",									"btree_controller"	);
+	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"btree_settings_controller",				rb_RPDB_DatabaseTypeSettingsController_btreeController,			0 	);
+	rb_define_alias(						rb_RPDB_DatabaseTypeSettingsController, 	"btree",									"btree_settings_controller"	);
 
-	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"hash_controller",				rb_RPDB_DatabaseTypeSettingsController_hashController,			0 	);
-	rb_define_alias(						rb_RPDB_DatabaseTypeSettingsController, 	"hash",										"hash_controller"	);
+	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"hash_settings_controller",				rb_RPDB_DatabaseTypeSettingsController_hashController,			0 	);
+	rb_define_alias(						rb_RPDB_DatabaseTypeSettingsController, 	"hash",										"hash_settings_controller"	);
 
-	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"queue_controller",				rb_RPDB_DatabaseTypeSettingsController_queueController,			0 	);
-	rb_define_alias(						rb_RPDB_DatabaseTypeSettingsController, 	"queue",									"queue_controller"	);
+	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"queue_settings_controller",				rb_RPDB_DatabaseTypeSettingsController_queueController,			0 	);
+	rb_define_alias(						rb_RPDB_DatabaseTypeSettingsController, 	"queue",									"queue_settings_controller"	);
 
-	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"recno_controller",				rb_RPDB_DatabaseTypeSettingsController_recnoController,			0 	);
-	rb_define_alias(						rb_RPDB_DatabaseTypeSettingsController, 	"recno",									"recno_controller"	);
+	rb_define_method(						rb_RPDB_DatabaseTypeSettingsController, 	"recno_settings_controller",				rb_RPDB_DatabaseTypeSettingsController_recnoController,			0 	);
+	rb_define_alias(						rb_RPDB_DatabaseTypeSettingsController, 	"recno",									"recno_settings_controller"	);
+
 }
 
 /*******************************************************************************************************************************************************************************************
@@ -181,7 +182,7 @@ VALUE rb_RPDB_DatabaseTypeSettingsController_new(	int			argc,
 	
 	if ( rb_parent_database != Qnil )	{
 		
-		const DBTYPE		c_database_type	=	RPDB_DatabaseTypeSettingsController_databaseType( c_database_type_settings_controller );
+		const DBTYPE	c_database_type	=	RPDB_DatabaseTypeSettingsController_databaseType( c_database_type_settings_controller );
 
 		VALUE	rb_database_specific_type_settings_controller	=	Qnil;
 		switch( c_database_type )	{

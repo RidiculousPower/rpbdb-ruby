@@ -396,6 +396,11 @@
 	#define RUBY_RPDB_DATABASE( c_database )																									RUBY_RPDB_OBJECT(	c_database, rb_RPDB_Database, NULL, NULL )
 	#define C_RPDB_DATABASE( rb_database, c_database )																				C_RPDB_STRUCT(		rb_database, c_database, RPDB_Database )
 
+	#define RUBY_RPDB_BTREE_DATABASE( c_btree_database )																									RUBY_RPDB_OBJECT(	c_btree_database, rb_RPDB_BtreeDatabase, NULL, NULL )
+	#define RUBY_RPDB_HASH_DATABASE( c_hash_database )																										RUBY_RPDB_OBJECT(	c_hash_database, rb_RPDB_HashDatabase, NULL, NULL )
+	#define RUBY_RPDB_QUEUE_DATABASE( c_queue_database )																									RUBY_RPDB_OBJECT(	c_queue_database, rb_RPDB_QueueDatabase, NULL, NULL )
+	#define RUBY_RPDB_RECNO_DATABASE( c_recno_database )																									RUBY_RPDB_OBJECT(	c_recno_database, rb_RPDB_RecnoDatabase, NULL, NULL )
+
 	#define RUBY_RPDB_DATABASE_OBJECT_DATABASE( c_database )																		RUBY_RPDB_OBJECT(	c_database, rb_RPDB_DatabaseObjectDatabase, NULL, NULL )
 	#define C_RPDB_DATABASE_OBJECT_DATABASE( rb_database, c_database )																C_RPDB_STRUCT(		rb_database, c_database, RPDB_Database )
 

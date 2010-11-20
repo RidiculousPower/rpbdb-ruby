@@ -28,32 +28,32 @@ describe RPDB::Settings::Database::Type::Btree do
 
   # RPDB::Settings::Database::Type::Btree.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Type::Btree.new( @environment ).should_not == nil
+    RPDB::Settings::Database::Type::Btree.new( @environment ).is_a?( RPDB::Settings::Database::Type::Btree ).should == true
   end
 
   # RPDB::Settings::Database::Type::Btree.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Type::Btree.new( @environment.database_controller ).should_not == nil
+    RPDB::Settings::Database::Type::Btree.new( @environment.database_controller ).is_a?( RPDB::Settings::Database::Type::Btree ).should == true
   end
 
   # RPDB::Settings::Database::Type::Btree.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Type::Btree.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Type::Btree ).should == true
   end
 
   # RPDB::Settings::Database::Type::Btree.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Type::Btree.new( RPDB::Settings.new ).should_not == nil
+    RPDB::Settings::Database::Type::Btree.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database::Type::Btree ).should == true
   end
 
   # RPDB::Settings::Database::Type::Btree.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Type::Btree.new( RPDB::Settings::Database.new ).should_not == nil
+    RPDB::Settings::Database::Type::Btree.new( RPDB::Settings::Database.new ).is_a?( RPDB::Settings::Database::Type::Btree ).should == true
   end
 
   # RPDB::Settings::Database::Type::Btree.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Type::Btree.new.should_not == nil
+    RPDB::Settings::Database::Type::Btree.new.is_a?( RPDB::Settings::Database::Type::Btree ).should == true
   end
 
   ########################
@@ -61,7 +61,10 @@ describe RPDB::Settings::Database::Type::Btree do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Database::Type::Btree.new.parent_environment.should_not == nil
+    # with a settings controller
+    RPDB::Settings::Database::Type::Btree.new.parent_environment.is_a?( RPDB::Environment ).should == true
+    # with a database
+    RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
   end
 
   #####################
@@ -69,7 +72,10 @@ describe RPDB::Settings::Database::Type::Btree do
   #####################
 
   it "can return its parent database" do
-    RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
+    # with a settings controller
+    RPDB::Settings::Database::Type::Btree.new.parent_database.should == nil
+    # with a database
+    RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
   end
 
   ################################
@@ -77,7 +83,10 @@ describe RPDB::Settings::Database::Type::Btree do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Database::Type::Btree.new.parent_settings_controller.should_not == nil
+    # with a settings controller
+    RPDB::Settings::Database::Type::Btree.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    # with a database
+    RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
   end
 
   #########################################
@@ -85,7 +94,10 @@ describe RPDB::Settings::Database::Type::Btree do
   #########################################
 
   it "can return its parent database settings controller" do
-    RPDB::Settings::Database::Type::Btree.new.parent_database_settings_controller.should_not == nil
+    # with a settings controller
+    RPDB::Settings::Database::Type::Btree.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    # with a database
+    RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
   end
 
   ##############################################
@@ -93,7 +105,10 @@ describe RPDB::Settings::Database::Type::Btree do
   ##############################################
 
   it "can return its parent database type settings controller" do
-    RPDB::Settings::Database::Type::Btree.new.parent_database_type_settings_controller.should_not == nil
+    # with a settings controller
+    RPDB::Settings::Database::Type::Btree.new.parent_database_type_settings_controller.is_a?( RPDB::Settings::Database::Type ).should == true
+    # with a database
+    RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) ).parent_database_type_settings_controller.is_a?( RPDB::Settings::Database::Type ).should == true
   end
 
   ###################
@@ -101,7 +116,10 @@ describe RPDB::Settings::Database::Type::Btree do
   ###################
 
   it "can return its database type" do
+    # with a settings controller
     RPDB::Settings::Database::Type::Btree.new.database_type.should == RPDB::Database::Type::Btree
+    # with a database
+    RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) ).database_type.should == RPDB::Database::Type::Btree
   end
 
   ##################
@@ -109,7 +127,10 @@ describe RPDB::Settings::Database::Type::Btree do
   ##################
 
   it "can report whether the type is btree" do
+    # with a settings controller
     RPDB::Settings::Database::Type::Btree.new.is_btree?.should == true
+    # with a database
+    RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) ).is_btree?.should == true
   end
 
   #################
@@ -117,7 +138,10 @@ describe RPDB::Settings::Database::Type::Btree do
   #################
 
   it "can report whether the type is hash" do
+    # with a settings controller
     RPDB::Settings::Database::Type::Btree.new.is_hash?.should == false
+    # with a database
+    RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) ).is_hash?.should == false
   end
 
   ##################
@@ -125,7 +149,10 @@ describe RPDB::Settings::Database::Type::Btree do
   ##################
 
   it "can report whether the type is queue" do
+    # with a settings controller
     RPDB::Settings::Database::Type::Btree.new.is_recno?.should == false
+    # with a database
+    RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) ).is_recno?.should == false
   end
 
   ##################
@@ -133,7 +160,10 @@ describe RPDB::Settings::Database::Type::Btree do
   ##################
 
   it "can report whether the type is recno" do
+    # with a settings controller
     RPDB::Settings::Database::Type::Btree.new.is_queue?.should == false
+    # with a database
+    RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) ).is_queue?.should == false
   end
 
   #######################################
@@ -143,12 +173,22 @@ describe RPDB::Settings::Database::Type::Btree do
   #######################################
 
   it "can be set for record number retrieval (restricted in type from general key retrieval)" do
+    # with a settings controller
     btree_settings  = RPDB::Settings::Database::Type::Btree.new
+    test_record_number_retrieval( btree_settings )
+    # with a database
+    btree_settings  = RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) )
+    test_record_number_retrieval( btree_settings )
+  end
+  
+  def test_record_number_retrieval( btree_settings )
+    
     btree_settings.record_number_retrieval?.should == false
     btree_settings.turn_record_number_retrieval_on
     btree_settings.record_number_retrieval?.should == true
     btree_settings.turn_record_number_retrieval_off
     btree_settings.record_number_retrieval?.should == false
+
   end
 
   #################################
@@ -158,12 +198,22 @@ describe RPDB::Settings::Database::Type::Btree do
   #################################
 
   it "can perform reverse splitting of b-tree nodes" do
+    # with a settings controller
     btree_settings  = RPDB::Settings::Database::Type::Btree.new
+    test_reverse_splitting( btree_settings )
+    # with a database
+    btree_settings  = RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) )
+    test_reverse_splitting( btree_settings )
+  end
+  
+  def test_reverse_splitting( btree_settings )
+    
     btree_settings.reverse_splitting?.should == false
     btree_settings.turn_reverse_splitting_on
     btree_settings.reverse_splitting?.should == true
     btree_settings.turn_reverse_splitting_off
     btree_settings.reverse_splitting?.should == false
+
   end
 
   ###############################
@@ -172,9 +222,19 @@ describe RPDB::Settings::Database::Type::Btree do
   ###############################
 
   it "can set and return the minimum number of keys per page" do
+    # with a settings controller
     btree_settings  = RPDB::Settings::Database::Type::Btree.new
+    test_minimum_keys_per_page( btree_settings )
+    # with a database
+    btree_settings  = RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) )
+    test_minimum_keys_per_page( btree_settings )
+  end
+  
+  def test_minimum_keys_per_page( btree_settings )
+    
     btree_settings.set_minimum_keys_per_page( 42 )
     btree_settings.minimum_keys_per_page.should == 42
+
   end
 
   ###############################
@@ -185,6 +245,16 @@ describe RPDB::Settings::Database::Type::Btree do
   # fix name for callback
   it "can set and return a prefix comparison method" do
     raise "Callback."
+    # with a settings controller
+    btree_settings  = RPDB::Settings::Database::Type::Btree.new
+    test_prefix_compare_method( btree_settings )
+    # with a database
+    btree_settings  = RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) )
+    test_prefix_compare_method( btree_settings )
+  end
+  
+  def test_prefix_compare_method( btree_settings )
+    
   end
 
   ########################
@@ -195,6 +265,16 @@ describe RPDB::Settings::Database::Type::Btree do
   # fix name for callback
   it "can set and return a comparison method" do
     raise "Callback."
+    # with a settings controller
+    btree_settings  = RPDB::Settings::Database::Type::Btree.new
+    test_compare_method( btree_settings )
+    # with a database
+    btree_settings  = RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) )
+    test_compare_method( btree_settings )
+  end
+  
+  def test_compare_method( btree_settings )
+    
   end
 
   ##################################
@@ -205,6 +285,16 @@ describe RPDB::Settings::Database::Type::Btree do
   # fix name for callback
   it "can set and return a duplicate comparison method" do
     raise "Callback."
+    # with a settings controller
+    btree_settings  = RPDB::Settings::Database::Type::Btree.new
+    test_duplicate_compare_method( btree_settings )
+    # with a database
+    btree_settings  = RPDB::Settings::Database::Type::Btree.new( RPDB::Database.new( $database_name ) )
+    test_duplicate_compare_method( btree_settings )
+  end
+  
+  def test_duplicate_compare_method( btree_settings )
+    
   end
 
 end

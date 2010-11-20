@@ -28,42 +28,42 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment ).class.should == RPDB::Settings::Database::Cursor::ReadWrite
+    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment ).is_a?( RPDB::Settings::Database::Cursor::ReadWrite ).should == true
   end
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment.database_controller ).class.should == RPDB::Settings::Database::Cursor::ReadWrite
+    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment.database_controller ).is_a?( RPDB::Settings::Database::Cursor::ReadWrite ).should == true
   end
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment.database_controller.new( $database_name ) ).class.should == RPDB::Settings::Database::Cursor::ReadWrite
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Cursor::ReadWrite ).should == true
   end
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new( database_cursor_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment.database_controller.new( $database_name ).cursor_controller ).class.should == RPDB::Settings::Database::Cursor::ReadWrite
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor_controller ).is_a?( RPDB::Settings::Database::Cursor::ReadWrite ).should == true
   end
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new( database_cursor )
   it "can be created with a database cursor" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( @environment.database_controller.new( $database_name ).cursor ).class.should == RPDB::Settings::Database::Cursor::ReadWrite
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).is_a?( RPDB::Settings::Database::Cursor::ReadWrite ).should == true
   end
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Settings.new ).class.should == RPDB::Settings::Database::Cursor::ReadWrite
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database::Cursor::ReadWrite ).should == true
   end
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Settings::Database.new ).class.should == RPDB::Settings::Database::Cursor::ReadWrite
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Settings::Database.new ).is_a?( RPDB::Settings::Database::Cursor::ReadWrite ).should == true
   end
 
   # RPDB::Settings::Database::Cursor::ReadWrite.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Cursor::ReadWrite.new.class.should == RPDB::Settings::Database::Cursor::ReadWrite
+    RPDB::Settings::Database::Cursor::ReadWrite.new.is_a?( RPDB::Settings::Database::Cursor::ReadWrite ).should == true
   end
 
   ########################
@@ -72,11 +72,11 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
 
   it "can return its parent environment" do
     # with settings controller
-    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_environment.class.should == RPDB::Environment
+    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_environment.is_a?( RPDB::Environment ).should == true
     # with database
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_environment.class.should == RPDB::Environment
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
     # with database cursor
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_environment.class.should == RPDB::Environment
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_environment.is_a?( RPDB::Environment ).should == true
   end
 
   #####################
@@ -87,9 +87,9 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
     # with settings controller
     RPDB::Settings::Database::Cursor::ReadWrite.new.parent_database.should == nil
     # with database
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database.class.should == RPDB::Database
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
     # with database cursor
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_database.class.should == RPDB::Database
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_database.is_a?( RPDB::Database ).should == true
   end
 
   ############################
@@ -102,7 +102,7 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
     # with database
     RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database_cursor.should == nil
     # with database cursor
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_database_cursor.class.should == RPDB::Database::Cursor
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_database_cursor.is_a?( RPDB::Database::Cursor ).should == true
   end
 
   ################################
@@ -111,11 +111,11 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
 
   it "can return its parent settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_settings_controller.class.should == RPDB::Settings
+    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
     # with database
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.class.should == RPDB::Settings
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
     # with database cursor
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_settings_controller.class.should == RPDB::Settings
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
   end
 
   #########################################
@@ -124,11 +124,11 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
 
   it "can return its parent database settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_database_settings_controller.class.should == RPDB::Settings::Database
+    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
     # with database
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.class.should == RPDB::Settings::Database
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
     # with database cursor
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_database_settings_controller.class.should == RPDB::Settings::Database
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
   end
 
   ################################################
@@ -137,11 +137,11 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
 
   it "can return its parent database cursor settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_database_cursor_settings_controller.class.should == RPDB::Settings::Database::Cursor
+    RPDB::Settings::Database::Cursor::ReadWrite.new.parent_database_cursor_settings_controller.is_a?( RPDB::Settings::Database::Cursor ).should == true
     # with database
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database_cursor_settings_controller.class.should == RPDB::Settings::Database::Cursor
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database_cursor_settings_controller.is_a?( RPDB::Settings::Database::Cursor ).should == true
     # with database cursor
-    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_database_cursor_settings_controller.class.should == RPDB::Settings::Database::Cursor
+    RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor ).parent_database_cursor_settings_controller.is_a?( RPDB::Settings::Database::Cursor ).should == true
   end
 
   ###########################
@@ -151,12 +151,25 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   ###########################
 
   it "can be a read-only cursor or it can permit writing" do
+    # with settings controller
     read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new
+    test_permit_write( read_write_settings )
+    # with database
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    test_permit_write( read_write_settings )
+    # with database cursor
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor )
+    test_permit_write( read_write_settings )
+  end
+  
+  def test_permit_write( read_write_settings )
+    
     read_write_settings.permit_write?.should == false
     read_write_settings.turn_permit_write_on
     read_write_settings.permit_write?.should == true
     read_write_settings.turn_permit_write_off
     read_write_settings.permit_write?.should == false
+
   end
 
   ############################
@@ -166,12 +179,25 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   ############################
 
   it "can be set to ignore its replication status (regarding master leases)" do
+    # with settings controller
     read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new
+    test_ignore_lease( read_write_settings )
+    # with database
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    test_ignore_lease( read_write_settings )
+    # with database cursor
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor )
+    test_ignore_lease( read_write_settings )
+  end
+
+  def test_ignore_lease( read_write_settings )
+    
     read_write_settings.ignore_lease?.should == false
     read_write_settings.turn_ignore_lease_on
     read_write_settings.ignore_lease?.should == true
     read_write_settings.turn_ignore_lease_off
     read_write_settings.ignore_lease?.should == false
+
   end
 
   ################################################
@@ -181,12 +207,25 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   ################################################
 
   it "can use write locks instead of read locks" do
+    # with settings controller
     read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new
+    test_write_locks_instead_of_read_locks( read_write_settings )
+    # with database
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    test_ignore_lease( read_write_settings )
+    # with database cursor
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor )
+    test_ignore_lease( read_write_settings )
+  end
+
+  def test_write_locks_instead_of_read_locks( read_write_settings )
+    
     read_write_settings.write_locks_instead_of_read_locks?.should == false
     read_write_settings.turn_write_locks_instead_of_read_locks_on
     read_write_settings.write_locks_instead_of_read_locks?.should == true
     read_write_settings.turn_write_locks_instead_of_read_locks_off
     read_write_settings.write_locks_instead_of_read_locks?.should == false
+
   end
 
   #########################################
@@ -196,12 +235,25 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   #########################################
 
   it "can return multiple data items in a single data parameter" do
+    # with settings controller
     read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new
+    test_return_multiple_data_items( read_write_settings )
+    # with database
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    test_return_multiple_data_items( read_write_settings )
+    # with database cursor
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor )
+    test_return_multiple_data_items( read_write_settings )
+  end
+
+  def test_return_multiple_data_items( read_write_settings )
+    
     read_write_settings.return_multiple_data_items?.should == false
     read_write_settings.turn_return_multiple_data_items_on
     read_write_settings.return_multiple_data_items?.should == true
     read_write_settings.turn_return_multiple_data_items_off
     read_write_settings.return_multiple_data_items?.should == false
+
   end
 
   #############################################
@@ -211,12 +263,25 @@ describe RPDB::Settings::Database::Cursor::ReadWrite do
   #############################################
 
   it "can return multiple key and data items in a single data parameter" do
+    # with settings controller
     read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new
+    test_return_multiple_key_data_pairs( read_write_settings )
+    # with database
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    test_return_multiple_key_data_pairs( read_write_settings )
+    # with database cursor
+    read_write_settings = RPDB::Settings::Database::Cursor::ReadWrite.new( RPDB::Database.new( $database_name ).cursor )
+    test_return_multiple_key_data_pairs( read_write_settings )
+  end
+
+  def test_return_multiple_key_data_pairs( read_write_settings )
+    
     read_write_settings.return_multiple_key_data_pairs?.should == false
     read_write_settings.turn_return_multiple_key_data_pairs_on
     read_write_settings.return_multiple_key_data_pairs?.should == true
     read_write_settings.turn_return_multiple_key_data_pairs_off
     read_write_settings.return_multiple_key_data_pairs?.should == false
+
   end
 
 end

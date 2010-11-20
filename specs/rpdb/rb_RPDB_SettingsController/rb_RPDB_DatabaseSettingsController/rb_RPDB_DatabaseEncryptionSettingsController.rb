@@ -28,32 +28,32 @@ describe RPDB::Settings::Database::Encryption do
 
   # RPDB::Settings::Database::Encryption.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Encryption.new( @environment ).should_not == nil
+    RPDB::Settings::Database::Encryption.new( @environment ).is_a?( RPDB::Settings::Database::Encryption ).should == true
   end
 
   # RPDB::Settings::Database::Encryption.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Encryption.new( @environment.database_controller ).should_not == nil
+    RPDB::Settings::Database::Encryption.new( @environment.database_controller ).is_a?( RPDB::Settings::Database::Encryption ).should == true
   end
 
   # RPDB::Settings::Database::Encryption.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Encryption.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Encryption.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Encryption ).should == true
   end
 
   # RPDB::Settings::Database::Encryption.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Encryption.new( RPDB::Settings.new ).should_not == nil
+    RPDB::Settings::Database::Encryption.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database::Encryption ).should == true
   end
 
   # RPDB::Settings::Database::Encryption.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Encryption.new( RPDB::Settings::Database.new ).should_not == nil
+    RPDB::Settings::Database::Encryption.new( RPDB::Settings::Database.new ).is_a?( RPDB::Settings::Database::Encryption ).should == true
   end
 
   # RPDB::Settings::Database::Encryption.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Encryption.new.should_not == nil
+    RPDB::Settings::Database::Encryption.new.is_a?( RPDB::Settings::Database::Encryption ).should == true
   end
 
   ########################
@@ -61,7 +61,10 @@ describe RPDB::Settings::Database::Encryption do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Database::Encryption.new.parent_environment.should_not == nil
+    # with settings controller
+    RPDB::Settings::Database::Encryption.new.parent_environment.is_a?( RPDB::Environment ).should == true
+    # with database
+    RPDB::Settings::Database::Encryption.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
   end
 
   #####################
@@ -69,7 +72,10 @@ describe RPDB::Settings::Database::Encryption do
   #####################
 
   it "can return its parent database" do
-    RPDB::Settings::Database::Encryption.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
+    # with settings controller
+    RPDB::Settings::Database::Encryption.new.parent_database.should == nil
+    # with database
+    RPDB::Settings::Database::Encryption.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
   end
 
   ################################
@@ -77,7 +83,10 @@ describe RPDB::Settings::Database::Encryption do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Database::Encryption.new.parent_settings_controller.should_not == nil
+    # with settings controller
+    RPDB::Settings::Database::Encryption.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    # with database
+    RPDB::Settings::Database::Encryption.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
   end
 
   #########################################
@@ -85,7 +94,10 @@ describe RPDB::Settings::Database::Encryption do
   #########################################
 
   it "can return its parent database settings controller" do
-    RPDB::Settings::Database::Encryption.new.parent_database_settings_controller.should_not == nil
+    # with settings controller
+    RPDB::Settings::Database::Encryption.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    # with database
+    RPDB::Settings::Database::Encryption.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
   end
 
   #########################
@@ -95,7 +107,16 @@ describe RPDB::Settings::Database::Encryption do
   #########################
 
   it "can turn encryption on and off and report whether it is encrypted" do
+    # with settings controller
     encryption_settings = RPDB::Settings::Database::Encryption.new
+    test_encrypted( encryption_settings )
+    # with database
+    encryption_settings = RPDB::Settings::Database::Encryption.new( RPDB::Database.new( $database_name ) )
+    test_encrypted( encryption_settings )
+  end
+  
+  def test_encrypted( encryption_settings )
+
     encryption_settings.encrypted?.should == false
     encryption_settings.turn_encryption_on( 'password!' )
     encryption_settings.encrypted?.should == true
@@ -103,6 +124,7 @@ describe RPDB::Settings::Database::Encryption do
     encryption_settings.encrypted?.should == true
     encryption_settings.turn_encryption_off( 'password!' )
     encryption_settings.encrypted?.should == false
+    
   end
 
 end

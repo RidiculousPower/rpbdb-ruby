@@ -167,14 +167,7 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_new(	int			argc,
 
 	VALUE	rb_database_type_recno_settings_controller	= RUBY_RPDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( c_database_type_recno_settings_controller );
 
-	if ( rb_parent_database == Qnil )	{
-
-		//	store reference to parent type settings controller
-		rb_iv_set(	rb_database_type_recno_settings_controller,
-								RPDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER,
-								rb_parent_database_type_settings_controller );
-	}
-	else {
+	if ( rb_parent_database != Qnil )	{
 
 		if ( rb_parent_database_settings_controller == Qnil )	{
 			rb_parent_database_settings_controller = rb_RPDB_Database_settingsController( rb_parent_database );
@@ -186,6 +179,11 @@ VALUE rb_RPDB_DatabaseTypeRecnoSettingsController_new(	int			argc,
 								rb_parent_database_settings_controller );
 
 	}
+
+	//	store reference to parent type settings controller
+	rb_iv_set(	rb_database_type_recno_settings_controller,
+							RPDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER,
+							rb_parent_database_type_settings_controller );
 
 	//	if we have a parent database in addition to our parent environmental settings controller, set it as parent as well
 	//	it's possible we were passed a database settings controller with a parent database

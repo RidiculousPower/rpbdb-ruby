@@ -38,7 +38,7 @@ describe RPDB::Settings::Database::Record::FixedLength do
 
   # RPDB::Settings::Database::Record::FixedLength.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Record::FixedLength.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Record::FixedLength.new( RPDB::Database.new( $database_name ) ).should_not == nil
   end
 
   # RPDB::Settings::Database::Record::FixedLength.new( settings_controller )
@@ -61,7 +61,9 @@ describe RPDB::Settings::Database::Record::FixedLength do
   ########################
 
   it "can return its parent environment" do
+    # with settings controller
     RPDB::Settings::Database::Record::FixedLength.new.parent_environment.is_a?( RPDB::Environment ).should == true
+    # with database
     RPDB::Settings::Database::Record::FixedLength.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
   end
 
@@ -70,7 +72,9 @@ describe RPDB::Settings::Database::Record::FixedLength do
   #####################
 
   it "can return its parent database" do
+    # with settings controller
     RPDB::Settings::Database::Record::FixedLength.new.parent_database.should == nil
+    # with database
     RPDB::Settings::Database::Record::FixedLength.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
   end
 
@@ -79,7 +83,9 @@ describe RPDB::Settings::Database::Record::FixedLength do
   ################################
 
   it "can return its parent settings controller" do
+    # with settings controller
     RPDB::Settings::Database::Record::FixedLength.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    # with database
     RPDB::Settings::Database::Record::FixedLength.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
   end
 
@@ -88,7 +94,9 @@ describe RPDB::Settings::Database::Record::FixedLength do
   #########################################
 
   it "can return its parent database settings controller" do
+    # with settings controller
     RPDB::Settings::Database::Record::FixedLength.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    # with database
     RPDB::Settings::Database::Record::FixedLength.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
   end
 
@@ -97,7 +105,9 @@ describe RPDB::Settings::Database::Record::FixedLength do
   ################################################
 
   it "can return its parent database settings controller" do
+    # with settings controller
     RPDB::Settings::Database::Record::FixedLength.new.parent_database_record_settings_controller.is_a?( RPDB::Settings::Database::Record ).should == true
+    # with database
     RPDB::Settings::Database::Record::FixedLength.new( RPDB::Database.new( $database_name ) ).parent_database_record_settings_controller.is_a?( RPDB::Settings::Database::Record ).should == true
   end
 
@@ -107,9 +117,19 @@ describe RPDB::Settings::Database::Record::FixedLength do
   #######################
 
   it "can set and return a fixed length for records" do
+    # with settings controller
     fixed_length_settings = RPDB::Settings::Database::Record::FixedLength.new
+    test_record_length( fixed_length_settings )
+    # with database
+    fixed_length_settings = RPDB::Settings::Database::Record::FixedLength.new( RPDB::Database.new( $database_name ) )
+    test_record_length( fixed_length_settings )
+  end
+
+  def test_record_length( fixed_length_settings )
+    
     fixed_length_settings.set_record_length( 42 )
     fixed_length_settings.record_length.should == 42
+
   end
 
   ######################
@@ -118,9 +138,19 @@ describe RPDB::Settings::Database::Record::FixedLength do
   ######################
 
   it "can set and return which character will be used for padding records shorter than fixed length" do
+    # with settings controller
     fixed_length_settings = RPDB::Settings::Database::Record::FixedLength.new
+    test_padding_byte( fixed_length_settings )
+    # with database
+    fixed_length_settings = RPDB::Settings::Database::Record::FixedLength.new( RPDB::Database.new( $database_name ) )
+    test_padding_byte( fixed_length_settings )
+  end
+
+  def test_padding_byte( fixed_length_settings )
+    
     fixed_length_settings.set_padding_byte( '.' )
     fixed_length_settings.padding_byte.should == '.'
+
   end
 
 end

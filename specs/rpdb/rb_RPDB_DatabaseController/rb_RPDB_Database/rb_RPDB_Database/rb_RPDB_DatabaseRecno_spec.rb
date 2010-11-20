@@ -1,6 +1,6 @@
-require_relative 'lib/rpdb.rb'
+require_relative '../../../../../lib/rpdb/rpdb'
 
-describe RPDB::Database::Controller do
+describe RPDB::Database::Btree do
 
   $environment_path           = '/tmp/rpdb_spec_environment_home/'
 
@@ -9,13 +9,10 @@ describe RPDB::Database::Controller do
   $database_new_name          = :spec_database_renamed
   $database_extension         = '.db'
   $duplicates_database_name   = :duplicates_db
-
-  $unsorted_duplicates_database_name   = :unsorted_duplicates_db
-  $sorted_duplicates_database_name   = :sorted_duplicates_db
-  
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path ).open
+    @environment = RPDB::Environment.new( $environment_path )
+    @environment.open
     @database_controller = @environment.database_controller
 
   end
@@ -23,11 +20,5 @@ describe RPDB::Database::Controller do
   after( :each ) do
     @environment.close
   end
-
-
-  it "can return its parent database" do
-    RPDB::Settings::Database::Type.new( RPDB::Database::Hash.new( $database_name ) ).is_a?( RPDB::Settings::Database::Type::Hash ).should == true
-  end
-
 
 end

@@ -28,53 +28,52 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
 
   # RPDB::Settings::Database::Cursor::Cache::Priority.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Cursor::Cache::Priority.new( @environment ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( @environment ).is_a?( RPDB::Settings::Database::Cursor::Cache::Priority ).should == true
   end
 
   # RPDB::Settings::Database::Cursor::Cache::Priority.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Cursor::Cache::Priority.new( @environment.database_controller ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( @environment.database_controller ).is_a?( RPDB::Settings::Database::Cursor::Cache::Priority ).should == true
   end
 
   # RPDB::Settings::Database::Cursor::Cache::Priority.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Cursor::Cache::Priority.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Cursor::Cache::Priority ).should == true
   end
 
   # RPDB::Settings::Database::Cursor::Cache::Priority.new( database_cursor_controller )
   it "can be created with a database cursor controller" do
-    RPDB::Settings::Database::Cursor::Cache::Priority.new( @environment.database_controller.new( $database_name ).cursor_controller ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ).cursor_controller ).is_a?( RPDB::Settings::Database::Cursor::Cache::Priority ).should == true
   end
 
   # RPDB::Settings::Database::Cursor::Cache::Priority.new( database_cursor )
   it "can be created with a database cursor" do
-    RPDB::Settings::Database::Cursor::Cache::Priority.new( @environment.database_controller.new( $database_name ).cursor ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ).cursor ).is_a?( RPDB::Settings::Database::Cursor::Cache::Priority ).should == true
   end
-
 
   # RPDB::Settings::Database::Cursor::Cache::Priority.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Settings.new ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database::Cursor::Cache::Priority ).should == true
   end
 
   # RPDB::Settings::Database::Cursor::Cache::Priority.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Settings::Database.new ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Settings::Database.new ).is_a?( RPDB::Settings::Database::Cursor::Cache::Priority ).should == true
   end
 
   # RPDB::Settings::Database::Cursor::Cache::Priority.new( database_settings_controller )
   it "can be created with a database cursor settings controller" do
-    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Settings::Database::Cursor.new ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Settings::Database::Cursor.new ).is_a?( RPDB::Settings::Database::Cursor::Cache::Priority ).should == true
   end
 
   # RPDB::Settings::Database::Cursor::Cache::Priority.new( database_settings_controller )
   it "can be created with a database cursor cache settings controller" do
-    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Settings::Database::Cursor::Cache.new ).should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Settings::Database::Cursor::Cache.new ).is_a?( RPDB::Settings::Database::Cursor::Cache::Priority ).should == true
   end
   
   # RPDB::Settings::Database::Cursor::Cache::Priority.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Cursor::Cache::Priority.new.should_not == nil
+    RPDB::Settings::Database::Cursor::Cache::Priority.new.is_a?( RPDB::Settings::Database::Cursor::Cache::Priority ).should == true
   end
 
   ########################
@@ -82,7 +81,12 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
   ########################
 
   it "can return its parent environment" do
+    # with a settings controller
     RPDB::Settings::Database::Cursor::Cache::Priority.new.parent_environment.should_not == nil
+    # with a database
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
+    # with a database cursor
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ).cursor ).parent_environment.is_a?( RPDB::Environment ).should == true
   end
 
   #####################
@@ -90,7 +94,12 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
   #####################
 
   it "can return its parent database" do
-    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
+    # with a settings controller
+    RPDB::Settings::Database::Cursor::Cache::Priority.new.parent_database.should == nil
+    # with a database
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
+    # with a database cursor
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ).cursor ).parent_database.is_a?( RPDB::Database ).should == true
   end
 
   ################################
@@ -98,7 +107,12 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
   ################################
 
   it "can return its parent settings controller" do
+    # with a settings controller
     RPDB::Settings::Database::Cursor::Cache::Priority.new.parent_settings_controller.should_not == nil
+    # with a database
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    # with a database cursor
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ).cursor ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
   end
 
   #########################################
@@ -106,7 +120,12 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
   #########################################
 
   it "can return its parent database settings controller" do
+    # with a settings controller
     RPDB::Settings::Database::Cursor::Cache::Priority.new.parent_database_settings_controller.should_not == nil
+    # with a database
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    # with a database cursor
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ).cursor ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
   end
 
   ################################################
@@ -114,7 +133,12 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
   ################################################
 
   it "can return its parent database cursor settings controller" do
+    # with a settings controller
     RPDB::Settings::Database::Cursor::Cache::Priority.new.parent_database_cursor_settings_controller.should_not == nil
+    # with a database
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ) ).parent_database_cursor_settings_controller.is_a?( RPDB::Settings::Database::Cursor ).should == true
+    # with a database cursor
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ).cursor ).parent_database_cursor_settings_controller.is_a?( RPDB::Settings::Database::Cursor ).should == true
   end
 
   ######################################################
@@ -122,7 +146,12 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
   ######################################################
 
   it "can return its parent database cursor cache settings controller" do
+    # with a settings controller
     RPDB::Settings::Database::Cursor::Cache::Priority.new.parent_database_cursor_cache_settings_controller.should_not == nil
+    # with a database
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ) ).parent_database_cursor_cache_settings_controller.is_a?( RPDB::Settings::Database::Cursor::Cache ).should == true
+    # with a database cursor
+    RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ).cursor ).parent_database_cursor_cache_settings_controller.is_a?( RPDB::Settings::Database::Cursor::Cache ).should == true
   end
 
   ######################
@@ -140,7 +169,21 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
   ######################
 
   it "can set priority and report whether a priority level is currently set as well as report its current priority" do
+    # with a settings controller
+    priority_settings_controller  = RPDB::Settings::Database::Cursor::Cache::Priority.new
+    test_priority_settings( priority_settings_controller )
+
+    # with a database
     priority_settings_controller  = RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ) )
+    test_priority_settings( priority_settings_controller )
+
+    # with a database cursor
+    priority_settings_controller  = RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ).cursor )
+    test_priority_settings( priority_settings_controller )
+  end
+  
+  def test_priority_settings( priority_settings_controller )
+
     priority_settings_controller.current_priority.should == 0
     priority_settings_controller.set_to_very_low
     priority_settings_controller.very_low?.should == true
@@ -152,6 +195,7 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
     priority_settings_controller.high?.should == true
     priority_settings_controller.set_to_very_high
     priority_settings_controller.very_high?.should == true
+
   end
 
   #########################
@@ -168,7 +212,21 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
   #########################
 
   it "can report on relative priority levels" do
+    # with a settings controller
     priority_settings_controller  = RPDB::Settings::Database::Cursor::Cache::Priority.new
+    test_relative_priority_settings( priority_settings_controller )
+
+    # with a database
+    priority_settings_controller  = RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ) )
+    test_relative_priority_settings( priority_settings_controller )
+    
+    # with a database cursor
+    priority_settings_controller  = RPDB::Settings::Database::Cursor::Cache::Priority.new( RPDB::Database.new( $database_name ).cursor )
+    test_relative_priority_settings( priority_settings_controller )    
+  end
+
+  def test_relative_priority_settings( priority_settings_controller )
+    
     priority_settings_controller.set_to_very_low
     priority_settings_controller.is_at_least_very_low?.should == true
     priority_settings_controller.is_at_most_very_low?.should == true
@@ -228,8 +286,8 @@ describe RPDB::Settings::Database::Cursor::Cache::Priority do
     priority_settings_controller.is_at_most_high?.should == false
     priority_settings_controller.is_at_least_very_high?.should == true
     priority_settings_controller.is_at_most_very_high?.should == true
-
+    
   end
-  
+
 end
 

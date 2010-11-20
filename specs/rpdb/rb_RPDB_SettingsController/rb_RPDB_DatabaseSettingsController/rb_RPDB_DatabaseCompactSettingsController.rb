@@ -28,32 +28,32 @@ describe RPDB::Settings::Database::Compact do
 
   # RPDB::Settings::Database::Compact.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Compact.new( @environment ).class.should == RPDB::Settings::Database::Compact
+    RPDB::Settings::Database::Compact.new( @environment ).is_a?( RPDB::Settings::Database::Compact ).should == true
   end
 
   # RPDB::Settings::Database::Compact.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Compact.new( @environment.database_controller ).class.should == RPDB::Settings::Database::Compact
+    RPDB::Settings::Database::Compact.new( @environment.database_controller ).is_a?( RPDB::Settings::Database::Compact ).should == true
   end
 
   # RPDB::Settings::Database::Compact.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Compact.new( @environment.database_controller.new( $database_name ) ).class.should == RPDB::Settings::Database::Compact
+    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Compact ).should == true
   end
 
   # RPDB::Settings::Database::Compact.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Compact.new( RPDB::Settings.new ).class.should == RPDB::Settings::Database::Compact
+    RPDB::Settings::Database::Compact.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database::Compact ).should == true
   end
 
   # RPDB::Settings::Database::Compact.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Compact.new( RPDB::Settings::Database.new ).class.should == RPDB::Settings::Database::Compact
+    RPDB::Settings::Database::Compact.new( RPDB::Settings::Database.new ).is_a?( RPDB::Settings::Database::Compact ).should == true
   end
 
   # RPDB::Settings::Database::Compact.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Compact.new.class.should == RPDB::Settings::Database::Compact
+    RPDB::Settings::Database::Compact.new.is_a?( RPDB::Settings::Database::Compact ).should == true
   end
 
   ########################
@@ -61,8 +61,10 @@ describe RPDB::Settings::Database::Compact do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Database::Compact.new.parent_environment.class.should == RPDB::Environment
-    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_environment.class.should == RPDB::Environment
+    # with a settings controller
+    RPDB::Settings::Database::Compact.new.parent_environment.is_a?( RPDB::Environment ).should == true
+    # with a database
+    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
   end
 
   #####################
@@ -70,8 +72,10 @@ describe RPDB::Settings::Database::Compact do
   #####################
 
   it "can return its parent database" do
+    # with a settings controller
     RPDB::Settings::Database::Compact.new.parent_database.should == nil
-    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_database.class.should == RPDB::Database
+    # with a database
+    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
   end
 
   ################################
@@ -79,8 +83,10 @@ describe RPDB::Settings::Database::Compact do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Database::Compact.new.parent_settings_controller.class.should == RPDB::Settings
-    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.class.should == RPDB::Settings
+    # with a settings controller
+    RPDB::Settings::Database::Compact.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    # with a database
+    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
   end
 
   #########################################
@@ -88,8 +94,10 @@ describe RPDB::Settings::Database::Compact do
   #########################################
 
   it "can return its parent database settings controller" do
-    RPDB::Settings::Database::Compact.new.parent_database_settings_controller.class.should == RPDB::Settings::Database
-    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.class.should == RPDB::Settings::Database
+    # with a settings controller
+    RPDB::Settings::Database::Compact.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    # with a database
+    RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
   end
 
   ######################
@@ -98,9 +106,19 @@ describe RPDB::Settings::Database::Compact do
   ######################
 
   it "can set and report the level at which compaction should occur" do
+    # with a settings controller
     compact_settings  = RPDB::Settings::Database::Compact.new
+    test_fill_percent( compact_settings )
+    # with a database
+    compact_settings  = RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) )
+    test_fill_percent( compact_settings )
+  end
+
+  def test_fill_percent( compact_settings )
+    
     compact_settings.set_fill_percent( 42 )
     compact_settings.fill_percent.should == 42
+
   end
 
   ##############################
@@ -109,9 +127,19 @@ describe RPDB::Settings::Database::Compact do
   ##############################
 
   it "can set and report the maximum amount of pages to be compacted at any time" do
+    # with a settings controller
     compact_settings  = RPDB::Settings::Database::Compact.new
+    test_max_pages_to_compact( compact_settings )
+    # with a database
+    compact_settings  = RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) )
+    test_max_pages_to_compact( compact_settings )
+  end
+
+  def test_max_pages_to_compact( compact_settings )
+    
     compact_settings.set_max_pages_to_compact( 42 )
     compact_settings.max_pages_to_compact.should == 42
+
   end
 
   #################
@@ -120,9 +148,19 @@ describe RPDB::Settings::Database::Compact do
   #################
 
   it "can set and report compaction timeout" do
+    # with a settings controller
     compact_settings  = RPDB::Settings::Database::Compact.new
+    test_timeout( compact_settings )
+    # with a database
+    compact_settings  = RPDB::Settings::Database::Compact.new( RPDB::Database.new( $database_name ) )
+    test_timeout( compact_settings )
+  end
+
+  def test_timeout( compact_settings )
+    
     compact_settings.set_timeout( 42 )
     compact_settings.timeout.should == 42
+
   end
 
 end

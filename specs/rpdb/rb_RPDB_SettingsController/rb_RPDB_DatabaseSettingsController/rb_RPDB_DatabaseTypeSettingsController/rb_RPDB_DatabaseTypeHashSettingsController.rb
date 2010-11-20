@@ -28,32 +28,32 @@ describe RPDB::Settings::Database::Type::Hash do
 
   # RPDB::Settings::Database::Type::Hash.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Type::Hash.new( @environment ).should_not == nil
+    RPDB::Settings::Database::Type::Hash.new( @environment ).is_a?( RPDB::Settings::Database::Type::Hash ).should == true
   end
 
   # RPDB::Settings::Database::Type::Hash.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Type::Hash.new( @environment.database_controller ).should_not == nil
+    RPDB::Settings::Database::Type::Hash.new( @environment.database_controller ).is_a?( RPDB::Settings::Database::Type::Hash ).should == true
   end
 
   # RPDB::Settings::Database::Type::Hash.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Type::Hash.new( @environment.database_controller.new( $database_name ) ).should_not == nil
+    RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Type::Hash ).should == true
   end
 
   # RPDB::Settings::Database::Type::Hash.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Type::Hash.new( RPDB::Settings.new ).should_not == nil
+    RPDB::Settings::Database::Type::Hash.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database::Type::Hash ).should == true
   end
 
   # RPDB::Settings::Database::Type::Hash.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Type::Hash.new( RPDB::Settings::Database.new ).should_not == nil
+    RPDB::Settings::Database::Type::Hash.new( RPDB::Settings::Database.new ).is_a?( RPDB::Settings::Database::Type::Hash ).should == true
   end
 
   # RPDB::Settings::Database::Type::Hash.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Type::Hash.new.should_not == nil
+    RPDB::Settings::Database::Type::Hash.new.is_a?( RPDB::Settings::Database::Type::Hash ).should == true
   end
 
   ########################
@@ -61,7 +61,10 @@ describe RPDB::Settings::Database::Type::Hash do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Database::Type::Hash.new.parent_environment.should_not == nil
+    # with a settings controller
+    RPDB::Settings::Database::Type::Hash.new.parent_environment.is_a?( RPDB::Environment ).should == true
+    # with a database
+    RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
   end
 
   #####################
@@ -69,7 +72,10 @@ describe RPDB::Settings::Database::Type::Hash do
   #####################
 
   it "can return its parent database" do
-    RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
+    # with a settings controller
+    RPDB::Settings::Database::Type::Hash.new.parent_database.should == nil
+    # with a database
+    RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
   end
 
   ################################
@@ -77,7 +83,10 @@ describe RPDB::Settings::Database::Type::Hash do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Database::Type::Hash.new.parent_settings_controller.should_not == nil
+    # with a settings controller
+    RPDB::Settings::Database::Type::Hash.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    # with a database
+    RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
   end
 
   #########################################
@@ -85,7 +94,10 @@ describe RPDB::Settings::Database::Type::Hash do
   #########################################
 
   it "can return its parent database settings controller" do
-    RPDB::Settings::Database::Type::Hash.new.parent_database_settings_controller.should_not == nil
+    # with a settings controller
+    RPDB::Settings::Database::Type::Hash.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    # with a database
+    RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
   end
 
   ##############################################
@@ -93,7 +105,10 @@ describe RPDB::Settings::Database::Type::Hash do
   ##############################################
 
   it "can return its parent database type settings controller" do
-    RPDB::Settings::Database::Type::Hash.new.parent_database_type_settings_controller.should_not == nil
+    # with a settings controller
+    RPDB::Settings::Database::Type::Hash.new.parent_database_type_settings_controller.is_a?( RPDB::Settings::Database::Type ).should == true
+    # with a database
+    RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) ).parent_database_type_settings_controller.is_a?( RPDB::Settings::Database::Type ).should == true
   end
 
   ###################
@@ -101,7 +116,10 @@ describe RPDB::Settings::Database::Type::Hash do
   ###################
 
   it "can return its database type" do
+    # with a settings controller
     RPDB::Settings::Database::Type::Hash.new.database_type.should == RPDB::Database::Type::Hash
+    # with a database
+    RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) ).database_type.should == RPDB::Database::Type::Hash
   end
 
   ##################
@@ -109,7 +127,10 @@ describe RPDB::Settings::Database::Type::Hash do
   ##################
 
   it "can report whether the type is btree" do
+    # with a settings controller
     RPDB::Settings::Database::Type::Hash.new.is_btree?.should == false
+    # with a database
+    RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) ).is_btree?.should == false
   end
 
   #################
@@ -117,7 +138,10 @@ describe RPDB::Settings::Database::Type::Hash do
   #################
 
   it "can report whether the type is hash" do
+    # with a settings controller
     RPDB::Settings::Database::Type::Hash.new.is_hash?.should == true
+    # with a database
+    RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) ).is_hash?.should == true
   end
 
   ##################
@@ -125,7 +149,10 @@ describe RPDB::Settings::Database::Type::Hash do
   ##################
 
   it "can report whether the type is queue" do
+    # with a settings controller
     RPDB::Settings::Database::Type::Hash.new.is_recno?.should == false
+    # with a database
+    RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) ).is_recno?.should == false
   end
 
   ##################
@@ -133,7 +160,10 @@ describe RPDB::Settings::Database::Type::Hash do
   ##################
 
   it "can report whether the type is recno" do
+    # with a settings controller
     RPDB::Settings::Database::Type::Hash.new.is_queue?.should == false
+    # with a database
+    RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) ).is_queue?.should == false
   end
 
   ####################
@@ -142,9 +172,19 @@ describe RPDB::Settings::Database::Type::Hash do
   ####################
 
   it "can set and return its table size" do
+    # with a settings controller
     hash_settings = RPDB::Settings::Database::Type::Hash.new
+    test_table_size( hash_settings )
+    # with a database
+    hash_settings = RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) )
+    test_table_size( hash_settings )
+  end
+
+  def test_table_size( hash_settings )
+    
     hash_settings.set_table_size( 42 )
     hash_settings.table_size.should == 42
+
   end
 
   #############################
@@ -153,9 +193,19 @@ describe RPDB::Settings::Database::Type::Hash do
   #############################
 
   it "can set and return its hash density factor" do
+    # with a settings controller
     hash_settings = RPDB::Settings::Database::Type::Hash.new
+    test_hash_density_factor( hash_settings )
+    # with a database
+    hash_settings = RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) )
+    test_hash_density_factor( hash_settings )
+  end
+
+  def test_hash_density_factor( hash_settings )
+    
     hash_settings.set_hash_density_factor( 42 )
     hash_settings.hash_density_factor.should == 42
+
   end
 
   #####################
@@ -166,6 +216,16 @@ describe RPDB::Settings::Database::Type::Hash do
   # fix name for callback
   it "can set and return a method for hashing" do
     raise "Callback."
+    # with a settings controller
+    hash_settings = RPDB::Settings::Database::Type::Hash.new
+    test_hash_method( hash_settings )
+    # with a database
+    hash_settings = RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) )
+    test_hash_method( hash_settings )
+  end
+
+  def test_hash_method( hash_settings )
+    
   end
 
   #########################
@@ -176,6 +236,16 @@ describe RPDB::Settings::Database::Type::Hash do
   # fix name for callback
   it "can set and return a comparison method" do
     raise "Callback."
+    # with a settings controller
+    hash_settings = RPDB::Settings::Database::Type::Hash.new
+    test_compare_method( hash_settings )
+    # with a database
+    hash_settings = RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) )
+    test_compare_method( hash_settings )
+  end
+
+  def test_compare_method( hash_settings )
+    
   end
 
   ##################################
@@ -186,6 +256,16 @@ describe RPDB::Settings::Database::Type::Hash do
   # fix name for callback
   it "can set and return a duplicate comparison method" do
     raise "Callback."
+    # with a settings controller
+    hash_settings = RPDB::Settings::Database::Type::Hash.new
+    test_duplicate_compare_method( hash_settings )
+    # with a database
+    hash_settings = RPDB::Settings::Database::Type::Hash.new( RPDB::Database.new( $database_name ) )
+    test_duplicate_compare_method( hash_settings )
+  end
+
+  def test_duplicate_compare_method( hash_settings )
+    
   end
 
 end
