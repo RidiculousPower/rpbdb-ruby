@@ -1,12 +1,12 @@
-require_relative '../../../lib/rpdb/rpdb'
+require_relative '../../../lib/rbdb/rbdb'
 
-describe RPDB::Environment::DatabaseController::Database::CursorController::ObjectCursor do
+describe Rbdb::Environment::DatabaseController::Database::CursorController::ObjectCursor do
 
   $environment_name           = :spec_environment
-  $environment_path             = '/tmp/rpdb_spec_environment_home'
+  $environment_path             = '/tmp/rbdb_spec_environment_home'
 
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_name, $environment_path )
+    @environment = Rbdb::Environment.new( $environment_name, $environment_path )
     @environment.open
     @database_controller  = @environment.database_controller
     @database             = @database_controller.database
@@ -21,10 +21,10 @@ describe RPDB::Environment::DatabaseController::Database::CursorController::Obje
   #  initialize  #
   ################
 
-  # RPDB::Environment::DatabaseController::Database::CursorController::ObjectCursor.new( environment )
-  # RPDB::Environment::DatabaseController::Database::CursorController::ObjectCursor.new( environment_name ) 
-  # RPDB::Environment::DatabaseController::Database::CursorController::ObjectCursor.new( database_controller ) 
-  # RPDB::Environment::DatabaseController::Database::CursorController::ObjectCursor.new
+  # Rbdb::Environment::DatabaseController::Database::CursorController::ObjectCursor.new( environment )
+  # Rbdb::Environment::DatabaseController::Database::CursorController::ObjectCursor.new( environment_name ) 
+  # Rbdb::Environment::DatabaseController::Database::CursorController::ObjectCursor.new( database_controller ) 
+  # Rbdb::Environment::DatabaseController::Database::CursorController::ObjectCursor.new
   
   #########################
   #  settings_controller  #

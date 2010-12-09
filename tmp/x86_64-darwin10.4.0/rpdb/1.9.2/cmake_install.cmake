@@ -1,4 +1,4 @@
-# Install script for directory: /Users/asher/Projects/rp/ruby/rpdb/ext
+# Install script for directory: /Users/asher/Projects/rp/ruby/rbdb/ext
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -29,7 +29,7 @@ ENDIF(NOT CMAKE_INSTALL_COMPONENT)
 
 IF(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  INCLUDE("/Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb/cmake_install.cmake")
+  INCLUDE("/Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2/rbdb/cmake_install.cmake")
 
 ENDIF(NOT CMAKE_INSTALL_LOCAL_ONLY)
 
@@ -39,7 +39,7 @@ ELSE(CMAKE_INSTALL_COMPONENT)
   SET(CMAKE_INSTALL_MANIFEST "install_manifest.txt")
 ENDIF(CMAKE_INSTALL_COMPONENT)
 
-FILE(WRITE "/Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/${CMAKE_INSTALL_MANIFEST}" "")
+FILE(WRITE "/Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2/${CMAKE_INSTALL_MANIFEST}" "")
 FOREACH(file ${CMAKE_INSTALL_MANIFEST_FILES})
-  FILE(APPEND "/Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
+  FILE(APPEND "/Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2/${CMAKE_INSTALL_MANIFEST}" "${file}\n")
 ENDFOREACH(file)

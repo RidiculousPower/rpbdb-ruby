@@ -1,8 +1,8 @@
-require_relative '../../../../lib/rpdb.rb'
+require_relative '../../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Database::Sequence do
+describe Rbdb::Settings::Database::Sequence do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Database::Sequence do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,34 +26,34 @@ describe RPDB::Settings::Database::Sequence do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Database::Sequence.new( environment )
+  # Rbdb::Settings::Database::Sequence.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Sequence.new( @environment ).is_a?( RPDB::Settings::Database::Sequence ).should == true
+    Rbdb::Settings::Database::Sequence.new( @environment ).is_a?( Rbdb::Settings::Database::Sequence ).should == true
   end
 
-  # RPDB::Settings::Database::Sequence.new( database_controller )
+  # Rbdb::Settings::Database::Sequence.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Sequence.new( @environment.database_controller ).is_a?( RPDB::Settings::Database::Sequence ).should == true
+    Rbdb::Settings::Database::Sequence.new( @environment.database_controller ).is_a?( Rbdb::Settings::Database::Sequence ).should == true
   end
 
-  # RPDB::Settings::Database::Sequence.new( database )
+  # Rbdb::Settings::Database::Sequence.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Sequence.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Sequence ).should == true
+    Rbdb::Settings::Database::Sequence.new( Rbdb::Database.new( $database_name ) ).is_a?( Rbdb::Settings::Database::Sequence ).should == true
   end
 
-  # RPDB::Settings::Database::Sequence.new( settings_controller )
+  # Rbdb::Settings::Database::Sequence.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Sequence.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database::Sequence ).should == true
+    Rbdb::Settings::Database::Sequence.new( Rbdb::Settings.new ).is_a?( Rbdb::Settings::Database::Sequence ).should == true
   end
 
-  # RPDB::Settings::Database::Sequence.new( database_settings_controller )
+  # Rbdb::Settings::Database::Sequence.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Sequence.new( RPDB::Settings::Database.new ).is_a?( RPDB::Settings::Database::Sequence ).should == true
+    Rbdb::Settings::Database::Sequence.new( Rbdb::Settings::Database.new ).is_a?( Rbdb::Settings::Database::Sequence ).should == true
   end
 
-  # RPDB::Settings::Database::Sequence.new
+  # Rbdb::Settings::Database::Sequence.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Sequence.new.is_a?( RPDB::Settings::Database::Sequence ).should == true
+    Rbdb::Settings::Database::Sequence.new.is_a?( Rbdb::Settings::Database::Sequence ).should == true
   end
   
   ########################
@@ -62,9 +62,9 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can return its parent environment" do
     # with settings controller
-    RPDB::Settings::Database::Sequence.new.parent_environment.is_a?( RPDB::Environment ).should == true
+    Rbdb::Settings::Database::Sequence.new.parent_environment.is_a?( Rbdb::Environment ).should == true
     # with database
-    RPDB::Settings::Database::Sequence.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
+    Rbdb::Settings::Database::Sequence.new( Rbdb::Database.new( $database_name ) ).parent_environment.is_a?( Rbdb::Environment ).should == true
   end
 
   #####################
@@ -73,9 +73,9 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can return its parent database" do
     # with settings controller
-    RPDB::Settings::Database::Sequence.new.parent_database.should == nil
+    Rbdb::Settings::Database::Sequence.new.parent_database.should == nil
     # with database
-    RPDB::Settings::Database::Sequence.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
+    Rbdb::Settings::Database::Sequence.new( Rbdb::Database.new( $database_name ) ).parent_database.is_a?( Rbdb::Database ).should == true
   end
 
   ################################
@@ -84,9 +84,9 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can return its parent settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Sequence.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    Rbdb::Settings::Database::Sequence.new.parent_settings_controller.is_a?( Rbdb::Settings ).should == true
     # with database
-    RPDB::Settings::Database::Sequence.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    Rbdb::Settings::Database::Sequence.new( Rbdb::Database.new( $database_name ) ).parent_settings_controller.is_a?( Rbdb::Settings ).should == true
   end
 
   #########################################
@@ -95,9 +95,9 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can return its parent database settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Sequence.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    Rbdb::Settings::Database::Sequence.new.parent_database_settings_controller.is_a?( Rbdb::Settings::Database ).should == true
     # with database
-    RPDB::Settings::Database::Sequence.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    Rbdb::Settings::Database::Sequence.new( Rbdb::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( Rbdb::Settings::Database ).should == true
   end
 
   #######################
@@ -107,10 +107,10 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can be set as an increasing sequence" do
     # with settings controller
-    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings = Rbdb::Settings::Database::Sequence.new
     test_increasing( sequence_settings )
     # with database
-    sequence_settings = RPDB::Settings::Database::Sequence.new( RPDB::Database.new( $database_name ) )
+    sequence_settings = Rbdb::Settings::Database::Sequence.new( Rbdb::Database.new( $database_name ) )
     test_increasing( sequence_settings )
   end
 
@@ -128,10 +128,10 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can be set as a decreasing sequence" do
     # with settings controller
-    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings = Rbdb::Settings::Database::Sequence.new
     test_decreasing( sequence_settings )
     # with database
-    sequence_settings = RPDB::Settings::Database::Sequence.new( RPDB::Database.new( $database_name ) )
+    sequence_settings = Rbdb::Settings::Database::Sequence.new( Rbdb::Database.new( $database_name ) )
     test_decreasing( sequence_settings )
   end
 
@@ -149,10 +149,10 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can be set to wrap at a given value" do
     # with settings controller
-    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings = Rbdb::Settings::Database::Sequence.new
     test_wrap( sequence_settings )
     # with database
-    sequence_settings = RPDB::Settings::Database::Sequence.new( RPDB::Database.new( $database_name ) )
+    sequence_settings = Rbdb::Settings::Database::Sequence.new( Rbdb::Database.new( $database_name ) )
     test_wrap( sequence_settings )
   end
 
@@ -170,10 +170,10 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can set the minimum value for a sequence range" do
     # with settings controller
-    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings = Rbdb::Settings::Database::Sequence.new
     test_range_minimum( sequence_settings )
     # with database
-    sequence_settings = RPDB::Settings::Database::Sequence.new( RPDB::Database.new( $database_name ) )
+    sequence_settings = Rbdb::Settings::Database::Sequence.new( Rbdb::Database.new( $database_name ) )
     test_range_minimum( sequence_settings )
   end
 
@@ -191,10 +191,10 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can set the maximum value for a sequence range" do
     # with settings controller
-    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings = Rbdb::Settings::Database::Sequence.new
     test_range_maximum( sequence_settings )
     # with database
-    sequence_settings = RPDB::Settings::Database::Sequence.new( RPDB::Database.new( $database_name ) )
+    sequence_settings = Rbdb::Settings::Database::Sequence.new( Rbdb::Database.new( $database_name ) )
     test_range_maximum( sequence_settings )
   end
 
@@ -212,10 +212,10 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can set the sequence cache size" do
     # with settings controller
-    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings = Rbdb::Settings::Database::Sequence.new
     test_cache_size( sequence_settings )
     # with database
-    sequence_settings = RPDB::Settings::Database::Sequence.new( RPDB::Database.new( $database_name ) )
+    sequence_settings = Rbdb::Settings::Database::Sequence.new( Rbdb::Database.new( $database_name ) )
     test_cache_size( sequence_settings )
   end
 
@@ -233,10 +233,10 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can set the initial sequence value" do
     # with settings controller
-    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings = Rbdb::Settings::Database::Sequence.new
     test_initial_value( sequence_settings )
     # with database
-    sequence_settings = RPDB::Settings::Database::Sequence.new( RPDB::Database.new( $database_name ) )
+    sequence_settings = Rbdb::Settings::Database::Sequence.new( Rbdb::Database.new( $database_name ) )
     test_initial_value( sequence_settings )
   end
 
@@ -254,10 +254,10 @@ describe RPDB::Settings::Database::Sequence do
 
   it "can set the default step value" do
     # with settings controller
-    sequence_settings = RPDB::Settings::Database::Sequence.new
+    sequence_settings = Rbdb::Settings::Database::Sequence.new
     test_default_step_value( sequence_settings )
     # with database
-    sequence_settings = RPDB::Settings::Database::Sequence.new( RPDB::Database.new( $database_name ) )
+    sequence_settings = Rbdb::Settings::Database::Sequence.new( Rbdb::Database.new( $database_name ) )
     test_default_step_value( sequence_settings )
   end
 

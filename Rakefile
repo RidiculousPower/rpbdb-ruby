@@ -4,7 +4,7 @@
 #                                                                             #
 ###############################################################################
 
-  gem_target                  = 'rpdb'
+  gem_target                  = 'rbdb'
   has_c_source                = true
 
   developer_name              = 'Asher'
@@ -26,7 +26,7 @@ Hoe.spec gem_target do
   self.history_file       = 'History.txt'
   self.extra_rdoc_files	  = FileList['*.rdoc']
   if has_c_source
-    self.spec_extras			= { :extensions => ["ext/rpdb/extconf.rb"] }
+    self.spec_extras			= { :extensions => ["ext/rbdb/extconf.rb"] }
     self.extra_dev_deps << ['rake-compiler', '>= 0']
     Rake::ExtensionTask.new( gem_target, spec ) do |ext|
       ext.lib_dir         = File.join('lib', gem_target)

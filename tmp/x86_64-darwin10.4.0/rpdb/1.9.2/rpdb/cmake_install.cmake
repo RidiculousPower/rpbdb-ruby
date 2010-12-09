@@ -1,4 +1,4 @@
-# Install script for directory: /Users/asher/Projects/rp/ruby/rpdb/ext/rpdb
+# Install script for directory: /Users/asher/Projects/rp/ruby/rbdb/ext/rbdb
 
 # Set the install prefix
 IF(NOT DEFINED CMAKE_INSTALL_PREFIX)

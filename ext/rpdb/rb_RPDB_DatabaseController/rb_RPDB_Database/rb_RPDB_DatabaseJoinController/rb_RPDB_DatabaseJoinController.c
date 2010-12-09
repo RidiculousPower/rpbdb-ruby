@@ -1,5 +1,5 @@
 /*
- *		RPDB::JoinController
+ *		Rbdb::JoinController
  *
  *
  */
@@ -10,19 +10,19 @@
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-#include "rb_RPDB_DatabaseJoinController.h"
-#include "rb_RPDB_DatabaseJoinController_internal.h"
+#include "rb_Rbdb_DatabaseJoinController.h"
+#include "rb_Rbdb_DatabaseJoinController_internal.h"
 
-#include "rb_RPDB_Database.h"
+#include "rb_Rbdb_Database.h"
 
-#include <rpdb/RPDB_Environment.h>
+#include <rbdb/Rbdb_Environment.h>
 
-#include <rpdb/RPDB_Database.h>
-#include <rpdb/RPDB_DatabaseJoinController.h>
-#include <rpdb/RPDB_DatabaseJoinCursor.h>
+#include <rbdb/Rbdb_Database.h>
+#include <rbdb/Rbdb_DatabaseJoinController.h>
+#include <rbdb/Rbdb_DatabaseJoinCursor.h>
 
-#include <rpdb/RPDB_DatabaseJoinSettingsController.h>
-#include <rpdb/RPDB_DatabaseCursor.h>
+#include <rbdb/Rbdb_DatabaseJoinSettingsController.h>
+#include <rbdb/Rbdb_DatabaseCursor.h>
 
 #include <rargs.h>
 
@@ -30,38 +30,38 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
-extern	VALUE	rb_RPDB_Environment;
-extern	VALUE	rb_RPDB_DatabaseJoinController;
-extern	VALUE	rb_RPDB_DatabaseJoinCursor;
-extern	VALUE	rb_RPDB_DatabaseJoinSettingsController;
-extern	VALUE	rb_RPDB_DatabaseCursor;
-extern	VALUE	rb_RPDB_Database;
-extern	VALUE	rb_RPDB_DatabaseJoinContainer;
+extern	VALUE	rb_Rbdb_Environment;
+extern	VALUE	rb_Rbdb_DatabaseJoinController;
+extern	VALUE	rb_Rbdb_DatabaseJoinCursor;
+extern	VALUE	rb_Rbdb_DatabaseJoinSettingsController;
+extern	VALUE	rb_Rbdb_DatabaseCursor;
+extern	VALUE	rb_Rbdb_Database;
+extern	VALUE	rb_Rbdb_DatabaseJoinContainer;
 
-void Init_RPDB_DatabaseJoinController()	{
+void Init_Rbdb_DatabaseJoinController()	{
 
-	rb_RPDB_DatabaseJoinContainer	=	rb_define_module_under(	rb_RPDB_Database, "Join" );
+	rb_Rbdb_DatabaseJoinContainer	=	rb_define_module_under(	rb_Rbdb_Database, "Join" );
 
-	rb_RPDB_DatabaseJoinController		=	rb_define_class_under(	rb_RPDB_DatabaseJoinContainer,				
+	rb_Rbdb_DatabaseJoinController		=	rb_define_class_under(	rb_Rbdb_DatabaseJoinContainer,				
 																															"Controller",		
 																															rb_cObject );
 	
-	rb_define_singleton_method(	rb_RPDB_DatabaseJoinController, 	"new",													rb_RPDB_DatabaseJoinController_new,											-1 	);
-	rb_define_method(						rb_RPDB_DatabaseJoinController, 	"initialize",										rb_RPDB_DatabaseJoinController_initialize,										-1 	);
+	rb_define_singleton_method(	rb_Rbdb_DatabaseJoinController, 	"new",													rb_Rbdb_DatabaseJoinController_new,											-1 	);
+	rb_define_method(						rb_Rbdb_DatabaseJoinController, 	"initialize",										rb_Rbdb_DatabaseJoinController_initialize,										-1 	);
 		
-	rb_define_method(						rb_RPDB_DatabaseJoinController, 	"settings_controller",					rb_RPDB_DatabaseJoinController_settingsController,			0 	);
-	rb_define_alias(						rb_RPDB_DatabaseJoinController, 	"settings",											"settings_controller"	);
-	rb_define_alias(						rb_RPDB_DatabaseJoinController, 	"set",													"settings_controller"	);
-	rb_define_alias(						rb_RPDB_DatabaseJoinController, 	"set_to",												"settings_controller"	);
-	rb_define_alias(						rb_RPDB_DatabaseJoinController, 	"is_set_to",										"settings_controller"	);
-	rb_define_method(						rb_RPDB_DatabaseJoinController, 	"parent_environment",						rb_RPDB_DatabaseJoinController_parentEnvironment,				0 	);
-	rb_define_alias(						rb_RPDB_DatabaseJoinController, 	"environment",									"parent_environment"	);
-	rb_define_method(						rb_RPDB_DatabaseJoinController, 	"parent_database",							rb_RPDB_DatabaseJoinController_parentDatabase,					0 	);
-	rb_define_alias(						rb_RPDB_DatabaseJoinController, 	"database",											"parent_database"	);
+	rb_define_method(						rb_Rbdb_DatabaseJoinController, 	"settings_controller",					rb_Rbdb_DatabaseJoinController_settingsController,			0 	);
+	rb_define_alias(						rb_Rbdb_DatabaseJoinController, 	"settings",											"settings_controller"	);
+	rb_define_alias(						rb_Rbdb_DatabaseJoinController, 	"set",													"settings_controller"	);
+	rb_define_alias(						rb_Rbdb_DatabaseJoinController, 	"set_to",												"settings_controller"	);
+	rb_define_alias(						rb_Rbdb_DatabaseJoinController, 	"is_set_to",										"settings_controller"	);
+	rb_define_method(						rb_Rbdb_DatabaseJoinController, 	"parent_environment",						rb_Rbdb_DatabaseJoinController_parentEnvironment,				0 	);
+	rb_define_alias(						rb_Rbdb_DatabaseJoinController, 	"environment",									"parent_environment"	);
+	rb_define_method(						rb_Rbdb_DatabaseJoinController, 	"parent_database",							rb_Rbdb_DatabaseJoinController_parentDatabase,					0 	);
+	rb_define_alias(						rb_Rbdb_DatabaseJoinController, 	"database",											"parent_database"	);
 	                  					
-	rb_define_method(						rb_RPDB_DatabaseJoinController, 	"join",													rb_RPDB_DatabaseJoinController_join,										-1 	);
-	rb_define_alias(						rb_RPDB_DatabaseJoinController, 	"cursor",												"join"	);
-	rb_define_method(						rb_RPDB_DatabaseJoinController, 	"close_all_cursors",						rb_RPDB_DatabaseJoinController_closeAllCursors,					-1 	);
+	rb_define_method(						rb_Rbdb_DatabaseJoinController, 	"join",													rb_Rbdb_DatabaseJoinController_join,										-1 	);
+	rb_define_alias(						rb_Rbdb_DatabaseJoinController, 	"cursor",												"join"	);
+	rb_define_method(						rb_Rbdb_DatabaseJoinController, 	"close_all_cursors",						rb_Rbdb_DatabaseJoinController_closeAllCursors,					-1 	);
 
 }
 
@@ -75,7 +75,7 @@ void Init_RPDB_DatabaseJoinController()	{
 *  self.new  *
 *************/
 
-VALUE rb_RPDB_DatabaseJoinController_new(	int			argc,
+VALUE rb_Rbdb_DatabaseJoinController_new(	int			argc,
 																					VALUE*	args,
 																					VALUE		rb_database_join_controller_class __attribute__((unused)) )	{
 
@@ -96,21 +96,21 @@ VALUE rb_RPDB_DatabaseJoinController_new(	int			argc,
 	}
 	else {
 		VALUE	rb_parent_environment		=	rb_parent_database_or_environment;
-		VALUE	rb_database_controller	=	rb_RPDB_Environment_databaseController( rb_parent_environment );
-		rb_parent_database	=	rb_RPDB_Database_new( 1,
+		VALUE	rb_database_controller	=	rb_Rbdb_Environment_databaseController( rb_parent_environment );
+		rb_parent_database	=	rb_Rbdb_Database_new( 1,
 																								& rb_database_controller,
-																								rb_RPDB_Database );
+																								rb_Rbdb_Database );
 	}
 
 	/*------------------------------------------------------*/
 	
-	RPDB_Database*		c_parent_database;
-	C_RPDB_DATABASE( rb_parent_database, c_parent_database );
-	VALUE	rb_join_controller	=	RUBY_RPDB_DATABASE_JOIN_CONTROLLER( RPDB_DatabaseJoinController_new( c_parent_database ) );
+	Rbdb_Database*		c_parent_database;
+	C_Rbdb_DATABASE( rb_parent_database, c_parent_database );
+	VALUE	rb_join_controller	=	RUBY_Rbdb_DATABASE_JOIN_CONTROLLER( Rbdb_DatabaseJoinController_new( c_parent_database ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_join_controller,
-							RPDB_RB_ALL_VARIABLE_PARENT_DATABASE,
+							Rbdb_RB_ALL_VARIABLE_PARENT_DATABASE,
 							rb_parent_database );
 
 	rb_obj_call_init(	rb_join_controller,
@@ -124,7 +124,7 @@ VALUE rb_RPDB_DatabaseJoinController_new(	int			argc,
 *  self.new  *
 *************/
 
-VALUE rb_RPDB_DatabaseJoinController_initialize(	int			argc __attribute__ ((unused)),
+VALUE rb_Rbdb_DatabaseJoinController_initialize(	int			argc __attribute__ ((unused)),
 																						VALUE*	args __attribute__ ((unused)),
 																						VALUE		rb_join_controller )	{
 
@@ -134,22 +134,22 @@ VALUE rb_RPDB_DatabaseJoinController_initialize(	int			argc __attribute__ ((unus
 /***************************
 *  settingsController  *
 ***************************/
-VALUE rb_RPDB_DatabaseJoinController_settingsController(	VALUE	rb_database_join_controller )	{
+VALUE rb_Rbdb_DatabaseJoinController_settingsController(	VALUE	rb_database_join_controller )	{
 
 	VALUE	rb_database_join_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_join_settings_controller = rb_iv_get(	rb_database_join_controller,
-																														RPDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																														Rbdb_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
-		RPDB_DatabaseJoinController*		c_database_join_controller;
-		C_RPDB_DATABASE_JOIN_CONTROLLER( rb_database_join_controller, c_database_join_controller );
+		Rbdb_DatabaseJoinController*		c_database_join_controller;
+		C_Rbdb_DATABASE_JOIN_CONTROLLER( rb_database_join_controller, c_database_join_controller );
 	
-		RPDB_DatabaseJoinSettingsController*	c_database_join_settings_controller	=	RPDB_DatabaseJoinController_settingsController( c_database_join_controller );
+		Rbdb_DatabaseJoinSettingsController*	c_database_join_settings_controller	=	Rbdb_DatabaseJoinController_settingsController( c_database_join_controller );
 
-		rb_database_join_settings_controller	=	RUBY_RPDB_DATABASE_JOIN_SETTINGS_CONTROLLER( c_database_join_settings_controller );
+		rb_database_join_settings_controller	=	RUBY_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( c_database_join_settings_controller );
 
 		rb_iv_set(	rb_database_join_controller,
-								RPDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
+								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
 								rb_database_join_settings_controller );
 	}
 
@@ -160,11 +160,11 @@ VALUE rb_RPDB_DatabaseJoinController_settingsController(	VALUE	rb_database_join_
 *  parent_environment  *
 ***********************/
 
-VALUE rb_RPDB_DatabaseJoinController_parentEnvironment(	VALUE	rb_join_controller )	{
+VALUE rb_Rbdb_DatabaseJoinController_parentEnvironment(	VALUE	rb_join_controller )	{
 
-	VALUE	rb_parent_database	=	rb_RPDB_DatabaseJoinController_parentDatabase( rb_join_controller );
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseJoinController_parentDatabase( rb_join_controller );
 	
-	VALUE	rb_parent_environment	=	rb_RPDB_Database_parentEnvironment( rb_parent_database );
+	VALUE	rb_parent_environment	=	rb_Rbdb_Database_parentEnvironment( rb_parent_database );
 	
 	return rb_parent_environment;
 }
@@ -172,10 +172,10 @@ VALUE rb_RPDB_DatabaseJoinController_parentEnvironment(	VALUE	rb_join_controller
 /********************
 *  parent_database  *
 ********************/
-VALUE rb_RPDB_DatabaseJoinController_parentDatabase(	VALUE	rb_join_controller )	{
+VALUE rb_Rbdb_DatabaseJoinController_parentDatabase(	VALUE	rb_join_controller )	{
 	
 	VALUE	rb_parent_database	=		rb_iv_get(	rb_join_controller,
-																						RPDB_RB_ALL_VARIABLE_PARENT_DATABASE );
+																						Rbdb_RB_ALL_VARIABLE_PARENT_DATABASE );
 	return rb_parent_database;
 }
 
@@ -193,7 +193,7 @@ VALUE rb_RPDB_DatabaseJoinController_parentDatabase(	VALUE	rb_join_controller )	
 //	if there is more than one hash with one or more cursors, an error will be thrown
 //	arrays will be treated as groups, so ( [ hash, cursor ], hash ) is a valid set 
 //		of arguments, which will return 2 join cursors
-VALUE rb_RPDB_DatabaseJoinController_join(	int			argc,
+VALUE rb_Rbdb_DatabaseJoinController_join(	int			argc,
 																						VALUE*	args,
 																						VALUE		rb_join_controller )	{
 
@@ -209,7 +209,7 @@ VALUE rb_RPDB_DatabaseJoinController_join(	int			argc,
 	
 	VALUE	rb_join_cursors_return_array	=	rb_ary_new();
 	
-	VALUE	rb_primary_database						=	rb_RPDB_DatabaseJoinController_parentDatabase( rb_join_controller );
+	VALUE	rb_primary_database						=	rb_Rbdb_DatabaseJoinController_parentDatabase( rb_join_controller );
 
 	//	sort each arg
 	int	c_which_arg	=	0;
@@ -230,7 +230,7 @@ VALUE rb_RPDB_DatabaseJoinController_join(	int			argc,
 				VALUE	rb_klass	=	rb_obj_class( rb_this_arg );
 				VALUE	rb_ancestors	=	rb_mod_ancestors( rb_klass );
 				if ( rb_ary_includes(	rb_ancestors,
-															rb_RPDB_DatabaseCursor ) == Qtrue )	{
+															rb_Rbdb_DatabaseCursor ) == Qtrue )	{
 					rb_ary_push(	rb_cursors,
 												rb_this_arg );
 				}
@@ -255,7 +255,7 @@ VALUE rb_RPDB_DatabaseJoinController_join(	int			argc,
 		for ( c_which_join_array = 0 ; c_which_join_array < RARRAY_LEN( rb_join_arrays ) ; c_which_join_array++ )	{
 			VALUE		rb_this_join_array	=	RARRAY_PTR( rb_join_arrays )[ c_which_join_array ];
 			//	call recursively
-			VALUE	rb_join_cursor_or_array	=	rb_RPDB_DatabaseJoinController_join(	RARRAY_LEN( rb_this_join_array ),
+			VALUE	rb_join_cursor_or_array	=	rb_Rbdb_DatabaseJoinController_join(	RARRAY_LEN( rb_this_join_array ),
 																																						RARRAY_PTR( rb_this_join_array ),
 																																						rb_join_controller );
 			//	we don't know what's in the array, so we can get 1 or more cursors back
@@ -284,7 +284,7 @@ VALUE rb_RPDB_DatabaseJoinController_join(	int			argc,
 	//	now, if we have cursors, combine all cursors
 	if ( RARRAY_LEN( rb_cursors ) )	{
 		
-		VALUE	rb_join_cursor	=	rb_RPDB_DatabaseJoinController_joinListOfCursors(	RARRAY_LEN( rb_cursors ),
+		VALUE	rb_join_cursor	=	rb_Rbdb_DatabaseJoinController_joinListOfCursors(	RARRAY_LEN( rb_cursors ),
 																																							RARRAY_PTR( rb_cursors ),
 																																							rb_join_controller );
 		rb_ary_push(	rb_join_cursors_return_array,
@@ -330,7 +330,7 @@ VALUE rb_RPDB_DatabaseJoinController_join(	int			argc,
 //	Assumes that all cursors in list have the same primary database (the first will be used)
 //
 //	Join cursors have the same name as the Database database_cursor that was used to initalize them
-VALUE rb_RPDB_DatabaseJoinController_joinListOfCursors(	int			argc,
+VALUE rb_Rbdb_DatabaseJoinController_joinListOfCursors(	int			argc,
 																												VALUE*	args,
 																												VALUE		rb_join_controller )	{
 	
@@ -350,27 +350,27 @@ VALUE rb_RPDB_DatabaseJoinController_joinListOfCursors(	int			argc,
 									rb_this_arg );
 	}
 
-	RPDB_DatabaseJoinController*	c_join_controller;
-	C_RPDB_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller );
+	Rbdb_DatabaseJoinController*	c_join_controller;
+	C_Rbdb_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller );
 	
 	VALUE	rb_this_cursor		=	Qnil;
-	RPDB_DatabaseCursor**	c_cursor_list	=	calloc( RARRAY_LEN( rb_cursor_list ) + 1, sizeof( RPDB_DatabaseCursor* ) );
+	Rbdb_DatabaseCursor**	c_cursor_list	=	calloc( RARRAY_LEN( rb_cursor_list ) + 1, sizeof( Rbdb_DatabaseCursor* ) );
 	int		which_cursor_index	=	0;
 	for( which_cursor_index = 0 ; which_cursor_index < RARRAY_LEN( rb_cursor_list ) ; which_cursor_index++ )	{
 
 		rb_this_cursor	=	RARRAY_PTR( rb_cursor_list )[ which_cursor_index ];
 		
-		//	Get c pointer to RPDB_DatabaseCursor
-		C_RPDB_DATABASE_CURSOR( rb_this_cursor, c_cursor_list[ which_cursor_index ] );
+		//	Get c pointer to Rbdb_DatabaseCursor
+		C_Rbdb_DATABASE_CURSOR( rb_this_cursor, c_cursor_list[ which_cursor_index ] );
 	}
 	
 	//	cap off list with a NULL pointer
 	c_cursor_list[ which_cursor_index++ ]	=	NULL;
 		
-	RPDB_DatabaseJoinCursor*	c_join_cursor	=	RPDB_DatabaseJoinController_join(	c_join_controller,
+	Rbdb_DatabaseJoinCursor*	c_join_cursor	=	Rbdb_DatabaseJoinController_join(	c_join_controller,
 																																							c_cursor_list );
 							
-	return RUBY_RPDB_DATABASE_JOIN_CURSOR( c_join_cursor );
+	return RUBY_Rbdb_DATABASE_JOIN_CURSOR( c_join_cursor );
 	
 }
 
@@ -378,12 +378,12 @@ VALUE rb_RPDB_DatabaseJoinController_joinListOfCursors(	int			argc,
 *  closeAllCursors  *
 *************************/
 
-VALUE rb_RPDB_DatabaseJoinController_closeAllCursors( VALUE	rb_join_controller )	{
+VALUE rb_Rbdb_DatabaseJoinController_closeAllCursors( VALUE	rb_join_controller )	{
 
-	RPDB_DatabaseJoinController*	c_join_controller;
-	C_RPDB_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller );
+	Rbdb_DatabaseJoinController*	c_join_controller;
+	C_Rbdb_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller );
 
-	RPDB_DatabaseJoinController_closeAllCursors( c_join_controller );
+	Rbdb_DatabaseJoinController_closeAllCursors( c_join_controller );
 
 	return rb_join_controller;
 }
@@ -394,7 +394,7 @@ VALUE rb_RPDB_DatabaseJoinController_closeAllCursors( VALUE	rb_join_controller )
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-static int rb_RPDB_DatabaseCursorController_internal_cursorsForEachHashDescriptor(	VALUE	rb_key_method_symbol,
+static int rb_Rbdb_DatabaseCursorController_internal_cursorsForEachHashDescriptor(	VALUE	rb_key_method_symbol,
 																																										VALUE	rb_key_value,
 																																										VALUE	rb_passed_args );
 
@@ -409,7 +409,7 @@ VALUE rb_DatabaseJoinController_internal_joinCursorForHashDescriptor( VALUE	rb_j
 	VALUE	rb_cursors_array	=	rb_DatabaseJoinController_internal_cursorsForHashDescriptor(	rb_primary_database,
 																																													rb_hash_descriptor );
 	
-	VALUE	rb_join_cursor	=	rb_RPDB_DatabaseJoinController_joinListOfCursors(	RARRAY_LEN( rb_cursors_array ),
+	VALUE	rb_join_cursor	=	rb_Rbdb_DatabaseJoinController_joinListOfCursors(	RARRAY_LEN( rb_cursors_array ),
 																																						RARRAY_PTR( rb_cursors_array ),
 																																						rb_join_controller );
 	return rb_join_cursor;
@@ -429,7 +429,7 @@ VALUE rb_DatabaseJoinController_internal_cursorsForHashDescriptor(	VALUE	rb_prim
 
 	//	foreach item (once): 
 	rb_hash_foreach(	rb_hash_descriptor, 
-										& rb_RPDB_DatabaseCursorController_internal_cursorsForEachHashDescriptor,
+										& rb_Rbdb_DatabaseCursorController_internal_cursorsForEachHashDescriptor,
 										rb_passed_args );
 	
 	//	our cursor array is our passed args array minus the first index (rb_primary_database)
@@ -453,7 +453,7 @@ VALUE rb_DatabaseJoinController_internal_cursorsForHashDescriptor(	VALUE	rb_prim
 ***************************************************/
 
 //	rb_passed_args should end up with 1 element (rb_self) + 1 element (idx-idx string) + # of elements in hash
-static int rb_RPDB_DatabaseCursorController_internal_cursorsForEachHashDescriptor(	VALUE	rb_key_method_symbol,
+static int rb_Rbdb_DatabaseCursorController_internal_cursorsForEachHashDescriptor(	VALUE	rb_key_method_symbol,
 																																										VALUE	rb_key_value,
 																																										VALUE	rb_passed_args )	{
 	
@@ -464,7 +464,7 @@ static int rb_RPDB_DatabaseCursorController_internal_cursorsForEachHashDescripto
 		rb_key_method_symbol	=	STRING2SYM( rb_key_method_symbol );
 	}
 	
-	VALUE	rb_cursor				=	rb_RPDB_DatabaseJoinController_internal_cursorForIndexAtKeyValue(	rb_primary_database,
+	VALUE	rb_cursor				=	rb_Rbdb_DatabaseJoinController_internal_cursorForIndexAtKeyValue(	rb_primary_database,
 																																										rb_key_method_symbol,
 																																										rb_key_value );
 	
@@ -499,14 +499,14 @@ static int rb_RPDB_DatabaseCursorController_internal_cursorsForEachHashDescripto
 *  cursorForParameterDescription  *
 ******************************************/
 
-VALUE rb_RPDB_DatabaseJoinController_internal_cursorForIndexAtKeyValue(	VALUE	rb_primary_database,
+VALUE rb_Rbdb_DatabaseJoinController_internal_cursorForIndexAtKeyValue(	VALUE	rb_primary_database,
 																																				VALUE	rb_index_name,
 																																				VALUE	rb_key_value  )	{
 		
-	VALUE	rb_secondary_database	=	rb_RPDB_Database_requireSecondaryDatabaseWithIndex(	rb_primary_database,
+	VALUE	rb_secondary_database	=	rb_Rbdb_Database_requireSecondaryDatabaseWithIndex(	rb_primary_database,
 																																										rb_index_name );
 	
-	//	we call via rb_funcall so that the class determines whether or not to use RPDB_DatabaseCursor or RPDB_DatabaseObjectCursor
+	//	we call via rb_funcall so that the class determines whether or not to use Rbdb_DatabaseCursor or Rbdb_DatabaseObjectCursor
 	VALUE	rb_cursor	=	rb_funcall(	rb_secondary_database,
 																rb_intern( "cursor" ),
 																0 );
@@ -514,7 +514,7 @@ VALUE rb_RPDB_DatabaseJoinController_internal_cursorForIndexAtKeyValue(	VALUE	rb
 	//	FIX - we probably want to add a method (perhaps a block) that gets called here that can be overridden for settings, etc.
 	
 	//	set cursor to requested first record
-	//	again, we call via rb_funcall so that the class determines whether or not to use RPDB_DatabaseCursor or RPDB_DatabaseObjectCursor
+	//	again, we call via rb_funcall so that the class determines whether or not to use Rbdb_DatabaseCursor or Rbdb_DatabaseObjectCursor
 	VALUE	rb_current	=	rb_funcall(	rb_cursor,
 																	rb_intern( "retrieve" ),
 																	1,

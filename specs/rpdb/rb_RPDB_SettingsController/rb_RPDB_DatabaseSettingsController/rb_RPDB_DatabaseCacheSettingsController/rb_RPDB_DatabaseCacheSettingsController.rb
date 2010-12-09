@@ -1,6 +1,6 @@
-require_relative '../../../../../lib/rpdb.rb'
+require_relative '../../../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Database::Cache do
+describe Rbdb::Settings::Database::Cache do
 
   # Database cache is only relevant when a database is opened without an environment
 
@@ -16,14 +16,14 @@ describe RPDB::Settings::Database::Cache do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Database::Cache.new
+  # Rbdb::Settings::Database::Cache.new
   it "can be created with no argument specified and no current working environment" do
-    RPDB::Settings::Database::Cache.new.should_not == nil
+    Rbdb::Settings::Database::Cache.new.should_not == nil
   end
 
-  # RPDB::Settings::Database::Cache.new( database_settings_controller )
+  # Rbdb::Settings::Database::Cache.new( database_settings_controller )
   it "can be created with a current working environment (of which the database is not part) by passing false" do
-    RPDB::Settings::Database::Cache.new( RPDB::Settings::Database.new ).should_not == nil
+    Rbdb::Settings::Database::Cache.new( Rbdb::Settings::Database.new ).should_not == nil
   end
 
   ########################
@@ -31,7 +31,7 @@ describe RPDB::Settings::Database::Cache do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Database::Cache.new.parent_environment.should_not == nil
+    Rbdb::Settings::Database::Cache.new.parent_environment.should_not == nil
   end
 
   #####################
@@ -39,7 +39,7 @@ describe RPDB::Settings::Database::Cache do
   #####################
 
   it "can return its parent database" do
-    RPDB::Settings::Database::Cache.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
+    Rbdb::Settings::Database::Cache.new( Rbdb::Database.new( $database_name ) ).parent_database.should_not == nil
   end
 
   ################################
@@ -47,7 +47,7 @@ describe RPDB::Settings::Database::Cache do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Database::Cache.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::Database::Cache.new.parent_settings_controller.should_not == nil
   end
 
   #########################################
@@ -55,7 +55,7 @@ describe RPDB::Settings::Database::Cache do
   #########################################
 
   it "can return its parent database settings controller" do
-    RPDB::Settings::Database::Cache.new.parent_database_settings_controller.should_not == nil
+    Rbdb::Settings::Database::Cache.new.parent_database_settings_controller.should_not == nil
   end
 
   ################################################
@@ -73,7 +73,7 @@ describe RPDB::Settings::Database::Cache do
   ################################################
 
   it "can set its cache size according to various measures" do
-    database_cache_settings = RPDB::Settings::Database::Cache.new( RPDB::Database( $database_name ) )
+    database_cache_settings = Rbdb::Settings::Database::Cache.new( Rbdb::Database( $database_name ) )
 
     database_cache_settings.set_max_size_in_bytes( 12 )
     database_cache_settings.max_size_in_bytes.should == 12
@@ -104,7 +104,7 @@ describe RPDB::Settings::Database::Cache do
   ##############################
 
   it "can specify how many regions to divide cache into" do
-    database_cache_settings = RPDB::Settings::Database::Cache.new( RPDB::Database( $database_name ) )
+    database_cache_settings = Rbdb::Settings::Database::Cache.new( Rbdb::Database( $database_name ) )
     database_cache_settings.set_number_cache_regions( 12 )
     database_cache_settings.number_cache_regions.should == 12
   end
@@ -114,7 +114,7 @@ describe RPDB::Settings::Database::Cache do
   #########################
 
   it "can return its priority controller" do
-    RPDB::Settings::Database::Cache.new.priority_controller.is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
+    Rbdb::Settings::Database::Cache.new.priority_controller.is_a?( Rbdb::Settings::Database::Cache::Priority ).should == true
   end
 
 end

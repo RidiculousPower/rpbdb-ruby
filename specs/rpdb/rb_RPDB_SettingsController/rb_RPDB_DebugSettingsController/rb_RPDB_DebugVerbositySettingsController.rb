@@ -1,8 +1,8 @@
-require_relative '../../../../lib/rpdb.rb'
+require_relative '../../../../lib/rbdb.rb'
 
-describe RPDB::Database do
+describe Rbdb::Database do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Database do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,24 +26,24 @@ describe RPDB::Database do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Debug::Verbosity.new( environment )
+  # Rbdb::Settings::Debug::Verbosity.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Debug::Verbosity.new( @environment ).should_not == nil
+    Rbdb::Settings::Debug::Verbosity.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::Debug::Verbosity.new( settings_controller )
+  # Rbdb::Settings::Debug::Verbosity.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Debug::Verbosity.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::Debug::Verbosity.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::Debug::Verbosity.new( debug_settings_controller )
+  # Rbdb::Settings::Debug::Verbosity.new( debug_settings_controller )
   it "can be created with a debug settings controller" do
-    RPDB::Settings::Debug::Verbosity.new( RPDB::Settings::Debug.new ).should_not == nil
+    Rbdb::Settings::Debug::Verbosity.new( Rbdb::Settings::Debug.new ).should_not == nil
   end
 
-  # RPDB::Settings::Debug::Verbosity.new
+  # Rbdb::Settings::Debug::Verbosity.new
   it "can be created with no environment specified" do
-    RPDB::Settings::Debug::Verbosity.new.should_not == nil
+    Rbdb::Settings::Debug::Verbosity.new.should_not == nil
   end
 
   ########################
@@ -51,7 +51,7 @@ describe RPDB::Database do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Debug::Verbosity.new.parent_environment.should_not == nil
+    Rbdb::Settings::Debug::Verbosity.new.parent_environment.should_not == nil
   end
 
   ################################
@@ -59,7 +59,7 @@ describe RPDB::Database do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Debug::Verbosity.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::Debug::Verbosity.new.parent_settings_controller.should_not == nil
   end
 
   ######################################
@@ -67,7 +67,7 @@ describe RPDB::Database do
   ######################################
 
   it "can return its parent debug settings controller" do
-    RPDB::Settings::Debug::Verbosity.new.parent_debug_settings_controller.should_not == nil
+    Rbdb::Settings::Debug::Verbosity.new.parent_debug_settings_controller.should_not == nil
   end
 
   #############################################################
@@ -77,7 +77,7 @@ describe RPDB::Database do
   #############################################################
 
   it "can display additional information during recovery" do
-    verbosity__settings  = RPDB::Settings::Debug::Verbosity.new
+    verbosity__settings  = Rbdb::Settings::Debug::Verbosity.new
     verbosity__settings.display_additional_information_during_recovery?.should == false
     verbosity__settings.turn_display_additional_information_during_recovery_on
     verbosity__settings.display_additional_information_during_recovery?.should == true

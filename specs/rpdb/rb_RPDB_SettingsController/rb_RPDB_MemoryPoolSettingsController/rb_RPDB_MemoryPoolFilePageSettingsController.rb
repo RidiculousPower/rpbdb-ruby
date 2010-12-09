@@ -1,8 +1,8 @@
-require_relative '../../../../lib/rpdb.rb'
+require_relative '../../../../lib/rbdb.rb'
 
-describe RPDB::Settings::MemoryPool::File::Page do
+describe Rbdb::Settings::MemoryPool::File::Page do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,29 +26,29 @@ describe RPDB::Settings::MemoryPool::File::Page do
   #  initialize  #
   ################
 
-  # RPDB::Settings::MemoryPool::File::Page.new( environment )
+  # Rbdb::Settings::MemoryPool::File::Page.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::MemoryPool::File::Page.new( @environment ).should_not == nil
+    Rbdb::Settings::MemoryPool::File::Page.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::File::Page.new( settings_controller )
+  # Rbdb::Settings::MemoryPool::File::Page.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::MemoryPool::File::Page.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::MemoryPool::File::Page.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::File::Page.new( memory_pool_settings_controller )
+  # Rbdb::Settings::MemoryPool::File::Page.new( memory_pool_settings_controller )
   it "can be created with a memory pool settings controller" do
-    RPDB::Settings::MemoryPool::File::Page.new( RPDB::Settings::MemoryPool.new ).should_not == nil
+    Rbdb::Settings::MemoryPool::File::Page.new( Rbdb::Settings::MemoryPool.new ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::File::Page.new( memory_pool_settings_controller )
+  # Rbdb::Settings::MemoryPool::File::Page.new( memory_pool_settings_controller )
   it "can be created with a memory pool file settings controller" do
-    RPDB::Settings::MemoryPool::File::Page.new( RPDB::Settings::MemoryPool::File.new ).should_not == nil
+    Rbdb::Settings::MemoryPool::File::Page.new( Rbdb::Settings::MemoryPool::File.new ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::File::Page.new
+  # Rbdb::Settings::MemoryPool::File::Page.new
   it "can be created with no argument specified" do
-    RPDB::Settings::MemoryPool::File::Page.new.should_not == nil
+    Rbdb::Settings::MemoryPool::File::Page.new.should_not == nil
   end
 
   ########################
@@ -56,7 +56,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::MemoryPool::File::Page.new.parent_environment.should_not == nil
+    Rbdb::Settings::MemoryPool::File::Page.new.parent_environment.should_not == nil
   end
 
   ################################
@@ -64,7 +64,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::MemoryPool::File::Page.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::MemoryPool::File::Page.new.parent_settings_controller.should_not == nil
   end
 
   ############################################
@@ -72,7 +72,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
   ############################################
 
   it "can return its parent memory pool settings controller" do
-    RPDB::Settings::MemoryPool::File::Page.new.parent_memory_pool_settings_controller.should_not == nil
+    Rbdb::Settings::MemoryPool::File::Page.new.parent_memory_pool_settings_controller.should_not == nil
   end
 
   #################################################
@@ -80,7 +80,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
   #################################################
 
   it "can return its parent memory pool file settings controller" do
-    RPDB::Settings::MemoryPool::File::Page.new.parent_memory_pool_file_settings_controller.should_not == nil
+    Rbdb::Settings::MemoryPool::File::Page.new.parent_memory_pool_file_settings_controller.should_not == nil
   end
 
   ######################################################
@@ -90,7 +90,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
   ######################################################
 
   it "can be set so get page creates the given memory page if it does not already exist" do
-    memory_page_settings  = RPDB::Settings::MemoryPool::File::Page.new
+    memory_page_settings  = Rbdb::Settings::MemoryPool::File::Page.new
     memory_page_settings.get_page_creates_page_if_does_not_exist?.should == false
     memory_page_settings.turn_get_page_creates_page_if_does_not_exist_on
     memory_page_settings.get_page_creates_page_if_does_not_exist?.should == true
@@ -105,7 +105,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
   ###################################################
 
   it "can be set so get page writes a copy before eviction" do
-    memory_page_settings  = RPDB::Settings::MemoryPool::File::Page.new
+    memory_page_settings  = Rbdb::Settings::MemoryPool::File::Page.new
     memory_page_settings.get_page_writes_copy_before_eviction?.should == false
     memory_page_settings.turn_get_page_writes_copy_before_eviction_on
     memory_page_settings.get_page_writes_copy_before_eviction?.should == true
@@ -120,7 +120,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
   ###########################################################
 
   it "can be set so get page writes before evicting pages without copying" do
-    memory_page_settings  = RPDB::Settings::MemoryPool::File::Page.new
+    memory_page_settings  = Rbdb::Settings::MemoryPool::File::Page.new
     memory_page_settings.get_page_writes_before_eviction_without_copy?.should == false
     memory_page_settings.turn_get_page_writes_before_eviction_without_copy_on
     memory_page_settings.get_page_writes_before_eviction_without_copy?.should == true
@@ -135,7 +135,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
   #########################################
 
   it "can be set so get page returns the last page" do
-    memory_page_settings  = RPDB::Settings::MemoryPool::File::Page.new
+    memory_page_settings  = Rbdb::Settings::MemoryPool::File::Page.new
     memory_page_settings.get_page_returns_last_page?.should == false
     memory_page_settings.turn_get_page_returns_last_page_on
     memory_page_settings.get_page_returns_last_page?.should == true
@@ -150,7 +150,7 @@ describe RPDB::Settings::MemoryPool::File::Page do
   ########################################
 
   it "can be set so get page creates a new page" do
-    memory_page_settings  = RPDB::Settings::MemoryPool::File::Page.new
+    memory_page_settings  = Rbdb::Settings::MemoryPool::File::Page.new
     memory_page_settings.get_page_creates_new_page?.should == false
     memory_page_settings.turn_get_page_creates_new_page_on
     memory_page_settings.get_page_creates_new_page?.should == true

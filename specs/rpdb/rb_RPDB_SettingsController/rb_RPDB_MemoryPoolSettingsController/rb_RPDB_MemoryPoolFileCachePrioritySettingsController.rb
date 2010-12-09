@@ -1,8 +1,8 @@
-require_relative '../../../../lib/rpdb.rb'
+require_relative '../../../../lib/rbdb.rb'
 
-describe RPDB::Settings::MemoryPool::File::Cache::Priority do
+describe Rbdb::Settings::MemoryPool::File::Cache::Priority do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::MemoryPool::File::Cache::Priority do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,34 +26,34 @@ describe RPDB::Settings::MemoryPool::File::Cache::Priority do
   #  initialize  #
   ################
 
-  # RPDB::Settings::MemoryPool::File::Cache::Priority.new( environment )
+  # Rbdb::Settings::MemoryPool::File::Cache::Priority.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::MemoryPool::File::Cache::Priority.new( @environment ).should_not == nil
+    Rbdb::Settings::MemoryPool::File::Cache::Priority.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::File::Cache::Priority.new( settings_controller )
+  # Rbdb::Settings::MemoryPool::File::Cache::Priority.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::MemoryPool::File::Cache::Priority.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::MemoryPool::File::Cache::Priority.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::File::Cache::Priority.new( memory_pool_settings_controller )
+  # Rbdb::Settings::MemoryPool::File::Cache::Priority.new( memory_pool_settings_controller )
   it "can be created with a memory pool settings controller" do
-    RPDB::Settings::MemoryPool::File::Cache::Priority.new( RPDB::Settings::MemoryPool.new ).should_not == nil
+    Rbdb::Settings::MemoryPool::File::Cache::Priority.new( Rbdb::Settings::MemoryPool.new ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::File::Cache::Priority.new( memory_pool_file_settings_controller )
+  # Rbdb::Settings::MemoryPool::File::Cache::Priority.new( memory_pool_file_settings_controller )
   it "can be created with a memory pool file settings controller" do
-    RPDB::Settings::MemoryPool::File::Cache::Priority.new( RPDB::Settings::MemoryPool::File.new ).should_not == nil
+    Rbdb::Settings::MemoryPool::File::Cache::Priority.new( Rbdb::Settings::MemoryPool::File.new ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::File::Cache::Priority.new( memory_pool_file_cache_settings_controller )
+  # Rbdb::Settings::MemoryPool::File::Cache::Priority.new( memory_pool_file_cache_settings_controller )
   it "can be created with a memory pool file cache settings controller" do
-    RPDB::Settings::MemoryPool::File::Cache::Priority.new( RPDB::Settings::MemoryPool::File::Cache.new ).should_not == nil
+    Rbdb::Settings::MemoryPool::File::Cache::Priority.new( Rbdb::Settings::MemoryPool::File::Cache.new ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::File::Cache::Priority.new
+  # Rbdb::Settings::MemoryPool::File::Cache::Priority.new
   it "can be created with no argument specified" do
-    RPDB::Settings::MemoryPool::File::Cache::Priority.new.should_not == nil
+    Rbdb::Settings::MemoryPool::File::Cache::Priority.new.should_not == nil
   end
 
   ########################
@@ -61,7 +61,7 @@ describe RPDB::Settings::MemoryPool::File::Cache::Priority do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::MemoryPool::File::Cache::Priority.new.parent_environment.should_not == nil
+    Rbdb::Settings::MemoryPool::File::Cache::Priority.new.parent_environment.should_not == nil
   end
 
   ################################
@@ -69,7 +69,7 @@ describe RPDB::Settings::MemoryPool::File::Cache::Priority do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::MemoryPool::File::Cache::Priority.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::MemoryPool::File::Cache::Priority.new.parent_settings_controller.should_not == nil
   end
 
   ############################################
@@ -77,7 +77,7 @@ describe RPDB::Settings::MemoryPool::File::Cache::Priority do
   ############################################
 
   it "can return its parent memory pool settings controller" do
-    RPDB::Settings::MemoryPool::File::Cache::Priority.new.parent_memory_pool_settings_controller.should_not == nil
+    Rbdb::Settings::MemoryPool::File::Cache::Priority.new.parent_memory_pool_settings_controller.should_not == nil
   end
 
   #################################################
@@ -85,7 +85,7 @@ describe RPDB::Settings::MemoryPool::File::Cache::Priority do
   #################################################
 
   it "can return its parent memory pool file settings controller" do
-    RPDB::Settings::MemoryPool::File::Cache::Priority.new.parent_memory_pool_file_settings_controller.should_not == nil
+    Rbdb::Settings::MemoryPool::File::Cache::Priority.new.parent_memory_pool_file_settings_controller.should_not == nil
   end
 
   #######################################################
@@ -93,7 +93,7 @@ describe RPDB::Settings::MemoryPool::File::Cache::Priority do
   #######################################################
 
   it "can return its parent memory pool file cache settings controller" do
-    RPDB::Settings::MemoryPool::File::Cache::Priority.new.parent_memory_pool_file_cache_settings_controller.should_not == nil
+    Rbdb::Settings::MemoryPool::File::Cache::Priority.new.parent_memory_pool_file_cache_settings_controller.should_not == nil
   end
 
   ######################
@@ -111,7 +111,7 @@ describe RPDB::Settings::MemoryPool::File::Cache::Priority do
   ######################
 
   it "can set priority and report whether a priority level is currently set as well as report its current priority" do
-    priority_settings_controller  = RPDB::Settings::MemoryPool::File::Cache::Priority.new
+    priority_settings_controller  = Rbdb::Settings::MemoryPool::File::Cache::Priority.new
     priority_settings_controller.current_priority.should == 0
     priority_settings_controller.set_to_very_low
     priority_settings_controller.very_low?.should == true
@@ -139,7 +139,7 @@ describe RPDB::Settings::MemoryPool::File::Cache::Priority do
   #########################
 
   it "can report on relative priority levels" do
-    priority_settings_controller  = RPDB::Settings::MemoryPool::File::Cache::Priority.new
+    priority_settings_controller  = Rbdb::Settings::MemoryPool::File::Cache::Priority.new
     priority_settings_controller.set_to_very_low
     priority_settings_controller.is_at_least_very_low?.should == true
     priority_settings_controller.is_at_most_very_low?.should == true

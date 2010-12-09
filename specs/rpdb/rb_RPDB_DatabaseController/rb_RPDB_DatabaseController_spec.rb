@@ -1,13 +1,13 @@
-require_relative '../../../lib/rpdb.rb'
+require_relative '../../../lib/rbdb.rb'
 
-describe RPDB::Database::Controller do
+describe Rbdb::Database::Controller do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
 
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
   end
 
@@ -20,26 +20,26 @@ describe RPDB::Database::Controller do
   #  initialize  #
   ################
 
-  # RPDB::Database::Controller.new( environment )
-  # RPDB::Database::Controller.new( environment_name ) 
-  # RPDB::Database::Controller.new
+  # Rbdb::Database::Controller.new( environment )
+  # Rbdb::Database::Controller.new( environment_name ) 
+  # Rbdb::Database::Controller.new
   
   it "can be created with a parent environment" do 
-    database_controller = RPDB::Database::Controller.new( @environment )
+    database_controller = Rbdb::Database::Controller.new( @environment )
     database_controller.should_not == nil
-    database_controller.is_a?.should == RPDB::Database::Controller
+    database_controller.is_a?.should == Rbdb::Database::Controller
   end
 
   it "can be created without any arguments, which implies default environment" do 
-    database_controller = RPDB::Database::Controller.new
+    database_controller = Rbdb::Database::Controller.new
     database_controller.should_not == nil
-    database_controller.is_a?.should == RPDB::Database::Controller
+    database_controller.is_a?.should == Rbdb::Database::Controller
   end
   
   it "can be retrieved from an environment instance" do
     database_controller = @environment.database_controller
     database_controller.should_not == nil
-    database_controller.is_a?.should == RPDB::Database::Controller
+    database_controller.is_a?.should == Rbdb::Database::Controller
   end
 
   #########################
@@ -52,7 +52,7 @@ describe RPDB::Database::Controller do
     # make sure we have a settings controller
     settings_controller = database_controller.settings_controller
     settings_controller.should_not == nil
-    settings_controller.is_a?.should == RPDB::Settings::Database
+    settings_controller.is_a?.should == Rbdb::Settings::Database
     # make sure that our settings controller is the environment's database settings controller
     settings_controller.should == @environment.settings.database
   end
@@ -64,7 +64,7 @@ describe RPDB::Database::Controller do
   it "can refer to its parent environment" do
     parent_environment = @environment.database_controller.parent_environment
     parent_environment.should_not == nil
-    parent_environment.is_a?.should == RPDB::Environment
+    parent_environment.is_a?.should == Rbdb::Environment
   end
 
   ##################
@@ -77,7 +77,7 @@ describe RPDB::Database::Controller do
     database_controller = @environment.database_controller
     database = database_controller.new( $database_name )
     database.should_not == nil
-    database.is_a?.should == RPDB::Database
+    database.is_a?.should == Rbdb::Database
     database.handle.should == $database_name
     database.name.should == $database_name.to_s
   end
@@ -86,7 +86,7 @@ describe RPDB::Database::Controller do
     database_controller = @environment.database_controller
     database = database_controller.new( $database_name.to_s )
     database.should_not == nil
-    database.is_a?.should == RPDB::Database
+    database.is_a?.should == Rbdb::Database
     database.handle.should == $database_name
     database.name.should == $database_name.to_s
   end

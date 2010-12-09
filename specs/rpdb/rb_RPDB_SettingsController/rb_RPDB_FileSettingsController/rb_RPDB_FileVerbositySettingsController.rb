@@ -1,8 +1,8 @@
-require_relative '../../../../lib/rpdb.rb'
+require_relative '../../../../lib/rbdb.rb'
 
-describe RPDB::Database do
+describe Rbdb::Database do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Database do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,24 +26,24 @@ describe RPDB::Database do
   #  initialize  #
   ################
 
-  # RPDB::Settings::File::Verbosity.new( environment )
+  # Rbdb::Settings::File::Verbosity.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::File::Verbosity.new( @environment ).should_not == nil
+    Rbdb::Settings::File::Verbosity.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::File::Verbosity.new( settings_controller )
+  # Rbdb::Settings::File::Verbosity.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::File::Verbosity.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::File::Verbosity.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::File::Verbosity.new( settings_controller )
+  # Rbdb::Settings::File::Verbosity.new( settings_controller )
   it "can be created with a file settings controller" do
-    RPDB::Settings::File::Verbosity.new( RPDB::Settings::File.new ).should_not == nil
+    Rbdb::Settings::File::Verbosity.new( Rbdb::Settings::File.new ).should_not == nil
   end
 
-  # RPDB::Settings::File::Verbosity.new
+  # Rbdb::Settings::File::Verbosity.new
   it "can be created with no environment specified" do
-    RPDB::Settings::File::Verbosity.new.should_not == nil
+    Rbdb::Settings::File::Verbosity.new.should_not == nil
   end
 
   ########################
@@ -51,7 +51,7 @@ describe RPDB::Database do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::File::Verbosity.new.parent_environment.should_not == nil
+    Rbdb::Settings::File::Verbosity.new.parent_environment.should_not == nil
   end
 
   ################################
@@ -59,7 +59,7 @@ describe RPDB::Database do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::File::Verbosity.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::File::Verbosity.new.parent_settings_controller.should_not == nil
   end
 
   #####################################
@@ -67,7 +67,7 @@ describe RPDB::Database do
   #####################################
 
   it "can return its parent file settings controller" do
-    RPDB::Settings::File::Verbosity.new.parent_file_settings_controller.should_not == nil
+    Rbdb::Settings::File::Verbosity.new.parent_file_settings_controller.should_not == nil
   end
 
   ######################################################################################
@@ -77,7 +77,7 @@ describe RPDB::Database do
   ######################################################################################
 
   it "can be set to display additional information during open/close/rename file operations" do
-    verbosity_settings  = RPDB::Settings::File::Verbosity.new
+    verbosity_settings  = Rbdb::Settings::File::Verbosity.new
     verbosity_settings.display_additional_information_during_open_close_rename_file_operations?.should == false
     verbosity_settings.turn_display_additional_information_during_open_close_rename_file_operations_on
     verbosity_settings.display_additional_information_during_open_close_rename_file_operations?.should == true
@@ -92,7 +92,7 @@ describe RPDB::Database do
   ########################################################################
 
   it "can display additional information during all file operations" do
-    verbosity_settings  = RPDB::Settings::File::Verbosity.new
+    verbosity_settings  = Rbdb::Settings::File::Verbosity.new
     verbosity_settings.display_additional_information_during_all_file_operations?.should == false
     verbosity_settings.turn_display_additional_information_during_all_file_operations_on
     verbosity_settings.display_additional_information_during_all_file_operations?.should == true

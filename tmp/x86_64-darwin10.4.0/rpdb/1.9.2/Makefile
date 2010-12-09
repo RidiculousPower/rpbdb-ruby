@@ -42,10 +42,10 @@ RM = "/Applications/CMake 2.8-2.app/Contents/bin/cmake" -E remove -f
 CMAKE_EDIT_COMMAND = "/Applications/CMake 2.8-2.app/Contents/bin/ccmake"
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/asher/Projects/rp/ruby/rpdb/ext
+CMAKE_SOURCE_DIR = /Users/asher/Projects/rp/ruby/rbdb/ext
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2
+CMAKE_BINARY_DIR = /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -72,9 +72,9 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2/CMakeFiles /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -102,17 +102,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named rb_rpdb
+# Target rules for targets named rb_rbdb
 
 # Build rule for target.
-rb_rpdb: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 rb_rpdb
-.PHONY : rb_rpdb
+rb_rbdb: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 rb_rbdb
+.PHONY : rb_rbdb
 
 # fast build rule for target.
-rb_rpdb/fast:
-	$(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/build
-.PHONY : rb_rpdb/fast
+rb_rbdb/fast:
+	$(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/build
+.PHONY : rb_rbdb/fast
 
 # Help Target
 help:
@@ -122,7 +122,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
-	@echo "... rb_rpdb"
+	@echo "... rb_rbdb"
 .PHONY : help
 
 

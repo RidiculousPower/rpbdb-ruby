@@ -39,10 +39,10 @@ RM = "/Applications/CMake 2.8-2.app/Contents/bin/cmake" -E remove -f
 CMAKE_EDIT_COMMAND = "/Applications/CMake 2.8-2.app/Contents/bin/ccmake"
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/asher/Projects/rp/ruby/rpdb/ext
+CMAKE_SOURCE_DIR = /Users/asher/Projects/rp/ruby/rbdb/ext
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2
+CMAKE_BINARY_DIR = /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -69,14 +69,14 @@ rebuild_cache/fast: rebuild_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/rpdb/CMakeFiles/progress.marks
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f CMakeFiles/Makefile2 rpdb/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2/CMakeFiles 0
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(CMAKE_COMMAND) -E cmake_progress_start /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2/CMakeFiles /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2/rbdb/CMakeFiles/progress.marks
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f CMakeFiles/Makefile2 rbdb/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f CMakeFiles/Makefile2 rpdb/clean
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f CMakeFiles/Makefile2 rbdb/clean
 .PHONY : clean
 
 # The main clean target
@@ -85,2072 +85,2072 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f CMakeFiles/Makefile2 rpdb/preinstall
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f CMakeFiles/Makefile2 rbdb/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f CMakeFiles/Makefile2 rpdb/preinstall
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f CMakeFiles/Makefile2 rbdb/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
-rpdb/CMakeFiles/rb_rpdb.dir/rule:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f CMakeFiles/Makefile2 rpdb/CMakeFiles/rb_rpdb.dir/rule
-.PHONY : rpdb/CMakeFiles/rb_rpdb.dir/rule
+rbdb/CMakeFiles/rb_rbdb.dir/rule:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f CMakeFiles/Makefile2 rbdb/CMakeFiles/rb_rbdb.dir/rule
+.PHONY : rbdb/CMakeFiles/rb_rbdb.dir/rule
 
 # Convenience name for target.
-rb_rpdb: rpdb/CMakeFiles/rb_rpdb.dir/rule
-.PHONY : rb_rpdb
+rb_rbdb: rbdb/CMakeFiles/rb_rbdb.dir/rule
+.PHONY : rb_rbdb
 
 # fast build rule for target.
-rb_rpdb/fast:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/build
-.PHONY : rb_rpdb/fast
+rb_rbdb/fast:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/build
+.PHONY : rb_rbdb/fast
 
-rb_RPDB.o: rb_RPDB.c.o
-.PHONY : rb_RPDB.o
+rb_Rbdb.o: rb_Rbdb.c.o
+.PHONY : rb_Rbdb.o
 
 # target to build an object file
-rb_RPDB.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB.c.o
-.PHONY : rb_RPDB.c.o
+rb_Rbdb.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb.c.o
+.PHONY : rb_Rbdb.c.o
 
-rb_RPDB.i: rb_RPDB.c.i
-.PHONY : rb_RPDB.i
+rb_Rbdb.i: rb_Rbdb.c.i
+.PHONY : rb_Rbdb.i
 
 # target to preprocess a source file
-rb_RPDB.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB.c.i
-.PHONY : rb_RPDB.c.i
+rb_Rbdb.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb.c.i
+.PHONY : rb_Rbdb.c.i
 
-rb_RPDB.s: rb_RPDB.c.s
-.PHONY : rb_RPDB.s
+rb_Rbdb.s: rb_Rbdb.c.s
+.PHONY : rb_Rbdb.s
 
 # target to generate assembly for a file
-rb_RPDB.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB.c.s
-.PHONY : rb_RPDB.c.s
+rb_Rbdb.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb.c.s
+.PHONY : rb_Rbdb.c.s
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.o: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.o
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.o: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.o
 
 # target to build an object file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.c.o
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.c.o
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.i: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.i
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.i: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.i
 
 # target to preprocess a source file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.c.i
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.c.i
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.s: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.s
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.s: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.s
 
 # target to generate assembly for a file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.c.s
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.c.s
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.o: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.o
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.o: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.o
 
 # target to build an object file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.c.o
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.c.o
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.i: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.i
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.i: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.i
 
 # target to preprocess a source file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.c.i
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.c.i
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.s: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.s
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.s: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.s
 
 # target to generate assembly for a file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.c.s
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.c.s
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.o: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.o
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.o: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.o
 
 # target to build an object file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.c.o
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.c.o
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.i: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.i
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.i: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.i
 
 # target to preprocess a source file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.c.i
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.c.i
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.s: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.s
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.s: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.s
 
 # target to generate assembly for a file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.c.s
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.c.s
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.o: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.o
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.o: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.o
 
 # target to build an object file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.c.o
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.o
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.i: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.i
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.i: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.i
 
 # target to preprocess a source file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.c.i
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.i
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.s: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.s
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.s: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.s
 
 # target to generate assembly for a file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.c.s
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.s
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.o: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.o
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.o: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.o
 
 # target to build an object file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.o
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.i: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.i
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.i: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.i
 
 # target to preprocess a source file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.i
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.i
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.s: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.s
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.s: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.s
 
 # target to generate assembly for a file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.c.s
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.s
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.o: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.o
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.o: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.o
 
 # target to build an object file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.o
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.c.o
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.i: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.i
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.i: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.i
 
 # target to preprocess a source file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.i
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.c.i
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.s: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.s
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.s: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.s
 
 # target to generate assembly for a file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.c.s
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.c.s
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.o: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.o
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.o: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.o
 
 # target to build an object file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.o
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.c.o
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.i: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.i
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.i: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.i
 
 # target to preprocess a source file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.i
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.c.i
 
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.s: rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.s
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.s: rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.s
 
 # target to generate assembly for a file
-rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.c.s
+rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.c.s
 
-rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.o: rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.o
+rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.o: rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.o
 
 # target to build an object file
-rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.c.o
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.c.o
+rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.c.o
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.c.o
 
-rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.i: rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.i
+rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.i: rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.i
 
 # target to preprocess a source file
-rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.c.i
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.c.i
+rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.c.i
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.c.i
 
-rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.s: rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.s
+rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.s: rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.s
 
 # target to generate assembly for a file
-rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.c.s
-.PHONY : rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.c.s
+rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.c.s
+.PHONY : rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.c.s
 
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.o: rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.c.o
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.o
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.o: rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.c.o
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.o
 
 # target to build an object file
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.c.o
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.c.o
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.c.o
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.c.o
 
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.i: rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.c.i
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.i
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.i: rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.c.i
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.i
 
 # target to preprocess a source file
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.c.i
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.c.i
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.c.i
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.c.i
 
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.s: rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.c.s
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.s
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.s: rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.c.s
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.s
 
 # target to generate assembly for a file
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.c.s
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.c.s
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.c.s
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.c.s
 
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.o: rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.c.o
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.o
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.o: rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.c.o
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.o
 
 # target to build an object file
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.c.o
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.c.o
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.c.o
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.c.o
 
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.i: rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.c.i
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.i
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.i: rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.c.i
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.i
 
 # target to preprocess a source file
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.c.i
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.c.i
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.c.i
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.c.i
 
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.s: rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.c.s
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.s
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.s: rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.c.s
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.s
 
 # target to generate assembly for a file
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.c.s
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.c.s
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.c.s
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.c.s
 
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.o: rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.c.o
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.o
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.o: rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.c.o
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.o
 
 # target to build an object file
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.c.o
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.c.o
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.c.o
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.c.o
 
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.i: rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.c.i
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.i
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.i: rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.c.i
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.i
 
 # target to preprocess a source file
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.c.i
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.c.i
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.c.i
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.c.i
 
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.s: rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.c.s
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.s
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.s: rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.c.s
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.s
 
 # target to generate assembly for a file
-rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.c.s
-.PHONY : rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.c.s
+rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.c.s
+.PHONY : rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.c.s
 
-rb_RPDB_Environment/rb_RPDB_Environment.o: rb_RPDB_Environment/rb_RPDB_Environment.c.o
-.PHONY : rb_RPDB_Environment/rb_RPDB_Environment.o
+rb_Rbdb_Environment/rb_Rbdb_Environment.o: rb_Rbdb_Environment/rb_Rbdb_Environment.c.o
+.PHONY : rb_Rbdb_Environment/rb_Rbdb_Environment.o
 
 # target to build an object file
-rb_RPDB_Environment/rb_RPDB_Environment.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Environment/rb_RPDB_Environment.c.o
-.PHONY : rb_RPDB_Environment/rb_RPDB_Environment.c.o
+rb_Rbdb_Environment/rb_Rbdb_Environment.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Environment/rb_Rbdb_Environment.c.o
+.PHONY : rb_Rbdb_Environment/rb_Rbdb_Environment.c.o
 
-rb_RPDB_Environment/rb_RPDB_Environment.i: rb_RPDB_Environment/rb_RPDB_Environment.c.i
-.PHONY : rb_RPDB_Environment/rb_RPDB_Environment.i
+rb_Rbdb_Environment/rb_Rbdb_Environment.i: rb_Rbdb_Environment/rb_Rbdb_Environment.c.i
+.PHONY : rb_Rbdb_Environment/rb_Rbdb_Environment.i
 
 # target to preprocess a source file
-rb_RPDB_Environment/rb_RPDB_Environment.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Environment/rb_RPDB_Environment.c.i
-.PHONY : rb_RPDB_Environment/rb_RPDB_Environment.c.i
+rb_Rbdb_Environment/rb_Rbdb_Environment.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Environment/rb_Rbdb_Environment.c.i
+.PHONY : rb_Rbdb_Environment/rb_Rbdb_Environment.c.i
 
-rb_RPDB_Environment/rb_RPDB_Environment.s: rb_RPDB_Environment/rb_RPDB_Environment.c.s
-.PHONY : rb_RPDB_Environment/rb_RPDB_Environment.s
+rb_Rbdb_Environment/rb_Rbdb_Environment.s: rb_Rbdb_Environment/rb_Rbdb_Environment.c.s
+.PHONY : rb_Rbdb_Environment/rb_Rbdb_Environment.s
 
 # target to generate assembly for a file
-rb_RPDB_Environment/rb_RPDB_Environment.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Environment/rb_RPDB_Environment.c.s
-.PHONY : rb_RPDB_Environment/rb_RPDB_Environment.c.s
+rb_Rbdb_Environment/rb_Rbdb_Environment.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Environment/rb_Rbdb_Environment.c.s
+.PHONY : rb_Rbdb_Environment/rb_Rbdb_Environment.c.s
 
-rb_RPDB_Lock/rb_RPDB_Lock.o: rb_RPDB_Lock/rb_RPDB_Lock.c.o
-.PHONY : rb_RPDB_Lock/rb_RPDB_Lock.o
+rb_Rbdb_Lock/rb_Rbdb_Lock.o: rb_Rbdb_Lock/rb_Rbdb_Lock.c.o
+.PHONY : rb_Rbdb_Lock/rb_Rbdb_Lock.o
 
 # target to build an object file
-rb_RPDB_Lock/rb_RPDB_Lock.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Lock/rb_RPDB_Lock.c.o
-.PHONY : rb_RPDB_Lock/rb_RPDB_Lock.c.o
+rb_Rbdb_Lock/rb_Rbdb_Lock.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Lock/rb_Rbdb_Lock.c.o
+.PHONY : rb_Rbdb_Lock/rb_Rbdb_Lock.c.o
 
-rb_RPDB_Lock/rb_RPDB_Lock.i: rb_RPDB_Lock/rb_RPDB_Lock.c.i
-.PHONY : rb_RPDB_Lock/rb_RPDB_Lock.i
+rb_Rbdb_Lock/rb_Rbdb_Lock.i: rb_Rbdb_Lock/rb_Rbdb_Lock.c.i
+.PHONY : rb_Rbdb_Lock/rb_Rbdb_Lock.i
 
 # target to preprocess a source file
-rb_RPDB_Lock/rb_RPDB_Lock.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Lock/rb_RPDB_Lock.c.i
-.PHONY : rb_RPDB_Lock/rb_RPDB_Lock.c.i
+rb_Rbdb_Lock/rb_Rbdb_Lock.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Lock/rb_Rbdb_Lock.c.i
+.PHONY : rb_Rbdb_Lock/rb_Rbdb_Lock.c.i
 
-rb_RPDB_Lock/rb_RPDB_Lock.s: rb_RPDB_Lock/rb_RPDB_Lock.c.s
-.PHONY : rb_RPDB_Lock/rb_RPDB_Lock.s
+rb_Rbdb_Lock/rb_Rbdb_Lock.s: rb_Rbdb_Lock/rb_Rbdb_Lock.c.s
+.PHONY : rb_Rbdb_Lock/rb_Rbdb_Lock.s
 
 # target to generate assembly for a file
-rb_RPDB_Lock/rb_RPDB_Lock.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Lock/rb_RPDB_Lock.c.s
-.PHONY : rb_RPDB_Lock/rb_RPDB_Lock.c.s
+rb_Rbdb_Lock/rb_Rbdb_Lock.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Lock/rb_Rbdb_Lock.c.s
+.PHONY : rb_Rbdb_Lock/rb_Rbdb_Lock.c.s
 
-rb_RPDB_Lock/rb_RPDB_LockController.o: rb_RPDB_Lock/rb_RPDB_LockController.c.o
-.PHONY : rb_RPDB_Lock/rb_RPDB_LockController.o
+rb_Rbdb_Lock/rb_Rbdb_LockController.o: rb_Rbdb_Lock/rb_Rbdb_LockController.c.o
+.PHONY : rb_Rbdb_Lock/rb_Rbdb_LockController.o
 
 # target to build an object file
-rb_RPDB_Lock/rb_RPDB_LockController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Lock/rb_RPDB_LockController.c.o
-.PHONY : rb_RPDB_Lock/rb_RPDB_LockController.c.o
+rb_Rbdb_Lock/rb_Rbdb_LockController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Lock/rb_Rbdb_LockController.c.o
+.PHONY : rb_Rbdb_Lock/rb_Rbdb_LockController.c.o
 
-rb_RPDB_Lock/rb_RPDB_LockController.i: rb_RPDB_Lock/rb_RPDB_LockController.c.i
-.PHONY : rb_RPDB_Lock/rb_RPDB_LockController.i
+rb_Rbdb_Lock/rb_Rbdb_LockController.i: rb_Rbdb_Lock/rb_Rbdb_LockController.c.i
+.PHONY : rb_Rbdb_Lock/rb_Rbdb_LockController.i
 
 # target to preprocess a source file
-rb_RPDB_Lock/rb_RPDB_LockController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Lock/rb_RPDB_LockController.c.i
-.PHONY : rb_RPDB_Lock/rb_RPDB_LockController.c.i
+rb_Rbdb_Lock/rb_Rbdb_LockController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Lock/rb_Rbdb_LockController.c.i
+.PHONY : rb_Rbdb_Lock/rb_Rbdb_LockController.c.i
 
-rb_RPDB_Lock/rb_RPDB_LockController.s: rb_RPDB_Lock/rb_RPDB_LockController.c.s
-.PHONY : rb_RPDB_Lock/rb_RPDB_LockController.s
+rb_Rbdb_Lock/rb_Rbdb_LockController.s: rb_Rbdb_Lock/rb_Rbdb_LockController.c.s
+.PHONY : rb_Rbdb_Lock/rb_Rbdb_LockController.s
 
 # target to generate assembly for a file
-rb_RPDB_Lock/rb_RPDB_LockController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Lock/rb_RPDB_LockController.c.s
-.PHONY : rb_RPDB_Lock/rb_RPDB_LockController.c.s
+rb_Rbdb_Lock/rb_Rbdb_LockController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Lock/rb_Rbdb_LockController.c.s
+.PHONY : rb_Rbdb_Lock/rb_Rbdb_LockController.c.s
 
-rb_RPDB_Log/rb_RPDB_Log.o: rb_RPDB_Log/rb_RPDB_Log.c.o
-.PHONY : rb_RPDB_Log/rb_RPDB_Log.o
+rb_Rbdb_Log/rb_Rbdb_Log.o: rb_Rbdb_Log/rb_Rbdb_Log.c.o
+.PHONY : rb_Rbdb_Log/rb_Rbdb_Log.o
 
 # target to build an object file
-rb_RPDB_Log/rb_RPDB_Log.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.o
-.PHONY : rb_RPDB_Log/rb_RPDB_Log.c.o
+rb_Rbdb_Log/rb_Rbdb_Log.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_Log.c.o
+.PHONY : rb_Rbdb_Log/rb_Rbdb_Log.c.o
 
-rb_RPDB_Log/rb_RPDB_Log.i: rb_RPDB_Log/rb_RPDB_Log.c.i
-.PHONY : rb_RPDB_Log/rb_RPDB_Log.i
+rb_Rbdb_Log/rb_Rbdb_Log.i: rb_Rbdb_Log/rb_Rbdb_Log.c.i
+.PHONY : rb_Rbdb_Log/rb_Rbdb_Log.i
 
 # target to preprocess a source file
-rb_RPDB_Log/rb_RPDB_Log.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.i
-.PHONY : rb_RPDB_Log/rb_RPDB_Log.c.i
+rb_Rbdb_Log/rb_Rbdb_Log.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_Log.c.i
+.PHONY : rb_Rbdb_Log/rb_Rbdb_Log.c.i
 
-rb_RPDB_Log/rb_RPDB_Log.s: rb_RPDB_Log/rb_RPDB_Log.c.s
-.PHONY : rb_RPDB_Log/rb_RPDB_Log.s
+rb_Rbdb_Log/rb_Rbdb_Log.s: rb_Rbdb_Log/rb_Rbdb_Log.c.s
+.PHONY : rb_Rbdb_Log/rb_Rbdb_Log.s
 
 # target to generate assembly for a file
-rb_RPDB_Log/rb_RPDB_Log.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_Log.c.s
-.PHONY : rb_RPDB_Log/rb_RPDB_Log.c.s
+rb_Rbdb_Log/rb_Rbdb_Log.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_Log.c.s
+.PHONY : rb_Rbdb_Log/rb_Rbdb_Log.c.s
 
-rb_RPDB_Log/rb_RPDB_LogController.o: rb_RPDB_Log/rb_RPDB_LogController.c.o
-.PHONY : rb_RPDB_Log/rb_RPDB_LogController.o
+rb_Rbdb_Log/rb_Rbdb_LogController.o: rb_Rbdb_Log/rb_Rbdb_LogController.c.o
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogController.o
 
 # target to build an object file
-rb_RPDB_Log/rb_RPDB_LogController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogController.c.o
-.PHONY : rb_RPDB_Log/rb_RPDB_LogController.c.o
+rb_Rbdb_Log/rb_Rbdb_LogController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_LogController.c.o
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogController.c.o
 
-rb_RPDB_Log/rb_RPDB_LogController.i: rb_RPDB_Log/rb_RPDB_LogController.c.i
-.PHONY : rb_RPDB_Log/rb_RPDB_LogController.i
+rb_Rbdb_Log/rb_Rbdb_LogController.i: rb_Rbdb_Log/rb_Rbdb_LogController.c.i
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogController.i
 
 # target to preprocess a source file
-rb_RPDB_Log/rb_RPDB_LogController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogController.c.i
-.PHONY : rb_RPDB_Log/rb_RPDB_LogController.c.i
+rb_Rbdb_Log/rb_Rbdb_LogController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_LogController.c.i
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogController.c.i
 
-rb_RPDB_Log/rb_RPDB_LogController.s: rb_RPDB_Log/rb_RPDB_LogController.c.s
-.PHONY : rb_RPDB_Log/rb_RPDB_LogController.s
+rb_Rbdb_Log/rb_Rbdb_LogController.s: rb_Rbdb_Log/rb_Rbdb_LogController.c.s
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogController.s
 
 # target to generate assembly for a file
-rb_RPDB_Log/rb_RPDB_LogController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogController.c.s
-.PHONY : rb_RPDB_Log/rb_RPDB_LogController.c.s
+rb_Rbdb_Log/rb_Rbdb_LogController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_LogController.c.s
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogController.c.s
 
-rb_RPDB_Log/rb_RPDB_LogCursor.o: rb_RPDB_Log/rb_RPDB_LogCursor.c.o
-.PHONY : rb_RPDB_Log/rb_RPDB_LogCursor.o
+rb_Rbdb_Log/rb_Rbdb_LogCursor.o: rb_Rbdb_Log/rb_Rbdb_LogCursor.c.o
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogCursor.o
 
 # target to build an object file
-rb_RPDB_Log/rb_RPDB_LogCursor.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogCursor.c.o
-.PHONY : rb_RPDB_Log/rb_RPDB_LogCursor.c.o
+rb_Rbdb_Log/rb_Rbdb_LogCursor.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_LogCursor.c.o
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogCursor.c.o
 
-rb_RPDB_Log/rb_RPDB_LogCursor.i: rb_RPDB_Log/rb_RPDB_LogCursor.c.i
-.PHONY : rb_RPDB_Log/rb_RPDB_LogCursor.i
+rb_Rbdb_Log/rb_Rbdb_LogCursor.i: rb_Rbdb_Log/rb_Rbdb_LogCursor.c.i
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogCursor.i
 
 # target to preprocess a source file
-rb_RPDB_Log/rb_RPDB_LogCursor.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogCursor.c.i
-.PHONY : rb_RPDB_Log/rb_RPDB_LogCursor.c.i
+rb_Rbdb_Log/rb_Rbdb_LogCursor.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_LogCursor.c.i
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogCursor.c.i
 
-rb_RPDB_Log/rb_RPDB_LogCursor.s: rb_RPDB_Log/rb_RPDB_LogCursor.c.s
-.PHONY : rb_RPDB_Log/rb_RPDB_LogCursor.s
+rb_Rbdb_Log/rb_Rbdb_LogCursor.s: rb_Rbdb_Log/rb_Rbdb_LogCursor.c.s
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogCursor.s
 
 # target to generate assembly for a file
-rb_RPDB_Log/rb_RPDB_LogCursor.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogCursor.c.s
-.PHONY : rb_RPDB_Log/rb_RPDB_LogCursor.c.s
+rb_Rbdb_Log/rb_Rbdb_LogCursor.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_LogCursor.c.s
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogCursor.c.s
 
-rb_RPDB_Log/rb_RPDB_LogCursorController.o: rb_RPDB_Log/rb_RPDB_LogCursorController.c.o
-.PHONY : rb_RPDB_Log/rb_RPDB_LogCursorController.o
+rb_Rbdb_Log/rb_Rbdb_LogCursorController.o: rb_Rbdb_Log/rb_Rbdb_LogCursorController.c.o
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogCursorController.o
 
 # target to build an object file
-rb_RPDB_Log/rb_RPDB_LogCursorController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogCursorController.c.o
-.PHONY : rb_RPDB_Log/rb_RPDB_LogCursorController.c.o
+rb_Rbdb_Log/rb_Rbdb_LogCursorController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_LogCursorController.c.o
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogCursorController.c.o
 
-rb_RPDB_Log/rb_RPDB_LogCursorController.i: rb_RPDB_Log/rb_RPDB_LogCursorController.c.i
-.PHONY : rb_RPDB_Log/rb_RPDB_LogCursorController.i
+rb_Rbdb_Log/rb_Rbdb_LogCursorController.i: rb_Rbdb_Log/rb_Rbdb_LogCursorController.c.i
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogCursorController.i
 
 # target to preprocess a source file
-rb_RPDB_Log/rb_RPDB_LogCursorController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogCursorController.c.i
-.PHONY : rb_RPDB_Log/rb_RPDB_LogCursorController.c.i
+rb_Rbdb_Log/rb_Rbdb_LogCursorController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_LogCursorController.c.i
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogCursorController.c.i
 
-rb_RPDB_Log/rb_RPDB_LogCursorController.s: rb_RPDB_Log/rb_RPDB_LogCursorController.c.s
-.PHONY : rb_RPDB_Log/rb_RPDB_LogCursorController.s
+rb_Rbdb_Log/rb_Rbdb_LogCursorController.s: rb_Rbdb_Log/rb_Rbdb_LogCursorController.c.s
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogCursorController.s
 
 # target to generate assembly for a file
-rb_RPDB_Log/rb_RPDB_LogCursorController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogCursorController.c.s
-.PHONY : rb_RPDB_Log/rb_RPDB_LogCursorController.c.s
+rb_Rbdb_Log/rb_Rbdb_LogCursorController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_LogCursorController.c.s
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogCursorController.c.s
 
-rb_RPDB_Log/rb_RPDB_LogSequenceNumber.o: rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.o
-.PHONY : rb_RPDB_Log/rb_RPDB_LogSequenceNumber.o
+rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.o: rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.c.o
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.o
 
 # target to build an object file
-rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.o
-.PHONY : rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.o
+rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.c.o
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.c.o
 
-rb_RPDB_Log/rb_RPDB_LogSequenceNumber.i: rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.i
-.PHONY : rb_RPDB_Log/rb_RPDB_LogSequenceNumber.i
+rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.i: rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.c.i
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.i
 
 # target to preprocess a source file
-rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.i
-.PHONY : rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.i
+rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.c.i
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.c.i
 
-rb_RPDB_Log/rb_RPDB_LogSequenceNumber.s: rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.s
-.PHONY : rb_RPDB_Log/rb_RPDB_LogSequenceNumber.s
+rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.s: rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.c.s
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.s
 
 # target to generate assembly for a file
-rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.s
-.PHONY : rb_RPDB_Log/rb_RPDB_LogSequenceNumber.c.s
+rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.c.s
+.PHONY : rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.c.s
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.o: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.c.o
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.o
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.o: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.c.o
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.o
 
 # target to build an object file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.c.o
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.c.o
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.c.o
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.c.o
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.i: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.c.i
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.i
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.i: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.c.i
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.i
 
 # target to preprocess a source file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.c.i
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.c.i
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.c.i
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.c.i
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.s: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.c.s
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.s
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.s: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.c.s
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.s
 
 # target to generate assembly for a file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.c.s
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.c.s
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.c.s
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.c.s
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.o: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.o
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.o
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.o: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.c.o
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.o
 
 # target to build an object file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.o
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.o
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.c.o
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.c.o
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.i: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.i
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.i
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.i: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.c.i
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.i
 
 # target to preprocess a source file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.i
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.i
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.c.i
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.c.i
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.s: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.s
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.s
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.s: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.c.s
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.s
 
 # target to generate assembly for a file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.s
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.c.s
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.c.s
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.c.s
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.o: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.o
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.o
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.o: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.c.o
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.o
 
 # target to build an object file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.o
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.o
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.c.o
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.c.o
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.i: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.i
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.i
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.i: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.c.i
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.i
 
 # target to preprocess a source file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.i
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.i
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.c.i
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.c.i
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.s: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.s
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.s
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.s: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.c.s
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.s
 
 # target to generate assembly for a file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.s
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.c.s
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.c.s
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.c.s
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.o: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.o
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.o
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.o: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.c.o
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.o
 
 # target to build an object file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.o
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.o
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.c.o
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.c.o
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.i: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.i
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.i
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.i: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.c.i
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.i
 
 # target to preprocess a source file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.i
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.i
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.c.i
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.c.i
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.s: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.s
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.s
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.s: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.c.s
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.s
 
 # target to generate assembly for a file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.s
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.c.s
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.c.s
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.c.s
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.o: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.o
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.o
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.o: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.c.o
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.o
 
 # target to build an object file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.o
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.o
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.c.o
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.c.o
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.i: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.i
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.i
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.i: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.c.i
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.i
 
 # target to preprocess a source file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.i
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.i
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.c.i
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.c.i
 
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.s: rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.s
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.s
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.s: rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.c.s
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.s
 
 # target to generate assembly for a file
-rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.s
-.PHONY : rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.c.s
+rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.c.s
+.PHONY : rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.c.s
 
-rb_RPDB_Mutex/rb_RPDB_Mutex.o: rb_RPDB_Mutex/rb_RPDB_Mutex.c.o
-.PHONY : rb_RPDB_Mutex/rb_RPDB_Mutex.o
+rb_Rbdb_Mutex/rb_Rbdb_Mutex.o: rb_Rbdb_Mutex/rb_Rbdb_Mutex.c.o
+.PHONY : rb_Rbdb_Mutex/rb_Rbdb_Mutex.o
 
 # target to build an object file
-rb_RPDB_Mutex/rb_RPDB_Mutex.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Mutex/rb_RPDB_Mutex.c.o
-.PHONY : rb_RPDB_Mutex/rb_RPDB_Mutex.c.o
+rb_Rbdb_Mutex/rb_Rbdb_Mutex.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Mutex/rb_Rbdb_Mutex.c.o
+.PHONY : rb_Rbdb_Mutex/rb_Rbdb_Mutex.c.o
 
-rb_RPDB_Mutex/rb_RPDB_Mutex.i: rb_RPDB_Mutex/rb_RPDB_Mutex.c.i
-.PHONY : rb_RPDB_Mutex/rb_RPDB_Mutex.i
+rb_Rbdb_Mutex/rb_Rbdb_Mutex.i: rb_Rbdb_Mutex/rb_Rbdb_Mutex.c.i
+.PHONY : rb_Rbdb_Mutex/rb_Rbdb_Mutex.i
 
 # target to preprocess a source file
-rb_RPDB_Mutex/rb_RPDB_Mutex.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Mutex/rb_RPDB_Mutex.c.i
-.PHONY : rb_RPDB_Mutex/rb_RPDB_Mutex.c.i
+rb_Rbdb_Mutex/rb_Rbdb_Mutex.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Mutex/rb_Rbdb_Mutex.c.i
+.PHONY : rb_Rbdb_Mutex/rb_Rbdb_Mutex.c.i
 
-rb_RPDB_Mutex/rb_RPDB_Mutex.s: rb_RPDB_Mutex/rb_RPDB_Mutex.c.s
-.PHONY : rb_RPDB_Mutex/rb_RPDB_Mutex.s
+rb_Rbdb_Mutex/rb_Rbdb_Mutex.s: rb_Rbdb_Mutex/rb_Rbdb_Mutex.c.s
+.PHONY : rb_Rbdb_Mutex/rb_Rbdb_Mutex.s
 
 # target to generate assembly for a file
-rb_RPDB_Mutex/rb_RPDB_Mutex.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Mutex/rb_RPDB_Mutex.c.s
-.PHONY : rb_RPDB_Mutex/rb_RPDB_Mutex.c.s
+rb_Rbdb_Mutex/rb_Rbdb_Mutex.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Mutex/rb_Rbdb_Mutex.c.s
+.PHONY : rb_Rbdb_Mutex/rb_Rbdb_Mutex.c.s
 
-rb_RPDB_Mutex/rb_RPDB_MutexController.o: rb_RPDB_Mutex/rb_RPDB_MutexController.c.o
-.PHONY : rb_RPDB_Mutex/rb_RPDB_MutexController.o
+rb_Rbdb_Mutex/rb_Rbdb_MutexController.o: rb_Rbdb_Mutex/rb_Rbdb_MutexController.c.o
+.PHONY : rb_Rbdb_Mutex/rb_Rbdb_MutexController.o
 
 # target to build an object file
-rb_RPDB_Mutex/rb_RPDB_MutexController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Mutex/rb_RPDB_MutexController.c.o
-.PHONY : rb_RPDB_Mutex/rb_RPDB_MutexController.c.o
+rb_Rbdb_Mutex/rb_Rbdb_MutexController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Mutex/rb_Rbdb_MutexController.c.o
+.PHONY : rb_Rbdb_Mutex/rb_Rbdb_MutexController.c.o
 
-rb_RPDB_Mutex/rb_RPDB_MutexController.i: rb_RPDB_Mutex/rb_RPDB_MutexController.c.i
-.PHONY : rb_RPDB_Mutex/rb_RPDB_MutexController.i
+rb_Rbdb_Mutex/rb_Rbdb_MutexController.i: rb_Rbdb_Mutex/rb_Rbdb_MutexController.c.i
+.PHONY : rb_Rbdb_Mutex/rb_Rbdb_MutexController.i
 
 # target to preprocess a source file
-rb_RPDB_Mutex/rb_RPDB_MutexController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Mutex/rb_RPDB_MutexController.c.i
-.PHONY : rb_RPDB_Mutex/rb_RPDB_MutexController.c.i
+rb_Rbdb_Mutex/rb_Rbdb_MutexController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Mutex/rb_Rbdb_MutexController.c.i
+.PHONY : rb_Rbdb_Mutex/rb_Rbdb_MutexController.c.i
 
-rb_RPDB_Mutex/rb_RPDB_MutexController.s: rb_RPDB_Mutex/rb_RPDB_MutexController.c.s
-.PHONY : rb_RPDB_Mutex/rb_RPDB_MutexController.s
+rb_Rbdb_Mutex/rb_Rbdb_MutexController.s: rb_Rbdb_Mutex/rb_Rbdb_MutexController.c.s
+.PHONY : rb_Rbdb_Mutex/rb_Rbdb_MutexController.s
 
 # target to generate assembly for a file
-rb_RPDB_Mutex/rb_RPDB_MutexController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Mutex/rb_RPDB_MutexController.c.s
-.PHONY : rb_RPDB_Mutex/rb_RPDB_MutexController.c.s
+rb_Rbdb_Mutex/rb_Rbdb_MutexController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Mutex/rb_Rbdb_MutexController.c.s
+.PHONY : rb_Rbdb_Mutex/rb_Rbdb_MutexController.c.s
 
-rb_RPDB_Record/rb_RPDB_Data.o: rb_RPDB_Record/rb_RPDB_Data.c.o
-.PHONY : rb_RPDB_Record/rb_RPDB_Data.o
+rb_Rbdb_Record/rb_Rbdb_Data.o: rb_Rbdb_Record/rb_Rbdb_Data.c.o
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Data.o
 
 # target to build an object file
-rb_RPDB_Record/rb_RPDB_Data.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Data.c.o
-.PHONY : rb_RPDB_Record/rb_RPDB_Data.c.o
+rb_Rbdb_Record/rb_Rbdb_Data.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Record/rb_Rbdb_Data.c.o
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Data.c.o
 
-rb_RPDB_Record/rb_RPDB_Data.i: rb_RPDB_Record/rb_RPDB_Data.c.i
-.PHONY : rb_RPDB_Record/rb_RPDB_Data.i
+rb_Rbdb_Record/rb_Rbdb_Data.i: rb_Rbdb_Record/rb_Rbdb_Data.c.i
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Data.i
 
 # target to preprocess a source file
-rb_RPDB_Record/rb_RPDB_Data.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Data.c.i
-.PHONY : rb_RPDB_Record/rb_RPDB_Data.c.i
+rb_Rbdb_Record/rb_Rbdb_Data.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Record/rb_Rbdb_Data.c.i
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Data.c.i
 
-rb_RPDB_Record/rb_RPDB_Data.s: rb_RPDB_Record/rb_RPDB_Data.c.s
-.PHONY : rb_RPDB_Record/rb_RPDB_Data.s
+rb_Rbdb_Record/rb_Rbdb_Data.s: rb_Rbdb_Record/rb_Rbdb_Data.c.s
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Data.s
 
 # target to generate assembly for a file
-rb_RPDB_Record/rb_RPDB_Data.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Data.c.s
-.PHONY : rb_RPDB_Record/rb_RPDB_Data.c.s
+rb_Rbdb_Record/rb_Rbdb_Data.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Record/rb_Rbdb_Data.c.s
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Data.c.s
 
-rb_RPDB_Record/rb_RPDB_Key.o: rb_RPDB_Record/rb_RPDB_Key.c.o
-.PHONY : rb_RPDB_Record/rb_RPDB_Key.o
+rb_Rbdb_Record/rb_Rbdb_Key.o: rb_Rbdb_Record/rb_Rbdb_Key.c.o
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Key.o
 
 # target to build an object file
-rb_RPDB_Record/rb_RPDB_Key.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.o
-.PHONY : rb_RPDB_Record/rb_RPDB_Key.c.o
+rb_Rbdb_Record/rb_Rbdb_Key.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Record/rb_Rbdb_Key.c.o
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Key.c.o
 
-rb_RPDB_Record/rb_RPDB_Key.i: rb_RPDB_Record/rb_RPDB_Key.c.i
-.PHONY : rb_RPDB_Record/rb_RPDB_Key.i
+rb_Rbdb_Record/rb_Rbdb_Key.i: rb_Rbdb_Record/rb_Rbdb_Key.c.i
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Key.i
 
 # target to preprocess a source file
-rb_RPDB_Record/rb_RPDB_Key.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.i
-.PHONY : rb_RPDB_Record/rb_RPDB_Key.c.i
+rb_Rbdb_Record/rb_Rbdb_Key.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Record/rb_Rbdb_Key.c.i
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Key.c.i
 
-rb_RPDB_Record/rb_RPDB_Key.s: rb_RPDB_Record/rb_RPDB_Key.c.s
-.PHONY : rb_RPDB_Record/rb_RPDB_Key.s
+rb_Rbdb_Record/rb_Rbdb_Key.s: rb_Rbdb_Record/rb_Rbdb_Key.c.s
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Key.s
 
 # target to generate assembly for a file
-rb_RPDB_Record/rb_RPDB_Key.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Key.c.s
-.PHONY : rb_RPDB_Record/rb_RPDB_Key.c.s
+rb_Rbdb_Record/rb_Rbdb_Key.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Record/rb_Rbdb_Key.c.s
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Key.c.s
 
-rb_RPDB_Record/rb_RPDB_Record.o: rb_RPDB_Record/rb_RPDB_Record.c.o
-.PHONY : rb_RPDB_Record/rb_RPDB_Record.o
+rb_Rbdb_Record/rb_Rbdb_Record.o: rb_Rbdb_Record/rb_Rbdb_Record.c.o
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Record.o
 
 # target to build an object file
-rb_RPDB_Record/rb_RPDB_Record.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Record.c.o
-.PHONY : rb_RPDB_Record/rb_RPDB_Record.c.o
+rb_Rbdb_Record/rb_Rbdb_Record.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Record/rb_Rbdb_Record.c.o
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Record.c.o
 
-rb_RPDB_Record/rb_RPDB_Record.i: rb_RPDB_Record/rb_RPDB_Record.c.i
-.PHONY : rb_RPDB_Record/rb_RPDB_Record.i
+rb_Rbdb_Record/rb_Rbdb_Record.i: rb_Rbdb_Record/rb_Rbdb_Record.c.i
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Record.i
 
 # target to preprocess a source file
-rb_RPDB_Record/rb_RPDB_Record.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Record.c.i
-.PHONY : rb_RPDB_Record/rb_RPDB_Record.c.i
+rb_Rbdb_Record/rb_Rbdb_Record.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Record/rb_Rbdb_Record.c.i
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Record.c.i
 
-rb_RPDB_Record/rb_RPDB_Record.s: rb_RPDB_Record/rb_RPDB_Record.c.s
-.PHONY : rb_RPDB_Record/rb_RPDB_Record.s
+rb_Rbdb_Record/rb_Rbdb_Record.s: rb_Rbdb_Record/rb_Rbdb_Record.c.s
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Record.s
 
 # target to generate assembly for a file
-rb_RPDB_Record/rb_RPDB_Record.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_Record.c.s
-.PHONY : rb_RPDB_Record/rb_RPDB_Record.c.s
+rb_Rbdb_Record/rb_Rbdb_Record.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Record/rb_Rbdb_Record.c.s
+.PHONY : rb_Rbdb_Record/rb_Rbdb_Record.c.s
 
-rb_RPDB_Record/rb_RPDB_SecondaryKeys.o: rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.o
-.PHONY : rb_RPDB_Record/rb_RPDB_SecondaryKeys.o
+rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.o: rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.c.o
+.PHONY : rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.o
 
 # target to build an object file
-rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.o
-.PHONY : rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.o
+rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.c.o
+.PHONY : rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.c.o
 
-rb_RPDB_Record/rb_RPDB_SecondaryKeys.i: rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.i
-.PHONY : rb_RPDB_Record/rb_RPDB_SecondaryKeys.i
+rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.i: rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.c.i
+.PHONY : rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.i
 
 # target to preprocess a source file
-rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.i
-.PHONY : rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.i
+rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.c.i
+.PHONY : rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.c.i
 
-rb_RPDB_Record/rb_RPDB_SecondaryKeys.s: rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.s
-.PHONY : rb_RPDB_Record/rb_RPDB_SecondaryKeys.s
+rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.s: rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.c.s
+.PHONY : rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.s
 
 # target to generate assembly for a file
-rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.s
-.PHONY : rb_RPDB_Record/rb_RPDB_SecondaryKeys.c.s
+rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.c.s
+.PHONY : rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.c.s
 
-rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.o: rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.c.o
-.PHONY : rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.o
+rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.o: rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.c.o
+.PHONY : rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.o
 
 # target to build an object file
-rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.c.o
-.PHONY : rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.c.o
+rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.c.o
+.PHONY : rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.c.o
 
-rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.i: rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.c.i
-.PHONY : rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.i
+rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.i: rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.c.i
+.PHONY : rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.i
 
 # target to preprocess a source file
-rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.c.i
-.PHONY : rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.c.i
+rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.c.i
+.PHONY : rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.c.i
 
-rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.s: rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.c.s
-.PHONY : rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.s
+rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.s: rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.c.s
+.PHONY : rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.s
 
 # target to generate assembly for a file
-rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.c.s
-.PHONY : rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.c.s
+rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.c.s
+.PHONY : rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.c.s
 
-rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.o: rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.c.o
-.PHONY : rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.o
+rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.o: rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.c.o
+.PHONY : rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.o
 
 # target to build an object file
-rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.c.o
-.PHONY : rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.c.o
+rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.c.o
+.PHONY : rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.c.o
 
-rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.i: rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.c.i
-.PHONY : rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.i
+rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.i: rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.c.i
+.PHONY : rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.i
 
 # target to preprocess a source file
-rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.c.i
-.PHONY : rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.c.i
+rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.c.i
+.PHONY : rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.c.i
 
-rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.s: rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.c.s
-.PHONY : rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.s
+rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.s: rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.c.s
+.PHONY : rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.s
 
 # target to generate assembly for a file
-rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.c.s
-.PHONY : rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.c.s
+rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.c.s
+.PHONY : rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.o: rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.i: rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.s: rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.o: rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.i: rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.s: rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.o: rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.i: rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.s: rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.o: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.i: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.s: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.o: rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.i: rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.s: rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_SettingsController.o: rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_SettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_SettingsController.i: rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_SettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_SettingsController.s: rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_SettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_SettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.c.s
 
-rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.o: rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.o
+rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.o: rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.o
 
 # target to build an object file
-rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.o
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.o
+rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.c.o
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.c.o
 
-rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.i: rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.i
+rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.i: rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.i
 
 # target to preprocess a source file
-rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.i
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.i
+rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.c.i
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.c.i
 
-rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.s: rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.s
+rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.s: rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.s
 
 # target to generate assembly for a file
-rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.s
-.PHONY : rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.c.s
+rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.c.s
+.PHONY : rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.c.s
 
-rb_RPDB_Transaction/rb_RPDB_Transaction.o: rb_RPDB_Transaction/rb_RPDB_Transaction.c.o
-.PHONY : rb_RPDB_Transaction/rb_RPDB_Transaction.o
+rb_Rbdb_Transaction/rb_Rbdb_Transaction.o: rb_Rbdb_Transaction/rb_Rbdb_Transaction.c.o
+.PHONY : rb_Rbdb_Transaction/rb_Rbdb_Transaction.o
 
 # target to build an object file
-rb_RPDB_Transaction/rb_RPDB_Transaction.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.o
-.PHONY : rb_RPDB_Transaction/rb_RPDB_Transaction.c.o
+rb_Rbdb_Transaction/rb_Rbdb_Transaction.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Transaction/rb_Rbdb_Transaction.c.o
+.PHONY : rb_Rbdb_Transaction/rb_Rbdb_Transaction.c.o
 
-rb_RPDB_Transaction/rb_RPDB_Transaction.i: rb_RPDB_Transaction/rb_RPDB_Transaction.c.i
-.PHONY : rb_RPDB_Transaction/rb_RPDB_Transaction.i
+rb_Rbdb_Transaction/rb_Rbdb_Transaction.i: rb_Rbdb_Transaction/rb_Rbdb_Transaction.c.i
+.PHONY : rb_Rbdb_Transaction/rb_Rbdb_Transaction.i
 
 # target to preprocess a source file
-rb_RPDB_Transaction/rb_RPDB_Transaction.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.i
-.PHONY : rb_RPDB_Transaction/rb_RPDB_Transaction.c.i
+rb_Rbdb_Transaction/rb_Rbdb_Transaction.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Transaction/rb_Rbdb_Transaction.c.i
+.PHONY : rb_Rbdb_Transaction/rb_Rbdb_Transaction.c.i
 
-rb_RPDB_Transaction/rb_RPDB_Transaction.s: rb_RPDB_Transaction/rb_RPDB_Transaction.c.s
-.PHONY : rb_RPDB_Transaction/rb_RPDB_Transaction.s
+rb_Rbdb_Transaction/rb_Rbdb_Transaction.s: rb_Rbdb_Transaction/rb_Rbdb_Transaction.c.s
+.PHONY : rb_Rbdb_Transaction/rb_Rbdb_Transaction.s
 
 # target to generate assembly for a file
-rb_RPDB_Transaction/rb_RPDB_Transaction.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_Transaction.c.s
-.PHONY : rb_RPDB_Transaction/rb_RPDB_Transaction.c.s
+rb_Rbdb_Transaction/rb_Rbdb_Transaction.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Transaction/rb_Rbdb_Transaction.c.s
+.PHONY : rb_Rbdb_Transaction/rb_Rbdb_Transaction.c.s
 
-rb_RPDB_Transaction/rb_RPDB_TransactionController.o: rb_RPDB_Transaction/rb_RPDB_TransactionController.c.o
-.PHONY : rb_RPDB_Transaction/rb_RPDB_TransactionController.o
+rb_Rbdb_Transaction/rb_Rbdb_TransactionController.o: rb_Rbdb_Transaction/rb_Rbdb_TransactionController.c.o
+.PHONY : rb_Rbdb_Transaction/rb_Rbdb_TransactionController.o
 
 # target to build an object file
-rb_RPDB_Transaction/rb_RPDB_TransactionController.c.o:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_TransactionController.c.o
-.PHONY : rb_RPDB_Transaction/rb_RPDB_TransactionController.c.o
+rb_Rbdb_Transaction/rb_Rbdb_TransactionController.c.o:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Transaction/rb_Rbdb_TransactionController.c.o
+.PHONY : rb_Rbdb_Transaction/rb_Rbdb_TransactionController.c.o
 
-rb_RPDB_Transaction/rb_RPDB_TransactionController.i: rb_RPDB_Transaction/rb_RPDB_TransactionController.c.i
-.PHONY : rb_RPDB_Transaction/rb_RPDB_TransactionController.i
+rb_Rbdb_Transaction/rb_Rbdb_TransactionController.i: rb_Rbdb_Transaction/rb_Rbdb_TransactionController.c.i
+.PHONY : rb_Rbdb_Transaction/rb_Rbdb_TransactionController.i
 
 # target to preprocess a source file
-rb_RPDB_Transaction/rb_RPDB_TransactionController.c.i:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_TransactionController.c.i
-.PHONY : rb_RPDB_Transaction/rb_RPDB_TransactionController.c.i
+rb_Rbdb_Transaction/rb_Rbdb_TransactionController.c.i:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Transaction/rb_Rbdb_TransactionController.c.i
+.PHONY : rb_Rbdb_Transaction/rb_Rbdb_TransactionController.c.i
 
-rb_RPDB_Transaction/rb_RPDB_TransactionController.s: rb_RPDB_Transaction/rb_RPDB_TransactionController.c.s
-.PHONY : rb_RPDB_Transaction/rb_RPDB_TransactionController.s
+rb_Rbdb_Transaction/rb_Rbdb_TransactionController.s: rb_Rbdb_Transaction/rb_Rbdb_TransactionController.c.s
+.PHONY : rb_Rbdb_Transaction/rb_Rbdb_TransactionController.s
 
 # target to generate assembly for a file
-rb_RPDB_Transaction/rb_RPDB_TransactionController.c.s:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(MAKE) -f rpdb/CMakeFiles/rb_rpdb.dir/build.make rpdb/CMakeFiles/rb_rpdb.dir/rb_RPDB_Transaction/rb_RPDB_TransactionController.c.s
-.PHONY : rb_RPDB_Transaction/rb_RPDB_TransactionController.c.s
+rb_Rbdb_Transaction/rb_Rbdb_TransactionController.c.s:
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(MAKE) -f rbdb/CMakeFiles/rb_rbdb.dir/build.make rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_Transaction/rb_Rbdb_TransactionController.c.s
+.PHONY : rb_Rbdb_Transaction/rb_Rbdb_TransactionController.c.s
 
 # Help Target
 help:
@@ -2159,263 +2159,263 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... rb_rpdb"
+	@echo "... rb_rbdb"
 	@echo "... rebuild_cache"
-	@echo "... rb_RPDB.o"
-	@echo "... rb_RPDB.i"
-	@echo "... rb_RPDB.s"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.o"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.i"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_Database.s"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.o"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.i"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursor.s"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.o"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.i"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseCursorController/rb_RPDB_DatabaseCursorController.s"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.o"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.i"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinController.s"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.o"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.i"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseJoinController/rb_RPDB_DatabaseJoinCursor.s"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.o"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.i"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequence.s"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.o"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.i"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_Database/rb_RPDB_DatabaseSequenceController/rb_RPDB_DatabaseSequenceController.s"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.o"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.i"
-	@echo "... rb_RPDB_DatabaseController/rb_RPDB_DatabaseController.s"
-	@echo "... rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.o"
-	@echo "... rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.i"
-	@echo "... rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObject.s"
-	@echo "... rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.o"
-	@echo "... rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.i"
-	@echo "... rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectCursor.s"
-	@echo "... rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.o"
-	@echo "... rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.i"
-	@echo "... rb_RPDB_DatabaseObject/rb_RPDB_DatabaseObjectDatabase.s"
-	@echo "... rb_RPDB_Environment/rb_RPDB_Environment.o"
-	@echo "... rb_RPDB_Environment/rb_RPDB_Environment.i"
-	@echo "... rb_RPDB_Environment/rb_RPDB_Environment.s"
-	@echo "... rb_RPDB_Lock/rb_RPDB_Lock.o"
-	@echo "... rb_RPDB_Lock/rb_RPDB_Lock.i"
-	@echo "... rb_RPDB_Lock/rb_RPDB_Lock.s"
-	@echo "... rb_RPDB_Lock/rb_RPDB_LockController.o"
-	@echo "... rb_RPDB_Lock/rb_RPDB_LockController.i"
-	@echo "... rb_RPDB_Lock/rb_RPDB_LockController.s"
-	@echo "... rb_RPDB_Log/rb_RPDB_Log.o"
-	@echo "... rb_RPDB_Log/rb_RPDB_Log.i"
-	@echo "... rb_RPDB_Log/rb_RPDB_Log.s"
-	@echo "... rb_RPDB_Log/rb_RPDB_LogController.o"
-	@echo "... rb_RPDB_Log/rb_RPDB_LogController.i"
-	@echo "... rb_RPDB_Log/rb_RPDB_LogController.s"
-	@echo "... rb_RPDB_Log/rb_RPDB_LogCursor.o"
-	@echo "... rb_RPDB_Log/rb_RPDB_LogCursor.i"
-	@echo "... rb_RPDB_Log/rb_RPDB_LogCursor.s"
-	@echo "... rb_RPDB_Log/rb_RPDB_LogCursorController.o"
-	@echo "... rb_RPDB_Log/rb_RPDB_LogCursorController.i"
-	@echo "... rb_RPDB_Log/rb_RPDB_LogCursorController.s"
-	@echo "... rb_RPDB_Log/rb_RPDB_LogSequenceNumber.o"
-	@echo "... rb_RPDB_Log/rb_RPDB_LogSequenceNumber.i"
-	@echo "... rb_RPDB_Log/rb_RPDB_LogSequenceNumber.s"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.o"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.i"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolController.s"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.o"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.i"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFile.s"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.o"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.i"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFileController.s"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.o"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.i"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePage.s"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.o"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.i"
-	@echo "... rb_RPDB_MemoryPoolController/rb_RPDB_MemoryPoolFilePageController.s"
-	@echo "... rb_RPDB_Mutex/rb_RPDB_Mutex.o"
-	@echo "... rb_RPDB_Mutex/rb_RPDB_Mutex.i"
-	@echo "... rb_RPDB_Mutex/rb_RPDB_Mutex.s"
-	@echo "... rb_RPDB_Mutex/rb_RPDB_MutexController.o"
-	@echo "... rb_RPDB_Mutex/rb_RPDB_MutexController.i"
-	@echo "... rb_RPDB_Mutex/rb_RPDB_MutexController.s"
-	@echo "... rb_RPDB_Record/rb_RPDB_Data.o"
-	@echo "... rb_RPDB_Record/rb_RPDB_Data.i"
-	@echo "... rb_RPDB_Record/rb_RPDB_Data.s"
-	@echo "... rb_RPDB_Record/rb_RPDB_Key.o"
-	@echo "... rb_RPDB_Record/rb_RPDB_Key.i"
-	@echo "... rb_RPDB_Record/rb_RPDB_Key.s"
-	@echo "... rb_RPDB_Record/rb_RPDB_Record.o"
-	@echo "... rb_RPDB_Record/rb_RPDB_Record.i"
-	@echo "... rb_RPDB_Record/rb_RPDB_Record.s"
-	@echo "... rb_RPDB_Record/rb_RPDB_SecondaryKeys.o"
-	@echo "... rb_RPDB_Record/rb_RPDB_SecondaryKeys.i"
-	@echo "... rb_RPDB_Record/rb_RPDB_SecondaryKeys.s"
-	@echo "... rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.o"
-	@echo "... rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.i"
-	@echo "... rb_RPDB_ReplicationController/rb_RPDB_RemoteSite.s"
-	@echo "... rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.o"
-	@echo "... rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.i"
-	@echo "... rb_RPDB_ReplicationController/rb_RPDB_ReplicationController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseAssociationSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCachePrioritySettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCacheSettingsController/rb_RPDB_DatabaseCacheSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCompactSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCachePrioritySettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController/rb_RPDB_DatabaseCursorCacheSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorReadWriteSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseCursorSettingsController/rb_RPDB_DatabaseCursorSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseEncryptionSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseErrorSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseJoinSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordFixedLengthSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordReadWriteSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseRecordSettingsController/rb_RPDB_DatabaseRecordVariableLengthSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSequenceSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeBtreeSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeHashSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeQueueSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeRecnoSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseTypeSettingsController/rb_RPDB_DatabaseTypeSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerbositySettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DatabaseSettingsController/rb_RPDB_DatabaseVerificationSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DebugSettingsController/rb_RPDB_DebugVerbositySettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_DirectorySettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_EnvironmentCacheSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ErrorSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_FileSettingsController/rb_RPDB_FileVerbositySettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockDeadlockDetectorVerbositySettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_LockSettingsController/rb_RPDB_LockSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_LogSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCachePrioritySettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileCacheSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFilePageSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolFileSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolReadWriteSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MemoryPoolSettingsController/rb_RPDB_MemoryPoolSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MessageSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_MutexSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationElectionSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationTimeoutSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ReplicationSettingsController/rb_RPDB_ReplicationVerbositySettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_SettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_SettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_SettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_ThreadSettingsController.s"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.o"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.i"
-	@echo "... rb_RPDB_SettingsController/rb_RPDB_TransactionSettingsController.s"
-	@echo "... rb_RPDB_Transaction/rb_RPDB_Transaction.o"
-	@echo "... rb_RPDB_Transaction/rb_RPDB_Transaction.i"
-	@echo "... rb_RPDB_Transaction/rb_RPDB_Transaction.s"
-	@echo "... rb_RPDB_Transaction/rb_RPDB_TransactionController.o"
-	@echo "... rb_RPDB_Transaction/rb_RPDB_TransactionController.i"
-	@echo "... rb_RPDB_Transaction/rb_RPDB_TransactionController.s"
+	@echo "... rb_Rbdb.o"
+	@echo "... rb_Rbdb.i"
+	@echo "... rb_Rbdb.s"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.o"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.i"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_Database.s"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.o"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.i"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursor.s"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.o"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.i"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseCursorController/rb_Rbdb_DatabaseCursorController.s"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.o"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.i"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.s"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.o"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.i"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.s"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.o"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.i"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequence.s"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.o"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.i"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseSequenceController/rb_Rbdb_DatabaseSequenceController.s"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.o"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.i"
+	@echo "... rb_Rbdb_DatabaseController/rb_Rbdb_DatabaseController.s"
+	@echo "... rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.o"
+	@echo "... rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.i"
+	@echo "... rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObject.s"
+	@echo "... rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.o"
+	@echo "... rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.i"
+	@echo "... rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectCursor.s"
+	@echo "... rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.o"
+	@echo "... rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.i"
+	@echo "... rb_Rbdb_DatabaseObject/rb_Rbdb_DatabaseObjectDatabase.s"
+	@echo "... rb_Rbdb_Environment/rb_Rbdb_Environment.o"
+	@echo "... rb_Rbdb_Environment/rb_Rbdb_Environment.i"
+	@echo "... rb_Rbdb_Environment/rb_Rbdb_Environment.s"
+	@echo "... rb_Rbdb_Lock/rb_Rbdb_Lock.o"
+	@echo "... rb_Rbdb_Lock/rb_Rbdb_Lock.i"
+	@echo "... rb_Rbdb_Lock/rb_Rbdb_Lock.s"
+	@echo "... rb_Rbdb_Lock/rb_Rbdb_LockController.o"
+	@echo "... rb_Rbdb_Lock/rb_Rbdb_LockController.i"
+	@echo "... rb_Rbdb_Lock/rb_Rbdb_LockController.s"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_Log.o"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_Log.i"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_Log.s"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_LogController.o"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_LogController.i"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_LogController.s"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_LogCursor.o"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_LogCursor.i"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_LogCursor.s"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_LogCursorController.o"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_LogCursorController.i"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_LogCursorController.s"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.o"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.i"
+	@echo "... rb_Rbdb_Log/rb_Rbdb_LogSequenceNumber.s"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.o"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.i"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolController.s"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.o"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.i"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFile.s"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.o"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.i"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFileController.s"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.o"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.i"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePage.s"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.o"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.i"
+	@echo "... rb_Rbdb_MemoryPoolController/rb_Rbdb_MemoryPoolFilePageController.s"
+	@echo "... rb_Rbdb_Mutex/rb_Rbdb_Mutex.o"
+	@echo "... rb_Rbdb_Mutex/rb_Rbdb_Mutex.i"
+	@echo "... rb_Rbdb_Mutex/rb_Rbdb_Mutex.s"
+	@echo "... rb_Rbdb_Mutex/rb_Rbdb_MutexController.o"
+	@echo "... rb_Rbdb_Mutex/rb_Rbdb_MutexController.i"
+	@echo "... rb_Rbdb_Mutex/rb_Rbdb_MutexController.s"
+	@echo "... rb_Rbdb_Record/rb_Rbdb_Data.o"
+	@echo "... rb_Rbdb_Record/rb_Rbdb_Data.i"
+	@echo "... rb_Rbdb_Record/rb_Rbdb_Data.s"
+	@echo "... rb_Rbdb_Record/rb_Rbdb_Key.o"
+	@echo "... rb_Rbdb_Record/rb_Rbdb_Key.i"
+	@echo "... rb_Rbdb_Record/rb_Rbdb_Key.s"
+	@echo "... rb_Rbdb_Record/rb_Rbdb_Record.o"
+	@echo "... rb_Rbdb_Record/rb_Rbdb_Record.i"
+	@echo "... rb_Rbdb_Record/rb_Rbdb_Record.s"
+	@echo "... rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.o"
+	@echo "... rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.i"
+	@echo "... rb_Rbdb_Record/rb_Rbdb_SecondaryKeys.s"
+	@echo "... rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.o"
+	@echo "... rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.i"
+	@echo "... rb_Rbdb_ReplicationController/rb_Rbdb_RemoteSite.s"
+	@echo "... rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.o"
+	@echo "... rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.i"
+	@echo "... rb_Rbdb_ReplicationController/rb_Rbdb_ReplicationController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseAssociationSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCachePrioritySettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCacheSettingsController/rb_Rbdb_DatabaseCacheSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCompactSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCachePrioritySettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController/rb_Rbdb_DatabaseCursorCacheSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorReadWriteSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseCursorSettingsController/rb_Rbdb_DatabaseCursorSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseEncryptionSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseErrorSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseJoinSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordFixedLengthSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordReadWriteSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseRecordSettingsController/rb_Rbdb_DatabaseRecordVariableLengthSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSequenceSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeBtreeSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeHashSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeQueueSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeRecnoSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseTypeSettingsController/rb_Rbdb_DatabaseTypeSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerbositySettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DatabaseSettingsController/rb_Rbdb_DatabaseVerificationSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DebugSettingsController/rb_Rbdb_DebugVerbositySettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_DirectorySettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_EnvironmentCacheSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ErrorSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_FileSettingsController/rb_Rbdb_FileVerbositySettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockDeadlockDetectorVerbositySettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_LockSettingsController/rb_Rbdb_LockSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_LogSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCachePrioritySettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileCacheSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFilePageSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolReadWriteSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MessageSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_MutexSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationElectionSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationTimeoutSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ReplicationSettingsController/rb_Rbdb_ReplicationVerbositySettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_SettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_ThreadSettingsController.s"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.o"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.i"
+	@echo "... rb_Rbdb_SettingsController/rb_Rbdb_TransactionSettingsController.s"
+	@echo "... rb_Rbdb_Transaction/rb_Rbdb_Transaction.o"
+	@echo "... rb_Rbdb_Transaction/rb_Rbdb_Transaction.i"
+	@echo "... rb_Rbdb_Transaction/rb_Rbdb_Transaction.s"
+	@echo "... rb_Rbdb_Transaction/rb_Rbdb_TransactionController.o"
+	@echo "... rb_Rbdb_Transaction/rb_Rbdb_TransactionController.i"
+	@echo "... rb_Rbdb_Transaction/rb_Rbdb_TransactionController.s"
 .PHONY : help
 
 
@@ -2427,6 +2427,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/asher/Projects/rp/ruby/rpdb/tmp/x86_64-darwin10.4.0/rpdb/1.9.2 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2 && $(CMAKE_COMMAND) -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

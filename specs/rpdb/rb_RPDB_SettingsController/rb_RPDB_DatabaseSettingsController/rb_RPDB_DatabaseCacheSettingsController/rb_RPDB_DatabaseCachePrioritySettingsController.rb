@@ -1,8 +1,8 @@
-require_relative '../../../../../lib/rpdb.rb'
+require_relative '../../../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Database::Cache::Priority do
+describe Rbdb::Settings::Database::Cache::Priority do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Database::Cache::Priority do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,34 +26,34 @@ describe RPDB::Settings::Database::Cache::Priority do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Database::Cache::Priority.new( environment )
+  # Rbdb::Settings::Database::Cache::Priority.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Cache::Priority.new( @environment ).is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
+    Rbdb::Settings::Database::Cache::Priority.new( @environment ).is_a?( Rbdb::Settings::Database::Cache::Priority ).should == true
   end
 
-  # RPDB::Settings::Database::Cache::Priority.new( database_controller )
+  # Rbdb::Settings::Database::Cache::Priority.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Cache::Priority.new( @environment.database_controller ).is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
+    Rbdb::Settings::Database::Cache::Priority.new( @environment.database_controller ).is_a?( Rbdb::Settings::Database::Cache::Priority ).should == true
   end
 
-  # RPDB::Settings::Database::Cache::Priority.new( database )
+  # Rbdb::Settings::Database::Cache::Priority.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Cache::Priority.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
+    Rbdb::Settings::Database::Cache::Priority.new( Rbdb::Database.new( $database_name ) ).is_a?( Rbdb::Settings::Database::Cache::Priority ).should == true
   end
 
-  # RPDB::Settings::Database::Cache::Priority.new( settings_controller )
+  # Rbdb::Settings::Database::Cache::Priority.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Cache::Priority.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
+    Rbdb::Settings::Database::Cache::Priority.new( Rbdb::Settings.new ).is_a?( Rbdb::Settings::Database::Cache::Priority ).should == true
   end
 
-  # RPDB::Settings::Database::Cache::Priority.new( database_settings_controller )
+  # Rbdb::Settings::Database::Cache::Priority.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Cache::Priority.new( RPDB::Settings::Database.new ).is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
+    Rbdb::Settings::Database::Cache::Priority.new( Rbdb::Settings::Database.new ).is_a?( Rbdb::Settings::Database::Cache::Priority ).should == true
   end
 
-  # RPDB::Settings::Database::Cache::Priority.new
+  # Rbdb::Settings::Database::Cache::Priority.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Cache::Priority.new.is_a?( RPDB::Settings::Database::Cache::Priority ).should == true
+    Rbdb::Settings::Database::Cache::Priority.new.is_a?( Rbdb::Settings::Database::Cache::Priority ).should == true
   end
 
   ########################
@@ -61,7 +61,7 @@ describe RPDB::Settings::Database::Cache::Priority do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Database::Cache::Priority.new.parent_environment..is_a?( RPDB::Environment ).should == true
+    Rbdb::Settings::Database::Cache::Priority.new.parent_environment..is_a?( Rbdb::Environment ).should == true
   end
 
   #####################
@@ -69,7 +69,7 @@ describe RPDB::Settings::Database::Cache::Priority do
   #####################
 
   it "can return its parent database" do
-    RPDB::Settings::Database::Cache::Priority.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
+    Rbdb::Settings::Database::Cache::Priority.new( Rbdb::Database.new( $database_name ) ).parent_database.is_a?( Rbdb::Database ).should == true
   end
 
   ################################
@@ -77,7 +77,7 @@ describe RPDB::Settings::Database::Cache::Priority do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Database::Cache::Priority.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    Rbdb::Settings::Database::Cache::Priority.new.parent_settings_controller.is_a?( Rbdb::Settings ).should == true
   end
 
   #########################################
@@ -85,7 +85,7 @@ describe RPDB::Settings::Database::Cache::Priority do
   #########################################
 
   it "can return its parent database settings controller" do
-    RPDB::Settings::Database::Cache::Priority.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    Rbdb::Settings::Database::Cache::Priority.new.parent_database_settings_controller.is_a?( Rbdb::Settings::Database ).should == true
   end
 
   ###############################################
@@ -93,7 +93,7 @@ describe RPDB::Settings::Database::Cache::Priority do
   ###############################################
 
   it "can return its parent database cache settings controller" do
-    RPDB::Settings::Database::Cache::Priority.new.parent_database_cache_settings_controller.is_a?( RPDB::Settings::Database::Cache ).should == true
+    Rbdb::Settings::Database::Cache::Priority.new.parent_database_cache_settings_controller.is_a?( Rbdb::Settings::Database::Cache ).should == true
   end
 
   ######################
@@ -111,7 +111,7 @@ describe RPDB::Settings::Database::Cache::Priority do
   ######################
 
   it "can set priority and report whether a priority level is currently set as well as report its current priority" do
-    priority_settings_controller  = RPDB::Settings::Database::Cache::Priority.new
+    priority_settings_controller  = Rbdb::Settings::Database::Cache::Priority.new
     priority_settings_controller.current_priority.should == 0
     priority_settings_controller.set_to_very_low
     priority_settings_controller.very_low?.should == true
@@ -139,7 +139,7 @@ describe RPDB::Settings::Database::Cache::Priority do
   #########################
 
   it "can report on relative priority levels" do
-    priority_settings_controller  = RPDB::Settings::Database::Cache::Priority.new
+    priority_settings_controller  = Rbdb::Settings::Database::Cache::Priority.new
     priority_settings_controller.set_to_very_low
     priority_settings_controller.is_at_least_very_low?.should == true
     priority_settings_controller.is_at_most_very_low?.should == true

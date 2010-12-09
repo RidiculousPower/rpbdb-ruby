@@ -1,8 +1,8 @@
-require_relative '../../../../../lib/rpdb/rpdb'
+require_relative '../../../../../lib/rbdb/rbdb'
 
-describe RPDB::Database do
+describe Rbdb::Database do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -12,7 +12,7 @@ describe RPDB::Database do
   $sorted_duplicates_database_name   = :sorted_duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
   end
@@ -26,24 +26,24 @@ describe RPDB::Database do
   #  initialize  #
   ################
 
-  # RPDB::Database.new( name, environment )
+  # Rbdb::Database.new( name, environment )
   it "can be created with a name and a parent environment" do
-    RPDB::Database.new( $database_name, @environment ).is_a?( RPDB::Database ).should == true
+    Rbdb::Database.new( $database_name, @environment ).is_a?( Rbdb::Database ).should == true
   end
 
-  # RPDB::Database.new( name, environment_name ) 
+  # Rbdb::Database.new( name, environment_name ) 
   it "can be created with a name and a parent environment directory" do
-    RPDB::Database.new( $database_name, $environment_path ).is_a?( RPDB::Database ).should == true  
+    Rbdb::Database.new( $database_name, $environment_path ).is_a?( Rbdb::Database ).should == true  
   end
 
-  # RPDB::Database.new( name, database_controller ) 
+  # Rbdb::Database.new( name, database_controller ) 
   it "can be created with a name and a parent database controller" do
-    RPDB::Database.new( $database_name, @database_controller ).is_a?( RPDB::Database ).should == true
+    Rbdb::Database.new( $database_name, @database_controller ).is_a?( Rbdb::Database ).should == true
   end
 
-  # RPDB::Database.new( name )  
+  # Rbdb::Database.new( name )  
   it "can be created with a name (using the default environment)" do
-    RPDB::Database.new( $database_name ).is_a?( RPDB::Database ).should == true
+    Rbdb::Database.new( $database_name ).is_a?( Rbdb::Database ).should == true
   end
 
   #########################
@@ -55,7 +55,7 @@ describe RPDB::Database do
     database = @database_controller.new_database( $database_name )
     # make sure it has a settings controller
     # and that it's not the same settings controller that our environment owns
-    database.settings.is_a?( RPDB::Settings::Database ).should == true
+    database.settings.is_a?( Rbdb::Settings::Database ).should == true
     database.settings.should_not == @environment.settings.database
   end
   
@@ -180,7 +180,7 @@ describe RPDB::Database do
   #####################
 
   it "has a join controller" do
-    @environment.database.new( $database_name ).join_controller.is_a?( RPDB::Database::Join::Controller ).should == true
+    @environment.database.new( $database_name ).join_controller.is_a?( Rbdb::Database::Join::Controller ).should == true
   end
 
   ############
@@ -188,7 +188,7 @@ describe RPDB::Database do
   ############
 
   it "can return a cursor from its cursor controller" do
-    @environment.database.new( $database_name ).cursor.is_a?( RPDB::Database::Cursor ).should == true
+    @environment.database.new( $database_name ).cursor.is_a?( Rbdb::Database::Cursor ).should == true
   end
 
   ###################
@@ -196,7 +196,7 @@ describe RPDB::Database do
   ###################
 
   it "can return an object cursor (which automatically handles serialization) from its cursor controller" do
-    cursor = @environment.database.new( $database_name ).object_cursor.is_a?( RPDB::Database::Cursor::ObjectCursor ).should == true
+    cursor = @environment.database.new( $database_name ).object_cursor.is_a?( Rbdb::Database::Cursor::ObjectCursor ).should == true
   end
 
   ##########

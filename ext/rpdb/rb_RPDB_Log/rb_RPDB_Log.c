@@ -1,5 +1,5 @@
 /*
- *		RPDB::LogController::Log
+ *		Rbdb::LogController::Log
  *
  *	
  */
@@ -10,22 +10,22 @@
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-#include "rb_RPDB.h"
-#include "rb_RPDB_Log.h"
-#include "rb_RPDB_LogController.h"
-#include "rb_RPDB_LogCursorController.h"
-#include "rb_RPDB_LogCursor.h"
+#include "rb_Rbdb.h"
+#include "rb_Rbdb_Log.h"
+#include "rb_Rbdb_LogController.h"
+#include "rb_Rbdb_LogCursorController.h"
+#include "rb_Rbdb_LogCursor.h"
 
-#include <rpdb/RPDB_Environment.h>
+#include <rbdb/Rbdb_Environment.h>
 
-#include <rpdb/RPDB_Record.h>
+#include <rbdb/Rbdb_Record.h>
 
-#include <rpdb/RPDB_Log.h>
-#include <rpdb/RPDB_LogCursor.h>
-#include <rpdb/RPDB_LogCursorController.h>
-//#include <rpdb/RPDB_LogSequenceNumber.h>
+#include <rbdb/Rbdb_Log.h>
+#include <rbdb/Rbdb_LogCursor.h>
+#include <rbdb/Rbdb_LogCursorController.h>
+//#include <rbdb/Rbdb_LogSequenceNumber.h>
 
-#include <rpdb/RPDB_LogSettingsController.h>
+#include <rbdb/Rbdb_LogSettingsController.h>
 
 #include <rargs.h>
 
@@ -33,38 +33,38 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 	
-extern	VALUE	rb_mRPDB;
-extern	VALUE	rb_RPDB_Environment;
-extern	VALUE	rb_RPDB_Log;
-extern	VALUE	rb_RPDB_LogController;
-extern	VALUE	rb_RPDB_LogCursorController;
-extern	VALUE	rb_RPDB_LogCursor;
-extern	VALUE	rb_RPDB_LogSettingsController;
-extern	VALUE	rb_RPDB_Record;
-extern	VALUE	rb_RPDB_LogSequenceNumber;
+extern	VALUE	rb_mRbdb;
+extern	VALUE	rb_Rbdb_Environment;
+extern	VALUE	rb_Rbdb_Log;
+extern	VALUE	rb_Rbdb_LogController;
+extern	VALUE	rb_Rbdb_LogCursorController;
+extern	VALUE	rb_Rbdb_LogCursor;
+extern	VALUE	rb_Rbdb_LogSettingsController;
+extern	VALUE	rb_Rbdb_Record;
+extern	VALUE	rb_Rbdb_LogSequenceNumber;
 
-void Init_RPDB_Log()	{
+void Init_Rbdb_Log()	{
 
-	rb_RPDB_Log	=	rb_define_class_under(		rb_RPDB_Environment, 
+	rb_Rbdb_Log	=	rb_define_class_under(		rb_Rbdb_Environment, 
 																					"Log",			
 																					rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_Log, 	"new",																													rb_RPDB_Log_new,												-1 	);
-	rb_define_method(						rb_RPDB_Log, 	"initialize",																										rb_RPDB_Log_initialize,											-1 	);
+	rb_define_singleton_method(	rb_Rbdb_Log, 	"new",																													rb_Rbdb_Log_new,												-1 	);
+	rb_define_method(						rb_Rbdb_Log, 	"initialize",																										rb_Rbdb_Log_initialize,											-1 	);
                                                                                           		
-	rb_define_method(						rb_RPDB_Log, 	"settings_controller",																					rb_RPDB_Log_settingsController,				0 	);
-	rb_define_alias(						rb_RPDB_Log, 	"settings",																											"settings_controller"	);
-	rb_define_alias(						rb_RPDB_Log, 	"set",																													"settings_controller"	);
-	rb_define_alias(						rb_RPDB_Log, 	"set_to",																												"settings_controller"	);
-	rb_define_alias(						rb_RPDB_Log, 	"is_set_to",																										"settings_controller"	);
-	rb_define_method(						rb_RPDB_Log, 	"parent_environment",																						rb_RPDB_Log_parentEnvironment,					0 	);
-	rb_define_alias(						rb_RPDB_Log, 	"environment",																									"parent_environment"	);
+	rb_define_method(						rb_Rbdb_Log, 	"settings_controller",																					rb_Rbdb_Log_settingsController,				0 	);
+	rb_define_alias(						rb_Rbdb_Log, 	"settings",																											"settings_controller"	);
+	rb_define_alias(						rb_Rbdb_Log, 	"set",																													"settings_controller"	);
+	rb_define_alias(						rb_Rbdb_Log, 	"set_to",																												"settings_controller"	);
+	rb_define_alias(						rb_Rbdb_Log, 	"is_set_to",																										"settings_controller"	);
+	rb_define_method(						rb_Rbdb_Log, 	"parent_environment",																						rb_Rbdb_Log_parentEnvironment,					0 	);
+	rb_define_alias(						rb_Rbdb_Log, 	"environment",																									"parent_environment"	);
 
 	//	FIX - what's log_record? isn't that self?
-	rb_define_method(						rb_RPDB_Log, 	"record",																												rb_RPDB_Log_logRecord,														0 	);
-	rb_define_method(						rb_RPDB_Log, 	"sequence_number",																							rb_RPDB_Log_logSequenceNumber,										0 	);
-	rb_define_alias(						rb_RPDB_Log, 	"lsn",																													"log_sequence_number"	);		
-	rb_define_method(						rb_RPDB_Log, 	"filename",																											rb_RPDB_Log_filename,															0 	);
+	rb_define_method(						rb_Rbdb_Log, 	"record",																												rb_Rbdb_Log_logRecord,														0 	);
+	rb_define_method(						rb_Rbdb_Log, 	"sequence_number",																							rb_Rbdb_Log_logSequenceNumber,										0 	);
+	rb_define_alias(						rb_Rbdb_Log, 	"lsn",																													"log_sequence_number"	);		
+	rb_define_method(						rb_Rbdb_Log, 	"filename",																											rb_Rbdb_Log_filename,															0 	);
 		
 }
 
@@ -78,7 +78,7 @@ void Init_RPDB_Log()	{
 *  self.new  *
 *************/
 
-VALUE rb_RPDB_Log_new(	int			argc,
+VALUE rb_Rbdb_Log_new(	int			argc,
 												VALUE*	args,
 												VALUE		rb_klass_self __attribute__ ((unused)) )	{
 
@@ -88,10 +88,10 @@ VALUE rb_RPDB_Log_new(	int			argc,
 	VALUE	rb_parent_log_cursor							=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
-			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
-																						R_MatchAncestorInstance( rb_parent_log_controller, rb_RPDB_LogController ),
-																						R_MatchAncestorInstance( rb_parent_log_cursor_controller, rb_RPDB_LogCursorController ),
-																						R_MatchAncestorInstance( rb_parent_log_cursor, rb_RPDB_LogCursor ) ) ),
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_Rbdb_Environment ),
+																						R_MatchAncestorInstance( rb_parent_log_controller, rb_Rbdb_LogController ),
+																						R_MatchAncestorInstance( rb_parent_log_cursor_controller, rb_Rbdb_LogCursorController ),
+																						R_MatchAncestorInstance( rb_parent_log_cursor, rb_Rbdb_LogCursor ) ) ),
 			R_ListOrder( 1 ),
 			"[ <parent environment> ]",
 			"[ <parent log controller> ]",
@@ -100,14 +100,14 @@ VALUE rb_RPDB_Log_new(	int			argc,
 		)
 	);
 	
-	RPDB_LogController*	c_parent_log_controller;
-	C_RPDB_LOG_CONTROLLER( rb_parent_log_controller, c_parent_log_controller );
+	Rbdb_LogController*	c_parent_log_controller;
+	C_Rbdb_LOG_CONTROLLER( rb_parent_log_controller, c_parent_log_controller );
 	
-	VALUE	rb_log	=	RUBY_RPDB_LOG( RPDB_Log_new( c_parent_log_controller ) );
+	VALUE	rb_log	=	RUBY_Rbdb_LOG( Rbdb_Log_new( c_parent_log_controller ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_log,
-							RPDB_RB_LOG_VARIABLE_PARENT_LOG_CURSOR,
+							Rbdb_RB_LOG_VARIABLE_PARENT_LOG_CURSOR,
 							rb_parent_log_cursor );
 	
 	VALUE	argv[]	=	{ rb_parent_log_controller };
@@ -122,7 +122,7 @@ VALUE rb_RPDB_Log_new(	int			argc,
 *  self.new  *
 *************/
 
-VALUE rb_RPDB_Log_initialize(	int				argc __attribute__ ((unused)),
+VALUE rb_Rbdb_Log_initialize(	int				argc __attribute__ ((unused)),
 												VALUE*		args __attribute__ ((unused)),
 												VALUE			rb_self )	{
 
@@ -132,22 +132,22 @@ VALUE rb_RPDB_Log_initialize(	int				argc __attribute__ ((unused)),
 /***************************
 *  settingsController  *
 ***************************/
-VALUE rb_RPDB_Log_settingsController(	VALUE	rb_log )	{
+VALUE rb_Rbdb_Log_settingsController(	VALUE	rb_log )	{
 	
 	VALUE	rb_local_log_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_log_settings_controller = rb_iv_get(	rb_log,
-																												RPDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																												Rbdb_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
-		RPDB_Log*		c_log;
-		C_RPDB_LOG( rb_log, c_log );
+		Rbdb_Log*		c_log;
+		C_Rbdb_LOG( rb_log, c_log );
 	
-		RPDB_LogSettingsController*	c_local_log_settings_controller	=	RPDB_Log_settingsController( c_log );
+		Rbdb_LogSettingsController*	c_local_log_settings_controller	=	Rbdb_Log_settingsController( c_log );
 
-		rb_local_log_settings_controller	=	RUBY_RPDB_LOG_SETTINGS_CONTROLLER( c_local_log_settings_controller );
+		rb_local_log_settings_controller	=	RUBY_Rbdb_LOG_SETTINGS_CONTROLLER( c_local_log_settings_controller );
 
 		rb_iv_set(	rb_log,
-								RPDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,
+								Rbdb_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,
 								rb_local_log_settings_controller );
 	}
 
@@ -157,10 +157,10 @@ VALUE rb_RPDB_Log_settingsController(	VALUE	rb_log )	{
 /***************************************
 *  parent_environment  *
 ***************************************/
-VALUE rb_RPDB_Log_parentEnvironment(	VALUE	rb_log )	{
+VALUE rb_Rbdb_Log_parentEnvironment(	VALUE	rb_log )	{
 
-	VALUE	rb_parent_log_controller			=	rb_RPDB_Log_parentLogController( rb_log );
-	VALUE	rb_parent_environment					=	rb_RPDB_LogController_parentEnvironment( rb_parent_log_controller );
+	VALUE	rb_parent_log_controller			=	rb_Rbdb_Log_parentLogController( rb_log );
+	VALUE	rb_parent_environment					=	rb_Rbdb_LogController_parentEnvironment( rb_parent_log_controller );
 	
 	return rb_parent_environment;
 }
@@ -168,10 +168,10 @@ VALUE rb_RPDB_Log_parentEnvironment(	VALUE	rb_log )	{
 /***************************************
 *  parent_log_controller  *
 ***************************************/
-VALUE rb_RPDB_Log_parentLogController(	VALUE	rb_log )	{
+VALUE rb_Rbdb_Log_parentLogController(	VALUE	rb_log )	{
 
-	VALUE	rb_parent_log_cursor_controller		=	rb_RPDB_Log_parentLogCursorController( rb_log );
-	VALUE	rb_parent_log_controller					=	rb_RPDB_LogCursorController_parentLogController( rb_parent_log_cursor_controller );
+	VALUE	rb_parent_log_cursor_controller		=	rb_Rbdb_Log_parentLogCursorController( rb_log );
+	VALUE	rb_parent_log_controller					=	rb_Rbdb_LogCursorController_parentLogController( rb_parent_log_cursor_controller );
 	
 	return rb_parent_log_controller;
 }
@@ -179,10 +179,10 @@ VALUE rb_RPDB_Log_parentLogController(	VALUE	rb_log )	{
 /***************************************
 *  parent_log_cursor_controller  *
 ***************************************/
-VALUE rb_RPDB_Log_parentLogCursorController(	VALUE	rb_log )	{
+VALUE rb_Rbdb_Log_parentLogCursorController(	VALUE	rb_log )	{
 
-	VALUE	rb_parent_log_cursor							=	rb_RPDB_Log_parentLogCursor( rb_log );
-	VALUE	rb_parent_log_cursor_controller		=	rb_RPDB_LogCursor_parentLogCursorController( rb_parent_log_cursor );
+	VALUE	rb_parent_log_cursor							=	rb_Rbdb_Log_parentLogCursor( rb_log );
+	VALUE	rb_parent_log_cursor_controller		=	rb_Rbdb_LogCursor_parentLogCursorController( rb_parent_log_cursor );
 	
 	return rb_parent_log_cursor_controller;
 }
@@ -190,10 +190,10 @@ VALUE rb_RPDB_Log_parentLogCursorController(	VALUE	rb_log )	{
 /***************************************
 *  parent_log_cursor  *
 ***************************************/
-VALUE rb_RPDB_Log_parentLogCursor(	VALUE	rb_log )	{
+VALUE rb_Rbdb_Log_parentLogCursor(	VALUE	rb_log )	{
 
 	VALUE	rb_parent_log_cursor	=	rb_iv_get(	rb_log,
-																						RPDB_RB_LOG_VARIABLE_PARENT_LOG_CURSOR );
+																						Rbdb_RB_LOG_VARIABLE_PARENT_LOG_CURSOR );
 
 	return rb_parent_log_cursor;
 }
@@ -202,24 +202,24 @@ VALUE rb_RPDB_Log_parentLogCursor(	VALUE	rb_log )	{
 *  logRecord  *
 *****************/
 
-VALUE rb_RPDB_Log_logRecord( VALUE	rb_log )	{
+VALUE rb_Rbdb_Log_logRecord( VALUE	rb_log )	{
 
-	RPDB_Log*			c_log;
-	C_RPDB_LOG( rb_log, c_log );
+	Rbdb_Log*			c_log;
+	C_Rbdb_LOG( rb_log, c_log );
 
-	return RUBY_RPDB_RECORD( RPDB_Log_logRecord( c_log ) );
+	return RUBY_Rbdb_RECORD( Rbdb_Log_logRecord( c_log ) );
 }
 
 /*************************
 *  sequenceNumbers  *
 *************************/
 
-VALUE rb_RPDB_Log_logSequenceNumber( VALUE	rb_log )	{
+VALUE rb_Rbdb_Log_logSequenceNumber( VALUE	rb_log )	{
 
-	RPDB_Log*			c_log;
-	C_RPDB_LOG( rb_log, c_log );
+	Rbdb_Log*			c_log;
+	C_Rbdb_LOG( rb_log, c_log );
 
-	return RUBY_RPDB_LOG_SEQUENCE_NUMBER( RPDB_Log_logSequenceNumber( c_log ) );	
+	return RUBY_Rbdb_LOG_SEQUENCE_NUMBER( Rbdb_Log_logSequenceNumber( c_log ) );	
 }
 
 /*************
@@ -227,12 +227,12 @@ VALUE rb_RPDB_Log_logSequenceNumber( VALUE	rb_log )	{
 *************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/log_file.html
-VALUE rb_RPDB_Log_filename( VALUE	rb_log )	{
+VALUE rb_Rbdb_Log_filename( VALUE	rb_log )	{
 
-	RPDB_Log*			c_log;
-	C_RPDB_LOG( rb_log, c_log );
+	Rbdb_Log*			c_log;
+	C_Rbdb_LOG( rb_log, c_log );
 
-	return rb_str_new2( RPDB_Log_filename( c_log ) );
+	return rb_str_new2( Rbdb_Log_filename( c_log ) );
 }
 
 

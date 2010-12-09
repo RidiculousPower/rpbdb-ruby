@@ -1,12 +1,12 @@
-require_relative '../../../../lib/rpdb/rpdb'
+require_relative '../../../../lib/rbdb/rbdb'
 
-describe RPDB::Environment::SettingsController::LockSettingsController::LockDeadlockDetectorVerbositySettingsController do
+describe Rbdb::Environment::SettingsController::LockSettingsController::LockDeadlockDetectorVerbositySettingsController do
 
   $environment_name           = :spec_environment
-  $environment_path             = '/tmp/rpdb_spec_environment_home'
+  $environment_path             = '/tmp/rbdb_spec_environment_home'
 
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_name, $environment_path )
+    @environment = Rbdb::Environment.new( $environment_name, $environment_path )
     @environment.open
     @settings_controller  = @environment.settings_controller
   end
@@ -20,9 +20,9 @@ describe RPDB::Environment::SettingsController::LockSettingsController::LockDead
   #  initialize  #
   ################
 
-  # RPDB::Environment::SettingsController::Database.new( environment )
-  # RPDB::Environment::SettingsController::Database.new( environment_name ) 
-  # RPDB::Environment::SettingsController::Database.new
+  # Rbdb::Environment::SettingsController::Database.new( environment )
+  # Rbdb::Environment::SettingsController::Database.new( environment_name ) 
+  # Rbdb::Environment::SettingsController::Database.new
   
   #########################
   #  settings_controller  #

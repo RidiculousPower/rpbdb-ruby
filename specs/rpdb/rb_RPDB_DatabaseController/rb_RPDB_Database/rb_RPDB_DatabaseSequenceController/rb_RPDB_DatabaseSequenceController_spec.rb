@@ -1,15 +1,15 @@
-require_relative '../../../../../lib/rpdb/rpdb'
+require_relative '../../../../../lib/rbdb/rbdb'
 
-describe RPDB::Database::SequenceController do
+describe Rbdb::Database::SequenceController do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $database_new_name          = :spec_database_renamed
   $database_extension         = '.db'
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
     @database = @database_controller.database( $database_name ).open
@@ -25,19 +25,19 @@ describe RPDB::Database::SequenceController do
   #  initialize  #
   ################
 
-  # RPDB::Database::SequenceController.new( database )
+  # Rbdb::Database::SequenceController.new( database )
   it "can be created with a parent database" do
-    RPDB::Database::SequenceController.new( @database ).should_not == nil
+    Rbdb::Database::SequenceController.new( @database ).should_not == nil
   end
 
-  # RPDB::Database::SequenceController.new( environment, database_name ) 
+  # Rbdb::Database::SequenceController.new( environment, database_name ) 
   it "can be created with a parent environment and a database name" do
-    RPDB::Database::SequenceController.new( @environment, @database.name ).should_not == nil  
+    Rbdb::Database::SequenceController.new( @environment, @database.name ).should_not == nil  
   end
 
-  # RPDB::Database::SequenceController.new( environment_directory, database_name ) 
+  # Rbdb::Database::SequenceController.new( environment_directory, database_name ) 
   it "can be created with a parent environment home directory and a database name" do
-    RPDB::Database::SequenceController.new( $environment_path, @database.name ).should_not == nil  
+    Rbdb::Database::SequenceController.new( $environment_path, @database.name ).should_not == nil  
   end
 
   #########################

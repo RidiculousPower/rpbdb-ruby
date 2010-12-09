@@ -1,5 +1,5 @@
-require_relative 'rpdb/rpdb'
+require_relative 'rbdb/rbdb'
 
-module RPDB
+module Rbdb
 
 end

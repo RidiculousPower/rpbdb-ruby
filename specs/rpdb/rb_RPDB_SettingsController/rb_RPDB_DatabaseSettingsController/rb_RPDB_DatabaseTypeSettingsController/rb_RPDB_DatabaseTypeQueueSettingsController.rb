@@ -1,8 +1,8 @@
-require_relative '../../../../../lib/rpdb.rb'
+require_relative '../../../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Database::Type::Queue do
+describe Rbdb::Settings::Database::Type::Queue do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Database::Type::Queue do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,34 +26,34 @@ describe RPDB::Settings::Database::Type::Queue do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Database::Type::Queue.new( environment )
+  # Rbdb::Settings::Database::Type::Queue.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Type::Queue.new( @environment ).should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Type::Queue.new( database_controller )
+  # Rbdb::Settings::Database::Type::Queue.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Type::Queue.new( @environment.database_controller ).should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new( @environment.database_controller ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Type::Queue.new( database )
+  # Rbdb::Settings::Database::Type::Queue.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Type::Queue.new( RPDB::Database.new( $database_name ) ).should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new( Rbdb::Database.new( $database_name ) ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Type::Queue.new( settings_controller )
+  # Rbdb::Settings::Database::Type::Queue.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Type::Queue.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Type::Queue.new( database_settings_controller )
+  # Rbdb::Settings::Database::Type::Queue.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Type::Queue.new( RPDB::Settings::Database.new ).should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new( Rbdb::Settings::Database.new ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Type::Queue.new
+  # Rbdb::Settings::Database::Type::Queue.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Type::Queue.new.should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new.should_not == nil
   end
 
   ########################
@@ -62,9 +62,9 @@ describe RPDB::Settings::Database::Type::Queue do
 
   it "can return its parent environment" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Queue.new.parent_environment.should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new.parent_environment.should_not == nil
     # with a database
-    RPDB::Settings::Database::Type::Queue.new( RPDB::Database.new( $database_name ) ).parent_environment.should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new( Rbdb::Database.new( $database_name ) ).parent_environment.should_not == nil
   end
 
   #####################
@@ -73,9 +73,9 @@ describe RPDB::Settings::Database::Type::Queue do
 
   it "can return its parent database" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Queue.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new( Rbdb::Database.new( $database_name ) ).parent_database.should_not == nil
     # with a database
-    RPDB::Settings::Database::Type::Queue.new( RPDB::Database.new( $database_name ) ).parent_database.should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new( Rbdb::Database.new( $database_name ) ).parent_database.should_not == nil
   end
 
   ################################
@@ -84,9 +84,9 @@ describe RPDB::Settings::Database::Type::Queue do
 
   it "can return its parent settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Queue.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new.parent_settings_controller.should_not == nil
     # with a database
-    RPDB::Settings::Database::Type::Queue.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new( Rbdb::Database.new( $database_name ) ).parent_settings_controller.should_not == nil
   end
 
   #########################################
@@ -95,9 +95,9 @@ describe RPDB::Settings::Database::Type::Queue do
 
   it "can return its parent database settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Queue.new.parent_database_settings_controller.should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new.parent_database_settings_controller.should_not == nil
     # with a database
-    RPDB::Settings::Database::Type::Queue.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new( Rbdb::Database.new( $database_name ) ).parent_database_settings_controller.should_not == nil
   end
 
   ##############################################
@@ -106,9 +106,9 @@ describe RPDB::Settings::Database::Type::Queue do
 
   it "can return its parent database type settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Queue.new.parent_database_type_settings_controller.should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new.parent_database_type_settings_controller.should_not == nil
     # with a database
-    RPDB::Settings::Database::Type::Queue.new( RPDB::Database.new( $database_name ) ).parent_database_type_settings_controller.should_not == nil
+    Rbdb::Settings::Database::Type::Queue.new( Rbdb::Database.new( $database_name ) ).parent_database_type_settings_controller.should_not == nil
   end
 
   ###################
@@ -117,9 +117,9 @@ describe RPDB::Settings::Database::Type::Queue do
 
   it "can return its database type" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Queue.new.database_type.should == RPDB::Database::Type::Queue
+    Rbdb::Settings::Database::Type::Queue.new.database_type.should == Rbdb::Database::Type::Queue
     # with a database
-    RPDB::Settings::Database::Type::Queue.new( RPDB::Database.new( $database_name ) ).database_type.should == RPDB::Database::Type::Queue
+    Rbdb::Settings::Database::Type::Queue.new( Rbdb::Database.new( $database_name ) ).database_type.should == Rbdb::Database::Type::Queue
   end
 
   ##################
@@ -128,9 +128,9 @@ describe RPDB::Settings::Database::Type::Queue do
 
   it "can report whether the type is btree" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Queue.new.is_btree?.should == false
+    Rbdb::Settings::Database::Type::Queue.new.is_btree?.should == false
     # with a database
-    RPDB::Settings::Database::Type::Queue.new( RPDB::Database.new( $database_name ) ).is_btree?.should == false
+    Rbdb::Settings::Database::Type::Queue.new( Rbdb::Database.new( $database_name ) ).is_btree?.should == false
   end
 
   #################
@@ -139,9 +139,9 @@ describe RPDB::Settings::Database::Type::Queue do
 
   it "can report whether the type is hash" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Queue.new.is_hash?.should == false
+    Rbdb::Settings::Database::Type::Queue.new.is_hash?.should == false
     # with a database
-    RPDB::Settings::Database::Type::Queue.new( RPDB::Database.new( $database_name ) ).is_hash?.should == false
+    Rbdb::Settings::Database::Type::Queue.new( Rbdb::Database.new( $database_name ) ).is_hash?.should == false
   end
 
   ##################
@@ -150,9 +150,9 @@ describe RPDB::Settings::Database::Type::Queue do
 
   it "can report whether the type is queue" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Queue.new.is_recno?.should == false
+    Rbdb::Settings::Database::Type::Queue.new.is_recno?.should == false
     # with a database
-    RPDB::Settings::Database::Type::Queue.new( RPDB::Database.new( $database_name ) ).is_recno?.should == false
+    Rbdb::Settings::Database::Type::Queue.new( Rbdb::Database.new( $database_name ) ).is_recno?.should == false
   end
 
   ##################
@@ -161,9 +161,9 @@ describe RPDB::Settings::Database::Type::Queue do
 
   it "can report whether the type is recno" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Queue.new.is_queue?.should == true
+    Rbdb::Settings::Database::Type::Queue.new.is_queue?.should == true
     # with a database
-    RPDB::Settings::Database::Type::Queue.new( RPDB::Database.new( $database_name ) ).is_queue?.should == true
+    Rbdb::Settings::Database::Type::Queue.new( Rbdb::Database.new( $database_name ) ).is_queue?.should == true
   end
 
   #############################################
@@ -174,9 +174,9 @@ describe RPDB::Settings::Database::Type::Queue do
 
   it "can be set to return key/data pairs in order" do
     # with a settings controller
-    queue_settings  = RPDB::Settings::Database::Type::Queue.new
+    queue_settings  = Rbdb::Settings::Database::Type::Queue.new
     # with a database
-    queue_settings  = RPDB::Settings::Database::Type::Queue.new( RPDB::Database.new( $database_name ) )
+    queue_settings  = Rbdb::Settings::Database::Type::Queue.new( Rbdb::Database.new( $database_name ) )
   end
   
   def test_return_key_data_pairs_in_order( queue_settings )
@@ -196,9 +196,9 @@ describe RPDB::Settings::Database::Type::Queue do
 
   it "can set the number of pages used for underlying data" do
     # with a settings controller
-    queue_settings = RPDB::Settings::Database::Type::Queue.new
+    queue_settings = Rbdb::Settings::Database::Type::Queue.new
     # with a database
-    queue_settings = RPDB::Settings::Database::Type::Queue.new( RPDB::Database.new( $database_name ) )
+    queue_settings = Rbdb::Settings::Database::Type::Queue.new( Rbdb::Database.new( $database_name ) )
   end
 
   def test_number_of_pages_for_underlying_data( queue_settings )

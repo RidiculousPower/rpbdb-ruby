@@ -1,6 +1,6 @@
-require_relative 'lib/rpdb.rb'
+require_relative 'lib/rbdb.rb'
 
-$environment_path           = '/tmp/rpdb_spec_environment_home/'
+$environment_path           = '/tmp/rbdb_spec_environment_home/'
 
 $database_name              = :spec_database
 $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ $duplicates_database_name   = :duplicates_db
 
 
 
-@environment = RPDB::Environment.new( $environment_path )
+@environment = Rbdb::Environment.new( $environment_path )
 @environment.open
 
 

@@ -1,8 +1,8 @@
-require_relative '../../../../lib/rpdb.rb'
+require_relative '../../../../lib/rbdb.rb'
 
-describe RPDB::Database do
+describe Rbdb::Database do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Database do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,19 +26,19 @@ describe RPDB::Database do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Debug.new( environment )
+  # Rbdb::Settings::Debug.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Debug.new( @environment ).should_not == nil
+    Rbdb::Settings::Debug.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::Debug.new( settings_controller )
+  # Rbdb::Settings::Debug.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Debug.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::Debug.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::Debug.new
+  # Rbdb::Settings::Debug.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Debug.new.should_not == nil
+    Rbdb::Settings::Debug.new.should_not == nil
   end
 
   ########################
@@ -46,7 +46,7 @@ describe RPDB::Database do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Debug.new.parent_environment.should_not == nil
+    Rbdb::Settings::Debug.new.parent_environment.should_not == nil
   end
 
   ################################
@@ -54,7 +54,7 @@ describe RPDB::Database do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Debug.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::Debug.new.parent_settings_controller.should_not == nil
   end
 
   #############################################################
@@ -64,7 +64,7 @@ describe RPDB::Database do
   #############################################################
 
   it "can run normal recovery processes during environment open before actually opening environment" do
-    debug_settings  = RPDB::Settings::Debug.new
+    debug_settings  = Rbdb::Settings::Debug.new
     debug_settings.run_normal_recovery_before_opening_environment?.should == false
     debug_settings.turn_run_normal_recovery_before_opening_environment_on
     debug_settings.run_normal_recovery_before_opening_environment?.should == true
@@ -79,7 +79,7 @@ describe RPDB::Database do
   ###################################################################
 
   it "can run catastrophic recovery processes during environment open before actually opening environment" do
-    debug_settings  = RPDB::Settings::Debug.new
+    debug_settings  = Rbdb::Settings::Debug.new
     debug_settings.run_catastrophic_recovery_before_opening_environment?.should == false
     debug_settings.turn_run_catastrophic_recovery_before_opening_environment_on
     debug_settings.run_catastrophic_recovery_before_opening_environment?.should == true
@@ -94,7 +94,7 @@ describe RPDB::Database do
   ###############################
 
   it "can open in lockdown" do
-    debug_settings  = RPDB::Settings::Debug.new
+    debug_settings  = Rbdb::Settings::Debug.new
     debug_settings.open_in_lockdown?.should == false
     debug_settings.turn_open_in_lockdown_on
     debug_settings.open_in_lockdown?.should == true
@@ -109,7 +109,7 @@ describe RPDB::Database do
   ####################################
 
   it "can check whether it should run recovery processes during environment open before actually opening environment" do
-    debug_settings  = RPDB::Settings::Debug.new
+    debug_settings  = Rbdb::Settings::Debug.new
     debug_settings.register_for_recovery?.should == false
     debug_settings.turn_register_for_recovery_on
     debug_settings.register_for_recovery?.should == true
@@ -124,7 +124,7 @@ describe RPDB::Database do
   #############################
 
   it "can prohibit panic" do
-    debug_settings  = RPDB::Settings::Debug.new
+    debug_settings  = Rbdb::Settings::Debug.new
     debug_settings.prohibit_panic?.should == false
     debug_settings.turn_prohibit_panic_on
     debug_settings.prohibit_panic?.should == true
@@ -139,7 +139,7 @@ describe RPDB::Database do
   ####################
 
   it "can panic" do
-    debug_settings  = RPDB::Settings::Debug.new
+    debug_settings  = Rbdb::Settings::Debug.new
     debug_settings.panic?.should == false
     debug_settings.turn_panic_on
     debug_settings.panic?.should == true
@@ -154,7 +154,7 @@ describe RPDB::Database do
   ########################################
 
   it "can yield cpu for stress test" do
-    debug_settings  = RPDB::Settings::Debug.new
+    debug_settings  = Rbdb::Settings::Debug.new
     debug_settings.yield_cpu_for_stress_test?.should == false
     debug_settings.turn_yield_cpu_for_stress_test_on
     debug_settings.yield_cpu_for_stress_test?.should == true
@@ -167,7 +167,7 @@ describe RPDB::Database do
   ###################################
 
   it "can return its verbosity settings controller" do
-    RPDB::Settings::Debug.new.verbosity_settings_controller.is_a?( RPDB::Settings::Debug::Verbosity ).should == true
+    Rbdb::Settings::Debug.new.verbosity_settings_controller.is_a?( Rbdb::Settings::Debug::Verbosity ).should == true
   end
 
 end

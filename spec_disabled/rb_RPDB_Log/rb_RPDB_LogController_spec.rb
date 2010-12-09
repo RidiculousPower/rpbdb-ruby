@@ -1,12 +1,12 @@
-require_relative '../../../lib/rpdb/rpdb'
+require_relative '../../../lib/rbdb/rbdb'
 
-describe RPDB::Environment::LogController do
+describe Rbdb::Environment::LogController do
 
   $environment_name           = :spec_environment
-  $environment_path             = '/tmp/rpdb_spec_environment_home'
+  $environment_path             = '/tmp/rbdb_spec_environment_home'
 
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_name, $environment_path )
+    @environment = Rbdb::Environment.new( $environment_name, $environment_path )
     @environment.open
   end
 

@@ -1,8 +1,8 @@
-require_relative '../../../../lib/rpdb.rb'
+require_relative '../../../../lib/rbdb.rb'
 
-describe RPDB::Settings::MemoryPool::File do
+describe Rbdb::Settings::MemoryPool::File do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::MemoryPool::File do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,24 +26,24 @@ describe RPDB::Settings::MemoryPool::File do
   #  initialize  #
   ################
 
-  # RPDB::Settings::MemoryPool::File.new( environment )
+  # Rbdb::Settings::MemoryPool::File.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::MemoryPool::File.new( @environment ).should_not == nil
+    Rbdb::Settings::MemoryPool::File.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::File.new( settings_controller )
+  # Rbdb::Settings::MemoryPool::File.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::MemoryPool::File.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::MemoryPool::File.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::File.new( memory_pool_settings_controller )
+  # Rbdb::Settings::MemoryPool::File.new( memory_pool_settings_controller )
   it "can be created with a memory pool settings controller" do
-    RPDB::Settings::MemoryPool::File.new( RPDB::Settings::MemoryPool.new ).should_not == nil
+    Rbdb::Settings::MemoryPool::File.new( Rbdb::Settings::MemoryPool.new ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::File.new
+  # Rbdb::Settings::MemoryPool::File.new
   it "can be created with no argument specified" do
-    RPDB::Settings::MemoryPool::File.new.should_not == nil
+    Rbdb::Settings::MemoryPool::File.new.should_not == nil
   end
 
   ########################
@@ -51,7 +51,7 @@ describe RPDB::Settings::MemoryPool::File do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::MemoryPool::File.new.parent_environment.should_not == nil
+    Rbdb::Settings::MemoryPool::File.new.parent_environment.should_not == nil
   end
 
   ################################
@@ -59,7 +59,7 @@ describe RPDB::Settings::MemoryPool::File do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::MemoryPool::File.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::MemoryPool::File.new.parent_settings_controller.should_not == nil
   end
 
   ############################################
@@ -67,7 +67,7 @@ describe RPDB::Settings::MemoryPool::File do
   ############################################
 
   it "can return its parent memory pool settings controller" do
-    RPDB::Settings::MemoryPool::File.new.parent_memory_pool_settings_controller.should_not == nil
+    Rbdb::Settings::MemoryPool::File.new.parent_memory_pool_settings_controller.should_not == nil
   end
 
   ################################################
@@ -85,7 +85,7 @@ describe RPDB::Settings::MemoryPool::File do
   ################################################
 
   it "can set its cache size according to various measures" do
-    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new( @environment )
+    memory_pool_file_settings = Rbdb::Settings::MemoryPool::File.new( @environment )
 
     memory_pool_file_settings.set_max_size_in_bytes( 12 )
     memory_pool_file_settings.max_size_in_bytes.should == 12
@@ -117,7 +117,7 @@ describe RPDB::Settings::MemoryPool::File do
   ##################################################
 
   it "can be set to create file with initial null bytes numbering ______" do
-    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
+    memory_pool_file_settings = Rbdb::Settings::MemoryPool::File.new
     memory_pool_file_settings.set_create_with_initial_null_bytes_numbering( 42 )
     memory_pool_file_settings.create_with_initial_null_bytes_numbering.should == 42
   end
@@ -128,13 +128,13 @@ describe RPDB::Settings::MemoryPool::File do
   #################
 
   it "can set and return its file id, which is a 20-byte string" do
-    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
+    memory_pool_file_settings = Rbdb::Settings::MemoryPool::File.new
     memory_pool_file_settings.set_file_id( "42000000000000000000" )
     memory_pool_file_settings.file_id.should == "42000000000000000000"
   end
 
   it "can set and return its file id, which can be anything shorter than a 20-byte string and will be padded with '.'" do
-    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
+    memory_pool_file_settings = Rbdb::Settings::MemoryPool::File.new
     memory_pool_file_settings.set_file_id( "42" )
     memory_pool_file_settings.file_id.should == "42"
   end
@@ -147,7 +147,7 @@ describe RPDB::Settings::MemoryPool::File do
   # FIX - FILE
   it "can set and return its file type" do
     raise "File"
-    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
+    memory_pool_file_settings = Rbdb::Settings::MemoryPool::File.new
     memory_pool_file_settings.set_file_type( 'txt' )
     memory_pool_file_settings.file_type.should == 'txt'
   end
@@ -158,7 +158,7 @@ describe RPDB::Settings::MemoryPool::File do
   ####################################
 
   it "can set and return its log sequence number offset" do
-    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
+    memory_pool_file_settings = Rbdb::Settings::MemoryPool::File.new
     memory_pool_file_settings.set_log_sequence_number_offset( 42 )
     memory_pool_file_settings.log_sequence_number_offset.should == 42
   end
@@ -169,7 +169,7 @@ describe RPDB::Settings::MemoryPool::File do
   ################
 
   it "can set and return its cookie (a byte string)" do
-    memory_pool_file_settings = RPDB::Settings::MemoryPool::File.new
+    memory_pool_file_settings = Rbdb::Settings::MemoryPool::File.new
     memory_pool_file_settings.set_cookie( "42" )
     memory_pool_file_settings.cookie.should == "42"
   end
@@ -179,7 +179,7 @@ describe RPDB::Settings::MemoryPool::File do
   ###############################
 
   it "can return its cache settings controller" do
-    RPDB::Settings::MemoryPool::File.new.cache_settings_controller.is_a?( RPDB::Settings::MemoryPool::File::Cache ).should == true
+    Rbdb::Settings::MemoryPool::File.new.cache_settings_controller.is_a?( Rbdb::Settings::MemoryPool::File::Cache ).should == true
   end
 
   ##############################
@@ -187,7 +187,7 @@ describe RPDB::Settings::MemoryPool::File do
   ##############################
 
   it "can return its page settings controller" do
-    RPDB::Settings::MemoryPool::File.new.page_settings_controller.is_a?( RPDB::Settings::MemoryPool::File::Page ).should == true
+    Rbdb::Settings::MemoryPool::File.new.page_settings_controller.is_a?( Rbdb::Settings::MemoryPool::File::Page ).should == true
   end
 
 end

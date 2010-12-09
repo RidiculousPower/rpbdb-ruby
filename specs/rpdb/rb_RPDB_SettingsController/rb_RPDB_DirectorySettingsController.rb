@@ -1,8 +1,8 @@
-require_relative '../../../lib/rpdb.rb'
+require_relative '../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Directory do
+describe Rbdb::Settings::Directory do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Directory do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,19 +26,19 @@ describe RPDB::Settings::Directory do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Directory.new( environment )
+  # Rbdb::Settings::Directory.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Directory.new( @environment ).should_not == nil
+    Rbdb::Settings::Directory.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::Directory.new( settings_controller )
+  # Rbdb::Settings::Directory.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Directory.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::Directory.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::Directory.new
+  # Rbdb::Settings::Directory.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Directory.new.should_not == nil
+    Rbdb::Settings::Directory.new.should_not == nil
   end
 
   ########################
@@ -46,7 +46,7 @@ describe RPDB::Settings::Directory do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Directory.new.parent_environment.should_not == nil
+    Rbdb::Settings::Directory.new.parent_environment.should_not == nil
   end
 
   ################################
@@ -54,7 +54,7 @@ describe RPDB::Settings::Directory do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Directory.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::Directory.new.parent_settings_controller.should_not == nil
   end
 
   ####################
@@ -62,7 +62,7 @@ describe RPDB::Settings::Directory do
   ####################
 
   it "can return its home directory" do
-    directory_settings  = RPDB::Settings::Directory.new
+    directory_settings  = Rbdb::Settings::Directory.new
     directory_settings.home_directory.should_not == nil
   end
 
@@ -74,7 +74,7 @@ describe RPDB::Settings::Directory do
   # FIX - FILE
   it "can add a data directory to the data directories array" do
     raise "File"
-    directory_settings  = RPDB::Settings::Directory.new
+    directory_settings  = Rbdb::Settings::Directory.new
     directory_settings.add_data_directory( '/tmp' )
     directory_settings.data_directories.include?( '/tmp' ).should == true
   end

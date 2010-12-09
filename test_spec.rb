@@ -1,8 +1,8 @@
-require_relative 'lib/rpdb.rb'
+require_relative 'lib/rbdb.rb'
 
-describe RPDB::Database::Controller do
+describe Rbdb::Database::Controller do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -15,7 +15,7 @@ describe RPDB::Database::Controller do
   
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path ).open
+    @environment = Rbdb::Environment.new( $environment_path ).open
     @database_controller = @environment.database_controller
 
   end

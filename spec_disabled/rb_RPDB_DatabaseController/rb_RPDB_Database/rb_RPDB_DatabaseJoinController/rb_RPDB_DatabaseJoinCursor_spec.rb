@@ -1,12 +1,12 @@
-require_relative '../../../../../lib/rpdb/rpdb'
+require_relative '../../../../../lib/rbdb/rbdb'
 
-describe RPDB::Environment::DatabaseController::Database::JoinController::Cursor do
+describe Rbdb::Environment::DatabaseController::Database::JoinController::Cursor do
 
   $environment_name           = :spec_environment
-  $environment_path             = '/tmp/rpdb_spec_environment_home'
+  $environment_path             = '/tmp/rbdb_spec_environment_home'
 
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_name, $environment_path )
+    @environment = Rbdb::Environment.new( $environment_name, $environment_path )
     @environment.open
     @database_controller  = @environment.database_controller
     @database             = @database_controller.database
@@ -22,9 +22,9 @@ describe RPDB::Environment::DatabaseController::Database::JoinController::Cursor
   #  initialize  #
   ################
 
-  # RPDB::Environment::DatabaseController::Database::JoinController::Cursor.new( database )
-  # RPDB::Environment::DatabaseController::Database::JoinController::Cursor.new( database_name ) 
-  # RPDB::Environment::DatabaseController::Database::JoinController::Cursor.new( join_controller ) 
+  # Rbdb::Environment::DatabaseController::Database::JoinController::Cursor.new( database )
+  # Rbdb::Environment::DatabaseController::Database::JoinController::Cursor.new( database_name ) 
+  # Rbdb::Environment::DatabaseController::Database::JoinController::Cursor.new( join_controller ) 
   
   #########################
   #  settings_controller  #

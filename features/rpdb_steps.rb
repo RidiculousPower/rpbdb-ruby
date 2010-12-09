@@ -1,6 +1,6 @@
-# features/rpdb_steps.rb
-require_relative '../lib/rpdb/rpdb'
+# features/rbdb_steps.rb
+require_relative '../lib/rbdb/rbdb'
 
 Given /an Environment has been created/ do
-  @environment = RPDB::Environments.new
+  @environment = Rbdb::Environments.new
 end

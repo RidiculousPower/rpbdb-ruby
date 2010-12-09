@@ -1,8 +1,8 @@
-require_relative '../../../lib/rpdb.rb'
+require_relative '../../../lib/rbdb.rb'
 
-describe RPDB::Settings do
+describe Rbdb::Settings do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -15,17 +15,17 @@ describe RPDB::Settings do
   #  initialize  #
   ################
 
-  # RPDB::Settings.new( environment )
+  # Rbdb::Settings.new( environment )
   it "can be created with an environment" do
-    environment = RPDB::Environment.new( $environment_path ).open
-    RPDB::Settings.new( environment ).should_not == nil
+    environment = Rbdb::Environment.new( $environment_path ).open
+    Rbdb::Settings.new( environment ).should_not == nil
     environment.close
   end
 
-  # RPDB::Settings.new
+  # Rbdb::Settings.new
   it "can be created with no argument specified" do
-    environment = RPDB::Environment.new( $environment_path ).open
-    RPDB::Settings.new.should_not == nil
+    environment = Rbdb::Environment.new( $environment_path ).open
+    Rbdb::Settings.new.should_not == nil
     environment.close
   end
 
@@ -34,8 +34,8 @@ describe RPDB::Settings do
   ########################
 
   it "can return its parent environment" do
-    environment = RPDB::Environment.new( $environment_path ).open
-    RPDB::Settings.new.parent_environment.should_not == nil
+    environment = Rbdb::Environment.new( $environment_path ).open
+    Rbdb::Settings.new.parent_environment.should_not == nil
     environment.close
   end
 
@@ -45,7 +45,7 @@ describe RPDB::Settings do
   #################
 
   it "can set and return its shm base ID for shared memory spaces" do
-    environment = RPDB::Environment.new( $environment_path )
+    environment = Rbdb::Environment.new( $environment_path )
     shm_key = 1
     environment.settings.shm_key         = shm_key
     environment.settings.shm_key.should == shm_key
@@ -56,7 +56,7 @@ describe RPDB::Settings do
   ##############################
 
   it "can return its file settings controller" do
-    RPDB::Environment.new( $environment_path ).settings.file_settings_controller.should_not == nil
+    Rbdb::Environment.new( $environment_path ).settings.file_settings_controller.should_not == nil
   end
 
   ###############################
@@ -64,7 +64,7 @@ describe RPDB::Settings do
   ###############################
 
   it "can return its error settings controller" do
-    RPDB::Environment.new( $environment_path ).settings.error_settings_controller.should_not == nil
+    Rbdb::Environment.new( $environment_path ).settings.error_settings_controller.should_not == nil
   end
 
   #############################
@@ -72,7 +72,7 @@ describe RPDB::Settings do
   #############################
 
   it "can return its log settings controller" do
-    RPDB::Environment.new( $environment_path ).settings.log_settings_controller.should_not == nil
+    Rbdb::Environment.new( $environment_path ).settings.log_settings_controller.should_not == nil
   end
 
   ##############################
@@ -80,7 +80,7 @@ describe RPDB::Settings do
   ##############################
 
   it "can return its lock settings controller" do
-    RPDB::Environment.new( $environment_path ).settings.lock_settings_controller.should_not == nil
+    Rbdb::Environment.new( $environment_path ).settings.lock_settings_controller.should_not == nil
   end
 
   #####################################
@@ -88,7 +88,7 @@ describe RPDB::Settings do
   #####################################
 
   it "can return its replication settings controller" do
-    RPDB::Environment.new( $environment_path ).settings.replication_settings_controller.should_not == nil
+    Rbdb::Environment.new( $environment_path ).settings.replication_settings_controller.should_not == nil
   end
 
   #####################################
@@ -96,7 +96,7 @@ describe RPDB::Settings do
   #####################################
 
   it "can return its memory pool settings controller" do
-    RPDB::Environment.new( $environment_path ).settings.memory_pool_settings_controller.should_not == nil
+    Rbdb::Environment.new( $environment_path ).settings.memory_pool_settings_controller.should_not == nil
   end
 
   ##################################
@@ -104,7 +104,7 @@ describe RPDB::Settings do
   ##################################
 
   it "can return its database settings controller" do
-    RPDB::Environment.new( $environment_path ).settings.database_settings_controller.should_not == nil
+    Rbdb::Environment.new( $environment_path ).settings.database_settings_controller.should_not == nil
   end
 
   ###################################
@@ -112,7 +112,7 @@ describe RPDB::Settings do
   ###################################
 
   it "can return its directory settings controller" do
-    RPDB::Environment.new( $environment_path ).settings.directory_settings_controller.should_not == nil
+    Rbdb::Environment.new( $environment_path ).settings.directory_settings_controller.should_not == nil
   end
 
 end

@@ -1,6 +1,6 @@
 /*
- *		RPDB::SettingsController::DatabaseSettingsController::DatabaseCompactSettingsController
- *		RPDB::DatabaseController::Database::SettingsController::CompactSettingsController
+ *		Rbdb::SettingsController::DatabaseSettingsController::DatabaseCompactSettingsController
+ *		Rbdb::DatabaseController::Database::SettingsController::CompactSettingsController
  *
  */
 
@@ -10,23 +10,23 @@
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-#include "rb_RPDB_DatabaseCompactSettingsController.h"
-#include "rb_RPDB_DatabaseSettingsController.h"
-#include "rb_RPDB_SettingsController.h"
-#include "rb_RPDB_DatabaseController.h"
-#include "rb_RPDB_Database.h"
-#include "rb_RPDB.h"
+#include "rb_Rbdb_DatabaseCompactSettingsController.h"
+#include "rb_Rbdb_DatabaseSettingsController.h"
+#include "rb_Rbdb_SettingsController.h"
+#include "rb_Rbdb_DatabaseController.h"
+#include "rb_Rbdb_Database.h"
+#include "rb_Rbdb.h"
 
-#include <rpdb/RPDB_Environment.h>
-#include <rpdb/RPDB_Database.h>
+#include <rbdb/Rbdb_Environment.h>
+#include <rbdb/Rbdb_Database.h>
 
-#include <rpdb/RPDB_DatabaseSettingsController.h>
+#include <rbdb/Rbdb_DatabaseSettingsController.h>
 
-#include <rpdb/RPDB_DatabaseCompactSettingsController.h>
-#include <rpdb/RPDB_DatabaseSettingsController.h>
-#include <rpdb/RPDB_SettingsController.h>
-#include <rpdb/RPDB_DatabaseController.h>
-#include <rpdb/RPDB_Database.h>
+#include <rbdb/Rbdb_DatabaseCompactSettingsController.h>
+#include <rbdb/Rbdb_DatabaseSettingsController.h>
+#include <rbdb/Rbdb_SettingsController.h>
+#include <rbdb/Rbdb_DatabaseController.h>
+#include <rbdb/Rbdb_Database.h>
 
 #include <rargs.h>
 
@@ -34,41 +34,41 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
-extern	VALUE	rb_mRPDB;
-extern	VALUE	rb_RPDB_Environment;
-extern	VALUE	rb_RPDB_Database;
+extern	VALUE	rb_mRbdb;
+extern	VALUE	rb_Rbdb_Environment;
+extern	VALUE	rb_Rbdb_Database;
 
-extern	VALUE	rb_RPDB_DatabaseController;
-extern	VALUE	rb_RPDB_SettingsController;
-extern	VALUE	rb_RPDB_DatabaseSettingsController;
-extern	VALUE	rb_RPDB_DatabaseCompactSettingsController;
+extern	VALUE	rb_Rbdb_DatabaseController;
+extern	VALUE	rb_Rbdb_SettingsController;
+extern	VALUE	rb_Rbdb_DatabaseSettingsController;
+extern	VALUE	rb_Rbdb_DatabaseCompactSettingsController;
 
-void Init_RPDB_DatabaseCompactSettingsController()	{
+void Init_Rbdb_DatabaseCompactSettingsController()	{
 
-	rb_RPDB_DatabaseCompactSettingsController				=	rb_define_class_under(	rb_RPDB_DatabaseSettingsController, 
+	rb_Rbdb_DatabaseCompactSettingsController				=	rb_define_class_under(	rb_Rbdb_DatabaseSettingsController, 
 																																						"Compact",	
 																																						rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_DatabaseCompactSettingsController, 	"new",												rb_RPDB_DatabaseCompactSettingsController_new,											-1 	);
-	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"initialize",									rb_RPDB_DatabaseCompactSettingsController_initialize,											-1 	);
+	rb_define_singleton_method(	rb_Rbdb_DatabaseCompactSettingsController, 	"new",												rb_Rbdb_DatabaseCompactSettingsController_new,											-1 	);
+	rb_define_method(						rb_Rbdb_DatabaseCompactSettingsController, 	"initialize",									rb_Rbdb_DatabaseCompactSettingsController_initialize,											-1 	);
                     					                                                                      		
-	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"parent_environment",					rb_RPDB_DatabaseCompactSettingsController_parentEnvironment,				0 	);
-	rb_define_alias(						rb_RPDB_DatabaseCompactSettingsController, 	"environment",								"parent_environment"	);
-	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"parent_database",						rb_RPDB_DatabaseCompactSettingsController_parentDatabase,						0 	);
-	rb_define_alias(						rb_RPDB_DatabaseCompactSettingsController, 	"database",										"parent_database"	);
-	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"parent_settings_controller",						rb_RPDB_DatabaseCompactSettingsController_parentSettingsController,						0 	);
-	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"parent_database_settings_controller",						rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController,						0 	);
+	rb_define_method(						rb_Rbdb_DatabaseCompactSettingsController, 	"parent_environment",					rb_Rbdb_DatabaseCompactSettingsController_parentEnvironment,				0 	);
+	rb_define_alias(						rb_Rbdb_DatabaseCompactSettingsController, 	"environment",								"parent_environment"	);
+	rb_define_method(						rb_Rbdb_DatabaseCompactSettingsController, 	"parent_database",						rb_Rbdb_DatabaseCompactSettingsController_parentDatabase,						0 	);
+	rb_define_alias(						rb_Rbdb_DatabaseCompactSettingsController, 	"database",										"parent_database"	);
+	rb_define_method(						rb_Rbdb_DatabaseCompactSettingsController, 	"parent_settings_controller",						rb_Rbdb_DatabaseCompactSettingsController_parentSettingsController,						0 	);
+	rb_define_method(						rb_Rbdb_DatabaseCompactSettingsController, 	"parent_database_settings_controller",						rb_Rbdb_DatabaseCompactSettingsController_parentDatabaseSettingsController,						0 	);
                     					                                                                      		
-	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"fill_percent",								rb_RPDB_DatabaseCompactSettingsController_fillPercent,							0 	);
-	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"set_fill_percent",						rb_RPDB_DatabaseCompactSettingsController_setFillPercent,						1 	);
+	rb_define_method(						rb_Rbdb_DatabaseCompactSettingsController, 	"fill_percent",								rb_Rbdb_DatabaseCompactSettingsController_fillPercent,							0 	);
+	rb_define_method(						rb_Rbdb_DatabaseCompactSettingsController, 	"set_fill_percent",						rb_Rbdb_DatabaseCompactSettingsController_setFillPercent,						1 	);
                     					
-	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"max_pages_to_compact",				rb_RPDB_DatabaseCompactSettingsController_maxPagesToCompact,				0 	);
-	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"max_pages_to_compact=",			rb_RPDB_DatabaseCompactSettingsController_setMaxPagesToCompact,			1 	);
-	rb_define_alias(						rb_RPDB_DatabaseCompactSettingsController, 	"set_max_pages_to_compact",		"max_pages_to_compact="	);
+	rb_define_method(						rb_Rbdb_DatabaseCompactSettingsController, 	"max_pages_to_compact",				rb_Rbdb_DatabaseCompactSettingsController_maxPagesToCompact,				0 	);
+	rb_define_method(						rb_Rbdb_DatabaseCompactSettingsController, 	"max_pages_to_compact=",			rb_Rbdb_DatabaseCompactSettingsController_setMaxPagesToCompact,			1 	);
+	rb_define_alias(						rb_Rbdb_DatabaseCompactSettingsController, 	"set_max_pages_to_compact",		"max_pages_to_compact="	);
                     					
-	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"timeout",										rb_RPDB_DatabaseCompactSettingsController_timeout,									0 	);
-	rb_define_method(						rb_RPDB_DatabaseCompactSettingsController, 	"timeout=",										rb_RPDB_DatabaseCompactSettingsController_setTimeout,								1 	);
-	rb_define_alias(						rb_RPDB_DatabaseCompactSettingsController, 	"set_timeout",								"timeout=" 	);
+	rb_define_method(						rb_Rbdb_DatabaseCompactSettingsController, 	"timeout",										rb_Rbdb_DatabaseCompactSettingsController_timeout,									0 	);
+	rb_define_method(						rb_Rbdb_DatabaseCompactSettingsController, 	"timeout=",										rb_Rbdb_DatabaseCompactSettingsController_setTimeout,								1 	);
+	rb_define_alias(						rb_Rbdb_DatabaseCompactSettingsController, 	"set_timeout",								"timeout=" 	);
 }
 
 /*******************************************************************************************************************************************************************************************
@@ -81,7 +81,7 @@ void Init_RPDB_DatabaseCompactSettingsController()	{
 *  self.new  *
 *************/
 
-VALUE rb_RPDB_DatabaseCompactSettingsController_new(	int			argc,
+VALUE rb_Rbdb_DatabaseCompactSettingsController_new(	int			argc,
 																											VALUE*	args,
 																											VALUE		rb_klass_self __attribute__ ((unused)) )	{
 
@@ -92,11 +92,11 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_new(	int			argc,
 	VALUE	rb_parent_database_settings_controller								=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
-			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
-																						R_MatchAncestorInstance( rb_parent_database_controller, rb_RPDB_DatabaseController ),
-																						R_MatchAncestorInstance( rb_parent_database, rb_RPDB_Database ),
-																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
-																						R_MatchAncestorInstance( rb_parent_database_settings_controller, rb_RPDB_DatabaseSettingsController ) ) ),
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_Rbdb_Environment ),
+																						R_MatchAncestorInstance( rb_parent_database_controller, rb_Rbdb_DatabaseController ),
+																						R_MatchAncestorInstance( rb_parent_database, rb_Rbdb_Database ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_Rbdb_SettingsController ),
+																						R_MatchAncestorInstance( rb_parent_database_settings_controller, rb_Rbdb_DatabaseSettingsController ) ) ),
 			R_ListOrder( 1 ),
 			"[ <parent environment> ]",
 			"[ <parent database controller> ]",
@@ -114,31 +114,31 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_new(	int			argc,
 			&&	rb_parent_database_controller == Qnil
 			&&	rb_parent_settings_controller == Qnil
 			&&	rb_parent_database_settings_controller == Qnil )	{
-		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+		rb_parent_environment	=	rb_Rbdb_currentWorkingEnvironment( rb_mRbdb );
 	}
 
 	if ( rb_parent_database_controller != Qnil ) {
-		rb_parent_environment	=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );			
+		rb_parent_environment	=	rb_Rbdb_DatabaseController_parentEnvironment( rb_parent_database_controller );			
 	}
 	if ( rb_parent_environment != Qnil )	{
-		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+		rb_parent_settings_controller = rb_Rbdb_Environment_settingsController( rb_parent_environment );
 	}
 	if ( rb_parent_settings_controller != Qnil )	{
-		rb_parent_database_settings_controller	=	rb_RPDB_SettingsController_databaseSettingsController( rb_parent_settings_controller );
+		rb_parent_database_settings_controller	=	rb_Rbdb_SettingsController_databaseSettingsController( rb_parent_settings_controller );
 	}
 	if ( rb_parent_database != Qnil )	{
-		rb_parent_database_settings_controller	=	rb_RPDB_Database_settingsController( rb_parent_database );
+		rb_parent_database_settings_controller	=	rb_Rbdb_Database_settingsController( rb_parent_database );
 	}
 
-	RPDB_DatabaseSettingsController*	c_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
-	RPDB_DatabaseCompactSettingsController*	c_database_compact_settings_controller	=	RPDB_DatabaseSettingsController_compactSettingsController( c_database_settings_controller );
+	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
+	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
+	Rbdb_DatabaseCompactSettingsController*	c_database_compact_settings_controller	=	Rbdb_DatabaseSettingsController_compactSettingsController( c_database_settings_controller );
 
-	VALUE	rb_database_compact_settings_controller	= RUBY_RPDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( c_database_compact_settings_controller );
+	VALUE	rb_database_compact_settings_controller	= RUBY_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( c_database_compact_settings_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_compact_settings_controller,
-							RPDB_RB_DATABASE_COMPACT_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+							Rbdb_RB_DATABASE_COMPACT_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
@@ -153,7 +153,7 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_new(	int			argc,
 *  initialize  *
 ***************/
 
-VALUE rb_RPDB_DatabaseCompactSettingsController_initialize(	int				argc __attribute__ ((unused)),
+VALUE rb_Rbdb_DatabaseCompactSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																											VALUE*		args __attribute__ ((unused)),
 																											VALUE			rb_self )	{
 
@@ -164,10 +164,10 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_initialize(	int				argc __attrib
 *  parent_environment  *
 ***********************/
 
-VALUE rb_RPDB_DatabaseCompactSettingsController_parentEnvironment(	VALUE	rb_database_compact_settings_controller )	{
+VALUE rb_Rbdb_DatabaseCompactSettingsController_parentEnvironment(	VALUE	rb_database_compact_settings_controller )	{
 
-	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController( rb_database_compact_settings_controller );
-	VALUE	rb_parent_environment										=	rb_RPDB_DatabaseSettingsController_parentEnvironment( rb_parent_database_settings_controller );
+	VALUE	rb_parent_database_settings_controller	=	rb_Rbdb_DatabaseCompactSettingsController_parentDatabaseSettingsController( rb_database_compact_settings_controller );
+	VALUE	rb_parent_environment										=	rb_Rbdb_DatabaseSettingsController_parentEnvironment( rb_parent_database_settings_controller );
 
 	return rb_parent_environment;
 }
@@ -176,10 +176,10 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_parentEnvironment(	VALUE	rb_data
 *  parent_database  *
 ********************/
 
-VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabase(	VALUE	rb_database_compact_settings_controller )	{
+VALUE rb_Rbdb_DatabaseCompactSettingsController_parentDatabase(	VALUE	rb_database_compact_settings_controller )	{
 
-	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController( rb_database_compact_settings_controller );
-	VALUE	rb_parent_database											=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
+	VALUE	rb_parent_database_settings_controller	=	rb_Rbdb_DatabaseCompactSettingsController_parentDatabaseSettingsController( rb_database_compact_settings_controller );
+	VALUE	rb_parent_database											=	rb_Rbdb_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
 
 	return rb_parent_database;
 }
@@ -188,10 +188,10 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabase(	VALUE	rb_databas
 *  parent_settings_controller  *
 *******************************/
 
-VALUE rb_RPDB_DatabaseCompactSettingsController_parentSettingsController(	VALUE	rb_database_compact_settings_controller )	{
+VALUE rb_Rbdb_DatabaseCompactSettingsController_parentSettingsController(	VALUE	rb_database_compact_settings_controller )	{
 
-	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController( rb_database_compact_settings_controller );
-	VALUE	rb_parent_settings_controller						=	rb_RPDB_DatabaseSettingsController_parentSettingsController( rb_parent_database_settings_controller );
+	VALUE	rb_parent_database_settings_controller	=	rb_Rbdb_DatabaseCompactSettingsController_parentDatabaseSettingsController( rb_database_compact_settings_controller );
+	VALUE	rb_parent_settings_controller						=	rb_Rbdb_DatabaseSettingsController_parentSettingsController( rb_parent_database_settings_controller );
 
 	return rb_parent_settings_controller;
 }
@@ -200,10 +200,10 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_parentSettingsController(	VALUE	
 *  parent_database_settings_controller  *
 ****************************************/
 
-VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_compact_settings_controller )	{
+VALUE rb_Rbdb_DatabaseCompactSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_compact_settings_controller )	{
 
 	VALUE	rb_parent_database_compact_settings_controller	=	rb_iv_get(	rb_database_compact_settings_controller,
-																																			RPDB_RB_DATABASE_COMPACT_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																																			Rbdb_RB_DATABASE_COMPACT_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_compact_settings_controller;
 }
@@ -216,12 +216,12 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_parentDatabaseSettingsController
 //	If non-zero, the goal for filling pages, specified as a percentage between 1 and 100. 
 //	Any page in a Btree or Recno databases not at or above this percentage full will be considered for compaction. 
 //	The default behavior is to consider every page for compaction, regardless of its page fill percentage.
-VALUE rb_RPDB_DatabaseCompactSettingsController_fillPercent( VALUE	rb_database_compact_settings_controller )	{
+VALUE rb_Rbdb_DatabaseCompactSettingsController_fillPercent( VALUE	rb_database_compact_settings_controller )	{
 
-	RPDB_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
-	C_RPDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
+	Rbdb_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
+	C_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
 
-	return INT2FIX( RPDB_DatabaseCompactSettingsController_fillPercent( c_database_compact_settings_controller ) );
+	return INT2FIX( Rbdb_DatabaseCompactSettingsController_fillPercent( c_database_compact_settings_controller ) );
 }
 
 /*********************
@@ -232,13 +232,13 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_fillPercent( VALUE	rb_database_c
 //	If non-zero, the goal for filling pages, specified as a percentage between 1 and 100. 
 //	Any page in a Btree or Recno databases not at or above this percentage full will be considered for compaction. 
 //	The default behavior is to consider every page for compaction, regardless of its page fill percentage.
-VALUE rb_RPDB_DatabaseCompactSettingsController_setFillPercent(	VALUE	rb_database_compact_settings_controller, 
+VALUE rb_Rbdb_DatabaseCompactSettingsController_setFillPercent(	VALUE	rb_database_compact_settings_controller, 
 																	VALUE	rb_fill_percent )	{
 
-	RPDB_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
-	C_RPDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
+	Rbdb_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
+	C_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
 
-	RPDB_DatabaseCompactSettingsController_setFillPercent(	c_database_compact_settings_controller,
+	Rbdb_DatabaseCompactSettingsController_setFillPercent(	c_database_compact_settings_controller,
 	 														FIX2INT( rb_fill_percent ) );
 
 	return rb_database_compact_settings_controller;
@@ -250,12 +250,12 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_setFillPercent(	VALUE	rb_databas
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html
 //	If non-zero, the call will return after that number of pages have been freed.
-VALUE rb_RPDB_DatabaseCompactSettingsController_maxPagesToCompact( VALUE	rb_database_compact_settings_controller )	{
+VALUE rb_Rbdb_DatabaseCompactSettingsController_maxPagesToCompact( VALUE	rb_database_compact_settings_controller )	{
 
-	RPDB_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
-	C_RPDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
+	Rbdb_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
+	C_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
 
-	return INT2FIX( RPDB_DatabaseCompactSettingsController_maxPagesToCompact( c_database_compact_settings_controller ) );
+	return INT2FIX( Rbdb_DatabaseCompactSettingsController_maxPagesToCompact( c_database_compact_settings_controller ) );
 }
 
 /*****************************
@@ -264,13 +264,13 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_maxPagesToCompact( VALUE	rb_data
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html
 //	If non-zero, the call will return after that number of pages have been freed.
-VALUE rb_RPDB_DatabaseCompactSettingsController_setMaxPagesToCompact(	VALUE	rb_database_compact_settings_controller, 
+VALUE rb_Rbdb_DatabaseCompactSettingsController_setMaxPagesToCompact(	VALUE	rb_database_compact_settings_controller, 
 																		VALUE	rb_max_pages_to_compact )	{
 
-	RPDB_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
-	C_RPDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
+	Rbdb_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
+	C_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
 
-	RPDB_DatabaseCompactSettingsController_setMaxPagesToCompact(	c_database_compact_settings_controller,
+	Rbdb_DatabaseCompactSettingsController_setMaxPagesToCompact(	c_database_compact_settings_controller,
 	 																FIX2INT( rb_max_pages_to_compact ) );
 
 	return rb_database_compact_settings_controller;
@@ -282,12 +282,12 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_setMaxPagesToCompact(	VALUE	rb_d
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html
 //	If non-zero, and no txnid parameter was specified, the lock timeout set for implicit transactions, in microseconds.
-VALUE rb_RPDB_DatabaseCompactSettingsController_timeout( VALUE	rb_database_compact_settings_controller )	{
+VALUE rb_Rbdb_DatabaseCompactSettingsController_timeout( VALUE	rb_database_compact_settings_controller )	{
 
-	RPDB_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
-	C_RPDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
+	Rbdb_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
+	C_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
 
-	return INT2FIX( RPDB_DatabaseCompactSettingsController_timeout( c_database_compact_settings_controller ) );
+	return INT2FIX( Rbdb_DatabaseCompactSettingsController_timeout( c_database_compact_settings_controller ) );
 
 }
 
@@ -297,13 +297,13 @@ VALUE rb_RPDB_DatabaseCompactSettingsController_timeout( VALUE	rb_database_compa
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_compact.html
 //	If non-zero, and no txnid parameter was specified, the lock timeout set for implicit transactions, in microseconds.
-VALUE rb_RPDB_DatabaseCompactSettingsController_setTimeout(	VALUE	rb_database_compact_settings_controller, 
+VALUE rb_Rbdb_DatabaseCompactSettingsController_setTimeout(	VALUE	rb_database_compact_settings_controller, 
 																VALUE	rb_timeout )	{
 
-	RPDB_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
-	C_RPDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
+	Rbdb_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
+	C_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
 
-	RPDB_DatabaseCompactSettingsController_setTimeout(	c_database_compact_settings_controller,
+	Rbdb_DatabaseCompactSettingsController_setTimeout(	c_database_compact_settings_controller,
 	 													FIX2INT( rb_timeout ) );
 
 	return rb_database_compact_settings_controller;

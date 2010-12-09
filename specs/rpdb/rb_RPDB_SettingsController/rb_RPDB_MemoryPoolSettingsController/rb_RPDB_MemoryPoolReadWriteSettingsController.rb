@@ -1,8 +1,8 @@
-require_relative '../../../../lib/rpdb.rb'
+require_relative '../../../../lib/rbdb.rb'
 
-describe RPDB::Settings::MemoryPool::ReadWrite do
+describe Rbdb::Settings::MemoryPool::ReadWrite do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,24 +26,24 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   #  initialize  #
   ################
 
-  # RPDB::Settings::MemoryPool::ReadWrite.new( environment )
+  # Rbdb::Settings::MemoryPool::ReadWrite.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::MemoryPool::ReadWrite.new( @environment ).should_not == nil
+    Rbdb::Settings::MemoryPool::ReadWrite.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::ReadWrite.new( settings_controller )
+  # Rbdb::Settings::MemoryPool::ReadWrite.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::MemoryPool::ReadWrite.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::MemoryPool::ReadWrite.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::ReadWrite.new( memory_pool_settings_controller )
+  # Rbdb::Settings::MemoryPool::ReadWrite.new( memory_pool_settings_controller )
   it "can be created with a memory pool settings controller" do
-    RPDB::Settings::MemoryPool::ReadWrite.new( RPDB::Settings::MemoryPool.new ).should_not == nil
+    Rbdb::Settings::MemoryPool::ReadWrite.new( Rbdb::Settings::MemoryPool.new ).should_not == nil
   end
 
-  # RPDB::Settings::MemoryPool::ReadWrite.new
+  # Rbdb::Settings::MemoryPool::ReadWrite.new
   it "can be created with no argument specified" do
-    RPDB::Settings::MemoryPool::ReadWrite.new.should_not == nil
+    Rbdb::Settings::MemoryPool::ReadWrite.new.should_not == nil
   end
 
   ########################
@@ -51,7 +51,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::MemoryPool::ReadWrite.new.parent_environment.should_not == nil
+    Rbdb::Settings::MemoryPool::ReadWrite.new.parent_environment.should_not == nil
   end
 
   ################################
@@ -59,7 +59,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::MemoryPool::ReadWrite.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::MemoryPool::ReadWrite.new.parent_settings_controller.should_not == nil
   end
 
   ############################################
@@ -67,7 +67,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ############################################
 
   it "can return its parent memory pool settings controller" do
-    RPDB::Settings::MemoryPool::ReadWrite.new.parent_memory_pool_settings_controller.should_not == nil
+    Rbdb::Settings::MemoryPool::ReadWrite.new.parent_memory_pool_settings_controller.should_not == nil
   end
 
   ########################
@@ -76,7 +76,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ########################
 
   it "can set and return its maximum open file limit" do
-    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings  = Rbdb::Settings::MemoryPool::ReadWrite.new
     read_write_settings.set_max_open_files( 42 )
     read_write_settings.max_open_files.should == 42
   end
@@ -87,7 +87,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ###############################
 
   it "can set and return its maximum sequential write limit" do
-    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings  = Rbdb::Settings::MemoryPool::ReadWrite.new
     read_write_settings.set_max_sequential_writes( 42 )
     read_write_settings.max_sequential_writes.should == 42
   end
@@ -98,7 +98,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   #########################################
 
   it "can set and return its maximum time to sleep before next write" do
-    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings  = Rbdb::Settings::MemoryPool::ReadWrite.new
     read_write_settings.set_time_to_sleep_before_next_write( 42 )
     read_write_settings.time_to_sleep_before_next_write.should == 42
   end
@@ -109,7 +109,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ##################################
 
   it "can set maximum mapped database size limit" do
-    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings  = Rbdb::Settings::MemoryPool::ReadWrite.new
     read_write_settings.set_max_mapped_database_size( 42 )
     read_write_settings.max_mapped_database_size.should == 42
   end
@@ -121,7 +121,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   #######################################
 
   it "can be set to pagefault shared regions" do
-    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings  = Rbdb::Settings::MemoryPool::ReadWrite.new
     read_write_settings.pagefault_shared_regions?.should == false
     read_write_settings.turn_pagefault_shared_regions_on
     read_write_settings.pagefault_shared_regions?.should == true
@@ -136,7 +136,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   #####################################################
 
   it "can be set not to write temporary backing file" do
-    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings  = Rbdb::Settings::MemoryPool::ReadWrite.new
     read_write_settings.do_not_write_to_temporary_backing_file?.should == false
     read_write_settings.turn_do_not_write_to_temporary_backing_file_on
     read_write_settings.do_not_write_to_temporary_backing_file?.should == true
@@ -151,7 +151,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ############################################
 
   it "can be set to use system memory for storage" do
-    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings  = Rbdb::Settings::MemoryPool::ReadWrite.new
     read_write_settings.use_system_memory_for_storage?.should == false
     read_write_settings.turn_use_system_memory_for_storage_on
     read_write_settings.use_system_memory_for_storage?.should == true
@@ -166,7 +166,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ###############################################
 
   it "can declare that application has exclusive access to permit optimizations" do
-    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings  = Rbdb::Settings::MemoryPool::ReadWrite.new
     read_write_settings.application_has_exclusive_access?.should == false
     read_write_settings.turn_application_has_exclusive_access_on
     read_write_settings.application_has_exclusive_access?.should == true
@@ -181,7 +181,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   #####################################################
 
   it "can allocate memory using malloc" do
-    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings  = Rbdb::Settings::MemoryPool::ReadWrite.new
     read_write_settings.database_allocates_memory_using_malloc?.should == false
     read_write_settings.turn_database_allocates_memory_using_malloc_on
     read_write_settings.database_allocates_memory_using_malloc?.should == true
@@ -196,7 +196,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ######################################################
 
   it "can allocate memory using realloc" do
-    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings  = Rbdb::Settings::MemoryPool::ReadWrite.new
     read_write_settings.database_allocates_memory_using_realloc?.should == false
     read_write_settings.turn_database_allocates_memory_using_realloc_on
     read_write_settings.database_allocates_memory_using_realloc?.should == true
@@ -211,7 +211,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ###########################################
 
   it "can depend on application to allocate memory" do
-    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings  = Rbdb::Settings::MemoryPool::ReadWrite.new
     read_write_settings.application_allocates_memory?.should == false
     read_write_settings.turn_application_allocates_memory_on
     read_write_settings.application_allocates_memory?.should == true
@@ -226,7 +226,7 @@ describe RPDB::Settings::MemoryPool::ReadWrite do
   ####################################
 
   it "can depend on database to free memory when finished with it" do
-    read_write_settings  = RPDB::Settings::MemoryPool::ReadWrite.new
+    read_write_settings  = Rbdb::Settings::MemoryPool::ReadWrite.new
     read_write_settings.database_frees_memory?.should == false
     read_write_settings.turn_database_frees_memory_on
     read_write_settings.database_frees_memory?.should == true

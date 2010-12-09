@@ -1,8 +1,8 @@
-require_relative '../../../lib/rpdb.rb'
+require_relative '../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Mutex do
+describe Rbdb::Settings::Mutex do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Mutex do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
   end
 
   after( :each ) do
@@ -23,22 +23,22 @@ describe RPDB::Settings::Mutex do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Mutex.new( environment )
+  # Rbdb::Settings::Mutex.new( environment )
   it "can be created with an environment" do
     @environment.open
-    RPDB::Settings::Mutex.new( @environment ).should_not == nil
+    Rbdb::Settings::Mutex.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::Mutex.new( settings_controller )
+  # Rbdb::Settings::Mutex.new( settings_controller )
   it "can be created with a settings controller" do
     @environment.open
-    RPDB::Settings::Mutex.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::Mutex.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::Mutex.new
+  # Rbdb::Settings::Mutex.new
   it "can be created with no argument specified" do
     @environment.open
-    RPDB::Settings::Mutex.new.should_not == nil
+    Rbdb::Settings::Mutex.new.should_not == nil
   end
 
 
@@ -48,7 +48,7 @@ describe RPDB::Settings::Mutex do
 
   it "can return its parent environment" do
     @environment.open
-    RPDB::Settings::Mutex.new.parent_environment.should_not == nil
+    Rbdb::Settings::Mutex.new.parent_environment.should_not == nil
   end
 
   ################################
@@ -57,7 +57,7 @@ describe RPDB::Settings::Mutex do
 
   it "can return its parent settings controller" do
     @environment.open
-    RPDB::Settings::Mutex.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::Mutex.new.parent_settings_controller.should_not == nil
   end
   
   #############################################################
@@ -67,7 +67,7 @@ describe RPDB::Settings::Mutex do
 
   it "can set and return its blcoking time for test and spin mutexes" do
     @environment.open
-    mutex_settings  = RPDB::Settings::Mutex.new
+    mutex_settings  = Rbdb::Settings::Mutex.new
     mutex_settings.set_spin_time_before_blocking_for_test_and_spin_mutexes( 42 )
     mutex_settings.spin_time_before_blocking_for_test_and_spin_mutexes.should == 42
   end
@@ -78,7 +78,7 @@ describe RPDB::Settings::Mutex do
   ###############################
 
   it "can set its maximum allowable mutex limit" do
-    mutex_settings  = RPDB::Settings::Mutex.new( @environment )
+    mutex_settings  = Rbdb::Settings::Mutex.new( @environment )
     mutex_settings.set_max_allowable_mutexes( 42 )
     mutex_settings.max_allowable_mutexes.should == 42
   end
@@ -89,7 +89,7 @@ describe RPDB::Settings::Mutex do
   ######################################
 
   it "can set and return its increment for adding mutexes" do
-    mutex_settings  = RPDB::Settings::Mutex.new( @environment )
+    mutex_settings  = Rbdb::Settings::Mutex.new( @environment )
     mutex_settings.set_increment_for_adding_mutexes( 42 )
     mutex_settings.increment_for_adding_mutexes.should == 42
   end
@@ -100,7 +100,7 @@ describe RPDB::Settings::Mutex do
   #########################
 
   it "can set and return its mutex alignment" do
-    mutex_settings  = RPDB::Settings::Mutex.new( @environment )
+    mutex_settings  = Rbdb::Settings::Mutex.new( @environment )
     mutex_settings.set_mutex_alignment( 42 )
     mutex_settings.mutex_alignment.should == 42
   end
@@ -113,7 +113,7 @@ describe RPDB::Settings::Mutex do
 
   it "can be set to associate with a single process" do
     @environment.open
-    mutex_settings  = RPDB::Settings::Mutex.new
+    mutex_settings  = Rbdb::Settings::Mutex.new
     mutex_settings.associated_with_single_process?.should == false
     mutex_settings.turn_associated_with_single_process_on
     mutex_settings.associated_with_single_process?.should == true
@@ -129,7 +129,7 @@ describe RPDB::Settings::Mutex do
 
   it "can be set to be self-blocking" do
     @environment.open
-    mutex_settings  = RPDB::Settings::Mutex.new
+    mutex_settings  = Rbdb::Settings::Mutex.new
     mutex_settings.self_blocking?.should == false
     mutex_settings.turn_self_blocking_on
     mutex_settings.self_blocking?.should == true

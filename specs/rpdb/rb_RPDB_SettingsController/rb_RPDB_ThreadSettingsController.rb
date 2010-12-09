@@ -1,8 +1,8 @@
-require_relative '../../../lib/rpdb.rb'
+require_relative '../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Thread do
+describe Rbdb::Settings::Thread do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Thread do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
   end
 
   after( :each ) do
@@ -23,22 +23,22 @@ describe RPDB::Settings::Thread do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Thread.new( environment )
+  # Rbdb::Settings::Thread.new( environment )
   it "can be created with an environment" do
     @environment.open
-    RPDB::Settings::Thread.new( @environment ).should_not == nil
+    Rbdb::Settings::Thread.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::Thread.new( settings_controller )
+  # Rbdb::Settings::Thread.new( settings_controller )
   it "can be created with a settings controller" do
     @environment.open
-    RPDB::Settings::Thread.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::Thread.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::Thread.new
+  # Rbdb::Settings::Thread.new
   it "can be created with no argument specified" do
     @environment.open
-    RPDB::Settings::Thread.new.should_not == nil
+    Rbdb::Settings::Thread.new.should_not == nil
   end
 
   ########################
@@ -47,7 +47,7 @@ describe RPDB::Settings::Thread do
 
   it "can return its parent environment" do
     @environment.open
-    RPDB::Settings::Thread.new.parent_environment.should_not == nil
+    Rbdb::Settings::Thread.new.parent_environment.should_not == nil
   end
 
   ################################
@@ -56,7 +56,7 @@ describe RPDB::Settings::Thread do
 
   it "can return its parent settings controller" do
     @environment.open
-    RPDB::Settings::Thread.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::Thread.new.parent_settings_controller.should_not == nil
   end
 
   ##############
@@ -67,7 +67,7 @@ describe RPDB::Settings::Thread do
   ##############
 
   it "can be turned on or off as well as report whether it is on or off" do
-    thread_settings  = RPDB::Settings::Thread.new( @environment )
+    thread_settings  = Rbdb::Settings::Thread.new( @environment )
     thread_settings.on?.should == false
     thread_settings.turn_on
     thread_settings.on?.should == true
@@ -82,7 +82,7 @@ describe RPDB::Settings::Thread do
   ######################
 
   it "can set and return its thread count" do
-    thread_settings  = RPDB::Settings::Thread.new( @environment )
+    thread_settings  = Rbdb::Settings::Thread.new( @environment )
     thread_settings.set_thread_count( 42 )
     thread_settings.thread_count.should == 42
   end

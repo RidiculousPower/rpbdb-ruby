@@ -1,8 +1,8 @@
-require_relative '../../../../lib/rpdb.rb'
+require_relative '../../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Database::Verification do
+describe Rbdb::Settings::Database::Verification do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Database::Verification do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
   end
 
@@ -24,34 +24,34 @@ describe RPDB::Settings::Database::Verification do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Database::Verification.new( environment )
+  # Rbdb::Settings::Database::Verification.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Verification.new( @environment ).is_a?( RPDB::Settings::Database::Verification ).should == true
+    Rbdb::Settings::Database::Verification.new( @environment ).is_a?( Rbdb::Settings::Database::Verification ).should == true
   end
 
-  # RPDB::Settings::Database::Verification.new( database_controller )
+  # Rbdb::Settings::Database::Verification.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Verification.new( @environment.database_controller ).is_a?( RPDB::Settings::Database::Verification ).should == true
+    Rbdb::Settings::Database::Verification.new( @environment.database_controller ).is_a?( Rbdb::Settings::Database::Verification ).should == true
   end
 
-  # RPDB::Settings::Database::Verification.new( database )
+  # Rbdb::Settings::Database::Verification.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Verification.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Verification ).should == true
+    Rbdb::Settings::Database::Verification.new( Rbdb::Database.new( $database_name ) ).is_a?( Rbdb::Settings::Database::Verification ).should == true
   end
 
-  # RPDB::Settings::Database::Verification.new( settings_controller )
+  # Rbdb::Settings::Database::Verification.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Verification.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database::Verification ).should == true
+    Rbdb::Settings::Database::Verification.new( Rbdb::Settings.new ).is_a?( Rbdb::Settings::Database::Verification ).should == true
   end
 
-  # RPDB::Settings::Database::Verification.new( database_settings_controller )
+  # Rbdb::Settings::Database::Verification.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Verification.new( RPDB::Settings::Database.new ).is_a?( RPDB::Settings::Database::Verification ).should == true
+    Rbdb::Settings::Database::Verification.new( Rbdb::Settings::Database.new ).is_a?( Rbdb::Settings::Database::Verification ).should == true
   end
 
-  # RPDB::Settings::Database::Verification.new
+  # Rbdb::Settings::Database::Verification.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Verification.new.is_a?( RPDB::Settings::Database::Verification ).should == true
+    Rbdb::Settings::Database::Verification.new.is_a?( Rbdb::Settings::Database::Verification ).should == true
   end
 
   ########################
@@ -60,9 +60,9 @@ describe RPDB::Settings::Database::Verification do
 
   it "can return its parent environment" do
     # with a settings controller
-    RPDB::Settings::Database::Verification.new.parent_environment.is_a?( RPDB::Environment ).should == true
+    Rbdb::Settings::Database::Verification.new.parent_environment.is_a?( Rbdb::Environment ).should == true
     # with a database
-    RPDB::Settings::Database::Verification.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
+    Rbdb::Settings::Database::Verification.new( Rbdb::Database.new( $database_name ) ).parent_environment.is_a?( Rbdb::Environment ).should == true
   end
 
   #####################
@@ -71,9 +71,9 @@ describe RPDB::Settings::Database::Verification do
 
   it "can return its parent database" do
     # with a settings controller
-    RPDB::Settings::Database::Verification.new.parent_database.should == nil
+    Rbdb::Settings::Database::Verification.new.parent_database.should == nil
     # with a database
-    RPDB::Settings::Database::Verification.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
+    Rbdb::Settings::Database::Verification.new( Rbdb::Database.new( $database_name ) ).parent_database.is_a?( Rbdb::Database ).should == true
   end
 
   ################################
@@ -82,9 +82,9 @@ describe RPDB::Settings::Database::Verification do
 
   it "can return its parent settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Verification.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    Rbdb::Settings::Database::Verification.new.parent_settings_controller.is_a?( Rbdb::Settings ).should == true
     # with a database
-    RPDB::Settings::Database::Verification.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    Rbdb::Settings::Database::Verification.new( Rbdb::Database.new( $database_name ) ).parent_settings_controller.is_a?( Rbdb::Settings ).should == true
   end
 
   #########################################
@@ -93,9 +93,9 @@ describe RPDB::Settings::Database::Verification do
 
   it "can return its parent database settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Verification.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    Rbdb::Settings::Database::Verification.new.parent_database_settings_controller.is_a?( Rbdb::Settings::Database ).should == true
     # with a database
-    RPDB::Settings::Database::Verification.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    Rbdb::Settings::Database::Verification.new( Rbdb::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( Rbdb::Settings::Database ).should == true
   end
 
   ##############
@@ -107,9 +107,9 @@ describe RPDB::Settings::Database::Verification do
   it "can set its verification file" do
     raise "File"
     # with a settings controller
-    verification_settings = RPDB::Settings::Database::Verification.new
+    verification_settings = Rbdb::Settings::Database::Verification.new
     # with a database
-    verification_settings = RPDB::Settings::Database::Verification.new( RPDB::Database.new( $database_name ) )
+    verification_settings = Rbdb::Settings::Database::Verification.new( Rbdb::Database.new( $database_name ) )
   end
   
   def test_( verification_settings )
@@ -127,9 +127,9 @@ describe RPDB::Settings::Database::Verification do
 
   it "can be set to do an aggressive key/data pair dump" do
     # with a settings controller
-    verification_settings  = RPDB::Settings::Database::Verification.new
+    verification_settings  = Rbdb::Settings::Database::Verification.new
     # with a database
-    verification_settings  = RPDB::Settings::Database::Verification.new( RPDB::Database.new( $database_name ) )
+    verification_settings  = Rbdb::Settings::Database::Verification.new( Rbdb::Database.new( $database_name ) )
   end
   
   def test_( verification_settings )
@@ -150,9 +150,9 @@ describe RPDB::Settings::Database::Verification do
 
   it "can specify that key and data are printable characters" do
     # with a settings controller
-    verification_settings  = RPDB::Settings::Database::Verification.new
+    verification_settings  = Rbdb::Settings::Database::Verification.new
     # with a database
-    verification_settings  = RPDB::Settings::Database::Verification.new( RPDB::Database.new( $database_name ) )
+    verification_settings  = Rbdb::Settings::Database::Verification.new( Rbdb::Database.new( $database_name ) )
   end
   
   def test_( verification_settings )
@@ -173,9 +173,9 @@ describe RPDB::Settings::Database::Verification do
 
   it "can skip order checking" do
     # with a settings controller
-    verification_settings  = RPDB::Settings::Database::Verification.new
+    verification_settings  = Rbdb::Settings::Database::Verification.new
     # with a database
-    verification_settings  = RPDB::Settings::Database::Verification.new( RPDB::Database.new( $database_name ) )
+    verification_settings  = Rbdb::Settings::Database::Verification.new( Rbdb::Database.new( $database_name ) )
   end
   
   def test_( verification_settings )
@@ -196,9 +196,9 @@ describe RPDB::Settings::Database::Verification do
 
   it "can perform order checking alone" do
     # with a settings controller
-    verification_settings  = RPDB::Settings::Database::Verification.new
+    verification_settings  = Rbdb::Settings::Database::Verification.new
     # with a database
-    verification_settings  = RPDB::Settings::Database::Verification.new( RPDB::Database.new( $database_name ) )
+    verification_settings  = Rbdb::Settings::Database::Verification.new( Rbdb::Database.new( $database_name ) )
   end
   
   def test_( verification_settings )
@@ -221,9 +221,9 @@ describe RPDB::Settings::Database::Verification do
 
   it "can force an order check to be performed" do
     # with a settings controller
-    verification_settings  = RPDB::Settings::Database::Verification.new
+    verification_settings  = Rbdb::Settings::Database::Verification.new
     # with a database
-    verification_settings  = RPDB::Settings::Database::Verification.new( RPDB::Database.new( $database_name ) )
+    verification_settings  = Rbdb::Settings::Database::Verification.new( Rbdb::Database.new( $database_name ) )
   end
   
   def test_( verification_settings )

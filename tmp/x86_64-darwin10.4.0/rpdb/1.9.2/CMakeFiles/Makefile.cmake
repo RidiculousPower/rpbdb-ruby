@@ -31,11 +31,11 @@ SET(CMAKE_MAKEFILE_DEPENDS
   "/Applications/CMake 2.8-2.app/Contents/share/cmake-2.8/Modules/FindRuby.cmake"
   "/Applications/CMake 2.8-2.app/Contents/share/cmake-2.8/Modules/Platform/Darwin.cmake"
   "/Applications/CMake 2.8-2.app/Contents/share/cmake-2.8/Modules/Platform/UnixPaths.cmake"
-  "/Users/asher/Projects/rp/ruby/rpdb/ext/CMakeLists.txt"
-  "/Users/asher/Projects/rp/ruby/rpdb/ext/cmake/Modules/FindRPDB.cmake"
-  "/Users/asher/Projects/rp/ruby/rpdb/ext/cmake/Modules/FindRargs.cmake"
-  "/Users/asher/Projects/rp/ruby/rpdb/ext/cmake/Modules/RecursivelyIncludeSource.cmake"
-  "/Users/asher/Projects/rp/ruby/rpdb/ext/rpdb/CMakeLists.txt"
+  "/Users/asher/Projects/rp/ruby/rbdb/ext/CMakeLists.txt"
+  "/Users/asher/Projects/rp/ruby/rbdb/ext/cmake/Modules/FindRbdb.cmake"
+  "/Users/asher/Projects/rp/ruby/rbdb/ext/cmake/Modules/FindRargs.cmake"
+  "/Users/asher/Projects/rp/ruby/rbdb/ext/cmake/Modules/RecursivelyIncludeSource.cmake"
+  "/Users/asher/Projects/rp/ruby/rbdb/ext/rbdb/CMakeLists.txt"
   "CMakeFiles/CMakeCCompiler.cmake"
   "CMakeFiles/CMakeSystem.cmake"
   )
@@ -49,10 +49,10 @@ SET(CMAKE_MAKEFILE_OUTPUTS
 # Byproducts of CMake generate step:
 SET(CMAKE_MAKEFILE_PRODUCTS
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "rpdb/CMakeFiles/CMakeDirectoryInformation.cmake"
+  "rbdb/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 SET(CMAKE_DEPEND_INFO_FILES
-  "rpdb/CMakeFiles/rb_rpdb.dir/DependInfo.cmake"
+  "rbdb/CMakeFiles/rb_rbdb.dir/DependInfo.cmake"
   )

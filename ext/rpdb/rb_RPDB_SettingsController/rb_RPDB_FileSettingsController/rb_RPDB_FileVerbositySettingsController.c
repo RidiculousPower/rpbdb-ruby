@@ -1,5 +1,5 @@
 /*
- *		RPDB::SettingsController::FileSettingsController
+ *		Rbdb::SettingsController::FileSettingsController
  *
  *
  */
@@ -10,18 +10,18 @@
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-#include "rb_RPDB_FileSettingsController.h"
-#include "rb_RPDB_SettingsController.h"
-#include "rb_RPDB_FileVerbositySettingsController.h"
+#include "rb_Rbdb_FileSettingsController.h"
+#include "rb_Rbdb_SettingsController.h"
+#include "rb_Rbdb_FileVerbositySettingsController.h"
 
-#include "rb_RPDB_Environment.h"
-#include "rb_RPDB.h"
+#include "rb_Rbdb_Environment.h"
+#include "rb_Rbdb.h"
 
-#include <rpdb/RPDB_Environment.h>
+#include <rbdb/Rbdb_Environment.h>
 
-#include <rpdb/RPDB_FileVerbositySettingsController.h>
-#include <rpdb/RPDB_FileSettingsController.h>
-#include <rpdb/RPDB_SettingsController.h>
+#include <rbdb/Rbdb_FileVerbositySettingsController.h>
+#include <rbdb/Rbdb_FileSettingsController.h>
+#include <rbdb/Rbdb_SettingsController.h>
 
 #include <rargs.h>
 
@@ -29,32 +29,32 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
-extern	VALUE	rb_mRPDB; 
-extern	VALUE	rb_RPDB_Environment; 
-extern	VALUE	rb_RPDB_SettingsController;
-extern	VALUE	rb_RPDB_FileSettingsController;
-extern	VALUE	rb_RPDB_FileVerbositySettingsController;
+extern	VALUE	rb_mRbdb; 
+extern	VALUE	rb_Rbdb_Environment; 
+extern	VALUE	rb_Rbdb_SettingsController;
+extern	VALUE	rb_Rbdb_FileSettingsController;
+extern	VALUE	rb_Rbdb_FileVerbositySettingsController;
 
-void Init_RPDB_FileVerbositySettingsController()	{
+void Init_Rbdb_FileVerbositySettingsController()	{
 
-	rb_RPDB_FileVerbositySettingsController		=	rb_define_class_under(	rb_RPDB_FileSettingsController, 
+	rb_Rbdb_FileVerbositySettingsController		=	rb_define_class_under(	rb_Rbdb_FileSettingsController, 
 																																			"Verbosity",	
 																																			rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_FileVerbositySettingsController, 	"new",																rb_RPDB_FileVerbositySettingsController_new,														-1 	);
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"initialize",													rb_RPDB_FileVerbositySettingsController_initialize,														-1 	);
+	rb_define_singleton_method(	rb_Rbdb_FileVerbositySettingsController, 	"new",																rb_Rbdb_FileVerbositySettingsController_new,														-1 	);
+	rb_define_method(			rb_Rbdb_FileVerbositySettingsController, 				"initialize",													rb_Rbdb_FileVerbositySettingsController_initialize,														-1 	);
 
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"parent_environment",									rb_RPDB_FileVerbositySettingsController_parentEnvironment,								0 	);
-	rb_define_alias(			rb_RPDB_FileVerbositySettingsController, 				"environment",												"parent_environment"	);
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"parent_settings_controller",					rb_RPDB_FileVerbositySettingsController_parentSettingsController,								0 	);
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"parent_file_settings_controller",					rb_RPDB_FileVerbositySettingsController_parentFileSettingsController,								0 	);
+	rb_define_method(			rb_Rbdb_FileVerbositySettingsController, 				"parent_environment",									rb_Rbdb_FileVerbositySettingsController_parentEnvironment,								0 	);
+	rb_define_alias(			rb_Rbdb_FileVerbositySettingsController, 				"environment",												"parent_environment"	);
+	rb_define_method(			rb_Rbdb_FileVerbositySettingsController, 				"parent_settings_controller",					rb_Rbdb_FileVerbositySettingsController_parentSettingsController,								0 	);
+	rb_define_method(			rb_Rbdb_FileVerbositySettingsController, 				"parent_file_settings_controller",					rb_Rbdb_FileVerbositySettingsController_parentFileSettingsController,								0 	);
 
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"display_additional_information_during_open_close_rename_file_operations?",														rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuringOpenCloseRenameFileOperations,													0 	);
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"turn_display_additional_information_during_open_close_rename_file_operations_on",														rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOn,													0 	);
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"turn_display_additional_information_during_open_close_rename_file_operations_off",														rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOff,													0 	);
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"display_additional_information_during_all_file_operations?",														rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuringAllFileOperations,													0 	);
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"turn_display_additional_information_during_all_file_operations_on",														rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOn,													0 	);
-	rb_define_method(			rb_RPDB_FileVerbositySettingsController, 				"turn_display_additional_information_during_all_file_operations_off",														rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOff,													0 	);
+	rb_define_method(			rb_Rbdb_FileVerbositySettingsController, 				"display_additional_information_during_open_close_rename_file_operations?",														rb_Rbdb_FileVerbositySettingsController_displayAdditionalInformationDuringOpenCloseRenameFileOperations,													0 	);
+	rb_define_method(			rb_Rbdb_FileVerbositySettingsController, 				"turn_display_additional_information_during_open_close_rename_file_operations_on",														rb_Rbdb_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOn,													0 	);
+	rb_define_method(			rb_Rbdb_FileVerbositySettingsController, 				"turn_display_additional_information_during_open_close_rename_file_operations_off",														rb_Rbdb_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOff,													0 	);
+	rb_define_method(			rb_Rbdb_FileVerbositySettingsController, 				"display_additional_information_during_all_file_operations?",														rb_Rbdb_FileVerbositySettingsController_displayAdditionalInformationDuringAllFileOperations,													0 	);
+	rb_define_method(			rb_Rbdb_FileVerbositySettingsController, 				"turn_display_additional_information_during_all_file_operations_on",														rb_Rbdb_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOn,													0 	);
+	rb_define_method(			rb_Rbdb_FileVerbositySettingsController, 				"turn_display_additional_information_during_all_file_operations_off",														rb_Rbdb_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOff,													0 	);
 
 }
 
@@ -68,7 +68,7 @@ void Init_RPDB_FileVerbositySettingsController()	{
 *  self.new  *
 *************/
 
-VALUE rb_RPDB_FileVerbositySettingsController_new(	int			argc,
+VALUE rb_Rbdb_FileVerbositySettingsController_new(	int			argc,
 																										VALUE*	args,
 																										VALUE		rb_klass_self __attribute__ ((unused)) )	{
 
@@ -77,9 +77,9 @@ VALUE rb_RPDB_FileVerbositySettingsController_new(	int			argc,
 	VALUE	rb_parent_file_settings_controller										=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
-			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
-																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ),
-																						R_MatchAncestorInstance( rb_parent_file_settings_controller, rb_RPDB_FileSettingsController ) ) ),
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_Rbdb_Environment ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_Rbdb_SettingsController ),
+																						R_MatchAncestorInstance( rb_parent_file_settings_controller, rb_Rbdb_FileSettingsController ) ) ),
 			R_ListOrder( 1 ),
 			"<no args>",
 			"[ <parent environment> ]",
@@ -91,25 +91,25 @@ VALUE rb_RPDB_FileVerbositySettingsController_new(	int			argc,
 	if (		rb_parent_environment == Qnil
 			&&	rb_parent_settings_controller == Qnil
 			&&	rb_parent_file_settings_controller == Qnil )	{
-		rb_parent_environment = rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+		rb_parent_environment = rb_Rbdb_currentWorkingEnvironment( rb_mRbdb );
 	}
 	
 	if ( rb_parent_environment != Qnil )	{
-		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+		rb_parent_settings_controller = rb_Rbdb_Environment_settingsController( rb_parent_environment );
 	}
 	if ( rb_parent_settings_controller != Qnil )	{
-		rb_parent_file_settings_controller = rb_RPDB_SettingsController_fileSettingsController( rb_parent_settings_controller );
+		rb_parent_file_settings_controller = rb_Rbdb_SettingsController_fileSettingsController( rb_parent_settings_controller );
 	}
 
-	RPDB_FileSettingsController*	c_parent_file_settings_controller;
-	C_RPDB_FILE_SETTINGS_CONTROLLER( rb_parent_file_settings_controller, c_parent_file_settings_controller );
+	Rbdb_FileSettingsController*	c_parent_file_settings_controller;
+	C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_parent_file_settings_controller, c_parent_file_settings_controller );
 	
-	RPDB_FileVerbositySettingsController*	c_file_verbosity_settings_controller	=	RPDB_FileSettingsController_verbositySettingsController( c_parent_file_settings_controller );
+	Rbdb_FileVerbositySettingsController*	c_file_verbosity_settings_controller	=	Rbdb_FileSettingsController_verbositySettingsController( c_parent_file_settings_controller );
 	
-	VALUE	rb_file_verbosity_settings_controller	= RUBY_RPDB_FILE_VERBOSITY_SETTINGS_CONTROLLER( c_file_verbosity_settings_controller );
+	VALUE	rb_file_verbosity_settings_controller	= RUBY_Rbdb_FILE_VERBOSITY_SETTINGS_CONTROLLER( c_file_verbosity_settings_controller );
 
 	rb_iv_set(	rb_file_verbosity_settings_controller,
-							RPDB_RB_FILE_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_FILE_SETTINGS_CONTROLLER,
+							Rbdb_RB_FILE_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_FILE_SETTINGS_CONTROLLER,
 							rb_parent_file_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_file_settings_controller };
@@ -124,7 +124,7 @@ VALUE rb_RPDB_FileVerbositySettingsController_new(	int			argc,
 *  initialize  *
 ***************/
 
-VALUE rb_RPDB_FileVerbositySettingsController_initialize(	int				argc __attribute__ ((unused)),
+VALUE rb_Rbdb_FileVerbositySettingsController_initialize(	int				argc __attribute__ ((unused)),
 																										VALUE*		args __attribute__ ((unused)),
 																										VALUE			rb_self )	{
 	
@@ -135,10 +135,10 @@ VALUE rb_RPDB_FileVerbositySettingsController_initialize(	int				argc __attribut
 *  parent_environment  *
 ***********************/
 
-VALUE rb_RPDB_FileVerbositySettingsController_parentEnvironment(	VALUE	rb_file_verbosity_settings_controller )	{
+VALUE rb_Rbdb_FileVerbositySettingsController_parentEnvironment(	VALUE	rb_file_verbosity_settings_controller )	{
 
-	VALUE	rb_parent_settings_controller							=	rb_RPDB_FileVerbositySettingsController_parentSettingsController( rb_file_verbosity_settings_controller );
-	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	VALUE	rb_parent_settings_controller							=	rb_Rbdb_FileVerbositySettingsController_parentSettingsController( rb_file_verbosity_settings_controller );
+	VALUE	rb_parent_environment											=	rb_Rbdb_SettingsController_parentEnvironment( rb_parent_settings_controller );
 	
 	return rb_parent_environment;
 }
@@ -147,10 +147,10 @@ VALUE rb_RPDB_FileVerbositySettingsController_parentEnvironment(	VALUE	rb_file_v
 *  parent_settings_controller  *
 *******************************/
 
-VALUE rb_RPDB_FileVerbositySettingsController_parentSettingsController(	VALUE	rb_file_verbosity_settings_controller )	{
+VALUE rb_Rbdb_FileVerbositySettingsController_parentSettingsController(	VALUE	rb_file_verbosity_settings_controller )	{
 
-	VALUE	rb_parent_file_settings_controller		=	rb_RPDB_FileVerbositySettingsController_parentFileSettingsController( rb_file_verbosity_settings_controller );
-	VALUE	rb_parent_settings_controller					=	rb_RPDB_FileSettingsController_parentSettingsController( rb_parent_file_settings_controller );
+	VALUE	rb_parent_file_settings_controller		=	rb_Rbdb_FileVerbositySettingsController_parentFileSettingsController( rb_file_verbosity_settings_controller );
+	VALUE	rb_parent_settings_controller					=	rb_Rbdb_FileSettingsController_parentSettingsController( rb_parent_file_settings_controller );
 	
 	return rb_parent_settings_controller;	
 }
@@ -159,10 +159,10 @@ VALUE rb_RPDB_FileVerbositySettingsController_parentSettingsController(	VALUE	rb
 *  parent_file_settings_controller  *
 ************************************/
 
-VALUE rb_RPDB_FileVerbositySettingsController_parentFileSettingsController(	VALUE	rb_file_verbosity_settings_controller )	{
+VALUE rb_Rbdb_FileVerbositySettingsController_parentFileSettingsController(	VALUE	rb_file_verbosity_settings_controller )	{
 
 	VALUE	rb_parent_file_settings_controller	=	rb_iv_get(	rb_file_verbosity_settings_controller,
-																													RPDB_RB_FILE_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_FILE_SETTINGS_CONTROLLER );
+																													Rbdb_RB_FILE_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_FILE_SETTINGS_CONTROLLER );
 
 	return rb_parent_file_settings_controller;
 }
@@ -172,12 +172,12 @@ VALUE rb_RPDB_FileVerbositySettingsController_parentFileSettingsController(	VALU
 *****************************************************************************/
 
 //	DB_VERB_FILEOPS         	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
-VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuringOpenCloseRenameFileOperations( VALUE	rb_file_verbosity_settings_controller )	{
+VALUE rb_Rbdb_FileVerbositySettingsController_displayAdditionalInformationDuringOpenCloseRenameFileOperations( VALUE	rb_file_verbosity_settings_controller )	{
 
-	RPDB_FileVerbositySettingsController*	c_file_verbosity_settings_controller;
-	C_RPDB_FILE_VERBOSITY_SETTINGS_CONTROLLER( rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller );
+	Rbdb_FileVerbositySettingsController*	c_file_verbosity_settings_controller;
+	C_Rbdb_FILE_VERBOSITY_SETTINGS_CONTROLLER( rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller );
 
-	return ( RPDB_FileVerbositySettingsController_displayAdditionalInformationDuringOpenCloseRenameFileOperations( c_file_verbosity_settings_controller )	?	Qtrue
+	return ( Rbdb_FileVerbositySettingsController_displayAdditionalInformationDuringOpenCloseRenameFileOperations( c_file_verbosity_settings_controller )	?	Qtrue
 																																							:	Qfalse );
 }
 
@@ -185,12 +185,12 @@ VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuring
 	*  turn_display_additional_information_during_open_close_rename_file_operations_on  *
 	************************************************************************************/
 
-	VALUE rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOn( VALUE	rb_file_verbosity_settings_controller )	{
+	VALUE rb_Rbdb_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOn( VALUE	rb_file_verbosity_settings_controller )	{
 
-		RPDB_FileVerbositySettingsController*	c_file_verbosity_settings_controller;
-		C_RPDB_FILE_VERBOSITY_SETTINGS_CONTROLLER( rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller );
+		Rbdb_FileVerbositySettingsController*	c_file_verbosity_settings_controller;
+		C_Rbdb_FILE_VERBOSITY_SETTINGS_CONTROLLER( rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller );
 
-		RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOn( c_file_verbosity_settings_controller );
+		Rbdb_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOn( c_file_verbosity_settings_controller );
 
 		return rb_file_verbosity_settings_controller;
 	}
@@ -199,12 +199,12 @@ VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuring
 	*  turn_display_additional_information_during_open_close_rename_file_operations_off  *
 	*************************************************************************************/
 
-	VALUE rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOff( VALUE	rb_file_verbosity_settings_controller )	{
+	VALUE rb_Rbdb_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOff( VALUE	rb_file_verbosity_settings_controller )	{
 
-		RPDB_FileVerbositySettingsController*	c_file_verbosity_settings_controller;
-		C_RPDB_FILE_VERBOSITY_SETTINGS_CONTROLLER( rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller );
+		Rbdb_FileVerbositySettingsController*	c_file_verbosity_settings_controller;
+		C_Rbdb_FILE_VERBOSITY_SETTINGS_CONTROLLER( rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller );
 
-		RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOff( c_file_verbosity_settings_controller );
+		Rbdb_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringOpenCloseRenameFileOperationsOff( c_file_verbosity_settings_controller );
 
 		return rb_file_verbosity_settings_controller;
 	}
@@ -214,12 +214,12 @@ VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuring
 ***************************************************************/
 
 //	DB_VERB_FILEOPS_ALL     	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_verbose.html
-VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuringAllFileOperations( VALUE	rb_file_verbosity_settings_controller )	{
+VALUE rb_Rbdb_FileVerbositySettingsController_displayAdditionalInformationDuringAllFileOperations( VALUE	rb_file_verbosity_settings_controller )	{
 
-	RPDB_FileVerbositySettingsController*	c_file_verbosity_settings_controller;
-	C_RPDB_FILE_VERBOSITY_SETTINGS_CONTROLLER( rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller );
+	Rbdb_FileVerbositySettingsController*	c_file_verbosity_settings_controller;
+	C_Rbdb_FILE_VERBOSITY_SETTINGS_CONTROLLER( rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller );
 
-	return ( RPDB_FileVerbositySettingsController_displayAdditionalInformationDuringAllFileOperations( c_file_verbosity_settings_controller )	?	Qtrue
+	return ( Rbdb_FileVerbositySettingsController_displayAdditionalInformationDuringAllFileOperations( c_file_verbosity_settings_controller )	?	Qtrue
 																																				:	Qfalse );
 }
 
@@ -227,12 +227,12 @@ VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuring
 	*  turn_display_additional_information_during_all_file_operations_on  *
 	**********************************************************************/
 
-	VALUE rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOn( VALUE	rb_file_verbosity_settings_controller )	{
+	VALUE rb_Rbdb_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOn( VALUE	rb_file_verbosity_settings_controller )	{
 
-		RPDB_FileVerbositySettingsController*	c_file_verbosity_settings_controller;
-		C_RPDB_FILE_VERBOSITY_SETTINGS_CONTROLLER( rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller );
+		Rbdb_FileVerbositySettingsController*	c_file_verbosity_settings_controller;
+		C_Rbdb_FILE_VERBOSITY_SETTINGS_CONTROLLER( rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller );
 
-		RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOn( c_file_verbosity_settings_controller );
+		Rbdb_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOn( c_file_verbosity_settings_controller );
 
 		return rb_file_verbosity_settings_controller;
 	}
@@ -241,12 +241,12 @@ VALUE rb_RPDB_FileVerbositySettingsController_displayAdditionalInformationDuring
 	*  turn_display_additional_information_during_all_file_operations_off  *
 	***********************************************************************/
 
-	VALUE rb_RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOff( VALUE	rb_file_verbosity_settings_controller )	{
+	VALUE rb_Rbdb_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOff( VALUE	rb_file_verbosity_settings_controller )	{
 
-		RPDB_FileVerbositySettingsController*	c_file_verbosity_settings_controller;
-		C_RPDB_FILE_VERBOSITY_SETTINGS_CONTROLLER( rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller );
+		Rbdb_FileVerbositySettingsController*	c_file_verbosity_settings_controller;
+		C_Rbdb_FILE_VERBOSITY_SETTINGS_CONTROLLER( rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller );
 
-		RPDB_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOff( c_file_verbosity_settings_controller );
+		Rbdb_FileVerbositySettingsController_turnDisplayAdditionalInformationDuringAllFileOperationsOff( c_file_verbosity_settings_controller );
 
 		return rb_file_verbosity_settings_controller;
 	}

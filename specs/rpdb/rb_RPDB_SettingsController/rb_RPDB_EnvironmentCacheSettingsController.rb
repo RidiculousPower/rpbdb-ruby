@@ -1,8 +1,8 @@
-require_relative '../../../lib/rpdb.rb'
+require_relative '../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Cache do
+describe Rbdb::Settings::Cache do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Cache do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
   end
 
   after( :each ) do
@@ -23,22 +23,22 @@ describe RPDB::Settings::Cache do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Cache.new( environment )
+  # Rbdb::Settings::Cache.new( environment )
   it "can be created with an environment" do
     @environment.open
-    RPDB::Settings::Cache.new( @environment ).should_not == nil
+    Rbdb::Settings::Cache.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::Cache.new( settings_controller )
+  # Rbdb::Settings::Cache.new( settings_controller )
   it "can be created with a settings controller" do
     @environment.open
-    RPDB::Settings::Cache.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::Cache.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::Cache.new
+  # Rbdb::Settings::Cache.new
   it "can be created with no argument specified" do
     @environment.open
-    RPDB::Settings::Cache.new.should_not == nil
+    Rbdb::Settings::Cache.new.should_not == nil
   end
 
   ########################
@@ -47,7 +47,7 @@ describe RPDB::Settings::Cache do
 
   it "can return its parent environment" do
     @environment.open
-    RPDB::Settings::Cache.new.parent_environment.should_not == nil
+    Rbdb::Settings::Cache.new.parent_environment.should_not == nil
   end
 
   ################################
@@ -56,7 +56,7 @@ describe RPDB::Settings::Cache do
 
   it "can return its parent settings controller" do
     @environment.open
-    RPDB::Settings::Cache.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::Cache.new.parent_settings_controller.should_not == nil
   end
 
   ########################
@@ -67,7 +67,7 @@ describe RPDB::Settings::Cache do
 
   it "can turn buffering on and off" do
     @environment.open
-    cache_settings  = RPDB::Settings::Cache.new
+    cache_settings  = Rbdb::Settings::Cache.new
     cache_settings.buffering?.should == false
     cache_settings.turn_buffering_on
     cache_settings.buffering?.should == true
@@ -91,7 +91,7 @@ describe RPDB::Settings::Cache do
 
   it "can set its cache size according to various measures" do
 
-    cache_settings = RPDB::Settings::Cache.new( @environment )
+    cache_settings = Rbdb::Settings::Cache.new( @environment )
 
     cache_settings.set_max_size_in_gbytes( 420 )
     cache_settings.max_size_in_gbytes.should == 420

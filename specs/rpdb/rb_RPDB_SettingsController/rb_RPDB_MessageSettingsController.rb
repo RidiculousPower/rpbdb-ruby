@@ -1,8 +1,8 @@
-require_relative '../../../lib/rpdb.rb'
+require_relative '../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Message do
+describe Rbdb::Settings::Message do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Message do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,19 +26,19 @@ describe RPDB::Settings::Message do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Message.new( environment )
+  # Rbdb::Settings::Message.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Message.new( @environment ).should_not == nil
+    Rbdb::Settings::Message.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::Message.new( settings_controller )
+  # Rbdb::Settings::Message.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Message.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::Message.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::Message.new
+  # Rbdb::Settings::Message.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Message.new.should_not == nil
+    Rbdb::Settings::Message.new.should_not == nil
   end
 
   ########################
@@ -46,7 +46,7 @@ describe RPDB::Settings::Message do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Message.new.parent_environment.should_not == nil
+    Rbdb::Settings::Message.new.parent_environment.should_not == nil
   end
 
   ################################
@@ -54,7 +54,7 @@ describe RPDB::Settings::Message do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Message.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::Message.new.parent_settings_controller.should_not == nil
   end
 
   ##############
@@ -65,7 +65,7 @@ describe RPDB::Settings::Message do
   # FIX - FILE
   it "can set and return its message file" do
     raise "File"
-    message_settings  = RPDB::Settings::Message.new
+    message_settings  = Rbdb::Settings::Message.new
     message_settings.set_file( '/tmp/file.tmp' )
     message_settings.file.should == '/tmp/file.tmp'
   end

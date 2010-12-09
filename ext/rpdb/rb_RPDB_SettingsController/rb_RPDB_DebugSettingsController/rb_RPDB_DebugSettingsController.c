@@ -1,5 +1,5 @@
 /*
- *		RPDB_settingsController:RPDB_DebugSettingsController
+ *		Rbdb_settingsController:Rbdb_DebugSettingsController
  *
  *
  */
@@ -10,19 +10,19 @@
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-#include "rb_RPDB_DebugSettingsController.h"
-#include "rb_RPDB_DebugVerbositySettingsController.h"
-#include "rb_RPDB_SettingsController.h"
+#include "rb_Rbdb_DebugSettingsController.h"
+#include "rb_Rbdb_DebugVerbositySettingsController.h"
+#include "rb_Rbdb_SettingsController.h"
 
-#include "rb_RPDB_Environment.h"
+#include "rb_Rbdb_Environment.h"
 
-#include "rb_RPDB.h"
+#include "rb_Rbdb.h"
 
-#include <rpdb/RPDB_Environment.h>
+#include <rbdb/Rbdb_Environment.h>
 
-#include <rpdb/RPDB_SettingsController.h>
-#include <rpdb/RPDB_DebugSettingsController.h>
-#include <rpdb/RPDB_DebugVerbositySettingsController.h>
+#include <rbdb/Rbdb_SettingsController.h>
+#include <rbdb/Rbdb_DebugSettingsController.h>
+#include <rbdb/Rbdb_DebugVerbositySettingsController.h>
 
 #include <rargs.h>
 
@@ -30,55 +30,55 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
-VALUE	extern	rb_mRPDB;
-VALUE	extern	rb_RPDB_Environment;
-VALUE	extern	rb_RPDB_Database;
-VALUE	extern	rb_RPDB_SettingsController;
-VALUE	extern	rb_RPDB_DebugSettingsController;
-VALUE	extern	rb_RPDB_DebugVerbositySettingsController;
+VALUE	extern	rb_mRbdb;
+VALUE	extern	rb_Rbdb_Environment;
+VALUE	extern	rb_Rbdb_Database;
+VALUE	extern	rb_Rbdb_SettingsController;
+VALUE	extern	rb_Rbdb_DebugSettingsController;
+VALUE	extern	rb_Rbdb_DebugVerbositySettingsController;
 
-void Init_RPDB_DebugSettingsController()	{
+void Init_Rbdb_DebugSettingsController()	{
 
-	rb_RPDB_DebugSettingsController		=	rb_define_class_under(	rb_RPDB_SettingsController, 
+	rb_Rbdb_DebugSettingsController		=	rb_define_class_under(	rb_Rbdb_SettingsController, 
 																															"Debug",	
 																															rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_DebugSettingsController, 	"new",																																	rb_RPDB_DebugSettingsController_new,									-1 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"initialize",																														rb_RPDB_DebugSettingsController_initialize,									-1 	);
+	rb_define_singleton_method(	rb_Rbdb_DebugSettingsController, 	"new",																																	rb_Rbdb_DebugSettingsController_new,									-1 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"initialize",																														rb_Rbdb_DebugSettingsController_initialize,									-1 	);
                     					                                                                                        				
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"parent_environment",																										rb_RPDB_DebugSettingsController_parentEnvironment,						0 	);
-	rb_define_alias(						rb_RPDB_DebugSettingsController, 	"environment",																													"parent_environment"	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"parent_settings_controller",																						rb_RPDB_DebugSettingsController_parentSettingsController,							0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"parent_environment",																										rb_Rbdb_DebugSettingsController_parentEnvironment,						0 	);
+	rb_define_alias(						rb_Rbdb_DebugSettingsController, 	"environment",																													"parent_environment"	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"parent_settings_controller",																						rb_Rbdb_DebugSettingsController_parentSettingsController,							0 	);
                     					                                                                                        				
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"run_normal_recovery_before_opening_environment?",											rb_RPDB_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment,									0 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_run_normal_recovery_before_opening_environment_on",								rb_RPDB_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOn,								0 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_run_normal_recovery_before_opening_environment_off",							rb_RPDB_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOff,				0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"run_normal_recovery_before_opening_environment?",											rb_Rbdb_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment,									0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"turn_run_normal_recovery_before_opening_environment_on",								rb_Rbdb_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOn,								0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"turn_run_normal_recovery_before_opening_environment_off",							rb_Rbdb_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOff,				0 	);
 
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"run_catastrophic_recovery_before_opening_environment?",								rb_RPDB_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnvironment,		0 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_run_catastrophic_recovery_before_opening_environment_on",					rb_RPDB_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOn,		0 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_run_catastrophic_recovery_before_opening_environment_off",				rb_RPDB_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOff,					0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"run_catastrophic_recovery_before_opening_environment?",								rb_Rbdb_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnvironment,		0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"turn_run_catastrophic_recovery_before_opening_environment_on",					rb_Rbdb_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOn,		0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"turn_run_catastrophic_recovery_before_opening_environment_off",				rb_Rbdb_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOff,					0 	);
 
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"open_in_lockdown?",																										rb_RPDB_DebugSettingsController_openInLockdown,				0 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_open_in_lockdown_on",																							rb_RPDB_DebugSettingsController_turnOpenInLockdownOn,				0 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_open_in_lockdown_off",																						rb_RPDB_DebugSettingsController_turnOpenInLockdownOff,							0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"open_in_lockdown?",																										rb_Rbdb_DebugSettingsController_openInLockdown,				0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"turn_open_in_lockdown_on",																							rb_Rbdb_DebugSettingsController_turnOpenInLockdownOn,				0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"turn_open_in_lockdown_off",																						rb_Rbdb_DebugSettingsController_turnOpenInLockdownOff,							0 	);
 
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"register_for_recovery?",																								rb_RPDB_DebugSettingsController_registerForRecovery,					0 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_register_for_recovery_on",																				rb_RPDB_DebugSettingsController_turnRegisterForRecoveryOn,					0 	);                    					                                                                                        									    		
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_register_for_recovery_off",																				rb_RPDB_DebugSettingsController_turnRegisterForRecoveryOff,							0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"register_for_recovery?",																								rb_Rbdb_DebugSettingsController_registerForRecovery,					0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"turn_register_for_recovery_on",																				rb_Rbdb_DebugSettingsController_turnRegisterForRecoveryOn,					0 	);                    					                                                                                        									    		
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"turn_register_for_recovery_off",																				rb_Rbdb_DebugSettingsController_turnRegisterForRecoveryOff,							0 	);
 
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"prohibit_panic?",																												rb_RPDB_DebugSettingsController_prohibitPanic,					0 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_prohibit_panic_on",																								rb_RPDB_DebugSettingsController_turnProhibitPanicOn,					0 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_prohibit_panic_off",																							rb_RPDB_DebugSettingsController_turnProhibitPanicOff,						0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"prohibit_panic?",																												rb_Rbdb_DebugSettingsController_prohibitPanic,					0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"turn_prohibit_panic_on",																								rb_Rbdb_DebugSettingsController_turnProhibitPanicOn,					0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"turn_prohibit_panic_off",																							rb_Rbdb_DebugSettingsController_turnProhibitPanicOff,						0 	);
 
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"panic?",																																rb_RPDB_DebugSettingsController_panic,					0 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_panic_on",																												rb_RPDB_DebugSettingsController_turnPanicOn,					0 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_panic_off",																												rb_RPDB_DebugSettingsController_turnPanicOff,					0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"panic?",																																rb_Rbdb_DebugSettingsController_panic,					0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"turn_panic_on",																												rb_Rbdb_DebugSettingsController_turnPanicOn,					0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"turn_panic_off",																												rb_Rbdb_DebugSettingsController_turnPanicOff,					0 	);
 
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"yield_cpu_for_stress_test?",																						rb_RPDB_DebugSettingsController_yieldCPUForStressTest,					0 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_yield_cpu_for_stress_test_on",																		rb_RPDB_DebugSettingsController_turnYieldCPUForStressTestOn,					0 	);
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"turn_yield_cpu_for_stress_test_off",																		rb_RPDB_DebugSettingsController_turnYieldCPUForStressTestOff,					0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"yield_cpu_for_stress_test?",																						rb_Rbdb_DebugSettingsController_yieldCPUForStressTest,					0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"turn_yield_cpu_for_stress_test_on",																		rb_Rbdb_DebugSettingsController_turnYieldCPUForStressTestOn,					0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"turn_yield_cpu_for_stress_test_off",																		rb_Rbdb_DebugSettingsController_turnYieldCPUForStressTestOff,					0 	);
 
-	rb_define_method(						rb_RPDB_DebugSettingsController, 	"verbosity_settings_controller",																				rb_RPDB_DebugSettingsController_verbositySettingsController,					0 	);
+	rb_define_method(						rb_Rbdb_DebugSettingsController, 	"verbosity_settings_controller",																				rb_Rbdb_DebugSettingsController_verbositySettingsController,					0 	);
 
 }
 
@@ -92,7 +92,7 @@ void Init_RPDB_DebugSettingsController()	{
 *  self.new  *
 *************/
 
-VALUE rb_RPDB_DebugSettingsController_new(	int			argc,
+VALUE rb_Rbdb_DebugSettingsController_new(	int			argc,
 																						VALUE*	args,
 																						VALUE		rb_klass_self __attribute__ ((unused)) )	{
 	
@@ -101,8 +101,8 @@ VALUE rb_RPDB_DebugSettingsController_new(	int			argc,
 	VALUE	rb_parent_debug_settings_controller										=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
-			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_RPDB_Environment ),
-																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_RPDB_SettingsController ) ) ),
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_Rbdb_Environment ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_Rbdb_SettingsController ) ) ),
 			R_ListOrder( 1 ),
 			"<no args>",
 			"[ <parent environment> ]",
@@ -113,23 +113,23 @@ VALUE rb_RPDB_DebugSettingsController_new(	int			argc,
 	if (		rb_parent_environment == Qnil
 			&&	rb_parent_settings_controller == Qnil
 			&&	rb_parent_debug_settings_controller == Qnil )	{
-		rb_parent_environment = rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+		rb_parent_environment = rb_Rbdb_currentWorkingEnvironment( rb_mRbdb );
 	}
 	
 	if ( rb_parent_environment != Qnil )	{
-		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+		rb_parent_settings_controller = rb_Rbdb_Environment_settingsController( rb_parent_environment );
 	}
 
-	RPDB_SettingsController*	c_parent_settings_controller;
-	C_RPDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
+	Rbdb_SettingsController*	c_parent_settings_controller;
+	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 	
-	RPDB_DebugSettingsController*	c_debug_settings_controller	=	RPDB_SettingsController_debugSettingsController( c_parent_settings_controller );
+	Rbdb_DebugSettingsController*	c_debug_settings_controller	=	Rbdb_SettingsController_debugSettingsController( c_parent_settings_controller );
 	
-	VALUE	rb_debug_settings_controller	= RUBY_RPDB_DEBUG_SETTINGS_CONTROLLER( c_debug_settings_controller );
+	VALUE	rb_debug_settings_controller	= RUBY_Rbdb_DEBUG_SETTINGS_CONTROLLER( c_debug_settings_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_debug_settings_controller,
-							RPDB_RB_DEBUG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							Rbdb_RB_DEBUG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
 							rb_parent_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
@@ -144,7 +144,7 @@ VALUE rb_RPDB_DebugSettingsController_new(	int			argc,
 *  initialize  *
 ***************/
 
-VALUE rb_RPDB_DebugSettingsController_initialize(	int				argc __attribute__ ((unused)),
+VALUE rb_Rbdb_DebugSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																						VALUE*		args __attribute__ ((unused)),
 																						VALUE			rb_self )	{
 
@@ -155,10 +155,10 @@ VALUE rb_RPDB_DebugSettingsController_initialize(	int				argc __attribute__ ((un
 *  parent_environment  *
 ***********************/
 
-VALUE rb_RPDB_DebugSettingsController_parentEnvironment(	VALUE	rb_debug_settings_controller )	{
+VALUE rb_Rbdb_DebugSettingsController_parentEnvironment(	VALUE	rb_debug_settings_controller )	{
 
-	VALUE	rb_parent_settings_controller							=	rb_RPDB_DebugSettingsController_parentSettingsController( rb_debug_settings_controller );
-	VALUE	rb_parent_environment											=	rb_RPDB_SettingsController_parentEnvironment( rb_parent_settings_controller );
+	VALUE	rb_parent_settings_controller							=	rb_Rbdb_DebugSettingsController_parentSettingsController( rb_debug_settings_controller );
+	VALUE	rb_parent_environment											=	rb_Rbdb_SettingsController_parentEnvironment( rb_parent_settings_controller );
 	
 	return rb_parent_environment;
 }
@@ -167,10 +167,10 @@ VALUE rb_RPDB_DebugSettingsController_parentEnvironment(	VALUE	rb_debug_settings
 *  parent_settings_controller  *
 *******************************/
 
-VALUE rb_RPDB_DebugSettingsController_parentSettingsController(	VALUE	rb_debug_settings_controller )	{
+VALUE rb_Rbdb_DebugSettingsController_parentSettingsController(	VALUE	rb_debug_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_debug_settings_controller,
-																															RPDB_RB_DEBUG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+																															Rbdb_RB_DEBUG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_settings_controller;
 }
@@ -183,12 +183,12 @@ VALUE rb_RPDB_DebugSettingsController_parentSettingsController(	VALUE	rb_debug_s
 //	Run normal recovery on this environment before opening it for normal use. 
 //	If this flag is set, the DB_CREATE and DB_INIT_TXN flags must also be set, because the regions will be removed and re-created, 
 //	and transactions are required for application recovery.
-VALUE rb_RPDB_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment( VALUE	rb_debug_settings_controller )	{
+VALUE rb_Rbdb_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment( VALUE	rb_debug_settings_controller )	{
 
-	RPDB_DebugSettingsController*	c_debug_settings_controller;
-	C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+	Rbdb_DebugSettingsController*	c_debug_settings_controller;
+	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-	return ( RPDB_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment( c_debug_settings_controller )	?	Qtrue
+	return ( Rbdb_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment( c_debug_settings_controller )	?	Qtrue
 																																																									:	Qfalse );
 }
 
@@ -196,12 +196,12 @@ VALUE rb_RPDB_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment(
 	*  turn_run_normal_recovery_before_opening_environment_on  *
 	***********************************************************/
 
-	VALUE rb_RPDB_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOn( VALUE	rb_debug_settings_controller )	{
+	VALUE rb_Rbdb_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOn( VALUE	rb_debug_settings_controller )	{
 
-		RPDB_DebugSettingsController*	c_debug_settings_controller;
-		C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		Rbdb_DebugSettingsController*	c_debug_settings_controller;
+		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-		RPDB_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOn( c_debug_settings_controller );
+		Rbdb_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOn( c_debug_settings_controller );
 
 		return rb_debug_settings_controller;
 	}
@@ -210,12 +210,12 @@ VALUE rb_RPDB_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment(
 	*  turn_run_normal_recovery_before_opening_environment_off  *
 	************************************************************/
 
-	VALUE rb_RPDB_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOff( VALUE	rb_debug_settings_controller )	{
+	VALUE rb_Rbdb_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOff( VALUE	rb_debug_settings_controller )	{
 
-		RPDB_DebugSettingsController*	c_debug_settings_controller;
-		C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		Rbdb_DebugSettingsController*	c_debug_settings_controller;
+		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-		RPDB_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOff( c_debug_settings_controller );
+		Rbdb_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOff( c_debug_settings_controller );
 
 		return rb_debug_settings_controller;
 	}
@@ -228,12 +228,12 @@ VALUE rb_RPDB_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment(
 //	Run catastrophic recovery on this environment before opening it for normal use. 
 //	If this flag is set, the DB_CREATE and DB_INIT_TXN flags must also be set, because the regions will be removed and re-created, 
 //	and transactions are required for application recovery.
-VALUE rb_RPDB_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnvironment( VALUE	rb_debug_settings_controller )	{
+VALUE rb_Rbdb_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnvironment( VALUE	rb_debug_settings_controller )	{
 
-	RPDB_DebugSettingsController*	c_debug_settings_controller;
-	C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+	Rbdb_DebugSettingsController*	c_debug_settings_controller;
+	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-	return ( RPDB_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnvironment( c_debug_settings_controller )	?	Qtrue
+	return ( Rbdb_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnvironment( c_debug_settings_controller )	?	Qtrue
 																															:	Qfalse );
 }
 
@@ -242,12 +242,12 @@ VALUE rb_RPDB_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnviro
 	*****************************************************************/
 
 	//	DB_RECOVER_FATAL        http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
-	VALUE rb_RPDB_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOn( VALUE	rb_debug_settings_controller )	{
+	VALUE rb_Rbdb_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOn( VALUE	rb_debug_settings_controller )	{
 
-		RPDB_DebugSettingsController*	c_debug_settings_controller;
-		C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		Rbdb_DebugSettingsController*	c_debug_settings_controller;
+		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 	
-		RPDB_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOn( c_debug_settings_controller );
+		Rbdb_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOn( c_debug_settings_controller );
 
 		return rb_debug_settings_controller;
 	}
@@ -257,12 +257,12 @@ VALUE rb_RPDB_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnviro
 	******************************************************************/
 
 	//	DB_RECOVER_FATAL        http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
-	VALUE rb_RPDB_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOff( VALUE	rb_debug_settings_controller )	{
+	VALUE rb_Rbdb_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOff( VALUE	rb_debug_settings_controller )	{
 
-		RPDB_DebugSettingsController*	c_debug_settings_controller;
-		C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		Rbdb_DebugSettingsController*	c_debug_settings_controller;
+		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-		RPDB_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOff( c_debug_settings_controller );
+		Rbdb_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOff( c_debug_settings_controller );
 
 		return rb_debug_settings_controller;
 	}
@@ -273,12 +273,12 @@ VALUE rb_RPDB_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnviro
 
 //	DB_LOCKDOWN             http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 //	Lock shared Berkeley DB environment files and memory-mapped databases into memory.
-VALUE rb_RPDB_DebugSettingsController_openInLockdown( VALUE	rb_debug_settings_controller )	{
+VALUE rb_Rbdb_DebugSettingsController_openInLockdown( VALUE	rb_debug_settings_controller )	{
 
-	RPDB_DebugSettingsController*	c_debug_settings_controller;
-	C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+	Rbdb_DebugSettingsController*	c_debug_settings_controller;
+	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-	return ( RPDB_DebugSettingsController_openInLockdown( c_debug_settings_controller )	?	Qtrue
+	return ( Rbdb_DebugSettingsController_openInLockdown( c_debug_settings_controller )	?	Qtrue
 																							:	Qfalse );
 }
 
@@ -288,12 +288,12 @@ VALUE rb_RPDB_DebugSettingsController_openInLockdown( VALUE	rb_debug_settings_co
 
 	//	DB_LOCKDOWN             http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 	//	Lock shared Berkeley DB environment files and memory-mapped databases into memory.
-	VALUE rb_RPDB_DebugSettingsController_turnOpenInLockdownOn( VALUE	rb_debug_settings_controller )	{
+	VALUE rb_Rbdb_DebugSettingsController_turnOpenInLockdownOn( VALUE	rb_debug_settings_controller )	{
 
-		RPDB_DebugSettingsController*	c_debug_settings_controller;
-		C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		Rbdb_DebugSettingsController*	c_debug_settings_controller;
+		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-		RPDB_DebugSettingsController_turnOpenInLockdownOn( c_debug_settings_controller );
+		Rbdb_DebugSettingsController_turnOpenInLockdownOn( c_debug_settings_controller );
 
 		return rb_debug_settings_controller;
 	}
@@ -304,12 +304,12 @@ VALUE rb_RPDB_DebugSettingsController_openInLockdown( VALUE	rb_debug_settings_co
 
 	//	DB_LOCKDOWN             http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_open.html
 	//	Lock shared Berkeley DB environment files and memory-mapped databases into memory.
-	VALUE rb_RPDB_DebugSettingsController_turnOpenInLockdownOff( VALUE	rb_debug_settings_controller )	{
+	VALUE rb_Rbdb_DebugSettingsController_turnOpenInLockdownOff( VALUE	rb_debug_settings_controller )	{
 
-		RPDB_DebugSettingsController*	c_debug_settings_controller;
-		C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		Rbdb_DebugSettingsController*	c_debug_settings_controller;
+		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-		RPDB_DebugSettingsController_turnOpenInLockdownOff( c_debug_settings_controller );
+		Rbdb_DebugSettingsController_turnOpenInLockdownOff( c_debug_settings_controller );
 
 		return rb_debug_settings_controller;
 	}
@@ -325,12 +325,12 @@ VALUE rb_RPDB_DebugSettingsController_openInLockdown( VALUE	rb_debug_settings_co
 //	recovery will be performed and the open will proceed normally. If recovery needs to be performed and DB_RECOVER is not specified, 
 //	DB_RUNRECOVERY will be returned. If recovery does not need to be performed, the DB_RECOVER flag will be ignored. 
 //	See Architecting Transactional Data Store applications for more information.
-VALUE rb_RPDB_DebugSettingsController_registerForRecovery( VALUE	rb_debug_settings_controller )	{
+VALUE rb_Rbdb_DebugSettingsController_registerForRecovery( VALUE	rb_debug_settings_controller )	{
 
-	RPDB_DebugSettingsController*	c_debug_settings_controller;
-	C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+	Rbdb_DebugSettingsController*	c_debug_settings_controller;
+	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-	return ( RPDB_DebugSettingsController_registerForRecovery( c_debug_settings_controller )	?	Qtrue
+	return ( Rbdb_DebugSettingsController_registerForRecovery( c_debug_settings_controller )	?	Qtrue
 																													:	Qfalse );
 }
 
@@ -338,12 +338,12 @@ VALUE rb_RPDB_DebugSettingsController_registerForRecovery( VALUE	rb_debug_settin
 	*  turn_register_for_recovery_on  *
 	**********************************************************/
 
-	VALUE rb_RPDB_DebugSettingsController_turnRegisterForRecoveryOn( VALUE	rb_debug_settings_controller )	{
+	VALUE rb_Rbdb_DebugSettingsController_turnRegisterForRecoveryOn( VALUE	rb_debug_settings_controller )	{
 
-		RPDB_DebugSettingsController*	c_debug_settings_controller;
-		C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		Rbdb_DebugSettingsController*	c_debug_settings_controller;
+		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-		RPDB_DebugSettingsController_turnRegisterForRecoveryOn( c_debug_settings_controller );
+		Rbdb_DebugSettingsController_turnRegisterForRecoveryOn( c_debug_settings_controller );
 
 		return rb_debug_settings_controller;
 	}
@@ -352,12 +352,12 @@ VALUE rb_RPDB_DebugSettingsController_registerForRecovery( VALUE	rb_debug_settin
 	*  turn_register_for_recovery_off  *
 	***********************************************************/
 
-	VALUE rb_RPDB_DebugSettingsController_turnRegisterForRecoveryOff( VALUE	rb_debug_settings_controller )	{
+	VALUE rb_Rbdb_DebugSettingsController_turnRegisterForRecoveryOff( VALUE	rb_debug_settings_controller )	{
 
-		RPDB_DebugSettingsController*	c_debug_settings_controller;
-		C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		Rbdb_DebugSettingsController*	c_debug_settings_controller;
+		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-		RPDB_DebugSettingsController_turnRegisterForRecoveryOff( c_debug_settings_controller );
+		Rbdb_DebugSettingsController_turnRegisterForRecoveryOff( c_debug_settings_controller );
 
 		return rb_debug_settings_controller;
 	}
@@ -377,12 +377,12 @@ VALUE rb_RPDB_DebugSettingsController_registerForRecovery( VALUE	rb_debug_settin
 //
 //	The DB_NOPANIC flag may be used to configure Berkeley DB at any time during the life of the application.
 //
-VALUE rb_RPDB_DebugSettingsController_prohibitPanic( VALUE	rb_debug_settings_controller )	{
+VALUE rb_Rbdb_DebugSettingsController_prohibitPanic( VALUE	rb_debug_settings_controller )	{
 
-	RPDB_DebugSettingsController*	c_debug_settings_controller;
-	C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+	Rbdb_DebugSettingsController*	c_debug_settings_controller;
+	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-	return ( RPDB_DebugSettingsController_prohibitPanic( c_debug_settings_controller )	?	Qtrue
+	return ( Rbdb_DebugSettingsController_prohibitPanic( c_debug_settings_controller )	?	Qtrue
 																						:	Qfalse );
 }
 
@@ -390,12 +390,12 @@ VALUE rb_RPDB_DebugSettingsController_prohibitPanic( VALUE	rb_debug_settings_con
 	*  turn_prohibit_panic_on  *
 	***************************/
 
-	VALUE rb_RPDB_DebugSettingsController_turnProhibitPanicOn( VALUE	rb_debug_settings_controller )	{
+	VALUE rb_Rbdb_DebugSettingsController_turnProhibitPanicOn( VALUE	rb_debug_settings_controller )	{
 
-		RPDB_DebugSettingsController*	c_debug_settings_controller;
-		C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		Rbdb_DebugSettingsController*	c_debug_settings_controller;
+		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-		RPDB_DebugSettingsController_turnProhibitPanicOn( c_debug_settings_controller );
+		Rbdb_DebugSettingsController_turnProhibitPanicOn( c_debug_settings_controller );
 
 		return rb_debug_settings_controller;
 	}
@@ -404,12 +404,12 @@ VALUE rb_RPDB_DebugSettingsController_prohibitPanic( VALUE	rb_debug_settings_con
 	*  turn_prohibit_panic_off  *
 	****************************/
 
-	VALUE rb_RPDB_DebugSettingsController_turnProhibitPanicOff( VALUE	rb_debug_settings_controller )	{
+	VALUE rb_Rbdb_DebugSettingsController_turnProhibitPanicOff( VALUE	rb_debug_settings_controller )	{
 
-		RPDB_DebugSettingsController*	c_debug_settings_controller;
-		C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		Rbdb_DebugSettingsController*	c_debug_settings_controller;
+		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-		RPDB_DebugSettingsController_turnProhibitPanicOff( c_debug_settings_controller );
+		Rbdb_DebugSettingsController_turnProhibitPanicOff( c_debug_settings_controller );
 
 		return rb_debug_settings_controller;
 	}
@@ -429,12 +429,12 @@ VALUE rb_RPDB_DebugSettingsController_prohibitPanic( VALUE	rb_debug_settings_con
 //	Calling DB_ENV->set_flags with the DB_PANIC_ENVIRONMENT flag affects the database environment, including all threads of control accessing the database environment.
 //
 //	The DB_PANIC_ENVIRONMENT flag may be used to configure Berkeley DB only after the DB_ENV->open method is called.
-VALUE rb_RPDB_DebugSettingsController_panic( VALUE	rb_debug_settings_controller )	{
+VALUE rb_Rbdb_DebugSettingsController_panic( VALUE	rb_debug_settings_controller )	{
 
-	RPDB_DebugSettingsController*	c_debug_settings_controller;
-	C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+	Rbdb_DebugSettingsController*	c_debug_settings_controller;
+	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-	return ( RPDB_DebugSettingsController_panic( c_debug_settings_controller )	?	Qtrue
+	return ( Rbdb_DebugSettingsController_panic( c_debug_settings_controller )	?	Qtrue
 																				:	Qfalse );
 }
 
@@ -443,12 +443,12 @@ VALUE rb_RPDB_DebugSettingsController_panic( VALUE	rb_debug_settings_controller 
 	******************/
 
 	//	DB_PANIC_ENVIRONMENT    http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
-	VALUE rb_RPDB_DebugSettingsController_turnPanicOn( VALUE	rb_debug_settings_controller )	{
+	VALUE rb_Rbdb_DebugSettingsController_turnPanicOn( VALUE	rb_debug_settings_controller )	{
 
-		RPDB_DebugSettingsController*	c_debug_settings_controller;
-		C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		Rbdb_DebugSettingsController*	c_debug_settings_controller;
+		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-		RPDB_DebugSettingsController_turnPanicOn( c_debug_settings_controller );
+		Rbdb_DebugSettingsController_turnPanicOn( c_debug_settings_controller );
 
 		return rb_debug_settings_controller;
 	}
@@ -458,12 +458,12 @@ VALUE rb_RPDB_DebugSettingsController_panic( VALUE	rb_debug_settings_controller 
 	*******************/
 
 	//	DB_PANIC_ENVIRONMENT    http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/env_set_flags.html
-	VALUE rb_RPDB_DebugSettingsController_turnPanicOff( VALUE	rb_debug_settings_controller )	{
+	VALUE rb_Rbdb_DebugSettingsController_turnPanicOff( VALUE	rb_debug_settings_controller )	{
 
-		RPDB_DebugSettingsController*	c_debug_settings_controller;
-		C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		Rbdb_DebugSettingsController*	c_debug_settings_controller;
+		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-		RPDB_DebugSettingsController_turnPanicOff( c_debug_settings_controller );
+		Rbdb_DebugSettingsController_turnPanicOff( c_debug_settings_controller );
 
 		return rb_debug_settings_controller;
 	}
@@ -485,12 +485,12 @@ VALUE rb_RPDB_DebugSettingsController_panic( VALUE	rb_debug_settings_controller 
 //	DB_YIELDCPU flag or the flag should be specified in the DB_CONFIG configuration file.
 //
 //	The DB_YIELDCPU flag may be used to configure Berkeley DB at any time during the life of the application.
-VALUE rb_RPDB_DebugSettingsController_yieldCPUForStressTest( VALUE	rb_debug_settings_controller )	{
+VALUE rb_Rbdb_DebugSettingsController_yieldCPUForStressTest( VALUE	rb_debug_settings_controller )	{
 
-	RPDB_DebugSettingsController*	c_debug_settings_controller;
-	C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+	Rbdb_DebugSettingsController*	c_debug_settings_controller;
+	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-	return ( RPDB_DebugSettingsController_yieldCPUForStressTest( c_debug_settings_controller )	?	Qtrue
+	return ( Rbdb_DebugSettingsController_yieldCPUForStressTest( c_debug_settings_controller )	?	Qtrue
 																								:	Qfalse );
 }
 
@@ -498,12 +498,12 @@ VALUE rb_RPDB_DebugSettingsController_yieldCPUForStressTest( VALUE	rb_debug_sett
 	*  turn_yield_cpu_for_stress_test_on  *
 	**************************************/
 
-	VALUE rb_RPDB_DebugSettingsController_turnYieldCPUForStressTestOn( VALUE	rb_debug_settings_controller )	{
+	VALUE rb_Rbdb_DebugSettingsController_turnYieldCPUForStressTestOn( VALUE	rb_debug_settings_controller )	{
 
-		RPDB_DebugSettingsController*	c_debug_settings_controller;
-		C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		Rbdb_DebugSettingsController*	c_debug_settings_controller;
+		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-		RPDB_DebugSettingsController_turnYieldCPUForStressTestOn( c_debug_settings_controller );
+		Rbdb_DebugSettingsController_turnYieldCPUForStressTestOn( c_debug_settings_controller );
 
 		return rb_debug_settings_controller;
 	}
@@ -512,12 +512,12 @@ VALUE rb_RPDB_DebugSettingsController_yieldCPUForStressTest( VALUE	rb_debug_sett
 	*  turn_yield_cpu_for_stress_test_off  *
 	***************************************/
 
-	VALUE rb_RPDB_DebugSettingsController_turnYieldCPUForStressTestOff( VALUE	rb_debug_settings_controller )	{
+	VALUE rb_Rbdb_DebugSettingsController_turnYieldCPUForStressTestOff( VALUE	rb_debug_settings_controller )	{
 
-		RPDB_DebugSettingsController*	c_debug_settings_controller;
-		C_RPDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		Rbdb_DebugSettingsController*	c_debug_settings_controller;
+		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
-		RPDB_DebugSettingsController_turnYieldCPUForStressTestOff( c_debug_settings_controller );
+		Rbdb_DebugSettingsController_turnYieldCPUForStressTestOff( c_debug_settings_controller );
 
 		return rb_debug_settings_controller;
 	}
@@ -526,18 +526,18 @@ VALUE rb_RPDB_DebugSettingsController_yieldCPUForStressTest( VALUE	rb_debug_sett
 *  verbosity_settings_controller  *
 **********************************/
 
-VALUE rb_RPDB_DebugSettingsController_verbositySettingsController( VALUE	rb_debug_settings_controller )	{
+VALUE rb_Rbdb_DebugSettingsController_verbositySettingsController( VALUE	rb_debug_settings_controller )	{
 
 	VALUE	rb_debug_verbosity_settings_controller	=	Qnil;
 	
 	if ( ( rb_debug_verbosity_settings_controller = rb_iv_get(	rb_debug_settings_controller,
-																															RPDB_RB_SETTINGS_VARIABLE_DEBUG_VERBOSITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																															Rbdb_RB_SETTINGS_VARIABLE_DEBUG_VERBOSITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
-		rb_debug_verbosity_settings_controller	=	rb_RPDB_DebugVerbositySettingsController_new(	1,
+		rb_debug_verbosity_settings_controller	=	rb_Rbdb_DebugVerbositySettingsController_new(	1,
 																																														& rb_debug_settings_controller,
-																																														rb_RPDB_DebugVerbositySettingsController );
+																																														rb_Rbdb_DebugVerbositySettingsController );
 		rb_iv_set(	rb_debug_settings_controller,
-								RPDB_RB_SETTINGS_VARIABLE_DEBUG_VERBOSITY_SETTINGS_CONTROLLER,
+								Rbdb_RB_SETTINGS_VARIABLE_DEBUG_VERBOSITY_SETTINGS_CONTROLLER,
 								rb_debug_verbosity_settings_controller );
 	}
 	

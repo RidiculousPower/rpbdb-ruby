@@ -1,5 +1,5 @@
 /*
- *		RPDB::DatabaseController::ObjectDatabase
+ *		Rbdb::DatabaseController::ObjectDatabase
  *
  *
  */
@@ -10,29 +10,29 @@
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-#include "rb_RPDB_DatabaseObjectCursor.h"
-#include "rb_RPDB_DatabaseObjectDatabase.h"
-#include "rb_RPDB_DatabaseObjectDatabase_internal.h"
+#include "rb_Rbdb_DatabaseObjectCursor.h"
+#include "rb_Rbdb_DatabaseObjectDatabase.h"
+#include "rb_Rbdb_DatabaseObjectDatabase_internal.h"
 
-#include <rpdb/RPDB_Database.h>
-#include <rpdb/RPDB_DatabaseCursor.h>
+#include <rbdb/Rbdb_Database.h>
+#include <rbdb/Rbdb_DatabaseCursor.h>
 
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
-extern	VALUE	rb_RPDB_Database;
-extern	VALUE	rb_RPDB_DatabaseController;
-extern	VALUE	rb_RPDB_DatabaseObjectCursor;
-extern	VALUE	rb_RPDB_DatabaseObjectDatabase;
+extern	VALUE	rb_Rbdb_Database;
+extern	VALUE	rb_Rbdb_DatabaseController;
+extern	VALUE	rb_Rbdb_DatabaseObjectCursor;
+extern	VALUE	rb_Rbdb_DatabaseObjectDatabase;
 
-void Init_RPDB_DatabaseObjectDatabase()	{
+void Init_Rbdb_DatabaseObjectDatabase()	{
 	
-	rb_RPDB_DatabaseObjectDatabase		=	rb_define_class_under(	rb_RPDB_DatabaseController, 
+	rb_Rbdb_DatabaseObjectDatabase		=	rb_define_class_under(	rb_Rbdb_DatabaseController, 
 																															"ObjectDatabase",
-																															rb_RPDB_Database );
+																															rb_Rbdb_Database );
 
-	rb_define_method(		rb_RPDB_DatabaseObjectDatabase, 	"cursor",										rb_RPDB_DatabaseObjectDatabase_cursor,						0 	);
+	rb_define_method(		rb_Rbdb_DatabaseObjectDatabase, 	"cursor",										rb_Rbdb_DatabaseObjectDatabase_cursor,						0 	);
 		
 }
 
@@ -46,14 +46,14 @@ void Init_RPDB_DatabaseObjectDatabase()	{
 *  cursor  *
 ***********/
 
-VALUE rb_RPDB_DatabaseObjectDatabase_cursor( VALUE	rb_database )	{
+VALUE rb_Rbdb_DatabaseObjectDatabase_cursor( VALUE	rb_database )	{
 
-	RPDB_Database*	c_database	=	NULL;
-	C_RPDB_DATABASE_OBJECT_DATABASE( rb_database, c_database );
+	Rbdb_Database*	c_database	=	NULL;
+	C_Rbdb_DATABASE_OBJECT_DATABASE( rb_database, c_database );
 	
-	RPDB_DatabaseCursor*	c_cursor	=	RPDB_Database_cursor( c_database );
+	Rbdb_DatabaseCursor*	c_cursor	=	Rbdb_Database_cursor( c_database );
 	
-	VALUE	rb_cursor	=	RUBY_RPDB_DATABASE_OBJECT_CURSOR( c_cursor );
+	VALUE	rb_cursor	=	RUBY_Rbdb_DATABASE_OBJECT_CURSOR( c_cursor );
 	
 	return rb_cursor;
 }	

@@ -33,13 +33,13 @@ function( recursively_include_src which_directory return_variable )
 		endforeach( this_sub_directory ${this_directory_directories} )
 	endif( this_directory_all_files AND this_directory_src )
 	
-	#	add source files to ${rb_rpdb_src} in PARENT_SCOPE
+	#	add source files to ${rb_rbdb_src} in PARENT_SCOPE
 	if( ${return_variable} STREQUAL "headers" )
-		set( rb_rpdb_headers ${rb_rpdb_headers} ${this_directory_src} PARENT_SCOPE )
+		set( rb_rbdb_headers ${rb_rbdb_headers} ${this_directory_src} PARENT_SCOPE )
 	else( ${return_variable} STREQUAL "headers" )
-		set( rb_rpdb_src ${rb_rpdb_src} ${this_directory_src} PARENT_SCOPE )
+		set( rb_rbdb_src ${rb_rbdb_src} ${this_directory_src} PARENT_SCOPE )
 	endif( ${return_variable} STREQUAL "headers" )
 
-	set( rb_rpdb_directories ${rb_rpdb_directories} ${which_directory} PARENT_SCOPE )
+	set( rb_rbdb_directories ${rb_rbdb_directories} ${which_directory} PARENT_SCOPE )
 	
 endfunction( recursively_include_src which_directory return_variable )

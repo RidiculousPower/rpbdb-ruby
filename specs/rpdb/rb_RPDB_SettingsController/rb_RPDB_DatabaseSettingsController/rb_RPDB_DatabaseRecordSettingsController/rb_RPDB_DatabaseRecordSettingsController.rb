@@ -1,8 +1,8 @@
-require_relative '../../../../../lib/rpdb.rb'
+require_relative '../../../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Database::Record do
+describe Rbdb::Settings::Database::Record do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Database::Record do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,34 +26,34 @@ describe RPDB::Settings::Database::Record do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Database::Record.new( environment )
+  # Rbdb::Settings::Database::Record.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Record.new( @environment ).should_not == nil
+    Rbdb::Settings::Database::Record.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Record.new( database_controller )
+  # Rbdb::Settings::Database::Record.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Record.new( @environment.database_controller ).should_not == nil
+    Rbdb::Settings::Database::Record.new( @environment.database_controller ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Record.new( database )
+  # Rbdb::Settings::Database::Record.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Record.new( RPDB::Database.new( $database_name ) ).should_not == nil
+    Rbdb::Settings::Database::Record.new( Rbdb::Database.new( $database_name ) ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Record.new( settings_controller )
+  # Rbdb::Settings::Database::Record.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Record.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::Database::Record.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Record.new( database_settings_controller )
+  # Rbdb::Settings::Database::Record.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Record.new( RPDB::Settings::Database.new ).should_not == nil
+    Rbdb::Settings::Database::Record.new( Rbdb::Settings::Database.new ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Record.new
+  # Rbdb::Settings::Database::Record.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Record.new.should_not == nil
+    Rbdb::Settings::Database::Record.new.should_not == nil
   end
 
   ########################
@@ -62,9 +62,9 @@ describe RPDB::Settings::Database::Record do
 
   it "can return its parent environment" do
     # with settings controller
-    RPDB::Settings::Database::Record.new.parent_environment.is_a?( RPDB::Environment ).should == true
+    Rbdb::Settings::Database::Record.new.parent_environment.is_a?( Rbdb::Environment ).should == true
     # with database
-    RPDB::Settings::Database::Record.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
+    Rbdb::Settings::Database::Record.new( Rbdb::Database.new( $database_name ) ).parent_environment.is_a?( Rbdb::Environment ).should == true
   end
 
   #####################
@@ -73,9 +73,9 @@ describe RPDB::Settings::Database::Record do
 
   it "can return its parent database" do
     # with settings controller
-    RPDB::Settings::Database::Record.new.parent_database.should == nil
+    Rbdb::Settings::Database::Record.new.parent_database.should == nil
     # with database
-    RPDB::Settings::Database::Record.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
+    Rbdb::Settings::Database::Record.new( Rbdb::Database.new( $database_name ) ).parent_database.is_a?( Rbdb::Database ).should == true
   end
 
   ################################
@@ -84,9 +84,9 @@ describe RPDB::Settings::Database::Record do
 
   it "can return its parent settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Record.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    Rbdb::Settings::Database::Record.new.parent_settings_controller.is_a?( Rbdb::Settings ).should == true
     # with database
-    RPDB::Settings::Database::Record.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    Rbdb::Settings::Database::Record.new( Rbdb::Database.new( $database_name ) ).parent_settings_controller.is_a?( Rbdb::Settings ).should == true
   end
 
   #########################################
@@ -95,9 +95,9 @@ describe RPDB::Settings::Database::Record do
 
   it "can return its parent database settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Record.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    Rbdb::Settings::Database::Record.new.parent_database_settings_controller.is_a?( Rbdb::Settings::Database ).should == true
     # with database
-    RPDB::Settings::Database::Record.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    Rbdb::Settings::Database::Record.new( Rbdb::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( Rbdb::Settings::Database ).should == true
   end
 
   ####################################
@@ -106,9 +106,9 @@ describe RPDB::Settings::Database::Record do
 
   it "can return its parent database settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Record.new.read_write_settings_controller.is_a?( RPDB::Settings::Database::Record::ReadWrite ).should == true
+    Rbdb::Settings::Database::Record.new.read_write_settings_controller.is_a?( Rbdb::Settings::Database::Record::ReadWrite ).should == true
     # with database
-    RPDB::Settings::Database::Record.new( RPDB::Database.new( $database_name ) ).read_write_settings_controller.is_a?( RPDB::Settings::Database::Record::ReadWrite ).should == true
+    Rbdb::Settings::Database::Record.new( Rbdb::Database.new( $database_name ) ).read_write_settings_controller.is_a?( Rbdb::Settings::Database::Record::ReadWrite ).should == true
   end
 
   ######################################
@@ -117,9 +117,9 @@ describe RPDB::Settings::Database::Record do
 
   it "can return its parent database settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Record.new.fixed_length_settings_controller.is_a?( RPDB::Settings::Database::Record::FixedLength ).should == true
+    Rbdb::Settings::Database::Record.new.fixed_length_settings_controller.is_a?( Rbdb::Settings::Database::Record::FixedLength ).should == true
     # with database
-    RPDB::Settings::Database::Record.new( RPDB::Database.new( $database_name ) ).fixed_length_settings_controller.is_a?( RPDB::Settings::Database::Record::FixedLength ).should == true
+    Rbdb::Settings::Database::Record.new( Rbdb::Database.new( $database_name ) ).fixed_length_settings_controller.is_a?( Rbdb::Settings::Database::Record::FixedLength ).should == true
   end
 
   #########################################
@@ -128,9 +128,9 @@ describe RPDB::Settings::Database::Record do
 
   it "can return its parent database settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Record.new.variable_length_settings_controller.is_a?( RPDB::Settings::Database::Record::VariableLength ).should == true
+    Rbdb::Settings::Database::Record.new.variable_length_settings_controller.is_a?( Rbdb::Settings::Database::Record::VariableLength ).should == true
     # with database
-    RPDB::Settings::Database::Record.new( RPDB::Database.new( $database_name ) ).variable_length_settings_controller.is_a?( RPDB::Settings::Database::Record::VariableLength ).should == true
+    Rbdb::Settings::Database::Record.new( Rbdb::Database.new( $database_name ) ).variable_length_settings_controller.is_a?( Rbdb::Settings::Database::Record::VariableLength ).should == true
   end
 
 end

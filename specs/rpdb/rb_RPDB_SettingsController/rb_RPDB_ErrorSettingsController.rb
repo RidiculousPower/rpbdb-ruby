@@ -1,8 +1,8 @@
-require_relative '../../../lib/rpdb.rb'
+require_relative '../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Error do
+describe Rbdb::Settings::Error do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Error do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,19 +26,19 @@ describe RPDB::Settings::Error do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Error.new( environment )
+  # Rbdb::Settings::Error.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Error.new( @environment ).should_not == nil
+    Rbdb::Settings::Error.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::Error.new( settings_controller )
+  # Rbdb::Settings::Error.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Error.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::Error.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::Error.new
+  # Rbdb::Settings::Error.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Error.new.should_not == nil
+    Rbdb::Settings::Error.new.should_not == nil
   end
 
   ########################
@@ -46,7 +46,7 @@ describe RPDB::Settings::Error do
   ########################
 
   it "can return its parent environment" do
-    RPDB::Settings::Error.new.parent_environment.should_not == nil
+    Rbdb::Settings::Error.new.parent_environment.should_not == nil
   end
 
   ################################
@@ -54,7 +54,7 @@ describe RPDB::Settings::Error do
   ################################
 
   it "can return its parent settings controller" do
-    RPDB::Settings::Error.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::Error.new.parent_settings_controller.should_not == nil
   end
 
   ##############
@@ -65,7 +65,7 @@ describe RPDB::Settings::Error do
   # FIX - FILE
   it "can set and return an error file" do
     raise "File"
-    error_settings  = RPDB::Settings::Error.new
+    error_settings  = Rbdb::Settings::Error.new
     error_settings.set_file( '/tmp/file.tmp' )
     error_settings.file.should == '/tmp/file.tmp'
   end
@@ -76,7 +76,7 @@ describe RPDB::Settings::Error do
   ################
 
   it "can set and return an error prefix" do
-    error_settings  = RPDB::Settings::Error.new
+    error_settings  = Rbdb::Settings::Error.new
     error_settings.set_prefix( 'prefix' )
     error_settings.prefix.should == 'prefix'
   end

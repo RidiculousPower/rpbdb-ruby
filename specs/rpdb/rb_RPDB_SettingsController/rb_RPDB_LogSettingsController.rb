@@ -1,8 +1,8 @@
-require_relative '../../../lib/rpdb.rb'
+require_relative '../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Log do
+describe Rbdb::Settings::Log do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Log do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
   end
 
   after( :each ) do
@@ -23,22 +23,22 @@ describe RPDB::Settings::Log do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Log.new( environment )
+  # Rbdb::Settings::Log.new( environment )
   it "can be created with an environment" do
     @environment.open
-    RPDB::Settings::Log.new( @environment ).should_not == nil
+    Rbdb::Settings::Log.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::Log.new( settings_controller )
+  # Rbdb::Settings::Log.new( settings_controller )
   it "can be created with a settings controller" do
     @environment.open
-    RPDB::Settings::Log.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::Log.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::Log.new
+  # Rbdb::Settings::Log.new
   it "can be created with no argument specified" do
     @environment.open
-    RPDB::Settings::Log.new.should_not == nil
+    Rbdb::Settings::Log.new.should_not == nil
   end
 
   ########################
@@ -47,7 +47,7 @@ describe RPDB::Settings::Log do
 
   it "can return its parent environment" do
     @environment.open
-    RPDB::Settings::Log.new.parent_environment.should_not == nil
+    Rbdb::Settings::Log.new.parent_environment.should_not == nil
   end
 
   ################################
@@ -56,7 +56,7 @@ describe RPDB::Settings::Log do
 
   it "can return its parent settings controller" do
     @environment.open
-    RPDB::Settings::Log.new.parent_settings_controller.should_not == nil
+    Rbdb::Settings::Log.new.parent_settings_controller.should_not == nil
   end
 
   ##############
@@ -68,7 +68,7 @@ describe RPDB::Settings::Log do
 
   it "can turn on and off and report whether it is on or off" do
     @environment.open
-    log_settings  = RPDB::Settings::Log.new
+    log_settings  = Rbdb::Settings::Log.new
     log_settings.on?.should == true
     log_settings.turn_off
     log_settings.on?.should == false
@@ -85,7 +85,7 @@ describe RPDB::Settings::Log do
 
   it "can turn system buffering on and off" do
     raise "Log config (log_get_config always returning 0)"
-    log_settings  = RPDB::Settings::Log.new( @environment )
+    log_settings  = Rbdb::Settings::Log.new( @environment )
     log_settings.disable_system_buffering?.should == false
     log_settings.turn_disable_system_buffering_on
     log_settings.disable_system_buffering?.should == true
@@ -101,7 +101,7 @@ describe RPDB::Settings::Log do
 
   it "can be set to flush before returning from a write" do
     @environment.open
-    log_settings  = RPDB::Settings::Log.new
+    log_settings  = Rbdb::Settings::Log.new
     log_settings.flush_before_return_from_write?.should == false
     log_settings.turn_flush_before_return_from_write_on
     log_settings.flush_before_return_from_write?.should == true
@@ -117,7 +117,7 @@ describe RPDB::Settings::Log do
 
   it "can be set to autoremove logs" do
     @environment.open
-    log_settings  = RPDB::Settings::Log.new
+    log_settings  = Rbdb::Settings::Log.new
     log_settings.autoremove_logs?.should == false
     log_settings.turn_autoremove_on
     log_settings.autoremove_logs?.should == true
@@ -133,7 +133,7 @@ describe RPDB::Settings::Log do
 
   it "can be set to log in memory rather than on disk" do
     raise "Log config (log_get_config always returning 0)"
-    log_settings  = RPDB::Settings::Log.new( @environment )
+    log_settings  = Rbdb::Settings::Log.new( @environment )
     log_settings.log_in_memory?.should == false
     log_settings.turn_log_in_memory_on
     log_settings.log_in_memory?.should == true
@@ -149,7 +149,7 @@ describe RPDB::Settings::Log do
 
   it "can be set to zero the log at creation" do
     @environment.open
-    log_settings  = RPDB::Settings::Log.new
+    log_settings  = Rbdb::Settings::Log.new
     log_settings.zero_at_creation?.should == false
     log_settings.turn_zero_at_creation_on
     log_settings.zero_at_creation?.should == true
@@ -165,7 +165,7 @@ describe RPDB::Settings::Log do
 
   it "can be set to force a flush after record write" do
     @environment.open
-    log_settings  = RPDB::Settings::Log.new
+    log_settings  = Rbdb::Settings::Log.new
     log_settings.force_flush_after_record_write?.should == false
     log_settings.turn_force_flush_after_record_write_on
     log_settings.force_flush_after_record_write?.should == true
@@ -179,7 +179,7 @@ describe RPDB::Settings::Log do
   #####################
 
   it "can set and return its buffer size" do
-    log_settings  = RPDB::Settings::Log.new( @environment )
+    log_settings  = Rbdb::Settings::Log.new( @environment )
     log_settings.set_buffer_size( 42 )
     log_settings.buffer_size.should == 42
   end
@@ -191,7 +191,7 @@ describe RPDB::Settings::Log do
 
   it "can set and return its directory" do
     @environment.open
-    log_settings  = RPDB::Settings::Log.new
+    log_settings  = Rbdb::Settings::Log.new
     log_settings.set_directory( '/tmp/file.tmp' )
     log_settings.directory.should == '/tmp/file.tmp'
   end
@@ -203,7 +203,7 @@ describe RPDB::Settings::Log do
 
   it "can set and return its mode" do
     @environment.open
-    log_settings  = RPDB::Settings::Log.new
+    log_settings  = Rbdb::Settings::Log.new
     log_settings.set_mode( 0 )
     log_settings.mode.should == 0
   end
@@ -215,7 +215,7 @@ describe RPDB::Settings::Log do
 
   it "can set and return its maximum log size" do
     @environment.open
-    log_settings  = RPDB::Settings::Log.new
+    log_settings  = Rbdb::Settings::Log.new
     log_settings.set_max_log_size( 42 )
     log_settings.max_log_size.should == 42
   end
@@ -226,7 +226,7 @@ describe RPDB::Settings::Log do
   #########################
 
   it "can set and return its maximum region size" do
-    log_settings  = RPDB::Settings::Log.new( @environment )
+    log_settings  = Rbdb::Settings::Log.new( @environment )
     log_settings.set_max_region_size( 42 )
     log_settings.max_region_size.should == 42
   end

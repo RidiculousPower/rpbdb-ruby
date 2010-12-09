@@ -1,12 +1,12 @@
-require_relative '../../../lib/rpdb/rpdb'
+require_relative '../../../lib/rbdb/rbdb'
 
-describe RPDB::Environment::DatabaseController::ObjectDatabase do
+describe Rbdb::Environment::DatabaseController::ObjectDatabase do
 
   $environment_name           = :spec_environment
-  $environment_path             = '/tmp/rpdb_spec_environment_home'
+  $environment_path             = '/tmp/rbdb_spec_environment_home'
 
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_name, $environment_path )
+    @environment = Rbdb::Environment.new( $environment_name, $environment_path )
     @environment.open
     @database_controller  = @environment.database_controller
     @database             = @database_controller.database
@@ -21,10 +21,10 @@ describe RPDB::Environment::DatabaseController::ObjectDatabase do
   #  initialize  #
   ################
 
-  # RPDB::Environment::DatabaseController::ObjectDatabase.new( environment )
-  # RPDB::Environment::DatabaseController::ObjectDatabase.new( environment_name ) 
-  # RPDB::Environment::DatabaseController::ObjectDatabase.new( database_controller ) 
-  # RPDB::Environment::DatabaseController::ObjectDatabase.new
+  # Rbdb::Environment::DatabaseController::ObjectDatabase.new( environment )
+  # Rbdb::Environment::DatabaseController::ObjectDatabase.new( environment_name ) 
+  # Rbdb::Environment::DatabaseController::ObjectDatabase.new( database_controller ) 
+  # Rbdb::Environment::DatabaseController::ObjectDatabase.new
   
   #########################
   #  settings_controller  #

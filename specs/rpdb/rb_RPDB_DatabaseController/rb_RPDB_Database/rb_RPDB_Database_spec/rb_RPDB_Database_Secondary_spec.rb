@@ -1,8 +1,8 @@
-require_relative '../../../../../lib/rpdb/rpdb'
+require_relative '../../../../../lib/rbdb/rbdb'
 
-describe RPDB::Database do
+describe Rbdb::Database do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -12,7 +12,7 @@ describe RPDB::Database do
   $sorted_duplicates_database_name   = :sorted_duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
   end
@@ -21,7 +21,7 @@ describe RPDB::Database do
     @environment.close
   end
 
-  require_relative './rb_RPDB_Database_SecondarySupportFunctions.rb'
+  require_relative './rb_Rbdb_Database_SecondarySupportFunctions.rb'
 
   ################################################
   #  set_secondary_key_creation_callback_method  #

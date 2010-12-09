@@ -1,5 +1,5 @@
 /*
- *		RPDB::Database::DatabaseSettingsController::DatabaseAssociationSettingsController
+ *		Rbdb::Database::DatabaseSettingsController::DatabaseAssociationSettingsController
  *
  *
  */
@@ -10,19 +10,19 @@
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-#include "rb_RPDB_DatabaseAssociationSettingsController.h"
-#include "rb_RPDB_DatabaseSettingsController.h"
-#include "rb_RPDB_SettingsController.h"
-#include "rb_RPDB_DatabaseController.h"
-#include "rb_RPDB_Database.h"
-#include "rb_RPDB.h"
+#include "rb_Rbdb_DatabaseAssociationSettingsController.h"
+#include "rb_Rbdb_DatabaseSettingsController.h"
+#include "rb_Rbdb_SettingsController.h"
+#include "rb_Rbdb_DatabaseController.h"
+#include "rb_Rbdb_Database.h"
+#include "rb_Rbdb.h"
 
-#include <rpdb/RPDB_Environment.h>
+#include <rbdb/Rbdb_Environment.h>
 
-#include <rpdb/RPDB_Database.h>
+#include <rbdb/Rbdb_Database.h>
 
-#include <rpdb/RPDB_DatabaseSettingsController.h>
-#include <rpdb/RPDB_DatabaseAssociationSettingsController.h>
+#include <rbdb/Rbdb_DatabaseSettingsController.h>
+#include <rbdb/Rbdb_DatabaseAssociationSettingsController.h>
 
 #include <rargs.h>
 
@@ -30,38 +30,38 @@
 																		Ruby Definitions
 *******************************************************************************************************************************************************************************************/
 
-extern	VALUE	rb_mRPDB;
-extern	VALUE	rb_RPDB_Environment;
-extern	VALUE	rb_RPDB_Database;
+extern	VALUE	rb_mRbdb;
+extern	VALUE	rb_Rbdb_Environment;
+extern	VALUE	rb_Rbdb_Database;
 
-extern	VALUE	rb_RPDB_DatabaseController;
-extern	VALUE	rb_RPDB_SettingsController;
-extern	VALUE	rb_RPDB_DatabaseSettingsController;
-extern	VALUE	rb_RPDB_DatabaseAssociationSettingsController;
+extern	VALUE	rb_Rbdb_DatabaseController;
+extern	VALUE	rb_Rbdb_SettingsController;
+extern	VALUE	rb_Rbdb_DatabaseSettingsController;
+extern	VALUE	rb_Rbdb_DatabaseAssociationSettingsController;
 
-void Init_RPDB_DatabaseAssociationSettingsController()	{
+void Init_Rbdb_DatabaseAssociationSettingsController()	{
 
-	rb_RPDB_DatabaseAssociationSettingsController		=	rb_define_class_under(	rb_RPDB_DatabaseSettingsController, 
+	rb_Rbdb_DatabaseAssociationSettingsController		=	rb_define_class_under(	rb_Rbdb_DatabaseSettingsController, 
 																																						"Association",	
 																																						rb_cObject );
 
-	rb_define_singleton_method(	rb_RPDB_DatabaseAssociationSettingsController, 	"new",																						rb_RPDB_DatabaseAssociationSettingsController_new,													-1 	);
-	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController,	"initialize",																			rb_RPDB_DatabaseAssociationSettingsController_initialize,													-1 	);
+	rb_define_singleton_method(	rb_Rbdb_DatabaseAssociationSettingsController, 	"new",																						rb_Rbdb_DatabaseAssociationSettingsController_new,													-1 	);
+	rb_define_method(						rb_Rbdb_DatabaseAssociationSettingsController,	"initialize",																			rb_Rbdb_DatabaseAssociationSettingsController_initialize,													-1 	);
 
-	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"parent_environment",															rb_RPDB_DatabaseAssociationSettingsController_parentEnvironment,									0 	);
-	rb_define_alias(						rb_RPDB_DatabaseAssociationSettingsController, 	"environment",																		"parent_environment"	);
-	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"parent_database",																rb_RPDB_DatabaseAssociationSettingsController_parentDatabase,										0 	);
-	rb_define_alias(						rb_RPDB_DatabaseAssociationSettingsController, 	"database",																				"parent_database"	);
-	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"parent_settings_controller",											rb_RPDB_DatabaseAssociationSettingsController_parentSettingsController,										0 	);
-	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"parent_database_settings_controller",						rb_RPDB_DatabaseAssociationSettingsController_parentDatabaseSettingsController,										0 	);
+	rb_define_method(						rb_Rbdb_DatabaseAssociationSettingsController, 	"parent_environment",															rb_Rbdb_DatabaseAssociationSettingsController_parentEnvironment,									0 	);
+	rb_define_alias(						rb_Rbdb_DatabaseAssociationSettingsController, 	"environment",																		"parent_environment"	);
+	rb_define_method(						rb_Rbdb_DatabaseAssociationSettingsController, 	"parent_database",																rb_Rbdb_DatabaseAssociationSettingsController_parentDatabase,										0 	);
+	rb_define_alias(						rb_Rbdb_DatabaseAssociationSettingsController, 	"database",																				"parent_database"	);
+	rb_define_method(						rb_Rbdb_DatabaseAssociationSettingsController, 	"parent_settings_controller",											rb_Rbdb_DatabaseAssociationSettingsController_parentSettingsController,										0 	);
+	rb_define_method(						rb_Rbdb_DatabaseAssociationSettingsController, 	"parent_database_settings_controller",						rb_Rbdb_DatabaseAssociationSettingsController_parentDatabaseSettingsController,										0 	);
                     					
-	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"secondary_association_creates_index?",						rb_RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesIndex,					0 	);
-	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"turn_secondary_association_creates_index_on",		rb_RPDB_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOn,				0 	);
-	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"turn_secondary_association_creates_index_off",		rb_RPDB_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOff,				0 	);
+	rb_define_method(						rb_Rbdb_DatabaseAssociationSettingsController, 	"secondary_association_creates_index?",						rb_Rbdb_DatabaseAssociationSettingsController_secondaryAssociationCreatesIndex,					0 	);
+	rb_define_method(						rb_Rbdb_DatabaseAssociationSettingsController, 	"turn_secondary_association_creates_index_on",		rb_Rbdb_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOn,				0 	);
+	rb_define_method(						rb_Rbdb_DatabaseAssociationSettingsController, 	"turn_secondary_association_creates_index_off",		rb_Rbdb_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOff,				0 	);
                     					
-	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"immutable_secondary_key?",												rb_RPDB_DatabaseAssociationSettingsController_immutableSecondaryKey,								0 	);
-	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"turn_immutable_secondary_key_on",								rb_RPDB_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOn,							0 	);
-	rb_define_method(						rb_RPDB_DatabaseAssociationSettingsController, 	"turn_immutable_secondary_key_off",								rb_RPDB_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOff,						0 	);
+	rb_define_method(						rb_Rbdb_DatabaseAssociationSettingsController, 	"immutable_secondary_key?",												rb_Rbdb_DatabaseAssociationSettingsController_immutableSecondaryKey,								0 	);
+	rb_define_method(						rb_Rbdb_DatabaseAssociationSettingsController, 	"turn_immutable_secondary_key_on",								rb_Rbdb_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOn,							0 	);
+	rb_define_method(						rb_Rbdb_DatabaseAssociationSettingsController, 	"turn_immutable_secondary_key_off",								rb_Rbdb_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOff,						0 	);
 }
 
 /*******************************************************************************************************************************************************************************************
@@ -74,7 +74,7 @@ void Init_RPDB_DatabaseAssociationSettingsController()	{
 *  self.new  *
 *************/
 
-VALUE rb_RPDB_DatabaseAssociationSettingsController_new(	int			argc,
+VALUE rb_Rbdb_DatabaseAssociationSettingsController_new(	int			argc,
 																													VALUE*	args,
 																													VALUE		rb_klass_self __attribute__ ((unused)) )	{
 	
@@ -85,11 +85,11 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_new(	int			argc,
 	VALUE	rb_parent_database_settings_controller								=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
-			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment,										rb_RPDB_Environment ),
-																						R_MatchAncestorInstance( rb_parent_database_controller,						rb_RPDB_DatabaseController ),
-																						R_MatchAncestorInstance( rb_parent_database,											rb_RPDB_Database ),
-																						R_MatchAncestorInstance( rb_parent_settings_controller,						rb_RPDB_SettingsController ),
-																						R_MatchAncestorInstance( rb_parent_database_settings_controller,	rb_RPDB_DatabaseSettingsController ) ) ),
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment,										rb_Rbdb_Environment ),
+																						R_MatchAncestorInstance( rb_parent_database_controller,						rb_Rbdb_DatabaseController ),
+																						R_MatchAncestorInstance( rb_parent_database,											rb_Rbdb_Database ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller,						rb_Rbdb_SettingsController ),
+																						R_MatchAncestorInstance( rb_parent_database_settings_controller,	rb_Rbdb_DatabaseSettingsController ) ) ),
 			R_ListOrder( 1 ),
 			"[ <parent environment> ]",
 			"[ <parent database controller> ]",
@@ -107,30 +107,30 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_new(	int			argc,
 			&&	rb_parent_database_controller == Qnil
 			&&	rb_parent_settings_controller == Qnil
 			&&	rb_parent_database_settings_controller == Qnil )	{
-		rb_parent_environment	=	rb_RPDB_currentWorkingEnvironment( rb_mRPDB );
+		rb_parent_environment	=	rb_Rbdb_currentWorkingEnvironment( rb_mRbdb );
 	}
 
 	if ( rb_parent_database_controller != Qnil ) {
-		rb_parent_environment	=	rb_RPDB_DatabaseController_parentEnvironment( rb_parent_database_controller );			
+		rb_parent_environment	=	rb_Rbdb_DatabaseController_parentEnvironment( rb_parent_database_controller );			
 	}
 	if ( rb_parent_environment != Qnil )	{
-		rb_parent_settings_controller = rb_RPDB_Environment_settingsController( rb_parent_environment );
+		rb_parent_settings_controller = rb_Rbdb_Environment_settingsController( rb_parent_environment );
 	}
 	if ( rb_parent_settings_controller != Qnil )	{
-		rb_parent_database_settings_controller	=	rb_RPDB_SettingsController_databaseSettingsController( rb_parent_settings_controller );
+		rb_parent_database_settings_controller	=	rb_Rbdb_SettingsController_databaseSettingsController( rb_parent_settings_controller );
 	}
 	if ( rb_parent_database != Qnil )	{
-		rb_parent_database_settings_controller	=	rb_RPDB_Database_settingsController( rb_parent_database );
+		rb_parent_database_settings_controller	=	rb_Rbdb_Database_settingsController( rb_parent_database );
 	}
 	
-	RPDB_DatabaseSettingsController*	c_database_settings_controller;
-	C_RPDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
-	RPDB_DatabaseAssociationSettingsController*	c_database_association_settings_controller	=	RPDB_DatabaseSettingsController_associationSettingsController( c_database_settings_controller );
+	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
+	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
+	Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller	=	Rbdb_DatabaseSettingsController_associationSettingsController( c_database_settings_controller );
 
-	VALUE	rb_database_association_settings_controller	=	RUBY_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( c_database_association_settings_controller );
+	VALUE	rb_database_association_settings_controller	=	RUBY_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( c_database_association_settings_controller );
 
 	rb_iv_set(	rb_database_association_settings_controller,
-							RPDB_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER,
+							Rbdb_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
@@ -145,7 +145,7 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_new(	int			argc,
 *  initialize  *
 ***************/
 
-VALUE rb_RPDB_DatabaseAssociationSettingsController_initialize(	int				argc __attribute__ ((unused)),
+VALUE rb_Rbdb_DatabaseAssociationSettingsController_initialize(	int				argc __attribute__ ((unused)),
 																													VALUE*		args __attribute__ ((unused)),
 																													VALUE			rb_self )	{	
 	return rb_self;
@@ -155,10 +155,10 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_initialize(	int				argc __at
 *  parent_environment  *
 ***********************/
 
-VALUE rb_RPDB_DatabaseAssociationSettingsController_parentEnvironment(	VALUE	rb_database_association_settings_controller )	{
+VALUE rb_Rbdb_DatabaseAssociationSettingsController_parentEnvironment(	VALUE	rb_database_association_settings_controller )	{
 
-	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseAssociationSettingsController_parentDatabaseSettingsController(rb_database_association_settings_controller );
-	VALUE	rb_parent_environment										=	rb_RPDB_DatabaseSettingsController_parentEnvironment( rb_parent_database_settings_controller );
+	VALUE	rb_parent_database_settings_controller	=	rb_Rbdb_DatabaseAssociationSettingsController_parentDatabaseSettingsController(rb_database_association_settings_controller );
+	VALUE	rb_parent_environment										=	rb_Rbdb_DatabaseSettingsController_parentEnvironment( rb_parent_database_settings_controller );
 	
 	return rb_parent_environment;
 }
@@ -167,10 +167,10 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_parentEnvironment(	VALUE	rb_
 *  parent_database  *
 ********************/
 
-VALUE rb_RPDB_DatabaseAssociationSettingsController_parentDatabase(	VALUE	rb_database_association_settings_controller )	{
+VALUE rb_Rbdb_DatabaseAssociationSettingsController_parentDatabase(	VALUE	rb_database_association_settings_controller )	{
 
-	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseAssociationSettingsController_parentDatabaseSettingsController(rb_database_association_settings_controller );
-	VALUE	rb_parent_database											=	rb_RPDB_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
+	VALUE	rb_parent_database_settings_controller	=	rb_Rbdb_DatabaseAssociationSettingsController_parentDatabaseSettingsController(rb_database_association_settings_controller );
+	VALUE	rb_parent_database											=	rb_Rbdb_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller );
 	
 	return rb_parent_database;
 }
@@ -179,10 +179,10 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_parentDatabase(	VALUE	rb_dat
 *  parent_settings_controller  *
 *******************************/
 
-VALUE rb_RPDB_DatabaseAssociationSettingsController_parentSettingsController(	VALUE	rb_database_association_settings_controller )	{
+VALUE rb_Rbdb_DatabaseAssociationSettingsController_parentSettingsController(	VALUE	rb_database_association_settings_controller )	{
 
-	VALUE	rb_parent_database_settings_controller	=	rb_RPDB_DatabaseAssociationSettingsController_parentDatabaseSettingsController(rb_database_association_settings_controller );
-	VALUE	rb_parent_settings_controller						=	rb_RPDB_DatabaseSettingsController_parentSettingsController( rb_parent_database_settings_controller );
+	VALUE	rb_parent_database_settings_controller	=	rb_Rbdb_DatabaseAssociationSettingsController_parentDatabaseSettingsController(rb_database_association_settings_controller );
+	VALUE	rb_parent_settings_controller						=	rb_Rbdb_DatabaseSettingsController_parentSettingsController( rb_parent_database_settings_controller );
 	
 	return rb_parent_settings_controller;
 }
@@ -192,10 +192,10 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_parentSettingsController(	VA
 *  parent_database_settings_controller  *
 ****************************************/
 
-VALUE rb_RPDB_DatabaseAssociationSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_association_settings_controller )	{
+VALUE rb_Rbdb_DatabaseAssociationSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_association_settings_controller )	{
 	
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_association_settings_controller,
-																															RPDB_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER );
+																															Rbdb_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER );
 	
 	return rb_parent_database_settings_controller;
 }
@@ -210,12 +210,12 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_parentDatabaseSettingsContro
 //	If transactions are not being used, care should be taken not to modify a primary database being used to populate a secondary database in another thread of control, 
 //	until the DB->associate call has returned successfully in the first thread. 
 //	If transactions are being used, Berkeley DB will perform appropriate locking and the application need not do any special operation ordering.
-VALUE rb_RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesIndex( VALUE	rb_database_association_settings_controller )	{
+VALUE rb_Rbdb_DatabaseAssociationSettingsController_secondaryAssociationCreatesIndex( VALUE	rb_database_association_settings_controller )	{
 
-	RPDB_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
-	C_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
+	Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
+	C_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
 
-	BOOL	c_secondary_creates_index		= RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesIndex( c_database_association_settings_controller );
+	BOOL	c_secondary_creates_index		= Rbdb_DatabaseAssociationSettingsController_secondaryAssociationCreatesIndex( c_database_association_settings_controller );
 	
 	VALUE	rb_secondary_creates_index	=	( c_secondary_creates_index ? Qtrue : Qfalse );
 	
@@ -226,12 +226,12 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesI
 	*  turn_secondary_association_creates_index_on  *
 	************************************************/
 
-	VALUE rb_RPDB_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOn( VALUE	rb_database_association_settings_controller )	{
+	VALUE rb_Rbdb_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOn( VALUE	rb_database_association_settings_controller )	{
 
-		RPDB_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
-		C_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
+		Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
+		C_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
 
-		RPDB_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOn( c_database_association_settings_controller );
+		Rbdb_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOn( c_database_association_settings_controller );
 
 		return rb_database_association_settings_controller;
 	}
@@ -240,12 +240,12 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesI
 	*  turn_secondary_association_creates_index_off  *
 	*************************************************/
 
-	VALUE rb_RPDB_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOff( VALUE	rb_database_association_settings_controller )	{
+	VALUE rb_Rbdb_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOff( VALUE	rb_database_association_settings_controller )	{
 
-		RPDB_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
-		C_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
+		Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
+		C_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
 
-		RPDB_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOff( c_database_association_settings_controller );
+		Rbdb_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOff( c_database_association_settings_controller );
 
 		return rb_database_association_settings_controller;
 	}
@@ -260,12 +260,12 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_secondaryAssociationCreatesI
 //	This optimization may reduce the overhead of update operations significantly if the callback function is expensive.
 //	Be sure to specify this flag only if the secondary key in the primary record is never changed. 
 //	If this rule is violated, the secondary index will become corrupted, that is, it will become out of sync with the primary.
-VALUE rb_RPDB_DatabaseAssociationSettingsController_immutableSecondaryKey( VALUE	rb_database_association_settings_controller )	{
+VALUE rb_Rbdb_DatabaseAssociationSettingsController_immutableSecondaryKey( VALUE	rb_database_association_settings_controller )	{
 
-	RPDB_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
-	C_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
+	Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
+	C_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
 
-	BOOL	c_immutable_secondary_key		=	RPDB_DatabaseAssociationSettingsController_immutableSecondaryKey( c_database_association_settings_controller );
+	BOOL	c_immutable_secondary_key		=	Rbdb_DatabaseAssociationSettingsController_immutableSecondaryKey( c_database_association_settings_controller );
 
 	VALUE	rb_immutable_secondary_key	=	( c_immutable_secondary_key ? Qtrue : Qfalse );
 	
@@ -276,12 +276,12 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_immutableSecondaryKey( VALUE
 	*  turn_immutable_secondary_key_on  *
 	************************************/
 
-	VALUE rb_RPDB_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOn( VALUE	rb_database_association_settings_controller )	{
+	VALUE rb_Rbdb_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOn( VALUE	rb_database_association_settings_controller )	{
 
-		RPDB_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
-		C_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
+		Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
+		C_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
 
-		RPDB_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOn( c_database_association_settings_controller );
+		Rbdb_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOn( c_database_association_settings_controller );
 
 		return rb_database_association_settings_controller;
 	}
@@ -290,12 +290,12 @@ VALUE rb_RPDB_DatabaseAssociationSettingsController_immutableSecondaryKey( VALUE
 	*  turn_immutable_secondary_key_off  *
 	*************************************/
 
-	VALUE rb_RPDB_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOff( VALUE	rb_database_association_settings_controller )	{
+	VALUE rb_Rbdb_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOff( VALUE	rb_database_association_settings_controller )	{
 
-		RPDB_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
-		C_RPDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
+		Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
+		C_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
 
-		RPDB_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOff( c_database_association_settings_controller );
+		Rbdb_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOff( c_database_association_settings_controller );
 
 		return rb_database_association_settings_controller;
 	}

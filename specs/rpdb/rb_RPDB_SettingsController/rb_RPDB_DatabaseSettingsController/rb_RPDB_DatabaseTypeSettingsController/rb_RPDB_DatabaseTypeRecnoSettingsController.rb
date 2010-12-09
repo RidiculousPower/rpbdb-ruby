@@ -1,8 +1,8 @@
-require_relative '../../../../../lib/rpdb.rb'
+require_relative '../../../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Database::Type::Recno do
+describe Rbdb::Settings::Database::Type::Recno do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Database::Type::Recno do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,34 +26,34 @@ describe RPDB::Settings::Database::Type::Recno do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Database::Type::Recno.new( environment )
+  # Rbdb::Settings::Database::Type::Recno.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Type::Recno.new( @environment ).is_a?( RPDB::Settings::Database::Type::Recno ).should == true
+    Rbdb::Settings::Database::Type::Recno.new( @environment ).is_a?( Rbdb::Settings::Database::Type::Recno ).should == true
   end
 
-  # RPDB::Settings::Database::Type::Recno.new( database_controller )
+  # Rbdb::Settings::Database::Type::Recno.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Type::Recno.new( @environment.database_controller ).is_a?( RPDB::Settings::Database::Type::Recno ).should == true
+    Rbdb::Settings::Database::Type::Recno.new( @environment.database_controller ).is_a?( Rbdb::Settings::Database::Type::Recno ).should == true
   end
 
-  # RPDB::Settings::Database::Type::Recno.new( database )
+  # Rbdb::Settings::Database::Type::Recno.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Type::Recno ).should == true
+    Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) ).is_a?( Rbdb::Settings::Database::Type::Recno ).should == true
   end
 
-  # RPDB::Settings::Database::Type::Recno.new( settings_controller )
+  # Rbdb::Settings::Database::Type::Recno.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Type::Recno.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database::Type::Recno ).should == true
+    Rbdb::Settings::Database::Type::Recno.new( Rbdb::Settings.new ).is_a?( Rbdb::Settings::Database::Type::Recno ).should == true
   end
 
-  # RPDB::Settings::Database::Type::Recno.new( database_settings_controller )
+  # Rbdb::Settings::Database::Type::Recno.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Type::Recno.new( RPDB::Settings::Database.new ).is_a?( RPDB::Settings::Database::Type::Recno ).should == true
+    Rbdb::Settings::Database::Type::Recno.new( Rbdb::Settings::Database.new ).is_a?( Rbdb::Settings::Database::Type::Recno ).should == true
   end
 
-  # RPDB::Settings::Database::Type::Recno.new
+  # Rbdb::Settings::Database::Type::Recno.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Type::Recno.new.is_a?( RPDB::Settings::Database::Type::Recno ).should == true
+    Rbdb::Settings::Database::Type::Recno.new.is_a?( Rbdb::Settings::Database::Type::Recno ).should == true
   end
 
   ########################
@@ -62,9 +62,9 @@ describe RPDB::Settings::Database::Type::Recno do
 
   it "can return its parent environment" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Recno.new.parent_environment.is_a?( RPDB::Environment ).should == true
+    Rbdb::Settings::Database::Type::Recno.new.parent_environment.is_a?( Rbdb::Environment ).should == true
     # with a database
-    RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
+    Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) ).parent_environment.is_a?( Rbdb::Environment ).should == true
   end
 
   #####################
@@ -73,9 +73,9 @@ describe RPDB::Settings::Database::Type::Recno do
 
   it "can return its parent database" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Recno.new.parent_database.should == nil
+    Rbdb::Settings::Database::Type::Recno.new.parent_database.should == nil
     # with a database
-    RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
+    Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) ).parent_database.is_a?( Rbdb::Database ).should == true
   end
 
   ################################
@@ -84,9 +84,9 @@ describe RPDB::Settings::Database::Type::Recno do
 
   it "can return its parent settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Recno.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    Rbdb::Settings::Database::Type::Recno.new.parent_settings_controller.is_a?( Rbdb::Settings ).should == true
     # with a database
-    RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) ).parent_settings_controller.is_a?( Rbdb::Settings ).should == true
   end
 
   #########################################
@@ -95,9 +95,9 @@ describe RPDB::Settings::Database::Type::Recno do
 
   it "can return its parent database settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Recno.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    Rbdb::Settings::Database::Type::Recno.new.parent_database_settings_controller.is_a?( Rbdb::Settings::Database ).should == true
     # with a database
-    RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( Rbdb::Settings::Database ).should == true
   end
 
   ##############################################
@@ -106,9 +106,9 @@ describe RPDB::Settings::Database::Type::Recno do
 
   it "can return its parent database type settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Recno.new.parent_database_type_settings_controller.is_a?( RPDB::Settings::Database::Type ).should == true
+    Rbdb::Settings::Database::Type::Recno.new.parent_database_type_settings_controller.is_a?( Rbdb::Settings::Database::Type ).should == true
     # with a database
-    RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) ).parent_database_type_settings_controller.is_a?( RPDB::Settings::Database::Type ).should == true
+    Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) ).parent_database_type_settings_controller.is_a?( Rbdb::Settings::Database::Type ).should == true
   end
 
   ###################
@@ -117,9 +117,9 @@ describe RPDB::Settings::Database::Type::Recno do
 
   it "can return its database type" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Recno.new.database_type.should == RPDB::Database::Type::Recno
+    Rbdb::Settings::Database::Type::Recno.new.database_type.should == Rbdb::Database::Type::Recno
     # with a database
-    RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) ).database_type.should == RPDB::Database::Type::Recno
+    Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) ).database_type.should == Rbdb::Database::Type::Recno
   end
 
   ##################
@@ -128,9 +128,9 @@ describe RPDB::Settings::Database::Type::Recno do
 
   it "can report whether the type is btree" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Recno.new.is_btree?.should == false
+    Rbdb::Settings::Database::Type::Recno.new.is_btree?.should == false
     # with a database
-    RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) ).is_btree?.should == false
+    Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) ).is_btree?.should == false
   end
 
   #################
@@ -139,9 +139,9 @@ describe RPDB::Settings::Database::Type::Recno do
 
   it "can report whether the type is hash" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Recno.new.is_hash?.should == false
+    Rbdb::Settings::Database::Type::Recno.new.is_hash?.should == false
     # with a database
-    RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) ).is_hash?.should == false
+    Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) ).is_hash?.should == false
   end
 
   ##################
@@ -150,9 +150,9 @@ describe RPDB::Settings::Database::Type::Recno do
 
   it "can report whether the type is queue" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Recno.new.is_recno?.should == true
+    Rbdb::Settings::Database::Type::Recno.new.is_recno?.should == true
     # with a database
-    RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) ).is_recno?.should == true
+    Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) ).is_recno?.should == true
   end
 
   ##################
@@ -161,9 +161,9 @@ describe RPDB::Settings::Database::Type::Recno do
 
   it "can report whether the type is recno" do
     # with a settings controller
-    RPDB::Settings::Database::Type::Recno.new.is_queue?.should == false
+    Rbdb::Settings::Database::Type::Recno.new.is_queue?.should == false
     # with a database
-    RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) ).is_queue?.should == false
+    Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) ).is_queue?.should == false
   end
 
   #################################
@@ -174,10 +174,10 @@ describe RPDB::Settings::Database::Type::Recno do
 
   it "can allow renumbering of record numbers" do
     # with a settings controller
-    recno_settings  = RPDB::Settings::Database::Type::Recno.new
+    recno_settings  = Rbdb::Settings::Database::Type::Recno.new
     test_record_renumbering( recno_settings )
     # with a database
-    recno_settings  = RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) )
+    recno_settings  = Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) )
     test_record_renumbering( recno_settings )
   end
 
@@ -199,10 +199,10 @@ describe RPDB::Settings::Database::Type::Recno do
 
   it "can provide snapshot isolation, which forces the record source file to be read in its entirety" do
     # with a settings controller
-    recno_settings  = RPDB::Settings::Database::Type::Recno.new
+    recno_settings  = Rbdb::Settings::Database::Type::Recno.new
     test_snapshot_isolation( recno_settings )
     # with a database
-    recno_settings  = RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) )
+    recno_settings  = Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) )
     test_snapshot_isolation( recno_settings )
   end
 
@@ -225,10 +225,10 @@ describe RPDB::Settings::Database::Type::Recno do
   it "can set and return the record source file that will be read during database opening" do
     # with a settings controller
     raise "File"
-    recno_settings  = RPDB::Settings::Database::Type::Recno.new
+    recno_settings  = Rbdb::Settings::Database::Type::Recno.new
     test_source_file( recno_settings )
     # with a database
-    recno_settings  = RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) )
+    recno_settings  = Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) )
     test_source_file( recno_settings )
   end
 
@@ -248,10 +248,10 @@ describe RPDB::Settings::Database::Type::Recno do
   it "can set and return a callback method to use for appending records" do
     raise "Callback."
     # with a settings controller
-    recno_settings  = RPDB::Settings::Database::Type::Recno.new
+    recno_settings  = Rbdb::Settings::Database::Type::Recno.new
     test_append_callback_method( recno_settings )
     # with a database
-    recno_settings  = RPDB::Settings::Database::Type::Recno.new( RPDB::Database.new( $database_name ) )
+    recno_settings  = Rbdb::Settings::Database::Type::Recno.new( Rbdb::Database.new( $database_name ) )
     test_append_callback_method( recno_settings )
   end
 

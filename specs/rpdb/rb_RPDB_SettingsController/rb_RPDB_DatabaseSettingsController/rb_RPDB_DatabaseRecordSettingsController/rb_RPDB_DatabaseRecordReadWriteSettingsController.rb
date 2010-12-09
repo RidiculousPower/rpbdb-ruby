@@ -1,8 +1,8 @@
-require_relative '../../../../../lib/rpdb.rb'
+require_relative '../../../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Database::Record::ReadWrite do
+describe Rbdb::Settings::Database::Record::ReadWrite do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,34 +26,34 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Database::Record::ReadWrite.new( environment )
+  # Rbdb::Settings::Database::Record::ReadWrite.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Record::ReadWrite.new( @environment ).should_not == nil
+    Rbdb::Settings::Database::Record::ReadWrite.new( @environment ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Record::ReadWrite.new( database_controller )
+  # Rbdb::Settings::Database::Record::ReadWrite.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Record::ReadWrite.new( @environment.database_controller ).should_not == nil
+    Rbdb::Settings::Database::Record::ReadWrite.new( @environment.database_controller ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Record::ReadWrite.new( database )
+  # Rbdb::Settings::Database::Record::ReadWrite.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) ).should_not == nil
+    Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Record::ReadWrite.new( settings_controller )
+  # Rbdb::Settings::Database::Record::ReadWrite.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Settings.new ).should_not == nil
+    Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Settings.new ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Record::ReadWrite.new( database_settings_controller )
+  # Rbdb::Settings::Database::Record::ReadWrite.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Settings::Database.new ).should_not == nil
+    Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Settings::Database.new ).should_not == nil
   end
 
-  # RPDB::Settings::Database::Record::ReadWrite.new
+  # Rbdb::Settings::Database::Record::ReadWrite.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Record::ReadWrite.new.should_not == nil
+    Rbdb::Settings::Database::Record::ReadWrite.new.should_not == nil
   end
   
   ########################
@@ -62,9 +62,9 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can return its parent environment" do
     # with settings controller
-    RPDB::Settings::Database::Record::ReadWrite.new.parent_environment.is_a?( RPDB::Environment ).should == true
+    Rbdb::Settings::Database::Record::ReadWrite.new.parent_environment.is_a?( Rbdb::Environment ).should == true
     # with database
-    RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
+    Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) ).parent_environment.is_a?( Rbdb::Environment ).should == true
   end
 
   #####################
@@ -73,9 +73,9 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can return its parent database" do
     # with settings controller
-    RPDB::Settings::Database::Record::ReadWrite.new.parent_database.should == nil
+    Rbdb::Settings::Database::Record::ReadWrite.new.parent_database.should == nil
     # with database
-    RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
+    Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) ).parent_database.is_a?( Rbdb::Database ).should == true
   end
 
   ################################
@@ -84,9 +84,9 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can return its parent settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Record::ReadWrite.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    Rbdb::Settings::Database::Record::ReadWrite.new.parent_settings_controller.is_a?( Rbdb::Settings ).should == true
     # with database
-    RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) ).parent_settings_controller.is_a?( Rbdb::Settings ).should == true
   end
 
   #########################################
@@ -95,9 +95,9 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can return its parent database settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Record::ReadWrite.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    Rbdb::Settings::Database::Record::ReadWrite.new.parent_database_settings_controller.is_a?( Rbdb::Settings::Database ).should == true
     # with database
-    RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( Rbdb::Settings::Database ).should == true
   end
 
   ################################################
@@ -106,9 +106,9 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can return its parent database settings controller" do
     # with settings controller
-    RPDB::Settings::Database::Record::ReadWrite.new.parent_database_record_settings_controller.is_a?( RPDB::Settings::Database::Record ).should == true
+    Rbdb::Settings::Database::Record::ReadWrite.new.parent_database_record_settings_controller.is_a?( Rbdb::Settings::Database::Record ).should == true
     # with database
-    RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) ).parent_database_record_settings_controller.is_a?( RPDB::Settings::Database::Record ).should == true
+    Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) ).parent_database_record_settings_controller.is_a?( Rbdb::Settings::Database::Record ).should == true
   end
 
   #####################################
@@ -119,10 +119,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can prohibit syncing on database close" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_prohibit_sync_on_close( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_prohibit_sync_on_close( read_write_settings )
   end
   
@@ -144,10 +144,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can return data regardless of master leases" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_ignore_lease( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_ignore_lease( read_write_settings )
   end
   
@@ -169,10 +169,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can return multiple data items in the record's data" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_return_multiple( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_return_multiple( read_write_settings )
   end
   
@@ -194,10 +194,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can prohibit duplicate data items" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_write_data_only_if_non_duplicate( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_write_data_only_if_non_duplicate( read_write_settings )
   end
   
@@ -219,10 +219,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can prohibit overwriting existing items" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_prohibit_overwrite( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_prohibit_overwrite( read_write_settings )
   end
   
@@ -244,10 +244,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can prohibit page compaction" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_prohibit_page_compaction( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_prohibit_page_compaction( read_write_settings )
   end
   
@@ -269,10 +269,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can return pages to the filesystem" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_return_pages_to_filesystem( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_return_pages_to_filesystem( read_write_settings )
   end
   
@@ -294,10 +294,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can truncate the database file upon opening" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_truncate_file_on_open( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_truncate_file_on_open( read_write_settings )
   end
   
@@ -319,10 +319,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can use write locks instead of read locks" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_write_locks_instead_of_read_locks( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_write_locks_instead_of_read_locks( read_write_settings )
   end
   
@@ -344,10 +344,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can write and retrieve data based on partial information" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_partial_access( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_partial_access( read_write_settings )
   end
   
@@ -369,10 +369,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can use malloc to allocate memory" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_database_allocates_memory_using_malloc( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_database_allocates_memory_using_malloc( read_write_settings )
   end
   
@@ -394,10 +394,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can use realloc to allocate memory" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_database_allocates_memory_using_realloc( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_database_allocates_memory_using_realloc( read_write_settings )
   end
   
@@ -419,10 +419,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can require that the application allocates memory" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_application_allocates_memory( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_application_allocates_memory( read_write_settings )
   end
   
@@ -444,10 +444,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can have the database free memory when finished with it" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_database_frees_memory( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_database_frees_memory( read_write_settings )
   end
   
@@ -469,10 +469,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can force sync prior to returning from write" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_sync_prior_to_write_return( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_sync_prior_to_write_return( read_write_settings )
   end
   
@@ -494,10 +494,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
     it "can permit duplicates" do
       # with settings controller
-      read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+      read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
       test_unsorted_duplicates( read_write_settings )
       # with database
-      read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+      read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
       test_unsorted_duplicates( read_write_settings )
     end
   
@@ -519,10 +519,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
     it "can permit sorted duplicates" do
       # with settings controller
-      read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+      read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
       test_sorted_duplicates( read_write_settings )
       # with database
-      read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+      read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
       test_sorted_duplicates( read_write_settings )
     end
   
@@ -544,10 +544,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
     it "can automatically serialize data to permit implicit storage of objects" do
       # with settings controller
-      read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+      read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
       test_serialize_data( read_write_settings )
       # with database
-      read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+      read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
       test_serialize_data( read_write_settings )
     end
   
@@ -568,10 +568,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can set the database filename" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_filename( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_filename( read_write_settings )
   end
   
@@ -589,10 +589,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can set its data buffer size" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_data_buffer_size( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_data_buffer_size( read_write_settings )
   end
   
@@ -610,10 +610,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can set partial read/write size" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_partial_read_write_size( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_partial_read_write_size( read_write_settings )
   end
   
@@ -631,10 +631,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can set partial read/write offset" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_partial_read_write_offset( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_partial_read_write_offset( read_write_settings )
   end
   
@@ -652,10 +652,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
 
   it "can set the type stored in database" do
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_storage_type( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_storage_type( read_write_settings )
   end
   
@@ -675,10 +675,10 @@ describe RPDB::Settings::Database::Record::ReadWrite do
   it "can set its write-failed callback method" do
     raise "Callback."
     # with settings controller
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
     test_write_failed_callback_method( read_write_settings )
     # with database
-    read_write_settings = RPDB::Settings::Database::Record::ReadWrite.new( RPDB::Database.new( $database_name ) )
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
     test_write_failed_callback_method( read_write_settings )
   end
   

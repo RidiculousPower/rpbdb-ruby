@@ -1,8 +1,8 @@
-require_relative '../../../../../lib/rpdb.rb'
+require_relative '../../../../../lib/rbdb.rb'
 
-describe RPDB::Settings::Database::Type do
+describe Rbdb::Settings::Database::Type do
 
-  $environment_path           = '/tmp/rpdb_spec_environment_home/'
+  $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $secondary_database_name    = $database_name.to_s + '_secondary'
@@ -11,7 +11,7 @@ describe RPDB::Settings::Database::Type do
   $duplicates_database_name   = :duplicates_db
   
   before( :each ) do
-    @environment = RPDB::Environment.new( $environment_path )
+    @environment = Rbdb::Environment.new( $environment_path )
     @environment.open
     @database_controller = @environment.database_controller
 
@@ -26,34 +26,34 @@ describe RPDB::Settings::Database::Type do
   #  initialize  #
   ################
 
-  # RPDB::Settings::Database::Type.new( environment )
+  # Rbdb::Settings::Database::Type.new( environment )
   it "can be created with an environment" do
-    RPDB::Settings::Database::Type.new( @environment ).is_a?( RPDB::Settings::Database::Type ).should == true
+    Rbdb::Settings::Database::Type.new( @environment ).is_a?( Rbdb::Settings::Database::Type ).should == true
   end
 
-  # RPDB::Settings::Database::Type.new( database_controller )
+  # Rbdb::Settings::Database::Type.new( database_controller )
   it "can be created with a database controller" do
-    RPDB::Settings::Database::Type.new( @environment.database_controller ).is_a?( RPDB::Settings::Database::Type ).should == true
+    Rbdb::Settings::Database::Type.new( @environment.database_controller ).is_a?( Rbdb::Settings::Database::Type ).should == true
   end
 
-  # RPDB::Settings::Database::Type.new( database )
+  # Rbdb::Settings::Database::Type.new( database )
   it "can be created with a database" do
-    RPDB::Settings::Database::Type.new( RPDB::Database.new( $database_name ) ).is_a?( RPDB::Settings::Database::Type::Btree ).should == true
+    Rbdb::Settings::Database::Type.new( Rbdb::Database.new( $database_name ) ).is_a?( Rbdb::Settings::Database::Type::Btree ).should == true
   end
 
-  # RPDB::Settings::Database::Type.new( settings_controller )
+  # Rbdb::Settings::Database::Type.new( settings_controller )
   it "can be created with a settings controller" do
-    RPDB::Settings::Database::Type.new( RPDB::Settings.new ).is_a?( RPDB::Settings::Database::Type ).should == true
+    Rbdb::Settings::Database::Type.new( Rbdb::Settings.new ).is_a?( Rbdb::Settings::Database::Type ).should == true
   end
 
-  # RPDB::Settings::Database::Type.new( database_settings_controller )
+  # Rbdb::Settings::Database::Type.new( database_settings_controller )
   it "can be created with a database settings controller" do
-    RPDB::Settings::Database::Type.new( RPDB::Settings::Database.new ).is_a?( RPDB::Settings::Database::Type ).should == true
+    Rbdb::Settings::Database::Type.new( Rbdb::Settings::Database.new ).is_a?( Rbdb::Settings::Database::Type ).should == true
   end
 
-  # RPDB::Settings::Database::Type.new
+  # Rbdb::Settings::Database::Type.new
   it "can be created with no argument specified" do
-    RPDB::Settings::Database::Type.new.is_a?( RPDB::Settings::Database::Type ).should == true
+    Rbdb::Settings::Database::Type.new.is_a?( Rbdb::Settings::Database::Type ).should == true
   end
 
   ########################
@@ -62,9 +62,9 @@ describe RPDB::Settings::Database::Type do
 
   it "can return its parent environment" do
     # with a settings controller
-    RPDB::Settings::Database::Type.new.parent_environment.is_a?( RPDB::Environment ).should == true
+    Rbdb::Settings::Database::Type.new.parent_environment.is_a?( Rbdb::Environment ).should == true
     # with a database
-    RPDB::Settings::Database::Type.new( RPDB::Database.new( $database_name ) ).parent_environment.is_a?( RPDB::Environment ).should == true
+    Rbdb::Settings::Database::Type.new( Rbdb::Database.new( $database_name ) ).parent_environment.is_a?( Rbdb::Environment ).should == true
   end
 
   #####################
@@ -73,9 +73,9 @@ describe RPDB::Settings::Database::Type do
 
   it "can return its parent database" do
     # with a settings controller
-    RPDB::Settings::Database::Type.new.parent_database.should == nil
+    Rbdb::Settings::Database::Type.new.parent_database.should == nil
     # with a database
-    RPDB::Settings::Database::Type.new( RPDB::Database.new( $database_name ) ).parent_database.is_a?( RPDB::Database ).should == true
+    Rbdb::Settings::Database::Type.new( Rbdb::Database.new( $database_name ) ).parent_database.is_a?( Rbdb::Database ).should == true
   end
 
   ################################
@@ -84,9 +84,9 @@ describe RPDB::Settings::Database::Type do
 
   it "can return its parent settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Type.new.parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    Rbdb::Settings::Database::Type.new.parent_settings_controller.is_a?( Rbdb::Settings ).should == true
     # with a database
-    RPDB::Settings::Database::Type.new( RPDB::Database.new( $database_name ) ).parent_settings_controller.is_a?( RPDB::Settings ).should == true
+    Rbdb::Settings::Database::Type.new( Rbdb::Database.new( $database_name ) ).parent_settings_controller.is_a?( Rbdb::Settings ).should == true
   end
 
   #########################################
@@ -95,9 +95,9 @@ describe RPDB::Settings::Database::Type do
 
   it "can return its parent database settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Type.new.parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    Rbdb::Settings::Database::Type.new.parent_database_settings_controller.is_a?( Rbdb::Settings::Database ).should == true
     # with a database
-    RPDB::Settings::Database::Type.new( RPDB::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( RPDB::Settings::Database ).should == true
+    Rbdb::Settings::Database::Type.new( Rbdb::Database.new( $database_name ) ).parent_database_settings_controller.is_a?( Rbdb::Settings::Database ).should == true
   end
 
   ###################
@@ -106,9 +106,9 @@ describe RPDB::Settings::Database::Type do
 
   it "can return its database type" do
     # with a settings controller
-    RPDB::Settings::Database::Type.new.database_type.should == RPDB::Database::Type::Btree
+    Rbdb::Settings::Database::Type.new.database_type.should == Rbdb::Database::Type::Btree
     # with a database
-    RPDB::Settings::Database::Type.new( RPDB::Database.new( $database_name ) ).database_type.should == RPDB::Database::Type::Btree
+    Rbdb::Settings::Database::Type.new( Rbdb::Database.new( $database_name ) ).database_type.should == Rbdb::Database::Type::Btree
   end
 
   #######################
@@ -118,9 +118,9 @@ describe RPDB::Settings::Database::Type do
 
   it "can set the default type to btree and report whether the type is btree" do
     # with a settings controller
-    type_settings = RPDB::Settings::Database::Type.new
+    type_settings = Rbdb::Settings::Database::Type.new
     # with a database
-    type_settings = RPDB::Settings::Database::Type.new( RPDB::Database.new( $database_name ) )
+    type_settings = Rbdb::Settings::Database::Type.new( Rbdb::Database.new( $database_name ) )
   end
 
   def test_is_btree( type_settings )
@@ -137,9 +137,9 @@ describe RPDB::Settings::Database::Type do
 
   it "can set the default type to hash and report whether the type is hash" do
     # with a settings controller
-    type_settings = RPDB::Settings::Database::Type.new
+    type_settings = Rbdb::Settings::Database::Type.new
     # with a database
-    type_settings = RPDB::Settings::Database::Type.new( RPDB::Database.new( $database_name ) )
+    type_settings = Rbdb::Settings::Database::Type.new( Rbdb::Database.new( $database_name ) )
 
   end
 
@@ -157,9 +157,9 @@ describe RPDB::Settings::Database::Type do
 
   it "can set the default type to queue and report whether the type is queue" do
     # with a settings controller
-    type_settings = RPDB::Settings::Database::Type.new
+    type_settings = Rbdb::Settings::Database::Type.new
     # with a database
-    type_settings = RPDB::Settings::Database::Type.new( RPDB::Database.new( $database_name ) )
+    type_settings = Rbdb::Settings::Database::Type.new( Rbdb::Database.new( $database_name ) )
   end
 
   def test_is_recno( type_settings )
@@ -176,9 +176,9 @@ describe RPDB::Settings::Database::Type do
 
   it "can set the default type to recno and report whether the type is recno" do
     # with a settings controller
-    type_settings = RPDB::Settings::Database::Type.new
+    type_settings = Rbdb::Settings::Database::Type.new
     # with a database
-    type_settings = RPDB::Settings::Database::Type.new( RPDB::Database.new( $database_name ) )
+    type_settings = Rbdb::Settings::Database::Type.new( Rbdb::Database.new( $database_name ) )
   end
 
   def test_is_queue( type_settings )
@@ -194,9 +194,9 @@ describe RPDB::Settings::Database::Type do
 
   it "can return its btree settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Type.new.btree_settings_controller.is_a?( RPDB::Settings::Database::Type::Btree ).should == true
+    Rbdb::Settings::Database::Type.new.btree_settings_controller.is_a?( Rbdb::Settings::Database::Type::Btree ).should == true
     # with a database
-    RPDB::Settings::Database::Type.new( RPDB::Database::Btree.new( $database_name ) ).is_a?( RPDB::Settings::Database::Type::Btree ).should == true
+    Rbdb::Settings::Database::Type.new( Rbdb::Database::Btree.new( $database_name ) ).is_a?( Rbdb::Settings::Database::Type::Btree ).should == true
   end
 
   ##############################
@@ -205,9 +205,9 @@ describe RPDB::Settings::Database::Type do
 
   it "can return its hash settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Type.new.hash_settings_controller.is_a?( RPDB::Settings::Database::Type::Hash ).should == true
+    Rbdb::Settings::Database::Type.new.hash_settings_controller.is_a?( Rbdb::Settings::Database::Type::Hash ).should == true
     # with a database
-    RPDB::Settings::Database::Type.new( RPDB::Database::Hash.new( $database_name ) ).is_a?( RPDB::Settings::Database::Type::Hash ).should == true
+    Rbdb::Settings::Database::Type.new( Rbdb::Database::Hash.new( $database_name ) ).is_a?( Rbdb::Settings::Database::Type::Hash ).should == true
   end
 
   ###############################
@@ -216,9 +216,9 @@ describe RPDB::Settings::Database::Type do
 
   it "can return its queue settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Type.new.queue_settings_controller.is_a?( RPDB::Settings::Database::Type::Queue ).should == true
+    Rbdb::Settings::Database::Type.new.queue_settings_controller.is_a?( Rbdb::Settings::Database::Type::Queue ).should == true
     # with a database
-    RPDB::Settings::Database::Type.new( RPDB::Database::Queue.new( $database_name ) ).is_a?( RPDB::Settings::Database::Type::Queue ).should == true
+    Rbdb::Settings::Database::Type.new( Rbdb::Database::Queue.new( $database_name ) ).is_a?( Rbdb::Settings::Database::Type::Queue ).should == true
   end
 
   ###############################
@@ -227,9 +227,9 @@ describe RPDB::Settings::Database::Type do
 
   it "can return its recno settings controller" do
     # with a settings controller
-    RPDB::Settings::Database::Type.new.recno_settings_controller.is_a?( RPDB::Settings::Database::Type::Recno ).should == true
+    Rbdb::Settings::Database::Type.new.recno_settings_controller.is_a?( Rbdb::Settings::Database::Type::Recno ).should == true
     # with a database
-    RPDB::Settings::Database::Type.new( RPDB::Database::Recno.new( $database_name ) ).is_a?( RPDB::Settings::Database::Type::Recno ).should == true
+    Rbdb::Settings::Database::Type.new( Rbdb::Database::Recno.new( $database_name ) ).is_a?( Rbdb::Settings::Database::Type::Recno ).should == true
   end
 
 end
