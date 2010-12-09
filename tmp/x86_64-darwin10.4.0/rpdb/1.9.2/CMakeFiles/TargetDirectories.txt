@@ -1,1 +1,0 @@
-/Users/asher/Projects/rp/ruby/rbdb/tmp/x86_64-darwin10.4.0/rbdb/1.9.2/rbdb/CMakeFiles/rb_rbdb.dir
