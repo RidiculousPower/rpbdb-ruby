@@ -247,7 +247,7 @@ VALUE rb_Rbdb_DatabaseCursor_new( int			argc,
 	C_Rbdb_DATABASE_CURSOR_CONTROLLER( rb_parent_cursor_controller, c_parent_cursor_controller );
 
 	Rbdb_DatabaseCursor*	c_database_cursor		=	Rbdb_DatabaseCursorController_cursor( c_parent_cursor_controller );
-	VALUE									rb_database_cursor	=	RUBY_Rbdb_DATABASE_CURSOR( c_database_cursor );
+	VALUE									rb_database_cursor	=	RUBY_RBDB_DATABASE_CURSOR( c_database_cursor );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_cursor,
@@ -383,7 +383,7 @@ VALUE rb_Rbdb_DatabaseCursor_duplicateCursor( VALUE	rb_database_cursor )	{
 
 	Rbdb_DatabaseCursor*		c_duplicate_cursor	=	Rbdb_DatabaseCursor_duplicateCursor( c_database_cursor );
 
-	VALUE	rb_duplicate_cursor	=	RUBY_Rbdb_DATABASE_CURSOR( c_duplicate_cursor );
+	VALUE	rb_duplicate_cursor	=	RUBY_RBDB_DATABASE_CURSOR( c_duplicate_cursor );
 
  	return rb_duplicate_cursor;
 }

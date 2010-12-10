@@ -87,7 +87,7 @@ VALUE rb_Rbdb_ReplicationController_new(	int			argc,
 	Rbdb_Environment*		c_parent_environment;
 	C_Rbdb_ENVIRONMENT( rb_parent_environment, c_parent_environment );
 	
-	VALUE	rb_replication_controller	=	RUBY_Rbdb_REPLICATION_CONTROLLER( Rbdb_ReplicationController_new( c_parent_environment ) );
+	VALUE	rb_replication_controller	=	RUBY_RBDB_REPLICATION_CONTROLLER( Rbdb_ReplicationController_new( c_parent_environment ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_replication_controller,
@@ -128,7 +128,7 @@ VALUE rb_Rbdb_ReplicationController_settingsController(	VALUE	rb_replication_con
 	
 		Rbdb_ReplicationSettingsController*	c_local_replication_settings_controller	=	Rbdb_ReplicationController_settingsController( c_replication_controller );
 
-		rb_local_replication_settings_controller	=	RUBY_Rbdb_REPLICATION_SETTINGS_CONTROLLER( c_local_replication_settings_controller );
+		rb_local_replication_settings_controller	=	RUBY_RBDB_REPLICATION_SETTINGS_CONTROLLER( c_local_replication_settings_controller );
 
 		rb_iv_set(	rb_replication_controller,
 								Rbdb_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER,

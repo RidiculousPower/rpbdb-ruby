@@ -121,7 +121,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_new(	int			argc,
 
 	Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller	=	Rbdb_ReplicationSettingsController_electionSettingsController( c_parent_replication_settings_controller );
 
-	VALUE	rb_replication_election_settings_controller	= RUBY_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( c_replication_election_settings_controller );
+	VALUE	rb_replication_election_settings_controller	= RUBY_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( c_replication_election_settings_controller );
 
 	rb_iv_set(	rb_replication_election_settings_controller,
 							Rbdb_RB_REPLICATION_ELECTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER,

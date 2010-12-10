@@ -80,7 +80,7 @@ VALUE rb_Rbdb_RemoteSite_new(	int			argc,
 	
 	Rbdb_RemoteSite*	c_remote_site	=	Rbdb_RemoteSite_new( c_parent_replication_controller );
 	
-	VALUE	rb_remote_site	=	RUBY_Rbdb_REMOTE_SITE( c_remote_site );
+	VALUE	rb_remote_site	=	RUBY_RBDB_REMOTE_SITE( c_remote_site );
 
 	//	store reference to parent
 	rb_iv_set(	rb_remote_site,
@@ -121,7 +121,7 @@ VALUE rb_Rbdb_RemoteSite_settingsController(	VALUE	rb_remote_site )	{
 	
 		Rbdb_ReplicationSettingsController*	c_local_replication_settings_controller	=	Rbdb_RemoteSite_settingsController( c_remote_site );
 
-		rb_local_replication_settings_controller	=	RUBY_Rbdb_REPLICATION_SETTINGS_CONTROLLER( c_local_replication_settings_controller );
+		rb_local_replication_settings_controller	=	RUBY_RBDB_REPLICATION_SETTINGS_CONTROLLER( c_local_replication_settings_controller );
 
 		rb_iv_set(	rb_remote_site,
 								Rbdb_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER,

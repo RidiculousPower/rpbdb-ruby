@@ -386,275 +386,275 @@
 	*	Get Ruby from C Macros	*
 	****************************/
 
-	#define RUBY_Rbdb_ENVIRONMENT( c_environment )																																RUBY_Rbdb_OBJECT(	c_environment, rb_Rbdb_Environment, NULL, NULL )
-	#define RUBY_Rbdb_ENVIRONMENT_WITH_FREE( c_environment )																											RUBY_Rbdb_OBJECT(	c_environment, rb_Rbdb_Environment, NULL, rb_Rbdb_Environment_free )
+	#define RUBY_RBDB_ENVIRONMENT( c_environment )																																RUBY_RBDB_OBJECT(	c_environment, rb_Rbdb_Environment, NULL, NULL )
+	#define RUBY_RBDB_ENVIRONMENT_WITH_FREE( c_environment )																											RUBY_RBDB_OBJECT(	c_environment, rb_Rbdb_Environment, NULL, rb_Rbdb_Environment_free )
 	#define C_Rbdb_ENVIRONMENT( rb_environment, c_environment )																										C_Rbdb_STRUCT(		rb_environment, c_environment, Rbdb_Environment )
                                                                                                     								
-	#define RUBY_Rbdb_DATABASE_CONTROLLER( c_database_controller )																								RUBY_Rbdb_OBJECT(	c_database_controller, rb_Rbdb_DatabaseController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_CONTROLLER( c_database_controller )																								RUBY_RBDB_OBJECT(	c_database_controller, rb_Rbdb_DatabaseController, NULL, NULL )
 	#define C_Rbdb_DATABASE_CONTROLLER( rb_database_controller, c_database_controller )														C_Rbdb_STRUCT(		rb_database_controller, c_database_controller, Rbdb_DatabaseController )
                                                                                                     								
-	#define RUBY_Rbdb_DATABASE( c_database )																									RUBY_Rbdb_OBJECT(	c_database, rb_Rbdb_Database, NULL, NULL )
+	#define RUBY_RBDB_DATABASE( c_database )																									RUBY_RBDB_OBJECT(	c_database, rb_Rbdb_Database, NULL, NULL )
 	#define C_Rbdb_DATABASE( rb_database, c_database )																				C_Rbdb_STRUCT(		rb_database, c_database, Rbdb_Database )
 
-	#define RUBY_Rbdb_BTREE_DATABASE( c_btree_database )																									RUBY_Rbdb_OBJECT(	c_btree_database, rb_Rbdb_BtreeDatabase, NULL, NULL )
-	#define RUBY_Rbdb_HASH_DATABASE( c_hash_database )																										RUBY_Rbdb_OBJECT(	c_hash_database, rb_Rbdb_HashDatabase, NULL, NULL )
-	#define RUBY_Rbdb_QUEUE_DATABASE( c_queue_database )																									RUBY_Rbdb_OBJECT(	c_queue_database, rb_Rbdb_QueueDatabase, NULL, NULL )
-	#define RUBY_Rbdb_RECNO_DATABASE( c_recno_database )																									RUBY_Rbdb_OBJECT(	c_recno_database, rb_Rbdb_RecnoDatabase, NULL, NULL )
+	#define RUBY_RBDB_BTREE_DATABASE( c_btree_database )																									RUBY_RBDB_OBJECT(	c_btree_database, rb_Rbdb_BtreeDatabase, NULL, NULL )
+	#define RUBY_RBDB_HASH_DATABASE( c_hash_database )																										RUBY_RBDB_OBJECT(	c_hash_database, rb_Rbdb_HashDatabase, NULL, NULL )
+	#define RUBY_RBDB_QUEUE_DATABASE( c_queue_database )																									RUBY_RBDB_OBJECT(	c_queue_database, rb_Rbdb_QueueDatabase, NULL, NULL )
+	#define RUBY_RBDB_RECNO_DATABASE( c_recno_database )																									RUBY_RBDB_OBJECT(	c_recno_database, rb_Rbdb_RecnoDatabase, NULL, NULL )
 
-	#define RUBY_Rbdb_DATABASE_OBJECT_DATABASE( c_database )																		RUBY_Rbdb_OBJECT(	c_database, rb_Rbdb_DatabaseObjectDatabase, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_OBJECT_DATABASE( c_database )																		RUBY_RBDB_OBJECT(	c_database, rb_Rbdb_DatabaseObjectDatabase, NULL, NULL )
 	#define C_Rbdb_DATABASE_OBJECT_DATABASE( rb_database, c_database )																C_Rbdb_STRUCT(		rb_database, c_database, Rbdb_Database )
 
-	#define RUBY_Rbdb_DATABASE_CURSOR_CONTROLLER( c_cursor_controller )															RUBY_Rbdb_OBJECT(	c_cursor_controller, rb_Rbdb_DatabaseCursorController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_CURSOR_CONTROLLER( c_cursor_controller )															RUBY_RBDB_OBJECT(	c_cursor_controller, rb_Rbdb_DatabaseCursorController, NULL, NULL )
 	#define C_Rbdb_DATABASE_CURSOR_CONTROLLER( rb_cursor_controller, c_cursor_controller )											C_Rbdb_STRUCT(		rb_cursor_controller, c_cursor_controller, Rbdb_DatabaseCursorController )
                                                                             														
-	#define RUBY_Rbdb_DATABASE_CURSOR( c_cursor )																					RUBY_Rbdb_OBJECT(	c_cursor, rb_Rbdb_DatabaseCursor, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_CURSOR( c_cursor )																					RUBY_RBDB_OBJECT(	c_cursor, rb_Rbdb_DatabaseCursor, NULL, NULL )
 	#define C_Rbdb_DATABASE_CURSOR( rb_cursor, c_cursor )																			C_Rbdb_STRUCT(		rb_cursor, c_cursor, Rbdb_DatabaseCursor )
                                                                             														
-	#define RUBY_Rbdb_DATABASE_OBJECT_CURSOR( c_cursor )																			RUBY_Rbdb_OBJECT(	c_cursor, rb_Rbdb_DatabaseObjectCursor, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_OBJECT_CURSOR( c_cursor )																			RUBY_RBDB_OBJECT(	c_cursor, rb_Rbdb_DatabaseObjectCursor, NULL, NULL )
 	#define C_Rbdb_DATABASE_OBJECT_CURSOR( rb_cursor, c_cursor )																	C_Rbdb_STRUCT(		rb_cursor, c_cursor, Rbdb_DatabaseCursor )
                                                                                                     								
-	#define RUBY_Rbdb_DATABASE_JOIN_CONTROLLER( c_join_controller )																RUBY_Rbdb_OBJECT(	c_join_controller, rb_Rbdb_DatabaseJoinController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_JOIN_CONTROLLER( c_join_controller )																RUBY_RBDB_OBJECT(	c_join_controller, rb_Rbdb_DatabaseJoinController, NULL, NULL )
 	#define C_Rbdb_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller )												C_Rbdb_STRUCT(		rb_join_controller, c_join_controller, Rbdb_DatabaseJoinController )
                                                                             														
-	#define RUBY_Rbdb_DATABASE_JOIN_CURSOR( c_join_cursor )																		RUBY_Rbdb_OBJECT(	c_join_cursor, rb_Rbdb_DatabaseJoinCursor, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_JOIN_CURSOR( c_join_cursor )																		RUBY_RBDB_OBJECT(	c_join_cursor, rb_Rbdb_DatabaseJoinCursor, NULL, NULL )
 	#define C_Rbdb_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor )															C_Rbdb_STRUCT(		rb_join_cursor, c_join_cursor, Rbdb_DatabaseJoinCursor )
                                                                                                                             		
-	#define RUBY_Rbdb_DATABASE_SEQUENCE_CONTROLLER( c_database_sequence_controller )												RUBY_Rbdb_OBJECT(	c_database_sequence_controller, rb_Rbdb_DatabaseSequenceController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_SEQUENCE_CONTROLLER( c_database_sequence_controller )												RUBY_RBDB_OBJECT(	c_database_sequence_controller, rb_Rbdb_DatabaseSequenceController, NULL, NULL )
 	#define C_Rbdb_DATABASE_SEQUENCE_CONTROLLER( rb_database_sequence_controller, c_database_sequence_controller )					C_Rbdb_STRUCT(		rb_database_sequence_controller, c_database_sequence_controller, Rbdb_DatabaseSequenceController )
                                                                                                                             		
-	#define RUBY_Rbdb_DATABASE_SEQUENCE( c_database_sequence )																		RUBY_Rbdb_OBJECT(	c_database_sequence, rb_Rbdb_DatabaseSequence, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_SEQUENCE( c_database_sequence )																		RUBY_RBDB_OBJECT(	c_database_sequence, rb_Rbdb_DatabaseSequence, NULL, NULL )
 	#define C_Rbdb_DATABASE_SEQUENCE( rb_database_sequence, c_database_sequence )													C_Rbdb_STRUCT(		rb_database_sequence, c_database_sequence, Rbdb_DatabaseSequence )
 
-	#define RUBY_Rbdb_ERROR_CONTROLLER( c_error_controller )																		RUBY_Rbdb_OBJECT(	c_error_controller, rb_Rbdb_ErrorController, NULL, NULL )
+	#define RUBY_RBDB_ERROR_CONTROLLER( c_error_controller )																		RUBY_RBDB_OBJECT(	c_error_controller, rb_Rbdb_ErrorController, NULL, NULL )
 	#define C_Rbdb_ERROR_CONTROLLER( rb_error_controller, c_error_controller )														C_Rbdb_STRUCT(		rb_error_controller, c_error_controller, Rbdb_ErrorController )
 
-	#define RUBY_Rbdb_ERROR( c_error )																								RUBY_Rbdb_OBJECT(	c_error, rb_Rbdb_Error, NULL, NULL )
+	#define RUBY_RBDB_ERROR( c_error )																								RUBY_RBDB_OBJECT(	c_error, rb_Rbdb_Error, NULL, NULL )
 	#define C_Rbdb_ERROR( rb_error, c_error )																						C_Rbdb_STRUCT(		rb_error, c_error, Rbdb_Error )
 
-	#define RUBY_Rbdb_LOCK_CONTROLLER( c_lock_controller )																			RUBY_Rbdb_OBJECT(	c_lock_controller, rb_Rbdb_LockController, NULL, NULL )
+	#define RUBY_RBDB_LOCK_CONTROLLER( c_lock_controller )																			RUBY_RBDB_OBJECT(	c_lock_controller, rb_Rbdb_LockController, NULL, NULL )
 	#define C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller )														C_Rbdb_STRUCT(		rb_lock_controller, c_lock_controller, Rbdb_LockController )
 
-	#define RUBY_Rbdb_LOCK( c_lock )																								RUBY_Rbdb_OBJECT(	c_lock, rb_Rbdb_Lock, NULL, NULL )
+	#define RUBY_RBDB_LOCK( c_lock )																								RUBY_RBDB_OBJECT(	c_lock, rb_Rbdb_Lock, NULL, NULL )
 	#define C_Rbdb_LOCK( rb_lock, c_lock )																							C_Rbdb_STRUCT(		rb_lock, c_lock, Rbdb_Lock )
 
-	#define RUBY_Rbdb_LOG_CONTROLLER( c_log_controller )																			RUBY_Rbdb_OBJECT(	c_log_controller, rb_Rbdb_LogController, NULL, NULL )
+	#define RUBY_RBDB_LOG_CONTROLLER( c_log_controller )																			RUBY_RBDB_OBJECT(	c_log_controller, rb_Rbdb_LogController, NULL, NULL )
 	#define C_Rbdb_LOG_CONTROLLER( rb_log_controller, c_log_controller )															C_Rbdb_STRUCT(		rb_log_controller, c_log_controller, Rbdb_LogController )
 
-	#define RUBY_Rbdb_LOG( c_log )																									RUBY_Rbdb_OBJECT(	c_log, rb_Rbdb_Log, NULL, NULL )
+	#define RUBY_RBDB_LOG( c_log )																									RUBY_RBDB_OBJECT(	c_log, rb_Rbdb_Log, NULL, NULL )
 	#define C_Rbdb_LOG( rb_log, c_log )																							C_Rbdb_STRUCT(		rb_log, c_log, Rbdb_Log )
 
-	#define RUBY_Rbdb_LOG_CURSOR_CONTROLLER( c_log_cursor_controller )																RUBY_Rbdb_OBJECT(	c_log_cursor_controller, rb_Rbdb_LogCursorController, NULL, NULL )
+	#define RUBY_RBDB_LOG_CURSOR_CONTROLLER( c_log_cursor_controller )																RUBY_RBDB_OBJECT(	c_log_cursor_controller, rb_Rbdb_LogCursorController, NULL, NULL )
 	#define C_Rbdb_LOG_CURSOR_CONTROLLER( rb_log_cursor_controller, c_log_cursor_controller )										C_Rbdb_STRUCT(		rb_log_cursor_controller, c_log_cursor_controller, Rbdb_LogCursorController )
 
-	#define RUBY_Rbdb_LOG_CURSOR( c_log_cursor )																					RUBY_Rbdb_OBJECT(	c_log_cursor, rb_Rbdb_LogCursor, NULL, NULL )
+	#define RUBY_RBDB_LOG_CURSOR( c_log_cursor )																					RUBY_RBDB_OBJECT(	c_log_cursor, rb_Rbdb_LogCursor, NULL, NULL )
 	#define C_Rbdb_LOG_CURSOR( rb_log_cursor, c_log_cursor )																		C_Rbdb_STRUCT(		rb_log_cursor, c_log_cursor, Rbdb_LogCursor )
 
-	#define RUBY_Rbdb_LOG_SEQUENCE_NUMBER( c_log_sequence_number )																	RUBY_Rbdb_OBJECT(	c_log_sequence_number, rb_Rbdb_LogSequenceNumber, NULL, NULL )
+	#define RUBY_RBDB_LOG_SEQUENCE_NUMBER( c_log_sequence_number )																	RUBY_RBDB_OBJECT(	c_log_sequence_number, rb_Rbdb_LogSequenceNumber, NULL, NULL )
 	#define C_Rbdb_LOG_SEQUENCE_NUMBER( rb_log_sequence_number, c_log_sequence_number )											C_Rbdb_STRUCT(		rb_log_sequence_number, c_log_sequence_number, Rbdb_LogSequenceNumber )
 
-	#define RUBY_Rbdb_MEMORY_POOL_CONTROLLER( c_memory_pool_controller )															RUBY_Rbdb_OBJECT(	c_memory_pool_controller, rb_Rbdb_MemoryPoolController, NULL, NULL )
+	#define RUBY_RBDB_MEMORY_POOL_CONTROLLER( c_memory_pool_controller )															RUBY_RBDB_OBJECT(	c_memory_pool_controller, rb_Rbdb_MemoryPoolController, NULL, NULL )
 	#define C_Rbdb_MEMORY_POOL_CONTROLLER( rb_memory_pool_controller, c_memory_pool_controller )									C_Rbdb_STRUCT(		rb_memory_pool_controller, c_memory_pool_controller, Rbdb_MemoryPoolController )
 
-	#define RUBY_Rbdb_MEMORY_POOL_FILE_CONTROLLER( c_memory_pool_file_controller )													RUBY_Rbdb_OBJECT(	c_memory_pool_file_controller, rb_Rbdb_MemoryPoolFileController, NULL, NULL )
+	#define RUBY_RBDB_MEMORY_POOL_FILE_CONTROLLER( c_memory_pool_file_controller )													RUBY_RBDB_OBJECT(	c_memory_pool_file_controller, rb_Rbdb_MemoryPoolFileController, NULL, NULL )
 	#define C_Rbdb_MEMORY_POOL_FILE_CONTROLLER( rb_memory_pool_file_controller, c_memory_pool_file_controller )					C_Rbdb_STRUCT(		rb_memory_pool_file_controller, c_memory_pool_file_controller, Rbdb_MemoryPoolFileController )
 
-	#define RUBY_Rbdb_MEMORY_POOL_FILE( c_memory_pool_file )																		RUBY_Rbdb_OBJECT(	c_memory_pool_file, rb_Rbdb_MemoryPoolFile, NULL, NULL )
+	#define RUBY_RBDB_MEMORY_POOL_FILE( c_memory_pool_file )																		RUBY_RBDB_OBJECT(	c_memory_pool_file, rb_Rbdb_MemoryPoolFile, NULL, NULL )
 	#define C_Rbdb_MEMORY_POOL_FILE( rb_memory_pool_file, c_memory_pool_file )														C_Rbdb_STRUCT(		rb_memory_pool_file, c_memory_pool_file, Rbdb_MemoryPoolFile )
 
-	#define RUBY_Rbdb_MEMORY_POOL_FILE_PAGE_CONTROLLER( c_memory_pool_file_page_controller )										RUBY_Rbdb_OBJECT(	c_memory_pool_file_page_controller, rb_Rbdb_MemoryPoolFilePageController, NULL, NULL )
+	#define RUBY_RBDB_MEMORY_POOL_FILE_PAGE_CONTROLLER( c_memory_pool_file_page_controller )										RUBY_RBDB_OBJECT(	c_memory_pool_file_page_controller, rb_Rbdb_MemoryPoolFilePageController, NULL, NULL )
 	#define C_Rbdb_MEMORY_POOL_FILE_PAGE_CONTROLLER( rb_memory_pool_file_page_controller, c_memory_pool_file_page_controller )		C_Rbdb_STRUCT(		rb_memory_pool_file_page_controller, c_memory_pool_file_page_controller, Rbdb_MemoryPoolFilePageController )
 
-	#define RUBY_Rbdb_MEMORY_POOL_FILE_PAGE( c_memory_pool_file_page )																RUBY_Rbdb_OBJECT(	c_memory_pool_file_page, rb_Rbdb_MemoryPoolFilePage, NULL, NULL )
+	#define RUBY_RBDB_MEMORY_POOL_FILE_PAGE( c_memory_pool_file_page )																RUBY_RBDB_OBJECT(	c_memory_pool_file_page, rb_Rbdb_MemoryPoolFilePage, NULL, NULL )
 	#define C_Rbdb_MEMORY_POOL_FILE_PAGE( rb_memory_pool_file_page, c_memory_pool_file_page )										C_Rbdb_STRUCT(		rb_memory_pool_file_page, c_memory_pool_file_page, Rbdb_MemoryPoolFilePage )
 
-	#define RUBY_Rbdb_MUTEX_CONTROLLER( c_mutex_controller )																		RUBY_Rbdb_OBJECT(	c_mutex_controller, rb_Rbdb_MutexController, NULL, NULL )
+	#define RUBY_RBDB_MUTEX_CONTROLLER( c_mutex_controller )																		RUBY_RBDB_OBJECT(	c_mutex_controller, rb_Rbdb_MutexController, NULL, NULL )
 	#define C_Rbdb_MUTEX_CONTROLLER( rb_mutex_controller, c_mutex_controller )														C_Rbdb_STRUCT(		rb_mutex_controller, c_mutex_controller, Rbdb_MutexController )
 
-	#define RUBY_Rbdb_MUTEX( c_mutex )																								RUBY_Rbdb_OBJECT(	c_mutex, rb_Rbdb_Mutex, NULL, NULL )
+	#define RUBY_RBDB_MUTEX( c_mutex )																								RUBY_RBDB_OBJECT(	c_mutex, rb_Rbdb_Mutex, NULL, NULL )
 	#define C_Rbdb_MUTEX( rb_mutex, c_mutex )																						C_Rbdb_STRUCT(		rb_mutex, c_mutex, Rbdb_Mutex )
 
-	#define RUBY_Rbdb_RECORD( c_record )																							RUBY_Rbdb_OBJECT(	c_record, rb_Rbdb_Record, NULL, NULL )
+	#define RUBY_RBDB_RECORD( c_record )																							RUBY_RBDB_OBJECT(	c_record, rb_Rbdb_Record, NULL, NULL )
 	#define C_Rbdb_RECORD( rb_record, c_record )																					C_Rbdb_STRUCT(		rb_record, c_record, Rbdb_Record )
 
-	#define RUBY_Rbdb_DATA( c_data )																								RUBY_Rbdb_OBJECT(	c_data, rb_Rbdb_Data, NULL, NULL )
+	#define RUBY_RBDB_DATA( c_data )																								RUBY_RBDB_OBJECT(	c_data, rb_Rbdb_Data, NULL, NULL )
 	#define C_Rbdb_DATA( rb_data, c_data )																							C_Rbdb_STRUCT(		rb_data, c_data, Rbdb_Data )
 
-	#define RUBY_Rbdb_KEY( c_key )																									RUBY_Rbdb_OBJECT(	c_key, rb_Rbdb_Key, NULL, NULL )
+	#define RUBY_RBDB_KEY( c_key )																									RUBY_RBDB_OBJECT(	c_key, rb_Rbdb_Key, NULL, NULL )
 	#define C_Rbdb_KEY( rb_key, c_key )																							C_Rbdb_STRUCT(		rb_key, c_key, Rbdb_Key )
 
-	#define RUBY_Rbdb_SECONDARY_KEYS( c_secondary_key )																			RUBY_Rbdb_OBJECT(	c_secondary_key, rb_Rbdb_SecondaryKeys, NULL, NULL )
+	#define RUBY_RBDB_SECONDARY_KEYS( c_secondary_key )																			RUBY_RBDB_OBJECT(	c_secondary_key, rb_Rbdb_SecondaryKeys, NULL, NULL )
 	#define C_Rbdb_SECONDARY_KEYS( rb_secondary_key, c_secondary_key )																C_Rbdb_STRUCT(		rb_secondary_key, c_secondary_key, Rbdb_SecondaryKeys )
 
-	#define RUBY_Rbdb_REPLICATION_CONTROLLER( c_replication_controller )															RUBY_Rbdb_OBJECT(	c_replication_controller, rb_Rbdb_ReplicationController, NULL, NULL )
+	#define RUBY_RBDB_REPLICATION_CONTROLLER( c_replication_controller )															RUBY_RBDB_OBJECT(	c_replication_controller, rb_Rbdb_ReplicationController, NULL, NULL )
 	#define C_Rbdb_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller )									C_Rbdb_STRUCT(		rb_replication_controller, c_replication_controller, Rbdb_ReplicationController )
 
-	#define RUBY_Rbdb_REMOTE_SITE( c_remote_site )																					RUBY_Rbdb_OBJECT(	c_remote_site, rb_Rbdb_RemoteSite, NULL, NULL )
+	#define RUBY_RBDB_REMOTE_SITE( c_remote_site )																					RUBY_RBDB_OBJECT(	c_remote_site, rb_Rbdb_RemoteSite, NULL, NULL )
 	#define C_Rbdb_REMOTE_SITE( rb_remote_site, c_remote_site )																	C_Rbdb_STRUCT(		rb_remote_site, c_remote_site, Rbdb_RemoteSite )
 
-	#define RUBY_Rbdb_TRANSACTION_CONTROLLER( c_transaction_controller )															RUBY_Rbdb_OBJECT(	c_transaction_controller, rb_Rbdb_TransactionController, NULL, NULL )
+	#define RUBY_RBDB_TRANSACTION_CONTROLLER( c_transaction_controller )															RUBY_RBDB_OBJECT(	c_transaction_controller, rb_Rbdb_TransactionController, NULL, NULL )
 	#define C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller )									C_Rbdb_STRUCT(		rb_transaction_controller, c_transaction_controller, Rbdb_TransactionController )
 
-	#define RUBY_Rbdb_TRANSACTION( c_transaction )																					RUBY_Rbdb_OBJECT(	c_transaction, rb_Rbdb_Transaction, NULL, NULL )
+	#define RUBY_RBDB_TRANSACTION( c_transaction )																					RUBY_RBDB_OBJECT(	c_transaction, rb_Rbdb_Transaction, NULL, NULL )
 	#define C_Rbdb_TRANSACTION( rb_transaction, c_transaction )																	C_Rbdb_STRUCT(		rb_transaction, c_transaction, Rbdb_Transaction )
 
-	#define RUBY_Rbdb_DATABASE_SETTINGS_CONTROLLER( c_database_settings_controller )												RUBY_Rbdb_OBJECT(	c_database_settings_controller, rb_Rbdb_DatabaseSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_SETTINGS_CONTROLLER( c_database_settings_controller )												RUBY_RBDB_OBJECT(	c_database_settings_controller, rb_Rbdb_DatabaseSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller )					C_Rbdb_STRUCT(		rb_database_settings_controller, c_database_settings_controller, Rbdb_DatabaseSettingsController )
 
 		/****************************
 		*	Settings Controllers	*
 		****************************/
 
-	#define RUBY_Rbdb_SETTINGS_CONTROLLER( c_settings_controller )																															  RUBY_Rbdb_OBJECT(	c_settings_controller, rb_Rbdb_SettingsController, NULL, NULL )
+	#define RUBY_RBDB_SETTINGS_CONTROLLER( c_settings_controller )																															  RUBY_RBDB_OBJECT(	c_settings_controller, rb_Rbdb_SettingsController, NULL, NULL )
 	#define C_Rbdb_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller )																									  C_Rbdb_STRUCT(		rb_settings_controller, c_settings_controller, Rbdb_SettingsController )
                                                                                                                                                             								  
-	#define RUBY_Rbdb_DATABASE_SETTINGS_CONTROLLER( c_database_settings_controller )																										  RUBY_Rbdb_OBJECT(	c_database_settings_controller, rb_Rbdb_DatabaseSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_SETTINGS_CONTROLLER( c_database_settings_controller )																										  RUBY_RBDB_OBJECT(	c_database_settings_controller, rb_Rbdb_DatabaseSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller )																			  C_Rbdb_STRUCT(		rb_database_settings_controller, c_database_settings_controller, Rbdb_DatabaseSettingsController )
                                                                                                                                                             								  
-	#define RUBY_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( c_database_association_settings_controller )																				  RUBY_Rbdb_OBJECT(	c_database_association_settings_controller, rb_Rbdb_DatabaseAssociationSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( c_database_association_settings_controller )																				  RUBY_RBDB_OBJECT(	c_database_association_settings_controller, rb_Rbdb_DatabaseAssociationSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller )										  C_Rbdb_STRUCT(		rb_database_association_settings_controller, c_database_association_settings_controller, Rbdb_DatabaseAssociationSettingsController )
                                                                                                                                                             								  
-	#define RUBY_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( c_database_association_settings_controller )																				  RUBY_Rbdb_OBJECT(	c_database_association_settings_controller, rb_Rbdb_DatabaseAssociationSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( c_database_association_settings_controller )																				  RUBY_RBDB_OBJECT(	c_database_association_settings_controller, rb_Rbdb_DatabaseAssociationSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller )										  C_Rbdb_STRUCT(		rb_database_association_settings_controller, c_database_association_settings_controller, Rbdb_DatabaseAssociationSettingsController )
                                                                                                                                                             								  
-	#define RUBY_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( c_database_cache_settings_controller )																							  RUBY_Rbdb_OBJECT(	c_database_cache_settings_controller, rb_Rbdb_DatabaseCacheSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( c_database_cache_settings_controller )																							  RUBY_RBDB_OBJECT(	c_database_cache_settings_controller, rb_Rbdb_DatabaseCacheSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller )														  C_Rbdb_STRUCT(		rb_database_cache_settings_controller, c_database_cache_settings_controller, Rbdb_DatabaseCacheSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( c_database_cache_priority_settings_controller )																			  RUBY_Rbdb_OBJECT(	c_database_cache_priority_settings_controller, rb_Rbdb_DatabaseCachePrioritySettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( c_database_cache_priority_settings_controller )																			  RUBY_RBDB_OBJECT(	c_database_cache_priority_settings_controller, rb_Rbdb_DatabaseCachePrioritySettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller )							  C_Rbdb_STRUCT(		rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller, Rbdb_DatabaseCachePrioritySettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( c_database_compact_settings_controller )																						  RUBY_Rbdb_OBJECT(	c_database_compact_settings_controller, rb_Rbdb_DatabaseCompactSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( c_database_compact_settings_controller )																						  RUBY_RBDB_OBJECT(	c_database_compact_settings_controller, rb_Rbdb_DatabaseCompactSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller )													  C_Rbdb_STRUCT(		rb_database_compact_settings_controller, c_database_compact_settings_controller, Rbdb_DatabaseCompactSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DATABASE_CURSOR_SETTINGS_CONTROLLER( c_database_cursor_settings_controller )																							  RUBY_Rbdb_OBJECT(	c_database_cursor_settings_controller, rb_Rbdb_DatabaseCursorSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( c_database_cursor_settings_controller )																							  RUBY_RBDB_OBJECT(	c_database_cursor_settings_controller, rb_Rbdb_DatabaseCursorSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_database_cursor_settings_controller, c_database_cursor_settings_controller )													  C_Rbdb_STRUCT(		rb_database_cursor_settings_controller, c_database_cursor_settings_controller, Rbdb_DatabaseCursorSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( c_database_cursor_record_read_write_settings_controller )																	  RUBY_Rbdb_OBJECT(	c_database_cursor_record_read_write_settings_controller, rb_Rbdb_DatabaseCursorReadWriteSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( c_database_cursor_record_read_write_settings_controller )																	  RUBY_RBDB_OBJECT(	c_database_cursor_record_read_write_settings_controller, rb_Rbdb_DatabaseCursorReadWriteSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller )					  C_Rbdb_STRUCT(		rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller, Rbdb_DatabaseCursorReadWriteSettingsController )
                                                                                                                                                                                     		  
-	#define RUBY_Rbdb_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER( c_database_cursor_cache_settings_controller )																				  RUBY_Rbdb_OBJECT(	c_database_cursor_cache_settings_controller, rb_Rbdb_DatabaseCursorCacheSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER( c_database_cursor_cache_settings_controller )																				  RUBY_RBDB_OBJECT(	c_database_cursor_cache_settings_controller, rb_Rbdb_DatabaseCursorCacheSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER( rb_database_cursor_cache_settings_controller, c_database_cursor_cache_settings_controller )									  C_Rbdb_STRUCT(		rb_database_cursor_cache_settings_controller, c_database_cursor_cache_settings_controller, Rbdb_DatabaseCursorCacheSettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( c_database_cursor_cache_priority_settings_controller )															  RUBY_Rbdb_OBJECT(	c_database_cursor_cache_priority_settings_controller, rb_Rbdb_DatabaseCursorCachePrioritySettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( c_database_cursor_cache_priority_settings_controller )															  RUBY_RBDB_OBJECT(	c_database_cursor_cache_priority_settings_controller, rb_Rbdb_DatabaseCursorCachePrioritySettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller )		  C_Rbdb_STRUCT(		rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller, Rbdb_DatabaseCursorCachePrioritySettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( c_database_encryption_settings_controller )																					  RUBY_Rbdb_OBJECT(	c_database_encryption_settings_controller, rb_Rbdb_DatabaseEncryptionSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( c_database_encryption_settings_controller )																					  RUBY_RBDB_OBJECT(	c_database_encryption_settings_controller, rb_Rbdb_DatabaseEncryptionSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( rb_database_encryption_settings_controller, c_database_encryption_settings_controller )										  C_Rbdb_STRUCT(		rb_database_encryption_settings_controller, c_database_encryption_settings_controller, Rbdb_DatabaseEncryptionSettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_DATABASE_ERROR_SETTINGS_CONTROLLER( c_database_error_settings_controller )																							  RUBY_Rbdb_OBJECT(	c_database_error_settings_controller, rb_Rbdb_DatabaseErrorSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_ERROR_SETTINGS_CONTROLLER( c_database_error_settings_controller )																							  RUBY_RBDB_OBJECT(	c_database_error_settings_controller, rb_Rbdb_DatabaseErrorSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller )														  C_Rbdb_STRUCT(		rb_database_error_settings_controller, c_database_error_settings_controller, Rbdb_DatabaseErrorSettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( c_database_record_fixed_length_settings_controller )																				  RUBY_Rbdb_OBJECT(	c_database_record_fixed_length_settings_controller, rb_Rbdb_DatabaseRecordFixedLengthSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( c_database_record_fixed_length_settings_controller )																				  RUBY_RBDB_OBJECT(	c_database_record_fixed_length_settings_controller, rb_Rbdb_DatabaseRecordFixedLengthSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( rb_database_record_fixed_length_settings_controller, c_database_record_fixed_length_settings_controller )									  C_Rbdb_STRUCT(		rb_database_record_fixed_length_settings_controller, c_database_record_fixed_length_settings_controller, Rbdb_DatabaseRecordFixedLengthSettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( c_database_join_settings_controller )																								  RUBY_Rbdb_OBJECT(	c_database_join_settings_controller, rb_Rbdb_DatabaseJoinSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( c_database_join_settings_controller )																								  RUBY_RBDB_OBJECT(	c_database_join_settings_controller, rb_Rbdb_DatabaseJoinSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_database_join_settings_controller, c_database_join_settings_controller )															  C_Rbdb_STRUCT(		rb_database_join_settings_controller, c_database_join_settings_controller, Rbdb_DatabaseJoinSettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( c_database_record_read_write_settings_controller )																					  RUBY_Rbdb_OBJECT(	c_database_record_read_write_settings_controller, rb_Rbdb_DatabaseRecordReadWriteSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER( c_database_record_read_write_settings_controller )																					  RUBY_RBDB_OBJECT(	c_database_record_read_write_settings_controller, rb_Rbdb_DatabaseRecordReadWriteSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller )										  C_Rbdb_STRUCT(		rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller, Rbdb_DatabaseRecordReadWriteSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DATABASE_RECORD_SETTINGS_CONTROLLER( c_database_record_settings_controller )																							  RUBY_Rbdb_OBJECT(	c_database_record_settings_controller, rb_Rbdb_DatabaseRecordSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_RECORD_SETTINGS_CONTROLLER( c_database_record_settings_controller )																							  RUBY_RBDB_OBJECT(	c_database_record_settings_controller, rb_Rbdb_DatabaseRecordSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_RECORD_SETTINGS_CONTROLLER( rb_database_record_settings_controller, c_database_record_settings_controller )													  C_Rbdb_STRUCT(		rb_database_record_settings_controller, c_database_record_settings_controller, Rbdb_DatabaseRecordSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( c_database_sequence_settings_controller )																						  RUBY_Rbdb_OBJECT(	c_database_sequence_settings_controller, rb_Rbdb_DatabaseSequenceSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( c_database_sequence_settings_controller )																						  RUBY_RBDB_OBJECT(	c_database_sequence_settings_controller, rb_Rbdb_DatabaseSequenceSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller )												  C_Rbdb_STRUCT(		rb_database_sequence_settings_controller, c_database_sequence_settings_controller, Rbdb_DatabaseSequenceSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER( c_database_type_settings_controller )																								  RUBY_Rbdb_OBJECT(	c_database_type_settings_controller, rb_Rbdb_DatabaseTypeSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_TYPE_SETTINGS_CONTROLLER( c_database_type_settings_controller )																								  RUBY_RBDB_OBJECT(	c_database_type_settings_controller, rb_Rbdb_DatabaseTypeSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller )															  C_Rbdb_STRUCT(		rb_database_type_settings_controller, c_database_type_settings_controller, Rbdb_DatabaseTypeSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER( c_database_type_btree_settings_controller )																					  RUBY_Rbdb_OBJECT(	c_database_type_btree_settings_controller, rb_Rbdb_DatabaseTypeBtreeSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER( c_database_type_btree_settings_controller )																					  RUBY_RBDB_OBJECT(	c_database_type_btree_settings_controller, rb_Rbdb_DatabaseTypeBtreeSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER( rb_database_type_btree_settings_controller, c_database_type_btree_settings_controller )										  C_Rbdb_STRUCT(		rb_database_type_btree_settings_controller, c_database_type_btree_settings_controller, Rbdb_DatabaseTypeBtreeSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( c_database_type_hash_settings_controller )																					  RUBY_Rbdb_OBJECT(	c_database_type_hash_settings_controller, rb_Rbdb_DatabaseTypeHashSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( c_database_type_hash_settings_controller )																					  RUBY_RBDB_OBJECT(	c_database_type_hash_settings_controller, rb_Rbdb_DatabaseTypeHashSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller )											  C_Rbdb_STRUCT(		rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller, Rbdb_DatabaseTypeHashSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( c_database_type_recno_settings_controller )																					  RUBY_Rbdb_OBJECT(	c_database_type_recno_settings_controller, rb_Rbdb_DatabaseTypeRecnoSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( c_database_type_recno_settings_controller )																					  RUBY_RBDB_OBJECT(	c_database_type_recno_settings_controller, rb_Rbdb_DatabaseTypeRecnoSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller )										  C_Rbdb_STRUCT(		rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller, Rbdb_DatabaseTypeRecnoSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( c_database_type_queue_settings_controller )																					  RUBY_Rbdb_OBJECT(	c_database_type_queue_settings_controller, rb_Rbdb_DatabaseTypeQueueSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( c_database_type_queue_settings_controller )																					  RUBY_RBDB_OBJECT(	c_database_type_queue_settings_controller, rb_Rbdb_DatabaseTypeQueueSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( rb_database_type_queue_settings_controller, c_database_type_queue_settings_controller )										  C_Rbdb_STRUCT(		rb_database_type_queue_settings_controller, c_database_type_queue_settings_controller, Rbdb_DatabaseTypeQueueSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER( c_database_record_variable_length_settings_controller )																		  RUBY_Rbdb_OBJECT(	c_database_record_variable_length_settings_controller, rb_Rbdb_DatabaseRecordVariableLengthSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER( c_database_record_variable_length_settings_controller )																		  RUBY_RBDB_OBJECT(	c_database_record_variable_length_settings_controller, rb_Rbdb_DatabaseRecordVariableLengthSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER( rb_database_record_variable_length_settings_controller, c_database_record_variable_length_settings_controller )							  C_Rbdb_STRUCT(		rb_database_record_variable_length_settings_controller, c_database_record_variable_length_settings_controller, Rbdb_DatabaseRecordVariableLengthSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DATABASE_VERBOSITY_SETTINGS_CONTROLLER( c_database_verbosity_settings_controller )																					  RUBY_Rbdb_OBJECT(	c_database_verbosity_settings_controller, rb_Rbdb_DatabaseVerbositySettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_VERBOSITY_SETTINGS_CONTROLLER( c_database_verbosity_settings_controller )																					  RUBY_RBDB_OBJECT(	c_database_verbosity_settings_controller, rb_Rbdb_DatabaseVerbositySettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_VERBOSITY_SETTINGS_CONTROLLER( rb_database_verbosity_settings_controller, c_database_verbosity_settings_controller )											  C_Rbdb_STRUCT(		rb_database_verbosity_settings_controller, c_database_verbosity_settings_controller, Rbdb_DatabaseVerbositySettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( c_database_verification_settings_controller )																				  RUBY_Rbdb_OBJECT(	c_database_verification_settings_controller, rb_Rbdb_DatabaseVerificationSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( c_database_verification_settings_controller )																				  RUBY_RBDB_OBJECT(	c_database_verification_settings_controller, rb_Rbdb_DatabaseVerificationSettingsController, NULL, NULL )
 	#define C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller )									  C_Rbdb_STRUCT(		rb_database_verification_settings_controller, c_database_verification_settings_controller, Rbdb_DatabaseVerificationSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DEBUG_SETTINGS_CONTROLLER( c_debug_settings_controller )																												  RUBY_Rbdb_OBJECT(	c_debug_settings_controller, rb_Rbdb_DebugSettingsController, NULL, NULL )
+	#define RUBY_RBDB_DEBUG_SETTINGS_CONTROLLER( c_debug_settings_controller )																												  RUBY_RBDB_OBJECT(	c_debug_settings_controller, rb_Rbdb_DebugSettingsController, NULL, NULL )
 	#define C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller )																					  C_Rbdb_STRUCT(		rb_debug_settings_controller, c_debug_settings_controller, Rbdb_DebugSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DEBUG_VERBOSITY_SETTINGS_CONTROLLER( c_debug_verbosity_settings_controller )																							  RUBY_Rbdb_OBJECT(	c_debug_verbosity_settings_controller, rb_Rbdb_DebugVerbositySettingsController, NULL, NULL )
+	#define RUBY_RBDB_DEBUG_VERBOSITY_SETTINGS_CONTROLLER( c_debug_verbosity_settings_controller )																							  RUBY_RBDB_OBJECT(	c_debug_verbosity_settings_controller, rb_Rbdb_DebugVerbositySettingsController, NULL, NULL )
 	#define C_Rbdb_DEBUG_VERBOSITY_SETTINGS_CONTROLLER( rb_debug_verbosity_settings_controller, c_debug_verbosity_settings_controller )													  C_Rbdb_STRUCT(		rb_debug_verbosity_settings_controller, c_debug_verbosity_settings_controller, Rbdb_DebugVerbositySettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_DIRECTORY_SETTINGS_CONTROLLER( c_directory_settings_controller )																										  RUBY_Rbdb_OBJECT(	c_directory_settings_controller, rb_Rbdb_DirectorySettingsController, NULL, NULL )
+	#define RUBY_RBDB_DIRECTORY_SETTINGS_CONTROLLER( c_directory_settings_controller )																										  RUBY_RBDB_OBJECT(	c_directory_settings_controller, rb_Rbdb_DirectorySettingsController, NULL, NULL )
 	#define C_Rbdb_DIRECTORY_SETTINGS_CONTROLLER( rb_directory_settings_controller, c_directory_settings_controller )																		  C_Rbdb_STRUCT(		rb_directory_settings_controller, c_directory_settings_controller, Rbdb_DirectorySettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( c_environment_cache_settings_controller )																						  RUBY_Rbdb_OBJECT(	c_environment_cache_settings_controller, rb_Rbdb_EnvironmentCacheSettingsController, NULL, NULL )
+	#define RUBY_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( c_environment_cache_settings_controller )																						  RUBY_RBDB_OBJECT(	c_environment_cache_settings_controller, rb_Rbdb_EnvironmentCacheSettingsController, NULL, NULL )
 	#define C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller )												  C_Rbdb_STRUCT(		rb_environment_cache_settings_controller, c_environment_cache_settings_controller, Rbdb_EnvironmentCacheSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_ERROR_SETTINGS_CONTROLLER( c_error_settings_controller )																												  RUBY_Rbdb_OBJECT(	c_error_settings_controller, rb_Rbdb_ErrorSettingsController, NULL, NULL )
+	#define RUBY_RBDB_ERROR_SETTINGS_CONTROLLER( c_error_settings_controller )																												  RUBY_RBDB_OBJECT(	c_error_settings_controller, rb_Rbdb_ErrorSettingsController, NULL, NULL )
 	#define C_Rbdb_ERROR_SETTINGS_CONTROLLER( rb_error_settings_controller, c_error_settings_controller )																					  C_Rbdb_STRUCT(		rb_error_settings_controller, c_error_settings_controller, Rbdb_ErrorSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_FILE_SETTINGS_CONTROLLER( c_file_settings_controller )																												  RUBY_Rbdb_OBJECT(	c_file_settings_controller, rb_Rbdb_FileSettingsController, NULL, NULL )
+	#define RUBY_RBDB_FILE_SETTINGS_CONTROLLER( c_file_settings_controller )																												  RUBY_RBDB_OBJECT(	c_file_settings_controller, rb_Rbdb_FileSettingsController, NULL, NULL )
 	#define C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller )																						  C_Rbdb_STRUCT(		rb_file_settings_controller, c_file_settings_controller, Rbdb_FileSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_FILE_VERBOSITY_SETTINGS_CONTROLLER( c_file_verbosity_settings_controller )																							  RUBY_Rbdb_OBJECT(	c_file_verbosity_settings_controller, rb_Rbdb_FileVerbositySettingsController, NULL, NULL )
+	#define RUBY_RBDB_FILE_VERBOSITY_SETTINGS_CONTROLLER( c_file_verbosity_settings_controller )																							  RUBY_RBDB_OBJECT(	c_file_verbosity_settings_controller, rb_Rbdb_FileVerbositySettingsController, NULL, NULL )
 	#define C_Rbdb_FILE_VERBOSITY_SETTINGS_CONTROLLER( rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller )														  C_Rbdb_STRUCT(		rb_file_verbosity_settings_controller, c_file_verbosity_settings_controller, Rbdb_FileVerbositySettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_LOCK_SETTINGS_CONTROLLER( c_lock_settings_controller )																												  RUBY_Rbdb_OBJECT(	c_lock_settings_controller, rb_Rbdb_LockSettingsController, NULL, NULL )
+	#define RUBY_RBDB_LOCK_SETTINGS_CONTROLLER( c_lock_settings_controller )																												  RUBY_RBDB_OBJECT(	c_lock_settings_controller, rb_Rbdb_LockSettingsController, NULL, NULL )
 	#define C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller )																						  C_Rbdb_STRUCT(		rb_lock_settings_controller, c_lock_settings_controller, Rbdb_LockSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( c_lock_deadlock_detector_settings_controller )																			  RUBY_Rbdb_OBJECT(	c_lock_deadlock_detector_settings_controller, rb_Rbdb_LockDeadlockDetectorSettingsController, NULL, NULL )
+	#define RUBY_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( c_lock_deadlock_detector_settings_controller )																			  RUBY_RBDB_OBJECT(	c_lock_deadlock_detector_settings_controller, rb_Rbdb_LockDeadlockDetectorSettingsController, NULL, NULL )
 	#define C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller )								  C_Rbdb_STRUCT(		rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller, Rbdb_LockDeadlockDetectorSettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( c_lock_deadlock_detector_verbosity_settings_controller )														  RUBY_Rbdb_OBJECT(	c_lock_deadlock_detector_verbosity_settings_controller, rb_Rbdb_LockDeadlockDetectorVerbositySettingsController, NULL, NULL )
+	#define RUBY_RBDB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( c_lock_deadlock_detector_verbosity_settings_controller )														  RUBY_RBDB_OBJECT(	c_lock_deadlock_detector_verbosity_settings_controller, rb_Rbdb_LockDeadlockDetectorVerbositySettingsController, NULL, NULL )
 	#define C_Rbdb_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller )	  C_Rbdb_STRUCT(		rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller, Rbdb_LockDeadlockDetectorVerbositySettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_LOG_SETTINGS_CONTROLLER( c_log_settings_controller )																													  RUBY_Rbdb_OBJECT(	c_log_settings_controller, rb_Rbdb_LogSettingsController, NULL, NULL )
+	#define RUBY_RBDB_LOG_SETTINGS_CONTROLLER( c_log_settings_controller )																													  RUBY_RBDB_OBJECT(	c_log_settings_controller, rb_Rbdb_LogSettingsController, NULL, NULL )
 	#define C_Rbdb_LOG_SETTINGS_CONTROLLER( rb_log_settings_controller, c_log_settings_controller )																						  C_Rbdb_STRUCT(		rb_log_settings_controller, c_log_settings_controller, Rbdb_LogSettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( c_memory_pool_settings_controller )																									  RUBY_Rbdb_OBJECT(	c_memory_pool_settings_controller, rb_Rbdb_MemoryPoolSettingsController, NULL, NULL )
+	#define RUBY_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( c_memory_pool_settings_controller )																									  RUBY_RBDB_OBJECT(	c_memory_pool_settings_controller, rb_Rbdb_MemoryPoolSettingsController, NULL, NULL )
 	#define C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller )																  C_Rbdb_STRUCT(		rb_memory_pool_settings_controller, c_memory_pool_settings_controller, Rbdb_MemoryPoolSettingsController )
                                                                                                                                                                 							  
-	#define RUBY_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( c_memory_pool_file_settings_controller )																						  RUBY_Rbdb_OBJECT(	c_memory_pool_file_settings_controller, rb_Rbdb_MemoryPoolFileSettingsController, NULL, NULL )
+	#define RUBY_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( c_memory_pool_file_settings_controller )																						  RUBY_RBDB_OBJECT(	c_memory_pool_file_settings_controller, rb_Rbdb_MemoryPoolFileSettingsController, NULL, NULL )
 	#define C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller )													  C_Rbdb_STRUCT(		rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller, Rbdb_MemoryPoolFileSettingsController )
                                                                                                                                                                         					  
-	#define RUBY_Rbdb_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER( c_memory_pool_file_cache_settings_controller )															  RUBY_Rbdb_OBJECT(	c_memory_pool_file_cache_settings_controller, rb_Rbdb_MemoryPoolFileCacheSettingsController, NULL, NULL )
+	#define RUBY_RBDB_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER( c_memory_pool_file_cache_settings_controller )															  RUBY_RBDB_OBJECT(	c_memory_pool_file_cache_settings_controller, rb_Rbdb_MemoryPoolFileCacheSettingsController, NULL, NULL )
 	#define C_Rbdb_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER( rb_memory_pool_file_cache_settings_controller, c_memory_pool_file_cache_settings_controller )	  C_Rbdb_STRUCT(		rb_memory_pool_file_cache_settings_controller, c_memory_pool_file_cache_settings_controller, Rbdb_MemoryPoolFileCacheSettingsController )
 
-	#define RUBY_Rbdb_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER( c_memory_pool_file_cache_priority_settings_controller )															  RUBY_Rbdb_OBJECT(	c_memory_pool_file_cache_priority_settings_controller, rb_Rbdb_MemoryPoolFileCachePrioritySettingsController, NULL, NULL )
+	#define RUBY_RBDB_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER( c_memory_pool_file_cache_priority_settings_controller )															  RUBY_RBDB_OBJECT(	c_memory_pool_file_cache_priority_settings_controller, rb_Rbdb_MemoryPoolFileCachePrioritySettingsController, NULL, NULL )
 	#define C_Rbdb_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_memory_pool_file_cache_priority_settings_controller, c_memory_pool_file_cache_priority_settings_controller )	  C_Rbdb_STRUCT(		rb_memory_pool_file_cache_priority_settings_controller, c_memory_pool_file_cache_priority_settings_controller, Rbdb_MemoryPoolFileCachePrioritySettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( c_memory_pool_file_page_settings_controller )																				  RUBY_Rbdb_OBJECT(	c_memory_pool_file_page_settings_controller, rb_Rbdb_MemoryPoolFilePageSettingsController, NULL, NULL )
+	#define RUBY_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( c_memory_pool_file_page_settings_controller )																				  RUBY_RBDB_OBJECT(	c_memory_pool_file_page_settings_controller, rb_Rbdb_MemoryPoolFilePageSettingsController, NULL, NULL )
 	#define C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller )									  C_Rbdb_STRUCT(		rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller, Rbdb_MemoryPoolFilePageSettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( c_memory_pool_record_read_write_settings_controller )																			  RUBY_Rbdb_OBJECT(	c_memory_pool_record_read_write_settings_controller, rb_Rbdb_MemoryPoolReadWriteSettingsController, NULL, NULL )
+	#define RUBY_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( c_memory_pool_record_read_write_settings_controller )																			  RUBY_RBDB_OBJECT(	c_memory_pool_record_read_write_settings_controller, rb_Rbdb_MemoryPoolReadWriteSettingsController, NULL, NULL )
 	#define C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_record_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller )								  C_Rbdb_STRUCT(		rb_memory_pool_record_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller, Rbdb_MemoryPoolReadWriteSettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_MESSAGE_SETTINGS_CONTROLLER( c_message_settings_controller )																											  RUBY_Rbdb_OBJECT(	c_message_settings_controller, rb_Rbdb_MessageSettingsController, NULL, NULL )
+	#define RUBY_RBDB_MESSAGE_SETTINGS_CONTROLLER( c_message_settings_controller )																											  RUBY_RBDB_OBJECT(	c_message_settings_controller, rb_Rbdb_MessageSettingsController, NULL, NULL )
 	#define C_Rbdb_MESSAGE_SETTINGS_CONTROLLER( rb_message_settings_controller, c_message_settings_controller )																			  C_Rbdb_STRUCT(		rb_message_settings_controller, c_message_settings_controller, Rbdb_MessageSettingsController )
                                                                                                                                                 											  
-	#define RUBY_Rbdb_MUTEX_SETTINGS_CONTROLLER( c_mutex_settings_controller )																												  RUBY_Rbdb_OBJECT(	c_mutex_settings_controller, rb_Rbdb_MutexSettingsController, NULL, NULL )
+	#define RUBY_RBDB_MUTEX_SETTINGS_CONTROLLER( c_mutex_settings_controller )																												  RUBY_RBDB_OBJECT(	c_mutex_settings_controller, rb_Rbdb_MutexSettingsController, NULL, NULL )
 	#define C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller )																					  C_Rbdb_STRUCT(		rb_mutex_settings_controller, c_mutex_settings_controller, Rbdb_MutexSettingsController )
                                                                                                                                                 											  
-	#define RUBY_Rbdb_REPLICATION_SETTINGS_CONTROLLER( c_replication_settings_controller )																									  RUBY_Rbdb_OBJECT(	c_replication_settings_controller, rb_Rbdb_ReplicationSettingsController, NULL, NULL )
+	#define RUBY_RBDB_REPLICATION_SETTINGS_CONTROLLER( c_replication_settings_controller )																									  RUBY_RBDB_OBJECT(	c_replication_settings_controller, rb_Rbdb_ReplicationSettingsController, NULL, NULL )
 	#define C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller )																  C_Rbdb_STRUCT(		rb_replication_settings_controller, c_replication_settings_controller, Rbdb_ReplicationSettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( c_replication_election_settings_controller )																				  RUBY_Rbdb_OBJECT(	c_replication_election_settings_controller, rb_Rbdb_ReplicationElectionSettingsController, NULL, NULL )
+	#define RUBY_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( c_replication_election_settings_controller )																				  RUBY_RBDB_OBJECT(	c_replication_election_settings_controller, rb_Rbdb_ReplicationElectionSettingsController, NULL, NULL )
 	#define C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller )										  C_Rbdb_STRUCT(		rb_replication_election_settings_controller, c_replication_election_settings_controller, Rbdb_ReplicationElectionSettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( c_replication_timeout_settings_controller )																					  RUBY_Rbdb_OBJECT(	c_replication_timeout_settings_controller, rb_Rbdb_ReplicationTimeoutSettingsController, NULL, NULL )
+	#define RUBY_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( c_replication_timeout_settings_controller )																					  RUBY_RBDB_OBJECT(	c_replication_timeout_settings_controller, rb_Rbdb_ReplicationTimeoutSettingsController, NULL, NULL )
 	#define C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller )										  C_Rbdb_STRUCT(		rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller, Rbdb_ReplicationTimeoutSettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( c_replication_verbosity_settings_controller )																				  RUBY_Rbdb_OBJECT(	c_replication_verbosity_settings_controller, rb_Rbdb_ReplicationVerbositySettingsController, NULL, NULL )
+	#define RUBY_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( c_replication_verbosity_settings_controller )																				  RUBY_RBDB_OBJECT(	c_replication_verbosity_settings_controller, rb_Rbdb_ReplicationVerbositySettingsController, NULL, NULL )
 	#define C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller )									  C_Rbdb_STRUCT(		rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller, Rbdb_ReplicationVerbositySettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_THREAD_SETTINGS_CONTROLLER( c_thread_settings_controller )																											  RUBY_Rbdb_OBJECT(	c_thread_settings_controller, rb_Rbdb_ThreadSettingsController, NULL, NULL )
+	#define RUBY_RBDB_THREAD_SETTINGS_CONTROLLER( c_thread_settings_controller )																											  RUBY_RBDB_OBJECT(	c_thread_settings_controller, rb_Rbdb_ThreadSettingsController, NULL, NULL )
 	#define C_Rbdb_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller )																				  C_Rbdb_STRUCT(		rb_thread_settings_controller, c_thread_settings_controller, Rbdb_ThreadSettingsController )
                                                                                                                                                                                               
-	#define RUBY_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( c_transaction_settings_controller )																									  RUBY_Rbdb_OBJECT(	c_transaction_settings_controller, rb_Rbdb_TransactionSettingsController, NULL, NULL )
+	#define RUBY_RBDB_TRANSACTION_SETTINGS_CONTROLLER( c_transaction_settings_controller )																									  RUBY_RBDB_OBJECT(	c_transaction_settings_controller, rb_Rbdb_TransactionSettingsController, NULL, NULL )
 	#define C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller )																  C_Rbdb_STRUCT(		rb_transaction_settings_controller, c_transaction_settings_controller, Rbdb_TransactionSettingsController )
 
 	/****************************
@@ -667,7 +667,7 @@
 																																							c_struct )
 
 	//	Wrap Ruby RBDB T_DATA from C Rbdb struct
-	#define RUBY_Rbdb_OBJECT(	c_object, rb_rbdb_type, c_mark_function, c_free_function )	Data_Wrap_Struct(	rb_rbdb_type,						\
+	#define RUBY_RBDB_OBJECT(	c_object, rb_rbdb_type, c_mark_function, c_free_function )	Data_Wrap_Struct(	rb_rbdb_type,						\
 																																																					c_mark_function,				\
 																																																					c_free_function,				\
 																																																					c_object )

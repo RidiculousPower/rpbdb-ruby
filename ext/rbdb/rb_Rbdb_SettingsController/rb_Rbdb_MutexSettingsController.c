@@ -100,7 +100,7 @@ VALUE rb_Rbdb_MutexSettingsController_new(	int			argc,
 	Rbdb_SettingsController*	c_parent_settings_controller;
 	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
-	VALUE	rb_mutex_settings_controller	= RUBY_Rbdb_MUTEX_SETTINGS_CONTROLLER( Rbdb_MutexSettingsController_new( c_parent_settings_controller ) );	
+	VALUE	rb_mutex_settings_controller	= RUBY_RBDB_MUTEX_SETTINGS_CONTROLLER( Rbdb_MutexSettingsController_new( c_parent_settings_controller ) );	
 
 	rb_iv_set(	rb_mutex_settings_controller,
 							Rbdb_RB_MUTEX_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,

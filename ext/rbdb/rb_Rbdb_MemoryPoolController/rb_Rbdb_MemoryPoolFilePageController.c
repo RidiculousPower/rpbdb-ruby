@@ -97,7 +97,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageController_new(	int			argc,
 	//	FIX - should probably open page controller through file
 	Rbdb_MemoryPoolFilePageController*	c_memory_pool_file_page_controller	=	Rbdb_MemoryPoolFilePageController_new( c_parent_memory_pool_file );
 	
-	VALUE	rb_memory_pool_file_page_controller	=	RUBY_Rbdb_MEMORY_POOL_FILE_PAGE_CONTROLLER( c_memory_pool_file_page_controller );
+	VALUE	rb_memory_pool_file_page_controller	=	RUBY_RBDB_MEMORY_POOL_FILE_PAGE_CONTROLLER( c_memory_pool_file_page_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_memory_pool_file_page_controller,
@@ -139,7 +139,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageController_settingsController(	VALUE	rb_memory_p
 	
 		Rbdb_MemoryPoolFilePageSettingsController*	c_local_memory_pool_file_page_settings_controller	=	Rbdb_MemoryPoolFilePageController_settingsController( c_memory_pool_file_page_controller );
 
-		rb_local_memory_pool_file_page_settings_controller	=	RUBY_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( c_local_memory_pool_file_page_settings_controller );
+		rb_local_memory_pool_file_page_settings_controller	=	RUBY_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( c_local_memory_pool_file_page_settings_controller );
 
 		rb_iv_set(	rb_memory_pool_file_page_controller,
 								Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER,
@@ -212,7 +212,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageController_retrievePageFromCache(	VALUE	rb_memor
 	Rbdb_MemoryPoolFilePageController*		c_memory_pool_file_page_controller;
 	C_Rbdb_MEMORY_POOL_FILE_PAGE_CONTROLLER( rb_memory_pool_file_page_controller, c_memory_pool_file_page_controller );
 
-	return RUBY_Rbdb_MEMORY_POOL_FILE_PAGE( Rbdb_MemoryPoolFilePageController_retrievePageFromCache(	c_memory_pool_file_page_controller,
+	return RUBY_RBDB_MEMORY_POOL_FILE_PAGE( Rbdb_MemoryPoolFilePageController_retrievePageFromCache(	c_memory_pool_file_page_controller,
 								 															FIX2INT( rb_page_number_address ) ) );
 }
 

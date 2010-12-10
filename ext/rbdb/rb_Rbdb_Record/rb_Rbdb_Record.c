@@ -76,7 +76,7 @@ VALUE rb_Rbdb_Record_new(	int			argc,
 	Rbdb_Database*			c_parent_database;
 	C_Rbdb_DATABASE( rb_parent_database, c_parent_database );
 	
-	VALUE	rb_record	=	RUBY_Rbdb_RECORD( Rbdb_Record_new( c_parent_database ) );
+	VALUE	rb_record	=	RUBY_RBDB_RECORD( Rbdb_Record_new( c_parent_database ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_record,
@@ -118,7 +118,7 @@ VALUE rb_Rbdb_Record_settingsController(	VALUE	rb_record )	{
 	
 		Rbdb_DatabaseRecordSettingsController*	c_local_record_settings_controller	=	Rbdb_Record_settingsController( c_record );
 
-		rb_local_record_settings_controller	=	RUBY_Rbdb_DATABASE_RECORD_SETTINGS_CONTROLLER( c_local_record_settings_controller );
+		rb_local_record_settings_controller	=	RUBY_RBDB_DATABASE_RECORD_SETTINGS_CONTROLLER( c_local_record_settings_controller );
 
 		rb_iv_set(	rb_record,
 								Rbdb_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER,
@@ -179,7 +179,7 @@ VALUE rb_Rbdb_Record_primaryKey( VALUE	rb_record )	{
 	Rbdb_Record*		c_record;
 	C_Rbdb_RECORD( rb_record, c_record );
 
-	return RUBY_Rbdb_KEY( Rbdb_Record_primaryKey( c_record ) );
+	return RUBY_RBDB_KEY( Rbdb_Record_primaryKey( c_record ) );
 }
 
 /**********************
@@ -191,7 +191,7 @@ VALUE rb_Rbdb_Record_retrievalKey( VALUE	rb_record )	{
 	Rbdb_Record*		c_record;
 	C_Rbdb_RECORD( rb_record, c_record );
 
-	return RUBY_Rbdb_KEY( Rbdb_Record_retrievalKey( c_record ) );		
+	return RUBY_RBDB_KEY( Rbdb_Record_retrievalKey( c_record ) );		
 }
 
 /*******************************************************************************************************************************************************************************************

@@ -118,7 +118,7 @@ VALUE rb_Rbdb_DatabaseEncryptionSettingsController_new(	int			argc,
 	Rbdb_DatabaseSettingsController*	c_parent_database_settings_controller;
 	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_parent_database_settings_controller );
 	
-	VALUE	rb_database_encryption_settings_controller	= RUBY_Rbdb_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( Rbdb_DatabaseEncryptionSettingsController_new( c_parent_database_settings_controller ) );
+	VALUE	rb_database_encryption_settings_controller	= RUBY_RBDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( Rbdb_DatabaseEncryptionSettingsController_new( c_parent_database_settings_controller ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_encryption_settings_controller,

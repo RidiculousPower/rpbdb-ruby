@@ -208,7 +208,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_new(	int			argc,
 		c_database_settings_controller	=	Rbdb_SettingsController_databaseSettingsController( c_settings_controller );
 	}
 
-	VALUE	rb_database_settings_controller	=	RUBY_Rbdb_DATABASE_SETTINGS_CONTROLLER( c_database_settings_controller );
+	VALUE	rb_database_settings_controller	=	RUBY_RBDB_DATABASE_SETTINGS_CONTROLLER( c_database_settings_controller );
 
 	if ( rb_parent_database != Qnil )	{
 		rb_iv_set(	rb_database_settings_controller,

@@ -148,7 +148,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_new(	int			argc,
 
 	Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller	=	Rbdb_DatabaseSettingsController_cacheSettingsController( c_database_settings_controller );
 
-	VALUE	rb_database_cache_settings_controller	= RUBY_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( c_database_cache_settings_controller );
+	VALUE	rb_database_cache_settings_controller	= RUBY_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( c_database_cache_settings_controller );
 
 	rb_iv_set(	rb_database_cache_settings_controller,
 							Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER,

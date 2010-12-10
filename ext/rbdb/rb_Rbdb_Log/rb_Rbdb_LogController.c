@@ -97,7 +97,7 @@ VALUE rb_Rbdb_LogController_new(	int			argc,
 	Rbdb_Environment*	c_parent_environment;
 	C_Rbdb_ENVIRONMENT( rb_parent_environment, c_parent_environment );
 	
-	VALUE	rb_log_controller	=	RUBY_Rbdb_LOG_CONTROLLER( Rbdb_LogController_new( c_parent_environment ) );
+	VALUE	rb_log_controller	=	RUBY_RBDB_LOG_CONTROLLER( Rbdb_LogController_new( c_parent_environment ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_log_controller,
@@ -139,7 +139,7 @@ VALUE rb_Rbdb_LogController_settingsController(	VALUE	rb_log_controller )	{
 	
 		Rbdb_LogSettingsController*	c_local_log_settings_controller	=	Rbdb_LogController_settingsController( c_log_controller );
 
-		rb_local_log_settings_controller	=	RUBY_Rbdb_LOG_SETTINGS_CONTROLLER( c_local_log_settings_controller );
+		rb_local_log_settings_controller	=	RUBY_RBDB_LOG_SETTINGS_CONTROLLER( c_local_log_settings_controller );
 
 		rb_iv_set(	rb_log_controller,
 								Rbdb_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,

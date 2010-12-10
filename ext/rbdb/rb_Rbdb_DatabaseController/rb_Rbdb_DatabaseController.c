@@ -118,7 +118,7 @@ VALUE rb_Rbdb_DatabaseController_new(	int			argc,
 	
 	Rbdb_DatabaseController*	c_database_controller	=	Rbdb_Environment_databaseController( c_parent_environment );
 
-	VALUE	rb_database_controller	=	RUBY_Rbdb_DATABASE_CONTROLLER( c_database_controller );
+	VALUE	rb_database_controller	=	RUBY_RBDB_DATABASE_CONTROLLER( c_database_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_controller,

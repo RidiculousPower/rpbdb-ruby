@@ -119,7 +119,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_new(	int			argc,
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller	=	Rbdb_ReplicationSettingsController_timeoutSettingsController( c_parent_replication_settings_controller );
 
-	VALUE	rb_replication_timeout_settings_controller	= RUBY_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( c_replication_timeout_settings_controller );
+	VALUE	rb_replication_timeout_settings_controller	= RUBY_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( c_replication_timeout_settings_controller );
 
 	rb_iv_set(	rb_replication_timeout_settings_controller,
 							Rbdb_RB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER,

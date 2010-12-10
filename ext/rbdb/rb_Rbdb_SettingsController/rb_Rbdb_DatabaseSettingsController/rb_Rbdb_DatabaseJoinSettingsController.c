@@ -128,7 +128,7 @@ VALUE rb_Rbdb_DatabaseJoinSettingsController_new(	int			argc,
 
 	Rbdb_DatabaseJoinSettingsController*	c_database_join_settings_controller	=	Rbdb_DatabaseSettingsController_joinSettingsController( c_database_settings_controller );
 
-	VALUE	rb_join_settings_controller	= RUBY_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( c_database_join_settings_controller );
+	VALUE	rb_join_settings_controller	= RUBY_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( c_database_join_settings_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_join_settings_controller,

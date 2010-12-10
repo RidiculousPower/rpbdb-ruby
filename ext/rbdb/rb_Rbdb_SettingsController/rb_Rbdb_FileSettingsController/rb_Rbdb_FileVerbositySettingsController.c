@@ -106,7 +106,7 @@ VALUE rb_Rbdb_FileVerbositySettingsController_new(	int			argc,
 	
 	Rbdb_FileVerbositySettingsController*	c_file_verbosity_settings_controller	=	Rbdb_FileSettingsController_verbositySettingsController( c_parent_file_settings_controller );
 	
-	VALUE	rb_file_verbosity_settings_controller	= RUBY_Rbdb_FILE_VERBOSITY_SETTINGS_CONTROLLER( c_file_verbosity_settings_controller );
+	VALUE	rb_file_verbosity_settings_controller	= RUBY_RBDB_FILE_VERBOSITY_SETTINGS_CONTROLLER( c_file_verbosity_settings_controller );
 
 	rb_iv_set(	rb_file_verbosity_settings_controller,
 							Rbdb_RB_FILE_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_FILE_SETTINGS_CONTROLLER,

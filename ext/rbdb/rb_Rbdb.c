@@ -675,7 +675,7 @@ void rb_Rbdb_internal_initRuntimeStorages( VALUE rb_module_self )	{
 
 	Rbdb_DatabaseTypeSettingsController_setTypeToBTree( c_database_type_settings_controller );
 	
-	VALUE	rb_runtime_storage_database	=	RUBY_Rbdb_DATABASE( c_runtime_storage_database );
+	VALUE	rb_runtime_storage_database	=	RUBY_RBDB_DATABASE( c_runtime_storage_database );
 
 	rb_iv_set(	rb_module_self,
 							Rbdb_RUBY_MODULE_VARIABLE_DATABASE_RUNTIME_STORAGE,

@@ -87,7 +87,7 @@ VALUE rb_Rbdb_LogCursorController_new(	int			argc,
 	Rbdb_LogController*	c_parent_log_controller;
 	C_Rbdb_LOG_CONTROLLER( rb_parent_log_controller, c_parent_log_controller );
 	
-	VALUE	rb_log_cursor_controller	=	RUBY_Rbdb_LOG_CURSOR_CONTROLLER( Rbdb_LogCursorController_new( c_parent_log_controller ) );	
+	VALUE	rb_log_cursor_controller	=	RUBY_RBDB_LOG_CURSOR_CONTROLLER( Rbdb_LogCursorController_new( c_parent_log_controller ) );	
 
 	//	store reference to parent
 	rb_iv_set(	rb_log_cursor_controller,
@@ -129,7 +129,7 @@ VALUE rb_Rbdb_LogCursorController_settingsController(	VALUE	rb_log_cursor_contro
 	
 		Rbdb_LogSettingsController*	c_local_log_settings_controller	=	Rbdb_LogCursorController_settingsController( c_log_cursor_controller );
 
-		rb_local_log_settings_controller	=	RUBY_Rbdb_LOG_SETTINGS_CONTROLLER( c_local_log_settings_controller );
+		rb_local_log_settings_controller	=	RUBY_RBDB_LOG_SETTINGS_CONTROLLER( c_local_log_settings_controller );
 
 		rb_iv_set(	rb_log_cursor_controller,
 								Rbdb_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,

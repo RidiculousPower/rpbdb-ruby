@@ -150,7 +150,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_new(	int			argc,
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller	=	Rbdb_SettingsController_replicationSettingsController( c_parent_settings_controller );
 
-	VALUE	rb_replication_settings_controller	= RUBY_Rbdb_REPLICATION_SETTINGS_CONTROLLER( c_replication_settings_controller );
+	VALUE	rb_replication_settings_controller	= RUBY_RBDB_REPLICATION_SETTINGS_CONTROLLER( c_replication_settings_controller );
 
 	rb_iv_set(	rb_replication_settings_controller,
 							Rbdb_RB_REPLICATION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,

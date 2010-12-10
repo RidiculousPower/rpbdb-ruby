@@ -99,7 +99,7 @@ VALUE rb_Rbdb_MemoryPoolFilePage_new( int			argc,
 	//	FIX - this is probably not correct
 	Rbdb_MemoryPoolFilePage*	c_memory_pool_file_page	=	Rbdb_MemoryPoolFilePage_new( c_memory_pool_file_page_controller );
 
-	VALUE	rb_memory_pool_file_page	=	RUBY_Rbdb_MEMORY_POOL_FILE_PAGE( c_memory_pool_file_page );
+	VALUE	rb_memory_pool_file_page	=	RUBY_RBDB_MEMORY_POOL_FILE_PAGE( c_memory_pool_file_page );
 	
 	//	store reference to parent
 	rb_iv_set(	rb_memory_pool_file_page,
@@ -141,7 +141,7 @@ VALUE rb_Rbdb_MemoryPoolFilePage_settingsController(	VALUE	rb_memory_pool_file_p
 	
 		Rbdb_MemoryPoolFilePageSettingsController*	c_local_memory_pool_file_page_settings_controller	=	Rbdb_MemoryPoolFilePage_settingsController( c_memory_pool_file_page );
 
-		rb_local_memory_pool_file_page_settings_controller	=	RUBY_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( c_local_memory_pool_file_page_settings_controller );
+		rb_local_memory_pool_file_page_settings_controller	=	RUBY_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( c_local_memory_pool_file_page_settings_controller );
 
 		rb_iv_set(	rb_memory_pool_file_page,
 								Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,

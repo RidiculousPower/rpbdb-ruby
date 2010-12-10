@@ -124,7 +124,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_new(	int			argc,
 
 	Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller	=	Rbdb_MemoryPoolFileSettingsController_pageSettingsController( c_parent_memory_pool_file_settings_controller );
 
-	VALUE	rb_memory_pool_file_page_settings_controller	= RUBY_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( c_memory_pool_file_page_settings_controller );
+	VALUE	rb_memory_pool_file_page_settings_controller	= RUBY_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( c_memory_pool_file_page_settings_controller );
 
 	rb_iv_set(	rb_memory_pool_file_page_settings_controller,
 							Rbdb_RB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,

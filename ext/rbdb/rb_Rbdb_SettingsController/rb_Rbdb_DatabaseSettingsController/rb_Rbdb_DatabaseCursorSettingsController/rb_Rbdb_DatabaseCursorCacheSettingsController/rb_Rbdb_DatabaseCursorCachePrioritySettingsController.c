@@ -178,7 +178,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_new(	int			argc,
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller	=	Rbdb_DatabaseCursorCacheSettingsController_priorityController( c_database_cursor_cache_settings_controller );
 	
-	VALUE	rb_database_cursor_cache_priority_settings_controller	= RUBY_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( c_database_cursor_cache_priority_settings_controller );
+	VALUE	rb_database_cursor_cache_priority_settings_controller	= RUBY_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( c_database_cursor_cache_priority_settings_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_cursor_cache_priority_settings_controller,

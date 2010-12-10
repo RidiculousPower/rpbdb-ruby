@@ -148,7 +148,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_new(	int			argc,
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller	=	Rbdb_DatabaseSettingsController_sequenceSettingsController( c_database_settings_controller );
 
-	VALUE	rb_database_sequence_settings_controller	=	RUBY_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( c_database_sequence_settings_controller );
+	VALUE	rb_database_sequence_settings_controller	=	RUBY_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( c_database_sequence_settings_controller );
 	
 	//	store reference to parent
 	rb_iv_set(	rb_database_sequence_settings_controller,

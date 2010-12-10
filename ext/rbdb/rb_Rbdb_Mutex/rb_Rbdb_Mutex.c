@@ -84,7 +84,7 @@ VALUE rb_Rbdb_Mutex_new(	int			argc,
 	Rbdb_MutexController*		c_parent_mutex_controller;
 	C_Rbdb_MUTEX_CONTROLLER( rb_parent_mutex_controller, c_parent_mutex_controller );
 	
-	VALUE	rb_mutex	=	RUBY_Rbdb_MUTEX( Rbdb_Mutex_new( c_parent_mutex_controller ) );
+	VALUE	rb_mutex	=	RUBY_RBDB_MUTEX( Rbdb_Mutex_new( c_parent_mutex_controller ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_mutex,
@@ -127,7 +127,7 @@ VALUE rb_Rbdb_Mutex_settingsController(	VALUE	rb_mutex )	{
 	
 		Rbdb_MutexSettingsController*	c_local_mutex_settings_controller	=	Rbdb_Mutex_settingsController( c_mutex );
 
-		rb_local_mutex_settings_controller	=	RUBY_Rbdb_MUTEX_SETTINGS_CONTROLLER( c_local_mutex_settings_controller );
+		rb_local_mutex_settings_controller	=	RUBY_RBDB_MUTEX_SETTINGS_CONTROLLER( c_local_mutex_settings_controller );
 
 		rb_iv_set(	rb_mutex,
 								Rbdb_RB_SETTINGS_VARIABLE_MUTEX_SETTINGS_CONTROLLER,

@@ -128,7 +128,7 @@ VALUE rb_Rbdb_Environment_new(	int			argc,
 	}
 	Rbdb_Environment*	c_environment			=	Rbdb_Environment_new(	c_environment_home_directory );
 	
-	VALUE	rb_environment	=	RUBY_Rbdb_ENVIRONMENT_WITH_FREE( c_environment );
+	VALUE	rb_environment	=	RUBY_RBDB_ENVIRONMENT_WITH_FREE( c_environment );
 
 	VALUE	argv[]	=	{ rb_environment_home_directory };
 	rb_obj_call_init(	rb_environment,
@@ -442,7 +442,7 @@ VALUE rb_Rbdb_Environment_transactionController( VALUE rb_environment )	{
 		
 		Rbdb_TransactionController*	c_transaction_controller	=	Rbdb_Environment_transactionController( c_environment );
 
-		rb_transaction_controller	=	RUBY_Rbdb_TRANSACTION_CONTROLLER( c_transaction_controller );
+		rb_transaction_controller	=	RUBY_RBDB_TRANSACTION_CONTROLLER( c_transaction_controller );
 
 		rb_iv_set(	rb_environment,
 								Rbdb_RB_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER,

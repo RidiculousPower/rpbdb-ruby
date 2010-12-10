@@ -93,7 +93,7 @@ VALUE rb_Rbdb_ErrorSettingsController_new(	int			argc,
 
 	Rbdb_ErrorSettingsController*	c_error_settings_controller	=	Rbdb_SettingsController_errorSettingsController( c_parent_settings_controller );
 
-	VALUE	rb_error_settings_controller	= RUBY_Rbdb_ERROR_SETTINGS_CONTROLLER( c_error_settings_controller );
+	VALUE	rb_error_settings_controller	= RUBY_RBDB_ERROR_SETTINGS_CONTROLLER( c_error_settings_controller );
 
 	rb_iv_set(	rb_error_settings_controller,
 							Rbdb_RB_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,

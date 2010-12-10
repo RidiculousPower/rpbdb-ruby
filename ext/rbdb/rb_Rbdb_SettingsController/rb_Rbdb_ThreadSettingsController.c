@@ -92,7 +92,7 @@ VALUE rb_Rbdb_ThreadSettingsController_new(	int			argc,
 	Rbdb_SettingsController*	c_parent_settings_controller;
 	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 	
-	VALUE	rb_thread_settings_controller	= RUBY_Rbdb_THREAD_SETTINGS_CONTROLLER( Rbdb_ThreadSettingsController_new( c_parent_settings_controller ) );
+	VALUE	rb_thread_settings_controller	= RUBY_RBDB_THREAD_SETTINGS_CONTROLLER( Rbdb_ThreadSettingsController_new( c_parent_settings_controller ) );
 	
 	rb_iv_set(	rb_thread_settings_controller,
 							Rbdb_RB_THREAD_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,

@@ -105,7 +105,7 @@ VALUE rb_Rbdb_DatabaseCursorController_new( int			argc,
 	
 	Rbdb_DatabaseCursorController*	c_database_cursor_controller	=	Rbdb_Database_cursorController( c_parent_database );
 	
-	VALUE	rb_database_cursor_controller	=	RUBY_Rbdb_DATABASE_CURSOR_CONTROLLER( c_database_cursor_controller );
+	VALUE	rb_database_cursor_controller	=	RUBY_RBDB_DATABASE_CURSOR_CONTROLLER( c_database_cursor_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_cursor_controller,
@@ -147,7 +147,7 @@ VALUE rb_Rbdb_DatabaseCursorController_settingsController(	VALUE	rb_database_cur
 	
 		Rbdb_DatabaseCursorSettingsController*	c_database_cursor_settings_controller	=	Rbdb_DatabaseCursorController_settingsController( c_database_cursor_controller );
 
-		rb_database_cursor_settings_controller	=	RUBY_Rbdb_DATABASE_CURSOR_SETTINGS_CONTROLLER( c_database_cursor_settings_controller );
+		rb_database_cursor_settings_controller	=	RUBY_RBDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( c_database_cursor_settings_controller );
 
 		rb_iv_set(	rb_database_cursor_controller,
 								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER,
@@ -202,7 +202,7 @@ VALUE rb_Rbdb_DatabaseCursorController_objectCursor(	VALUE	rb_database_cursor_co
 	C_Rbdb_DATABASE_CURSOR_CONTROLLER( rb_database_cursor_controller, c_database_cursor_controller );
 	
 	Rbdb_DatabaseCursor*	c_cursor	=	Rbdb_DatabaseCursorController_cursor( c_database_cursor_controller );
-	VALUE									rb_cursor	=	RUBY_Rbdb_DATABASE_OBJECT_CURSOR( c_cursor );
+	VALUE									rb_cursor	=	RUBY_RBDB_DATABASE_OBJECT_CURSOR( c_cursor );
 	
 	return rb_cursor;
 }

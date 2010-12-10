@@ -121,7 +121,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_new(	int			argc,
 	
 	Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_settings_controller	=	Rbdb_LockSettingsController_deadlockDetectorSettingsController( c_parent_lock_settings_controller );
 
-	VALUE	rb_lock_deadlock_detector_settings_controller	= RUBY_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( c_lock_deadlock_settings_controller );
+	VALUE	rb_lock_deadlock_detector_settings_controller	= RUBY_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( c_lock_deadlock_settings_controller );
 
 	rb_iv_set(	rb_lock_deadlock_detector_settings_controller,
 							Rbdb_RB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_LOCK_SETTINGS_CONTROLLER,

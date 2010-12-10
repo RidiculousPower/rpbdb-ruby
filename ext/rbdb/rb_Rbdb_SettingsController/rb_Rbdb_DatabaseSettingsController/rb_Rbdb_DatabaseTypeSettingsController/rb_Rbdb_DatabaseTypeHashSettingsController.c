@@ -145,7 +145,7 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_new(	int			argc,
 			
 			Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller	=	Rbdb_DatabaseSettingsController_typeSettingsController( c_database_settings_controller );
 
-			rb_parent_database_type_settings_controller	=	RUBY_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER( c_database_type_settings_controller );
+			rb_parent_database_type_settings_controller	=	RUBY_RBDB_DATABASE_TYPE_SETTINGS_CONTROLLER( c_database_type_settings_controller );
 		}
 		else {
 			
@@ -159,7 +159,7 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_new(	int			argc,
 
 	Rbdb_DatabaseTypeHashSettingsController*	c_database_type_hash_settings_controller	=	Rbdb_DatabaseTypeSettingsController_hashController( c_database_type_settings_controller );
 
-	VALUE	rb_database_type_hash_settings_controller	= RUBY_Rbdb_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( c_database_type_hash_settings_controller );
+	VALUE	rb_database_type_hash_settings_controller	= RUBY_RBDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( c_database_type_hash_settings_controller );
 
 	if ( rb_parent_database != Qnil )	{
 

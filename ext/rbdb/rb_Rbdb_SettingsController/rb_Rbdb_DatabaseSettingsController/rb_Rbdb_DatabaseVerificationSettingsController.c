@@ -146,7 +146,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_new(	int			argc,
 
 	Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller	=	Rbdb_DatabaseSettingsController_verificationSettingsController( c_parent_database_settings_controller );
 
-	VALUE	rb_database_verification_settings_controller	= RUBY_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( c_database_verification_settings_controller );
+	VALUE	rb_database_verification_settings_controller	= RUBY_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( c_database_verification_settings_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_verification_settings_controller,

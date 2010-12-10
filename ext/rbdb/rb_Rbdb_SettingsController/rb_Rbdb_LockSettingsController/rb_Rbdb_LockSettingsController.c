@@ -119,7 +119,7 @@ VALUE rb_Rbdb_LockSettingsController_new(	int			argc,
 
 	Rbdb_LockSettingsController*	c_lock_settings_controller	=	Rbdb_SettingsController_lockSettingsController( c_parent_settings_controller );
 
-	VALUE	rb_lock_settings_controller	= RUBY_Rbdb_LOCK_SETTINGS_CONTROLLER( c_lock_settings_controller );
+	VALUE	rb_lock_settings_controller	= RUBY_RBDB_LOCK_SETTINGS_CONTROLLER( c_lock_settings_controller );
 
 	rb_iv_set(	rb_lock_settings_controller,
 							Rbdb_RB_LOCK_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,

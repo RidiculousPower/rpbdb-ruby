@@ -98,7 +98,7 @@ VALUE rb_Rbdb_DatabaseJoinCursor_new(	int			argc,
 	Rbdb_DatabaseJoinController*	c_parent_join_controller;
 	C_Rbdb_DATABASE_JOIN_CONTROLLER( rb_parent_database_join_controller, c_parent_join_controller );
 	
-	VALUE	rb_join_cursor	=	RUBY_Rbdb_DATABASE_JOIN_CURSOR( Rbdb_DatabaseJoinCursor_new( c_parent_join_controller ) );
+	VALUE	rb_join_cursor	=	RUBY_RBDB_DATABASE_JOIN_CURSOR( Rbdb_DatabaseJoinCursor_new( c_parent_join_controller ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_join_cursor,
@@ -139,7 +139,7 @@ VALUE rb_Rbdb_DatabaseJoinCursor_settingsController(	VALUE	rb_join_cursor )	{
 	
 		Rbdb_DatabaseJoinSettingsController*	c_local_database_join_settings_controller	=	Rbdb_DatabaseJoinCursor_settingsController( c_join_cursor );
 
-		rb_local_database_join_settings_controller	=	RUBY_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( c_local_database_join_settings_controller );
+		rb_local_database_join_settings_controller	=	RUBY_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( c_local_database_join_settings_controller );
 
 		rb_iv_set(	rb_join_cursor,
 								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
@@ -223,7 +223,7 @@ VALUE rb_Rbdb_DatabaseJoinCursor_retrieveKey(	VALUE	rb_join_cursor,
 	Rbdb_Key*			c_key;
 	C_Rbdb_KEY( rb_key, c_key );
 
-	return RUBY_Rbdb_RECORD( Rbdb_DatabaseJoinCursor_retrieveKey(	c_join_cursor,
+	return RUBY_RBDB_RECORD( Rbdb_DatabaseJoinCursor_retrieveKey(	c_join_cursor,
 																	c_key ) );
 }
 

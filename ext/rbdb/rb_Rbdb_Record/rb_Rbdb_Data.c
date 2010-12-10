@@ -75,7 +75,7 @@ VALUE rb_Rbdb_Data_new(	int			argc,
 	Rbdb_Record*		c_parent_record;
 	C_Rbdb_RECORD( rb_parent_record, c_parent_record );
 	
-	VALUE	rb_data	=	RUBY_Rbdb_DATA( Rbdb_Data_new( c_parent_record ) );
+	VALUE	rb_data	=	RUBY_RBDB_DATA( Rbdb_Data_new( c_parent_record ) );
 	
 	//	store reference to parent
 	rb_iv_set(	rb_data,
@@ -117,7 +117,7 @@ VALUE rb_Rbdb_Data_settingsController(	VALUE	rb_data )	{
 	
 		Rbdb_DatabaseRecordSettingsController*	c_local_record_settings_controller	=	Rbdb_Data_settingsController( c_data );
 
-		rb_local_record_settings_controller	=	RUBY_Rbdb_DATABASE_RECORD_SETTINGS_CONTROLLER( c_local_record_settings_controller );
+		rb_local_record_settings_controller	=	RUBY_RBDB_DATABASE_RECORD_SETTINGS_CONTROLLER( c_local_record_settings_controller );
 
 		rb_iv_set(	rb_data,
 								Rbdb_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER,

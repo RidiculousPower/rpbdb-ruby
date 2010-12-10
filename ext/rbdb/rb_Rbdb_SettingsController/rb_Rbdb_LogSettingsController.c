@@ -136,7 +136,7 @@ VALUE rb_Rbdb_LogSettingsController_new(	int			argc,
 
 	Rbdb_LogSettingsController*	c_log_settings_controller	=	Rbdb_SettingsController_logSettingsController( c_parent_settings_controller );
 
-	VALUE	rb_log_settings_controller	= RUBY_Rbdb_LOG_SETTINGS_CONTROLLER( c_log_settings_controller );
+	VALUE	rb_log_settings_controller	= RUBY_RBDB_LOG_SETTINGS_CONTROLLER( c_log_settings_controller );
 
 	rb_iv_set(	rb_log_settings_controller,
 							Rbdb_RB_LOG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,

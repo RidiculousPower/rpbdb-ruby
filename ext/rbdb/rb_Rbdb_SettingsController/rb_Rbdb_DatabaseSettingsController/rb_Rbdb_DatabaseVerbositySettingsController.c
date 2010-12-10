@@ -129,7 +129,7 @@ VALUE rb_Rbdb_DatabaseVerbositySettingsController_new(	int			argc,
 
 	Rbdb_DatabaseVerbositySettingsController*	c_database_verbosity_settings_controller	=	Rbdb_DatabaseSettingsController_verbositySettingsController( c_parent_database_settings_controller );
 
-	VALUE	rb_database_verbosity_settings_controller	= RUBY_Rbdb_DATABASE_VERBOSITY_SETTINGS_CONTROLLER( c_database_verbosity_settings_controller );
+	VALUE	rb_database_verbosity_settings_controller	= RUBY_RBDB_DATABASE_VERBOSITY_SETTINGS_CONTROLLER( c_database_verbosity_settings_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_verbosity_settings_controller,

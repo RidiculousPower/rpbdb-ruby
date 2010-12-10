@@ -233,7 +233,7 @@ VALUE rb_Rbdb_DatabaseTypeSettingsController_new(	int			argc,
 	}
 	else {
 		
-		rb_database_type_settings_controller	= RUBY_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER( c_database_type_settings_controller );
+		rb_database_type_settings_controller	= RUBY_RBDB_DATABASE_TYPE_SETTINGS_CONTROLLER( c_database_type_settings_controller );
 
 		VALUE	argv[]	=	{ rb_parent_database_settings_controller };
 		rb_obj_call_init(	rb_database_type_settings_controller,

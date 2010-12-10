@@ -125,7 +125,7 @@ VALUE rb_Rbdb_DebugSettingsController_new(	int			argc,
 	
 	Rbdb_DebugSettingsController*	c_debug_settings_controller	=	Rbdb_SettingsController_debugSettingsController( c_parent_settings_controller );
 	
-	VALUE	rb_debug_settings_controller	= RUBY_Rbdb_DEBUG_SETTINGS_CONTROLLER( c_debug_settings_controller );
+	VALUE	rb_debug_settings_controller	= RUBY_RBDB_DEBUG_SETTINGS_CONTROLLER( c_debug_settings_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_debug_settings_controller,

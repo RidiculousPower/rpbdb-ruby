@@ -53,7 +53,7 @@ VALUE rb_Rbdb_DatabaseObjectDatabase_cursor( VALUE	rb_database )	{
 	
 	Rbdb_DatabaseCursor*	c_cursor	=	Rbdb_Database_cursor( c_database );
 	
-	VALUE	rb_cursor	=	RUBY_Rbdb_DATABASE_OBJECT_CURSOR( c_cursor );
+	VALUE	rb_cursor	=	RUBY_RBDB_DATABASE_OBJECT_CURSOR( c_cursor );
 	
 	return rb_cursor;
 }	

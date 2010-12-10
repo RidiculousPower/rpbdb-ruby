@@ -75,7 +75,7 @@ VALUE rb_Rbdb_Key_new(	int			argc,
 	Rbdb_Record*			c_parent_record;
 	C_Rbdb_RECORD( rb_parent_record, c_parent_record );
 	
-	VALUE	rb_key	=	RUBY_Rbdb_KEY( Rbdb_Key_new( c_parent_record ) );
+	VALUE	rb_key	=	RUBY_RBDB_KEY( Rbdb_Key_new( c_parent_record ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_key,
@@ -116,7 +116,7 @@ VALUE rb_Rbdb_Key_settingsController(	VALUE	rb_key )	{
 	
 		Rbdb_DatabaseRecordSettingsController*	c_local_record_settings_controller	=	Rbdb_Key_settingsController( c_key );
 
-		rb_local_record_settings_controller	=	RUBY_Rbdb_DATABASE_RECORD_SETTINGS_CONTROLLER( c_local_record_settings_controller );
+		rb_local_record_settings_controller	=	RUBY_RBDB_DATABASE_RECORD_SETTINGS_CONTROLLER( c_local_record_settings_controller );
 
 		rb_iv_set(	rb_key,
 								Rbdb_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER,

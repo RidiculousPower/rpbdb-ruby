@@ -150,7 +150,7 @@ VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_new(	int			argc,
 			
 			Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller	=	Rbdb_DatabaseSettingsController_typeSettingsController( c_database_settings_controller );
 
-			rb_parent_database_type_settings_controller	=	RUBY_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER( c_database_type_settings_controller );
+			rb_parent_database_type_settings_controller	=	RUBY_RBDB_DATABASE_TYPE_SETTINGS_CONTROLLER( c_database_type_settings_controller );
 		}
 		else {
 			
@@ -164,7 +164,7 @@ VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_new(	int			argc,
 
 	Rbdb_DatabaseTypeQueueSettingsController*	c_database_type_queue_settings_controller	=	Rbdb_DatabaseTypeSettingsController_queueController( c_database_type_settings_controller );
 
-	VALUE	rb_database_type_queue_settings_controller	=	RUBY_Rbdb_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( c_database_type_queue_settings_controller );
+	VALUE	rb_database_type_queue_settings_controller	=	RUBY_RBDB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( c_database_type_queue_settings_controller );
 
 	if ( rb_parent_database != Qnil )	{
 

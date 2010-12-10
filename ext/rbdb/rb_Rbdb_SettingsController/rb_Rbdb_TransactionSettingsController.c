@@ -131,7 +131,7 @@ VALUE rb_Rbdb_TransactionSettingsController_new(	int			argc,
 	Rbdb_SettingsController*	c_parent_settings_controller;
 	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 	
-	VALUE	rb_transaction_settings_controller	= RUBY_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( Rbdb_TransactionSettingsController_new( c_parent_settings_controller ) );
+	VALUE	rb_transaction_settings_controller	= RUBY_RBDB_TRANSACTION_SETTINGS_CONTROLLER( Rbdb_TransactionSettingsController_new( c_parent_settings_controller ) );
 
 	rb_iv_set(	rb_transaction_settings_controller,
 							Rbdb_RB_TRANSACTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,

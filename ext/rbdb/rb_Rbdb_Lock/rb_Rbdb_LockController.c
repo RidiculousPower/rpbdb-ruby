@@ -129,7 +129,7 @@ VALUE rb_Rbdb_LockController_new(	int			argc,
 	Rbdb_Environment*		c_parent_environment;
 	C_Rbdb_ENVIRONMENT( rb_parent_environment, c_parent_environment );
 	
-	VALUE	rb_lock_controller	=	RUBY_Rbdb_LOCK_CONTROLLER( Rbdb_LockController_new( c_parent_environment ) );
+	VALUE	rb_lock_controller	=	RUBY_RBDB_LOCK_CONTROLLER( Rbdb_LockController_new( c_parent_environment ) );
 	
 	//	store reference to parent
 	rb_iv_set(	rb_lock_controller,
@@ -170,7 +170,7 @@ VALUE rb_Rbdb_LockController_settingsController(	VALUE	rb_lock_controller )	{
 	
 		Rbdb_LockSettingsController*	c_local_lock_settings_controller	=	Rbdb_LockController_settingsController( c_lock_controller );
 
-		rb_local_lock_settings_controller	=	RUBY_Rbdb_LOCK_SETTINGS_CONTROLLER( c_local_lock_settings_controller );
+		rb_local_lock_settings_controller	=	RUBY_RBDB_LOCK_SETTINGS_CONTROLLER( c_local_lock_settings_controller );
 
 		rb_iv_set(	rb_lock_controller,
 								Rbdb_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER,

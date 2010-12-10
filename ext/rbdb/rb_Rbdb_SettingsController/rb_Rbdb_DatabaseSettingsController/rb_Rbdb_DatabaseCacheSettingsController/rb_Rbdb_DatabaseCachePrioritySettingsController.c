@@ -159,7 +159,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_new(	int			argc,
 
 	Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller	=	Rbdb_DatabaseCacheSettingsController_priorityController( c_database_cache_settings_controller );
 
-	VALUE	rb_database_cache_priority_settings_controller	=	RUBY_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( c_database_cache_priority_settings_controller );
+	VALUE	rb_database_cache_priority_settings_controller	=	RUBY_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( c_database_cache_priority_settings_controller );
 
 	rb_iv_set(	rb_database_cache_priority_settings_controller,
 							Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER,

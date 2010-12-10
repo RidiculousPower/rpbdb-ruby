@@ -143,7 +143,7 @@ VALUE rb_Rbdb_DatabaseRecordFixedLengthSettingsController_new(	int			argc,
 
 	Rbdb_DatabaseRecordFixedLengthSettingsController*	c_database_record_fixed_length_settings_controller	=	Rbdb_DatabaseRecordSettingsController_fixedLengthSettingsController( c_database_record_settings_controller );
 
-	VALUE	rb_database_record_fixed_length_settings_controller	= RUBY_Rbdb_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( c_database_record_fixed_length_settings_controller );
+	VALUE	rb_database_record_fixed_length_settings_controller	= RUBY_RBDB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( c_database_record_fixed_length_settings_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_record_fixed_length_settings_controller,

@@ -104,7 +104,7 @@ VALUE rb_Rbdb_DebugVerbositySettingsController_new(	int			argc,
 	
 	Rbdb_DebugVerbositySettingsController*	c_debug_verbosity_settings_controller	=	Rbdb_DebugSettingsController_verbositySettingsController( c_parent_debug_settings_controller );
 	
-	VALUE	rb_debug_verbosity_settings_controller	= RUBY_Rbdb_DEBUG_VERBOSITY_SETTINGS_CONTROLLER( c_debug_verbosity_settings_controller );
+	VALUE	rb_debug_verbosity_settings_controller	= RUBY_RBDB_DEBUG_VERBOSITY_SETTINGS_CONTROLLER( c_debug_verbosity_settings_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_debug_verbosity_settings_controller,

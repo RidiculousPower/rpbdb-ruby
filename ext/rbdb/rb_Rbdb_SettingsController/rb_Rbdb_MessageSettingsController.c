@@ -89,7 +89,7 @@ VALUE rb_Rbdb_MessageSettingsController_new(	int			argc,
 	Rbdb_SettingsController*	c_parent_settings_controller;
 	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
-	VALUE	rb_message_settings_controller	= RUBY_Rbdb_MESSAGE_SETTINGS_CONTROLLER( Rbdb_SettingsController_messageSettingsController( c_parent_settings_controller ) );
+	VALUE	rb_message_settings_controller	= RUBY_RBDB_MESSAGE_SETTINGS_CONTROLLER( Rbdb_SettingsController_messageSettingsController( c_parent_settings_controller ) );
 
 	rb_iv_set(	rb_message_settings_controller,
 							Rbdb_RB_MESSAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,

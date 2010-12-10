@@ -348,19 +348,19 @@ VALUE rb_Rbdb_Database_new(	int			argc,
 	switch ( c_database_type )	{
 		
 		case DB_BTREE:
-			rb_database	=	RUBY_Rbdb_BTREE_DATABASE( c_database );
+			rb_database	=	RUBY_RBDB_BTREE_DATABASE( c_database );
 			break;
 			
 		case DB_HASH:
-			rb_database	=	RUBY_Rbdb_HASH_DATABASE( c_database );
+			rb_database	=	RUBY_RBDB_HASH_DATABASE( c_database );
 			break;
 
 		case DB_QUEUE:
-			rb_database	=	RUBY_Rbdb_QUEUE_DATABASE( c_database );
+			rb_database	=	RUBY_RBDB_QUEUE_DATABASE( c_database );
 			break;
 
 		case DB_RECNO:
-			rb_database	=	RUBY_Rbdb_RECNO_DATABASE( c_database );
+			rb_database	=	RUBY_RBDB_RECNO_DATABASE( c_database );
 			break;
 
 		default:

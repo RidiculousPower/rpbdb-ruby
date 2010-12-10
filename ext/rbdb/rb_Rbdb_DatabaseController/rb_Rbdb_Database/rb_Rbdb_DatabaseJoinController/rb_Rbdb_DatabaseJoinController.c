@@ -106,7 +106,7 @@ VALUE rb_Rbdb_DatabaseJoinController_new(	int			argc,
 	
 	Rbdb_Database*		c_parent_database;
 	C_Rbdb_DATABASE( rb_parent_database, c_parent_database );
-	VALUE	rb_join_controller	=	RUBY_Rbdb_DATABASE_JOIN_CONTROLLER( Rbdb_DatabaseJoinController_new( c_parent_database ) );
+	VALUE	rb_join_controller	=	RUBY_RBDB_DATABASE_JOIN_CONTROLLER( Rbdb_DatabaseJoinController_new( c_parent_database ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_join_controller,
@@ -146,7 +146,7 @@ VALUE rb_Rbdb_DatabaseJoinController_settingsController(	VALUE	rb_database_join_
 	
 		Rbdb_DatabaseJoinSettingsController*	c_database_join_settings_controller	=	Rbdb_DatabaseJoinController_settingsController( c_database_join_controller );
 
-		rb_database_join_settings_controller	=	RUBY_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( c_database_join_settings_controller );
+		rb_database_join_settings_controller	=	RUBY_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( c_database_join_settings_controller );
 
 		rb_iv_set(	rb_database_join_controller,
 								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
@@ -370,7 +370,7 @@ VALUE rb_Rbdb_DatabaseJoinController_joinListOfCursors(	int			argc,
 	Rbdb_DatabaseJoinCursor*	c_join_cursor	=	Rbdb_DatabaseJoinController_join(	c_join_controller,
 																																							c_cursor_list );
 							
-	return RUBY_Rbdb_DATABASE_JOIN_CURSOR( c_join_cursor );
+	return RUBY_RBDB_DATABASE_JOIN_CURSOR( c_join_cursor );
 	
 }
 

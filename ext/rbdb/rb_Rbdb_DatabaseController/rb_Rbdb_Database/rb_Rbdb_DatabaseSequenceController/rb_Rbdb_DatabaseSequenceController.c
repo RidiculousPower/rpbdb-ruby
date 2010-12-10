@@ -107,7 +107,7 @@ VALUE rb_Rbdb_DatabaseSequenceController_new(	int			argc,
 	
 	Rbdb_DatabaseSequenceController*	c_sequence_controller	=	Rbdb_Database_sequenceController( c_parent_database );
 	
-	VALUE	rb_database_sequence_controller	=	RUBY_Rbdb_DATABASE_SEQUENCE_CONTROLLER( c_sequence_controller );	
+	VALUE	rb_database_sequence_controller	=	RUBY_RBDB_DATABASE_SEQUENCE_CONTROLLER( c_sequence_controller );	
 	
 	//	store reference to parent
 	rb_iv_set(	rb_database_sequence_controller,
@@ -150,7 +150,7 @@ VALUE rb_Rbdb_DatabaseSequenceController_settingsController(	VALUE	rb_database_s
 	
 		Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller	=	Rbdb_DatabaseSequenceController_settingsController( c_database_sequence_controller );
 
-		rb_database_sequence_settings_controller	=	RUBY_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( c_database_sequence_settings_controller );
+		rb_database_sequence_settings_controller	=	RUBY_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( c_database_sequence_settings_controller );
 
 		rb_iv_set(	rb_database_sequence_controller,
 								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER,
@@ -210,7 +210,7 @@ VALUE rb_Rbdb_DatabaseSequenceController_createSequence(	int			argc __attribute_
 	Rbdb_DatabaseSequenceController*		c_database_sequence_controller;
 	C_Rbdb_DATABASE_SEQUENCE_CONTROLLER( rb_database_sequence_controller, c_database_sequence_controller );
 
-	return RUBY_Rbdb_DATABASE_SEQUENCE( Rbdb_DatabaseSequenceController_createSequence( c_database_sequence_controller ) );	
+	return RUBY_RBDB_DATABASE_SEQUENCE( Rbdb_DatabaseSequenceController_createSequence( c_database_sequence_controller ) );	
 }
 
 

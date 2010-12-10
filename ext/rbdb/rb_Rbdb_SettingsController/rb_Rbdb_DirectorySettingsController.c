@@ -90,7 +90,7 @@ VALUE rb_Rbdb_DirectorySettingsController_new(	int				argc,
 	Rbdb_SettingsController*	c_parent_settings_controller;
 	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
-	VALUE	rb_directory_settings_controller	= RUBY_Rbdb_DIRECTORY_SETTINGS_CONTROLLER( Rbdb_SettingsController_directorySettingsController( c_parent_settings_controller ) );
+	VALUE	rb_directory_settings_controller	= RUBY_RBDB_DIRECTORY_SETTINGS_CONTROLLER( Rbdb_SettingsController_directorySettingsController( c_parent_settings_controller ) );
 
 	rb_iv_set(	rb_directory_settings_controller,
 							Rbdb_RB_DIRECTORY_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,

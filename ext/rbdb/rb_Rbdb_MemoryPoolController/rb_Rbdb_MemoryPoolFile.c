@@ -86,7 +86,7 @@ VALUE rb_Rbdb_MemoryPoolFile_new(	int			argc,
 	Rbdb_MemoryPoolFileController*	c_parent_memory_pool_file_controller;
 	C_Rbdb_MEMORY_POOL_FILE_CONTROLLER( rb_parent_memory_pool_file_controller, c_parent_memory_pool_file_controller );
 	
-	VALUE	rb_memory_pool_file		=	RUBY_Rbdb_MEMORY_POOL_FILE( Rbdb_MemoryPoolFile_new( c_parent_memory_pool_file_controller ) );	
+	VALUE	rb_memory_pool_file		=	RUBY_RBDB_MEMORY_POOL_FILE( Rbdb_MemoryPoolFile_new( c_parent_memory_pool_file_controller ) );	
 
 	//	store reference to parent
 	rb_iv_set(	rb_memory_pool_file,
@@ -128,7 +128,7 @@ VALUE rb_Rbdb_MemoryPoolFile_settingsController(	VALUE	rb_memory_pool_file )	{
 	
 		Rbdb_MemoryPoolFileSettingsController*	c_local_memory_pool_file_settings_controller	=	Rbdb_MemoryPoolFile_settingsController( c_memory_pool_file );
 
-		rb_local_memory_pool_file_settings_controller	=	RUBY_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( c_local_memory_pool_file_settings_controller );
+		rb_local_memory_pool_file_settings_controller	=	RUBY_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( c_local_memory_pool_file_settings_controller );
 
 		rb_iv_set(	rb_memory_pool_file,
 								Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,

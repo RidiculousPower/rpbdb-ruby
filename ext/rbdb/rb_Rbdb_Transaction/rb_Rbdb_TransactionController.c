@@ -93,7 +93,7 @@ VALUE rb_Rbdb_TransactionController_new(	int			argc,
 	Rbdb_Environment*	c_parent_environment;
 	C_Rbdb_ENVIRONMENT( rb_parent_environment, c_parent_environment );
 
-	VALUE	rb_transaction_controller	=	RUBY_Rbdb_TRANSACTION_CONTROLLER( Rbdb_TransactionController_new( c_parent_environment ) );
+	VALUE	rb_transaction_controller	=	RUBY_RBDB_TRANSACTION_CONTROLLER( Rbdb_TransactionController_new( c_parent_environment ) );
 
 	rb_iv_set(	rb_transaction_controller,
 							Rbdb_RB_TRANSACTION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
@@ -126,7 +126,7 @@ VALUE rb_Rbdb_TransactionController_settingsController(	VALUE	rb_transaction_con
 	Rbdb_TransactionController*	c_transaction_controller;
 	C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
 
-	return RUBY_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( Rbdb_TransactionController_settingsController( c_transaction_controller ) );
+	return RUBY_RBDB_TRANSACTION_SETTINGS_CONTROLLER( Rbdb_TransactionController_settingsController( c_transaction_controller ) );
 
 }
 
@@ -155,7 +155,7 @@ VALUE rb_Rbdb_TransactionController_beginTransaction( VALUE	rb_transaction_contr
 	Rbdb_TransactionController*	c_transaction_controller;
 	C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
 
-	return RUBY_Rbdb_TRANSACTION( Rbdb_TransactionController_beginTransaction( c_transaction_controller ) );
+	return RUBY_RBDB_TRANSACTION( Rbdb_TransactionController_beginTransaction( c_transaction_controller ) );
 }
 
 /********************************
@@ -183,7 +183,7 @@ VALUE rb_Rbdb_TransactionController_currentTransaction( VALUE	rb_transaction_con
 	Rbdb_TransactionController*	c_transaction_controller;
 	C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
 
-	return RUBY_Rbdb_TRANSACTION( Rbdb_TransactionController_currentTransaction( c_transaction_controller ) );
+	return RUBY_RBDB_TRANSACTION( Rbdb_TransactionController_currentTransaction( c_transaction_controller ) );
 }
 
 /*************************

@@ -73,7 +73,7 @@ VALUE rb_Rbdb_SecondaryKeys_new(	int			argc,
 	Rbdb_Record*			c_parent_record;
 	C_Rbdb_RECORD( rb_parent_record, c_parent_record );
 	
-	VALUE	rb_secondary_keys	=	RUBY_Rbdb_SECONDARY_KEYS( Rbdb_SecondaryKeys_new( c_parent_record ) );
+	VALUE	rb_secondary_keys	=	RUBY_RBDB_SECONDARY_KEYS( Rbdb_SecondaryKeys_new( c_parent_record ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_secondary_keys,
@@ -180,6 +180,6 @@ VALUE rb_Rbdb_SecondaryKeys_secondaryKeyForIndex(	VALUE	rb_secondary_keys,
 	Rbdb_SecondaryKeys_secondaryKeyForIndex(	c_secondary_keys,
 												FIX2INT( rb_index ) );
 
-	return RUBY_Rbdb_KEY( Rbdb_SecondaryKeys_secondaryKeyForIndex(	c_secondary_keys,
+	return RUBY_RBDB_KEY( Rbdb_SecondaryKeys_secondaryKeyForIndex(	c_secondary_keys,
 																		FIX2INT( rb_index ) ) );
 }

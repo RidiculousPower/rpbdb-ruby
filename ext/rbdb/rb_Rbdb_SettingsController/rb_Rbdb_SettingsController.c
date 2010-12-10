@@ -136,7 +136,7 @@ VALUE rb_Rbdb_SettingsController_new(	int				argc,
 
 	Rbdb_SettingsController*	settings_controller	=	Rbdb_Environment_settingsController( c_parent_environment );
 
-	VALUE	rb_settings_controller	= RUBY_Rbdb_SETTINGS_CONTROLLER( settings_controller );
+	VALUE	rb_settings_controller	= RUBY_RBDB_SETTINGS_CONTROLLER( settings_controller );
 
 	rb_iv_set(	rb_settings_controller,
 							Rbdb_RB_SETTINGS_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,

@@ -454,7 +454,7 @@ VALUE rb_Rbdb_DatabaseObject_setDatabase(	VALUE	rb_self,
 		Rbdb_Database*	c_database	=	Rbdb_DatabaseController_newDatabase(	Rbdb_Environment_databaseController( c_environment ),
 																																				c_database_name );
 		
-		rb_database	=	RUBY_Rbdb_DATABASE_OBJECT_DATABASE( c_database );
+		rb_database	=	RUBY_RBDB_DATABASE_OBJECT_DATABASE( c_database );
 	}
 	//	otherwise we have an object - do parity checks for methods we require
 	//	we can't have nothing because we required 1 arg
@@ -1093,7 +1093,7 @@ VALUE rb_Rbdb_DatabaseObject_requireDefaultEnvironment( VALUE rb_self __attribut
 	if ( c_current_working_environment == NULL )	{
 		rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_ENVIRONMENT_NULL );
 	}
-	return RUBY_Rbdb_ENVIRONMENT( c_current_working_environment );
+	return RUBY_RBDB_ENVIRONMENT( c_current_working_environment );
 }
 
 /****************************
@@ -2699,7 +2699,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_initWithDefaultEnvironment(	VALUE	rb_klass
 		//	if it is, get the default environment and return a ruby-wrapped version
 		Rbdb_Environment*	c_current_working_environment	=	Rbdb_RuntimeStorageController_currentWorkingEnvironment( Rbdb_RuntimeStorageController_sharedInstance() );
 		
-		VALUE	rb_current_working_environment	=	RUBY_Rbdb_ENVIRONMENT( c_current_working_environment );
+		VALUE	rb_current_working_environment	=	RUBY_RBDB_ENVIRONMENT( c_current_working_environment );
 		
 		rb_Rbdb_DatabaseObject_internal_configureWithEnvironment(	rb_klass_self,
 																															rb_current_working_environment );

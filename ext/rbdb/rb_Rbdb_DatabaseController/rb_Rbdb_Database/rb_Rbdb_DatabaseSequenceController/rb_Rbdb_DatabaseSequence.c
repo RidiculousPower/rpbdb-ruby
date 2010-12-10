@@ -44,8 +44,8 @@ extern	VALUE	rb_Rbdb_DatabaseSequenceSettingsController;
 void Init_Rbdb_DatabaseSequence()	{
 
 	rb_Rbdb_DatabaseSequence		=	rb_define_class_under(	rb_Rbdb_DatabaseSequenceController, 
-																													"Sequence",				
-																													rb_cObject );
+																												"Sequence",				
+																												rb_cObject );
 	
 	rb_define_singleton_method(	rb_Rbdb_DatabaseSequence, 	"new",																	rb_Rbdb_DatabaseSequence_new,															-1 	);
 	rb_define_method(						rb_Rbdb_DatabaseSequence, 	"initialize",														rb_Rbdb_DatabaseSequence_initialize,														-1 	);
@@ -66,7 +66,7 @@ void Init_Rbdb_DatabaseSequence()	{
 	rb_define_alias(						rb_Rbdb_DatabaseSequence, 	"sequence_controller",									"parent_sequence_controller"	);
 	rb_define_alias(						rb_Rbdb_DatabaseSequence, 	"parent_controller",										"parent_sequence_controller"	);
 	rb_define_alias(						rb_Rbdb_DatabaseSequence, 	"controller",														"parent_sequence_controller"	);
-                    					
+	
 	rb_define_method(						rb_Rbdb_DatabaseSequence, 	"open",																	rb_Rbdb_DatabaseSequence_openSequence,										0 	);
 	rb_define_method(						rb_Rbdb_DatabaseSequence, 	"close",																rb_Rbdb_DatabaseSequence_closeSequence,										0 	);
 	rb_define_method(						rb_Rbdb_DatabaseSequence, 	"delete",																rb_Rbdb_DatabaseSequence_deleteSequence,									0 	);
@@ -103,12 +103,11 @@ VALUE rb_Rbdb_DatabaseSequence_new(	int			argc,
 			"[ <parent database sequence controller> ]"
 		)
 	);
-	
-	
+
 	Rbdb_DatabaseSequenceController*	c_parent_database_sequence_controller;
 	C_Rbdb_DATABASE_SEQUENCE_CONTROLLER( rb_parent_database_sequence_controller, c_parent_database_sequence_controller );
 	
-	VALUE	rb_database_sequence	=	RUBY_Rbdb_DATABASE_SEQUENCE( Rbdb_DatabaseSequence_new( c_parent_database_sequence_controller ) );
+	VALUE	rb_database_sequence	=	RUBY_RBDB_DATABASE_SEQUENCE( Rbdb_DatabaseSequence_new( c_parent_database_sequence_controller ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_sequence,
@@ -117,8 +116,8 @@ VALUE rb_Rbdb_DatabaseSequence_new(	int			argc,
 
 	VALUE	argv[]	=	{ rb_parent_database_sequence_controller };
 	rb_obj_call_init(	rb_database_sequence,
-						1, 
-						argv );
+										1, 
+										argv );
 	
 	return rb_database_sequence;		
 }
@@ -130,8 +129,8 @@ VALUE rb_Rbdb_DatabaseSequence_new(	int			argc,
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/seq_class.html
 VALUE rb_Rbdb_DatabaseSequence_initialize(	int				argc __attribute__ ((unused)),
-																			VALUE*		args __attribute__ ((unused)),
-																			VALUE			rb_self )	{
+																						VALUE*		args __attribute__ ((unused)),
+																						VALUE			rb_self )	{
 
 	return rb_self;
 }
@@ -152,7 +151,7 @@ VALUE rb_Rbdb_DatabaseSequence_settingsController(	VALUE	rb_database_sequence )	
 	
 		Rbdb_DatabaseSequenceSettingsController*	c_local_database_sequence_settings_controller	=	Rbdb_DatabaseSequence_settingsController( c_database_sequence );
 
-		rb_local_database_sequence_settings_controller	=	RUBY_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( c_local_database_sequence_settings_controller );
+		rb_local_database_sequence_settings_controller	=	RUBY_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( c_local_database_sequence_settings_controller );
 
 		rb_iv_set(	rb_database_sequence,
 								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER,

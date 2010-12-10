@@ -77,7 +77,7 @@ VALUE rb_Rbdb_Transaction_new(	int			argc,
 	Rbdb_TransactionController*	c_parent_transaction_controller;
 	C_Rbdb_TRANSACTION_CONTROLLER( rb_parent_transaction_controller, c_parent_transaction_controller );
 	
-	VALUE	rb_transaction	=	RUBY_Rbdb_TRANSACTION( Rbdb_Transaction_new( c_parent_transaction_controller ) );
+	VALUE	rb_transaction	=	RUBY_RBDB_TRANSACTION( Rbdb_Transaction_new( c_parent_transaction_controller ) );
 	
 	rb_iv_set(	rb_transaction,
 							Rbdb_RB_TRANSACTION_VARIABLE_PARENT_TRANSACTION_CONTROLLER,
@@ -110,7 +110,7 @@ VALUE rb_Rbdb_Transaction_settingsController(	VALUE	rb_transaction )	{
 	Rbdb_Transaction*	c_transaction;
 	C_Rbdb_TRANSACTION( rb_transaction, c_transaction );
 
-	return RUBY_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( Rbdb_Transaction_settingsController( c_transaction ) );
+	return RUBY_RBDB_TRANSACTION_SETTINGS_CONTROLLER( Rbdb_Transaction_settingsController( c_transaction ) );
 
 }
 

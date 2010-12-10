@@ -134,7 +134,7 @@ VALUE rb_Rbdb_DatabaseErrorSettingsController_new(	int			argc,
 	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
 	Rbdb_DatabaseErrorSettingsController*	c_database_error_settings_controller	=	Rbdb_DatabaseSettingsController_errorSettingsController( c_database_settings_controller );
 
-	VALUE	rb_database_error_settings_controller	= RUBY_Rbdb_DATABASE_ERROR_SETTINGS_CONTROLLER( c_database_error_settings_controller );
+	VALUE	rb_database_error_settings_controller	= RUBY_RBDB_DATABASE_ERROR_SETTINGS_CONTROLLER( c_database_error_settings_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_error_settings_controller,

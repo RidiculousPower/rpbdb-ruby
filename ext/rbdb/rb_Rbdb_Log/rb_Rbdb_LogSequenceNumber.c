@@ -90,7 +90,7 @@ VALUE rb_Rbdb_LogSequenceNumber_new(	int			argc,
 	Rbdb_Log*			c_parent_log;
 	C_Rbdb_LOG( rb_parent_log, c_parent_log );
 	
-	VALUE	rb_log_sequence_number	=	RUBY_Rbdb_LOG_SEQUENCE_NUMBER( Rbdb_LogSequenceNumber_new( c_parent_log ) );
+	VALUE	rb_log_sequence_number	=	RUBY_RBDB_LOG_SEQUENCE_NUMBER( Rbdb_LogSequenceNumber_new( c_parent_log ) );
 	
 	//	store reference to parent
 	rb_iv_set(	rb_log_sequence_number,
@@ -132,7 +132,7 @@ VALUE rb_Rbdb_LogSequenceNumber_settingsController(	VALUE	rb_log_sequence_number
 	
 		Rbdb_LogSettingsController*	c_local_log_settings_controller	=	Rbdb_LogSequenceNumber_settingsController( c_log_sequence_number );
 
-		rb_local_log_settings_controller	=	RUBY_Rbdb_LOG_SETTINGS_CONTROLLER( c_local_log_settings_controller );
+		rb_local_log_settings_controller	=	RUBY_RBDB_LOG_SETTINGS_CONTROLLER( c_local_log_settings_controller );
 
 		rb_iv_set(	rb_log_sequence_number,
 								Rbdb_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,

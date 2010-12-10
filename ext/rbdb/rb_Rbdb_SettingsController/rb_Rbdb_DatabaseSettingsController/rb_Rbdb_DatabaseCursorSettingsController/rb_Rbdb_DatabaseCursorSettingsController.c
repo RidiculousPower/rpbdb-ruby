@@ -159,7 +159,7 @@ VALUE rb_Rbdb_DatabaseCursorSettingsController_new(	int			argc,
 		c_database_cursor_settings_controller	=	Rbdb_DatabaseSettingsController_cursorSettingsController( c_database_settings_controller );
 	}
 
-	VALUE	rb_database_cursor_settings_controller	=	RUBY_Rbdb_DATABASE_CURSOR_SETTINGS_CONTROLLER( c_database_cursor_settings_controller );
+	VALUE	rb_database_cursor_settings_controller	=	RUBY_RBDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( c_database_cursor_settings_controller );
 
 	//	store reference to parent
 	if ( rb_parent_database_cursor != Qnil )	{

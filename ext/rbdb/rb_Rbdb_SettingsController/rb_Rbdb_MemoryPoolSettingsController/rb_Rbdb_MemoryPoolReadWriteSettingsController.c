@@ -188,7 +188,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_new(	int			argc,
 
 	Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller	=	Rbdb_MemoryPoolSettingsController_readWriteSettingsController( c_parent_memory_pool_settings_controller );
 
-	VALUE	rb_memory_pool_read_write_settings_controller	= RUBY_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( c_memory_pool_read_write_settings_controller );
+	VALUE	rb_memory_pool_read_write_settings_controller	= RUBY_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( c_memory_pool_read_write_settings_controller );
 
 	rb_iv_set(	rb_memory_pool_read_write_settings_controller,
 							Rbdb_RB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_SETTINGS_CONTROLLER,

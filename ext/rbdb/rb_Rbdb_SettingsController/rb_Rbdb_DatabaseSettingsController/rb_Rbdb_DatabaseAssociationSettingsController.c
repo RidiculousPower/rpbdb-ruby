@@ -127,7 +127,7 @@ VALUE rb_Rbdb_DatabaseAssociationSettingsController_new(	int			argc,
 	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
 	Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller	=	Rbdb_DatabaseSettingsController_associationSettingsController( c_database_settings_controller );
 
-	VALUE	rb_database_association_settings_controller	=	RUBY_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( c_database_association_settings_controller );
+	VALUE	rb_database_association_settings_controller	=	RUBY_RBDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( c_database_association_settings_controller );
 
 	rb_iv_set(	rb_database_association_settings_controller,
 							Rbdb_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER,

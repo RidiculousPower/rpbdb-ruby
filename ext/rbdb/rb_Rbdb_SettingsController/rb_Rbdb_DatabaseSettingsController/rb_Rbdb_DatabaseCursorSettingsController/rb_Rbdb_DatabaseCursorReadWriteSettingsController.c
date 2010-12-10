@@ -166,7 +166,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_new(	int			argc,
 
 	Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller	=	Rbdb_DatabaseCursorSettingsController_readWriteSettingsController( c_database_cursor_settings_controller );
 
-	VALUE	rb_database_cursor_read_write_settings_controller	=	RUBY_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( c_database_cursor_read_write_settings_controller );
+	VALUE	rb_database_cursor_read_write_settings_controller	=	RUBY_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( c_database_cursor_read_write_settings_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_cursor_read_write_settings_controller,
