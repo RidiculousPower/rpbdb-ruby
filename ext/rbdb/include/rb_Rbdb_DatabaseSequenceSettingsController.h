@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER
-	#define RB_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER
+#ifndef RB_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER
+	#define RB_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_DatabaseSequenceSettingsController();
+void Init_rb_Rbdb_DatabaseSequenceSettingsController();
 
 VALUE rb_Rbdb_DatabaseSequenceSettingsController_new(	int			argc,
 																											VALUE*	args,

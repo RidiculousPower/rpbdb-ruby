@@ -46,7 +46,7 @@ extern	VALUE	rb_Rbdb_MemoryPoolFileCacheSettingsController;
 extern	VALUE	rb_Rbdb_MemoryPoolFileCachePrioritySettingsController;
 extern	VALUE	rb_Rbdb_MemoryPoolFilePageSettingsController;
 
-void Init_Rbdb_MemoryPoolFileSettingsController()	{
+void Init_rb_Rbdb_MemoryPoolFileSettingsController()	{
 
 	rb_Rbdb_MemoryPoolFileSettingsController		=	rb_define_class_under(	rb_Rbdb_MemoryPoolSettingsController, 
 																																				"File",	
@@ -126,14 +126,14 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_new(	int			argc,
 	}
 
 	Rbdb_MemoryPoolSettingsController*	c_parent_memory_pool_settings_controller;
-	C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_parent_memory_pool_settings_controller, c_parent_memory_pool_settings_controller );
+	C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_parent_memory_pool_settings_controller, c_parent_memory_pool_settings_controller );
 
 	Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller	=	Rbdb_MemoryPoolSettingsController_fileSettingsController( c_parent_memory_pool_settings_controller );
 
 	VALUE	rb_memory_pool_file_settings_controller	= RUBY_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( c_memory_pool_file_settings_controller );
 
 	rb_iv_set(	rb_memory_pool_file_settings_controller,
-							Rbdb_RB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_SETTINGS_CONTROLLER,
+							RBDB_RB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_SETTINGS_CONTROLLER,
 							rb_parent_memory_pool_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_memory_pool_settings_controller };
@@ -190,7 +190,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_parentSettingsController(	VALUE	r
 VALUE rb_Rbdb_MemoryPoolFileSettingsController_parentMemoryPoolSettingsController(	VALUE	rb_memory_pool_file_settings_controller )	{
 
 	VALUE	rb_parent_memory_pool_settings_controller	=	rb_iv_get(	rb_memory_pool_file_settings_controller,
-																																Rbdb_RB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_SETTINGS_CONTROLLER );
+																																RBDB_RB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_SETTINGS_CONTROLLER );
 
 	return rb_parent_memory_pool_settings_controller;
 }
@@ -203,7 +203,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_parentMemoryPoolSettingsControlle
 VALUE rb_Rbdb_MemoryPoolFileSettingsController_createWithInitialNullBytesNumbering( VALUE	rb_memory_pool_file_settings_controller )	{
 
 	Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 											
 	return INT2NUM( Rbdb_MemoryPoolFileSettingsController_createWithInitialNullBytesNumbering( c_memory_pool_file_settings_controller ) );
 }
@@ -216,7 +216,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_createWithInitialNullBytesNumberi
 																								VALUE	rb_initial_null_bytes )	{
 
 		Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 		Rbdb_MemoryPoolFileSettingsController_setCreateWithInitialNullBytesNumbering(	c_memory_pool_file_settings_controller,
 																							FIX2INT( rb_initial_null_bytes ) );
@@ -232,7 +232,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_createWithInitialNullBytesNumberi
 VALUE rb_Rbdb_MemoryPoolFileSettingsController_fileID( VALUE	rb_memory_pool_file_settings_controller )	{
 
 	Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 	uint8_t*	file_id	=	Rbdb_MemoryPoolFileSettingsController_fileID( c_memory_pool_file_settings_controller );
 
@@ -278,7 +278,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_fileID( VALUE	rb_memory_pool_file
 		}
 
 		Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 	
 		uint8_t*	c_file_id	=	(uint8_t*) c_file_id_DB_FILE_ID_LEN_byte_string;
 
@@ -300,7 +300,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_fileID( VALUE	rb_memory_pool_file
 VALUE rb_Rbdb_MemoryPoolFileSettingsController_fileType( VALUE	rb_memory_pool_file_settings_controller )	{
 
 	Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 	return INT2FIX( Rbdb_MemoryPoolFileSettingsController_fileType( c_memory_pool_file_settings_controller ) );
 }
@@ -313,7 +313,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_fileType( VALUE	rb_memory_pool_fi
 																															VALUE	rb_file_type )	{
 
 		Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 		Rbdb_MemoryPoolFileSettingsController_setFileType(	c_memory_pool_file_settings_controller,
 																												rb_file_type );
@@ -329,7 +329,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_fileType( VALUE	rb_memory_pool_fi
 VALUE rb_Rbdb_MemoryPoolFileSettingsController_logSequenceNumberOffset( VALUE	rb_memory_pool_file_settings_controller )	{
 
 	Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 	return INT2FIX( Rbdb_MemoryPoolFileSettingsController_logSequenceNumberOffset( c_memory_pool_file_settings_controller ) );
 }
@@ -342,7 +342,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_logSequenceNumberOffset( VALUE	rb
 																				VALUE	rb_log_sequence_number_offset )	{
 
 		Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 		Rbdb_MemoryPoolFileSettingsController_setLogSequenceNumberOffset(	c_memory_pool_file_settings_controller,
 																			FIX2INT( rb_log_sequence_number_offset ) );
@@ -358,7 +358,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_logSequenceNumberOffset( VALUE	rb
 VALUE rb_Rbdb_MemoryPoolFileSettingsController_maxFileSizeInBytes( VALUE	rb_memory_pool_file_settings_controller )	{
 
 	Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 	uint64_t	c_max_size_in_bytes	=	Rbdb_MemoryPoolFileSettingsController_maxFileSizeInBytes( c_memory_pool_file_settings_controller );
 	VALUE			rb_max_size_in_bytes	=	LONG2NUM( c_max_size_in_bytes );
@@ -373,7 +373,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_maxFileSizeInBytes( VALUE	rb_memo
 VALUE rb_Rbdb_MemoryPoolFileSettingsController_maxFileSizeInKBytes( VALUE	rb_memory_pool_file_settings_controller )	{
 
 	Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 	uint32_t	c_max_size_in_kbytes	=	Rbdb_MemoryPoolFileSettingsController_maxFileSizeInKBytes( c_memory_pool_file_settings_controller );
 	VALUE			rb_max_size_in_kbytes	=	LONG2NUM( c_max_size_in_kbytes );
@@ -388,7 +388,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_maxFileSizeInKBytes( VALUE	rb_mem
 VALUE rb_Rbdb_MemoryPoolFileSettingsController_maxFileSizeInMBytes( VALUE	rb_memory_pool_file_settings_controller )	{
 
 	Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 	uint32_t	c_max_size_in_mbytes	=	Rbdb_MemoryPoolFileSettingsController_maxFileSizeInMBytes( c_memory_pool_file_settings_controller );
 	VALUE			rb_max_size_in_mbytes	=	LONG2NUM( c_max_size_in_mbytes );
@@ -403,7 +403,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_maxFileSizeInMBytes( VALUE	rb_mem
 VALUE rb_Rbdb_MemoryPoolFileSettingsController_maxFileSizeInGBytes( VALUE	rb_memory_pool_file_settings_controller )	{
 
 	Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 	uint32_t	c_max_size_in_gbytes	=	Rbdb_MemoryPoolFileSettingsController_maxFileSizeInGBytes( c_memory_pool_file_settings_controller );
 	VALUE			rb_max_size_in_gbytes	=	LONG2NUM( c_max_size_in_gbytes );
@@ -419,7 +419,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_maxFileSizeInGBytes( VALUE	rb_mem
 																			VALUE	rb_max_size_in_bytes )	{
 
 		Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 		uint64_t	c_max_size_in_bytes	=	NUM2LONG( rb_max_size_in_bytes );
 
@@ -437,7 +437,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_maxFileSizeInGBytes( VALUE	rb_mem
 																																					VALUE	rb_max_size_in_kbytes )	{
 
 		Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 		uint32_t	c_max_size_in_kbytes	=	NUM2LONG( rb_max_size_in_kbytes );
 
@@ -455,7 +455,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_maxFileSizeInGBytes( VALUE	rb_mem
 																																					VALUE	rb_max_size_in_mbytes )	{
 
 		Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 		uint32_t	c_max_size_in_mbytes	=	NUM2LONG( rb_max_size_in_mbytes );
 
@@ -473,7 +473,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_maxFileSizeInGBytes( VALUE	rb_mem
 																																					VALUE	rb_max_size_in_gbytes )	{
 
 		Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 		uint32_t	c_max_size_in_gbytes	=	NUM2LONG( rb_max_size_in_gbytes );
 
@@ -491,14 +491,14 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_maxFileSizeInGBytes( VALUE	rb_mem
 VALUE rb_Rbdb_MemoryPoolFileSettingsController_cookie( VALUE	rb_memory_pool_file_settings_controller )	{
 
 	Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 	Rbdb_Data*	c_cookie	=	Rbdb_MemoryPoolFileSettingsController_cookie( c_memory_pool_file_settings_controller );
 
 	VALUE	rb_cookie	=	Qnil;
 
 	if ( c_cookie != NULL )	{
-		rb_cookie = RUBY_STRING_FOR_Rbdb_DATA( c_cookie );
+		rb_cookie = RUBY_STRING_FOR_RBDB_DATA( c_cookie );
 	}
 
 	return rb_cookie;
@@ -512,7 +512,7 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_cookie( VALUE	rb_memory_pool_file
 																														VALUE	rb_cookie )	{
 
 		Rbdb_MemoryPoolFileSettingsController*	c_memory_pool_file_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_memory_pool_file_settings_controller, c_memory_pool_file_settings_controller );
 
 		Rbdb_Data*		c_cookie	=	Rbdb_Data_new( NULL );
 		
@@ -542,13 +542,13 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_cacheSettingsController( VALUE	rb
 	VALUE	rb_memory_pool_file_cache_settings_controller	=	Qnil;
 	
 	if ( ( rb_memory_pool_file_cache_settings_controller = rb_iv_get(	rb_memory_pool_file_settings_controller,
-																																		Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																		RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_memory_pool_file_cache_settings_controller	=	rb_Rbdb_MemoryPoolFileCacheSettingsController_new(	1,
 																																																				& rb_memory_pool_file_settings_controller,
 																																																				rb_Rbdb_MemoryPoolFileCacheSettingsController );
 		rb_iv_set(	rb_memory_pool_file_cache_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER,
 								rb_memory_pool_file_settings_controller );
 	}
 	
@@ -564,13 +564,13 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_pageSettingsController( VALUE	rb_
 	VALUE	rb_memory_pool_file_page_settings_controller	=	Qnil;
 	
 	if ( ( rb_memory_pool_file_page_settings_controller = rb_iv_get(	rb_memory_pool_file_settings_controller,
-																																		Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																		RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_memory_pool_file_page_settings_controller	=	rb_Rbdb_MemoryPoolFilePageSettingsController_new(	1,
 																																																			& rb_memory_pool_file_settings_controller,
 																																																			rb_Rbdb_MemoryPoolFilePageSettingsController );
 		rb_iv_set(	rb_memory_pool_file_page_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER,
 								rb_memory_pool_file_settings_controller );
 	}
 	

@@ -47,7 +47,7 @@ extern	VALUE	rb_Rbdb_DatabaseSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseCursorSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseCursorReadWriteSettingsController;
 
-void Init_Rbdb_DatabaseCursorReadWriteSettingsController()	{
+void Init_rb_Rbdb_DatabaseCursorReadWriteSettingsController()	{
 
 	rb_Rbdb_DatabaseCursorReadWriteSettingsController				=	rb_define_class_under(	rb_Rbdb_DatabaseCursorSettingsController, 
 																																										"ReadWrite",	
@@ -162,7 +162,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseCursorSettingsController*	c_database_cursor_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_parent_database_cursor_settings_controller, c_database_cursor_settings_controller );		
+	C_RBDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_parent_database_cursor_settings_controller, c_database_cursor_settings_controller );		
 
 	Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_read_write_settings_controller	=	Rbdb_DatabaseCursorSettingsController_readWriteSettingsController( c_database_cursor_settings_controller );
 
@@ -170,7 +170,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_new(	int			argc,
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_cursor_read_write_settings_controller,
-							Rbdb_RB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_SETTINGS_CONTROLLER,
 							rb_parent_database_cursor_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_cursor_settings_controller };
@@ -259,7 +259,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_parentDatabaseSettingsCo
 VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_parentDatabaseCursorSettingsController(	VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 	VALUE	rb_parent_database_cursor_settings_controller	=	rb_iv_get(	rb_database_cursor_read_write_settings_controller,
-																																		Rbdb_RB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_SETTINGS_CONTROLLER );
+																																		RBDB_RB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_cursor_settings_controller;
 }
@@ -276,7 +276,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_parentDatabaseCursorSett
 VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_permitWrite( VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 	Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+	C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
 	return ( Rbdb_DatabaseCursorReadWriteSettingsController_permitWrite( c_database_cursor_record_read_write_settings_controller )	?	Qtrue
 																																:	Qfalse );
@@ -289,7 +289,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_permitWrite( VALUE	rb_da
 	VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_turnPermitWriteOn( VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 		Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+		C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
 		Rbdb_DatabaseCursorReadWriteSettingsController_turnPermitWriteOn( c_database_cursor_record_read_write_settings_controller );
 		
@@ -303,7 +303,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_permitWrite( VALUE	rb_da
 	VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_turnPermitWriteOff( VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 		Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+		C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
 		Rbdb_DatabaseCursorReadWriteSettingsController_turnPermitWriteOff( c_database_cursor_record_read_write_settings_controller );
 
@@ -318,7 +318,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_permitWrite( VALUE	rb_da
 VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_ignoreLease( VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 	Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+	C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
 	return ( Rbdb_DatabaseCursorReadWriteSettingsController_ignoreLease( c_database_cursor_record_read_write_settings_controller )	?	Qtrue
 																																:	Qfalse );
@@ -331,7 +331,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_ignoreLease( VALUE	rb_da
 	VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_ignoreLeaseOn( VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 		Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+		C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
 		Rbdb_DatabaseCursorReadWriteSettingsController_ignoreLeaseOn( c_database_cursor_record_read_write_settings_controller );
 
@@ -345,7 +345,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_ignoreLease( VALUE	rb_da
 	VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_ignoreLeaseOff( VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 		Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+		C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
 		Rbdb_DatabaseCursorReadWriteSettingsController_ignoreLeaseOff( c_database_cursor_record_read_write_settings_controller );
 
@@ -360,7 +360,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_ignoreLease( VALUE	rb_da
 VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadLocks( VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 	Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+	C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
 	return ( Rbdb_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadLocks( c_database_cursor_record_read_write_settings_controller )	?	Qtrue
 																																				:	Qfalse );
@@ -373,7 +373,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadL
 	VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOn( VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 		Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+		C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
 		Rbdb_DatabaseCursorReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOn( c_database_cursor_record_read_write_settings_controller );
 
@@ -387,7 +387,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadL
 	VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOff( VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 		Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+		C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
 		Rbdb_DatabaseCursorReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOff( c_database_cursor_record_read_write_settings_controller );
 
@@ -402,7 +402,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_writeLocksInsteadOfReadL
 VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_returnMultipleDataItems( VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 	Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+	C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
 	return ( Rbdb_DatabaseCursorReadWriteSettingsController_returnMultipleDataItems( c_database_cursor_record_read_write_settings_controller )	?	Qtrue
 																																	:	Qfalse );
@@ -415,7 +415,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_returnMultipleDataItems(
 	VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_turnReturnMultipleDataItemsOn( VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 		Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+		C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
 		Rbdb_DatabaseCursorReadWriteSettingsController_turnReturnMultipleDataItemsOn( c_database_cursor_record_read_write_settings_controller );
 
@@ -429,7 +429,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_returnMultipleDataItems(
 	VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_turnReturnMultipleDataItemsOff( VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 		Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+		C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 	
 		Rbdb_DatabaseCursorReadWriteSettingsController_turnReturnMultipleDataItemsOff( c_database_cursor_record_read_write_settings_controller );
 
@@ -449,7 +449,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_returnMultipleDataItems(
 VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_returnMultipleKeyDataPairs( VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 	Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+	C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
 	return ( Rbdb_DatabaseCursorReadWriteSettingsController_returnMultipleKeyDataPairs( c_database_cursor_record_read_write_settings_controller )	?	Qtrue
 																																			:	Qfalse );
@@ -462,7 +462,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_returnMultipleKeyDataPai
 	VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_turnReturnMultipleKeyDataPairsOn( VALUE	rb_database_cursor_read_write_settings_controller )	{
 
 		Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+		C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 
 		Rbdb_DatabaseCursorReadWriteSettingsController_turnReturnMultipleKeyDataPairsOn( c_database_cursor_record_read_write_settings_controller );
 				
@@ -476,7 +476,7 @@ VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_returnMultipleKeyDataPai
 	VALUE rb_Rbdb_DatabaseCursorReadWriteSettingsController_turnReturnMultipleKeyDataPairsOff( VALUE	rb_database_cursor_read_write_settings_controller )	{
 	
 		Rbdb_DatabaseCursorReadWriteSettingsController*	c_database_cursor_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
+		C_RBDB_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER( rb_database_cursor_read_write_settings_controller, c_database_cursor_record_read_write_settings_controller );
 	
 		Rbdb_DatabaseCursorReadWriteSettingsController_turnReturnMultipleKeyDataPairsOff( c_database_cursor_record_read_write_settings_controller );
 

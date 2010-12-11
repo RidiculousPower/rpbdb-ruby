@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_MESSAGE_SETTINGS_CONTROLLER
-	#define RB_Rbdb_MESSAGE_SETTINGS_CONTROLLER
+#ifndef RB_RBDB_MESSAGE_SETTINGS_CONTROLLER
+	#define RB_RBDB_MESSAGE_SETTINGS_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_MessageSettingsController();
+void Init_rb_Rbdb_MessageSettingsController();
 
 VALUE rb_Rbdb_MessageSettingsController_new(	int			argc,
 																							VALUE*	args,

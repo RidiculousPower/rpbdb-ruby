@@ -1,12 +1,12 @@
-#ifndef RB_Rbdb_DATABASE_OBJECT
-	#define RB_Rbdb_DATABASE_OBJECT
+#ifndef RB_RBDB_DATABASE_OBJECT
+	#define RB_RBDB_DATABASE_OBJECT
 
 	//	This is a module - rb_self refers to the object currently implementing the module
 
 	#include <rbdb/Rbdb_Database.h>
 	#include <rbdb/Rbdb_Record.h>
 
-	void Init_Rbdb_Module();
+	void Init_rb_Rbdb_Module();
 	VALUE rb_Rbdb_DatabaseObject_initRbdb( VALUE	rb_klass_self );
 VALUE rb_Rbdb_DatabaseObject_hasConfigured( VALUE rb_self );
 VALUE rb_Rbdb_DatabaseObject_hasInitialized( VALUE rb_self );

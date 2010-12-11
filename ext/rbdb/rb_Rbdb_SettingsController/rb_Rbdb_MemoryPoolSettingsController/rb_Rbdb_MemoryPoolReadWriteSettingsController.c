@@ -35,7 +35,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_MemoryPoolSettingsController;
 extern	VALUE	rb_Rbdb_MemoryPoolReadWriteSettingsController;
 
-void Init_Rbdb_MemoryPoolReadWriteSettingsController()	{
+void Init_rb_Rbdb_MemoryPoolReadWriteSettingsController()	{
 
 	rb_Rbdb_MemoryPoolReadWriteSettingsController		=	rb_define_class_under(	rb_Rbdb_MemoryPoolSettingsController, 
 																																						"ReadWrite",	
@@ -184,14 +184,14 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_new(	int			argc,
 	}
 
 	Rbdb_MemoryPoolSettingsController*	c_parent_memory_pool_settings_controller;
-	C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_parent_memory_pool_settings_controller, c_parent_memory_pool_settings_controller );
+	C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_parent_memory_pool_settings_controller, c_parent_memory_pool_settings_controller );
 
 	Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller	=	Rbdb_MemoryPoolSettingsController_readWriteSettingsController( c_parent_memory_pool_settings_controller );
 
 	VALUE	rb_memory_pool_read_write_settings_controller	= RUBY_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( c_memory_pool_read_write_settings_controller );
 
 	rb_iv_set(	rb_memory_pool_read_write_settings_controller,
-							Rbdb_RB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_SETTINGS_CONTROLLER,
+							RBDB_RB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_SETTINGS_CONTROLLER,
 							rb_parent_memory_pool_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_memory_pool_settings_controller };
@@ -244,7 +244,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_parentSettingsController(	VA
 VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_parentMemoryPoolSettingsController(	VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 	VALUE	rb_parent_memory_pool_settings_controller	=	rb_iv_get(	rb_memory_pool_read_write_settings_controller,
-																																Rbdb_RB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_SETTINGS_CONTROLLER );
+																																RBDB_RB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_SETTINGS_CONTROLLER );
 
 	return rb_parent_memory_pool_settings_controller;
 }
@@ -257,7 +257,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_parentMemoryPoolSettingsCont
 VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_maxOpenFiles( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 	Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-	C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+	C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
 	return INT2FIX( Rbdb_MemoryPoolReadWriteSettingsController_maxOpenFiles( c_memory_pool_record_read_write_settings_controller ) );
 }
@@ -270,7 +270,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_maxOpenFiles( VALUE	rb_memor
 																			VALUE	rb_max_open_files )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_setMaxOpenFiles(	c_memory_pool_record_read_write_settings_controller,
 																		FIX2INT( rb_max_open_files ) );
@@ -286,7 +286,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_maxOpenFiles( VALUE	rb_memor
 VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_maxSequentialWrites( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 	Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-	C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+	C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
 	return INT2FIX( Rbdb_MemoryPoolReadWriteSettingsController_maxSequentialWrites( c_memory_pool_record_read_write_settings_controller ) );
 }
@@ -299,7 +299,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_maxSequentialWrites( VALUE	r
 																					VALUE	rb_max_sequential_writes )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_setMaxSequentialWrites(	c_memory_pool_record_read_write_settings_controller,
 																			FIX2INT( rb_max_sequential_writes ) );
@@ -314,7 +314,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_maxSequentialWrites( VALUE	r
 VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_timeToSleepBeforeNextWrite( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 	Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-	C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+	C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
 	return INT2FIX( Rbdb_MemoryPoolReadWriteSettingsController_timeToSleepBeforeNextWrite( c_memory_pool_record_read_write_settings_controller ) );
 }
@@ -327,7 +327,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_timeToSleepBeforeNextWrite( 
 																						VALUE	rb_time_to_sleep_before_next_write )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_setTimeToSleepBeforeNextWrite(	c_memory_pool_record_read_write_settings_controller,
 																					FIX2INT( rb_time_to_sleep_before_next_write ) );
@@ -343,7 +343,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_timeToSleepBeforeNextWrite( 
 VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_maxMappedDatabaseSize( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 	Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-	C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+	C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
 	size_t	c_max_mapped_db_size	=	Rbdb_MemoryPoolReadWriteSettingsController_maxMappedDatabaseSize( c_memory_pool_record_read_write_settings_controller );
 	VALUE		rb_max_mapped_db_size	=	LONG2NUM( c_max_mapped_db_size );
@@ -359,7 +359,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_maxMappedDatabaseSize( VALUE
 																																					VALUE	rb_max_mapped_db_size )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
 		size_t	c_max_mapped_db_size	=	NUM2LONG( rb_max_mapped_db_size );
 
@@ -377,7 +377,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_maxMappedDatabaseSize( VALUE
 VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 	Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-	C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+	C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
 	BOOL	c_pagefault_shared_regions	=	Rbdb_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions(	c_memory_pool_record_read_write_settings_controller );
 	VALUE	rb_pagefault_shared_regions	=	( c_pagefault_shared_regions ? Qtrue : Qfalse );
@@ -393,7 +393,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions( VALU
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOn( c_memory_pool_record_read_write_settings_controller );
 
@@ -408,7 +408,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions( VALU
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnPagefaultSharedRegionsOff( c_memory_pool_record_read_write_settings_controller );
 
@@ -424,7 +424,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_pagefaultSharedRegions( VALU
 VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_doNotWriteToTemporaryBackingFile( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 	Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-	C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+	C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
 	return ( Rbdb_MemoryPoolReadWriteSettingsController_doNotWriteToTemporaryBackingFile( c_memory_pool_record_read_write_settings_controller )	?	Qtrue
 																																																																							:	Qfalse );
@@ -439,7 +439,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_doNotWriteToTemporaryBacking
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnDoNotWriteToTemporaryBackingFileOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnDoNotWriteToTemporaryBackingFileOn( c_memory_pool_record_read_write_settings_controller );
 
@@ -455,7 +455,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_doNotWriteToTemporaryBacking
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnDoNotWriteToTemporaryBackingFileOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_record_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_record_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnDoNotWriteToTemporaryBackingFileOff( c_memory_pool_record_read_write_settings_controller );
 
@@ -470,7 +470,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_doNotWriteToTemporaryBacking
 VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_useSystemMemoryForStorage( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 	Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-	C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+	C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 	return ( Rbdb_MemoryPoolReadWriteSettingsController_useSystemMemoryForStorage( c_memory_pool_read_write_settings_controller )	?	Qtrue
 																																																																:	Qfalse );
@@ -484,7 +484,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_useSystemMemoryForStorage( V
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnUseSystemMemoryForStorageOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnUseSystemMemoryForStorageOn( c_memory_pool_read_write_settings_controller );
 
@@ -499,7 +499,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_useSystemMemoryForStorage( V
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnUseSystemMemoryForStorageOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnUseSystemMemoryForStorageOff( c_memory_pool_read_write_settings_controller );
 
@@ -514,7 +514,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_useSystemMemoryForStorage( V
 VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_applicationHasExclusiveAccess( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 	Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-	C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+	C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 	return ( Rbdb_MemoryPoolReadWriteSettingsController_applicationHasExclusiveAccess( c_memory_pool_read_write_settings_controller )	?	Qtrue
 																																																								:	Qfalse );
@@ -528,7 +528,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_applicationHasExclusiveAcces
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnApplicationHasExclusiveAccessOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnApplicationHasExclusiveAccessOn( c_memory_pool_read_write_settings_controller );
 
@@ -543,7 +543,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_applicationHasExclusiveAcces
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnApplicationHasExclusiveAccessOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnApplicationHasExclusiveAccessOff( c_memory_pool_read_write_settings_controller );
 
@@ -558,7 +558,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_applicationHasExclusiveAcces
 VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsingMalloc( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 	Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-	C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+	C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 	return ( Rbdb_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsingMalloc( c_memory_pool_read_write_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -572,7 +572,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsing
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOn( c_memory_pool_read_write_settings_controller );
 
@@ -587,7 +587,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsing
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOff( c_memory_pool_read_write_settings_controller );
 
@@ -602,7 +602,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsing
 VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsingRealloc( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 	Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-	C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+	C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 	return ( Rbdb_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsingRealloc( c_memory_pool_read_write_settings_controller )	?	Qtrue
 																															:	Qfalse );
@@ -616,7 +616,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsing
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOn( c_memory_pool_read_write_settings_controller );
 
@@ -631,7 +631,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsing
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOff( c_memory_pool_read_write_settings_controller );
 
@@ -646,7 +646,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_databaseAllocatesMemoryUsing
 VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_applicationAllocatesMemory( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 	Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-	C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+	C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 	return ( Rbdb_MemoryPoolReadWriteSettingsController_applicationAllocatesMemory( c_memory_pool_read_write_settings_controller )	?	Qtrue
 																												:	Qfalse );
@@ -660,7 +660,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_applicationAllocatesMemory( 
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnApplicationAllocatesMemoryOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnApplicationAllocatesMemoryOn( c_memory_pool_read_write_settings_controller );
 
@@ -675,7 +675,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_applicationAllocatesMemory( 
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnApplicationAllocatesMemoryOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnApplicationAllocatesMemoryOff( c_memory_pool_read_write_settings_controller );
 
@@ -690,7 +690,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_applicationAllocatesMemory( 
 VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_databaseFreesMemory( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 	Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-	C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+	C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 	return ( Rbdb_MemoryPoolReadWriteSettingsController_databaseFreesMemory( c_memory_pool_read_write_settings_controller )	?	Qtrue
 																																																													:	Qfalse );
@@ -704,7 +704,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_databaseFreesMemory( VALUE	r
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnDatabaseFreesMemoryOn( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnDatabaseFreesMemoryOn( c_memory_pool_read_write_settings_controller );
 
@@ -719,7 +719,7 @@ VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_databaseFreesMemory( VALUE	r
 	VALUE rb_Rbdb_MemoryPoolReadWriteSettingsController_turnDatabaseFreesMemoryOff( VALUE	rb_memory_pool_read_write_settings_controller )	{
 
 		Rbdb_MemoryPoolReadWriteSettingsController*	c_memory_pool_read_write_settings_controller;
-		C_Rbdb_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
+		C_RBDB_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER( rb_memory_pool_read_write_settings_controller, c_memory_pool_read_write_settings_controller );
 
 		Rbdb_MemoryPoolReadWriteSettingsController_turnDatabaseFreesMemoryOff( c_memory_pool_read_write_settings_controller );
 

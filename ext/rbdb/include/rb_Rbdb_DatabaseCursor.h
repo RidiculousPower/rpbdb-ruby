@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_DATABASE_CURSOR
-	#define RB_Rbdb_DATABASE_CURSOR
+#ifndef RB_RBDB_DATABASE_CURSOR
+	#define RB_RBDB_DATABASE_CURSOR
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_DatabaseCursor();
+void Init_rb_Rbdb_DatabaseCursor();
 
 VALUE rb_Rbdb_DatabaseCursor_new( int			argc,
 																	VALUE*	args,

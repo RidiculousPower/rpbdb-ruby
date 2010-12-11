@@ -46,7 +46,7 @@ extern	VALUE	rb_Rbdb_DatabaseRecordSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseRecordVariableLengthSettingsController;
 extern	VALUE	rb_Rbdb_Record;
 
-void Init_Rbdb_DatabaseRecordVariableLengthSettingsController()	{
+void Init_rb_Rbdb_DatabaseRecordVariableLengthSettingsController()	{
 
 	rb_Rbdb_DatabaseRecordVariableLengthSettingsController	=	rb_define_class_under(	rb_Rbdb_DatabaseRecordSettingsController, 
 																																							"VariableLength",	
@@ -137,7 +137,7 @@ VALUE rb_Rbdb_DatabaseRecordVariableLengthSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseRecordSettingsController*	c_database_record_settings_controller;
-	C_Rbdb_DATABASE_RECORD_SETTINGS_CONTROLLER( rb_parent_database_record_settings_controller, c_database_record_settings_controller );		
+	C_RBDB_DATABASE_RECORD_SETTINGS_CONTROLLER( rb_parent_database_record_settings_controller, c_database_record_settings_controller );		
 
 	Rbdb_DatabaseRecordVariableLengthSettingsController*	c_database_record_variable_length_settings_controller	=	Rbdb_DatabaseRecordSettingsController_variableLengthSettingsController( c_database_record_settings_controller );
 
@@ -145,7 +145,7 @@ VALUE rb_Rbdb_DatabaseRecordVariableLengthSettingsController_new(	int			argc,
 	
 	//	store reference to parent
 	rb_iv_set(	rb_database_record_variable_length_settings_controller,
-							Rbdb_RB_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER,
 							rb_parent_database_record_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_database_record_settings_controller };
@@ -222,7 +222,7 @@ VALUE rb_Rbdb_DatabaseRecordVariableLengthSettingsController_parentDatabaseSetti
 VALUE rb_Rbdb_DatabaseRecordVariableLengthSettingsController_parentDatabaseRecordSettingsController(	VALUE	rb_database_record_variable_length_settings_controller )	{
 
 	VALUE	rb_parent_database_record_settings_controller	=	rb_iv_get(	rb_database_record_variable_length_settings_controller,
-																																		Rbdb_RB_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER );
+																																		RBDB_RB_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_record_settings_controller;
 }
@@ -234,7 +234,7 @@ VALUE rb_Rbdb_DatabaseRecordVariableLengthSettingsController_parentDatabaseRecor
 VALUE rb_Rbdb_DatabaseRecordVariableLengthSettingsController_delimeterByte( VALUE	rb_database_record_variable_length_settings_controller )	{
 
 	Rbdb_DatabaseRecordVariableLengthSettingsController*	c_database_record_variable_length_settings_controller;
-	C_Rbdb_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER( rb_database_record_variable_length_settings_controller, c_database_record_variable_length_settings_controller );
+	C_RBDB_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER( rb_database_record_variable_length_settings_controller, c_database_record_variable_length_settings_controller );
 
 	int		c_delimeter_byte	=	Rbdb_DatabaseRecordVariableLengthSettingsController_delimeterByte( c_database_record_variable_length_settings_controller );
 	VALUE	rb_delimeter_byte	=	INT2FIX( c_delimeter_byte );
@@ -254,7 +254,7 @@ VALUE rb_Rbdb_DatabaseRecordVariableLengthSettingsController_setDelimeterByte(	V
 																																								VALUE	rb_delimeter_byte )	{
 
 	Rbdb_DatabaseRecordVariableLengthSettingsController*	c_database_record_variable_length_settings_controller;
-	C_Rbdb_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER( rb_database_record_variable_length_settings_controller, c_database_record_variable_length_settings_controller );
+	C_RBDB_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER( rb_database_record_variable_length_settings_controller, c_database_record_variable_length_settings_controller );
 
 	int	c_delimeter_byte	=	0;
 	

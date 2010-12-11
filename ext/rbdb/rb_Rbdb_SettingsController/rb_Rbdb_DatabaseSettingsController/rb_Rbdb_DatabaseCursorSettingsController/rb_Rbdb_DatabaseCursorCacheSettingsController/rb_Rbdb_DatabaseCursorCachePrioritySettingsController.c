@@ -48,7 +48,7 @@ extern	VALUE	rb_Rbdb_DatabaseCursorSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseCursorCacheSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseCursorCachePrioritySettingsController;
 
-void Init_Rbdb_DatabaseCursorCachePrioritySettingsController()	{
+void Init_rb_Rbdb_DatabaseCursorCachePrioritySettingsController()	{
 
 	rb_Rbdb_DatabaseCursorCachePrioritySettingsController		=	rb_define_class_under(	rb_Rbdb_DatabaseCursorCacheSettingsController, 
 																																										"Priority",	
@@ -174,7 +174,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseCursorCacheSettingsController*	c_database_cursor_cache_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER( rb_parent_database_cursor_cache_settings_controller, c_database_cursor_cache_settings_controller );		
+	C_RBDB_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER( rb_parent_database_cursor_cache_settings_controller, c_database_cursor_cache_settings_controller );		
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller	=	Rbdb_DatabaseCursorCacheSettingsController_priorityController( c_database_cursor_cache_settings_controller );
 	
@@ -182,7 +182,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_new(	int			argc,
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_cursor_cache_priority_settings_controller,
-							Rbdb_RB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER,
 							rb_parent_database_cursor_cache_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_cursor_cache_settings_controller };
@@ -271,7 +271,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_parentDatabaseCursor
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_parentDatabaseCursorCacheSettingsController(	VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	VALUE	rb_parent_database_cursor_cache_settings_controller	=	rb_iv_get(	rb_database_cursor_cache_priority_settings_controller,
-																																					Rbdb_RB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER );
+																																					RBDB_RB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_cursor_cache_settings_controller;
 }
@@ -284,7 +284,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_parentDatabaseCursor
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_priority( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	//	FIX - return constant
 	return INT2FIX( Rbdb_DatabaseCursorCachePrioritySettingsController_priority( c_database_cursor_cache_priority_settings_controller ) );
@@ -298,7 +298,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_priority( VALUE	rb_d
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_veryLow( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_veryLow( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																	:	Qfalse );
@@ -311,7 +311,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_veryLow( VALUE	rb_da
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_setVeryLow( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController_setVeryLow( c_database_cursor_cache_priority_settings_controller );
 
@@ -325,7 +325,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_setVeryLow( VALUE	rb
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastVeryLow( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastVeryLow( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																			:	Qfalse );
@@ -338,7 +338,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastVeryLow( VA
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtMostVeryLow( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_isAtMostVeryLow( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																			:	Qfalse );
@@ -352,7 +352,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtMostVeryLow( VAL
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_low( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_low( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																:	Qfalse );
@@ -365,7 +365,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_low( VALUE	rb_databa
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_setLow( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController_setLow( c_database_cursor_cache_priority_settings_controller );
 
@@ -379,7 +379,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_setLow( VALUE	rb_dat
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastLow( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastLow( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																																																		:	Qfalse );
@@ -392,7 +392,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastLow( VALUE	
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtMostLow( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_isAtMostLow( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																		:	Qfalse );
@@ -406,7 +406,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtMostLow( VALUE	r
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_default( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_default( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																	:	Qfalse );
@@ -419,7 +419,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_default( VALUE	rb_da
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_setDefault( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController_setDefault( c_database_cursor_cache_priority_settings_controller );
 
@@ -433,7 +433,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_setDefault( VALUE	rb
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastDefault( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastDefault( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																			:	Qfalse );
@@ -446,7 +446,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastDefault( VA
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtMostDefault( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_isAtMostDefault( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																			:	Qfalse );
@@ -460,7 +460,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtMostDefault( VAL
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_high( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_high( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																:	Qfalse );
@@ -473,7 +473,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_high( VALUE	rb_datab
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_setHigh( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController_setHigh( c_database_cursor_cache_priority_settings_controller );
 
@@ -487,7 +487,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_setHigh( VALUE	rb_da
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastHigh( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastHigh( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																		:	Qfalse );
@@ -500,7 +500,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastHigh( VALUE
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtMostHigh( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_isAtMostHigh( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																		:	Qfalse );
@@ -514,7 +514,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtMostHigh( VALUE	
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_veryHigh( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_veryHigh( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																	:	Qfalse );
@@ -527,7 +527,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_veryHigh( VALUE	rb_d
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_setVeryHigh( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController_setVeryHigh( c_database_cursor_cache_priority_settings_controller );
 
@@ -541,7 +541,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_setVeryHigh( VALUE	r
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastVeryHigh( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastVeryHigh( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																			:	Qfalse );
@@ -554,7 +554,7 @@ VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtLeastVeryHigh( V
 VALUE rb_Rbdb_DatabaseCursorCachePrioritySettingsController_isAtMostVeryHigh( VALUE	rb_database_cursor_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCursorCachePrioritySettingsController*	c_database_cursor_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cursor_cache_priority_settings_controller, c_database_cursor_cache_priority_settings_controller );
 
 	return ( Rbdb_DatabaseCursorCachePrioritySettingsController_isAtMostVeryHigh( c_database_cursor_cache_priority_settings_controller )	?	Qtrue
 																																			:	Qfalse );

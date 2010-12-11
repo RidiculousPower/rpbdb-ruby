@@ -33,7 +33,7 @@ extern	VALUE	rb_Rbdb_MemoryPoolSettingsController;
 extern	VALUE	rb_Rbdb_MemoryPoolFileController;
 extern	VALUE	rb_Rbdb_LogSequenceNumber;
 
-void Init_Rbdb_MemoryPoolController()	{
+void Init_rb_Rbdb_MemoryPoolController()	{
 
 	rb_Rbdb_MemoryPoolController	=	rb_define_class_under(	rb_Rbdb_Environment, 
 																													"MemoryPoolController",			
@@ -79,13 +79,13 @@ VALUE rb_Rbdb_MemoryPoolController_new(	int			argc,
 	);
 
 	Rbdb_Environment*	c_parent_environment;
-	C_Rbdb_ENVIRONMENT( rb_parent_environment, c_parent_environment );
+	C_RBDB_ENVIRONMENT( rb_parent_environment, c_parent_environment );
 
 	VALUE	rb_memory_pool_controller	=	RUBY_RBDB_MEMORY_POOL_CONTROLLER( Rbdb_MemoryPoolController_new( c_parent_environment ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_memory_pool_controller,
-							Rbdb_RB_MEMORY_POOL_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
+							RBDB_RB_MEMORY_POOL_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
 							rb_parent_environment );
 	
 	VALUE	argv[]	=	{ rb_parent_environment };
@@ -115,17 +115,17 @@ VALUE rb_Rbdb_MemoryPoolController_settingsController(	VALUE	rb_memory_pool_cont
 	VALUE	rb_local_memory_pool_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_memory_pool_settings_controller = rb_iv_get(	rb_memory_pool_controller,
-																																Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_MemoryPoolController*		c_memory_pool_controller;
-		C_Rbdb_MEMORY_POOL_CONTROLLER( rb_memory_pool_controller, c_memory_pool_controller );
+		C_RBDB_MEMORY_POOL_CONTROLLER( rb_memory_pool_controller, c_memory_pool_controller );
 	
 		Rbdb_MemoryPoolSettingsController*	c_local_memory_pool_settings_controller	=	Rbdb_MemoryPoolController_settingsController( c_memory_pool_controller );
 
 		rb_local_memory_pool_settings_controller	=	RUBY_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( c_local_memory_pool_settings_controller );
 
 		rb_iv_set(	rb_memory_pool_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_SETTINGS_CONTROLLER,
 								rb_local_memory_pool_settings_controller );
 	}
 
@@ -138,7 +138,7 @@ VALUE rb_Rbdb_MemoryPoolController_settingsController(	VALUE	rb_memory_pool_cont
 VALUE rb_Rbdb_MemoryPoolController_parentEnvironment(	VALUE	rb_memory_pool_controller )	{
 
 	VALUE	rb_parent_environment	=	rb_iv_get(	rb_memory_pool_controller,
-																						Rbdb_RB_MEMORY_POOL_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
+																						RBDB_RB_MEMORY_POOL_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
 	return rb_parent_environment;
 }
 
@@ -151,7 +151,7 @@ VALUE rb_Rbdb_MemoryPoolController_trickleClean(	VALUE	rb_memory_pool_controller
 													VALUE	rb_percent_of_pages_to_clean )	{
 
 	Rbdb_MemoryPoolController*		c_memory_pool_controller;
-	C_Rbdb_MEMORY_POOL_CONTROLLER( rb_memory_pool_controller, c_memory_pool_controller );
+	C_RBDB_MEMORY_POOL_CONTROLLER( rb_memory_pool_controller, c_memory_pool_controller );
 
 	Rbdb_MemoryPoolController_trickleClean(	c_memory_pool_controller,
 												FIX2INT( rb_percent_of_pages_to_clean ) );
@@ -169,10 +169,10 @@ VALUE rb_Rbdb_MemoryPoolController_flush(	VALUE	rb_memory_pool_controller,
 											VALUE	rb_write_all_records_before_lsn )	{
 
 	Rbdb_MemoryPoolController*		c_memory_pool_controller;
-	C_Rbdb_MEMORY_POOL_CONTROLLER( rb_memory_pool_controller, c_memory_pool_controller );
+	C_RBDB_MEMORY_POOL_CONTROLLER( rb_memory_pool_controller, c_memory_pool_controller );
 
 	Rbdb_LogSequenceNumber*		c_write_all_records_before_lsn;
-	C_Rbdb_LOG_SEQUENCE_NUMBER( rb_write_all_records_before_lsn, c_write_all_records_before_lsn );
+	C_RBDB_LOG_SEQUENCE_NUMBER( rb_write_all_records_before_lsn, c_write_all_records_before_lsn );
 
 	Rbdb_MemoryPoolController_flush(	c_memory_pool_controller,
 										c_write_all_records_before_lsn	);	
@@ -247,7 +247,7 @@ void *(*free_method)( VALUE ) Rbdb_MemoryPoolController_freeMethod( VALUE	rb_mem
 VALUE rb_Rbdb_MemoryPoolController_fileController( VALUE	rb_memory_pool_controller )	{
 
 	Rbdb_MemoryPoolController*		c_memory_pool_controller;
-	C_Rbdb_MEMORY_POOL_CONTROLLER( rb_memory_pool_controller, c_memory_pool_controller );
+	C_RBDB_MEMORY_POOL_CONTROLLER( rb_memory_pool_controller, c_memory_pool_controller );
 
 	return RUBY_RBDB_MEMORY_POOL_FILE_CONTROLLER( Rbdb_MemoryPoolController_fileController( c_memory_pool_controller ) );
 }

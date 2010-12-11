@@ -37,7 +37,7 @@ extern	VALUE	rb_Rbdb_LockSettingsController;
 extern	VALUE	rb_Rbdb_LockDeadlockDetectorSettingsController;
 extern	VALUE	rb_Rbdb_LockDeadlockDetectorVerbositySettingsController;
 
-void Init_Rbdb_LockDeadlockDetectorSettingsController()	{
+void Init_rb_Rbdb_LockDeadlockDetectorSettingsController()	{
 
 	rb_Rbdb_LockDeadlockDetectorSettingsController		=	rb_define_class_under(	rb_Rbdb_LockSettingsController, 
 																																							"DeadlockDetector",	
@@ -117,14 +117,14 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_new(	int			argc,
 	}
 
 	Rbdb_LockSettingsController*	c_parent_lock_settings_controller;
-	C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_parent_lock_settings_controller, c_parent_lock_settings_controller );
+	C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_parent_lock_settings_controller, c_parent_lock_settings_controller );
 	
 	Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_settings_controller	=	Rbdb_LockSettingsController_deadlockDetectorSettingsController( c_parent_lock_settings_controller );
 
 	VALUE	rb_lock_deadlock_detector_settings_controller	= RUBY_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( c_lock_deadlock_settings_controller );
 
 	rb_iv_set(	rb_lock_deadlock_detector_settings_controller,
-							Rbdb_RB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_LOCK_SETTINGS_CONTROLLER,
+							RBDB_RB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_LOCK_SETTINGS_CONTROLLER,
 							rb_parent_lock_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_lock_settings_controller };
@@ -177,7 +177,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_parentSettingsController(	V
 VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_parentLockSettingsController(	VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 	VALUE	rb_parent_lock_settings_controller	=	rb_iv_get(	rb_lock_deadlock_detector_settings_controller,
-																													Rbdb_RB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_LOCK_SETTINGS_CONTROLLER );
+																													RBDB_RB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_LOCK_SETTINGS_CONTROLLER );
 
 	return rb_parent_lock_settings_controller;
 }
@@ -189,7 +189,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_parentLockSettingsControlle
 VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_isDefault( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 	Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-	C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+	C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 	return ( Rbdb_LockDeadlockDetectorSettingsController_isDefault( c_lock_deadlock_detector_settings_controller )	?	Qtrue
 																													:	Qfalse );
@@ -203,7 +203,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_isDefault( VALUE	rb_lock_de
 	VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_setToDefault( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 		Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-		C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+		C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 		Rbdb_LockDeadlockDetectorSettingsController_setToDefault( c_lock_deadlock_detector_settings_controller );
 
@@ -217,7 +217,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_isDefault( VALUE	rb_lock_de
 VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectExpired( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 	Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-	C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+	C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 	return ( Rbdb_LockDeadlockDetectorSettingsController_rejectExpired( c_lock_deadlock_detector_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -230,7 +230,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectExpired( VALUE	rb_loc
 	VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_setToRejectExpired( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 		Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-		C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+		C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 		Rbdb_LockDeadlockDetectorSettingsController_setToRejectExpired( c_lock_deadlock_detector_settings_controller );
 
@@ -244,7 +244,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectExpired( VALUE	rb_loc
 VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithMostLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 	Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-	C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+	C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 	return ( Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithMostLocks( c_lock_deadlock_detector_settings_controller )	?	Qtrue
 																																	:	Qfalse );
@@ -257,7 +257,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithMostLocks( 
 	VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_setToRejectLockerWithMostLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 		Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-		C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+		C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 		Rbdb_LockDeadlockDetectorSettingsController_setToRejectLockerWithMostLocks( c_lock_deadlock_detector_settings_controller );
 
@@ -271,7 +271,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithMostLocks( 
 VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithMostWriteLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 	Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-	C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+	C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 	return ( Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithMostWriteLocks( c_lock_deadlock_detector_settings_controller )	?	Qtrue
 																																			:	Qfalse );
@@ -284,7 +284,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithMostWriteLo
 	VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_setToRejectLockerWithMostWriteLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 		Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-		C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+		C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 	
 		Rbdb_LockDeadlockDetectorSettingsController_setToRejectLockerWithMostWriteLocks( c_lock_deadlock_detector_settings_controller );
 	
@@ -298,7 +298,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithMostWriteLo
 VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithFewestLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 	Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-	C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+	C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 	return ( Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithFewestLocks( c_lock_deadlock_detector_settings_controller )	?	Qtrue
 																																		:	Qfalse );
@@ -311,7 +311,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithFewestLocks
 	VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_setToRejectLockerWithFewestLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 		Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-		C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+		C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 		Rbdb_LockDeadlockDetectorSettingsController_setToRejectLockerWithFewestLocks( c_lock_deadlock_detector_settings_controller );
 
@@ -325,7 +325,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithFewestLocks
 VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithFewestWriteLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 	Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-	C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+	C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 	return ( Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithFewestWriteLocks( c_lock_deadlock_detector_settings_controller )	?	Qtrue
 																																			:	Qfalse );
@@ -338,7 +338,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithFewestWrite
 	VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_setToRejectLockerWithFewestWriteLocks( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 		Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-		C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+		C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 		Rbdb_LockDeadlockDetectorSettingsController_setToRejectLockerWithFewestWriteLocks( c_lock_deadlock_detector_settings_controller );
 
@@ -352,7 +352,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithFewestWrite
 VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithOldestLock( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 	Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-	C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+	C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 	return ( Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithOldestLock( c_lock_deadlock_detector_settings_controller )	?	Qtrue
 																																		:	Qfalse );
@@ -365,7 +365,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithOldestLock(
 	VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_setToRejectLockerWithOldestLock( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 		Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-		C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+		C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 		Rbdb_LockDeadlockDetectorSettingsController_setToRejectLockerWithOldestLock( c_lock_deadlock_detector_settings_controller );
 
@@ -379,7 +379,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithOldestLock(
 VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithYoungestLock( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 	Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-	C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+	C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 	return ( Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithYoungestLock( c_lock_deadlock_detector_settings_controller )	?	Qtrue
 																																		:	Qfalse );
@@ -392,7 +392,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithYoungestLoc
 	VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_setToRejectLockerWithYoungestLock( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 		Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-		C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+		C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 		Rbdb_LockDeadlockDetectorSettingsController_setToRejectLockerWithYoungestLock( c_lock_deadlock_detector_settings_controller );
 
@@ -406,7 +406,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectLockerWithYoungestLoc
 VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectRandom( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 	Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-	C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+	C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 	return ( Rbdb_LockDeadlockDetectorSettingsController_rejectRandom( c_lock_deadlock_detector_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -419,7 +419,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_rejectRandom( VALUE	rb_lock
 	VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_setToRejectRandom( VALUE	rb_lock_deadlock_detector_settings_controller )	{
 
 		Rbdb_LockDeadlockDetectorSettingsController*	c_lock_deadlock_detector_settings_controller;
-		C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
+		C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_settings_controller, c_lock_deadlock_detector_settings_controller );
 
 		Rbdb_LockDeadlockDetectorSettingsController_setToRejectRandom( c_lock_deadlock_detector_settings_controller );
 
@@ -435,13 +435,13 @@ VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_verbositySettingsController
 	VALUE	rb_deadlock_detector_verbosity_settings_controller	=	Qnil;
 	
 	if ( ( rb_deadlock_detector_verbosity_settings_controller = rb_iv_get(	rb_lock_deadlock_detector_settings_controller,
-																																					Rbdb_RB_SETTINGS_VARIABLE_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																					RBDB_RB_SETTINGS_VARIABLE_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_deadlock_detector_verbosity_settings_controller	=	rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_new(	1,
 																																																												& rb_lock_deadlock_detector_settings_controller,
 																																																												rb_Rbdb_LockDeadlockDetectorVerbositySettingsController );
 		rb_iv_set(	rb_lock_deadlock_detector_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER,
 								rb_deadlock_detector_verbosity_settings_controller );
 	}
 	

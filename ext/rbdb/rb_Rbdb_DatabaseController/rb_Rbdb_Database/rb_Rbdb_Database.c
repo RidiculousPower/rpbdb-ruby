@@ -87,7 +87,7 @@ extern VALUE rb_Rbdb_DatabaseHashType_const;
 extern VALUE rb_Rbdb_DatabaseQueueType_const;
 extern VALUE rb_Rbdb_DatabaseRecnoType_const;
 
-#define Rbdb_RUBY_ERROR_INVALID_DATABASE_DATA			"Provided data was invalid. Database requires object that can be automatically converted to string."
+#define RBDB_RUBY_ERROR_INVALID_DATABASE_DATA			"Provided data was invalid. Database requires object that can be automatically converted to string."
 
 /*******************************************************************************************************************************************************************************************
 ********************************************************************************************************************************************************************************************
@@ -95,7 +95,7 @@ extern VALUE rb_Rbdb_DatabaseRecnoType_const;
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-void Init_Rbdb_Database()	{
+void Init_rb_Rbdb_Database()	{
 
 	rb_Rbdb_Database		=	rb_define_class_under(	rb_mRbdb, 
 																								"Database",
@@ -190,7 +190,7 @@ void Init_Rbdb_Database()	{
 	rb_define_method(						rb_Rbdb_Database, 	"iterate_keys",																	rb_Rbdb_Database_iterateKeys,																0 	);
 	rb_define_alias(						rb_Rbdb_Database, 	"each_key",																			"iterate_keys"	);
 
-	rb_define_method(						rb_Rbdb_Database, 	"sequence_controller",													rb_Rbdb_Database_sequenceController,													0 	);
+	rb_define_method(						rb_Rbdb_Database, 	"sequence_controller",													rb_Rbdb_Database_sequenceController,													-1 	);
 	rb_define_alias(						rb_Rbdb_Database, 	"sequences",																		"sequence_controller"	);
 	rb_define_alias(						rb_Rbdb_Database, 	"sequence",																			"sequence_controller"	);
 
@@ -283,7 +283,7 @@ VALUE rb_Rbdb_Database_new(	int			argc,
 		rb_database_name	=	rb_obj_as_string( rb_database_name );
 		c_database_name	=	StringValuePtr( rb_database_name );
 	}
-	C_Rbdb_DATABASE_CONTROLLER( rb_parent_database_controller, c_parent_database_controller );
+	C_RBDB_DATABASE_CONTROLLER( rb_parent_database_controller, c_parent_database_controller );
 	
 	Rbdb_Database*	c_database	=	Rbdb_DatabaseController_newDatabase(	c_parent_database_controller,
 																																			c_database_name );
@@ -371,7 +371,7 @@ VALUE rb_Rbdb_Database_new(	int			argc,
 
 	//	store reference to parent
 	rb_iv_set(	rb_database,
-							Rbdb_RB_DATABASE_VARIABLE_PARENT_DATABASE_CONTROLLER,
+							RBDB_RB_DATABASE_VARIABLE_PARENT_DATABASE_CONTROLLER,
 							rb_parent_database_controller );
 	
 	//	store reference to ruby instance by c instance
@@ -406,13 +406,13 @@ VALUE rb_Rbdb_Database_settingsController( VALUE	rb_database )	{
 	VALUE	rb_local_database_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_database_settings_controller = rb_iv_get(	rb_database,
-																														Rbdb_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																														RBDB_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		rb_local_database_settings_controller	=	rb_Rbdb_DatabaseSettingsController_new(	1,
 																																										& rb_database,
 																																										rb_Rbdb_DatabaseSettingsController );
 		rb_iv_set(	rb_database,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER,
 								rb_local_database_settings_controller );
 	}
 
@@ -441,7 +441,7 @@ VALUE rb_Rbdb_Database_parentEnvironment(	VALUE	rb_database )	{
 VALUE rb_Rbdb_Database_parentDatabaseController(	VALUE	rb_database )	{
 
 	VALUE	rb_parent_database_controller	=	rb_iv_get(	rb_database,
-																										Rbdb_RB_DATABASE_VARIABLE_PARENT_DATABASE_CONTROLLER );
+																										RBDB_RB_DATABASE_VARIABLE_PARENT_DATABASE_CONTROLLER );
 
 	return rb_parent_database_controller;
 }
@@ -457,7 +457,7 @@ VALUE rb_Rbdb_Database_parentDatabaseController(	VALUE	rb_database )	{
 VALUE rb_Rbdb_Database_filename( VALUE	rb_database )	{
 
 	Rbdb_Database*		c_database;
-	C_Rbdb_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE( rb_database, c_database );
 
 	return rb_str_new2( Rbdb_Database_filename( c_database ) );	
 }
@@ -469,7 +469,7 @@ VALUE rb_Rbdb_Database_filename( VALUE	rb_database )	{
 VALUE rb_Rbdb_Database_name( VALUE	rb_database )	{
 
 	Rbdb_Database*		c_database;
-	C_Rbdb_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE( rb_database, c_database );
 
 	char*	c_database_name		=	Rbdb_Database_name( c_database );
 	VALUE	rb_database_name	=	rb_str_new2( c_database_name );
@@ -486,7 +486,7 @@ VALUE rb_Rbdb_Database_rename(	VALUE	rb_database,
 																VALUE	rb_name	)	{
 	
 	Rbdb_Database*		c_database;
-	C_Rbdb_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE( rb_database, c_database );
 
 	rb_name	=	rb_obj_as_string( rb_name );
 
@@ -505,7 +505,7 @@ VALUE rb_Rbdb_Database_rename(	VALUE	rb_database,
 VALUE rb_Rbdb_Database_handle( VALUE	rb_database )	{
 
 	Rbdb_Database*		c_database;
-	C_Rbdb_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE( rb_database, c_database );
 
 	VALUE	rb_database_name		=	rb_Rbdb_Database_name( rb_database );
 	VALUE	rb_database_handle	=	STRING2SYM( rb_database_name );
@@ -521,7 +521,7 @@ VALUE rb_Rbdb_Database_handle( VALUE	rb_database )	{
 VALUE rb_Rbdb_Database_open( VALUE	rb_database )	{
 
 	Rbdb_Database*		c_database;
-	C_Rbdb_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE( rb_database, c_database );
 
 	Rbdb_Database_open( c_database );
 
@@ -535,7 +535,7 @@ VALUE rb_Rbdb_Database_open( VALUE	rb_database )	{
 VALUE rb_Rbdb_Database_isOpen( VALUE	rb_database )	{
 	
 	Rbdb_Database*		c_database;
-	C_Rbdb_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE( rb_database, c_database );
 	
 	if ( Rbdb_Database_isOpen( c_database ) )	{
 		return Qtrue;
@@ -552,7 +552,7 @@ VALUE rb_Rbdb_Database_isOpen( VALUE	rb_database )	{
 VALUE rb_Rbdb_Database_close( VALUE	rb_database )	{
 
 	Rbdb_Database*		c_database;
-	C_Rbdb_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE( rb_database, c_database );
 
 	rb_Rbdb_Database_internal_removeCallbackInfoFromHash( rb_database );
 	
@@ -569,7 +569,7 @@ VALUE rb_Rbdb_Database_close( VALUE	rb_database )	{
 VALUE rb_Rbdb_Database_empty( VALUE	rb_database )	{
 
 	Rbdb_Database*		c_database;
-	C_Rbdb_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE( rb_database, c_database );
 
 	Rbdb_Database_empty( c_database );
 
@@ -584,7 +584,7 @@ VALUE rb_Rbdb_Database_empty( VALUE	rb_database )	{
 VALUE rb_Rbdb_Database_erase( VALUE	rb_database )	{
 
 	Rbdb_Database*		c_database;
-	C_Rbdb_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE( rb_database, c_database );
 
 	Rbdb_Database_erase( c_database );
 
@@ -630,7 +630,7 @@ VALUE rb_Rbdb_Database_copyToForeignEnvironment( VALUE	rb_database )	{
 VALUE rb_Rbdb_Database_sync( VALUE	rb_database )	{
 
 	Rbdb_Database*		c_database;
-	C_Rbdb_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE( rb_database, c_database );
 
 	Rbdb_Database_sync( c_database );
 
@@ -644,7 +644,7 @@ VALUE rb_Rbdb_Database_sync( VALUE	rb_database )	{
 VALUE rb_Rbdb_Database_isSecondary(	VALUE	rb_database )	{
 	
 	Rbdb_Database*		c_database;
-	C_Rbdb_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE( rb_database, c_database );
 
 	BOOL	c_is_secondary	=	Rbdb_Database_isSecondary( c_database );
 	
@@ -660,7 +660,7 @@ VALUE rb_Rbdb_Database_isSecondary(	VALUE	rb_database )	{
 VALUE rb_Rbdb_Database_primaryDatabase(	VALUE	rb_primary_or_secondary_database )	{
 	
 	Rbdb_Database*		c_primary_or_secondary_database;
-	C_Rbdb_DATABASE( rb_primary_or_secondary_database, c_primary_or_secondary_database );
+	C_RBDB_DATABASE( rb_primary_or_secondary_database, c_primary_or_secondary_database );
 	
 	if ( Rbdb_Database_isSecondary( c_primary_or_secondary_database ) == FALSE )	{
 		return rb_primary_or_secondary_database;
@@ -776,12 +776,12 @@ VALUE rb_Rbdb_Database_setSecondaryKeyCreationCallbackMethod(	int			argc,
 		case -2:
 			break;
 		default:
-			rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_WRONG_ARITY_FOR_SECONDARY_KEY_CALLBACK );			
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_WRONG_ARITY_FOR_SECONDARY_KEY_CALLBACK );			
 			break;
 	}
 	
 	Rbdb_Database*		c_secondary_database;
-	C_Rbdb_DATABASE( rb_secondary_database, c_secondary_database );
+	C_RBDB_DATABASE( rb_secondary_database, c_secondary_database );
 
 	//	When an insert is made we need our Rbdb callback to call the Ruby Rbdb callback
 	//	our Ruby Rbdb callback calls the ruby method that has been specified and returns it to Rbdb
@@ -806,14 +806,14 @@ VALUE rb_Rbdb_Database_secondaryKeyCreationCallbackMethod(	VALUE	rb_secondary_da
 	
 	//	Get global variable 'callbacks', which stores secondary key creation callback methods
 	VALUE	rb_callbacks_hash	=	rb_iv_get(	rb_mRbdb,
-																				Rbdb_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS );
+																				RBDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS );
 	
 	//	Make sure it's a hash - if it's not, instantiate it as a new hash
 	if ( TYPE( rb_callbacks_hash ) != T_HASH )	{
 		
 		rb_callbacks_hash	=	rb_hash_new();
 		rb_iv_set(	rb_mRbdb,
-								Rbdb_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS,
+								RBDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS,
 								rb_callbacks_hash );
 	}
 
@@ -934,11 +934,11 @@ VALUE rb_Rbdb_Database_requireSecondaryDatabaseWithIndex(	VALUE	rb_primary_datab
 VALUE rb_Rbdb_Database_secondaryDatabaseHash( VALUE rb_primary_database )	{
 	
 	VALUE	rb_secondary_database_hash	=	rb_iv_get(	rb_primary_database,
-																									Rbdb_RB_DATABASE_VARIABLE_SECONDARY_DATABASES );
+																									RBDB_RB_DATABASE_VARIABLE_SECONDARY_DATABASES );
 	if ( rb_secondary_database_hash == Qnil )	{
 		rb_secondary_database_hash = rb_hash_new();
 		rb_iv_set(	rb_primary_database,
-								Rbdb_RB_DATABASE_VARIABLE_SECONDARY_DATABASES,
+								RBDB_RB_DATABASE_VARIABLE_SECONDARY_DATABASES,
 								rb_secondary_database_hash );
 	}
 	return rb_secondary_database_hash;
@@ -1113,17 +1113,17 @@ VALUE rb_Rbdb_Database_cursorController( VALUE	rb_database )	{
 	VALUE	rb_cursor_controller	=	Qnil;
 	
 	if ( ( rb_cursor_controller = rb_iv_get(	rb_database,
-																						Rbdb_RB_DATABASE_VARIABLE_CURSOR_CONTROLLER ) ) == Qnil )	{
+																						RBDB_RB_DATABASE_VARIABLE_CURSOR_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_Database*		c_database;
-		C_Rbdb_DATABASE( rb_database, c_database );
+		C_RBDB_DATABASE( rb_database, c_database );
 
 		rb_cursor_controller	=	rb_Rbdb_DatabaseCursorController_new(	1,
 																																	& rb_database,
 																																	rb_Rbdb_DatabaseCursorController );
 
 		rb_iv_set(	rb_database,
-								Rbdb_RB_DATABASE_VARIABLE_CURSOR_CONTROLLER,
+								RBDB_RB_DATABASE_VARIABLE_CURSOR_CONTROLLER,
 								rb_cursor_controller );
 	}
 
@@ -1139,17 +1139,17 @@ VALUE rb_Rbdb_Database_joinController( VALUE	rb_database )	{
 	VALUE	rb_join_controller	=	Qnil;
 	
 	if ( ( rb_join_controller = rb_iv_get(	rb_database,
-																					Rbdb_RB_DATABASE_VARIABLE_JOIN_CONTROLLER ) ) == Qnil )	{
+																					RBDB_RB_DATABASE_VARIABLE_JOIN_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_Database*		c_database;
-		C_Rbdb_DATABASE( rb_database, c_database );
+		C_RBDB_DATABASE( rb_database, c_database );
 	
 		rb_join_controller	=	rb_Rbdb_DatabaseJoinController_new(	1,
 																															& rb_database,
 																															rb_Rbdb_DatabaseJoinController );
 
 		rb_iv_set(	rb_database,
-								Rbdb_RB_DATABASE_VARIABLE_JOIN_CONTROLLER,
+								RBDB_RB_DATABASE_VARIABLE_JOIN_CONTROLLER,
 								rb_join_controller );
 	}
 
@@ -1160,23 +1160,44 @@ VALUE rb_Rbdb_Database_joinController( VALUE	rb_database )	{
 *  sequenceController  *
 ***********************/
 
-VALUE rb_Rbdb_Database_sequenceController( VALUE	rb_database )	{
+VALUE rb_Rbdb_Database_sequenceController(	int			argc,
+																						VALUE*	args,
+																						VALUE		rb_database )	{
+	
+	VALUE	rb_sequence_name	=	Qnil;
+	R_DefineAndParse( argc, args, rb_database,
+		R_DescribeParameterSet(
+			R_ParameterSet(
+				R_OptionalParameter(	R_MatchStringSymbol( rb_sequence_name ) )
+			),
+			1,
+			"<no args>",
+			"<:sequence name>",
+			"<'sequence name'>"
+		)
+	)
 	
 	VALUE	rb_sequence_controller	=	Qnil;
 	
 	if ( ( rb_sequence_controller = rb_iv_get(	rb_database,
-																							Rbdb_RB_DATABASE_SEQUENCE_CONTROLLER ) ) == Qnil )	{
+																							RBDB_RB_DATABASE_SEQUENCE_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_Database*		c_database;
-		C_Rbdb_DATABASE( rb_database, c_database );
+		C_RBDB_DATABASE( rb_database, c_database );
 	
 		rb_sequence_controller	=	rb_Rbdb_DatabaseSequenceController_new(	1,
 																																			& rb_database,
 																																			rb_Rbdb_DatabaseSequenceController );
 
 		rb_iv_set(	rb_database,
-								Rbdb_RB_DATABASE_SEQUENCE_CONTROLLER,
+								RBDB_RB_DATABASE_SEQUENCE_CONTROLLER,
 								rb_sequence_controller );
+	}
+
+	//	if a sequence was specified, return it instead of the controller
+	if ( rb_sequence_name != Qnil )	{
+		return rb_Rbdb_DatabaseSequenceController_sequence(	rb_sequence_controller,
+																												rb_sequence_name );
 	}
 
 	return rb_sequence_controller;
@@ -1676,7 +1697,7 @@ VALUE rb_Rbdb_Database_retrieve(	int			argc,
 			c_record	=	Rbdb_Database_retrieveRecord(	c_database,
 																								c_record );
 			
-			rb_data = RUBY_STRING_FOR_DATA_IN_Rbdb_RECORD( c_record );			
+			rb_data = RUBY_STRING_FOR_DATA_IN_RBDB_RECORD( c_record );			
 
 			rb_ary_push(	rb_return,
 										rb_data );
@@ -1719,7 +1740,7 @@ VALUE rb_Rbdb_Database_retrievePair(	int			argc,
 	c_record	=	Rbdb_Database_retrieveMatchingRecord(	c_database,
 																										c_record );
 
-	rb_data	=	RUBY_STRING_FOR_DATA_IN_Rbdb_RECORD( c_record );
+	rb_data	=	RUBY_STRING_FOR_DATA_IN_RBDB_RECORD( c_record );
 
 	return rb_data;
 }
@@ -1838,7 +1859,7 @@ VALUE rb_Rbdb_Database_shiftQueueOrWait( VALUE	rb_database )	{
 VALUE rb_Rbdb_Database_verify( VALUE	rb_database )	{
 
 	Rbdb_Database*		c_database;
-	C_Rbdb_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE( rb_database, c_database );
 
 	Rbdb_Database_verify( c_database );
 
@@ -1989,13 +2010,13 @@ VALUE	rb_Rbdb_Database_internal_setSecondaryKeyCreationCallbackMethodInfoHash(	V
 
 	//	Get global variable 'callbacks', which stores secondary key creation callback methods
 	VALUE	rb_callbacks_hash	=	rb_iv_get(	rb_mRbdb,
-																				Rbdb_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS );
+																				RBDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS );
 	
 	//	Make sure it's a hash - if it's not, instantiate it as a new hash
 	if ( TYPE( rb_callbacks_hash ) != T_HASH )	{
 		rb_callbacks_hash	=	rb_hash_new();
 		rb_iv_set(	rb_mRbdb,
-								Rbdb_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS,
+								RBDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS,
 								rb_callbacks_hash);
 	}
 	
@@ -2028,7 +2049,7 @@ VALUE	rb_Rbdb_Database_internal_setSecondaryKeyCreationCallbackMethodInfoHash(	V
 VALUE rb_Rbdb_Database_internal_initRubyRuntimeStorage(	VALUE rb_ruby_runtime_storage_database )	{
 
 	Rbdb_Database*	c_ruby_runtime_storage_database;
-	C_Rbdb_DATABASE( rb_ruby_runtime_storage_database, c_ruby_runtime_storage_database );
+	C_RBDB_DATABASE( rb_ruby_runtime_storage_database, c_ruby_runtime_storage_database );
 
 	Rbdb_DatabaseSettingsController*			c_database_settings_controller			=	Rbdb_Database_settingsController( c_ruby_runtime_storage_database );
 	Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller	=	Rbdb_DatabaseSettingsController_typeSettingsController( c_database_settings_controller );
@@ -2050,10 +2071,10 @@ VALUE rb_Rbdb_Database_internal_storeRubyRuntimeInstanceForCInstance(	VALUE rb_d
 
 	VALUE						rb_ruby_runtime_database	=	rb_Rbdb_internal_rubyRuntimeDatabase( rb_mRbdb );
 	Rbdb_Database*	c_ruby_runtime_database;
-	C_Rbdb_DATABASE( rb_ruby_runtime_database, c_ruby_runtime_database );
+	C_RBDB_DATABASE( rb_ruby_runtime_database, c_ruby_runtime_database );
 
 	Rbdb_Database*	c_database;
-	C_Rbdb_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE( rb_database, c_database );
 
 	uintptr_t	c_database_address	=	(uintptr_t) c_database;
 	uintptr_t	rb_database_address	=	(uintptr_t) rb_database;
@@ -2075,7 +2096,7 @@ VALUE rb_Rbdb_Database_internal_rubyRuntimeInstanceForCInstance(	void* c_rbdb_in
 	//	this is necessary to ensure extended methods, etc, remain
 	VALUE						rb_ruby_runtime_database	=	rb_Rbdb_internal_rubyRuntimeDatabase( rb_mRbdb );
 	Rbdb_Database*	c_ruby_runtime_database;
-	C_Rbdb_DATABASE( rb_ruby_runtime_database, c_ruby_runtime_database );
+	C_RBDB_DATABASE( rb_ruby_runtime_database, c_ruby_runtime_database );
 	
 	uintptr_t	c_rbdb_instance_address	=	(uintptr_t) c_rbdb_instance;
 	
@@ -2097,7 +2118,7 @@ VALUE rb_Rbdb_Database_internal_rubyRuntimeInstanceForCInstance(	void* c_rbdb_in
 ***************************************/
 
 //	This is the actual C method that gets called when a callback is set
-Rbdb_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_secondaryKeyCreationCallbackMethod(	Rbdb_Database*			c_secondary_database, 
+RBDB_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_secondaryKeyCreationCallbackMethod(	Rbdb_Database*			c_secondary_database, 
 																																																	Rbdb_Record*				c_record, 
 																																																	Rbdb_SecondaryKeys*	c_secondary_keys )	{
 	
@@ -2167,7 +2188,7 @@ Rbdb_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_secondaryKeyCreatio
 			break;
 		
 		default:
-			rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_WRONG_ARITY_FOR_SECONDARY_KEY_CALLBACK );
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_WRONG_ARITY_FOR_SECONDARY_KEY_CALLBACK );
 			break;
 	}
 
@@ -2178,7 +2199,7 @@ Rbdb_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_secondaryKeyCreatio
 
 	//	if nil, don't index
 	if ( rb_secondary_keys == Qnil )	{
-		return Rbdb_SECONDARY_KEY_CREATION_FAILED_DO_NOT_INDEX;
+		return RBDB_SECONDARY_KEY_CREATION_FAILED_DO_NOT_INDEX;
 	}
 
 	return rb_Rbdb_Database_internal_processSecondaryKeyReturn(	rb_secondary_database,
@@ -2190,7 +2211,7 @@ Rbdb_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_secondaryKeyCreatio
 *  processSecondaryKeyReturn  *
 ******************************/
 
-Rbdb_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_processSecondaryKeyReturn(	VALUE									rb_secondary_database,
+RBDB_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_processSecondaryKeyReturn(	VALUE									rb_secondary_database,
 																																												VALUE									rb_secondary_keys,
 																																												Rbdb_SecondaryKeys*		c_secondary_keys )	{
 
@@ -2234,7 +2255,7 @@ Rbdb_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_processSecondaryKey
 			c_secondary_keys->wrapped_bdb_dbt->data	=	c_keys;
 			c_secondary_keys->wrapped_bdb_dbt->size	=	number_of_keys;
 
-			return Rbdb_RECORD_ALLOCATED_BY_APPLICATION_FOR_MULTIPLE_SECONDARY_KEYS;
+			return RBDB_RECORD_ALLOCATED_BY_APPLICATION_FOR_MULTIPLE_SECONDARY_KEYS;
 		}
 		else {
 			
@@ -2266,14 +2287,14 @@ VALUE rb_Rbdb_Database_internal_removeCallbackInfoFromHash(	VALUE	rb_secondary_d
 	
 	//	Get global variable 'callbacks', which stores secondary key creation callback methods
 	VALUE	rb_callbacks_hash	=	rb_iv_get(	rb_mRbdb,
-																				Rbdb_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS );
+																				RBDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS );
 	
 	//	Make sure it's a hash - if it's not, instantiate it as a new hash
 	if ( TYPE( rb_callbacks_hash ) != T_HASH )	{
 		
 		rb_callbacks_hash	=	rb_hash_new();
 		rb_iv_set(	rb_mRbdb,
-								Rbdb_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS,
+								RBDB_RUBY_MODULE_SECONDARY_KEY_CALLBACK_METHODS,
 								rb_callbacks_hash );
 	}
 
@@ -2380,25 +2401,25 @@ void rb_Rbdb_Database_internal_packRubyValueForDatabaseStorage(	VALUE		rb_databa
 		case T_ARRAY:
 			//	array is treated as multiple individual records for the same key
 			
-			rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_INVALID_DATABASE_DATA );
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
 			break;
 
 		case T_HASH:
 			//	hash is treated as multiple individual records with different keys
 
-			rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_INVALID_DATABASE_DATA );
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
 			break;
 
 		case T_STRUCT:
 			//	each value from struct is stored
 			
-			rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_INVALID_DATABASE_DATA );
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
 			break;
 
 		case T_FILE:
 			//	file contents are stored as byte string
 			
-			rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_INVALID_DATABASE_DATA );
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
 			break;
 
 		case T_STRING:
@@ -2421,7 +2442,7 @@ void rb_Rbdb_Database_internal_packRubyValueForDatabaseStorage(	VALUE		rb_databa
 		case T_SYMBOL:
 			//	store symbol ID
 			
-			rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_INVALID_DATABASE_DATA );
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
 			break;
 			
 		case T_BIGNUM:
@@ -2473,7 +2494,7 @@ void rb_Rbdb_Database_internal_packRubyValueForDatabaseStorage(	VALUE		rb_databa
 		case T_DATA:
 		default:			
 			//	serialization is turned off, so we don't know how to handle these types			
-			rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_INVALID_DATABASE_DATA );
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
 			break;
 	}
 }
@@ -2552,7 +2573,7 @@ VALUE rb_Rbdb_Database_internal_createSecondaryIndex(	int			argc,
 	);
 
 	Rbdb_Database*	c_primary_database		=	NULL;
-	C_Rbdb_DATABASE( rb_primary_database_self, c_primary_database );
+	C_RBDB_DATABASE( rb_primary_database_self, c_primary_database );
 	
 	Rbdb_Database*	c_secondary_database	=	NULL;
 	char*						c_index_name					=	NULL;
@@ -2576,7 +2597,7 @@ VALUE rb_Rbdb_Database_internal_createSecondaryIndex(	int			argc,
 		rb_secondary_database									=	rb_Rbdb_DatabaseController_newDatabase(	rb_primary_database_controller,
 																																										rb_secondary_database_name );
 
-		C_Rbdb_DATABASE( rb_secondary_database, c_secondary_database );
+		C_RBDB_DATABASE( rb_secondary_database, c_secondary_database );
 
 		//	create secondary database
 		Rbdb_Database_internal_configureDatabaseInstanceForSecondaryIndexOnPrimaryDatabase(	c_primary_database,

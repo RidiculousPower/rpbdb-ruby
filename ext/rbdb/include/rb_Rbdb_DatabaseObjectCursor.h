@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_DATABASE_OBJECT_CURSOR
-	#define RB_Rbdb_DATABASE_OBJECT_CURSOR
+#ifndef RB_RBDB_DATABASE_OBJECT_CURSOR
+	#define RB_RBDB_DATABASE_OBJECT_CURSOR
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-	void Init_Rbdb_DatabaseObjectCursor();
+	void Init_rb_Rbdb_DatabaseObjectCursor();
 
 	VALUE rb_Rbdb_DatabaseObjectCursor_writeAsCurrent(	VALUE	rb_database_cursor, 
 													   VALUE	rb_data );

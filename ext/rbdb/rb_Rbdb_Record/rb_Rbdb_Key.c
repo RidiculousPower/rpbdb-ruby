@@ -1,5 +1,5 @@
 /*
- *		Rbdb::Rbdb_DatabaseController::Rbdb_Database::(Rbdb_DatabaseCursorController::Rbdb_DatabaseCursor::)Rbdb_Record::Rbdb_DBT => Rbdb_Key
+ *		Rbdb::Rbdb_DatabaseController::Rbdb_Database::(Rbdb_DatabaseCursorController::Rbdb_DatabaseCursor::)Rbdb_Record::RBDB_DBT => Rbdb_Key
  *
  *
  */
@@ -42,7 +42,7 @@ extern	VALUE	rb_Rbdb_DatabaseRecordSettingsController;
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-void Init_Rbdb_Key()	{
+void Init_rb_Rbdb_Key()	{
 
 	rb_Rbdb_Key		=	rb_define_class_under(	rb_Rbdb_Record, 
 																					"Key", 		
@@ -73,13 +73,13 @@ VALUE rb_Rbdb_Key_new(	int			argc,
 	);
 	
 	Rbdb_Record*			c_parent_record;
-	C_Rbdb_RECORD( rb_parent_record, c_parent_record );
+	C_RBDB_RECORD( rb_parent_record, c_parent_record );
 	
 	VALUE	rb_key	=	RUBY_RBDB_KEY( Rbdb_Key_new( c_parent_record ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_key,
-							Rbdb_RB_KEY_VARIABLE_PARENT_RECORD,
+							RBDB_RB_KEY_VARIABLE_PARENT_RECORD,
 							rb_parent_record );
 
 	VALUE	argv[]	=	{ rb_parent_record };
@@ -109,17 +109,17 @@ VALUE rb_Rbdb_Key_settingsController(	VALUE	rb_key )	{
 	VALUE	rb_local_record_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_record_settings_controller = rb_iv_get(	rb_key,
-																													Rbdb_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																													RBDB_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_Key*		c_key;
-		C_Rbdb_KEY( rb_key, c_key );
+		C_RBDB_KEY( rb_key, c_key );
 	
 		Rbdb_DatabaseRecordSettingsController*	c_local_record_settings_controller	=	Rbdb_Key_settingsController( c_key );
 
 		rb_local_record_settings_controller	=	RUBY_RBDB_DATABASE_RECORD_SETTINGS_CONTROLLER( c_local_record_settings_controller );
 
 		rb_iv_set(	rb_key,
-								Rbdb_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER,
 								rb_local_record_settings_controller );
 	}
 
@@ -169,7 +169,7 @@ VALUE rb_Rbdb_Key_parentDatabase(	VALUE	rb_key )	{
 VALUE rb_Rbdb_Key_parentRecord(	VALUE	rb_key )	{
 	
 	VALUE	rb_parent_record	=	rb_iv_get(	rb_key,
-																				Rbdb_RB_DATA_VARIABLE_PARENT_RECORD );
+																				RBDB_RB_DATA_VARIABLE_PARENT_RECORD );
 	return rb_parent_record;
 }
 

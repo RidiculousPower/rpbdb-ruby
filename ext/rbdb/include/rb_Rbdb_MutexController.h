@@ -1,5 +1,5 @@
-#ifndef RB_Rbdb_MUTEX_CONTROLLER
-	#define RB_Rbdb_MUTEX_CONTROLLER
+#ifndef RB_RBDB_MUTEX_CONTROLLER
+	#define RB_RBDB_MUTEX_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>

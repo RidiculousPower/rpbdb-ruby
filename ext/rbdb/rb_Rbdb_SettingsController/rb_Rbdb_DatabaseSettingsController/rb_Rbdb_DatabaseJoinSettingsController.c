@@ -36,7 +36,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_DatabaseSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseJoinSettingsController;
 
-void Init_Rbdb_DatabaseJoinSettingsController()	{
+void Init_rb_Rbdb_DatabaseJoinSettingsController()	{
 
 	rb_Rbdb_DatabaseJoinSettingsController		=	rb_define_class_under(	rb_Rbdb_DatabaseSettingsController, 
 																																			"Join",	
@@ -124,7 +124,7 @@ VALUE rb_Rbdb_DatabaseJoinSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
 
 	Rbdb_DatabaseJoinSettingsController*	c_database_join_settings_controller	=	Rbdb_DatabaseSettingsController_joinSettingsController( c_database_settings_controller );
 
@@ -132,7 +132,7 @@ VALUE rb_Rbdb_DatabaseJoinSettingsController_new(	int			argc,
 
 	//	store reference to parent
 	rb_iv_set(	rb_join_settings_controller,
-							Rbdb_RB_DATABASE_JOIN_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_JOIN_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=		{ rb_parent_database_settings_controller };
@@ -197,7 +197,7 @@ VALUE rb_Rbdb_DatabaseJoinSettingsController_parentSettingsController(	VALUE	rb_
 VALUE rb_Rbdb_DatabaseJoinSettingsController_parentDatabaseSettingsController(	VALUE	rb_join_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_join_settings_controller,
-																															Rbdb_RB_DATABASE_JOIN_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																															RBDB_RB_DATABASE_JOIN_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_settings_controller;
 }
@@ -210,7 +210,7 @@ VALUE rb_Rbdb_DatabaseJoinSettingsController_parentDatabaseSettingsController(	V
 VALUE rb_Rbdb_DatabaseJoinController_degreeOneIsolation( VALUE	rb_join_settings_controller )	{
 
 	Rbdb_DatabaseJoinSettingsController*	c_join_settings_controller;
-	C_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
+	C_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
 
 	return ( Rbdb_DatabaseJoinController_degreeOneIsolation( c_join_settings_controller )	?	Qtrue
 																																												:	Qfalse );
@@ -223,7 +223,7 @@ VALUE rb_Rbdb_DatabaseJoinController_degreeOneIsolation( VALUE	rb_join_settings_
 	VALUE rb_Rbdb_DatabaseJoinController_turnDegreeOneIsolationOn( VALUE	rb_join_settings_controller )	{
 
 		Rbdb_DatabaseJoinSettingsController*	c_join_settings_controller;
-		C_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
+		C_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
 
 		Rbdb_DatabaseJoinController_turnDegreeOneIsolationOn( c_join_settings_controller );
 		
@@ -237,7 +237,7 @@ VALUE rb_Rbdb_DatabaseJoinController_degreeOneIsolation( VALUE	rb_join_settings_
 	VALUE rb_Rbdb_DatabaseJoinController_turnDegreeOneIsolationOff( VALUE	rb_join_settings_controller )	{
 
 		Rbdb_DatabaseJoinSettingsController*	c_join_settings_controller;
-		C_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
+		C_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
 	
 		Rbdb_DatabaseJoinController_turnDegreeOneIsolationOff( c_join_settings_controller );
 
@@ -252,7 +252,7 @@ VALUE rb_Rbdb_DatabaseJoinController_degreeOneIsolation( VALUE	rb_join_settings_
 VALUE rb_Rbdb_DatabaseJoinController_writeLocksInsteadOfReadLocks( VALUE	rb_join_settings_controller )	{
 
 	Rbdb_DatabaseJoinSettingsController*	c_join_settings_controller;
-	C_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
+	C_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
 
 	return ( Rbdb_DatabaseJoinController_writeLocksInsteadOfReadLocks( c_join_settings_controller )	?	Qtrue
 																								:	Qfalse );
@@ -265,7 +265,7 @@ VALUE rb_Rbdb_DatabaseJoinController_writeLocksInsteadOfReadLocks( VALUE	rb_join
 	VALUE rb_Rbdb_DatabaseJoinController_turnWriteLocksInsteadOfReadLocksOn( VALUE	rb_join_settings_controller )	{
 
 		Rbdb_DatabaseJoinSettingsController*	c_join_settings_controller;
-		C_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
+		C_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
 
 		Rbdb_DatabaseJoinController_turnWriteLocksInsteadOfReadLocksOn( c_join_settings_controller );
 
@@ -279,7 +279,7 @@ VALUE rb_Rbdb_DatabaseJoinController_writeLocksInsteadOfReadLocks( VALUE	rb_join
 	VALUE rb_Rbdb_DatabaseJoinController_turnWriteLocksInsteadOfReadLocksOff( VALUE	rb_join_settings_controller )	{
 
 		Rbdb_DatabaseJoinSettingsController*	c_join_settings_controller;
-		C_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
+		C_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
 
 		Rbdb_DatabaseJoinController_turnWriteLocksInsteadOfReadLocksOff( c_join_settings_controller );
 
@@ -294,7 +294,7 @@ VALUE rb_Rbdb_DatabaseJoinController_writeLocksInsteadOfReadLocks( VALUE	rb_join
 VALUE rb_Rbdb_DatabaseJoinController_noSortBeforeJoin( VALUE	rb_join_settings_controller )	{
 
 	Rbdb_DatabaseJoinSettingsController*	c_join_settings_controller;
-	C_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
+	C_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
 
 	return ( Rbdb_DatabaseJoinController_noSortBeforeJoin( c_join_settings_controller )	?	Qtrue
 																					:	Qfalse );
@@ -307,7 +307,7 @@ VALUE rb_Rbdb_DatabaseJoinController_noSortBeforeJoin( VALUE	rb_join_settings_co
 	VALUE rb_Rbdb_DatabaseJoinController_turnNoSortBeforeJoinOn( VALUE	rb_join_settings_controller )	{
 
 		Rbdb_DatabaseJoinSettingsController*	c_join_settings_controller;
-		C_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
+		C_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
 
 		Rbdb_DatabaseJoinController_turnNoSortBeforeJoinOn( c_join_settings_controller );
 
@@ -321,7 +321,7 @@ VALUE rb_Rbdb_DatabaseJoinController_noSortBeforeJoin( VALUE	rb_join_settings_co
 	VALUE rb_Rbdb_DatabaseJoinController_turnNoSortBeforeJoinOff( VALUE	rb_join_settings_controller )	{
 
 		Rbdb_DatabaseJoinSettingsController*	c_join_settings_controller;
-		C_Rbdb_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
+		C_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( rb_join_settings_controller, c_join_settings_controller );
 
 		Rbdb_DatabaseJoinController_turnNoSortBeforeJoinOff( c_join_settings_controller );
 

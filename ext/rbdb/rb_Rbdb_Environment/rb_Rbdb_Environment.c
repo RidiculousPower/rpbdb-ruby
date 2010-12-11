@@ -60,7 +60,7 @@ VALUE	extern	rb_Rbdb_SettingsController;
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-void Init_Rbdb_Environment()	{
+void Init_rb_Rbdb_Environment()	{
 
 	rb_Rbdb_Environment		=	rb_define_class_under(	rb_mRbdb,	
 																									"Environment", 
@@ -165,7 +165,7 @@ VALUE rb_Rbdb_Environment_initialize(	int			argc __attribute__ ((unused)),
 VALUE rb_Rbdb_Environment_initForStorageInMemory( VALUE	rb_environment )	{
 
 	Rbdb_Environment*	c_environment;
-	C_Rbdb_ENVIRONMENT( rb_environment, c_environment );
+	C_RBDB_ENVIRONMENT( rb_environment, c_environment );
 					
 	Rbdb_Environment_initForStorageInMemory( c_environment );
 
@@ -265,7 +265,7 @@ VALUE rb_Rbdb_Environment_identifiers( VALUE	rb_environment )	{
 VALUE rb_Rbdb_Environment_open( VALUE	rb_environment )	{
 
 	Rbdb_Environment*	c_environment	=	NULL;
-	C_Rbdb_ENVIRONMENT( rb_environment, c_environment );
+	C_RBDB_ENVIRONMENT( rb_environment, c_environment );
 	
 	if ( ! Rbdb_Environment_isOpen( c_environment ) )	{
 		
@@ -287,7 +287,7 @@ VALUE rb_Rbdb_Environment_open( VALUE	rb_environment )	{
 VALUE rb_Rbdb_Environment_isOpen( VALUE	rb_environment )	{
 	
 	Rbdb_Environment*	c_environment	=	NULL;
-	C_Rbdb_ENVIRONMENT( rb_environment, c_environment );
+	C_RBDB_ENVIRONMENT( rb_environment, c_environment );
 	
 	return ( c_environment->is_open == TRUE ? Qtrue : Qfalse );
 }	
@@ -300,7 +300,7 @@ VALUE rb_Rbdb_Environment_isOpen( VALUE	rb_environment )	{
 VALUE rb_Rbdb_Environment_homeDirectory( VALUE	rb_environment )	{
 
 	Rbdb_Environment*	c_environment	=	NULL;
-	C_Rbdb_ENVIRONMENT( rb_environment, c_environment );
+	C_RBDB_ENVIRONMENT( rb_environment, c_environment );
 	
 	char*	c_environment_home_directory	=	Rbdb_Environment_homeDirectory( c_environment );
 	VALUE	rb_environment_home_directory	=	rb_str_new2( c_environment_home_directory );
@@ -316,7 +316,7 @@ VALUE rb_Rbdb_Environment_homeDirectory( VALUE	rb_environment )	{
 VALUE rb_Rbdb_Environment_close( VALUE	rb_environment )	{
 
 	Rbdb_Environment*	c_environment;
-	C_Rbdb_ENVIRONMENT( rb_environment, c_environment );
+	C_RBDB_ENVIRONMENT( rb_environment, c_environment );
 
 	//	mark configured classes as waiting for next environment
 	rb_Rbdb_Environment_internal_unmarkClassesConfigured(	rb_environment );
@@ -340,7 +340,7 @@ VALUE rb_Rbdb_Environment_close( VALUE	rb_environment )	{
 VALUE rb_Rbdb_Environment_erase( VALUE	rb_environment )	{
 
 	Rbdb_Environment*	c_environment;
-	C_Rbdb_ENVIRONMENT( rb_environment, c_environment );
+	C_RBDB_ENVIRONMENT( rb_environment, c_environment );
 
 	Rbdb_Environment_erase( c_environment );
 	
@@ -354,7 +354,7 @@ VALUE rb_Rbdb_Environment_erase( VALUE	rb_environment )	{
 VALUE rb_Rbdb_Environment_handle( VALUE rb_environment )	{
 	
 	Rbdb_Environment*	c_environment;
-	C_Rbdb_ENVIRONMENT( rb_environment, c_environment );
+	C_RBDB_ENVIRONMENT( rb_environment, c_environment );
 
 	char*	c_name	=	Rbdb_Environment_name( c_environment );
 	VALUE	rb_handle	=	Qnil;
@@ -372,7 +372,7 @@ VALUE rb_Rbdb_Environment_handle( VALUE rb_environment )	{
 VALUE rb_Rbdb_Environment_name( VALUE rb_environment )	{
 
 	Rbdb_Environment*	c_environment;
-	C_Rbdb_ENVIRONMENT( rb_environment, c_environment );
+	C_RBDB_ENVIRONMENT( rb_environment, c_environment );
 
 	char*	c_name	=	Rbdb_Environment_name( c_environment );
 	VALUE	rb_name	=	Qnil;
@@ -390,12 +390,12 @@ VALUE rb_Rbdb_Environment_name( VALUE rb_environment )	{
 VALUE rb_Rbdb_Environment_configuredClasses( VALUE rb_environment )	{
 	
 	VALUE	rb_configured_classes_array	=	rb_iv_get(	rb_environment,
-														Rbdb_RB_ENVIRONMENT_VARIABLE_CONFIGURED_CLASSES );
+														RBDB_RB_ENVIRONMENT_VARIABLE_CONFIGURED_CLASSES );
 	
 	if ( rb_configured_classes_array == Qnil )	{
 		rb_configured_classes_array = rb_ary_new();
 		rb_iv_set(	rb_environment,
-					Rbdb_RB_ENVIRONMENT_VARIABLE_CONFIGURED_CLASSES,
+					RBDB_RB_ENVIRONMENT_VARIABLE_CONFIGURED_CLASSES,
 					rb_configured_classes_array );
 	}
 	return rb_configured_classes_array;
@@ -413,14 +413,14 @@ VALUE rb_Rbdb_Environment_databaseController( VALUE rb_environment )	{
 
 	VALUE	rb_database_controller	=	Qnil;
 	if ( ( rb_database_controller = rb_iv_get(	rb_environment,
-																							Rbdb_RB_ENVIRONMENT_VARIABLE_DATABASE_CONTROLLER ) ) == Qnil )	{
+																							RBDB_RB_ENVIRONMENT_VARIABLE_DATABASE_CONTROLLER ) ) == Qnil )	{
 		
 		rb_database_controller	=	rb_Rbdb_DatabaseController_new(	1,
 																															& rb_environment,
 																															rb_Rbdb_DatabaseController );
 		
 		rb_iv_set(	rb_environment,
-								Rbdb_RB_ENVIRONMENT_VARIABLE_DATABASE_CONTROLLER,
+								RBDB_RB_ENVIRONMENT_VARIABLE_DATABASE_CONTROLLER,
 								rb_database_controller );
 	}
 	
@@ -435,17 +435,17 @@ VALUE rb_Rbdb_Environment_transactionController( VALUE rb_environment )	{
 	
 	VALUE	rb_transaction_controller	=	Qnil;
 	if ( ( rb_transaction_controller = rb_iv_get(	rb_environment,
-																								Rbdb_RB_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER ) ) == Qnil )	{
+																								RBDB_RB_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_Environment*	c_environment;
-		C_Rbdb_ENVIRONMENT( rb_environment, c_environment );
+		C_RBDB_ENVIRONMENT( rb_environment, c_environment );
 		
 		Rbdb_TransactionController*	c_transaction_controller	=	Rbdb_Environment_transactionController( c_environment );
 
 		rb_transaction_controller	=	RUBY_RBDB_TRANSACTION_CONTROLLER( c_transaction_controller );
 
 		rb_iv_set(	rb_environment,
-								Rbdb_RB_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER,
+								RBDB_RB_ENVIRONMENT_VARIABLE_TRANSACTION_CONTROLLER,
 								rb_transaction_controller );
 	}
 	
@@ -460,14 +460,14 @@ VALUE rb_Rbdb_Environment_settingsController( VALUE rb_environment )	{
 
 	VALUE	rb_settings_controller	=	Qnil;
 	if ( ( rb_settings_controller = rb_iv_get(	rb_environment,
-																							Rbdb_RB_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																							RBDB_RB_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		rb_settings_controller	=	rb_Rbdb_SettingsController_new(	1,
 																															& rb_environment,
 																															rb_Rbdb_SettingsController );
 
 		rb_iv_set(	rb_environment,
-								Rbdb_RB_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER,
+								RBDB_RB_ENVIRONMENT_VARIABLE_SETTINGS_CONTROLLER,
 								rb_settings_controller );
 	}
 	

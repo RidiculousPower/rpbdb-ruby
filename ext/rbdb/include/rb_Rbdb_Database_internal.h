@@ -1,5 +1,5 @@
-#ifndef RB_Rbdb_DATABASE_INTERNAL
-	#define RB_Rbdb_DATABASE_INTERNAL
+#ifndef RB_RBDB_DATABASE_INTERNAL
+	#define RB_RBDB_DATABASE_INTERNAL
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
@@ -10,13 +10,13 @@
 	 																					VALUE	rb_callback_object,
 																						VALUE	rb_callback_method );
 																						
-	Rbdb_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_secondaryKeyCreationCallbackMethod(	Rbdb_Database*			c_secondary_database, 
+	RBDB_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_secondaryKeyCreationCallbackMethod(	Rbdb_Database*			c_secondary_database, 
 																										Rbdb_Record*			c_record, 
 																										Rbdb_SecondaryKeys*	c_return_data );
 
 	VALUE rb_Rbdb_Database_internal_removeCallbackInfoFromHash(	VALUE	rb_secondary_database );
 	enum ruby_value_type rb_Rbdb_Database_internal_storageType( VALUE rb_database );
-	Rbdb_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_processSecondaryKeyReturn(	VALUE									rb_secondary_database,
+	RBDB_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_processSecondaryKeyReturn(	VALUE									rb_secondary_database,
 																																													VALUE									rb_secondary_keys,
 																																													Rbdb_SecondaryKeys*		c_secondary_keys );
 	void rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	VALUE		rb_database,

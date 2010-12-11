@@ -1,5 +1,5 @@
-#ifndef RB_Rbdb_MEMORY_POOL_FILE
-	#define RB_Rbdb_MEMORY_POOL_FILE
+#ifndef RB_RBDB_MEMORY_POOL_FILE
+	#define RB_RBDB_MEMORY_POOL_FILE
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>

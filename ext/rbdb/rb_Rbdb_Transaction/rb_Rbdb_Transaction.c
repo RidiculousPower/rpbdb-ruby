@@ -26,7 +26,7 @@ extern	VALUE	rb_Rbdb_TransactionSettingsController;
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-void Init_Rbdb_Transaction()	{
+void Init_rb_Rbdb_Transaction()	{
 	
 	
 	rb_Rbdb_Transaction	=	rb_define_class_under(	rb_Rbdb_TransactionController, 
@@ -75,12 +75,12 @@ VALUE rb_Rbdb_Transaction_new(	int			argc,
 	);
 
 	Rbdb_TransactionController*	c_parent_transaction_controller;
-	C_Rbdb_TRANSACTION_CONTROLLER( rb_parent_transaction_controller, c_parent_transaction_controller );
+	C_RBDB_TRANSACTION_CONTROLLER( rb_parent_transaction_controller, c_parent_transaction_controller );
 	
 	VALUE	rb_transaction	=	RUBY_RBDB_TRANSACTION( Rbdb_Transaction_new( c_parent_transaction_controller ) );
 	
 	rb_iv_set(	rb_transaction,
-							Rbdb_RB_TRANSACTION_VARIABLE_PARENT_TRANSACTION_CONTROLLER,
+							RBDB_RB_TRANSACTION_VARIABLE_PARENT_TRANSACTION_CONTROLLER,
 							rb_parent_transaction_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_transaction_controller };
@@ -108,7 +108,7 @@ VALUE rb_Rbdb_Transaction_initialize(	int				argc __attribute__ ((unused)),
 VALUE rb_Rbdb_Transaction_settingsController(	VALUE	rb_transaction )	{
 
 	Rbdb_Transaction*	c_transaction;
-	C_Rbdb_TRANSACTION( rb_transaction, c_transaction );
+	C_RBDB_TRANSACTION( rb_transaction, c_transaction );
 
 	return RUBY_RBDB_TRANSACTION_SETTINGS_CONTROLLER( Rbdb_Transaction_settingsController( c_transaction ) );
 
@@ -131,7 +131,7 @@ VALUE rb_Rbdb_Transaction_parentEnvironment(	VALUE	rb_transaction )	{
 VALUE rb_Rbdb_Transaction_parentTransactionController(	VALUE	rb_transaction )	{
 
 	VALUE	rb_parent_transaction_controller	=	rb_iv_get(	rb_transaction,
-																												Rbdb_RB_TRANSACTION_VARIABLE_PARENT_TRANSACTION_CONTROLLER );
+																												RBDB_RB_TRANSACTION_VARIABLE_PARENT_TRANSACTION_CONTROLLER );
 	
 	return rb_parent_transaction_controller;
 }
@@ -148,7 +148,7 @@ VALUE rb_Rbdb_Transaction_parentTransactionController(	VALUE	rb_transaction )	{
 VALUE rb_Rbdb_Transaction_name( VALUE	rb_transaction )	{
 
 	Rbdb_Transaction*	c_transaction;
-	C_Rbdb_TRANSACTION( rb_transaction, c_transaction );
+	C_RBDB_TRANSACTION( rb_transaction, c_transaction );
 
 	return rb_str_new2( Rbdb_Transaction_name( c_transaction ) );
 }
@@ -162,7 +162,7 @@ VALUE rb_Rbdb_Transaction_setName(	VALUE	rb_transaction,
  												VALUE	rb_transaction_name )	{
 
 	Rbdb_Transaction*	c_transaction;
-	C_Rbdb_TRANSACTION( rb_transaction, c_transaction );
+	C_RBDB_TRANSACTION( rb_transaction, c_transaction );
 
 	Rbdb_Transaction_setName(	c_transaction,
 											StringValuePtr( rb_transaction_name ) );
@@ -181,7 +181,7 @@ VALUE rb_Rbdb_Transaction_setName(	VALUE	rb_transaction,
 VALUE rb_Rbdb_Transaction_begin( VALUE	rb_transaction )	{
 	
 	Rbdb_Transaction*	c_transaction;
-	C_Rbdb_TRANSACTION( rb_transaction, c_transaction );
+	C_RBDB_TRANSACTION( rb_transaction, c_transaction );
 	
 	Rbdb_Transaction_begin( c_transaction );
 	
@@ -195,7 +195,7 @@ VALUE rb_Rbdb_Transaction_begin( VALUE	rb_transaction )	{
 VALUE rb_Rbdb_Transaction_commit( VALUE	rb_transaction )	{
 	
 	Rbdb_Transaction*	c_transaction;
-	C_Rbdb_TRANSACTION( rb_transaction, c_transaction );
+	C_RBDB_TRANSACTION( rb_transaction, c_transaction );
 	
 	Rbdb_Transaction_commit( c_transaction );
 	
@@ -215,7 +215,7 @@ VALUE rb_Rbdb_Transaction_prepare(	VALUE	rb_transaction,
  												VALUE	rb_global_transaction_id	)	{
 	
 	Rbdb_Transaction*	c_transaction;
-	C_Rbdb_TRANSACTION( rb_transaction, c_transaction );
+	C_RBDB_TRANSACTION( rb_transaction, c_transaction );
 	
 	Rbdb_Transaction_prepare(	c_transaction,
 								FIX2INT( rb_global_transaction_id ) );
@@ -231,7 +231,7 @@ VALUE rb_Rbdb_Transaction_prepare(	VALUE	rb_transaction,
 VALUE rb_Rbdb_Transaction_rollback( VALUE	rb_transaction )	{
 
 	Rbdb_Transaction*	c_transaction;
-	C_Rbdb_TRANSACTION( rb_transaction, c_transaction );
+	C_RBDB_TRANSACTION( rb_transaction, c_transaction );
 
 	Rbdb_Transaction_rollback( c_transaction );
 
@@ -246,7 +246,7 @@ VALUE rb_Rbdb_Transaction_rollback( VALUE	rb_transaction )	{
 VALUE rb_Rbdb_Transaction_discardRecoveredResources( VALUE	rb_transaction )	{
 
 	Rbdb_Transaction*	c_transaction;
-	C_Rbdb_TRANSACTION( rb_transaction, c_transaction );
+	C_RBDB_TRANSACTION( rb_transaction, c_transaction );
 
 	Rbdb_Transaction_discardRecoveredResources( c_transaction );
 	

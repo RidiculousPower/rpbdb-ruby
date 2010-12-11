@@ -32,7 +32,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_TransactionSettingsController;
 extern	VALUE	rb_Rbdb_Transaction;
 
-void Init_Rbdb_TransactionSettingsController()	{
+void Init_rb_Rbdb_TransactionSettingsController()	{
 
 	rb_Rbdb_TransactionSettingsController		=	rb_define_class_under(	rb_Rbdb_SettingsController, 
 																																		"Transaction",	
@@ -129,12 +129,12 @@ VALUE rb_Rbdb_TransactionSettingsController_new(	int			argc,
 	}
 
 	Rbdb_SettingsController*	c_parent_settings_controller;
-	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
+	C_RBDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 	
 	VALUE	rb_transaction_settings_controller	= RUBY_RBDB_TRANSACTION_SETTINGS_CONTROLLER( Rbdb_TransactionSettingsController_new( c_parent_settings_controller ) );
 
 	rb_iv_set(	rb_transaction_settings_controller,
-							Rbdb_RB_TRANSACTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							RBDB_RB_TRANSACTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
 							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
@@ -175,7 +175,7 @@ VALUE rb_Rbdb_TransactionSettingsController_parentEnvironment(	VALUE	rb_transact
 VALUE rb_Rbdb_TransactionSettingsController_parentSettingsController(	VALUE	rb_transaction_settings_controller )	{
 
 	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_transaction_settings_controller,
-																										Rbdb_RB_TRANSACTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+																										RBDB_RB_TRANSACTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_settings_controller;
 }
@@ -193,7 +193,7 @@ VALUE rb_Rbdb_TransactionSettingsController_parentSettingsController(	VALUE	rb_t
 VALUE rb_Rbdb_TransactionSettingsController_on( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return ( Rbdb_TransactionSettingsController_on( c_transaction_settings_controller )	?	Qtrue
 																							:	Qfalse );
@@ -208,7 +208,7 @@ VALUE rb_Rbdb_TransactionSettingsController_on( VALUE	rb_transaction_settings_co
 VALUE rb_Rbdb_TransactionSettingsController_off( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return ( Rbdb_TransactionSettingsController_off( c_transaction_settings_controller )	?	Qtrue
 																							:	Qfalse );
@@ -222,7 +222,7 @@ VALUE rb_Rbdb_TransactionSettingsController_off( VALUE	rb_transaction_settings_c
 	VALUE rb_Rbdb_TransactionSettingsController_turnOn( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnOn( c_transaction_settings_controller );
 
@@ -238,7 +238,7 @@ VALUE rb_Rbdb_TransactionSettingsController_off( VALUE	rb_transaction_settings_c
 	VALUE rb_Rbdb_TransactionSettingsController_turnOff( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnOff( c_transaction_settings_controller );
 
@@ -253,7 +253,7 @@ VALUE rb_Rbdb_TransactionSettingsController_off( VALUE	rb_transaction_settings_c
 VALUE rb_Rbdb_TransactionSettingsController_prohibitSyncOnWrite( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return ( Rbdb_TransactionSettingsController_prohibitSyncOnWrite( c_transaction_settings_controller )	?	Qtrue
 																											:	Qfalse );
@@ -267,7 +267,7 @@ VALUE rb_Rbdb_TransactionSettingsController_prohibitSyncOnWrite( VALUE	rb_transa
 	VALUE rb_Rbdb_TransactionSettingsController_turnProhibitSyncOnWriteTransactionOn( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnProhibitSyncOnWriteTransactionOn( c_transaction_settings_controller );
 
@@ -282,7 +282,7 @@ VALUE rb_Rbdb_TransactionSettingsController_prohibitSyncOnWrite( VALUE	rb_transa
 	VALUE rb_Rbdb_TransactionSettingsController_turnProhibitSyncOnWriteTransactionOff( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnProhibitSyncOnWriteTransactionOff( c_transaction_settings_controller );
 
@@ -297,7 +297,7 @@ VALUE rb_Rbdb_TransactionSettingsController_prohibitSyncOnWrite( VALUE	rb_transa
 VALUE rb_Rbdb_TransactionSettingsController_prohibitSyncOnCommit( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return ( Rbdb_TransactionSettingsController_prohibitSyncOnCommit( c_transaction_settings_controller )	?	Qtrue
 																											:	Qfalse );
@@ -311,7 +311,7 @@ VALUE rb_Rbdb_TransactionSettingsController_prohibitSyncOnCommit( VALUE	rb_trans
 	VALUE rb_Rbdb_TransactionSettingsController_turnProhibitSyncOnCommitOn( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnProhibitSyncOnCommitOn( c_transaction_settings_controller );
 
@@ -326,7 +326,7 @@ VALUE rb_Rbdb_TransactionSettingsController_prohibitSyncOnCommit( VALUE	rb_trans
 	VALUE rb_Rbdb_TransactionSettingsController_turnProhibitSyncOnCommitOff( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnProhibitSyncOnCommitOff( c_transaction_settings_controller );
 
@@ -341,7 +341,7 @@ VALUE rb_Rbdb_TransactionSettingsController_prohibitSyncOnCommit( VALUE	rb_trans
 VALUE rb_Rbdb_TransactionSettingsController_timeoutInMicrosecondsReturnsDenyNotDeadlock( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return ( Rbdb_TransactionSettingsController_timeoutInMicrosecondsReturnsDenyNotDeadlock( c_transaction_settings_controller )	?	Qtrue
 																																	:	Qfalse );
@@ -355,7 +355,7 @@ VALUE rb_Rbdb_TransactionSettingsController_timeoutInMicrosecondsReturnsDenyNotD
 	VALUE rb_Rbdb_TransactionSettingsController_turnTimeoutInMicrosecondsReturnsDenyNotDeadlockOn( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnTimeoutInMicrosecondsReturnsDenyNotDeadlockOn( c_transaction_settings_controller );
 
@@ -370,7 +370,7 @@ VALUE rb_Rbdb_TransactionSettingsController_timeoutInMicrosecondsReturnsDenyNotD
 	VALUE rb_Rbdb_TransactionSettingsController_turnTimeoutInMicrosecondsReturnsDenyNotDeadlockOff( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnTimeoutInMicrosecondsReturnsDenyNotDeadlockOff( c_transaction_settings_controller );
 
@@ -386,7 +386,7 @@ VALUE rb_Rbdb_TransactionSettingsController_timeoutInMicrosecondsReturnsDenyNotD
 VALUE rb_Rbdb_TransactionSettingsController_concurrentDataStoreLocking( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return ( Rbdb_TransactionSettingsController_concurrentDataStoreLocking( c_transaction_settings_controller )	?	Qtrue
 																													:	Qfalse );
@@ -399,7 +399,7 @@ VALUE rb_Rbdb_TransactionSettingsController_concurrentDataStoreLocking( VALUE	rb
 	VALUE rb_Rbdb_TransactionSettingsController_turnConcurrentDataStoreLockingOn( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnConcurrentDataStoreLockingOn( c_transaction_settings_controller );
 
@@ -413,7 +413,7 @@ VALUE rb_Rbdb_TransactionSettingsController_concurrentDataStoreLocking( VALUE	rb
 	VALUE rb_Rbdb_TransactionSettingsController_turnConcurrentDataStoreLockingOff( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnConcurrentDataStoreLockingOff( c_transaction_settings_controller );
 
@@ -429,7 +429,7 @@ VALUE rb_Rbdb_TransactionSettingsController_concurrentDataStoreLocking( VALUE	rb
 VALUE rb_Rbdb_TransactionSettingsController_snapshotIsolation( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return ( Rbdb_TransactionSettingsController_snapshotIsolation( c_transaction_settings_controller )	?	Qtrue
 																										:	Qfalse );
@@ -444,7 +444,7 @@ VALUE rb_Rbdb_TransactionSettingsController_snapshotIsolation( VALUE	rb_transact
 	VALUE rb_Rbdb_TransactionSettingsController_turnSnapshotIsolationOn( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnSnapshotIsolationOn( c_transaction_settings_controller );
 
@@ -460,7 +460,7 @@ VALUE rb_Rbdb_TransactionSettingsController_snapshotIsolation( VALUE	rb_transact
 	VALUE rb_Rbdb_TransactionSettingsController_turnSnapshotIsolationOff( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnSnapshotIsolationOff( c_transaction_settings_controller );
 
@@ -477,7 +477,7 @@ VALUE rb_Rbdb_TransactionSettingsController_snapshotIsolation( VALUE	rb_transact
 VALUE rb_Rbdb_TransactionSettingsController_degreeOneIsolation( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return ( Rbdb_TransactionSettingsController_degreeOneIsolation( c_transaction_settings_controller )	?	Qtrue
 																											:	Qfalse );
@@ -490,7 +490,7 @@ VALUE rb_Rbdb_TransactionSettingsController_degreeOneIsolation( VALUE	rb_transac
 	VALUE rb_Rbdb_TransactionSettingsController_turnDegreeOneIsolationOn( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnDegreeOneIsolationOn( c_transaction_settings_controller );
 
@@ -504,7 +504,7 @@ VALUE rb_Rbdb_TransactionSettingsController_degreeOneIsolation( VALUE	rb_transac
 	VALUE rb_Rbdb_TransactionSettingsController_turnDegreeOneIsolationOff( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnDegreeOneIsolationOff( c_transaction_settings_controller );
 
@@ -520,7 +520,7 @@ VALUE rb_Rbdb_TransactionSettingsController_degreeOneIsolation( VALUE	rb_transac
 VALUE rb_Rbdb_TransactionSettingsController_degreeTwoIsolation( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return ( Rbdb_TransactionSettingsController_degreeTwoIsolation( c_transaction_settings_controller )	?	Qtrue
 																											:	Qfalse );
@@ -533,7 +533,7 @@ VALUE rb_Rbdb_TransactionSettingsController_degreeTwoIsolation( VALUE	rb_transac
 	VALUE rb_Rbdb_TransactionSettingsController_turnDegreeTwoIsolationOn( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnDegreeTwoIsolationOn( c_transaction_settings_controller );
 
@@ -547,7 +547,7 @@ VALUE rb_Rbdb_TransactionSettingsController_degreeTwoIsolation( VALUE	rb_transac
 	VALUE rb_Rbdb_TransactionSettingsController_turnDegreeTwoIsolationOff( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnDegreeTwoIsolationOff( c_transaction_settings_controller );
 
@@ -562,7 +562,7 @@ VALUE rb_Rbdb_TransactionSettingsController_degreeTwoIsolation( VALUE	rb_transac
 VALUE rb_Rbdb_TransactionSettingsController_encloseAllActivityInTransaction( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return ( Rbdb_TransactionSettingsController_encloseAllActivityInTransaction( c_transaction_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -575,7 +575,7 @@ VALUE rb_Rbdb_TransactionSettingsController_encloseAllActivityInTransaction( VAL
 	VALUE rb_Rbdb_TransactionSettingsController_turnEncloseAllActivityInTransactionOn( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnEncloseAllActivityInTransactionOn( c_transaction_settings_controller );
 
@@ -589,7 +589,7 @@ VALUE rb_Rbdb_TransactionSettingsController_encloseAllActivityInTransaction( VAL
 	VALUE rb_Rbdb_TransactionSettingsController_turnEncloseAllActivityInTransactionOff( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnEncloseAllActivityInTransactionOff( c_transaction_settings_controller );
 
@@ -604,7 +604,7 @@ VALUE rb_Rbdb_TransactionSettingsController_encloseAllActivityInTransaction( VAL
 VALUE rb_Rbdb_TransactionSettingsController_environmentalSnapshotIsolation( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return ( Rbdb_TransactionSettingsController_environmentalSnapshotIsolation( c_transaction_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -617,7 +617,7 @@ VALUE rb_Rbdb_TransactionSettingsController_environmentalSnapshotIsolation( VALU
 	VALUE rb_Rbdb_TransactionSettingsController_turnEnvironmentalSnapshotIsolationOn( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnEnvironmentalSnapshotIsolationOn( c_transaction_settings_controller );
 
@@ -631,7 +631,7 @@ VALUE rb_Rbdb_TransactionSettingsController_environmentalSnapshotIsolation( VALU
 	VALUE rb_Rbdb_TransactionSettingsController_turnEnvironmentalSnapshotIsolationOff( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnEnvironmentalSnapshotIsolationOff( c_transaction_settings_controller );
 
@@ -646,7 +646,7 @@ VALUE rb_Rbdb_TransactionSettingsController_environmentalSnapshotIsolation( VALU
 VALUE rb_Rbdb_TransactionSettingsController_syncOnCommit( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return ( Rbdb_TransactionSettingsController_syncOnCommit( c_transaction_settings_controller )	?	Qtrue
 																									:	Qfalse );
@@ -659,7 +659,7 @@ VALUE rb_Rbdb_TransactionSettingsController_syncOnCommit( VALUE	rb_transaction_s
 	VALUE rb_Rbdb_TransactionSettingsController_turnSyncOnCommitOn( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnSyncOnCommitOn( c_transaction_settings_controller );
 
@@ -673,7 +673,7 @@ VALUE rb_Rbdb_TransactionSettingsController_syncOnCommit( VALUE	rb_transaction_s
 	VALUE rb_Rbdb_TransactionSettingsController_turnSyncOnCommitOff( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnSyncOnCommitOff( c_transaction_settings_controller );
 
@@ -688,7 +688,7 @@ VALUE rb_Rbdb_TransactionSettingsController_syncOnCommit( VALUE	rb_transaction_s
 VALUE rb_Rbdb_TransactionSettingsController_waitForLocks( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return ( Rbdb_TransactionSettingsController_waitForLocks( c_transaction_settings_controller )	?	Qtrue
 																									:	Qfalse );
@@ -701,7 +701,7 @@ VALUE rb_Rbdb_TransactionSettingsController_waitForLocks( VALUE	rb_transaction_s
 	VALUE rb_Rbdb_TransactionSettingsController_turnWaitForLocksOn( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnWaitForLocksOn( c_transaction_settings_controller );
 
@@ -715,7 +715,7 @@ VALUE rb_Rbdb_TransactionSettingsController_waitForLocks( VALUE	rb_transaction_s
 	VALUE rb_Rbdb_TransactionSettingsController_turnWaitForLocksOff( VALUE	rb_transaction_settings_controller )	{
 
 		Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-		C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+		C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 		Rbdb_TransactionSettingsController_turnWaitForLocksOff( c_transaction_settings_controller );
 
@@ -733,7 +733,7 @@ VALUE rb_Rbdb_TransactionSettingsController_waitForLocks( VALUE	rb_transaction_s
 VALUE rb_Rbdb_TransactionSettingsController_maximumNumberOfTransactionsToRecover( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return INT2FIX( Rbdb_TransactionSettingsController_maximumNumberOfTransactionsToRecover( c_transaction_settings_controller ) );
 }
@@ -751,7 +751,7 @@ VALUE rb_Rbdb_TransactionSettingsController_setMaximumNumberOfTransactionsToReco
 		rb_raise( rb_eRuntimeError, "Maximum number of transactions can only be specified before environment is opened." );	
 	}
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	Rbdb_TransactionSettingsController_setMaximumNumberOfTransactionsToRecover(	c_transaction_settings_controller,
 																																							FIX2INT( rb_maximum_number_of_transactions_to_recover ) );
@@ -767,7 +767,7 @@ VALUE rb_Rbdb_TransactionSettingsController_setMaximumNumberOfTransactionsToReco
 VALUE rb_Rbdb_TransactionSettingsController_timeoutInMicroseconds( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	return INT2FIX( Rbdb_TransactionSettingsController_timeoutInMicroseconds( c_transaction_settings_controller ) );
 }
@@ -781,7 +781,7 @@ VALUE rb_Rbdb_TransactionSettingsController_setTimeoutInMicroseconds(	VALUE	rb_t
 																		VALUE	rb_timeout_in_microseconds )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	Rbdb_TransactionSettingsController_setTimeoutInMicroseconds(	c_transaction_settings_controller,
 	 																FIX2INT( rb_timeout_in_microseconds ) );
@@ -797,7 +797,7 @@ VALUE rb_Rbdb_TransactionSettingsController_setTimeoutInMicroseconds(	VALUE	rb_t
 VALUE rb_Rbdb_TransactionSettingsController_maxOpen( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	int		c_max_open	=	Rbdb_TransactionSettingsController_maxOpen( c_transaction_settings_controller );
 
@@ -820,7 +820,7 @@ VALUE rb_Rbdb_TransactionSettingsController_setMaxOpen(	VALUE	rb_transaction_set
 		rb_raise( rb_eRuntimeError, "Maximum number of open transactions can only be specified before environment is opened." );	
 	}
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	Rbdb_TransactionSettingsController_setMaxOpen(	c_transaction_settings_controller,
 																									FIX2INT( rb_max_open ) );
@@ -836,7 +836,7 @@ VALUE rb_Rbdb_TransactionSettingsController_setMaxOpen(	VALUE	rb_transaction_set
 VALUE rb_Rbdb_TransactionSettingsController_recoveryTimestamp( VALUE	rb_transaction_settings_controller )	{
 
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	time_t	c_recovery_timestamp	=	Rbdb_TransactionSettingsController_recoveryTimestamp( c_transaction_settings_controller );
 	
@@ -859,7 +859,7 @@ VALUE rb_Rbdb_TransactionSettingsController_setRecoveryTimestamp(	VALUE	rb_trans
 		rb_raise( rb_eRuntimeError, "Recovery timestamp can only be specified before environment is opened." );	
 	}
 	Rbdb_TransactionSettingsController*	c_transaction_settings_controller;
-	C_Rbdb_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
+	C_RBDB_TRANSACTION_SETTINGS_CONTROLLER( rb_transaction_settings_controller, c_transaction_settings_controller );
 
 	time_t		c_recovery_timestamp	=	FIX2INT( rb_recovery_timestamp );
 

@@ -1,5 +1,5 @@
-#ifndef RB_Rbdb_REMOTE_SITE
-	#define RB_Rbdb_REMOTE_SITE
+#ifndef RB_RBDB_REMOTE_SITE
+	#define RB_RBDB_REMOTE_SITE
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>

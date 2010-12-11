@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_KEY
-	#define RB_Rbdb_KEY
+#ifndef RB_RBDB_KEY
+	#define RB_RBDB_KEY
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_Key();
+void Init_rb_Rbdb_Key();
 
 VALUE rb_Rbdb_Key_new(	int			argc,
 												VALUE*	args,

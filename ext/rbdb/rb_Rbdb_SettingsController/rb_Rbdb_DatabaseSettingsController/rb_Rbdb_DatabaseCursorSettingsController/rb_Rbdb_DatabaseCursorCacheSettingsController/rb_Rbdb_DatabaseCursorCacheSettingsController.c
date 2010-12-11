@@ -50,7 +50,7 @@ extern	VALUE	rb_Rbdb_DatabaseCursorSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseCursorCacheSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseCursorCachePrioritySettingsController;
 
-void Init_Rbdb_DatabaseCursorCacheSettingsController()	{
+void Init_rb_Rbdb_DatabaseCursorCacheSettingsController()	{
 
 	rb_Rbdb_DatabaseCursorCacheSettingsController			=	rb_define_class_under(	rb_Rbdb_DatabaseCursorSettingsController, 
 																																							"Cache",	
@@ -147,7 +147,7 @@ VALUE rb_Rbdb_DatabaseCursorCacheSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseCursorSettingsController*	c_database_cursor_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_parent_database_cursor_settings_controller, c_database_cursor_settings_controller );		
+	C_RBDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_parent_database_cursor_settings_controller, c_database_cursor_settings_controller );		
 
 	Rbdb_DatabaseCursorCacheSettingsController*	c_database_cursor_cache_settings_controller	=	Rbdb_DatabaseCursorSettingsController_cacheSettingsController( c_database_cursor_settings_controller );
 
@@ -155,7 +155,7 @@ VALUE rb_Rbdb_DatabaseCursorCacheSettingsController_new(	int			argc,
 	
 	//	store reference to parent
 	rb_iv_set(	rb_database_cursor_cache_settings_controller,
-							Rbdb_RB_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_SETTINGS_CONTROLLER,
 							rb_parent_database_cursor_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_database_cursor_settings_controller };
@@ -232,7 +232,7 @@ VALUE rb_Rbdb_DatabaseCursorCacheSettingsController_parentDatabaseSettingsContro
 VALUE rb_Rbdb_DatabaseCursorCacheSettingsController_parentDatabaseCursorSettingsController(	VALUE	rb_database_cursor_cache_settings_controller )	{
 
 	VALUE	rb_parent_database_cursor_cache_settings_controller	=	rb_iv_get(	rb_database_cursor_cache_settings_controller,
-																																					Rbdb_RB_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_SETTINGS_CONTROLLER );
+																																					RBDB_RB_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_cursor_cache_settings_controller;
 }
@@ -249,13 +249,13 @@ VALUE rb_Rbdb_DatabaseCursorCacheSettingsController_prioritySettingsController( 
 
 	VALUE	rb_database_cursor_cache_priority_settings_controller	=	Qnil;
 	if ( ( rb_database_cursor_cache_priority_settings_controller = rb_iv_get(	rb_database_cursor_cache_settings_controller,
-																																						Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																						RBDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		rb_database_cursor_cache_priority_settings_controller	=	rb_Rbdb_DatabaseCursorCachePrioritySettingsController_new(	1,
 																																																												& rb_database_cursor_cache_settings_controller,
 																																																												rb_Rbdb_DatabaseCursorCachePrioritySettingsController );
 		rb_iv_set(	rb_database_cursor_cache_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_CACHE_PRIORITY_SETTINGS_CONTROLLER,
 								rb_database_cursor_cache_priority_settings_controller );
 	}
 	

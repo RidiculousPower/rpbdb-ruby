@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_FILE_SETTINGS_CONTROLLER
-	#define RB_Rbdb_FILE_SETTINGS_CONTROLLER
+#ifndef RB_RBDB_FILE_SETTINGS_CONTROLLER
+	#define RB_RBDB_FILE_SETTINGS_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_FileSettingsController();
+void Init_rb_Rbdb_FileSettingsController();
 
 VALUE rb_Rbdb_FileSettingsController_new(	int			argc,
 																					VALUE*	args,

@@ -44,7 +44,7 @@ VALUE	extern	rb_Rbdb_DatabaseRecordSettingsController;
 VALUE	extern	rb_Rbdb_DatabaseRecordFixedLengthSettingsController;
 VALUE	extern	rb_Rbdb_Record;
 
-void Init_Rbdb_DatabaseRecordFixedLengthSettingsController()	{
+void Init_rb_Rbdb_DatabaseRecordFixedLengthSettingsController()	{
 
 	rb_Rbdb_DatabaseRecordFixedLengthSettingsController		=	rb_define_class_under(	rb_Rbdb_DatabaseRecordSettingsController, 
 																																						"FixedLength",	
@@ -139,7 +139,7 @@ VALUE rb_Rbdb_DatabaseRecordFixedLengthSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseRecordSettingsController*	c_database_record_settings_controller;
-	C_Rbdb_DATABASE_RECORD_SETTINGS_CONTROLLER( rb_parent_database_record_settings_controller, c_database_record_settings_controller );		
+	C_RBDB_DATABASE_RECORD_SETTINGS_CONTROLLER( rb_parent_database_record_settings_controller, c_database_record_settings_controller );		
 
 	Rbdb_DatabaseRecordFixedLengthSettingsController*	c_database_record_fixed_length_settings_controller	=	Rbdb_DatabaseRecordSettingsController_fixedLengthSettingsController( c_database_record_settings_controller );
 
@@ -147,7 +147,7 @@ VALUE rb_Rbdb_DatabaseRecordFixedLengthSettingsController_new(	int			argc,
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_record_fixed_length_settings_controller,
-							Rbdb_RB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER,
 							rb_parent_database_record_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };	
@@ -224,7 +224,7 @@ VALUE rb_Rbdb_DatabaseRecordFixedLengthSettingsController_parentDatabaseSettings
 VALUE rb_Rbdb_DatabaseRecordFixedLengthSettingsController_parentDatabaseRecordSettingsController(	VALUE	rb_database_record_fixed_length_settings_controller )	{
 
 	VALUE	rb_parent_database_record_settings_controller	=	rb_iv_get(	rb_database_record_fixed_length_settings_controller,
-																																		Rbdb_RB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER );
+																																		RBDB_RB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_record_settings_controller;
 }
@@ -237,7 +237,7 @@ VALUE rb_Rbdb_DatabaseRecordFixedLengthSettingsController_parentDatabaseRecordSe
 VALUE rb_Rbdb_DatabaseRecordFixedLengthSettingsController_recordLength( VALUE	rb_database_record_fixed_length_settings_controller )	{
 
 	Rbdb_DatabaseRecordFixedLengthSettingsController*	c_database_record_fixed_length_settings_controller;
-	C_Rbdb_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( rb_database_record_fixed_length_settings_controller, c_database_record_fixed_length_settings_controller );
+	C_RBDB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( rb_database_record_fixed_length_settings_controller, c_database_record_fixed_length_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseRecordFixedLengthSettingsController_recordLength( c_database_record_fixed_length_settings_controller ) );
 }
@@ -251,7 +251,7 @@ VALUE rb_Rbdb_DatabaseRecordFixedLengthSettingsController_setRecordLength(	VALUE
 																		VALUE	rb_record_length )	{
 
 	Rbdb_DatabaseRecordFixedLengthSettingsController*	c_database_record_fixed_length_settings_controller;
-	C_Rbdb_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( rb_database_record_fixed_length_settings_controller, c_database_record_fixed_length_settings_controller );
+	C_RBDB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( rb_database_record_fixed_length_settings_controller, c_database_record_fixed_length_settings_controller );
 
 	Rbdb_DatabaseRecordFixedLengthSettingsController_setRecordLength(	c_database_record_fixed_length_settings_controller,
 	 																FIX2INT( rb_record_length ) );
@@ -267,7 +267,7 @@ VALUE rb_Rbdb_DatabaseRecordFixedLengthSettingsController_setRecordLength(	VALUE
 VALUE rb_Rbdb_DatabaseRecordFixedLengthSettingsController_paddingByte( VALUE	rb_database_record_fixed_length_settings_controller )	{
 
 	Rbdb_DatabaseRecordFixedLengthSettingsController*	c_database_record_fixed_length_settings_controller;
-	C_Rbdb_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( rb_database_record_fixed_length_settings_controller, c_database_record_fixed_length_settings_controller );
+	C_RBDB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( rb_database_record_fixed_length_settings_controller, c_database_record_fixed_length_settings_controller );
 
 	int		c_padding_byte	=	Rbdb_DatabaseRecordFixedLengthSettingsController_paddingByte( c_database_record_fixed_length_settings_controller );
 
@@ -293,7 +293,7 @@ VALUE rb_Rbdb_DatabaseRecordFixedLengthSettingsController_setPaddingByte(	VALUE	
 																																					VALUE	rb_record_padding_byte )	{
 
 	Rbdb_DatabaseRecordFixedLengthSettingsController*	c_database_record_fixed_length_settings_controller;
-	C_Rbdb_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( rb_database_record_fixed_length_settings_controller, c_database_record_fixed_length_settings_controller );
+	C_RBDB_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER( rb_database_record_fixed_length_settings_controller, c_database_record_fixed_length_settings_controller );
 
 	int	c_padding_byte	=	0;
 	

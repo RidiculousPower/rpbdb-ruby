@@ -41,7 +41,7 @@ extern	VALUE	rb_Rbdb_Database;
 extern	VALUE	rb_Rbdb_DatabaseController;
 extern	VALUE	rb_Rbdb_DatabaseSettingsController;
 
-void Init_Rbdb_DatabaseController()	{
+void Init_rb_Rbdb_DatabaseController()	{
 
 	rb_Rbdb_DatabaseController	=	rb_define_class_under(	rb_Rbdb_Database, 
 																												"Controller",			
@@ -108,13 +108,13 @@ VALUE rb_Rbdb_DatabaseController_new(	int			argc,
 	}
 	
 	if ( rb_parent_environment == Qnil )	{
-			rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_MESSAGE_ENVIRONMENT_NOT_FOUND );
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_MESSAGE_ENVIRONMENT_NOT_FOUND );
 	}
 	
 	/*------------------------------------------------------*/
 
 	Rbdb_Environment*	c_parent_environment;
-	C_Rbdb_ENVIRONMENT( rb_parent_environment, c_parent_environment );
+	C_RBDB_ENVIRONMENT( rb_parent_environment, c_parent_environment );
 	
 	Rbdb_DatabaseController*	c_database_controller	=	Rbdb_Environment_databaseController( c_parent_environment );
 
@@ -122,7 +122,7 @@ VALUE rb_Rbdb_DatabaseController_new(	int			argc,
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_controller,
-							Rbdb_RB_ALL_VARIABLE_PARENT_ENVIRONMENT,
+							RBDB_RB_ALL_VARIABLE_PARENT_ENVIRONMENT,
 							rb_parent_environment );
 	
 	VALUE	argv[]	=	{ rb_parent_environment };
@@ -165,7 +165,7 @@ VALUE rb_Rbdb_DatabaseController_settingsController(	VALUE rb_database_controlle
 VALUE rb_Rbdb_DatabaseController_parentEnvironment(	VALUE rb_database_controller )	{
 
 	VALUE	rb_parent_environment	=	rb_iv_get(	rb_database_controller,
-																						Rbdb_RB_ALL_VARIABLE_PARENT_ENVIRONMENT );
+																						RBDB_RB_ALL_VARIABLE_PARENT_ENVIRONMENT );
 
 	return rb_parent_environment;
 }
@@ -198,7 +198,7 @@ VALUE rb_Rbdb_DatabaseController_newDatabase(	VALUE		rb_database_controller,
 VALUE rb_Rbdb_DatabaseController_closeAllDatabases( VALUE rb_database_controller )	{
 
 	Rbdb_DatabaseController*	c_database_controller;
-	C_Rbdb_DATABASE_CONTROLLER( rb_database_controller, c_database_controller );
+	C_RBDB_DATABASE_CONTROLLER( rb_database_controller, c_database_controller );
 
 	Rbdb_DatabaseController_closeAllDatabases( c_database_controller );
 

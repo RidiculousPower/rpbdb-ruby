@@ -1,5 +1,5 @@
-#ifndef RB_Rbdb_SECONDARY_KEYS
-	#define RB_Rbdb_SECONDARY_KEYS
+#ifndef RB_RBDB_SECONDARY_KEYS
+	#define RB_RBDB_SECONDARY_KEYS
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>

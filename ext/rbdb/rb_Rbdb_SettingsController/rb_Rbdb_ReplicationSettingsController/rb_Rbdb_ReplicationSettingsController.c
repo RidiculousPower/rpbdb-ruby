@@ -40,7 +40,7 @@ extern	VALUE	rb_Rbdb_ReplicationVerbositySettingsController;
 extern	VALUE	rb_Rbdb_ReplicationElectionSettingsController;
 extern	VALUE	rb_Rbdb_ReplicationTimeoutSettingsController;
 
-void Init_Rbdb_ReplicationSettingsController()	{
+void Init_rb_Rbdb_ReplicationSettingsController()	{
 
 	rb_Rbdb_ReplicationSettingsController		=	rb_define_class_under(	rb_Rbdb_SettingsController, 
 																																		"Replication",	
@@ -146,14 +146,14 @@ VALUE rb_Rbdb_ReplicationSettingsController_new(	int			argc,
 	}
 
 	Rbdb_SettingsController*	c_parent_settings_controller;
-	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
+	C_RBDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller	=	Rbdb_SettingsController_replicationSettingsController( c_parent_settings_controller );
 
 	VALUE	rb_replication_settings_controller	= RUBY_RBDB_REPLICATION_SETTINGS_CONTROLLER( c_replication_settings_controller );
 
 	rb_iv_set(	rb_replication_settings_controller,
-							Rbdb_RB_REPLICATION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							RBDB_RB_REPLICATION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
 							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
@@ -194,7 +194,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_parentEnvironment(	VALUE	rb_replicat
 VALUE rb_Rbdb_ReplicationSettingsController_parentSettingsController(	VALUE	rb_replication_settings_controller )	{
 
 	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_replication_settings_controller,
-																										Rbdb_RB_REPLICATION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+																										RBDB_RB_REPLICATION_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_settings_controller;
 }
@@ -207,7 +207,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_parentSettingsController(	VALUE	rb_r
 VALUE rb_Rbdb_ReplicationSettingsController_on( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return ( Rbdb_ReplicationSettingsController_on( c_replication_settings_controller )	?	Qtrue
 																							:	Qfalse );
@@ -226,7 +226,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_turnOn( VALUE	rb_replication_setting
 	}
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	Rbdb_ReplicationSettingsController_turnOn( c_replication_settings_controller );
 
@@ -240,7 +240,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_turnOn( VALUE	rb_replication_setting
 VALUE rb_Rbdb_ReplicationSettingsController_off( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return ( Rbdb_ReplicationSettingsController_off( c_replication_settings_controller )	?	Qtrue
 																							:	Qfalse );
@@ -253,7 +253,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_off( VALUE	rb_replication_settings_c
 VALUE rb_Rbdb_ReplicationSettingsController_turnOff( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	Rbdb_ReplicationSettingsController_turnOff( c_replication_settings_controller );
 
@@ -269,7 +269,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_turnOff( VALUE	rb_replication_settin
 VALUE rb_Rbdb_ReplicationSettingsController_clientToClientSynchronization( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return ( Rbdb_ReplicationSettingsController_clientToClientSynchronization( c_replication_settings_controller )	?	Qtrue
 																													:	Qfalse );
@@ -288,7 +288,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_clientToClientSynchronization( VALUE
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_turnClientToClientSynchronizationOn( c_replication_settings_controller );
 		
@@ -308,7 +308,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_clientToClientSynchronization( VALUE
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_turnClientToClientSynchronizationOff( c_replication_settings_controller );
 
@@ -323,7 +323,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_clientToClientSynchronization( VALUE
 VALUE rb_Rbdb_ReplicationSettingsController_singleBulkTransfer( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return ( Rbdb_ReplicationSettingsController_singleBulkTransfer( c_replication_settings_controller )	?	Qtrue
 																											:	Qfalse );
@@ -342,7 +342,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_singleBulkTransfer( VALUE	rb_replica
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_turnSingleBulkTransferOn( c_replication_settings_controller );
 
@@ -362,7 +362,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_singleBulkTransfer( VALUE	rb_replica
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_turnSingleBulkTransferOff( c_replication_settings_controller );
 
@@ -377,7 +377,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_singleBulkTransfer( VALUE	rb_replica
 VALUE rb_Rbdb_ReplicationSettingsController_delayNewSyncUntilExplicitCall( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return ( Rbdb_ReplicationSettingsController_delayNewSyncUntilExplicitCall( c_replication_settings_controller )	?	Qtrue
 																													:	Qfalse );
@@ -397,7 +397,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_delayNewSyncUntilExplicitCall( VALUE
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_turnDelayNewSyncUntilExplicitCallOn( c_replication_settings_controller );
 
@@ -417,7 +417,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_delayNewSyncUntilExplicitCall( VALUE
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_turnDelayNewSyncUntilExplicitCallOff( c_replication_settings_controller );
 
@@ -432,7 +432,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_delayNewSyncUntilExplicitCall( VALUE
 VALUE rb_Rbdb_ReplicationSettingsController_useMasterLeases( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return ( Rbdb_ReplicationSettingsController_useMasterLeases( c_replication_settings_controller )	?	Qtrue
 																										:	Qfalse );
@@ -451,7 +451,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_useMasterLeases( VALUE	rb_replicatio
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_turnUseMasterLeasesOn( c_replication_settings_controller );
 
@@ -471,7 +471,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_useMasterLeases( VALUE	rb_replicatio
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_turnUseMasterLeasesOff( c_replication_settings_controller );
 
@@ -486,7 +486,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_useMasterLeases( VALUE	rb_replicatio
 VALUE rb_Rbdb_ReplicationSettingsController_reinitializeOutdatedClients( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return ( Rbdb_ReplicationSettingsController_reinitializeOutdatedClients( c_replication_settings_controller )	?	Qtrue
 																													:	Qfalse );
@@ -505,7 +505,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_reinitializeOutdatedClients( VALUE	r
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_turnReinitializeOutdatedClientsOn( c_replication_settings_controller );
 
@@ -525,7 +525,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_reinitializeOutdatedClients( VALUE	r
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_turnReinitializeOutdatedClientsOff( c_replication_settings_controller );
 
@@ -540,7 +540,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_reinitializeOutdatedClients( VALUE	r
 VALUE rb_Rbdb_ReplicationSettingsController_prohibitWait( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return ( Rbdb_ReplicationSettingsController_prohibitWait( c_replication_settings_controller )	?	Qtrue
 																									:	Qfalse );
@@ -559,7 +559,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_prohibitWait( VALUE	rb_replication_s
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_turnProhibitWaitOn( c_replication_settings_controller );
 
@@ -579,7 +579,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_prohibitWait( VALUE	rb_replication_s
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_turnProhibitWaitOff( c_replication_settings_controller );
 
@@ -594,7 +594,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_prohibitWait( VALUE	rb_replication_s
 VALUE rb_Rbdb_ReplicationSettingsController_requireStrictMajority( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return ( Rbdb_ReplicationSettingsController_requireStrictMajority( c_replication_settings_controller )	?	Qtrue
 																											:	Qfalse );
@@ -613,7 +613,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_requireStrictMajority( VALUE	rb_repl
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_turnRequireStrictMajorityOn( c_replication_settings_controller );
 
@@ -633,7 +633,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_requireStrictMajority( VALUE	rb_repl
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_turnRequireStrictMajorityOff( c_replication_settings_controller );
 
@@ -648,7 +648,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_requireStrictMajority( VALUE	rb_repl
 VALUE rb_Rbdb_ReplicationSettingsController_isMaster( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return ( Rbdb_ReplicationSettingsController_isMaster( c_replication_settings_controller )	?	Qtrue
 																																														:	Qfalse );
@@ -667,7 +667,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_isMaster( VALUE	rb_replication_setti
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_setIsMaster( c_replication_settings_controller );
 
@@ -682,7 +682,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_isMaster( VALUE	rb_replication_setti
 VALUE rb_Rbdb_ReplicationSettingsController_isClient( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return ( Rbdb_ReplicationSettingsController_isClient( c_replication_settings_controller )	?	Qtrue
 																								:	Qfalse );
@@ -701,7 +701,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_isClient( VALUE	rb_replication_setti
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_setIsClient( c_replication_settings_controller );
 
@@ -715,7 +715,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_isClient( VALUE	rb_replication_setti
 VALUE rb_Rbdb_ReplicationSettingsController_startAsClientOrRallyElection( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return ( Rbdb_ReplicationSettingsController_startAsClientOrRallyElection( c_replication_settings_controller )	?	Qtrue
 																													:	Qfalse );
@@ -735,7 +735,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_startAsClientOrRallyElection( VALUE	
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_setStartAsClientOrRallyElection( c_replication_settings_controller );
 
@@ -750,7 +750,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_startAsClientOrRallyElection( VALUE	
 VALUE rb_Rbdb_ReplicationSettingsController_limit( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	double	c_limit		=	Rbdb_ReplicationSettingsController_limit( c_replication_settings_controller );
 	VALUE		rb_limit	=	LONG2NUM( c_limit );
@@ -774,7 +774,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_limit( VALUE	rb_replication_settings
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		uint64_t		c_limit_in_gbytes	=	NUM2LONG( rb_limit_in_gbytes );
 		uint64_t		c_limit_in_bytes	=	NUM2LONG( rb_limit_in_bytes );
@@ -793,7 +793,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_limit( VALUE	rb_replication_settings
 VALUE rb_Rbdb_ReplicationSettingsController_host( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return rb_str_new2( Rbdb_ReplicationSettingsController_host( c_replication_settings_controller ) );
 }
@@ -823,7 +823,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_host( VALUE	rb_replication_settings_
 		);
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		char*	c_host	=	StringValuePtr( rb_host );
 
@@ -840,7 +840,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_host( VALUE	rb_replication_settings_
 VALUE rb_Rbdb_ReplicationSettingsController_port( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	int		c_port	=	Rbdb_ReplicationSettingsController_port( c_replication_settings_controller );
 	VALUE	rb_port	=	INT2FIX( c_port );
@@ -860,7 +860,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_port( VALUE	rb_replication_settings_
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		int		c_port	=	FIX2INT( rb_port );
 
@@ -878,7 +878,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_port( VALUE	rb_replication_settings_
 VALUE rb_Rbdb_ReplicationSettingsController_siteCount( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationSettingsController_siteCount( c_replication_settings_controller ) );
 }
@@ -897,7 +897,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_siteCount( VALUE	rb_replication_sett
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_setSiteCount(	c_replication_settings_controller,
 		 													FIX2INT( rb_site_count ) );
@@ -913,7 +913,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_siteCount( VALUE	rb_replication_sett
 VALUE rb_Rbdb_ReplicationSettingsController_priorityOrderNumber( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationSettingsController_priorityOrderNumber( c_replication_settings_controller ) );
 }
@@ -933,7 +933,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_priorityOrderNumber( VALUE	rb_replic
 		}
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_setPriorityOrderNumber(	c_replication_settings_controller,
 		 															FIX2INT( rb_priority_order_number ) );
@@ -949,7 +949,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_priorityOrderNumber( VALUE	rb_replic
 VALUE rb_Rbdb_ReplicationSettingsController_retransmissionThresholdMinimum( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationSettingsController_retransmissionThresholdMinimum( c_replication_settings_controller ) );
 }
@@ -962,7 +962,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_retransmissionThresholdMinimum( VALU
 																					VALUE	rb_retransmission_threshold_minimum )	{
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_setRetransmissionThresholdMinimum(	c_replication_settings_controller,
 		 																		FIX2INT( rb_retransmission_threshold_minimum ) );
@@ -977,7 +977,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_retransmissionThresholdMinimum( VALU
 VALUE rb_Rbdb_ReplicationSettingsController_retransmissionThresholdMaximum( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationSettingsController_retransmissionThresholdMaximum( c_replication_settings_controller ) );
 }
@@ -990,7 +990,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_retransmissionThresholdMaximum( VALU
 	 																				VALUE	rb_retransmission_threshold_maximum )	{
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_setRetransmissionThresholdMaximum(	c_replication_settings_controller,
 		 																		FIX2INT( rb_retransmission_threshold_maximum ) );
@@ -1005,7 +1005,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_retransmissionThresholdMaximum( VALU
 VALUE rb_Rbdb_ReplicationSettingsController_slowestClockValue( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationSettingsController_slowestClockValue( c_replication_settings_controller ) );
 }
@@ -1018,7 +1018,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_slowestClockValue( VALUE	rb_replicat
 																		VALUE	rb_slowest_clock_value )	{
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 		Rbdb_ReplicationSettingsController_setSlowestClockValue(	c_replication_settings_controller,
 		 															FIX2INT( rb_slowest_clock_value ) );
@@ -1034,7 +1034,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_slowestClockValue( VALUE	rb_replicat
 VALUE rb_Rbdb_ReplicationSettingsController_fastestClockSkewValue( VALUE	rb_replication_settings_controller )	{
 
 	Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationSettingsController_fastestClockSkewValue( c_replication_settings_controller ) );
 }
@@ -1047,7 +1047,7 @@ VALUE rb_Rbdb_ReplicationSettingsController_fastestClockSkewValue( VALUE	rb_repl
 																			VALUE	rb_fastest_clock_value )	{
 
 		Rbdb_ReplicationSettingsController*	c_replication_settings_controller;
-		C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
+		C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_replication_settings_controller, c_replication_settings_controller );
 		Rbdb_ReplicationSettingsController_setFastestClockSkewValue(	c_replication_settings_controller,
 		 																FIX2INT( rb_fastest_clock_value ) );
 
@@ -1063,13 +1063,13 @@ VALUE rb_Rbdb_ReplicationSettingsController_electionSettingsController( VALUE	rb
 	VALUE	rb_replication_election_settings_controller	=	Qnil;
 	
 	if ( ( rb_replication_election_settings_controller = rb_iv_get(	rb_replication_settings_controller,
-																																	Rbdb_RB_SETTINGS_VARIABLE_REPLICATION_ELECTION_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																	RBDB_RB_SETTINGS_VARIABLE_REPLICATION_ELECTION_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_replication_election_settings_controller	=	rb_Rbdb_ReplicationElectionSettingsController_new(	1,
 																																																			& rb_replication_settings_controller,
 																																																			rb_Rbdb_ReplicationElectionSettingsController );
 		rb_iv_set(	rb_replication_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_REPLICATION_ELECTION_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_REPLICATION_ELECTION_SETTINGS_CONTROLLER,
 								rb_replication_election_settings_controller );
 	}
 	
@@ -1086,13 +1086,13 @@ VALUE rb_Rbdb_ReplicationSettingsController_timeoutSettingsController( VALUE	rb_
 	VALUE	rb_replication_timeout_settings_controller	=	Qnil;
 	
 	if ( ( rb_replication_timeout_settings_controller = rb_iv_get(	rb_replication_settings_controller,
-																																	Rbdb_RB_SETTINGS_VARIABLE_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																	RBDB_RB_SETTINGS_VARIABLE_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_replication_timeout_settings_controller	=	rb_Rbdb_ReplicationTimeoutSettingsController_new(	1,
 																																																		& rb_replication_settings_controller,
 																																																		rb_Rbdb_ReplicationTimeoutSettingsController );
 		rb_iv_set(	rb_replication_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER,
 								rb_replication_timeout_settings_controller );
 	}
 	
@@ -1109,13 +1109,13 @@ VALUE rb_Rbdb_ReplicationSettingsController_verbositySettingsController( VALUE	r
 	VALUE	rb_replication_verbosity_settings_controller	=	Qnil;
 	
 	if ( ( rb_replication_verbosity_settings_controller = rb_iv_get(	rb_replication_settings_controller,
-																																	Rbdb_RB_SETTINGS_VARIABLE_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																	RBDB_RB_SETTINGS_VARIABLE_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_replication_verbosity_settings_controller	=	rb_Rbdb_ReplicationVerbositySettingsController_new(	1,
 																																																				& rb_replication_settings_controller,
 																																																				rb_Rbdb_ReplicationVerbositySettingsController );
 		rb_iv_set(	rb_replication_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER,
 								rb_replication_verbosity_settings_controller );
 	}
 	

@@ -1,5 +1,5 @@
-#ifndef RB_Rbdb_MUTEX
-	#define RB_Rbdb_MUTEX
+#ifndef RB_RBDB_MUTEX
+	#define RB_RBDB_MUTEX
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>

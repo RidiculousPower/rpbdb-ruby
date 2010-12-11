@@ -51,7 +51,7 @@ extern	VALUE	rb_Rbdb_DatabaseRecordSettingsController;
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-void Init_Rbdb_DatabaseTypeRecnoSettingsController()	{
+void Init_rb_Rbdb_DatabaseTypeRecnoSettingsController()	{
 
 	rb_Rbdb_DatabaseTypeRecnoSettingsController		=	rb_define_class_under(	rb_Rbdb_DatabaseTypeSettingsController, 
 																																					"Recno",	
@@ -147,7 +147,7 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_new(	int			argc,
 		if ( ( rb_parent_database = rb_Rbdb_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller ) ) != Qnil )	{
 			
 			Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-			C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );			
+			C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );			
 			
 			Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller	=	Rbdb_DatabaseSettingsController_typeSettingsController( c_database_settings_controller );
 
@@ -161,7 +161,7 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller;
-	C_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_parent_database_type_settings_controller, c_database_type_settings_controller );		
+	C_RBDB_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_parent_database_type_settings_controller, c_database_type_settings_controller );		
 
 	Rbdb_DatabaseTypeRecnoSettingsController*	c_database_type_recno_settings_controller	=	Rbdb_DatabaseTypeSettingsController_recnoController( c_database_type_settings_controller );
 
@@ -175,14 +175,14 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_new(	int			argc,
 
 		//	store reference to parent database settings controller
 		rb_iv_set(	rb_database_type_recno_settings_controller,
-								Rbdb_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+								RBDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
 								rb_parent_database_settings_controller );
 
 	}
 
 	//	store reference to parent type settings controller
 	rb_iv_set(	rb_database_type_recno_settings_controller,
-							Rbdb_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER,
 							rb_parent_database_type_settings_controller );
 
 	//	if we have a parent database in addition to our parent environmental settings controller, set it as parent as well
@@ -194,7 +194,7 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_new(	int			argc,
 	}
 	if ( rb_parent_database != Qnil )	{
 		rb_iv_set(	rb_database_type_recno_settings_controller,
-								Rbdb_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE,
+								RBDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE,
 								rb_parent_database );	
 	}
 
@@ -260,7 +260,7 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_parentSettingsController(	VALU
 VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_type_recno_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_type_recno_settings_controller,
-																															Rbdb_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																															RBDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	if ( rb_parent_database_settings_controller == Qnil )	{
 	
@@ -280,7 +280,7 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_parentDatabaseSettingsControll
 VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_parentDatabaseTypeSettingsController(	VALUE	rb_database_type_recno_settings_controller )	{
 
 	VALUE	rb_parent_database_type_settings_controller	=	rb_iv_get(	rb_database_type_recno_settings_controller,
-																																	Rbdb_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER );
+																																	RBDB_RB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_type_settings_controller;
 }
@@ -297,7 +297,7 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_parentDatabaseTypeSettingsCont
 VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_recordRenumbering( VALUE	rb_database_type_recno_settings_controller )	{
 
 	Rbdb_DatabaseTypeRecnoSettingsController*	c_database_type_recno_settings_controller;
-	C_Rbdb_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
+	C_RBDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
 
 	return ( Rbdb_DatabaseTypeRecnoSettingsController_recordRenumbering( c_database_type_recno_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -310,7 +310,7 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_recordRenumbering( VALUE	rb_da
 	VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_turnRecordRenumberingOn( VALUE	rb_database_type_recno_settings_controller )	{
 
 		Rbdb_DatabaseTypeRecnoSettingsController*	c_database_type_recno_settings_controller;
-		C_Rbdb_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
+		C_RBDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
 
 		Rbdb_DatabaseTypeRecnoSettingsController_turnRecordRenumberingOn( c_database_type_recno_settings_controller );
 	
@@ -324,7 +324,7 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_recordRenumbering( VALUE	rb_da
 	VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_turnRecordRenumberingOff( VALUE	rb_database_type_recno_settings_controller )	{
 
 		Rbdb_DatabaseTypeRecnoSettingsController*	c_database_type_recno_settings_controller;
-		C_Rbdb_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
+		C_RBDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
 
 		Rbdb_DatabaseTypeRecnoSettingsController_turnRecordRenumberingOff( c_database_type_recno_settings_controller );
 	
@@ -339,7 +339,7 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_recordRenumbering( VALUE	rb_da
 VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_snapshotIsolation( VALUE	rb_database_type_recno_settings_controller )	{
 
 	Rbdb_DatabaseTypeRecnoSettingsController*	c_database_type_recno_settings_controller;
-	C_Rbdb_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
+	C_RBDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
 
 	return ( Rbdb_DatabaseTypeRecnoSettingsController_snapshotIsolation( c_database_type_recno_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -352,7 +352,7 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_snapshotIsolation( VALUE	rb_da
 	VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_turnSnapshotIsolationOn( VALUE	rb_database_type_recno_settings_controller )	{
 
 		Rbdb_DatabaseTypeRecnoSettingsController*	c_database_type_recno_settings_controller;
-		C_Rbdb_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
+		C_RBDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
 
 		Rbdb_DatabaseTypeRecnoSettingsController_turnSnapshotIsolationOn( c_database_type_recno_settings_controller );
 	
@@ -366,7 +366,7 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_snapshotIsolation( VALUE	rb_da
 	VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_turnSnapshotIsolationOff( VALUE	rb_database_type_recno_settings_controller )	{
 
 		Rbdb_DatabaseTypeRecnoSettingsController*	c_database_type_recno_settings_controller;
-		C_Rbdb_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
+		C_RBDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
 
 		Rbdb_DatabaseTypeRecnoSettingsController_turnSnapshotIsolationOff( c_database_type_recno_settings_controller );
 	
@@ -385,7 +385,7 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_snapshotIsolation( VALUE	rb_da
 VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_sourceFile( VALUE	rb_database_type_recno_settings_controller )	{
 
 	Rbdb_DatabaseTypeRecnoSettingsController*	c_database_type_recno_settings_controller;
-	C_Rbdb_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
+	C_RBDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
 
 	//	FIX - wrap in ruby file
 	Rbdb_DatabaseTypeRecnoSettingsController_sourceFile( c_database_type_recno_settings_controller );
@@ -402,7 +402,7 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_setSourceFile(	VALUE	rb_databa
 																																	VALUE	rb_file_path __attribute__ ((unused )) )	{
 
 	Rbdb_DatabaseTypeRecnoSettingsController*	c_database_type_recno_settings_controller;
-	C_Rbdb_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
+	C_RBDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
 
 	char*	c_source_file_path;
 
@@ -426,7 +426,7 @@ VALUE rb_Rbdb_DatabaseTypeRecnoSettingsController_setAppendCallbackMethod(	VALUE
 																										VALUE		record ) )	{
 
 	Rbdb_DatabaseTypeRecnoSettingsController*	c_database_type_recno_settings_controller;
-	C_Rbdb_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
+	C_RBDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
 
 	Rbdb_DatabaseTypeRecnoSettingsController_setAppendCallbackMethod();
 
@@ -442,7 +442,7 @@ void (*append_callback_method)(	VALUE		database,
 								VALUE		record ) Rbdb_DatabaseTypeRecnoSettingsController_appendCallback( VALUE	rb_database_type_recno_settings_controller )	{
 
 	Rbdb_DatabaseTypeRecnoSettingsController*	c_database_type_recno_settings_controller;
-	C_Rbdb_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
+	C_RBDB_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER( rb_database_type_recno_settings_controller, c_database_type_recno_settings_controller );
 
 }
 */

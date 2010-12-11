@@ -1,5 +1,5 @@
 /*
- *		Rbdb::Rbdb_DatabaseController::Rbdb_Database::(Rbdb_DatabaseCursorController::Rbdb_DatabaseCursor::)Rbdb_Record::Rbdb_DBT => Rbdb_SecondaryKeys
+ *		Rbdb::Rbdb_DatabaseController::Rbdb_Database::(Rbdb_DatabaseCursorController::Rbdb_DatabaseCursor::)Rbdb_Record::RBDB_DBT => Rbdb_SecondaryKeys
  *
  *
  */
@@ -34,7 +34,7 @@ extern	VALUE	rb_Rbdb_SecondaryKeys;
 extern	VALUE	rb_Rbdb_Record;
 extern	VALUE	rb_Rbdb_Key;
 
-void Init_Rbdb_SecondaryKey()	{
+void Init_rb_Rbdb_SecondaryKey()	{
 
 	rb_Rbdb_Key		=	rb_define_class_under(	rb_Rbdb_Record, 
 																					"SecondaryKeys", 		
@@ -71,13 +71,13 @@ VALUE rb_Rbdb_SecondaryKeys_new(	int			argc,
 	);
 
 	Rbdb_Record*			c_parent_record;
-	C_Rbdb_RECORD( rb_parent_record, c_parent_record );
+	C_RBDB_RECORD( rb_parent_record, c_parent_record );
 	
 	VALUE	rb_secondary_keys	=	RUBY_RBDB_SECONDARY_KEYS( Rbdb_SecondaryKeys_new( c_parent_record ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_secondary_keys,
-							Rbdb_RB_SECONDARY_KEYS_VARIABLE_PARENT_RECORD,
+							RBDB_RB_SECONDARY_KEYS_VARIABLE_PARENT_RECORD,
 							rb_parent_record );
 
 	VALUE	argv[]	=	{ rb_parent_record };
@@ -143,7 +143,7 @@ VALUE rb_Rbdb_SecondaryKeys_parentDatabase(	VALUE	rb_secondary_keys )	{
 VALUE rb_Rbdb_SecondaryKeys_parentRecord(	VALUE	rb_secondary_keys )	{
 	
 	VALUE	rb_parent_record	=	rb_iv_get(	rb_secondary_keys,
-																				Rbdb_RB_SECONDARY_KEYS_VARIABLE_PARENT_RECORD );
+																				RBDB_RB_SECONDARY_KEYS_VARIABLE_PARENT_RECORD );
 	return rb_parent_record;
 }
 
@@ -156,10 +156,10 @@ VALUE rb_Rbdb_SecondaryKeys_addSecondaryKey(	VALUE	rb_secondary_keys,
  												VALUE	rb_key )	{
 
 	Rbdb_SecondaryKeys*	c_secondary_keys;
-	C_Rbdb_SECONDARY_KEYS( rb_secondary_keys, c_secondary_keys );
+	C_RBDB_SECONDARY_KEYS( rb_secondary_keys, c_secondary_keys );
 
 	Rbdb_Key*				c_key;
-	C_Rbdb_KEY( rb_key, c_key );
+	C_RBDB_KEY( rb_key, c_key );
 
 	Rbdb_SecondaryKeys_addSecondaryKey(	c_secondary_keys,
 											c_key );
@@ -175,7 +175,7 @@ VALUE rb_Rbdb_SecondaryKeys_secondaryKeyForIndex(	VALUE	rb_secondary_keys,
 													VALUE	rb_index )	{
 
 	Rbdb_SecondaryKeys*	c_secondary_keys;
-	C_Rbdb_SECONDARY_KEYS( rb_secondary_keys, c_secondary_keys );
+	C_RBDB_SECONDARY_KEYS( rb_secondary_keys, c_secondary_keys );
 
 	Rbdb_SecondaryKeys_secondaryKeyForIndex(	c_secondary_keys,
 												FIX2INT( rb_index ) );

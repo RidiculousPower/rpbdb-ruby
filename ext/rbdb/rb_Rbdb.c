@@ -281,101 +281,101 @@ void Init_rbdb()	{
 	rb_define_singleton_method(	rb_mRbdb, 	"version_patch",											rb_Rbdb_versionPatch,									0 );
 	rb_define_singleton_method(	rb_mRbdb, 	"version_parts",											rb_Rbdb_versionData,									0 );
 		
-	Init_Rbdb_Module();
+	Init_rb_Rbdb_Module();
 
-		Init_Rbdb_Environment();
+		Init_rb_Rbdb_Environment();
 		
-		Init_Rbdb_Database();
-		Init_Rbdb_DatabaseController();
-		Init_Rbdb_DatabaseObjectDatabase();
-		Init_Rbdb_DatabaseCursor();
-		Init_Rbdb_DatabaseCursorController();
-		Init_Rbdb_DatabaseJoinController();
-		Init_Rbdb_DatabaseJoinCursor();
-		Init_Rbdb_DatabaseObjectCursor();
-		Init_Rbdb_DatabaseSequenceController();
-		Init_Rbdb_DatabaseSequence();
+		Init_rb_Rbdb_Database();
+		Init_rb_Rbdb_DatabaseController();
+		Init_rb_Rbdb_DatabaseObjectDatabase();
+		Init_rb_Rbdb_DatabaseCursor();
+		Init_rb_Rbdb_DatabaseCursorController();
+		Init_rb_Rbdb_DatabaseJoinController();
+		Init_rb_Rbdb_DatabaseJoinCursor();
+		Init_rb_Rbdb_DatabaseObjectCursor();
+		Init_rb_Rbdb_DatabaseSequence();
+		Init_rb_Rbdb_DatabaseSequenceController();
 
 		//	Record/Key/Data
-		Init_Rbdb_Record();
-		Init_Rbdb_Key();
-		Init_Rbdb_Data();
+		Init_rb_Rbdb_Record();
+		Init_rb_Rbdb_Key();
+		Init_rb_Rbdb_Data();
 
 		//	Locks
-//		Init_Rbdb_LockController();
-//		Init_Rbdb_Lock();
+//		Init_rb_Rbdb_LockController();
+//		Init_rb_Rbdb_Lock();
 
 		//	Transactions
-		Init_Rbdb_TransactionController();
-		Init_Rbdb_Transaction();
+		Init_rb_Rbdb_TransactionController();
+		Init_rb_Rbdb_Transaction();
 
 		//	Settings
-		Init_Rbdb_SettingsController();
+		Init_rb_Rbdb_SettingsController();
 
 		//	Database Settings
-		Init_Rbdb_DatabaseSettingsController();
-		Init_Rbdb_DatabaseAssociationSettingsController();
-		Init_Rbdb_DatabaseCacheSettingsController();
-		Init_Rbdb_DatabaseCachePrioritySettingsController();
-		Init_Rbdb_DatabaseCompactSettingsController();
-		Init_Rbdb_DatabaseCursorSettingsController();
-		Init_Rbdb_DatabaseCursorReadWriteSettingsController();
-		Init_Rbdb_DatabaseCacheSettingsController();
-		Init_Rbdb_DatabaseCursorCacheSettingsController();
-		Init_Rbdb_DatabaseCursorCachePrioritySettingsController();
-		Init_Rbdb_DatabaseEncryptionSettingsController();
-		Init_Rbdb_DatabaseErrorSettingsController();
-		Init_Rbdb_DatabaseJoinSettingsController();
-		Init_Rbdb_DatabaseRecordSettingsController();
-		Init_Rbdb_DatabaseRecordReadWriteSettingsController();
-		Init_Rbdb_DatabaseRecordFixedLengthSettingsController();
-		Init_Rbdb_DatabaseRecordVariableLengthSettingsController();
-		Init_Rbdb_DatabaseSequenceSettingsController();
-		Init_Rbdb_DatabaseTypeSettingsController();
-		Init_Rbdb_DatabaseTypeBtreeSettingsController();
-		Init_Rbdb_DatabaseTypeHashSettingsController();
-		Init_Rbdb_DatabaseTypeQueueSettingsController();
-		Init_Rbdb_DatabaseTypeRecnoSettingsController();
-		Init_Rbdb_DatabaseVerificationSettingsController();
-		Init_Rbdb_DatabaseVerbositySettingsController();
+		Init_rb_Rbdb_DatabaseSettingsController();
+		Init_rb_Rbdb_DatabaseAssociationSettingsController();
+		Init_rb_Rbdb_DatabaseCacheSettingsController();
+		Init_rb_Rbdb_DatabaseCachePrioritySettingsController();
+		Init_rb_Rbdb_DatabaseCompactSettingsController();
+		Init_rb_Rbdb_DatabaseCursorSettingsController();
+		Init_rb_Rbdb_DatabaseCursorReadWriteSettingsController();
+		Init_rb_Rbdb_DatabaseCacheSettingsController();
+		Init_rb_Rbdb_DatabaseCursorCacheSettingsController();
+		Init_rb_Rbdb_DatabaseCursorCachePrioritySettingsController();
+		Init_rb_Rbdb_DatabaseEncryptionSettingsController();
+		Init_rb_Rbdb_DatabaseErrorSettingsController();
+		Init_rb_Rbdb_DatabaseJoinSettingsController();
+		Init_rb_Rbdb_DatabaseRecordSettingsController();
+		Init_rb_Rbdb_DatabaseRecordReadWriteSettingsController();
+		Init_rb_Rbdb_DatabaseRecordFixedLengthSettingsController();
+		Init_rb_Rbdb_DatabaseRecordVariableLengthSettingsController();
+		Init_rb_Rbdb_DatabaseSequenceSettingsController();
+		Init_rb_Rbdb_DatabaseTypeSettingsController();
+		Init_rb_Rbdb_DatabaseTypeBtreeSettingsController();
+		Init_rb_Rbdb_DatabaseTypeHashSettingsController();
+		Init_rb_Rbdb_DatabaseTypeQueueSettingsController();
+		Init_rb_Rbdb_DatabaseTypeRecnoSettingsController();
+		Init_rb_Rbdb_DatabaseVerificationSettingsController();
+		Init_rb_Rbdb_DatabaseVerbositySettingsController();
 
-		Init_Rbdb_DebugSettingsController();
-		Init_Rbdb_DebugVerbositySettingsController();
+		Init_rb_Rbdb_DebugSettingsController();
+		Init_rb_Rbdb_DebugVerbositySettingsController();
 		
-		Init_Rbdb_DirectorySettingsController();
+		Init_rb_Rbdb_DirectorySettingsController();
 		
-		Init_Rbdb_EnvironmentCacheSettingsController();
+		Init_rb_Rbdb_EnvironmentCacheSettingsController();
 		
-		Init_Rbdb_ErrorSettingsController();
+		Init_rb_Rbdb_ErrorSettingsController();
 		
-		Init_Rbdb_FileSettingsController();
-		Init_Rbdb_FileVerbositySettingsController();
+		Init_rb_Rbdb_FileSettingsController();
+		Init_rb_Rbdb_FileVerbositySettingsController();
 		
-		Init_Rbdb_LogSettingsController();
+		Init_rb_Rbdb_LogSettingsController();
 		
-		Init_Rbdb_LockSettingsController();
-		Init_Rbdb_LockDeadlockDetectorSettingsController();
-		Init_Rbdb_LockDeadlockDetectorVerbositySettingsController();
+		Init_rb_Rbdb_LockSettingsController();
+		Init_rb_Rbdb_LockDeadlockDetectorSettingsController();
+		Init_rb_Rbdb_LockDeadlockDetectorVerbositySettingsController();
 		
-		Init_Rbdb_MemoryPoolSettingsController();
-		Init_Rbdb_MemoryPoolFileSettingsController();
-		Init_Rbdb_MemoryPoolFilePageSettingsController();
-		Init_Rbdb_MemoryPoolFileCacheSettingsController();
-		Init_Rbdb_MemoryPoolFileCachePrioritySettingsController();
-		Init_Rbdb_MemoryPoolReadWriteSettingsController();
+		Init_rb_Rbdb_MemoryPoolSettingsController();
+		Init_rb_Rbdb_MemoryPoolFileSettingsController();
+		Init_rb_Rbdb_MemoryPoolFilePageSettingsController();
+		Init_rb_Rbdb_MemoryPoolFileCacheSettingsController();
+		Init_rb_Rbdb_MemoryPoolFileCachePrioritySettingsController();
+		Init_rb_Rbdb_MemoryPoolReadWriteSettingsController();
 		
-		Init_Rbdb_MessageSettingsController();
+		Init_rb_Rbdb_MessageSettingsController();
 		
-		Init_Rbdb_MutexSettingsController();
+		Init_rb_Rbdb_MutexSettingsController();
 		
-		Init_Rbdb_ReplicationSettingsController();
-		Init_Rbdb_ReplicationElectionSettingsController();
-		Init_Rbdb_ReplicationTimeoutSettingsController();
-		Init_Rbdb_ReplicationVerbositySettingsController();
+		Init_rb_Rbdb_ReplicationSettingsController();
+		Init_rb_Rbdb_ReplicationElectionSettingsController();
+		Init_rb_Rbdb_ReplicationTimeoutSettingsController();
+		Init_rb_Rbdb_ReplicationVerbositySettingsController();
 		
-		Init_Rbdb_ThreadSettingsController();
+		Init_rb_Rbdb_ThreadSettingsController();
 		
-		Init_Rbdb_TransactionSettingsController();
+		Init_rb_Rbdb_TransactionSettingsController();
 		
 		rb_Rbdb_internal_initRuntimeStorages( rb_mRbdb );
 
@@ -555,7 +555,7 @@ VALUE rb_Rbdb_setCurrentWorkingEnvironment(	VALUE	rb_module_self,
 																						VALUE	rb_environment )	{
 
 	Rbdb_Environment*	c_environment	=	NULL;
-	C_Rbdb_ENVIRONMENT( rb_environment, c_environment );
+	C_RBDB_ENVIRONMENT( rb_environment, c_environment );
 
 	Rbdb_RuntimeStorageController_setCurrentWorkingEnvironment( Rbdb_RuntimeStorageController_sharedInstance(),
 																															c_environment );
@@ -678,7 +678,7 @@ void rb_Rbdb_internal_initRuntimeStorages( VALUE rb_module_self )	{
 	VALUE	rb_runtime_storage_database	=	RUBY_RBDB_DATABASE( c_runtime_storage_database );
 
 	rb_iv_set(	rb_module_self,
-							Rbdb_RUBY_MODULE_VARIABLE_DATABASE_RUNTIME_STORAGE,
+							RBDB_RUBY_MODULE_VARIABLE_DATABASE_RUNTIME_STORAGE,
 							rb_runtime_storage_database );
 }
 
@@ -689,7 +689,7 @@ void rb_Rbdb_internal_initRuntimeStorages( VALUE rb_module_self )	{
 VALUE rb_Rbdb_internal_rubyRuntimeDatabase(	VALUE rb_module_self )	{
 
 	VALUE	rb_runtime_storage_database	=	rb_iv_get(	rb_module_self,
-																									Rbdb_RUBY_MODULE_VARIABLE_DATABASE_RUNTIME_STORAGE );
+																									RBDB_RUBY_MODULE_VARIABLE_DATABASE_RUNTIME_STORAGE );
 	return rb_runtime_storage_database;
 }
 
@@ -723,14 +723,14 @@ VALUE rb_Rbdb_internal_environmentsToIdentifiersHash()	{
 	
 	//	get the environment identifiers hash from the Rbdb module
 	VALUE	rb_environment_to_identifiers_hash	=	rb_iv_get(	rb_mRbdb,
-																													Rbdb_RUBY_MODULE_VARIABLE_ENVIRONMENTS );
+																													RBDB_RUBY_MODULE_VARIABLE_ENVIRONMENTS );
 
 	//	init if necessary
 	if ( rb_environment_to_identifiers_hash == Qnil )	{
 		
 		rb_environment_to_identifiers_hash	=	rb_hash_new();
 		rb_iv_set(	rb_mRbdb,
-							  Rbdb_RUBY_MODULE_VARIABLE_ENVIRONMENTS,
+							  RBDB_RUBY_MODULE_VARIABLE_ENVIRONMENTS,
 							  rb_environment_to_identifiers_hash );
 	}
 	
@@ -745,14 +745,14 @@ VALUE rb_Rbdb_internal_extendedClassesHash()	{
 
 	//	get the environment identifiers hash from the Rbdb module
 	VALUE	rb_environment_to_identifiers_hash	=	rb_iv_get(	rb_mRbdb,
-																													Rbdb_RUBY_MODULE_VARIABLE_EXTENDED_CLASSES_HASH );
+																													RBDB_RUBY_MODULE_VARIABLE_EXTENDED_CLASSES_HASH );
 	
 	//	init if necessary
 	if ( rb_environment_to_identifiers_hash == Qnil )	{
 
 		rb_environment_to_identifiers_hash	=	rb_hash_new();
 		rb_iv_set(	rb_mRbdb,
-								Rbdb_RUBY_MODULE_VARIABLE_EXTENDED_CLASSES_HASH,
+								RBDB_RUBY_MODULE_VARIABLE_EXTENDED_CLASSES_HASH,
 								rb_environment_to_identifiers_hash );
 	}
 	
@@ -767,13 +767,13 @@ VALUE rb_Rbdb_internal_includedForClassesHash()	{
 	
 	//	get the environment identifiers hash from the Rbdb module
 	VALUE	rb_environment_to_identifiers_hash	=	rb_iv_get(	rb_mRbdb,
-																													Rbdb_RUBY_MODULE_VARIABLE_INCLUDED_FOR_CLASSES_HASH );
+																													RBDB_RUBY_MODULE_VARIABLE_INCLUDED_FOR_CLASSES_HASH );
 	
 	//	init if necessary
 	if ( rb_environment_to_identifiers_hash == Qnil )	{
 		rb_environment_to_identifiers_hash	=	rb_hash_new();
 		rb_iv_set(	rb_mRbdb,
-								Rbdb_RUBY_MODULE_VARIABLE_INCLUDED_FOR_CLASSES_HASH,
+								RBDB_RUBY_MODULE_VARIABLE_INCLUDED_FOR_CLASSES_HASH,
 								rb_environment_to_identifiers_hash );
 	}
 	
@@ -808,12 +808,12 @@ VALUE rb_Rbdb_internal_initializeWaitingClasses()	{
 VALUE rb_Rbdb_internal_classesWaitingForDefaultEnvironment()	{
 	
 	VALUE	rb_current_working_environment_wait_list_array	=	rb_iv_get(	rb_mRbdb,
-																															Rbdb_RUBY_MODULE_VARIABLE_DEFAULT_ENVIRONMENT_WAIT_LIST_ARRAY );
+																															RBDB_RUBY_MODULE_VARIABLE_DEFAULT_ENVIRONMENT_WAIT_LIST_ARRAY );
 	
 	if ( rb_current_working_environment_wait_list_array == Qnil )	{
 		rb_current_working_environment_wait_list_array = rb_ary_new();
 		rb_iv_set(	rb_mRbdb,
-								Rbdb_RUBY_MODULE_VARIABLE_DEFAULT_ENVIRONMENT_WAIT_LIST_ARRAY,
+								RBDB_RUBY_MODULE_VARIABLE_DEFAULT_ENVIRONMENT_WAIT_LIST_ARRAY,
 								rb_current_working_environment_wait_list_array );
 	}
 	
@@ -828,11 +828,11 @@ VALUE rb_Rbdb_internal_classesWaitingForDefaultEnvironment()	{
 VALUE rb_Rbdb_internal_classesWaitingForIdentification()	{
 	
 	VALUE	rb_init_classes_wait_list_array	=	rb_iv_get(	rb_mRbdb,
-																											Rbdb_RUBY_MODULE_VARIABLE_IDENTIFICATION_WAIT_LIST_ARRAY );
+																											RBDB_RUBY_MODULE_VARIABLE_IDENTIFICATION_WAIT_LIST_ARRAY );
 	if ( rb_init_classes_wait_list_array == Qnil )	{
 		rb_init_classes_wait_list_array = rb_ary_new();
 		rb_iv_set(	rb_mRbdb,
-								Rbdb_RUBY_MODULE_VARIABLE_IDENTIFICATION_WAIT_LIST_ARRAY,
+								RBDB_RUBY_MODULE_VARIABLE_IDENTIFICATION_WAIT_LIST_ARRAY,
 								rb_init_classes_wait_list_array );
 	}
 	
@@ -847,11 +847,11 @@ VALUE rb_Rbdb_internal_classesWaitingForIdentification()	{
 VALUE rb_Rbdb_internal_classesWaitingForInitialization()	{
 	
 	VALUE	rb_init_classes_wait_list_array	=	rb_iv_get(	rb_mRbdb,
-																											Rbdb_RUBY_MODULE_VARIABLE_INITIALIZATION_WAIT_LIST_ARRAY );
+																											RBDB_RUBY_MODULE_VARIABLE_INITIALIZATION_WAIT_LIST_ARRAY );
 	if ( rb_init_classes_wait_list_array == Qnil )	{
 		rb_init_classes_wait_list_array = rb_ary_new();
 		rb_iv_set(	rb_mRbdb,
-								Rbdb_RUBY_MODULE_VARIABLE_INITIALIZATION_WAIT_LIST_ARRAY,
+								RBDB_RUBY_MODULE_VARIABLE_INITIALIZATION_WAIT_LIST_ARRAY,
 								rb_init_classes_wait_list_array );
 	}
 	
@@ -887,12 +887,12 @@ VALUE rb_Rbdb_internal_deleteFromCurrentWorkingEnvironmentStack(	VALUE	rb_module
 VALUE rb_Rbdb_internal_currentWorkingEnvironmentStack(	VALUE	rb_module_self )	{
 	
 	VALUE	rb_stack_array	=	rb_iv_get(	rb_module_self,
-																			Rbdb_RUBY_MODULE_VARIABLE_CURRENT_WORKING_ENVIRONMENT_STACK );
+																			RBDB_RUBY_MODULE_VARIABLE_CURRENT_WORKING_ENVIRONMENT_STACK );
 
 	if ( rb_stack_array == Qnil )	{
 		rb_stack_array	=	rb_ary_new();
 		rb_iv_set(	rb_module_self,
-								Rbdb_RUBY_MODULE_VARIABLE_CURRENT_WORKING_ENVIRONMENT_STACK,
+								RBDB_RUBY_MODULE_VARIABLE_CURRENT_WORKING_ENVIRONMENT_STACK,
 								rb_stack_array );
 	}
 	return rb_stack_array;

@@ -30,7 +30,7 @@ VALUE	extern	rb_Rbdb_MutexController;
 VALUE	extern	rb_Rbdb_MutexSettingsController;
 VALUE	extern	rb_Rbdb_Mutex;
 
-void Init_Rbdb_MutexController()	{
+void Init_rb_Rbdb_MutexController()	{
 
 	rb_Rbdb_MutexController	=	rb_define_class_under(	rb_Rbdb_Environment, 
 																										"MutexController",			
@@ -76,13 +76,13 @@ VALUE	rb_Rbdb_MutexController_new(	int			argc,
 	);
 
 	Rbdb_Environment*	c_parent_environment;
-	C_Rbdb_ENVIRONMENT( rb_parent_environment, c_parent_environment );
+	C_RBDB_ENVIRONMENT( rb_parent_environment, c_parent_environment );
 	
 	VALUE	rb_mutex_controller	=	RUBY_RBDB_MUTEX_CONTROLLER( Rbdb_MutexController_new( c_parent_environment ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_mutex_controller,
-							Rbdb_RB_MUTEX_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
+							RBDB_RB_MUTEX_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_environment };
@@ -112,17 +112,17 @@ VALUE	rb_Rbdb_MutexController_settingsController(	VALUE	rb_mutex_controller )	{
 	VALUE	rb_local_mutex_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_mutex_settings_controller = rb_iv_get(	rb_mutex_controller,
-																													Rbdb_RB_SETTINGS_VARIABLE_MUTEX_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																													RBDB_RB_SETTINGS_VARIABLE_MUTEX_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_MutexController*		c_mutex_controller;
-		C_Rbdb_MUTEX_CONTROLLER( rb_mutex_controller, c_mutex_controller );
+		C_RBDB_MUTEX_CONTROLLER( rb_mutex_controller, c_mutex_controller );
 	
 		Rbdb_MutexSettingsController*	c_local_mutex_settings_controller	=	Rbdb_MutexController_settingsController( c_mutex_controller );
 
 		rb_local_mutex_settings_controller	=	RUBY_RBDB_MUTEX_SETTINGS_CONTROLLER( c_local_mutex_settings_controller );
 
 		rb_iv_set(	rb_mutex_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_MUTEX_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_MUTEX_SETTINGS_CONTROLLER,
 								rb_local_mutex_settings_controller );
 	}
 
@@ -135,7 +135,7 @@ VALUE	rb_Rbdb_MutexController_settingsController(	VALUE	rb_mutex_controller )	{
 VALUE	rb_Rbdb_MutexController_parentEnvironment(	VALUE	rb_mutex_controller )	{
 
 	VALUE	rb_parent_environment	=	rb_iv_get(	rb_mutex_controller,
-																						Rbdb_RB_MUTEX_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
+																						RBDB_RB_MUTEX_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
 	return rb_parent_environment;
 }
 
@@ -146,7 +146,7 @@ VALUE	rb_Rbdb_MutexController_parentEnvironment(	VALUE	rb_mutex_controller )	{
 VALUE	rb_Rbdb_MutexController_closeAllMutexes( VALUE	rb_mutex_controller )	{
 
 	Rbdb_MutexController*		c_mutex_controller;
-	C_Rbdb_MUTEX_CONTROLLER( rb_mutex_controller, c_mutex_controller );
+	C_RBDB_MUTEX_CONTROLLER( rb_mutex_controller, c_mutex_controller );
 
 	Rbdb_MutexController_closeAllMutexes( c_mutex_controller );
 

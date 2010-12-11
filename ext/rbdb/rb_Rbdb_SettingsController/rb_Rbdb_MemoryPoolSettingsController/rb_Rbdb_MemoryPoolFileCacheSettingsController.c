@@ -42,7 +42,7 @@ extern	VALUE	rb_Rbdb_MemoryPoolFileSettingsController;
 extern	VALUE	rb_Rbdb_MemoryPoolFileCacheSettingsController;
 extern	VALUE	rb_Rbdb_MemoryPoolFileCachePrioritySettingsController;
 
-void Init_Rbdb_MemoryPoolFileCacheSettingsController()	{
+void Init_rb_Rbdb_MemoryPoolFileCacheSettingsController()	{
 
 	rb_Rbdb_MemoryPoolFileCacheSettingsController		=	rb_define_class_under(	rb_Rbdb_MemoryPoolFileSettingsController, 
 																																						"Cache",	
@@ -110,14 +110,14 @@ VALUE rb_Rbdb_MemoryPoolFileCacheSettingsController_new(	int			argc,
 	}
 
 	Rbdb_MemoryPoolFileSettingsController*	c_parent_memory_pool_file_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_parent_memory_pool_file_settings_controller, c_parent_memory_pool_file_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_parent_memory_pool_file_settings_controller, c_parent_memory_pool_file_settings_controller );
 
 	Rbdb_MemoryPoolFileCacheSettingsController*	c_memory_pool_file_cache_settings_controller	=	Rbdb_MemoryPoolFileSettingsController_cacheSettingsController( c_parent_memory_pool_file_settings_controller );
 
 	VALUE	rb_memory_pool_file_cache_settings_controller	= RUBY_RBDB_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER( c_memory_pool_file_cache_settings_controller );
 
 	rb_iv_set(	rb_memory_pool_file_cache_settings_controller,
-							Rbdb_RB_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,
+							RBDB_RB_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,
 							rb_parent_memory_pool_file_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_memory_pool_file_settings_controller };	
@@ -182,7 +182,7 @@ VALUE rb_Rbdb_MemoryPoolFileCacheSettingsController_parentMemoryPoolSettingsCont
 VALUE rb_Rbdb_MemoryPoolFileCacheSettingsController_parentMemoryPoolFileSettingsController(	VALUE	rb_memory_pool_file_cache_settings_controller )	{
 
 	VALUE	rb_parent_memory_pool_file_settings_controller	=	rb_iv_get(	rb_memory_pool_file_cache_settings_controller,
-																																			Rbdb_RB_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_FILE_SETTINGS_CONTROLLER );
+																																			RBDB_RB_MEMORY_POOL_FILE_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_FILE_SETTINGS_CONTROLLER );
 
 	return rb_parent_memory_pool_file_settings_controller;
 }
@@ -196,13 +196,13 @@ VALUE rb_Rbdb_MemoryPoolFileCacheSettingsController_prioritySettingsController( 
 	VALUE	rb_memory_pool_file_cache_priority_settings_controller	=	Qnil;
 	
 	if ( ( rb_memory_pool_file_cache_priority_settings_controller = rb_iv_get(	rb_memory_pool_file_cache_settings_controller,
-																																							Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																							RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_memory_pool_file_cache_priority_settings_controller	=	rb_Rbdb_MemoryPoolFileCachePrioritySettingsController_new(	1,
 																																																													& rb_memory_pool_file_cache_settings_controller,
 																																																													rb_Rbdb_MemoryPoolFileCachePrioritySettingsController );
 		rb_iv_set(	rb_memory_pool_file_cache_priority_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER,
 								rb_memory_pool_file_cache_settings_controller );
 	}
 	

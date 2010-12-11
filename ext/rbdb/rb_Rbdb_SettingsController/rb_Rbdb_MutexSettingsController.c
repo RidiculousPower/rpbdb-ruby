@@ -32,7 +32,7 @@ extern	VALUE	rb_Rbdb_Environment;
 extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_MutexSettingsController;
 
-void Init_Rbdb_MutexSettingsController()	{
+void Init_rb_Rbdb_MutexSettingsController()	{
 
 	rb_Rbdb_MutexSettingsController		=	rb_define_class_under(	rb_Rbdb_SettingsController, 
 																																		"Mutex",	
@@ -98,12 +98,12 @@ VALUE rb_Rbdb_MutexSettingsController_new(	int			argc,
 	}
 
 	Rbdb_SettingsController*	c_parent_settings_controller;
-	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
+	C_RBDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
 	VALUE	rb_mutex_settings_controller	= RUBY_RBDB_MUTEX_SETTINGS_CONTROLLER( Rbdb_MutexSettingsController_new( c_parent_settings_controller ) );	
 
 	rb_iv_set(	rb_mutex_settings_controller,
-							Rbdb_RB_MUTEX_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							RBDB_RB_MUTEX_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
 							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
@@ -145,7 +145,7 @@ VALUE rb_Rbdb_MutexSettingsController_parentEnvironment(	VALUE	rb_mutex_settings
 VALUE rb_Rbdb_MutexSettingsController_parentSettingsController(	VALUE	rb_mutex_settings_controller )	{
 
 	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_mutex_settings_controller,
-																										Rbdb_RB_MUTEX_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+																										RBDB_RB_MUTEX_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_settings_controller;
 }
@@ -158,7 +158,7 @@ VALUE rb_Rbdb_MutexSettingsController_parentSettingsController(	VALUE	rb_mutex_s
 VALUE rb_Rbdb_MutexSettingsController_spinTimesBeforeBlockingForTestAndSpinMutexes( VALUE	rb_mutex_settings_controller )	{
 
 	Rbdb_MutexSettingsController*	c_mutex_settings_controller;
-	C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+	C_RBDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 	return INT2FIX( Rbdb_MutexSettingsController_spinTimesBeforeBlockingForTestAndSpinMutexes( c_mutex_settings_controller ) );
 }
@@ -171,7 +171,7 @@ VALUE rb_Rbdb_MutexSettingsController_spinTimesBeforeBlockingForTestAndSpinMutex
 																							VALUE	rb_spin_times_before_blocking_for_test_and_spin_mutexes )	{
 
 		Rbdb_MutexSettingsController*	c_mutex_settings_controller;
-		C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+		C_RBDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 		Rbdb_MutexSettingsController_setSpinTimesBeforeBlockingForTestAndSpinMutexes(	c_mutex_settings_controller,
 																						FIX2INT( rb_spin_times_before_blocking_for_test_and_spin_mutexes ) );
@@ -187,7 +187,7 @@ VALUE rb_Rbdb_MutexSettingsController_spinTimesBeforeBlockingForTestAndSpinMutex
 VALUE rb_Rbdb_MutexSettingsController_maxAllowableMutexes( VALUE	rb_mutex_settings_controller )	{
 
 	Rbdb_MutexSettingsController*	c_mutex_settings_controller;
-	C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+	C_RBDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 	return INT2FIX( Rbdb_MutexSettingsController_maxAllowableMutexes( c_mutex_settings_controller ) );
 }
@@ -207,7 +207,7 @@ VALUE rb_Rbdb_MutexSettingsController_maxAllowableMutexes( VALUE	rb_mutex_settin
 		}
 
 		Rbdb_MutexSettingsController*	c_mutex_settings_controller;
-		C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+		C_RBDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 		Rbdb_MutexSettingsController_setMaxAllowableMutexes(	c_mutex_settings_controller,
 																FIX2INT( rb_max_allowable_mutexes ) );
@@ -223,7 +223,7 @@ VALUE rb_Rbdb_MutexSettingsController_maxAllowableMutexes( VALUE	rb_mutex_settin
 VALUE rb_Rbdb_MutexSettingsController_incrementForAddingMutexes( VALUE	rb_mutex_settings_controller )	{
 
 	Rbdb_MutexSettingsController*	c_mutex_settings_controller;
-	C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+	C_RBDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 	return INT2FIX( Rbdb_MutexSettingsController_incrementForAddingMutexes( c_mutex_settings_controller ) );
 }
@@ -243,7 +243,7 @@ VALUE rb_Rbdb_MutexSettingsController_incrementForAddingMutexes( VALUE	rb_mutex_
 		}
 
 		Rbdb_MutexSettingsController*	c_mutex_settings_controller;
-		C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+		C_RBDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 		Rbdb_MutexSettingsController_setIncrementForAddingMutexes(	c_mutex_settings_controller,
 																	FIX2INT( rb_increment_for_adding_mutexes ) );
@@ -259,7 +259,7 @@ VALUE rb_Rbdb_MutexSettingsController_incrementForAddingMutexes( VALUE	rb_mutex_
 VALUE rb_Rbdb_MutexSettingsController_mutexAlignment( VALUE	rb_mutex_settings_controller )	{
 
 	Rbdb_MutexSettingsController*	c_mutex_settings_controller;
-	C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+	C_RBDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 	uint32_t	c_mutex_alignment		=	Rbdb_MutexSettingsController_mutexAlignment( c_mutex_settings_controller );
 	VALUE			rb_mutex_alignment	=	LONG2NUM( c_mutex_alignment );
@@ -282,7 +282,7 @@ VALUE rb_Rbdb_MutexSettingsController_mutexAlignment( VALUE	rb_mutex_settings_co
 		}
 
 		Rbdb_MutexSettingsController*	c_mutex_settings_controller;
-		C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+		C_RBDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 		uint32_t		c_mutex_alignment	=	NUM2LONG( rb_increment_for_adding_mutexes );
 
@@ -299,7 +299,7 @@ VALUE rb_Rbdb_MutexSettingsController_mutexAlignment( VALUE	rb_mutex_settings_co
 VALUE rb_Rbdb_MutexSettingsController_associatedWithSingleProcess( VALUE	rb_mutex_settings_controller )	{
 
 	Rbdb_MutexSettingsController*	c_mutex_settings_controller;
-	C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+	C_RBDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 	return ( Rbdb_MutexSettingsController_associatedWithSingleProcess( c_mutex_settings_controller )	?	Qtrue
 																										:	Qfalse );
@@ -312,7 +312,7 @@ VALUE rb_Rbdb_MutexSettingsController_associatedWithSingleProcess( VALUE	rb_mute
 	VALUE rb_Rbdb_MutexSettingsController_turnAssociatedWithSingleProcessOn( VALUE	rb_mutex_settings_controller )	{
 
 		Rbdb_MutexSettingsController*	c_mutex_settings_controller;
-		C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+		C_RBDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 		Rbdb_MutexSettingsController_turnAssociatedWithSingleProcessOn( c_mutex_settings_controller );
 
@@ -326,7 +326,7 @@ VALUE rb_Rbdb_MutexSettingsController_associatedWithSingleProcess( VALUE	rb_mute
 	VALUE rb_Rbdb_MutexSettingsController_turnAssociatedWithSingleProcessOff( VALUE	rb_mutex_settings_controller )	{
 
 		Rbdb_MutexSettingsController*	c_mutex_settings_controller;
-		C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+		C_RBDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 		Rbdb_MutexSettingsController_turnAssociatedWithSingleProcessOff( c_mutex_settings_controller );
 
@@ -340,7 +340,7 @@ VALUE rb_Rbdb_MutexSettingsController_associatedWithSingleProcess( VALUE	rb_mute
 VALUE rb_Rbdb_MutexSettingsController_selfBlocking( VALUE	rb_mutex_settings_controller )	{
 
 	Rbdb_MutexSettingsController*	c_mutex_settings_controller;
-	C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+	C_RBDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 	return ( Rbdb_MutexSettingsController_selfBlocking( c_mutex_settings_controller )	?	Qtrue
 																						:	Qfalse );
@@ -353,7 +353,7 @@ VALUE rb_Rbdb_MutexSettingsController_selfBlocking( VALUE	rb_mutex_settings_cont
 	VALUE rb_Rbdb_MutexSettingsController_turnSelfBlockingOn( VALUE	rb_mutex_settings_controller )	{
 
 		Rbdb_MutexSettingsController*	c_mutex_settings_controller;
-		C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+		C_RBDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 		Rbdb_MutexSettingsController_turnSelfBlockingOn( c_mutex_settings_controller );
 
@@ -367,7 +367,7 @@ VALUE rb_Rbdb_MutexSettingsController_selfBlocking( VALUE	rb_mutex_settings_cont
 	VALUE rb_Rbdb_MutexSettingsController_turnSelfBlockingOff( VALUE	rb_mutex_settings_controller )	{
 
 		Rbdb_MutexSettingsController*	c_mutex_settings_controller;
-		C_Rbdb_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
+		C_RBDB_MUTEX_SETTINGS_CONTROLLER( rb_mutex_settings_controller, c_mutex_settings_controller );
 
 		Rbdb_MutexSettingsController_turnSelfBlockingOff( c_mutex_settings_controller );
 

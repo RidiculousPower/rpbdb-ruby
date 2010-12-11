@@ -32,7 +32,7 @@ extern	VALUE	rb_Rbdb_ReplicationController;
 extern	VALUE	rb_Rbdb_DatabaseReplicationSettingsController;
 extern	VALUE	rb_Rbdb_ReplicationSettingsController;
 
-void Init_Rbdb_ReplicationController()	{
+void Init_rb_Rbdb_ReplicationController()	{
 
 	rb_Rbdb_ReplicationController		=	rb_define_class_under(	rb_Rbdb_Environment, 
 																														"ReplicationController", 		
@@ -85,13 +85,13 @@ VALUE rb_Rbdb_ReplicationController_new(	int			argc,
 	);
 	
 	Rbdb_Environment*		c_parent_environment;
-	C_Rbdb_ENVIRONMENT( rb_parent_environment, c_parent_environment );
+	C_RBDB_ENVIRONMENT( rb_parent_environment, c_parent_environment );
 	
 	VALUE	rb_replication_controller	=	RUBY_RBDB_REPLICATION_CONTROLLER( Rbdb_ReplicationController_new( c_parent_environment ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_replication_controller,
-							Rbdb_RB_REPLICATION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
+							RBDB_RB_REPLICATION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_environment };
@@ -121,17 +121,17 @@ VALUE rb_Rbdb_ReplicationController_settingsController(	VALUE	rb_replication_con
 	VALUE	rb_local_replication_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_replication_settings_controller = rb_iv_get(	rb_replication_controller,
-																																Rbdb_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																RBDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_ReplicationController*		c_replication_controller;
-		C_Rbdb_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
+		C_RBDB_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
 	
 		Rbdb_ReplicationSettingsController*	c_local_replication_settings_controller	=	Rbdb_ReplicationController_settingsController( c_replication_controller );
 
 		rb_local_replication_settings_controller	=	RUBY_RBDB_REPLICATION_SETTINGS_CONTROLLER( c_local_replication_settings_controller );
 
 		rb_iv_set(	rb_replication_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER,
 								rb_local_replication_settings_controller );
 	}
 
@@ -144,7 +144,7 @@ VALUE rb_Rbdb_ReplicationController_settingsController(	VALUE	rb_replication_con
 VALUE rb_Rbdb_ReplicationController_parentEnvironment(	VALUE	rb_replication_controller )	{
 
 	VALUE	rb_parent_environment	=	rb_iv_get(	rb_replication_controller,
-																						Rbdb_RB_REPLICATION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
+																						RBDB_RB_REPLICATION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
 
 	return rb_parent_environment;
 }
@@ -160,7 +160,7 @@ VALUE rb_Rbdb_ReplicationController_parentEnvironment(	VALUE	rb_replication_cont
 VALUE rb_Rbdb_ReplicationController_initReplicationID(	VALUE	rb_replication_controller )	{
 
 	Rbdb_ReplicationController*	c_replication_controller;
-	C_Rbdb_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
+	C_RBDB_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
 
 	return INT2FIX( Rbdb_ReplicationController_initReplicationID( c_replication_controller ) );
 }
@@ -175,7 +175,7 @@ VALUE rb_Rbdb_ReplicationController_start(	VALUE	rb_replication_controller,
  											VALUE	rb_number_of_threads_for_message_processing	)	{
 
 	Rbdb_ReplicationController*	c_replication_controller;
-	C_Rbdb_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
+	C_RBDB_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
 
 	Rbdb_ReplicationController_start(	c_replication_controller,
 										FIX2INT( rb_number_of_threads_for_message_processing ) );
@@ -197,13 +197,13 @@ VALUE rb_Rbdb_ReplicationController_processMessage(	VALUE	rb_replication_control
 														VALUE	rb_replication_record	)	{
 
 	Rbdb_ReplicationController*	c_replication_controller;
-	C_Rbdb_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
+	C_RBDB_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
 
 	Rbdb_Record*					c_control_record;
-	C_Rbdb_RECORD( rb_control_record, c_control_record );
+	C_RBDB_RECORD( rb_control_record, c_control_record );
 
 	Rbdb_Record*					c_replication_record;
-	C_Rbdb_RECORD( rb_replication_record, c_replication_record );
+	C_RBDB_RECORD( rb_replication_record, c_replication_record );
 
 	Rbdb_ReplicationController_processMessage(	c_replication_controller,
 												c_control_record,
@@ -220,7 +220,7 @@ VALUE rb_Rbdb_ReplicationController_processMessage(	VALUE	rb_replication_control
 VALUE rb_Rbdb_ReplicationController_sync( VALUE	rb_replication_controller )	{
 
 	Rbdb_ReplicationController*	c_replication_controller;
-	C_Rbdb_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
+	C_RBDB_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
 
 	Rbdb_ReplicationController_sync( c_replication_controller );
 
@@ -235,7 +235,7 @@ VALUE rb_Rbdb_ReplicationController_sync( VALUE	rb_replication_controller )	{
 VALUE rb_Rbdb_ReplicationController_callElection( VALUE	rb_replication_controller )	{
 
 	Rbdb_ReplicationController*	c_replication_controller;
-	C_Rbdb_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
+	C_RBDB_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
 
 	Rbdb_ReplicationController_callElection( c_replication_controller );
 	
@@ -252,7 +252,7 @@ VALUE rb_Rbdb_ReplicationController_addRemoteSite(	VALUE	rb_replication_controll
 													VALUE	remote_port	)	{
 
 	Rbdb_ReplicationController*	c_replication_controller;
-	C_Rbdb_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
+	C_RBDB_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
 
 	Rbdb_ReplicationController_addRemoteSite(	c_replication_controller,
 												StringValuePtr( remote_host ),
@@ -269,7 +269,7 @@ VALUE rb_Rbdb_ReplicationController_addRemoteSite(	VALUE	rb_replication_controll
 VALUE rb_Rbdb_ReplicationController_siteList( VALUE	rb_replication_controller )	{
 
 	Rbdb_ReplicationController*	c_replication_controller;
-	C_Rbdb_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
+	C_RBDB_REPLICATION_CONTROLLER( rb_replication_controller, c_replication_controller );
 
 	//	FIX - return array
 	

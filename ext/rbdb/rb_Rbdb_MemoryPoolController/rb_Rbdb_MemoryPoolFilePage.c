@@ -35,7 +35,7 @@ extern	VALUE	rb_Rbdb_MemoryPoolFile;
 extern	VALUE	rb_Rbdb_MemoryPoolFilePage;
 extern	VALUE	rb_Rbdb_MemoryPoolFilePageSettingsController;
 
-void Init_Rbdb_MemoryPoolFilePage()	{
+void Init_rb_Rbdb_MemoryPoolFilePage()	{
 
 	rb_Rbdb_MemoryPoolFilePage	=	rb_define_class_under(	rb_Rbdb_Environment, 
 																																	"PageController",			
@@ -94,7 +94,7 @@ VALUE rb_Rbdb_MemoryPoolFilePage_new( int			argc,
 	);
 
 	Rbdb_MemoryPoolFilePageController*	c_memory_pool_file_page_controller;
-	C_Rbdb_MEMORY_POOL_FILE_PAGE_CONTROLLER( rb_parent_memory_pool_file_page_controller, c_memory_pool_file_page_controller );
+	C_RBDB_MEMORY_POOL_FILE_PAGE_CONTROLLER( rb_parent_memory_pool_file_page_controller, c_memory_pool_file_page_controller );
 
 	//	FIX - this is probably not correct
 	Rbdb_MemoryPoolFilePage*	c_memory_pool_file_page	=	Rbdb_MemoryPoolFilePage_new( c_memory_pool_file_page_controller );
@@ -103,7 +103,7 @@ VALUE rb_Rbdb_MemoryPoolFilePage_new( int			argc,
 	
 	//	store reference to parent
 	rb_iv_set(	rb_memory_pool_file_page,
-							Rbdb_RB_MEMORY_POOL_FILE_PAGE_VARIABLE_PARENT_MEMORY_POOL_FILE_PAGE_CONTROLLER,
+							RBDB_RB_MEMORY_POOL_FILE_PAGE_VARIABLE_PARENT_MEMORY_POOL_FILE_PAGE_CONTROLLER,
 							rb_parent_memory_pool_file_page_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_memory_pool_file_page_controller };
@@ -134,17 +134,17 @@ VALUE rb_Rbdb_MemoryPoolFilePage_settingsController(	VALUE	rb_memory_pool_file_p
 	VALUE	rb_local_memory_pool_file_page_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_memory_pool_file_page_settings_controller = rb_iv_get(	rb_memory_pool_file_page,
-																																					Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																					RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_MemoryPoolFilePage*		c_memory_pool_file_page;
-		C_Rbdb_MEMORY_POOL_FILE_PAGE( rb_memory_pool_file_page, c_memory_pool_file_page );
+		C_RBDB_MEMORY_POOL_FILE_PAGE( rb_memory_pool_file_page, c_memory_pool_file_page );
 	
 		Rbdb_MemoryPoolFilePageSettingsController*	c_local_memory_pool_file_page_settings_controller	=	Rbdb_MemoryPoolFilePage_settingsController( c_memory_pool_file_page );
 
 		rb_local_memory_pool_file_page_settings_controller	=	RUBY_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( c_local_memory_pool_file_page_settings_controller );
 
 		rb_iv_set(	rb_memory_pool_file_page,
-								Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,
 								rb_local_memory_pool_file_page_settings_controller );
 	}
 
@@ -201,7 +201,7 @@ VALUE rb_Rbdb_MemoryPoolFilePage_parentMemoryPoolFile(	VALUE	rb_memory_pool_file
 VALUE rb_Rbdb_MemoryPoolFilePage_parentMemoryPoolFilePageController(	VALUE	rb_memory_pool_file_page )	{
 
 	VALUE	rb_parent_memory_pool_file	=	rb_iv_get(	rb_memory_pool_file_page,
-																									Rbdb_RB_MEMORY_POOL_FILE_PAGE_VARIABLE_PARENT_MEMORY_POOL_FILE_PAGE_CONTROLLER );
+																									RBDB_RB_MEMORY_POOL_FILE_PAGE_VARIABLE_PARENT_MEMORY_POOL_FILE_PAGE_CONTROLLER );
 	
 	return rb_parent_memory_pool_file;
 }
@@ -215,7 +215,7 @@ VALUE rb_Rbdb_MemoryPoolFilePage_parentMemoryPoolFilePageController(	VALUE	rb_me
 VALUE rb_Rbdb_MemoryPoolFilePage_writePageToCache( VALUE	rb_memory_pool_file_page )	{
 
 	Rbdb_MemoryPoolFilePage*		c_memory_pool_file_page;
-	C_Rbdb_MEMORY_POOL_FILE_PAGE( rb_memory_pool_file_page, c_memory_pool_file_page );
+	C_RBDB_MEMORY_POOL_FILE_PAGE( rb_memory_pool_file_page, c_memory_pool_file_page );
 
 	Rbdb_MemoryPoolFilePageController_writePageToCache( c_memory_pool_file_page );
 	

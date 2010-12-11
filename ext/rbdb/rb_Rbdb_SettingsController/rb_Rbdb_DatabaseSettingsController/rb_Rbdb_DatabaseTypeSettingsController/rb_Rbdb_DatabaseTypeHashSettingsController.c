@@ -43,7 +43,7 @@ extern	VALUE	rb_Rbdb_DatabaseRecordSettingsController;
 extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_Record;
 
-void Init_Rbdb_DatabaseTypeHashSettingsController()	{
+void Init_rb_Rbdb_DatabaseTypeHashSettingsController()	{
 
 	rb_Rbdb_DatabaseTypeHashSettingsController		=	rb_define_class_under(	rb_Rbdb_DatabaseTypeSettingsController, 
 																																					"Hash",	
@@ -141,7 +141,7 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_new(	int			argc,
 		if ( ( rb_parent_database = rb_Rbdb_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller ) ) != Qnil )	{
 			
 			Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-			C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );			
+			C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );			
 			
 			Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller	=	Rbdb_DatabaseSettingsController_typeSettingsController( c_database_settings_controller );
 
@@ -155,7 +155,7 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller;
-	C_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_parent_database_type_settings_controller, c_database_type_settings_controller );		
+	C_RBDB_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_parent_database_type_settings_controller, c_database_type_settings_controller );		
 
 	Rbdb_DatabaseTypeHashSettingsController*	c_database_type_hash_settings_controller	=	Rbdb_DatabaseTypeSettingsController_hashController( c_database_type_settings_controller );
 
@@ -169,14 +169,14 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_new(	int			argc,
 
 		//	store reference to parent database settings controller
 		rb_iv_set(	rb_database_type_hash_settings_controller,
-								Rbdb_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+								RBDB_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
 								rb_parent_database_settings_controller );
 
 	}
 
 	//	store reference to parent type settings controller
 	rb_iv_set(	rb_database_type_hash_settings_controller,
-							Rbdb_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER,
 							rb_parent_database_type_settings_controller );
 
 	//	if we have a parent database in addition to our parent environmental settings controller, set it as parent as well
@@ -188,7 +188,7 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_new(	int			argc,
 	}
 	if ( rb_parent_database != Qnil )	{
 		rb_iv_set(	rb_database_type_hash_settings_controller,
-								Rbdb_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE,
+								RBDB_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE,
 								rb_parent_database );	
 	}
 	
@@ -254,7 +254,7 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_parentSettingsController(	VALUE
 VALUE rb_Rbdb_DatabaseTypeHashSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_type_hash_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_type_hash_settings_controller,
-																															Rbdb_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																															RBDB_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	if ( rb_parent_database_settings_controller == Qnil )	{
 	
@@ -274,7 +274,7 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_parentDatabaseSettingsControlle
 VALUE rb_Rbdb_DatabaseTypeHashSettingsController_parentDatabaseTypeSettingsController(	VALUE	rb_database_type_hash_settings_controller )	{
 
 	VALUE	rb_parent_database_type_settings_controller	=	rb_iv_get(	rb_database_type_hash_settings_controller,
-																																	Rbdb_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER );
+																																	RBDB_RB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_type_settings_controller;
 }
@@ -291,7 +291,7 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_parentDatabaseTypeSettingsContr
 VALUE rb_Rbdb_DatabaseTypeHashSettingsController_tableSize( VALUE	rb_database_type_hash_settings_controller )	{
 
 	Rbdb_DatabaseTypeHashSettingsController*	c_database_type_hash_settings_controller;
-	C_Rbdb_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
+	C_RBDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseTypeHashSettingsController_tableSize( c_database_type_hash_settings_controller ) );
 }
@@ -304,7 +304,7 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_setTableSize(	VALUE	rb_database
 																VALUE	rb_number_of_elements )	{
 
 	Rbdb_DatabaseTypeHashSettingsController*	c_database_type_hash_settings_controller;
-	C_Rbdb_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
+	C_RBDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
 
 	Rbdb_DatabaseTypeHashSettingsController_setTableSize(	c_database_type_hash_settings_controller,
 															FIX2INT( rb_number_of_elements ) );
@@ -320,7 +320,7 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_setTableSize(	VALUE	rb_database
 VALUE rb_Rbdb_DatabaseTypeHashSettingsController_hashDensityFactor( VALUE	rb_database_type_hash_settings_controller )	{
 
 	Rbdb_DatabaseTypeHashSettingsController*	c_database_type_hash_settings_controller;
-	C_Rbdb_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
+	C_RBDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseTypeHashSettingsController_hashDensityFactor( c_database_type_hash_settings_controller ) );
 }
@@ -333,7 +333,7 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_setHashDensityFactor(	VALUE	rb_
 																		VALUE	rb_density )	{
 
 	Rbdb_DatabaseTypeHashSettingsController*	c_database_type_hash_settings_controller;
-	C_Rbdb_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
+	C_RBDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
 
 	Rbdb_DatabaseTypeHashSettingsController_setHashDensityFactor(	c_database_type_hash_settings_controller,
 																	FIX2INT( rb_density ) );
@@ -356,7 +356,7 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_setHashMethod(	VALUE	rb_databas
 																					VALUE				length ) )	{
 
 	Rbdb_DatabaseTypeHashSettingsController*	c_database_type_hash_settings_controller;
-	C_Rbdb_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
+	C_RBDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
 
 
 }
@@ -370,7 +370,7 @@ VALUE(*hash_method)(	VALUE			database,
 					VALUE				length ) Rbdb_DatabaseTypeHashSettingsController_hashMethod( VALUE	rb_database_type_hash_settings_controller )	{
 
 	Rbdb_DatabaseTypeHashSettingsController*	c_database_type_hash_settings_controller;
-	C_Rbdb_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
+	C_RBDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
 
 }
 */
@@ -385,7 +385,7 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_setCompareMethod(		VALUE	rb_dat
 																							const VALUE		data_two ) )	{
 
 	Rbdb_DatabaseTypeHashSettingsController*	c_database_type_hash_settings_controller;
-	C_Rbdb_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
+	C_RBDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
 
 }
 */
@@ -398,7 +398,7 @@ VALUE(*compare_method)(	VALUE		database,
 						const DBT*			data_two ) Rbdb_DatabaseTypeHashSettingsController_compareMethod( VALUE	rb_database_type_hash_settings_controller )	{
 
 	Rbdb_DatabaseTypeHashSettingsController*	c_database_type_hash_settings_controller;
-	C_Rbdb_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
+	C_RBDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
 
 }
 */
@@ -413,7 +413,7 @@ VALUE rb_Rbdb_DatabaseTypeHashSettingsController_setDuplicateCompareMethod(	VALU
 																												const VALUE		data_two ) )	{
 
 	Rbdb_DatabaseTypeHashSettingsController*	c_database_type_hash_settings_controller;
-	C_Rbdb_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
+	C_RBDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
 
 }
 */
@@ -426,7 +426,7 @@ VALUE(*duplicate_compare_method)(	VALUE		database,
 									const DBT*			data_two ) Rbdb_DatabaseTypeHashSettingsController_duplicateCompareMethod( VALUE	rb_database_type_hash_settings_controller )	{
 
 	Rbdb_DatabaseTypeHashSettingsController*	c_database_type_hash_settings_controller;
-	C_Rbdb_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
+	C_RBDB_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER( rb_database_type_hash_settings_controller, c_database_type_hash_settings_controller );
 
 }
 */

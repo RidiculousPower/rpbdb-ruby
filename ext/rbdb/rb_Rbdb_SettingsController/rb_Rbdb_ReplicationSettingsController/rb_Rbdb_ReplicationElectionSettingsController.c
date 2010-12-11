@@ -35,7 +35,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_ReplicationSettingsController;
 extern	VALUE	rb_Rbdb_ReplicationElectionSettingsController;
 
-void Init_Rbdb_ReplicationElectionSettingsController()	{
+void Init_rb_Rbdb_ReplicationElectionSettingsController()	{
 
 	rb_Rbdb_ReplicationElectionSettingsController		=	rb_define_class_under(	rb_Rbdb_ReplicationSettingsController, 
 																																						"Election",	
@@ -117,14 +117,14 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_new(	int			argc,
 	}
 
 	Rbdb_ReplicationSettingsController*	c_parent_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_parent_replication_settings_controller, c_parent_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_parent_replication_settings_controller, c_parent_replication_settings_controller );
 
 	Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller	=	Rbdb_ReplicationSettingsController_electionSettingsController( c_parent_replication_settings_controller );
 
 	VALUE	rb_replication_election_settings_controller	= RUBY_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( c_replication_election_settings_controller );
 
 	rb_iv_set(	rb_replication_election_settings_controller,
-							Rbdb_RB_REPLICATION_ELECTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER,
+							RBDB_RB_REPLICATION_ELECTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER,
 							rb_parent_replication_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_replication_settings_controller };
@@ -177,7 +177,7 @@ VALUE rb_Rbdb_ReplicationElectionSettingsController_parentSettingsController(	VA
 VALUE rb_Rbdb_ReplicationElectionSettingsController_parentReplicationSettingsController(	VALUE	rb_replication_election_settings_controller )	{
 
 	VALUE	rb_parent_replication_settings_controller	=	rb_iv_get(	rb_replication_election_settings_controller,
-																																Rbdb_RB_REPLICATION_ELECTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER );
+																																RBDB_RB_REPLICATION_ELECTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER );
 
 	return rb_parent_replication_settings_controller;
 }
@@ -191,7 +191,7 @@ VALUE rb_Rbdb_ReplicationElectionSettingsController_parentReplicationSettingsCon
 VALUE	rb_Rbdb_ReplicationElectionSettingsController_numberOfSitesRequiredForElection( VALUE	rb_replication_election_settings_controller )	{
 
 	Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-	C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+	C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationElectionSettingsController_numberOfSitesRequiredForElection( c_replication_election_settings_controller ) );
 }
@@ -204,7 +204,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_numberOfSitesRequiredForElec
 	 																							VALUE	rb_number_of_sites_required_for_election	)	{
 
 		Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-		C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+		C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 		Rbdb_ReplicationElectionSettingsController_setNumberOfSitesRequiredForElection(	c_replication_election_settings_controller,
 																							FIX2INT( rb_number_of_sites_required_for_election ) );
@@ -221,7 +221,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_numberOfSitesRequiredForElec
 VALUE	rb_Rbdb_ReplicationElectionSettingsController_numberOfVotesRequiredForElection( VALUE	rb_replication_election_settings_controller )	{
 
 	Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-	C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+	C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationElectionSettingsController_numberOfVotesRequiredForElection( c_replication_election_settings_controller ) );
 }
@@ -234,7 +234,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_numberOfVotesRequiredForElec
 	 																							VALUE	rb_number_of_votes_required_for_election	)	{
 
 		Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-		C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+		C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 		Rbdb_ReplicationElectionSettingsController_setNumberOfVotesRequiredForElection(	c_replication_election_settings_controller,
 																							FIX2INT( rb_number_of_votes_required_for_election ) );
@@ -251,7 +251,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_numberOfVotesRequiredForElec
 VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAllClients( VALUE	rb_replication_election_settings_controller )	{
 
 	Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-	C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+	C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 	return ( Rbdb_ReplicationElectionSettingsController_waitForAllClients( c_replication_election_settings_controller )	?	Qtrue
 																															:	Qfalse );
@@ -270,7 +270,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAllClients( VALUE	rb_
 		}
 
 		Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-		C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+		C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 		Rbdb_ReplicationElectionSettingsController_turnWaitForAllClientsOn( c_replication_election_settings_controller );
 
@@ -290,7 +290,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAllClients( VALUE	rb_
 		}
 
 		Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-		C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+		C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 		Rbdb_ReplicationElectionSettingsController_turnWaitForAllClientsOff( c_replication_election_settings_controller );
 
@@ -306,7 +306,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAllClients( VALUE	rb_
 VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAllElectablePeers( VALUE	rb_replication_election_settings_controller )	{
 
 	Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-	C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+	C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 	return ( Rbdb_ReplicationElectionSettingsController_waitForAllElectablePeers( c_replication_election_settings_controller )	?	Qtrue
 																																:	Qfalse );
@@ -325,7 +325,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAllElectablePeers( VA
 		}
 
 		Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-		C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+		C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 		Rbdb_ReplicationElectionSettingsController_turnWaitForAllElectablePeersOn( c_replication_election_settings_controller );
 
@@ -345,7 +345,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAllElectablePeers( VA
 		}
 
 		Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-		C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+		C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 		Rbdb_ReplicationElectionSettingsController_turnWaitForAllElectablePeersOff( c_replication_election_settings_controller );
 
@@ -361,7 +361,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAllElectablePeers( VA
 VALUE	rb_Rbdb_ReplicationElectionSettingsController_neverWait( VALUE	rb_replication_election_settings_controller )	{
 
 	Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-	C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+	C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 	return ( Rbdb_ReplicationElectionSettingsController_neverWait( c_replication_election_settings_controller )	?	Qtrue
 																													:	Qfalse );
@@ -380,7 +380,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_neverWait( VALUE	rb_replicat
 		}
 
 		Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-		C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+		C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 		Rbdb_ReplicationElectionSettingsController_turnNeverWaitOn( c_replication_election_settings_controller );
 
@@ -400,7 +400,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_neverWait( VALUE	rb_replicat
 		}
 
 		Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-		C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+		C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 		Rbdb_ReplicationElectionSettingsController_turnNeverWaitOff( c_replication_election_settings_controller );
 
@@ -416,7 +416,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_neverWait( VALUE	rb_replicat
 VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAtLeastOneClient( VALUE	rb_replication_election_settings_controller )	{
 
 	Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-	C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+	C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 	return ( Rbdb_ReplicationElectionSettingsController_waitForAtLeastOneClient( c_replication_election_settings_controller )	?	Qtrue
 																																:	Qfalse );
@@ -435,7 +435,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAtLeastOneClient( VAL
 		}
 
 		Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-		C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+		C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 		Rbdb_ReplicationElectionSettingsController_turnWaitForAtLeastOneClientOn( c_replication_election_settings_controller );
 
@@ -455,7 +455,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAtLeastOneClient( VAL
 		}
 
 		Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-		C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+		C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 		Rbdb_ReplicationElectionSettingsController_turnWaitForAtLeastOneClientOff( c_replication_election_settings_controller );
 
@@ -471,7 +471,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAtLeastOneClient( VAL
 VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAtLeastOneElectablePeer( VALUE	rb_replication_election_settings_controller )	{
 
 	Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-	C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+	C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 	return ( Rbdb_ReplicationElectionSettingsController_waitForAtLeastOneElectablePeer( c_replication_election_settings_controller )	?	Qtrue
 																																		:	Qfalse );
@@ -490,7 +490,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAtLeastOneElectablePe
 		}
 
 		Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-		C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+		C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 		Rbdb_ReplicationElectionSettingsController_turnWaitForAtLeastOneElectablePeerOn( c_replication_election_settings_controller );
 
@@ -510,7 +510,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAtLeastOneElectablePe
 		}
 
 		Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-		C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+		C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 		Rbdb_ReplicationElectionSettingsController_turnWaitForAtLeastOneElectablePeerOff( c_replication_election_settings_controller );
 
@@ -526,7 +526,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForAtLeastOneElectablePe
 VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForMinimumElectablePeersForDurableElection( VALUE	rb_replication_election_settings_controller )	{
 
 	Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-	C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+	C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 	return ( Rbdb_ReplicationElectionSettingsController_waitForMinimumElectablePeersForDurableElection( c_replication_election_settings_controller )	?	Qtrue
 																																						:	Qfalse );
@@ -545,7 +545,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForMinimumElectablePeers
 		}
 
 		Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-		C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+		C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 		Rbdb_ReplicationElectionSettingsController_turnWaitForMinimumElectablePeersForDurableElectionOn( c_replication_election_settings_controller );
 
@@ -565,7 +565,7 @@ VALUE	rb_Rbdb_ReplicationElectionSettingsController_waitForMinimumElectablePeers
 		}
 
 		Rbdb_ReplicationElectionSettingsController*	c_replication_election_settings_controller;
-		C_Rbdb_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
+		C_RBDB_REPLICATION_ELECTION_SETTINGS_CONTROLLER( rb_replication_election_settings_controller, c_replication_election_settings_controller );
 
 		Rbdb_ReplicationElectionSettingsController_turnWaitForMinimumElectablePeersForDurableElectionOff( c_replication_election_settings_controller );
 

@@ -1,5 +1,5 @@
-#ifndef RB_Rbdb_LOG_CURSOR
-	#define RB_Rbdb_LOG_CURSOR
+#ifndef RB_RBDB_LOG_CURSOR
+	#define RB_RBDB_LOG_CURSOR
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>

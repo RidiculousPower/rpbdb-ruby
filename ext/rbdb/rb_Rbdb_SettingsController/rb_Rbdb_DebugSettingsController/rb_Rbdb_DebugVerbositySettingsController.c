@@ -37,7 +37,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_DebugSettingsController;
 extern	VALUE	rb_Rbdb_DebugVerbositySettingsController;
 
-void Init_Rbdb_DebugVerbositySettingsController()	{
+void Init_rb_Rbdb_DebugVerbositySettingsController()	{
 
 	rb_Rbdb_DebugVerbositySettingsController		=	rb_define_class_under(	rb_Rbdb_DebugSettingsController, 
 																																				"Verbosity",	
@@ -100,7 +100,7 @@ VALUE rb_Rbdb_DebugVerbositySettingsController_new(	int			argc,
 	}
 
 	Rbdb_DebugSettingsController*	c_parent_debug_settings_controller;
-	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_parent_debug_settings_controller, c_parent_debug_settings_controller );
+	C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_parent_debug_settings_controller, c_parent_debug_settings_controller );
 	
 	Rbdb_DebugVerbositySettingsController*	c_debug_verbosity_settings_controller	=	Rbdb_DebugSettingsController_verbositySettingsController( c_parent_debug_settings_controller );
 	
@@ -108,7 +108,7 @@ VALUE rb_Rbdb_DebugVerbositySettingsController_new(	int			argc,
 
 	//	store reference to parent
 	rb_iv_set(	rb_debug_verbosity_settings_controller,
-							Rbdb_RB_DEBUG_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DEBUG_SETTINGS_CONTROLLER,
+							RBDB_RB_DEBUG_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DEBUG_SETTINGS_CONTROLLER,
 							rb_parent_debug_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_debug_settings_controller };
@@ -161,7 +161,7 @@ VALUE rb_Rbdb_DebugVerbositySettingsController_parentSettingsController(	VALUE	r
 VALUE rb_Rbdb_DebugVerbositySettingsController_parentDebugSettingsController(	VALUE	rb_debug_verbosity_settings_controller )	{
 
 	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_debug_verbosity_settings_controller,
-																										Rbdb_RB_DEBUG_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DEBUG_SETTINGS_CONTROLLER );
+																										RBDB_RB_DEBUG_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DEBUG_SETTINGS_CONTROLLER );
 
 	return rb_parent_settings_controller;
 }
@@ -174,7 +174,7 @@ VALUE rb_Rbdb_DebugVerbositySettingsController_parentDebugSettingsController(	VA
 VALUE rb_Rbdb_DebugVerbositySettingsController_displayAdditionalInformationDuringRecovery( VALUE	rb_debug_verbosity_settings_controller )	{
 
 	Rbdb_DebugVerbositySettingsController*	c_debug_verbosity_settings_controller;
-	C_Rbdb_DEBUG_VERBOSITY_SETTINGS_CONTROLLER( rb_debug_verbosity_settings_controller, c_debug_verbosity_settings_controller );
+	C_RBDB_DEBUG_VERBOSITY_SETTINGS_CONTROLLER( rb_debug_verbosity_settings_controller, c_debug_verbosity_settings_controller );
 
 	return ( Rbdb_DebugVerbositySettingsController_displayAdditionalInformationDuringRecovery( c_debug_verbosity_settings_controller )	?	Qtrue
 																																		:	Qfalse );
@@ -187,7 +187,7 @@ VALUE rb_Rbdb_DebugVerbositySettingsController_displayAdditionalInformationDurin
 	VALUE rb_Rbdb_DebugVerbositySettingsController_turnDisplayAdditionalInformationDuringRecoveryOn( VALUE	rb_debug_verbosity_settings_controller )	{
 
 		Rbdb_DebugVerbositySettingsController*	c_debug_verbosity_settings_controller;
-		C_Rbdb_DEBUG_VERBOSITY_SETTINGS_CONTROLLER( rb_debug_verbosity_settings_controller, c_debug_verbosity_settings_controller );
+		C_RBDB_DEBUG_VERBOSITY_SETTINGS_CONTROLLER( rb_debug_verbosity_settings_controller, c_debug_verbosity_settings_controller );
 	
 		Rbdb_DebugVerbositySettingsController_turnDisplayAdditionalInformationDuringRecoveryOn( c_debug_verbosity_settings_controller );
 		
@@ -201,7 +201,7 @@ VALUE rb_Rbdb_DebugVerbositySettingsController_displayAdditionalInformationDurin
 	VALUE rb_Rbdb_DebugVerbositySettingsController_turnDisplayAdditionalInformationDuringRecoveryOff( VALUE	rb_debug_verbosity_settings_controller )	{
 
 		Rbdb_DebugVerbositySettingsController*	c_debug_verbosity_settings_controller;
-		C_Rbdb_DEBUG_VERBOSITY_SETTINGS_CONTROLLER( rb_debug_verbosity_settings_controller, c_debug_verbosity_settings_controller );
+		C_RBDB_DEBUG_VERBOSITY_SETTINGS_CONTROLLER( rb_debug_verbosity_settings_controller, c_debug_verbosity_settings_controller );
 
 		Rbdb_DebugVerbositySettingsController_turnDisplayAdditionalInformationDuringRecoveryOff( c_debug_verbosity_settings_controller );
 

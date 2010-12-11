@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER
-	#define RB_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER
+#ifndef RB_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER
+	#define RB_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_MemoryPoolSettingsController();
+void Init_rb_Rbdb_MemoryPoolSettingsController();
 VALUE rb_Rbdb_MemoryPoolSettingsController_new(	int			argc,
 																								VALUE*	args,
 																								VALUE		rb_klass_self );

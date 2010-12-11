@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_RECORD
-	#define RB_Rbdb_RECORD
+#ifndef RB_RBDB_RECORD
+	#define RB_RBDB_RECORD
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_Record();
+void Init_rb_Rbdb_Record();
 
 VALUE rb_Rbdb_Record_new(	int			argc,
 													VALUE*	args,

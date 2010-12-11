@@ -38,7 +38,7 @@ extern	VALUE	rb_Rbdb_LogController;
 extern	VALUE	rb_Rbdb_LogSettingsController;
 extern	VALUE	rb_Rbdb_LogSequenceNumber;;
 
-void Init_Rbdb_LogController()	{
+void Init_rb_Rbdb_LogController()	{
 
 	rb_Rbdb_LogController	=	rb_define_class_under(	rb_Rbdb_Environment, 
 																									"LogController",			
@@ -95,13 +95,13 @@ VALUE rb_Rbdb_LogController_new(	int			argc,
 	);
 	
 	Rbdb_Environment*	c_parent_environment;
-	C_Rbdb_ENVIRONMENT( rb_parent_environment, c_parent_environment );
+	C_RBDB_ENVIRONMENT( rb_parent_environment, c_parent_environment );
 	
 	VALUE	rb_log_controller	=	RUBY_RBDB_LOG_CONTROLLER( Rbdb_LogController_new( c_parent_environment ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_log_controller,
-							Rbdb_RB_LOG_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
+							RBDB_RB_LOG_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
 							rb_parent_environment );
 	
 	VALUE	argv[]	=	{ rb_parent_environment };
@@ -132,17 +132,17 @@ VALUE rb_Rbdb_LogController_settingsController(	VALUE	rb_log_controller )	{
 	VALUE	rb_local_log_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_log_settings_controller = rb_iv_get(	rb_log_controller,
-																												Rbdb_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																												RBDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_LogController*		c_log_controller;
-		C_Rbdb_LOG_CONTROLLER( rb_log_controller, c_log_controller );
+		C_RBDB_LOG_CONTROLLER( rb_log_controller, c_log_controller );
 	
 		Rbdb_LogSettingsController*	c_local_log_settings_controller	=	Rbdb_LogController_settingsController( c_log_controller );
 
 		rb_local_log_settings_controller	=	RUBY_RBDB_LOG_SETTINGS_CONTROLLER( c_local_log_settings_controller );
 
 		rb_iv_set(	rb_log_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,
 								rb_local_log_settings_controller );
 	}
 
@@ -155,7 +155,7 @@ VALUE rb_Rbdb_LogController_settingsController(	VALUE	rb_log_controller )	{
 VALUE rb_Rbdb_LogController_parentEnvironment(	VALUE	rb_log_controller )	{
 
 	VALUE	rb_parent_environment	=	rb_iv_get(	rb_log_controller,
-																						Rbdb_RB_LOG_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
+																						RBDB_RB_LOG_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
 	
 	return rb_parent_environment;
 }
@@ -175,7 +175,7 @@ VALUE rb_Rbdb_LogController_appendStringToCurrentLog(	int			argc __attribute__ (
 																											VALUE	rb_log_controller )	{
 
 	Rbdb_LogController*	c_log_controller;
-	C_Rbdb_LOG_CONTROLLER( rb_log_controller, c_log_controller );
+	C_RBDB_LOG_CONTROLLER( rb_log_controller, c_log_controller );
 
 	//	FIX - not implemented
 	char*	c_log_string	=	NULL;
@@ -196,10 +196,10 @@ VALUE rb_Rbdb_LogController_flushLogsToDisk(	VALUE	rb_log_controller,
  												VALUE	rb_log_sequence_number )	{
 
 	Rbdb_LogController*	c_log_controller;
-	C_Rbdb_LOG_CONTROLLER( rb_log_controller, c_log_controller );
+	C_RBDB_LOG_CONTROLLER( rb_log_controller, c_log_controller );
 
 	Rbdb_LogSequenceNumber*	c_log_sequence_number;
-	C_Rbdb_LOG_SEQUENCE_NUMBER( rb_log_sequence_number, c_log_sequence_number );
+	C_RBDB_LOG_SEQUENCE_NUMBER( rb_log_sequence_number, c_log_sequence_number );
 
 	Rbdb_LogController_flushLogsToDisk(	c_log_controller,
 											c_log_sequence_number	);
@@ -216,10 +216,10 @@ VALUE rb_Rbdb_LogController_appendLogRecord(	VALUE	rb_log_controller,
  												VALUE	rb_log_record )	{
 
 	Rbdb_LogController*	c_log_controller;
-	C_Rbdb_LOG_CONTROLLER( rb_log_controller, c_log_controller );
+	C_RBDB_LOG_CONTROLLER( rb_log_controller, c_log_controller );
 
 	Rbdb_Record*		c_log_record;
-	C_Rbdb_RECORD( rb_log_record, c_log_record );
+	C_RBDB_RECORD( rb_log_record, c_log_record );
 
 	Rbdb_LogController_appendLogRecord(	c_log_controller,
 											c_log_record	);
@@ -234,7 +234,7 @@ VALUE rb_Rbdb_LogController_appendLogRecord(	VALUE	rb_log_controller,
 VALUE rb_Rbdb_LogController_cursorController( VALUE	rb_log_controller )	{
 
 	Rbdb_LogController*	c_log_controller;
-	C_Rbdb_LOG_CONTROLLER( rb_log_controller, c_log_controller );
+	C_RBDB_LOG_CONTROLLER( rb_log_controller, c_log_controller );
 
 	Rbdb_LogController_cursorController( c_log_controller );
 

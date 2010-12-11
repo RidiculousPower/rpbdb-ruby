@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_DATABASE_JOIN_CONTROLLER
-	#define RB_Rbdb_DATABASE_JOIN_CONTROLLER
+#ifndef RB_RBDB_DATABASE_JOIN_CONTROLLER
+	#define RB_RBDB_DATABASE_JOIN_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_DatabaseJoinController();
+void Init_rb_Rbdb_DatabaseJoinController();
 VALUE rb_Rbdb_DatabaseJoinController_new(	int			argc,
 																					VALUE*	args,
 																					VALUE		rb_klass_self );

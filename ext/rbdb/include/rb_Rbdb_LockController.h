@@ -1,5 +1,5 @@
-#ifndef RB_Rbdb_LOCK_CONTROLLER
-	#define RB_Rbdb_LOCK_CONTROLLER
+#ifndef RB_RBDB_LOCK_CONTROLLER
+	#define RB_RBDB_LOCK_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>

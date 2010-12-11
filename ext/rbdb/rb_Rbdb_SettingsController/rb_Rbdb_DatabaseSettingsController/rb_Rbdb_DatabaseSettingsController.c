@@ -64,7 +64,7 @@ extern	VALUE	rb_Rbdb_DatabaseRecordReadWriteSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseRecordSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseSequenceSettingsController;
 
-void Init_Rbdb_DatabaseSettingsController()	{
+void Init_rb_Rbdb_DatabaseSettingsController()	{
 
 	rb_Rbdb_DatabaseSettingsController		=	rb_define_class_under(	rb_Rbdb_SettingsController, 
 																																	"Database",	
@@ -198,13 +198,13 @@ VALUE rb_Rbdb_DatabaseSettingsController_new(	int			argc,
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller	=	NULL;
 	if ( rb_parent_database != Qnil )	{
 		Rbdb_Database*	c_parent_database;
-		C_Rbdb_DATABASE( rb_parent_database, c_parent_database );
+		C_RBDB_DATABASE( rb_parent_database, c_parent_database );
 		
 		c_database_settings_controller	=	Rbdb_Database_settingsController( c_parent_database );
 	}
 	else if ( rb_parent_settings_controller != Qnil )	{
 		Rbdb_SettingsController*	c_settings_controller;
-		C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_settings_controller );		
+		C_RBDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_settings_controller );		
 		c_database_settings_controller	=	Rbdb_SettingsController_databaseSettingsController( c_settings_controller );
 	}
 
@@ -212,7 +212,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_new(	int			argc,
 
 	if ( rb_parent_database != Qnil )	{
 		rb_iv_set(	rb_database_settings_controller,
-								Rbdb_RB_DATABASE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE,
+								RBDB_RB_DATABASE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE,
 								rb_parent_database);
 		//	if we create with a database we also want to make sure we can get a reference to the parent settings controller
 		if ( rb_parent_environment == Qnil )	{
@@ -222,7 +222,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_new(	int			argc,
 	}
 	if ( rb_parent_settings_controller != Qnil )	{
 		rb_iv_set(	rb_database_settings_controller,
-								Rbdb_RB_DATABASE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+								RBDB_RB_DATABASE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
 								rb_parent_settings_controller);	
 	}
 	
@@ -279,7 +279,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_parentEnvironment(	VALUE	rb_database_se
 VALUE rb_Rbdb_DatabaseSettingsController_parentDatabase(	VALUE	rb_database_settings_controller )	{
 
 	VALUE	rb_parent_database	=	rb_iv_get(	rb_database_settings_controller,
-																					Rbdb_RB_DATABASE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE );
+																					RBDB_RB_DATABASE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE );
 
 	return rb_parent_database;
 }
@@ -291,7 +291,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_parentDatabase(	VALUE	rb_database_setti
 VALUE rb_Rbdb_DatabaseSettingsController_parentSettingsController(	VALUE	rb_database_settings_controller )	{
 
 	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_database_settings_controller,
-																										Rbdb_RB_DATABASE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+																										RBDB_RB_DATABASE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_settings_controller;
 }
@@ -308,7 +308,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_parentSettingsController(	VALUE	rb_data
 VALUE rb_Rbdb_DatabaseSettingsController_checksum( VALUE	rb_database_settings_controller )	{
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 	return( Rbdb_DatabaseSettingsController_checksum( c_database_settings_controller )	?	Qtrue
 																																											:	Qfalse );
@@ -328,7 +328,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_checksum( VALUE	rb_database_settings_co
 		}
 
 		Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-		C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+		C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 		Rbdb_DatabaseSettingsController_turnChecksumOn( c_database_settings_controller );
 
@@ -349,7 +349,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_checksum( VALUE	rb_database_settings_co
 		}
 
 		Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-		C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+		C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 		Rbdb_DatabaseSettingsController_turnChecksumOff( c_database_settings_controller );
 
@@ -364,7 +364,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_checksum( VALUE	rb_database_settings_co
 VALUE rb_Rbdb_DatabaseSettingsController_transactionDurability( VALUE	rb_database_settings_controller )	{
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 	return( Rbdb_DatabaseSettingsController_transactionDurability( c_database_settings_controller )	?	Qtrue
 																																																	:	Qfalse );
@@ -379,7 +379,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_transactionDurability( VALUE	rb_databas
 	VALUE rb_Rbdb_DatabaseSettingsController_turnTransactionDurabilityOn( VALUE	rb_database_settings_controller )	{
 
 		Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-		C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+		C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 		Rbdb_DatabaseSettingsController_turnTransactionDurabilityOn( c_database_settings_controller );
 
@@ -394,7 +394,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_transactionDurability( VALUE	rb_databas
 	VALUE rb_Rbdb_DatabaseSettingsController_turnTransactionDurabilityOff( VALUE	rb_database_settings_controller )	{
 
 		Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-		C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+		C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 		Rbdb_DatabaseSettingsController_turnTransactionDurabilityOff( c_database_settings_controller );
 
@@ -413,7 +413,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_transactionDurability( VALUE	rb_databas
 VALUE rb_Rbdb_DatabaseSettingsController_pagesize( VALUE	rb_database_settings_controller )	{
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 	return INT2NUM( Rbdb_DatabaseSettingsController_pagesize( c_database_settings_controller ) );
 }
@@ -432,7 +432,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_setPagesize(	VALUE	rb_database_settings
 	}
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 	Rbdb_DatabaseSettingsController_setPageSize(	c_database_settings_controller,
 													FIX2INT( rb_pagesize ) );
@@ -449,7 +449,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_setPagesize(	VALUE	rb_database_settings
 VALUE rb_Rbdb_DatabaseSettingsController_isBigEndian( VALUE	rb_database_settings_controller )	{
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 	return ( Rbdb_DatabaseSettingsController_isBigEndian( c_database_settings_controller )	?	Qtrue
 																							:	Qfalse );
@@ -472,7 +472,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_setByteOrderToBigEndian( VALUE	rb_datab
 	}
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 	Rbdb_DatabaseSettingsController_setByteOrderToBigEndian( c_database_settings_controller );
 
@@ -488,7 +488,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_setByteOrderToBigEndian( VALUE	rb_datab
 VALUE rb_Rbdb_DatabaseSettingsController_isLittleEndian( VALUE	rb_database_settings_controller )	{
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 	return ( Rbdb_DatabaseSettingsController_isLittleEndian( c_database_settings_controller )	?	Qtrue
 																								:	Qfalse );
@@ -507,7 +507,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_setByteOrderToLittleEndian( VALUE	rb_da
 	}
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 	Rbdb_DatabaseSettingsController_setByteOrderToLittleEndian( c_database_settings_controller );
 
@@ -528,7 +528,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_isByteswapped( VALUE	rb_database_settin
 	}
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 	return ( Rbdb_DatabaseSettingsController_isByteswapped( c_database_settings_controller )	?	Qtrue
 																																														:	Qfalse );
@@ -544,7 +544,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_isByteswapped( VALUE	rb_database_settin
 VALUE rb_Rbdb_DatabaseSettingsController_maxSizePageIn( VALUE	rb_database_settings_controller )	{
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseSettingsController_maxSizePageIn( c_database_settings_controller ) );
 }
@@ -561,14 +561,14 @@ VALUE rb_Rbdb_DatabaseSettingsController_errorSettingsController( VALUE	rb_datab
 
 	VALUE	rb_database_error_settings_controller	=	Qnil;
 	if ( ( rb_database_error_settings_controller = rb_iv_get(	rb_database_settings_controller,
-																														Rbdb_RB_SETTINGS_VARIABLE_DATABASE_ERROR_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																														RBDB_RB_SETTINGS_VARIABLE_DATABASE_ERROR_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_database_error_settings_controller	=	rb_Rbdb_DatabaseErrorSettingsController_new(	1,
 																																													& rb_database_settings_controller,
 																																													rb_Rbdb_DatabaseErrorSettingsController );		
 
 		rb_iv_set(	rb_database_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_ERROR_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_ERROR_SETTINGS_CONTROLLER,
 								rb_database_error_settings_controller );
 	}
 
@@ -583,14 +583,14 @@ VALUE rb_Rbdb_DatabaseSettingsController_associationSettingsController( VALUE	rb
 
 	VALUE	rb_database_association_settings_controller	=	Qnil;
 	if ( ( rb_database_association_settings_controller = rb_iv_get(	rb_database_settings_controller,
-																														Rbdb_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																														RBDB_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_database_association_settings_controller	=	rb_Rbdb_DatabaseAssociationSettingsController_new(	1,
 																																																			& rb_database_settings_controller,
 																																																			rb_Rbdb_DatabaseErrorSettingsController );		
 
 		rb_iv_set(	rb_database_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER,
 								rb_database_association_settings_controller );
 	}
 
@@ -605,14 +605,14 @@ VALUE rb_Rbdb_DatabaseSettingsController_joinSettingsController( VALUE	rb_databa
 
 	VALUE	rb_database_join_settings_controller	=	Qnil;
 	if ( ( rb_database_join_settings_controller = rb_iv_get(	rb_database_settings_controller,
-																														Rbdb_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																														RBDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_database_join_settings_controller	=	rb_Rbdb_DatabaseJoinSettingsController_new(	1,
 																																												& rb_database_settings_controller,
 																																												rb_Rbdb_DatabaseErrorSettingsController );		
 
 		rb_iv_set(	rb_database_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
 								rb_database_join_settings_controller );
 	}
 
@@ -628,14 +628,14 @@ VALUE rb_Rbdb_DatabaseSettingsController_cacheSettingsController( VALUE	rb_datab
 
 	VALUE	rb_database_cache_settings_controller	=	Qnil;
 	if ( ( rb_database_cache_settings_controller = rb_iv_get(	rb_database_settings_controller,
-																														Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																														RBDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_database_cache_settings_controller	=	rb_Rbdb_DatabaseCacheSettingsController_new(	1,
 																																													& rb_database_settings_controller,
 																																													rb_Rbdb_DatabaseErrorSettingsController );		
 
 		rb_iv_set(	rb_database_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER,
 								rb_database_cache_settings_controller );
 	}
 
@@ -650,14 +650,14 @@ VALUE rb_Rbdb_DatabaseSettingsController_cursorSettingsController( VALUE	rb_data
 
 	VALUE	rb_database_cursor_settings_controller	=	Qnil;
 	if ( ( rb_database_cursor_settings_controller = rb_iv_get(	rb_database_settings_controller,
-																															Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																															RBDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_database_cursor_settings_controller	=	rb_Rbdb_DatabaseCursorSettingsController_new(	1,
 																																														& rb_database_settings_controller,
 																																														rb_Rbdb_DatabaseCursorSettingsController );		
 
 		rb_iv_set(	rb_database_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_SETTINGS_CONTROLLER,
 								rb_database_cursor_settings_controller );
 	}
 
@@ -672,14 +672,14 @@ VALUE rb_Rbdb_DatabaseSettingsController_sequenceSettingsController( VALUE	rb_da
 
 	VALUE	rb_database_sequence_settings_controller	=	Qnil;
 	if ( ( rb_database_sequence_settings_controller = rb_iv_get(	rb_database_settings_controller,
-																																Rbdb_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																RBDB_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_database_sequence_settings_controller	=	rb_Rbdb_DatabaseSequenceSettingsController_new(	1,
 																																																& rb_database_settings_controller,
 																																																rb_Rbdb_DatabaseErrorSettingsController );		
 
 		rb_iv_set(	rb_database_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER,
 								rb_database_sequence_settings_controller );
 	}
 
@@ -694,14 +694,14 @@ VALUE rb_Rbdb_DatabaseSettingsController_typeSettingsController( VALUE	rb_databa
 
 	VALUE	rb_database_type_settings_controller	=	Qnil;
 	if ( ( rb_database_type_settings_controller = rb_iv_get(	rb_database_settings_controller,
-																														Rbdb_RB_SETTINGS_VARIABLE_DATABASE_TYPE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																														RBDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_database_type_settings_controller	=	rb_Rbdb_DatabaseTypeSettingsController_new(	1,
 																																												& rb_database_settings_controller,
 																																												rb_Rbdb_DatabaseTypeSettingsController );
 
 		rb_iv_set(	rb_database_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_TYPE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_SETTINGS_CONTROLLER,
 								rb_database_type_settings_controller );
 	}
 
@@ -716,14 +716,14 @@ VALUE rb_Rbdb_DatabaseSettingsController_recordSettingsController( VALUE	rb_data
 
 	VALUE	rb_database_record_settings_controller	=	Qnil;
 	if ( ( rb_database_record_settings_controller = rb_iv_get(	rb_database_settings_controller,
-																															Rbdb_RB_SETTINGS_VARIABLE_DATABASE_RECORD_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																															RBDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_database_record_settings_controller	=	rb_Rbdb_DatabaseRecordSettingsController_new(	1,
 																																														& rb_database_settings_controller,
 																																														rb_Rbdb_DatabaseErrorSettingsController );		
 
 		rb_iv_set(	rb_database_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_RECORD_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_SETTINGS_CONTROLLER,
 								rb_database_record_settings_controller );
 	}
 

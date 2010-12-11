@@ -1,5 +1,5 @@
-#ifndef RB_Rbdb_LOG_CONTROLLER
-	#define RB_Rbdb_LOG_CONTROLLER
+#ifndef RB_RBDB_LOG_CONTROLLER
+	#define RB_RBDB_LOG_CONTROLLER
 	
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>

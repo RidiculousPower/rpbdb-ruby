@@ -44,7 +44,7 @@ extern	VALUE	rb_Rbdb_DatabaseRecordVariableLengthSettingsController;
 extern	VALUE	rb_Rbdb_Record;
 extern	VALUE	rb_Rbdb_SettingsController;
 
-void Init_Rbdb_DatabaseRecordSettingsController()	{
+void Init_rb_Rbdb_DatabaseRecordSettingsController()	{
 
 	rb_Rbdb_DatabaseRecordSettingsController		=		rb_define_class_under(			rb_Rbdb_DatabaseSettingsController, 
 																																							"Record",	
@@ -127,7 +127,7 @@ VALUE rb_Rbdb_DatabaseRecordSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
 
 	Rbdb_DatabaseRecordSettingsController*	c_database_record_settings_controller	=	Rbdb_DatabaseSettingsController_recordSettingsController( c_database_settings_controller );
 
@@ -135,7 +135,7 @@ VALUE rb_Rbdb_DatabaseRecordSettingsController_new(	int			argc,
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_record_settings_controller,
-							Rbdb_RB_DATABASE_RECORD_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_RECORD_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };	
@@ -201,7 +201,7 @@ VALUE rb_Rbdb_DatabaseRecordSettingsController_parentSettingsController(	VALUE	r
 VALUE rb_Rbdb_DatabaseRecordSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_record_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_record_settings_controller,
-																															Rbdb_RB_DATABASE_RECORD_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																															RBDB_RB_DATABASE_RECORD_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_settings_controller;
 }
@@ -215,13 +215,13 @@ VALUE rb_Rbdb_DatabaseRecordSettingsController_fixedLengthSettingsController(	VA
 	VALUE	rb_database_record_fixed_length_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_record_fixed_length_settings_controller = rb_iv_get(	rb_database_record_settings_controller,
-																																					Rbdb_RB_SETTINGS_VARIABLE_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																					RBDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_database_record_fixed_length_settings_controller	=	rb_Rbdb_DatabaseRecordFixedLengthSettingsController_new(	1,
 																																																										& rb_database_record_settings_controller,
 																																																										rb_Rbdb_DatabaseRecordFixedLengthSettingsController );
 		rb_iv_set(	rb_database_record_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_FIXED_LENGTH_SETTINGS_CONTROLLER,
 								rb_database_record_fixed_length_settings_controller );
 	}
 	
@@ -237,13 +237,13 @@ VALUE rb_Rbdb_DatabaseRecordSettingsController_variableLengthSettingsController(
 	VALUE	rb_database_record_variable_length_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_record_variable_length_settings_controller = rb_iv_get(	rb_database_record_settings_controller,
-																																							Rbdb_RB_SETTINGS_VARIABLE_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																							RBDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
 		rb_database_record_variable_length_settings_controller	=	rb_Rbdb_DatabaseRecordVariableLengthSettingsController_new(	1,
 																																																													& rb_database_record_settings_controller,
 																																																													rb_Rbdb_DatabaseRecordVariableLengthSettingsController );
 		rb_iv_set(	rb_database_record_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_VARIABLE_LENGTH_SETTINGS_CONTROLLER,
 								rb_database_record_variable_length_settings_controller );
 	}
 	
@@ -259,13 +259,13 @@ VALUE rb_Rbdb_DatabaseRecordSettingsController_readWriteSettingsController(	VALU
 	VALUE	rb_database_record_read_write_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_record_read_write_settings_controller = rb_iv_get(	rb_database_record_settings_controller,
-																																				Rbdb_RB_SETTINGS_VARIABLE_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																				RBDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
 		rb_database_record_read_write_settings_controller	=	rb_Rbdb_DatabaseRecordReadWriteSettingsController_new(	1,
 																																																								& rb_database_record_settings_controller,
 																																																								rb_Rbdb_DatabaseRecordReadWriteSettingsController );
 		rb_iv_set(	rb_database_record_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER,
 								rb_database_record_read_write_settings_controller );
 	}
 	

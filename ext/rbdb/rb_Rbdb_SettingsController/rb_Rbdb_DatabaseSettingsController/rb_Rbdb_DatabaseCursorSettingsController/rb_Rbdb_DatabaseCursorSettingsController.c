@@ -54,7 +54,7 @@ extern	VALUE	rb_Rbdb_DatabaseCursorCacheSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseCursorReadWriteSettingsController;
 extern	VALUE	rb_Rbdb_SettingsController;
 
-void Init_Rbdb_DatabaseCursorSettingsController()	{
+void Init_rb_Rbdb_DatabaseCursorSettingsController()	{
 
 	rb_Rbdb_DatabaseCursorSettingsController				=	rb_define_class_under(	rb_Rbdb_DatabaseSettingsController, 
 																																						"Cursor",	
@@ -149,13 +149,13 @@ VALUE rb_Rbdb_DatabaseCursorSettingsController_new(	int			argc,
 	Rbdb_DatabaseCursorSettingsController*	c_database_cursor_settings_controller	=	NULL;
 	if ( rb_parent_database_cursor != Qnil )	{
 		Rbdb_DatabaseCursor*	c_parent_database_cursor;
-		C_Rbdb_DATABASE_CURSOR( rb_parent_database_cursor, c_parent_database_cursor );
+		C_RBDB_DATABASE_CURSOR( rb_parent_database_cursor, c_parent_database_cursor );
 		
 		c_database_cursor_settings_controller	=	Rbdb_DatabaseCursor_settingsController( c_parent_database_cursor );
 	}
 	else if ( rb_parent_database_settings_controller != Qnil )	{
 		Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-		C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
+		C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
 		c_database_cursor_settings_controller	=	Rbdb_DatabaseSettingsController_cursorSettingsController( c_database_settings_controller );
 	}
 
@@ -165,7 +165,7 @@ VALUE rb_Rbdb_DatabaseCursorSettingsController_new(	int			argc,
 	if ( rb_parent_database_cursor != Qnil )	{
 	
 		rb_iv_set(	rb_database_cursor_settings_controller,
-								Rbdb_RB_DATABASE_CURSOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR,
+								RBDB_RB_DATABASE_CURSOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR,
 								rb_parent_database_cursor );
 		VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_parent_database_cursor );
 		rb_parent_database_settings_controller	=	rb_Rbdb_Database_settingsController( rb_parent_database );
@@ -173,7 +173,7 @@ VALUE rb_Rbdb_DatabaseCursorSettingsController_new(	int			argc,
 	if ( rb_parent_database_settings_controller != Qnil )	{
 	
 		rb_iv_set(	rb_database_cursor_settings_controller,
-								Rbdb_RB_DATABASE_CURSOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+								RBDB_RB_DATABASE_CURSOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
 								rb_parent_database_settings_controller );
 	}
 
@@ -225,7 +225,7 @@ VALUE rb_Rbdb_DatabaseCursorSettingsController_parentDatabase(	VALUE	rb_database
 VALUE rb_Rbdb_DatabaseCursorSettingsController_parentDatabaseCursor(	VALUE	rb_database_cursor_settings_controller )	{
 
 	VALUE	rb_parent_database_cursor	=	rb_iv_get(	rb_database_cursor_settings_controller,
-																								Rbdb_RB_DATABASE_CURSOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR );
+																								RBDB_RB_DATABASE_CURSOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_CURSOR );
 
 	return rb_parent_database_cursor;
 }
@@ -247,7 +247,7 @@ VALUE rb_Rbdb_DatabaseCursorSettingsController_parentSettingsController(	VALUE	r
 VALUE rb_Rbdb_DatabaseCursorSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_cursor_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_cursor_settings_controller,
-																															Rbdb_RB_DATABASE_CURSOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																															RBDB_RB_DATABASE_CURSOR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_settings_controller;
 }
@@ -260,7 +260,7 @@ VALUE rb_Rbdb_DatabaseCursorSettingsController_parentDatabaseSettingsController(
 VALUE rb_Rbdb_DatabaseCursorSettingsController_duplicateRetainsLocation( VALUE	rb_database_cursor_settings_controller )	{
 
 	Rbdb_DatabaseCursorSettingsController*	c_database_cursor_settings_controller;
-	C_Rbdb_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_database_cursor_settings_controller, c_database_cursor_settings_controller );
+	C_RBDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_database_cursor_settings_controller, c_database_cursor_settings_controller );
 
 	return ( Rbdb_DatabaseCursorSettingsController_duplicateRetainsLocation( c_database_cursor_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -273,7 +273,7 @@ VALUE rb_Rbdb_DatabaseCursorSettingsController_duplicateRetainsLocation( VALUE	r
 	VALUE rb_Rbdb_DatabaseCursorSettingsController_turnDuplicateRetainsLocationOn( VALUE	rb_database_cursor_settings_controller )	{
 
 		Rbdb_DatabaseCursorSettingsController*	c_database_cursor_settings_controller;
-		C_Rbdb_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_database_cursor_settings_controller, c_database_cursor_settings_controller );
+		C_RBDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_database_cursor_settings_controller, c_database_cursor_settings_controller );
 	
 		Rbdb_DatabaseCursorSettingsController_turnDuplicateRetainsLocationOn( c_database_cursor_settings_controller );
 	
@@ -287,7 +287,7 @@ VALUE rb_Rbdb_DatabaseCursorSettingsController_duplicateRetainsLocation( VALUE	r
 	VALUE rb_Rbdb_DatabaseCursorSettingsController_turnDuplicateRetainsLocationOff( VALUE	rb_database_cursor_settings_controller )	{
 
 		Rbdb_DatabaseCursorSettingsController*	c_database_cursor_settings_controller;
-		C_Rbdb_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_database_cursor_settings_controller, c_database_cursor_settings_controller );
+		C_RBDB_DATABASE_CURSOR_SETTINGS_CONTROLLER( rb_database_cursor_settings_controller, c_database_cursor_settings_controller );
 
 		Rbdb_DatabaseCursorSettingsController_turnDuplicateRetainsLocationOff( c_database_cursor_settings_controller );
 
@@ -307,13 +307,13 @@ VALUE rb_Rbdb_DatabaseCursorSettingsController_cacheSettingsController( VALUE	rb
 	VALUE	rb_database_cursor_cache_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_cursor_cache_settings_controller = rb_iv_get(	rb_database_cursor_settings_controller,
-																																		Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																		RBDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
 		rb_database_cursor_cache_settings_controller	=	rb_Rbdb_DatabaseCursorCacheSettingsController_new(	1,
 																																																				& rb_database_cursor_settings_controller,
 																																																				rb_Rbdb_DatabaseCursorCacheSettingsController );
 		rb_iv_set(	rb_database_cursor_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_CACHE_SETTINGS_CONTROLLER,
 								rb_database_cursor_cache_settings_controller );
 	}
 	
@@ -329,13 +329,13 @@ VALUE rb_Rbdb_DatabaseCursorSettingsController_readWriteSettingsController( VALU
 	VALUE	rb_database_cursor_read_write_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_cursor_read_write_settings_controller = rb_iv_get(	rb_database_cursor_settings_controller,
-																																				Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																				RBDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
 		rb_database_cursor_read_write_settings_controller	=	rb_Rbdb_DatabaseCursorReadWriteSettingsController_new(	1,
 																																																								& rb_database_cursor_settings_controller,
 																																																								rb_Rbdb_DatabaseCursorReadWriteSettingsController );
 		rb_iv_set(	rb_database_cursor_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_CURSOR_READ_WRITE_SETTINGS_CONTROLLER,
 								rb_database_cursor_read_write_settings_controller );
 	}
 	

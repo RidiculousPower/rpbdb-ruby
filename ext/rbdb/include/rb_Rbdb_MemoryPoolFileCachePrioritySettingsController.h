@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER
-	#define RB_Rbdb_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER
+#ifndef RB_RBDB_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER
+	#define RB_RBDB_MEMORY_POOL_FILE_CACHE_PRIORITY_SETTINGS_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_MemoryPoolFileCachePrioritySettingsController();
+void Init_rb_Rbdb_MemoryPoolFileCachePrioritySettingsController();
 
 VALUE rb_Rbdb_MemoryPoolFileCachePrioritySettingsController_new(	int			argc,
 																																	VALUE*	args,

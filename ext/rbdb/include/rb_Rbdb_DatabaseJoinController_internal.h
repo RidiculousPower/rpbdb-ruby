@@ -1,5 +1,5 @@
-#ifndef RB_Rbdb_DATABASE_JOIN_CONTROLLER_INTERNAL
-	#define RB_Rbdb_DATABASE_JOIN_CONTROLLER_INTERNAL
+#ifndef RB_RBDB_DATABASE_JOIN_CONTROLLER_INTERNAL
+	#define RB_RBDB_DATABASE_JOIN_CONTROLLER_INTERNAL
 
 VALUE rb_DatabaseJoinController_internal_joinCursorForHashDescriptor( VALUE	rb_join_controller,
 																																			VALUE	rb_primary_database,

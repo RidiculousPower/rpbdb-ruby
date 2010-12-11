@@ -43,7 +43,7 @@ extern	VALUE	rb_Rbdb_Database;
 extern	VALUE	rb_Rbdb_DatabaseController;
 extern	VALUE	rb_Rbdb_DatabaseJoinContainer;
 
-void Init_Rbdb_DatabaseJoinCursor()	{
+void Init_rb_Rbdb_DatabaseJoinCursor()	{
 		
 	rb_Rbdb_DatabaseJoinCursor		=	rb_define_class_under(	rb_Rbdb_DatabaseJoinContainer, 
 																													"Cursor",				
@@ -96,13 +96,13 @@ VALUE rb_Rbdb_DatabaseJoinCursor_new(	int			argc,
 	);
 	
 	Rbdb_DatabaseJoinController*	c_parent_join_controller;
-	C_Rbdb_DATABASE_JOIN_CONTROLLER( rb_parent_database_join_controller, c_parent_join_controller );
+	C_RBDB_DATABASE_JOIN_CONTROLLER( rb_parent_database_join_controller, c_parent_join_controller );
 	
 	VALUE	rb_join_cursor	=	RUBY_RBDB_DATABASE_JOIN_CURSOR( Rbdb_DatabaseJoinCursor_new( c_parent_join_controller ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_join_cursor,
-							Rbdb_RB_JOIN_CURSOR_VARIABLE_PARENT_JOIN_CONTROLLER,
+							RBDB_RB_JOIN_CURSOR_VARIABLE_PARENT_JOIN_CONTROLLER,
 							rb_parent_database_join_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_join_controller };
@@ -132,17 +132,17 @@ VALUE rb_Rbdb_DatabaseJoinCursor_settingsController(	VALUE	rb_join_cursor )	{
 	VALUE	rb_local_database_join_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_database_join_settings_controller = rb_iv_get(	rb_join_cursor,
-																																	Rbdb_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																	RBDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_DatabaseJoinCursor*		c_join_cursor;
-		C_Rbdb_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
+		C_RBDB_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
 	
 		Rbdb_DatabaseJoinSettingsController*	c_local_database_join_settings_controller	=	Rbdb_DatabaseJoinCursor_settingsController( c_join_cursor );
 
 		rb_local_database_join_settings_controller	=	RUBY_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( c_local_database_join_settings_controller );
 
 		rb_iv_set(	rb_join_cursor,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
 								rb_local_database_join_settings_controller );
 	}
 
@@ -191,7 +191,7 @@ VALUE rb_Rbdb_DatabaseJoinCursor_parentDatabase(	VALUE	rb_join_cursor )	{
 VALUE rb_Rbdb_DatabaseJoinCursor_parentDatabaseJoinController(	VALUE	rb_join_cursor )	{
 	
 	VALUE		rb_database_join_controller	=	rb_iv_get(	rb_join_cursor,
-																										Rbdb_RB_JOIN_CURSOR_VARIABLE_PARENT_JOIN_CONTROLLER );
+																										RBDB_RB_JOIN_CURSOR_VARIABLE_PARENT_JOIN_CONTROLLER );
 
 	return rb_database_join_controller;
 }
@@ -203,7 +203,7 @@ VALUE rb_Rbdb_DatabaseJoinCursor_parentDatabaseJoinController(	VALUE	rb_join_cur
 VALUE rb_Rbdb_DatabaseJoinCursor_close( VALUE	rb_join_cursor )	{
 	
 	Rbdb_DatabaseJoinCursor*	c_join_cursor;
-	C_Rbdb_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
+	C_RBDB_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
 
 	Rbdb_DatabaseJoinCursor_close( c_join_cursor );
 
@@ -218,10 +218,10 @@ VALUE rb_Rbdb_DatabaseJoinCursor_retrieveKey(	VALUE	rb_join_cursor,
 												VALUE	rb_key	)	{
 
 	Rbdb_DatabaseJoinCursor*	c_join_cursor;
-	C_Rbdb_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
+	C_RBDB_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
 
 	Rbdb_Key*			c_key;
-	C_Rbdb_KEY( rb_key, c_key );
+	C_RBDB_KEY( rb_key, c_key );
 
 	return RUBY_RBDB_RECORD( Rbdb_DatabaseJoinCursor_retrieveKey(	c_join_cursor,
 																	c_key ) );
@@ -243,7 +243,7 @@ VALUE rb_Rbdb_DatabaseJoinCursor_iterate(	int	argc,
 	}
 
 	Rbdb_DatabaseJoinCursor*	c_join_cursor;
-	C_Rbdb_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
+	C_RBDB_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
 
 	Rbdb_Record*	c_record	=	NULL;
 
@@ -278,7 +278,7 @@ VALUE rb_Rbdb_DatabaseJoinCursor_iterate(	int	argc,
 VALUE rb_Rbdb_DatabaseJoinCursor_retrievePrimaryKeysForJoinData( VALUE	rb_join_cursor )	{
 
 	Rbdb_DatabaseJoinCursor*	c_join_cursor;
-	C_Rbdb_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
+	C_RBDB_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
 
 	Rbdb_DatabaseJoinCursor_retrievePrimaryKeysForJoinData( c_join_cursor );
 }

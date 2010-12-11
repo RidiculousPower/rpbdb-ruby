@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_TRANSACTION_CONTROLLER
-	#define RB_Rbdb_TRANSACTION_CONTROLLER
+#ifndef RB_RBDB_TRANSACTION_CONTROLLER
+	#define RB_RBDB_TRANSACTION_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_TransactionController();
+void Init_rb_Rbdb_TransactionController();
 VALUE rb_Rbdb_TransactionController_new(	int			argc,
 																					VALUE*	args,
 																					VALUE		rb_klass_self );

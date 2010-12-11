@@ -33,7 +33,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_LockSettingsController;
 extern	VALUE	rb_Rbdb_LockDeadlockDetectorSettingsController;
 
-void Init_Rbdb_LockSettingsController()	{
+void Init_rb_Rbdb_LockSettingsController()	{
 
 	rb_Rbdb_LockSettingsController		=	rb_define_class_under(	rb_Rbdb_SettingsController, 
 																	"Lock",	
@@ -115,14 +115,14 @@ VALUE rb_Rbdb_LockSettingsController_new(	int			argc,
 	}
 
 	Rbdb_SettingsController*	c_parent_settings_controller;
-	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
+	C_RBDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
 	Rbdb_LockSettingsController*	c_lock_settings_controller	=	Rbdb_SettingsController_lockSettingsController( c_parent_settings_controller );
 
 	VALUE	rb_lock_settings_controller	= RUBY_RBDB_LOCK_SETTINGS_CONTROLLER( c_lock_settings_controller );
 
 	rb_iv_set(	rb_lock_settings_controller,
-							Rbdb_RB_LOCK_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							RBDB_RB_LOCK_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
 							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
@@ -163,7 +163,7 @@ VALUE rb_Rbdb_LockSettingsController_parentEnvironment(	VALUE	rb_lock_settings_c
 VALUE rb_Rbdb_LockSettingsController_parentSettingsController(	VALUE	rb_lock_settings_controller )	{
 
 	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_lock_settings_controller,
-																										Rbdb_RB_LOCK_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+																										RBDB_RB_LOCK_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_settings_controller;
 }
@@ -176,7 +176,7 @@ VALUE rb_Rbdb_LockSettingsController_parentSettingsController(	VALUE	rb_lock_set
 VALUE rb_Rbdb_LockSettingsController_on( VALUE	rb_lock_settings_controller )	{
 
 	Rbdb_LockSettingsController*	c_lock_settings_controller;
-	C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+	C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 	return ( Rbdb_LockSettingsController_on( c_lock_settings_controller )	?	Qtrue
 																			:	Qfalse );
@@ -190,7 +190,7 @@ VALUE rb_Rbdb_LockSettingsController_on( VALUE	rb_lock_settings_controller )	{
 VALUE rb_Rbdb_LockSettingsController_off( VALUE	rb_lock_settings_controller )	{
 
 	Rbdb_LockSettingsController*	c_lock_settings_controller;
-	C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+	C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 	return ( Rbdb_LockSettingsController_off( c_lock_settings_controller )	?	Qtrue
 																			:	Qfalse );
@@ -204,7 +204,7 @@ VALUE rb_Rbdb_LockSettingsController_off( VALUE	rb_lock_settings_controller )	{
 	VALUE rb_Rbdb_LockSettingsController_turnOn( VALUE	rb_lock_settings_controller )	{
 
 		Rbdb_LockSettingsController*	c_lock_settings_controller;
-		C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+		C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 		Rbdb_LockSettingsController_turnOn( c_lock_settings_controller );
 
@@ -219,7 +219,7 @@ VALUE rb_Rbdb_LockSettingsController_off( VALUE	rb_lock_settings_controller )	{
 	VALUE rb_Rbdb_LockSettingsController_turnOff( VALUE	rb_lock_settings_controller )	{
 
 		Rbdb_LockSettingsController*	c_lock_settings_controller;
-		C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+		C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 		Rbdb_LockSettingsController_turnOff( c_lock_settings_controller );
 
@@ -234,7 +234,7 @@ VALUE rb_Rbdb_LockSettingsController_off( VALUE	rb_lock_settings_controller )	{
 VALUE rb_Rbdb_LockSettingsController_prohibitLocking( VALUE	rb_lock_settings_controller )	{
 
 	Rbdb_LockSettingsController*	c_lock_settings_controller;
-	C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+	C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 	return ( Rbdb_LockSettingsController_prohibitLocking( c_lock_settings_controller )	?	Qtrue
 																						:	Qfalse );
@@ -248,7 +248,7 @@ VALUE rb_Rbdb_LockSettingsController_prohibitLocking( VALUE	rb_lock_settings_con
 	VALUE rb_Rbdb_LockSettingsController_turnProhibitLockingOn( VALUE	rb_lock_settings_controller )	{
 
 		Rbdb_LockSettingsController*	c_lock_settings_controller;
-		C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+		C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 		Rbdb_LockSettingsController_turnProhibitLockingOn( c_lock_settings_controller );
 
@@ -263,7 +263,7 @@ VALUE rb_Rbdb_LockSettingsController_prohibitLocking( VALUE	rb_lock_settings_con
 	VALUE rb_Rbdb_LockSettingsController_turnProhibitLockingOff( VALUE	rb_lock_settings_controller )	{
 
 		Rbdb_LockSettingsController*	c_lock_settings_controller;
-		C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+		C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 		Rbdb_LockSettingsController_turnProhibitLockingOff( c_lock_settings_controller );
 
@@ -278,7 +278,7 @@ VALUE rb_Rbdb_LockSettingsController_prohibitLocking( VALUE	rb_lock_settings_con
 VALUE rb_Rbdb_LockSettingsController_timeoutReturnsDenyNotDeadlock( VALUE	rb_lock_settings_controller )	{
 
 	Rbdb_LockSettingsController*	c_lock_settings_controller;
-	C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+	C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 	return ( Rbdb_LockSettingsController_timeoutReturnsDenyNotDeadlock( c_lock_settings_controller )	?	Qtrue
 																											:	Qfalse );
@@ -292,7 +292,7 @@ VALUE rb_Rbdb_LockSettingsController_timeoutReturnsDenyNotDeadlock( VALUE	rb_loc
 	VALUE rb_Rbdb_LockSettingsController_turnTimeoutReturnsDenyNotDeadlockOn( VALUE	rb_lock_settings_controller )	{
 
 		Rbdb_LockSettingsController*	c_lock_settings_controller;
-		C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+		C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 		Rbdb_LockSettingsController_turnTimeoutReturnsDenyNotDeadlockOn( c_lock_settings_controller );
 
@@ -307,7 +307,7 @@ VALUE rb_Rbdb_LockSettingsController_timeoutReturnsDenyNotDeadlock( VALUE	rb_loc
 	VALUE rb_Rbdb_LockSettingsController_turnTimeoutReturnsDenyNotDeadlockOff( VALUE	rb_lock_settings_controller )	{
 
 		Rbdb_LockSettingsController*	c_lock_settings_controller;
-		C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+		C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 		Rbdb_LockSettingsController_turnTimeoutReturnsDenyNotDeadlockOff( c_lock_settings_controller );
 
@@ -322,7 +322,7 @@ VALUE rb_Rbdb_LockSettingsController_timeoutReturnsDenyNotDeadlock( VALUE	rb_loc
 VALUE rb_Rbdb_LockSettingsController_noWaitingForConflicts( VALUE	rb_lock_settings_controller )	{
 
 	Rbdb_LockSettingsController*	c_lock_settings_controller;
-	C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+	C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 	return ( Rbdb_LockSettingsController_noWaitingForConflicts( c_lock_settings_controller )	?	Qtrue
 																								:	Qfalse );
@@ -336,7 +336,7 @@ VALUE rb_Rbdb_LockSettingsController_noWaitingForConflicts( VALUE	rb_lock_settin
 	VALUE rb_Rbdb_LockSettingsController_turnNoWaitingForConflictsOn( VALUE	rb_lock_settings_controller )	{
 
 		Rbdb_LockSettingsController*	c_lock_settings_controller;
-		C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+		C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 		Rbdb_LockSettingsController_turnNoWaitingForConflictsOn( c_lock_settings_controller );
 
@@ -351,7 +351,7 @@ VALUE rb_Rbdb_LockSettingsController_noWaitingForConflicts( VALUE	rb_lock_settin
 	VALUE rb_Rbdb_LockSettingsController_turnNoWaitingForConflictsOff( VALUE	rb_lock_settings_controller )	{
 
 		Rbdb_LockSettingsController*	c_lock_settings_controller;
-		C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+		C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 		Rbdb_LockSettingsController_turnNoWaitingForConflictsOff( c_lock_settings_controller );
 
@@ -366,7 +366,7 @@ VALUE rb_Rbdb_LockSettingsController_noWaitingForConflicts( VALUE	rb_lock_settin
 VALUE rb_Rbdb_LockSettingsController_lockForEnvironmentNotDatabase( VALUE	rb_lock_settings_controller )	{
 
 	Rbdb_LockSettingsController*	c_lock_settings_controller;
-	C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+	C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 	return ( Rbdb_LockSettingsController_lockForEnvironmentNotDatabase( c_lock_settings_controller )	?	Qtrue
 																										:	Qfalse );
@@ -379,7 +379,7 @@ VALUE rb_Rbdb_LockSettingsController_lockForEnvironmentNotDatabase( VALUE	rb_loc
 		VALUE rb_Rbdb_LockSettingsController_turnLockForEnvironmentNotDatabaseOn( VALUE	rb_lock_settings_controller )	{
 
 			Rbdb_LockSettingsController*	c_lock_settings_controller;
-			C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+			C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 			Rbdb_LockSettingsController_turnLockForEnvironmentNotDatabaseOn( c_lock_settings_controller );
 
@@ -393,7 +393,7 @@ VALUE rb_Rbdb_LockSettingsController_lockForEnvironmentNotDatabase( VALUE	rb_loc
 		VALUE rb_Rbdb_LockSettingsController_turnLockForEnvironmentNotDatabaseOff( VALUE	rb_lock_settings_controller )	{
 
 			Rbdb_LockSettingsController*	c_lock_settings_controller;
-			C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+			C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 			Rbdb_LockSettingsController_turnLockForEnvironmentNotDatabaseOff( c_lock_settings_controller );
 
@@ -408,7 +408,7 @@ VALUE rb_Rbdb_LockSettingsController_lockForEnvironmentNotDatabase( VALUE	rb_loc
 VALUE rb_Rbdb_LockSettingsController_timeout( VALUE	rb_lock_settings_controller )	{
 
 	Rbdb_LockSettingsController*	c_lock_settings_controller;
-	C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+	C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 	return INT2FIX( Rbdb_LockSettingsController_timeout( c_lock_settings_controller ) );
 }
@@ -422,7 +422,7 @@ VALUE rb_Rbdb_LockSettingsController_timeout( VALUE	rb_lock_settings_controller 
 														VALUE	timeout	)	{
 
 		Rbdb_LockSettingsController*	c_lock_settings_controller;
-		C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+		C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 		Rbdb_LockSettingsController_setTimeout(	c_lock_settings_controller,
 													FIX2INT( timeout ) );
@@ -439,7 +439,7 @@ VALUE rb_Rbdb_LockSettingsController_timeout( VALUE	rb_lock_settings_controller 
 VALUE rb_Rbdb_LockSettingsController_conflictMatrix( VALUE	rb_lock_settings_controller )	{
 
 	Rbdb_LockSettingsController*	c_lock_settings_controller;
-	C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+	C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 								//	FIX - return array
 
@@ -459,7 +459,7 @@ VALUE rb_Rbdb_LockSettingsController_conflictMatrix( VALUE	rb_lock_settings_cont
 																														VALUE	rb_conflict_matrix __attribute__ ((unused )) )	{
 
 		Rbdb_LockSettingsController*	c_lock_settings_controller;
-		C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+		C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 		//	FIX
 		uint8_t*	c_conflict_matrix;
@@ -478,7 +478,7 @@ VALUE rb_Rbdb_LockSettingsController_conflictMatrix( VALUE	rb_lock_settings_cont
 VALUE rb_Rbdb_LockSettingsController_maxLockers( VALUE	rb_lock_settings_controller )	{
 
 	Rbdb_LockSettingsController*	c_lock_settings_controller;
-	C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+	C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 	return INT2FIX( Rbdb_LockSettingsController_maxLockers( c_lock_settings_controller ) );
 }
@@ -492,7 +492,7 @@ VALUE rb_Rbdb_LockSettingsController_maxLockers( VALUE	rb_lock_settings_controll
 															VALUE	rb_max_lockers )	{
 	
 		Rbdb_LockSettingsController*	c_lock_settings_controller;
-		C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+		C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 	
 		Rbdb_LockSettingsController_setMaxLockers(	c_lock_settings_controller,
 													FIX2INT( rb_max_lockers ) );
@@ -508,7 +508,7 @@ VALUE rb_Rbdb_LockSettingsController_maxLockers( VALUE	rb_lock_settings_controll
 VALUE rb_Rbdb_LockSettingsController_maxLocks( VALUE	rb_lock_settings_controller )	{
 
 	Rbdb_LockSettingsController*	c_lock_settings_controller;
-	C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+	C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 	return INT2FIX( Rbdb_LockSettingsController_maxLocks( c_lock_settings_controller ) );
 }
@@ -522,7 +522,7 @@ VALUE rb_Rbdb_LockSettingsController_maxLocks( VALUE	rb_lock_settings_controller
 														VALUE	rb_max_locks )	{
 
 		Rbdb_LockSettingsController*	c_lock_settings_controller;
-		C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+		C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 		Rbdb_LockSettingsController_setMaxLocks(	c_lock_settings_controller,
 													FIX2INT( rb_max_locks ) );
@@ -538,7 +538,7 @@ VALUE rb_Rbdb_LockSettingsController_maxLocks( VALUE	rb_lock_settings_controller
 VALUE rb_Rbdb_LockSettingsController_maxObjects( VALUE	rb_lock_settings_controller )	{
 
 	Rbdb_LockSettingsController*	c_lock_settings_controller;
-	C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+	C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 	return INT2FIX( Rbdb_LockSettingsController_maxObjects( c_lock_settings_controller ) );
 }
@@ -552,7 +552,7 @@ VALUE rb_Rbdb_LockSettingsController_maxObjects( VALUE	rb_lock_settings_controll
 															VALUE	rb_max_objects )	{
 
 		Rbdb_LockSettingsController*	c_lock_settings_controller;
-		C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+		C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 		Rbdb_LockSettingsController_setMaxObjects(	c_lock_settings_controller,
 													FIX2INT( rb_max_objects ) );
@@ -568,7 +568,7 @@ VALUE rb_Rbdb_LockSettingsController_maxObjects( VALUE	rb_lock_settings_controll
 VALUE rb_Rbdb_LockSettingsController_numberOfPartitions( VALUE	rb_lock_settings_controller )	{
 
 	Rbdb_LockSettingsController*	c_lock_settings_controller;
-	C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+	C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 	return INT2FIX( Rbdb_LockSettingsController_numberOfPartitions( c_lock_settings_controller ) );
 }
@@ -582,7 +582,7 @@ VALUE rb_Rbdb_LockSettingsController_numberOfPartitions( VALUE	rb_lock_settings_
 																	VALUE	rb_partitions )	{
 
 		Rbdb_LockSettingsController*	c_lock_settings_controller;
-		C_Rbdb_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
+		C_RBDB_LOCK_SETTINGS_CONTROLLER( rb_lock_settings_controller, c_lock_settings_controller );
 
 		Rbdb_LockSettingsController_setNumberOfPartitions(	c_lock_settings_controller,
 															FIX2INT( rb_partitions ) );
@@ -603,13 +603,13 @@ VALUE rb_Rbdb_LockSettingsController_deadlockDetectorSettingsController( VALUE	r
 	VALUE	rb_deadlock_detector_settings_controller	=	Qnil;
 	
 	if ( ( rb_deadlock_detector_settings_controller = rb_iv_get(	rb_lock_settings_controller,
-																																Rbdb_RB_SETTINGS_VARIABLE_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																RBDB_RB_SETTINGS_VARIABLE_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_deadlock_detector_settings_controller	=	rb_Rbdb_LockDeadlockDetectorSettingsController_new(	1,
 																																																		& rb_lock_settings_controller,
 																																																		rb_Rbdb_LockDeadlockDetectorSettingsController );
 		rb_iv_set(	rb_lock_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER,
 								rb_deadlock_detector_settings_controller );
 	}
 	

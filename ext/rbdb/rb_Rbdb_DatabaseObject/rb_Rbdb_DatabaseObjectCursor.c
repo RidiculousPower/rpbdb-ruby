@@ -38,7 +38,7 @@ extern	VALUE	rb_Rbdb_DatabaseObjectCursor;
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-void Init_Rbdb_DatabaseObjectCursor()	{
+void Init_rb_Rbdb_DatabaseObjectCursor()	{
 
 	rb_Rbdb_DatabaseObjectCursor		=	rb_define_class_under(	rb_Rbdb_DatabaseCursor, 
 																														"ObjectCursor",				
@@ -128,7 +128,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_writeAsCurrent(	VALUE	rb_database_cursor,
 													VALUE	rb_data )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
@@ -151,7 +151,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_writeAsDuplicateAfterCurrent(	VALUE	rb_databa
 															VALUE	rb_data )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
@@ -174,7 +174,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_writeAsDuplicateBeforeCurrent(	VALUE	rb_datab
 															VALUE	rb_data )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
@@ -201,7 +201,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_writeBeforeAnyDuplicates(	VALUE	rb_database_c
 													   VALUE	rb_data )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
@@ -232,7 +232,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_writeAfterAnyDuplicates(	VALUE	rb_database_cu
 													  VALUE	rb_data )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
@@ -260,7 +260,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_writeOnlyIfNotInDatabase(	VALUE	rb_database_c
 													   VALUE	rb_data )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
@@ -290,7 +290,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_keyExists(	VALUE	rb_database_cursor,
 												VALUE	rb_key )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
@@ -312,7 +312,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrieve(	int	argc,
 												VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	rb_Rbdb_DatabaseObjectCursor_internal_retrieveRecord(	rb_database_cursor,
 																							argc,
@@ -335,7 +335,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrievePartialKey(	VALUE	rb_database_cursor,
 																												VALUE	rb_key __attribute__((unused)) )	{
  
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
  
 //	Rbdb_DatabaseCursor_retrievePartialKey( c_database_cursor );
 
@@ -353,7 +353,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrievePartialData(	VALUE	rb_database_cursor
 																												VALUE	rb_data __attribute__((unused)) )	{
  
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
  
 //	Rbdb_DatabaseCursor_retrievePartialData( c_database_cursor );
  
@@ -371,7 +371,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrievePartialKeyDataPair(	VALUE	rb_database
 																																VALUE	partial_data __attribute__((unused)) )	{
  
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
  
 //	Rbdb_DatabaseCursor_retrievePartialKeyDataPair( c_database_cursor );
 
@@ -391,7 +391,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrievePartialKeyDataPair(	VALUE	rb_database
 VALUE rb_Rbdb_DatabaseObjectCursor_current(	VALUE	rb_database_cursor )	{
 
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveCurrent(	c_database_cursor );
 	
@@ -405,7 +405,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_current(	VALUE	rb_database_cursor )	{
 VALUE rb_Rbdb_DatabaseObjectCursor_currentKey(	VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveCurrent(	c_database_cursor );
 	
@@ -420,7 +420,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_currentKey(	VALUE	rb_database_cursor )	{
 VALUE rb_Rbdb_DatabaseObjectCursor_retrieveFirst( VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveFirst(	c_database_cursor );
 	
@@ -435,7 +435,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrieveFirst( VALUE	rb_database_cursor )	{
 VALUE rb_Rbdb_DatabaseObjectCursor_retrieveFirstKey( VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveFirst(	c_database_cursor );
 	
@@ -450,7 +450,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrieveFirstKey( VALUE	rb_database_cursor )	
 VALUE rb_Rbdb_DatabaseObjectCursor_retrieveLast( VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveLast(	c_database_cursor );
 	
@@ -465,7 +465,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrieveLast( VALUE	rb_database_cursor )	{
 VALUE rb_Rbdb_DatabaseObjectCursor_retrieveLastKey( VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveLast(	c_database_cursor );
 	
@@ -480,7 +480,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrieveLastKey( VALUE	rb_database_cursor )	{
 VALUE rb_Rbdb_DatabaseObjectCursor_retrieveNext( VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveNext(	c_database_cursor );
 	
@@ -495,7 +495,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrieveNext( VALUE	rb_database_cursor )	{
 VALUE rb_Rbdb_DatabaseObjectCursor_retrieveNextKey( VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveNext(	c_database_cursor );
 	
@@ -510,7 +510,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrieveNextKey( VALUE	rb_database_cursor )	{
 VALUE rb_Rbdb_DatabaseObjectCursor_retrievePrevious( VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrievePrevious(	c_database_cursor );
 	
@@ -525,7 +525,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrievePrevious( VALUE	rb_database_cursor )	
 VALUE rb_Rbdb_DatabaseObjectCursor_retrievePreviousKey( VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrievePrevious(	c_database_cursor );
 	
@@ -540,7 +540,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrievePreviousKey( VALUE	rb_database_cursor
 VALUE rb_Rbdb_DatabaseObjectCursor_retrieveNextDuplicate( VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveNextDuplicate(	c_database_cursor );
 
@@ -555,7 +555,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrieveNextDuplicate( VALUE	rb_database_curs
 VALUE rb_Rbdb_DatabaseObjectCursor_retrievePreviousDuplicate( VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrievePreviousDuplicate(	c_database_cursor );
 	
@@ -570,7 +570,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrievePreviousDuplicate( VALUE	rb_database_
 VALUE rb_Rbdb_DatabaseObjectCursor_retrieveNextNonDuplicate( VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveNextNonDuplicate(	c_database_cursor );
 	
@@ -585,7 +585,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_retrieveNextNonDuplicate( VALUE	rb_database_c
 VALUE rb_Rbdb_DatabaseObjectCursor_retrievePreviousNonDuplicate( VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrievePreviousNonDuplicate(	c_database_cursor );
 	
@@ -600,7 +600,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_iterateInSegments(	VALUE rb_database_cursor,
 														VALUE rb_items_per_segment )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	//	Get our next record for the iteration
 	Rbdb_Record*	c_record	=	NULL;
@@ -653,7 +653,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_iterate( int	argc,
 */
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	//	Get our next record for the iteration
 	Rbdb_Record*	c_record	=	NULL;
@@ -681,7 +681,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_iterateAllInSegments(	VALUE rb_database_curso
 												VALUE rb_items_per_segment	)	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	NULL;
 	
@@ -734,7 +734,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_iterateAll( int	argc,
 */
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	NULL;
 	
@@ -763,7 +763,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_iterateDuplicatesInSegments( VALUE rb_databas
 													VALUE rb_items_per_segment )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	NULL;
 	
@@ -815,7 +815,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_iterateDuplicates( int	argc,
 	}	
 */
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	NULL;
 	
@@ -844,7 +844,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_iterateKeysInSegments( VALUE rb_database_curs
 												VALUE rb_items_per_segment )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	NULL;
 	
@@ -896,7 +896,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_iterateKeys( int	argc,
 	}	
 */	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	NULL;
 	
@@ -935,7 +935,7 @@ VALUE rb_Rbdb_DatabaseObjectCursor_delete(	int	argc,
 									 VALUE	rb_database_cursor )	{
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
@@ -980,7 +980,7 @@ Rbdb_Record* rb_Rbdb_DatabaseObjectCursor_internal_retrieveRecord(	VALUE	rb_data
 																		int		argc,
 																		VALUE*	args )	{
 	Rbdb_DatabaseCursor*	c_database_cursor;
-	C_Rbdb_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	

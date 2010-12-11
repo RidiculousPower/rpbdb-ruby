@@ -4,7 +4,7 @@
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_MemoryPoolFilePageSettingsController();
+void Init_rb_Rbdb_MemoryPoolFilePageSettingsController();
 
 VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_new(	int			argc,
 																												VALUE*	args,

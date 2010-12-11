@@ -34,7 +34,7 @@ extern	VALUE	rb_Rbdb_MemoryPoolFileSettingsController;
 extern	VALUE	rb_Rbdb_MemoryPoolFilePage;
 extern	VALUE	rb_Rbdb_MemoryPoolFile;
 
-void Init_Rbdb_MemoryPoolFileController()	{
+void Init_rb_Rbdb_MemoryPoolFileController()	{
 
 	rb_Rbdb_MemoryPoolFileController	=	rb_define_class_under(	rb_Rbdb_Environment, 
 																															"FileController",			
@@ -85,13 +85,13 @@ VALUE rb_Rbdb_MemoryPoolFileController_new(	int			argc,
 	);
 
 	Rbdb_MemoryPoolController*	c_parent_memory_pool_controller;
-	C_Rbdb_MEMORY_POOL_CONTROLLER( rb_parent_memory_pool_controller, c_parent_memory_pool_controller );
+	C_RBDB_MEMORY_POOL_CONTROLLER( rb_parent_memory_pool_controller, c_parent_memory_pool_controller );
 
 	VALUE	rb_memory_pool_file_controller	=	RUBY_RBDB_MEMORY_POOL_FILE_CONTROLLER( Rbdb_MemoryPoolFileController_new( c_parent_memory_pool_controller ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_memory_pool_file_controller,
-							Rbdb_RB_MEMORY_POOL_FILE_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_CONTROLLER,
+							RBDB_RB_MEMORY_POOL_FILE_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_CONTROLLER,
 							rb_parent_memory_pool_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_memory_pool_controller };
@@ -122,17 +122,17 @@ VALUE rb_Rbdb_MemoryPoolFileController_settingsController(	VALUE	rb_memory_pool_
 	VALUE	rb_local_memory_pool_file_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_memory_pool_file_settings_controller = rb_iv_get(	rb_memory_pool_file_controller,
-																																		Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																		RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_MemoryPoolFileController*		c_memory_pool_file_controller;
-		C_Rbdb_MEMORY_POOL_FILE_CONTROLLER( rb_memory_pool_file_controller, c_memory_pool_file_controller );
+		C_RBDB_MEMORY_POOL_FILE_CONTROLLER( rb_memory_pool_file_controller, c_memory_pool_file_controller );
 	
 		Rbdb_MemoryPoolFileSettingsController*	c_local_memory_pool_settings_controller	=	Rbdb_MemoryPoolFileController_settingsController( c_memory_pool_file_controller );
 
 		rb_local_memory_pool_file_settings_controller	=	RUBY_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( c_local_memory_pool_settings_controller );
 
 		rb_iv_set(	rb_memory_pool_file_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,
 								rb_local_memory_pool_file_settings_controller );
 	}
 
@@ -156,7 +156,7 @@ VALUE rb_Rbdb_MemoryPoolFileController_parentEnvironment(	VALUE	rb_memory_pool_f
 VALUE rb_Rbdb_MemoryPoolFileController_parentMemoryPoolController(	VALUE	rb_memory_pool_file_controller )	{
 
 	VALUE	rb_parent_memory_pool_controller	=	rb_iv_get(	rb_memory_pool_file_controller,
-																												Rbdb_RB_MEMORY_POOL_FILE_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_CONTROLLER );
+																												RBDB_RB_MEMORY_POOL_FILE_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_CONTROLLER );
 	
 	return rb_parent_memory_pool_controller;
 }
@@ -169,7 +169,7 @@ VALUE rb_Rbdb_MemoryPoolFileController_parentMemoryPoolController(	VALUE	rb_memo
 VALUE rb_Rbdb_MemoryPoolFileController_createFile( VALUE	rb_memory_pool_file_controller )	{
 
 	Rbdb_MemoryPoolFileController*		c_memory_pool_file_controller;
-	C_Rbdb_MEMORY_POOL_FILE_CONTROLLER( rb_memory_pool_file_controller, c_memory_pool_file_controller );
+	C_RBDB_MEMORY_POOL_FILE_CONTROLLER( rb_memory_pool_file_controller, c_memory_pool_file_controller );
 
 	return RUBY_RBDB_MEMORY_POOL_FILE_PAGE( Rbdb_MemoryPoolFileController_createFile( c_memory_pool_file_controller ) );	
 }
@@ -192,7 +192,7 @@ VALUE rb_Rbdb_MemoryPoolFileController_openFile(	VALUE	rb_memory_pool_file_contr
 													VALUE	rb_pagesize_in_bytes )	{
 
 	Rbdb_MemoryPoolFileController*		c_memory_pool_file_controller;
-	C_Rbdb_MEMORY_POOL_FILE_CONTROLLER( rb_memory_pool_file_controller, c_memory_pool_file_controller );
+	C_RBDB_MEMORY_POOL_FILE_CONTROLLER( rb_memory_pool_file_controller, c_memory_pool_file_controller );
 	
 	return RUBY_RBDB_MEMORY_POOL_FILE( Rbdb_MemoryPoolFileController_openFile(	c_memory_pool_file_controller,
 																					StringValuePtr( rb_file_path ),

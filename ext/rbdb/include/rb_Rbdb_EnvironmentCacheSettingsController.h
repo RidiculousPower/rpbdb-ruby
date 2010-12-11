@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER
-	#define RB_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER
+#ifndef RB_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER
+	#define RB_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_EnvironmentCacheSettingsController();
+void Init_rb_Rbdb_EnvironmentCacheSettingsController();
 
 VALUE rb_Rbdb_EnvironmentCacheSettingsController_new(	int			argc,
 																											VALUE*	args,
@@ -41,6 +41,6 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_parentSettingsController(	VALUE
 		VALUE rb_Rbdb_EnvironmentCacheSettingsController_setMaxSizeInKBytesBytes(	VALUE	rb_environment_cache_settings_controller, 
 																			  		VALUE	rb_max_size_kbytes, 
 																			  		VALUE	rb_additional_max_size_bytes );
-void Init_Rbdb_EnvironmentCacheSettingsController();
+void Init_rb_Rbdb_EnvironmentCacheSettingsController();
 
 #endif

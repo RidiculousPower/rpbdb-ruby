@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER
-	#define RB_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER
+#ifndef RB_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER
+	#define RB_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_ReplicationVerbositySettingsController();
+void Init_rb_Rbdb_ReplicationVerbositySettingsController();
 
 VALUE rb_Rbdb_ReplicationVerbositySettingsController_new(	int			argc,
 																													VALUE*	args,

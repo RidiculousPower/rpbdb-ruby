@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_JOIN_CURSOR
-	#define RB_Rbdb_JOIN_CURSOR
+#ifndef RB_RBDB_JOIN_CURSOR
+	#define RB_RBDB_JOIN_CURSOR
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_DatabaseJoinCursor();
+void Init_rb_Rbdb_DatabaseJoinCursor();
 VALUE rb_Rbdb_DatabaseJoinCursor_new(	int			argc,
 																			VALUE*	args,
 																			VALUE		rb_klass_self );

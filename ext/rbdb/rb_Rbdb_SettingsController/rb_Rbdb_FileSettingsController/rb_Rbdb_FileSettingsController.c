@@ -35,7 +35,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_FileSettingsController;
 extern	VALUE	rb_Rbdb_FileVerbositySettingsController;
 
-void Init_Rbdb_FileSettingsController()	{
+void Init_rb_Rbdb_FileSettingsController()	{
 
 	rb_Rbdb_FileSettingsController		=	rb_define_class_under(	rb_Rbdb_SettingsController, 
 																																		"File",	
@@ -115,14 +115,14 @@ VALUE rb_Rbdb_FileSettingsController_new(	int			argc,
 	}
 
 	Rbdb_SettingsController*	c_parent_settings_controller;
-	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
+	C_RBDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 	
 	Rbdb_FileSettingsController*	c_file_settings_controller	=	Rbdb_SettingsController_fileSettingsController( c_parent_settings_controller );
 	
 	VALUE	rb_file_settings_controller	= RUBY_RBDB_FILE_SETTINGS_CONTROLLER( c_file_settings_controller );
 
 	rb_iv_set(	rb_file_settings_controller,
-							Rbdb_RB_FILE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							RBDB_RB_FILE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
 							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
@@ -163,7 +163,7 @@ VALUE rb_Rbdb_FileSettingsController_parentEnvironment(	VALUE	rb_file_settings_c
 VALUE rb_Rbdb_FileSettingsController_parentSettingsController(	VALUE	rb_file_settings_controller )	{
 
 	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_file_settings_controller,
-																										Rbdb_RB_FILE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+																										RBDB_RB_FILE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_settings_controller;
 }
@@ -176,7 +176,7 @@ VALUE rb_Rbdb_FileSettingsController_parentSettingsController(	VALUE	rb_file_set
 VALUE rb_Rbdb_FileSettingsController_intermediateDirectoryMode( VALUE	rb_file_settings_controller )	{
 
 	Rbdb_FileSettingsController*	c_file_settings_controller;
-	C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+	C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 	char*	c_intermediate_directory_mode		=	Rbdb_FileSettingsController_intermediateDirectoryMode( c_file_settings_controller );
 	VALUE	rb_intermediate_directory_mode	=	rb_str_new2( c_intermediate_directory_mode );
@@ -198,7 +198,7 @@ VALUE rb_Rbdb_FileSettingsController_intermediateDirectoryMode( VALUE	rb_file_se
 		}
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 		char*	c_mode	=	StringValuePtr( rb_mode );
 
@@ -216,7 +216,7 @@ VALUE rb_Rbdb_FileSettingsController_intermediateDirectoryMode( VALUE	rb_file_se
 VALUE rb_Rbdb_FileSettingsController_tempDirectory( VALUE	rb_file_settings_controller )	{
 
 	Rbdb_FileSettingsController*	c_file_settings_controller;
-	C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+	C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 	return rb_str_new2( Rbdb_FileSettingsController_tempDirectory( c_file_settings_controller ) );
 }
@@ -229,7 +229,7 @@ VALUE rb_Rbdb_FileSettingsController_tempDirectory( VALUE	rb_file_settings_contr
 																													VALUE	rb_temp_directory )	{
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 									//	FIX - change to use ruby directory
 
@@ -249,7 +249,7 @@ VALUE rb_Rbdb_FileSettingsController_tempDirectory( VALUE	rb_file_settings_contr
 VALUE rb_Rbdb_FileSettingsController_permitEnvironmentBasedFileNaming( VALUE	rb_file_settings_controller )	{
 
 	Rbdb_FileSettingsController*	c_file_settings_controller;
-	C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+	C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 	return ( Rbdb_FileSettingsController_permitEnvironmentBasedFileNaming( c_file_settings_controller )	?	Qtrue
 																											:	Qfalse );
@@ -262,7 +262,7 @@ VALUE rb_Rbdb_FileSettingsController_permitEnvironmentBasedFileNaming( VALUE	rb_
 	VALUE rb_Rbdb_FileSettingsController_turnPermitEnvironmentBasedFileNamingOn( VALUE	rb_file_settings_controller )	{
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 		Rbdb_FileSettingsController_turnPermitEnvironmentBasedFileNamingOn( c_file_settings_controller );
 
@@ -276,7 +276,7 @@ VALUE rb_Rbdb_FileSettingsController_permitEnvironmentBasedFileNaming( VALUE	rb_
 	VALUE rb_Rbdb_FileSettingsController_turnPermitEnvironmentBasedFileNamingOff( VALUE	rb_file_settings_controller )	{
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 		Rbdb_FileSettingsController_turnPermitEnvironmentBasedFileNamingOff( c_file_settings_controller );
 
@@ -291,7 +291,7 @@ VALUE rb_Rbdb_FileSettingsController_permitEnvironmentBasedFileNaming( VALUE	rb_
 VALUE rb_Rbdb_FileSettingsController_useEnvironmentHomePermissionsForFileNaming( VALUE	rb_file_settings_controller )	{
 
 	Rbdb_FileSettingsController*	c_file_settings_controller;
-	C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+	C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 	return ( Rbdb_FileSettingsController_useEnvironmentHomePermissionsForFileNaming( c_file_settings_controller )	?	Qtrue
 																													:	Qfalse );
@@ -304,7 +304,7 @@ VALUE rb_Rbdb_FileSettingsController_useEnvironmentHomePermissionsForFileNaming(
 	VALUE rb_Rbdb_FileSettingsController_turnUseEnvironmentHomePermissionsForFileNamingOn( VALUE	rb_file_settings_controller )	{
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 		Rbdb_FileSettingsController_turnUseEnvironmentHomePermissionsForFileNamingOn( c_file_settings_controller );
 
@@ -318,7 +318,7 @@ VALUE rb_Rbdb_FileSettingsController_useEnvironmentHomePermissionsForFileNaming(
 	VALUE rb_Rbdb_FileSettingsController_turnUseEnvironmentHomePermissionsForFileNamingOff( VALUE	rb_file_settings_controller )	{
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 		Rbdb_FileSettingsController_turnUseEnvironmentHomePermissionsForFileNamingOff( c_file_settings_controller );
 
@@ -333,7 +333,7 @@ VALUE rb_Rbdb_FileSettingsController_useEnvironmentHomePermissionsForFileNaming(
 VALUE rb_Rbdb_FileSettingsController_createIfNecessary( VALUE	rb_file_settings_controller )	{
 
 	Rbdb_FileSettingsController*	c_file_settings_controller;
-	C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+	C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 	return ( Rbdb_FileSettingsController_createIfNecessary( c_file_settings_controller )	?	Qtrue
 																							:	Qfalse );
@@ -346,7 +346,7 @@ VALUE rb_Rbdb_FileSettingsController_createIfNecessary( VALUE	rb_file_settings_c
 	VALUE rb_Rbdb_FileSettingsController_turnCreateIfNecessaryOn( VALUE	rb_file_settings_controller )	{
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 		Rbdb_FileSettingsController_turnCreateIfNecessaryOn( c_file_settings_controller );
 
@@ -360,7 +360,7 @@ VALUE rb_Rbdb_FileSettingsController_createIfNecessary( VALUE	rb_file_settings_c
 	VALUE rb_Rbdb_FileSettingsController_turnCreateIfNecessaryOff( VALUE	rb_file_settings_controller )	{
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 		Rbdb_FileSettingsController_turnCreateIfNecessaryOff( c_file_settings_controller );
 
@@ -375,7 +375,7 @@ VALUE rb_Rbdb_FileSettingsController_createIfNecessary( VALUE	rb_file_settings_c
 VALUE rb_Rbdb_FileSettingsController_isErrorIfDBExistsBeforeCreate( VALUE	rb_file_settings_controller )	{
 
 	Rbdb_FileSettingsController*	c_file_settings_controller;
-	C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+	C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 	return ( Rbdb_FileSettingsController_isErrorIfDBExistsBeforeCreate( c_file_settings_controller )	?	Qtrue
 																										:	Qfalse );
@@ -388,7 +388,7 @@ VALUE rb_Rbdb_FileSettingsController_isErrorIfDBExistsBeforeCreate( VALUE	rb_fil
 	VALUE rb_Rbdb_FileSettingsController_turnIsErrorIfDBExistsBeforeCreateOn( VALUE	rb_file_settings_controller )	{
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 		Rbdb_FileSettingsController_turnIsErrorIfDBExistsBeforeCreateOn( c_file_settings_controller );
 
@@ -402,7 +402,7 @@ VALUE rb_Rbdb_FileSettingsController_isErrorIfDBExistsBeforeCreate( VALUE	rb_fil
 	VALUE rb_Rbdb_FileSettingsController_turnIsErrorIfDBExistsBeforeCreateOff( VALUE	rb_file_settings_controller )	{
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 		Rbdb_FileSettingsController_turnIsErrorIfDBExistsBeforeCreateOff( c_file_settings_controller );
 
@@ -417,7 +417,7 @@ VALUE rb_Rbdb_FileSettingsController_isErrorIfDBExistsBeforeCreate( VALUE	rb_fil
 VALUE rb_Rbdb_FileSettingsController_openReadOnly( VALUE	rb_file_settings_controller )	{
 
 	Rbdb_FileSettingsController*	c_file_settings_controller;
-	C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+	C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 	return ( Rbdb_FileSettingsController_openReadOnly( c_file_settings_controller )	?	Qtrue
 																						:	Qfalse );
@@ -430,7 +430,7 @@ VALUE rb_Rbdb_FileSettingsController_openReadOnly( VALUE	rb_file_settings_contro
 	VALUE rb_Rbdb_FileSettingsController_turnOpenReadOnlyOn( VALUE	rb_file_settings_controller )	{
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 		Rbdb_FileSettingsController_turnOpenReadOnlyOn( c_file_settings_controller );
 
@@ -444,7 +444,7 @@ VALUE rb_Rbdb_FileSettingsController_openReadOnly( VALUE	rb_file_settings_contro
 	VALUE rb_Rbdb_FileSettingsController_turnOpenReadOnlyOff( VALUE	rb_file_settings_controller )	{
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 		Rbdb_FileSettingsController_turnOpenReadOnlyOff( c_file_settings_controller );
 
@@ -459,7 +459,7 @@ VALUE rb_Rbdb_FileSettingsController_openReadOnly( VALUE	rb_file_settings_contro
 VALUE rb_Rbdb_FileSettingsController_forceRemoval( VALUE	rb_file_settings_controller )	{
 
 	Rbdb_FileSettingsController*	c_file_settings_controller;
-	C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+	C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 	return ( Rbdb_FileSettingsController_forceRemoval( c_file_settings_controller )	?	Qtrue
 																						:	Qfalse );
@@ -472,7 +472,7 @@ VALUE rb_Rbdb_FileSettingsController_forceRemoval( VALUE	rb_file_settings_contro
 	VALUE rb_Rbdb_FileSettingsController_turnForceRemovalOn( VALUE	rb_file_settings_controller )	{
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 		Rbdb_FileSettingsController_turnForceRemovalOn( c_file_settings_controller );
 
@@ -486,7 +486,7 @@ VALUE rb_Rbdb_FileSettingsController_forceRemoval( VALUE	rb_file_settings_contro
 	VALUE rb_Rbdb_FileSettingsController_turnForceRemovalOff( VALUE	rb_file_settings_controller )	{
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 		Rbdb_FileSettingsController_turnForceRemovalOff( c_file_settings_controller );
 
@@ -500,7 +500,7 @@ VALUE rb_Rbdb_FileSettingsController_forceRemoval( VALUE	rb_file_settings_contro
 VALUE rb_Rbdb_FileSettingsController_fileCreationMode( VALUE	rb_file_settings_controller )	{
 
 	Rbdb_FileSettingsController*	c_file_settings_controller;
-	C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+	C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 	return INT2FIX( Rbdb_FileSettingsController_fileCreationMode( c_file_settings_controller )	);
 }
@@ -519,7 +519,7 @@ VALUE rb_Rbdb_FileSettingsController_fileCreationMode( VALUE	rb_file_settings_co
 		}
 
 		Rbdb_FileSettingsController*	c_file_settings_controller;
-		C_Rbdb_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
+		C_RBDB_FILE_SETTINGS_CONTROLLER( rb_file_settings_controller, c_file_settings_controller );
 
 		Rbdb_FileSettingsController_setFileCreationMode(	c_file_settings_controller,
 															FIX2INT( rb_mode ) );
@@ -536,13 +536,13 @@ VALUE rb_Rbdb_FileSettingsController_verbositySettingsController( VALUE	rb_file_
 	VALUE	rb_file_verbosity_settings_controller	=	Qnil;
 	
 	if ( ( rb_file_verbosity_settings_controller = rb_iv_get(	rb_file_settings_controller,
-																														Rbdb_RB_SETTINGS_VARIABLE_FILE_VERBOSITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																														RBDB_RB_SETTINGS_VARIABLE_FILE_VERBOSITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_file_verbosity_settings_controller	=	rb_Rbdb_FileVerbositySettingsController_new(	1,
 																																													& rb_file_settings_controller,
 																																													rb_Rbdb_FileVerbositySettingsController );
 		rb_iv_set(	rb_file_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_FILE_VERBOSITY_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_FILE_VERBOSITY_SETTINGS_CONTROLLER,
 								rb_file_verbosity_settings_controller );
 	}
 	

@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_DATABASE_OBJECT_DATABASE
-	#define RB_Rbdb_DATABASE_OBJECT_DATABASE
+#ifndef RB_RBDB_DATABASE_OBJECT_DATABASE
+	#define RB_RBDB_DATABASE_OBJECT_DATABASE
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-	void Init_Rbdb_DatabaseObjectDatabase();
+	void Init_rb_Rbdb_DatabaseObjectDatabase();
 	VALUE rb_Rbdb_DatabaseObjectDatabase_cursor( VALUE	rb_database );
 	VALUE rb_Rbdb_DatabaseObjectDatabase_iterateInSegments(	VALUE	rb_database,
 															VALUE	rb_items_per_segment	);

@@ -31,7 +31,7 @@ extern	VALUE	rb_Rbdb_Environment;
 extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_ErrorSettingsController;
 
-void Init_Rbdb_ErrorSettingsController()	{
+void Init_rb_Rbdb_ErrorSettingsController()	{
 
 
 	rb_Rbdb_ErrorSettingsController		=	rb_define_class_under(	rb_Rbdb_SettingsController, 
@@ -89,14 +89,14 @@ VALUE rb_Rbdb_ErrorSettingsController_new(	int			argc,
 	}
 
 	Rbdb_SettingsController*	c_parent_settings_controller;
-	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
+	C_RBDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
 	Rbdb_ErrorSettingsController*	c_error_settings_controller	=	Rbdb_SettingsController_errorSettingsController( c_parent_settings_controller );
 
 	VALUE	rb_error_settings_controller	= RUBY_RBDB_ERROR_SETTINGS_CONTROLLER( c_error_settings_controller );
 
 	rb_iv_set(	rb_error_settings_controller,
-							Rbdb_RB_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							RBDB_RB_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
 							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
@@ -137,7 +137,7 @@ VALUE rb_Rbdb_ErrorSettingsController_parentEnvironment(	VALUE	rb_error_settings
 VALUE rb_Rbdb_ErrorSettingsController_parentSettingsController(	VALUE	rb_error_settings_controller )	{
 
 	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_error_settings_controller,
-																										Rbdb_RB_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+																										RBDB_RB_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_settings_controller;
 }
@@ -150,7 +150,7 @@ VALUE rb_Rbdb_ErrorSettingsController_parentSettingsController(	VALUE	rb_error_s
 VALUE rb_Rbdb_ErrorSettingsController_file( VALUE	rb_error_settings_controller )	{
 
 	Rbdb_ErrorSettingsController*	c_error_settings_controller;
-	C_Rbdb_ERROR_SETTINGS_CONTROLLER( rb_error_settings_controller, c_error_settings_controller );
+	C_RBDB_ERROR_SETTINGS_CONTROLLER( rb_error_settings_controller, c_error_settings_controller );
 
 								//	FIX - FILE
 
@@ -170,7 +170,7 @@ VALUE rb_Rbdb_ErrorSettingsController_file( VALUE	rb_error_settings_controller )
 																									VALUE	rb_file __attribute__ ((unused )) )	{
 
 		Rbdb_ErrorSettingsController*	c_error_settings_controller;
-		C_Rbdb_ERROR_SETTINGS_CONTROLLER( rb_error_settings_controller, c_error_settings_controller );
+		C_RBDB_ERROR_SETTINGS_CONTROLLER( rb_error_settings_controller, c_error_settings_controller );
 			//	FIX- file
 			
 		FILE*	c_file;
@@ -189,7 +189,7 @@ VALUE rb_Rbdb_ErrorSettingsController_file( VALUE	rb_error_settings_controller )
 VALUE rb_Rbdb_ErrorSettingsController_prefix( VALUE	rb_error_settings_controller )	{
 
 	Rbdb_ErrorSettingsController*	c_error_settings_controller;
-	C_Rbdb_ERROR_SETTINGS_CONTROLLER( rb_error_settings_controller, c_error_settings_controller );
+	C_RBDB_ERROR_SETTINGS_CONTROLLER( rb_error_settings_controller, c_error_settings_controller );
 
 	return rb_str_new2( Rbdb_ErrorSettingsController_prefix( c_error_settings_controller ) );
 }
@@ -203,7 +203,7 @@ VALUE rb_Rbdb_ErrorSettingsController_prefix( VALUE	rb_error_settings_controller
 														VALUE	rb_error_prefix )	{
 
 		Rbdb_ErrorSettingsController*	c_error_settings_controller;
-		C_Rbdb_ERROR_SETTINGS_CONTROLLER( rb_error_settings_controller, c_error_settings_controller );
+		C_RBDB_ERROR_SETTINGS_CONTROLLER( rb_error_settings_controller, c_error_settings_controller );
 
 		Rbdb_ErrorSettingsController_setPrefix(	c_error_settings_controller,
 													StringValuePtr( rb_error_prefix ) );

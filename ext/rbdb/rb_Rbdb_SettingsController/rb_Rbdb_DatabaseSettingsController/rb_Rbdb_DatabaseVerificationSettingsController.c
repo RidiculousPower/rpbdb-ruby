@@ -41,7 +41,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_DatabaseSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseVerificationSettingsController;
 
-void Init_Rbdb_DatabaseVerificationSettingsController()	{
+void Init_rb_Rbdb_DatabaseVerificationSettingsController()	{
 
 	rb_Rbdb_DatabaseVerificationSettingsController	=	rb_define_class_under(	rb_Rbdb_DatabaseSettingsController, 
 																																						"Verification",	
@@ -142,7 +142,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseSettingsController*	c_parent_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_parent_database_settings_controller );
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_parent_database_settings_controller );
 
 	Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller	=	Rbdb_DatabaseSettingsController_verificationSettingsController( c_parent_database_settings_controller );
 
@@ -150,7 +150,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_new(	int			argc,
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_verification_settings_controller,
-							Rbdb_RB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
@@ -215,7 +215,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_parentSettingsController(	V
 VALUE rb_Rbdb_DatabaseVerificationSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_verification_settings_controller )	{
 	
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_verification_settings_controller,
-																															Rbdb_RB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																															RBDB_RB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_settings_controller;
 }
@@ -227,7 +227,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_parentDatabaseSettingsContr
 VALUE rb_Rbdb_DatabaseVerificationSettingsController_file(	VALUE	rb_database_verification_settings_controller )	{
 
 	Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-	C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+	C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 	FILE*	c_file;
 
@@ -247,7 +247,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_setFile(	VALUE	rb_database_
 																															VALUE	rb_data_output_file )	{
 
 	Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-	C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+	C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 	FILE*	c_error_file	=	(FILE*) rb_funcall(	rb_data_output_file,
 																						rb_intern( "fileno" ),
@@ -267,7 +267,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_setFile(	VALUE	rb_database_
 VALUE rb_Rbdb_DatabaseVerificationSettingsController_aggressiveKeyDataPairDump( VALUE	rb_database_verification_settings_controller )	{
 
 	Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-	C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+	C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 	return ( Rbdb_DatabaseVerificationSettingsController_aggressiveKeyDataPairDump( c_database_verification_settings_controller )	?	Qtrue
 																																	:	Qfalse );
@@ -280,7 +280,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_aggressiveKeyDataPairDump( 
 	VALUE rb_Rbdb_DatabaseVerificationSettingsController_turnAggressiveKeyDataPairDumpOn( VALUE	rb_database_verification_settings_controller )	{
 
 		Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-		C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+		C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 		Rbdb_DatabaseVerificationSettingsController_turnAggressiveKeyDataPairDumpOn( c_database_verification_settings_controller );
 		
@@ -294,7 +294,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_aggressiveKeyDataPairDump( 
 	VALUE rb_Rbdb_DatabaseVerificationSettingsController_turnAggressiveKeyDataPairDumpOff( VALUE	rb_database_verification_settings_controller )	{
 
 		Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-		C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+		C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 		Rbdb_DatabaseVerificationSettingsController_turnAggressiveKeyDataPairDumpOff( c_database_verification_settings_controller );
 
@@ -309,7 +309,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_aggressiveKeyDataPairDump( 
 VALUE rb_Rbdb_DatabaseVerificationSettingsController_printableCharacters( VALUE	rb_database_verification_settings_controller )	{
 
 	Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-	C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+	C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 	return ( Rbdb_DatabaseVerificationSettingsController_printableCharacters( c_database_verification_settings_controller )	?	Qtrue
 																																:	Qfalse );
@@ -322,7 +322,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_printableCharacters( VALUE	
 	VALUE rb_Rbdb_DatabaseVerificationSettingsController_turnPrintableCharactersOn( VALUE	rb_database_verification_settings_controller )	{
 
 		Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-		C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+		C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 		Rbdb_DatabaseVerificationSettingsController_turnPrintableCharactersOn( c_database_verification_settings_controller );
 		
@@ -336,7 +336,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_printableCharacters( VALUE	
 	VALUE rb_Rbdb_DatabaseVerificationSettingsController_turnPrintableCharactersOff( VALUE	rb_database_verification_settings_controller )	{
 
 		Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-		C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+		C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 		Rbdb_DatabaseVerificationSettingsController_turnPrintableCharactersOff( c_database_verification_settings_controller );
 
@@ -351,7 +351,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_printableCharacters( VALUE	
 VALUE rb_Rbdb_DatabaseVerificationSettingsController_skipOrderCheck( VALUE	rb_database_verification_settings_controller )	{
 
 	Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-	C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+	C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 	return ( Rbdb_DatabaseVerificationSettingsController_skipOrderCheck( c_database_verification_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -365,7 +365,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_skipOrderCheck( VALUE	rb_da
 	VALUE rb_Rbdb_DatabaseVerificationSettingsController_turnSkipOrderCheckOn( VALUE	rb_database_verification_settings_controller )	{
 
 		Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-		C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+		C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 		Rbdb_DatabaseVerificationSettingsController_turnSkipOrderCheckOn( c_database_verification_settings_controller );
 
@@ -379,7 +379,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_skipOrderCheck( VALUE	rb_da
 	VALUE rb_Rbdb_DatabaseVerificationSettingsController_turnSkipOrderCheckOff( VALUE	rb_database_verification_settings_controller )	{
 
 		Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-		C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+		C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 		Rbdb_DatabaseVerificationSettingsController_turnSkipOrderCheckOff( c_database_verification_settings_controller );
 
@@ -394,7 +394,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_skipOrderCheck( VALUE	rb_da
 VALUE rb_Rbdb_DatabaseVerificationSettingsController_onlyOrderCheck( VALUE	rb_database_verification_settings_controller )	{
 
 	Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-	C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+	C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 	return ( Rbdb_DatabaseVerificationSettingsController_onlyOrderCheck( c_database_verification_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -408,7 +408,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_onlyOrderCheck( VALUE	rb_da
 	VALUE rb_Rbdb_DatabaseVerificationSettingsController_turnOnlyOrderCheckOn(	VALUE	rb_database_verification_settings_controller )	{
 
 		Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-		C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+		C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 		Rbdb_DatabaseVerificationSettingsController_turnOnlyOrderCheckOn( c_database_verification_settings_controller );
 
@@ -422,7 +422,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_onlyOrderCheck( VALUE	rb_da
 	VALUE rb_Rbdb_DatabaseVerificationSettingsController_turnOnlyOrderCheckOff( VALUE	rb_database_verification_settings_controller )	{
 
 		Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-		C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+		C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 		Rbdb_DatabaseVerificationSettingsController_turnOnlyOrderCheckOff( c_database_verification_settings_controller );
 
@@ -436,7 +436,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_onlyOrderCheck( VALUE	rb_da
 VALUE rb_Rbdb_DatabaseVerificationSettingsController_forceOrderCheck(	VALUE	rb_database_verification_settings_controller )	{
 
 	Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-	C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+	C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 	return ( Rbdb_DatabaseVerificationSettingsController_forceOrderCheck( c_database_verification_settings_controller )	?	Qtrue
 																															:	Qfalse );
@@ -449,7 +449,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_forceOrderCheck(	VALUE	rb_d
 	VALUE rb_Rbdb_DatabaseVerificationSettingsController_turnForceOrderCheckOn(	VALUE	rb_database_verification_settings_controller )	{
 
 		Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-		C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+		C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 		Rbdb_DatabaseVerificationSettingsController_turnForceOrderCheckOn( c_database_verification_settings_controller );
 
@@ -463,7 +463,7 @@ VALUE rb_Rbdb_DatabaseVerificationSettingsController_forceOrderCheck(	VALUE	rb_d
 	VALUE rb_Rbdb_DatabaseVerificationSettingsController_turnForceOrderCheckOff(	VALUE	rb_database_verification_settings_controller )	{
 
 		Rbdb_DatabaseVerificationSettingsController*	c_database_verification_settings_controller;
-		C_Rbdb_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
+		C_RBDB_DATABASE_VERIFICATION_SETTINGS_CONTROLLER( rb_database_verification_settings_controller, c_database_verification_settings_controller );
 
 		Rbdb_DatabaseVerificationSettingsController_turnForceOrderCheckOff( c_database_verification_settings_controller );
 

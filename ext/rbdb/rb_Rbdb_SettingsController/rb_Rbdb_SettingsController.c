@@ -54,7 +54,7 @@ extern	VALUE	rb_Rbdb_DatabaseSettingsController;
 extern	VALUE	rb_Rbdb_DirectorySettingsController;
 extern	VALUE	rb_Rbdb_ReplicationSettingsController;
 
-void Init_Rbdb_SettingsController()	{
+void Init_rb_Rbdb_SettingsController()	{
 
 		rb_Rbdb_SettingsController		=	rb_define_class_under(	rb_mRbdb, 
 																														"Settings",	
@@ -132,14 +132,14 @@ VALUE rb_Rbdb_SettingsController_new(	int				argc,
 	}
 
 	Rbdb_Environment*		c_parent_environment;
-	C_Rbdb_ENVIRONMENT( rb_parent_environment, c_parent_environment );
+	C_RBDB_ENVIRONMENT( rb_parent_environment, c_parent_environment );
 
 	Rbdb_SettingsController*	settings_controller	=	Rbdb_Environment_settingsController( c_parent_environment );
 
 	VALUE	rb_settings_controller	= RUBY_RBDB_SETTINGS_CONTROLLER( settings_controller );
 
 	rb_iv_set(	rb_settings_controller,
-							Rbdb_RB_SETTINGS_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
+							RBDB_RB_SETTINGS_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_environment };
@@ -168,7 +168,7 @@ VALUE rb_Rbdb_SettingsController_initialize(	int				argc __attribute__ ((unused)
 VALUE rb_Rbdb_SettingsController_parentEnvironment(	VALUE	rb_settings_controller )	{
 
 	VALUE	rb_parent_environment	=	rb_iv_get(	rb_settings_controller,
-																						Rbdb_RB_ALL_VARIABLE_PARENT_ENVIRONMENT );
+																						RBDB_RB_ALL_VARIABLE_PARENT_ENVIRONMENT );
 	return rb_parent_environment;
 }
 
@@ -181,7 +181,7 @@ VALUE rb_Rbdb_SettingsController_parentEnvironment(	VALUE	rb_settings_controller
 VALUE rb_Rbdb_SettingsController_SHMkey( VALUE	rb_settings_controller )	{
 	
 	Rbdb_SettingsController*	c_settings_controller;
-	C_Rbdb_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
+	C_RBDB_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
 	
 	long c_shm_key	=	Rbdb_SettingsController_SHMkey( c_settings_controller );
 	
@@ -206,7 +206,7 @@ VALUE rb_Rbdb_SettingsController_setSHMkey(	VALUE	rb_settings_controller,
 	}
 
 	Rbdb_SettingsController*	c_settings_controller;
-	C_Rbdb_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
+	C_RBDB_SETTINGS_CONTROLLER( rb_settings_controller, c_settings_controller );
 
 	long	c_shm_key	=	NUM2LONG( rb_shm_key );
 
@@ -229,14 +229,14 @@ VALUE rb_Rbdb_SettingsController_debugSettingsController( VALUE	rb_settings_cont
 	VALUE	rb_debug_settings_controller	=	Qnil;
 	
 	if ( ( rb_debug_settings_controller = rb_iv_get(	rb_settings_controller,
-																									Rbdb_RB_SETTINGS_VARIABLE_DEBUG_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																									RBDB_RB_SETTINGS_VARIABLE_DEBUG_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
 		rb_debug_settings_controller	=	rb_Rbdb_DebugSettingsController_new(	1,
 																																					& rb_settings_controller,
 																																					rb_Rbdb_DebugSettingsController );
 		
 		rb_iv_set(	rb_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DEBUG_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DEBUG_SETTINGS_CONTROLLER,
 								rb_debug_settings_controller );
 	}
 	
@@ -252,14 +252,14 @@ VALUE rb_Rbdb_SettingsController_fileSettingsController( VALUE	rb_settings_contr
 	VALUE	rb_file_settings_controller	=	Qnil;
 	
 	if ( ( rb_file_settings_controller = rb_iv_get(	rb_settings_controller,
-																									Rbdb_RB_SETTINGS_VARIABLE_FILE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																									RBDB_RB_SETTINGS_VARIABLE_FILE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
 		rb_file_settings_controller	=	rb_Rbdb_FileSettingsController_new(	1,
 																																			& rb_settings_controller,
 																																			rb_Rbdb_FileSettingsController );
 		
 		rb_iv_set(	rb_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_FILE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_FILE_SETTINGS_CONTROLLER,
 								rb_file_settings_controller );
 	}
 	
@@ -275,14 +275,14 @@ VALUE rb_Rbdb_SettingsController_errorSettingsController( VALUE	rb_settings_cont
 	VALUE	rb_error_settings_controller	=	Qnil;
 
 	if ( ( rb_error_settings_controller = rb_iv_get(	rb_settings_controller,
-																										Rbdb_RB_SETTINGS_VARIABLE_ERROR_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																										RBDB_RB_SETTINGS_VARIABLE_ERROR_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_error_settings_controller	=	rb_Rbdb_ErrorSettingsController_new(	1,
 																																					& rb_settings_controller,
 																																					rb_Rbdb_ErrorSettingsController );
 		
 		rb_iv_set(	rb_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_ERROR_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_ERROR_SETTINGS_CONTROLLER,
 								rb_error_settings_controller );
 	}
 
@@ -298,14 +298,14 @@ VALUE rb_Rbdb_SettingsController_logSettingsController( VALUE	rb_settings_contro
 	VALUE	rb_log_settings_controller	=	Qnil;
 
 	if ( ( rb_log_settings_controller = rb_iv_get(	rb_settings_controller,
-																									Rbdb_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																									RBDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_log_settings_controller	=	rb_Rbdb_LogSettingsController_new(	1,
 																																			& rb_settings_controller,
 																																			rb_Rbdb_LogSettingsController );
 		
 		rb_iv_set(	rb_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,
 								rb_log_settings_controller );
 	}
 
@@ -321,14 +321,14 @@ VALUE rb_Rbdb_SettingsController_lockSettingsController( VALUE	rb_settings_contr
 	VALUE	rb_lock_settings_controller	=	Qnil;
 
 	if ( ( rb_lock_settings_controller = rb_iv_get(	rb_settings_controller,
-																									Rbdb_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																									RBDB_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_lock_settings_controller	=	rb_Rbdb_LockSettingsController_new(	1,
 																																			& rb_settings_controller,
 																																			rb_Rbdb_LockSettingsController );
 		
 		rb_iv_set(	rb_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER,
 								rb_lock_settings_controller );
 	}
 
@@ -344,14 +344,14 @@ VALUE rb_Rbdb_SettingsController_replicationSettingsController( VALUE	rb_setting
 	VALUE	rb_replication_settings_controller	=	Qnil;
 
 	if ( ( rb_replication_settings_controller = rb_iv_get(	rb_settings_controller,
-																													Rbdb_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																													RBDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_replication_settings_controller	=	rb_Rbdb_ReplicationSettingsController_new(	1,
 																																											& rb_settings_controller,
 																																											rb_Rbdb_ReplicationSettingsController );
 		
 		rb_iv_set(	rb_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER,
 								rb_replication_settings_controller );
 	}
 
@@ -367,14 +367,14 @@ VALUE rb_Rbdb_SettingsController_memoryPoolSettingsController( VALUE	rb_settings
 	VALUE	rb_memory_pool_settings_controller	=	Qnil;
 
 	if ( ( rb_memory_pool_settings_controller = rb_iv_get(	rb_settings_controller,
-																													Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																													RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_memory_pool_settings_controller	=	rb_Rbdb_MemoryPoolSettingsController_new( 1,
 																																										& rb_settings_controller,
 																																										rb_Rbdb_MemoryPoolSettingsController );
 		
 		rb_iv_set(	rb_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_SETTINGS_CONTROLLER,
 								rb_memory_pool_settings_controller );
 	}
 
@@ -390,14 +390,14 @@ VALUE rb_Rbdb_SettingsController_databaseSettingsController( VALUE	rb_settings_c
 
 	VALUE	rb_database_settings_controller	=	Qnil;
 	if ( ( rb_database_settings_controller = rb_iv_get(	rb_settings_controller,
-																											Rbdb_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																											RBDB_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_database_settings_controller	=	rb_Rbdb_DatabaseSettingsController_new( 1,
 																																							& rb_settings_controller,
 																																							rb_Rbdb_DatabaseSettingsController );		
 
 		rb_iv_set(	rb_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_SETTINGS_CONTROLLER,
 								rb_database_settings_controller );
 	}
 
@@ -413,14 +413,14 @@ VALUE rb_Rbdb_SettingsController_directorySettingsController( VALUE	rb_settings_
 	VALUE	rb_directory_settings_controller	=	Qnil;
 
 	if ( ( rb_directory_settings_controller = rb_iv_get(	rb_settings_controller,
-																												Rbdb_RB_SETTINGS_VARIABLE_DIRECTORY_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																												RBDB_RB_SETTINGS_VARIABLE_DIRECTORY_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
 		rb_directory_settings_controller	=	rb_Rbdb_DatabaseSettingsController_new( 1,
 																																								& rb_settings_controller,
 																																								rb_Rbdb_DirectorySettingsController );		
 			
 		rb_iv_set(	rb_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DIRECTORY_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DIRECTORY_SETTINGS_CONTROLLER,
 								rb_directory_settings_controller );
 	}
 

@@ -40,7 +40,7 @@ extern	VALUE	rb_Rbdb_MemoryPoolSettingsController;
 extern	VALUE	rb_Rbdb_MemoryPoolFileSettingsController;
 extern	VALUE	rb_Rbdb_MemoryPoolReadWriteSettingsController;
 
-void Init_Rbdb_MemoryPoolSettingsController()	{
+void Init_rb_Rbdb_MemoryPoolSettingsController()	{
 
 	rb_Rbdb_MemoryPoolSettingsController		=	rb_define_class_under(	rb_Rbdb_SettingsController, 
 																																		"MemoryPool",	
@@ -116,14 +116,14 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_new(	int			argc,
 	}
 
 	Rbdb_SettingsController*	c_parent_settings_controller;
-	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
+	C_RBDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
 	Rbdb_MemoryPoolSettingsController*	c_memory_pool_settings_controller	=	Rbdb_SettingsController_memoryPoolSettingsController( c_parent_settings_controller );
 
 	VALUE	rb_memory_pool_settings_controller	=	RUBY_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( c_memory_pool_settings_controller );
 
 	rb_iv_set(	rb_memory_pool_settings_controller,
-							Rbdb_RB_MEMORY_POOL_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							RBDB_RB_MEMORY_POOL_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
 							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
@@ -165,7 +165,7 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_parentEnvironment(	VALUE	rb_memory_po
 VALUE rb_Rbdb_MemoryPoolSettingsController_parentSettingsController(	VALUE	rb_memory_pool_settings_controller )	{
 
 	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_memory_pool_settings_controller,
-																										Rbdb_RB_MEMORY_POOL_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+																										RBDB_RB_MEMORY_POOL_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_settings_controller;
 }
@@ -178,7 +178,7 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_parentSettingsController(	VALUE	rb_me
 VALUE rb_Rbdb_MemoryPoolSettingsController_on( VALUE	rb_memory_pool_settings_controller )	{
 
 	Rbdb_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-	C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
+	C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
 
 	return ( Rbdb_MemoryPoolSettingsController_on( c_memory_pool_settings_controller )	?	Qtrue
 																						:	Qfalse );
@@ -192,7 +192,7 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_on( VALUE	rb_memory_pool_settings_con
 VALUE rb_Rbdb_MemoryPoolSettingsController_off( VALUE	rb_memory_pool_settings_controller )	{
 
 	Rbdb_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-	C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
+	C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
 
 	return ( Rbdb_MemoryPoolSettingsController_off( c_memory_pool_settings_controller )	?	Qtrue
 																							:	Qfalse );
@@ -206,7 +206,7 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_off( VALUE	rb_memory_pool_settings_co
 	VALUE rb_Rbdb_MemoryPoolSettingsController_turnOn( VALUE	rb_memory_pool_settings_controller )	{
 
 		Rbdb_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-		C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
+		C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
 
 		Rbdb_MemoryPoolSettingsController_turnOn( c_memory_pool_settings_controller );
 
@@ -221,7 +221,7 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_off( VALUE	rb_memory_pool_settings_co
 	VALUE rb_Rbdb_MemoryPoolSettingsController_turnOff( VALUE	rb_memory_pool_settings_controller )	{
 
 		Rbdb_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-		C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
+		C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
 
 		Rbdb_MemoryPoolSettingsController_turnOff( c_memory_pool_settings_controller );
 
@@ -237,7 +237,7 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_off( VALUE	rb_memory_pool_settings_co
 VALUE rb_Rbdb_MemoryPoolSettingsController_memoryMapping( VALUE	rb_memory_pool_settings_controller )	{
 
 	Rbdb_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-	C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
+	C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
 
 	return ( Rbdb_MemoryPoolSettingsController_memoryMapping( c_memory_pool_settings_controller )	?	Qtrue
 																									:	Qfalse );
@@ -252,7 +252,7 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_memoryMapping( VALUE	rb_memory_pool_s
 	VALUE rb_Rbdb_MemoryPoolSettingsController_turnMemoryMappingOn( VALUE	rb_memory_pool_settings_controller )	{
 
 		Rbdb_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-		C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
+		C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
 
 		Rbdb_MemoryPoolSettingsController_turnMemoryMappingOn( c_memory_pool_settings_controller );
 
@@ -268,7 +268,7 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_memoryMapping( VALUE	rb_memory_pool_s
 	VALUE rb_Rbdb_MemoryPoolSettingsController_turnMemoryMappingOff( VALUE	rb_memory_pool_settings_controller )	{
 
 		Rbdb_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-		C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
+		C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
 
 		Rbdb_MemoryPoolSettingsController_turnMemoryMappingOff( c_memory_pool_settings_controller );
 
@@ -283,7 +283,7 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_memoryMapping( VALUE	rb_memory_pool_s
 VALUE rb_Rbdb_MemoryPoolSettingsController_removeFileWithLastReference( VALUE	rb_memory_pool_settings_controller )	{
 
 	Rbdb_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-	C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
+	C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
 
 	return ( Rbdb_MemoryPoolSettingsController_removeFileWithLastReference( c_memory_pool_settings_controller )	?	Qtrue
 																													:	Qfalse );
@@ -297,7 +297,7 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_removeFileWithLastReference( VALUE	rb
 	VALUE rb_Rbdb_MemoryPoolSettingsController_turnRemoveFileWithLastReferenceOn( VALUE	rb_memory_pool_settings_controller )	{
 
 		Rbdb_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-		C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
+		C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
 
 		Rbdb_MemoryPoolSettingsController_turnRemoveFileWithLastReferenceOn( c_memory_pool_settings_controller );
 
@@ -312,7 +312,7 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_removeFileWithLastReference( VALUE	rb
 	VALUE rb_Rbdb_MemoryPoolSettingsController_turnRemoveFileWithLastReferenceOff( VALUE	rb_memory_pool_settings_controller )	{
 
 		Rbdb_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-		C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
+		C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
 
 		Rbdb_MemoryPoolSettingsController_turnRemoveFileWithLastReferenceOff( c_memory_pool_settings_controller );
 
@@ -329,7 +329,7 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_removeFileWithLastReference( VALUE	rb
 VALUE rb_Rbdb_MemoryPoolSettingsController_pagesizeFactorMismatchShouldFail( VALUE	rb_memory_pool_settings_controller )	{
 
 	Rbdb_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-	C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
+	C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
 
 	return ( Rbdb_MemoryPoolSettingsController_pagesizeFactorMismatchShouldFail( c_memory_pool_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -342,7 +342,7 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_pagesizeFactorMismatchShouldFail( VAL
 	VALUE rb_Rbdb_MemoryPoolSettingsController_turnPageSizeFactorMismatchShouldFailOn( VALUE	rb_memory_pool_settings_controller )	{
 
 		Rbdb_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-		C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
+		C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
 
 		Rbdb_MemoryPoolSettingsController_turnPageSizeFactorMismatchShouldFailOn( c_memory_pool_settings_controller );
 
@@ -356,7 +356,7 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_pagesizeFactorMismatchShouldFail( VAL
 	VALUE rb_Rbdb_MemoryPoolSettingsController_turnPageSizeFactorMismatchShouldFailOff( VALUE	rb_memory_pool_settings_controller )	{
 
 		Rbdb_MemoryPoolSettingsController*	c_memory_pool_settings_controller;
-		C_Rbdb_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
+		C_RBDB_MEMORY_POOL_SETTINGS_CONTROLLER( rb_memory_pool_settings_controller, c_memory_pool_settings_controller );
 
 		Rbdb_MemoryPoolSettingsController_turnPageSizeFactorMismatchShouldFailOff( c_memory_pool_settings_controller );
 
@@ -373,13 +373,13 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_fileSettingsController( VALUE	rb_memo
 	VALUE	rb_memory_pool_file_settings_controller	=	Qnil;
 	
 	if ( ( rb_memory_pool_file_settings_controller = rb_iv_get(	rb_memory_pool_settings_controller,
-																															Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																															RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
 		rb_memory_pool_file_settings_controller	=	rb_Rbdb_MemoryPoolFileSettingsController_new(	1,
 																																														& rb_memory_pool_settings_controller,
 																																														rb_Rbdb_MemoryPoolFileSettingsController );
 		rb_iv_set(	rb_memory_pool_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,
 								rb_memory_pool_file_settings_controller );
 	}
 	
@@ -395,13 +395,13 @@ VALUE rb_Rbdb_MemoryPoolSettingsController_readWriteSettingsController( VALUE	rb
 	VALUE	rb_memory_pool_read_write_settings_controller	=	Qnil;
 	
 	if ( ( rb_memory_pool_read_write_settings_controller = rb_iv_get(	rb_memory_pool_settings_controller,
-																																		Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																		RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
 		rb_memory_pool_read_write_settings_controller	=	rb_Rbdb_MemoryPoolReadWriteSettingsController_new(	1,
 																																																				& rb_memory_pool_settings_controller,
 																																																				rb_Rbdb_MemoryPoolReadWriteSettingsController );
 		rb_iv_set(	rb_memory_pool_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_READ_WRITE_SETTINGS_CONTROLLER,
 								rb_memory_pool_read_write_settings_controller );
 	}
 	

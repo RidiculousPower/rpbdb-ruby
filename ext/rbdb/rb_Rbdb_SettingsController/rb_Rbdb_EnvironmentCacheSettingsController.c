@@ -32,7 +32,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_EnvironmentSettingsController;
 extern	VALUE	rb_Rbdb_EnvironmentCacheSettingsController;
 
-void Init_Rbdb_EnvironmentCacheSettingsController()	{
+void Init_rb_Rbdb_EnvironmentCacheSettingsController()	{
 
 	rb_Rbdb_EnvironmentCacheSettingsController		=	rb_define_class_under(	rb_Rbdb_SettingsController, 
 																																		"Cache",	
@@ -99,12 +99,12 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_new(	int			argc,
 	}
 
 	Rbdb_SettingsController*	c_parent_settings_controller;
-	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
+	C_RBDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
 	VALUE	rb_environment_cache_settings_controller	= RUBY_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( Rbdb_SettingsController_cacheSettingsController( c_parent_settings_controller ) );
 
 	rb_iv_set(	rb_environment_cache_settings_controller,
-							Rbdb_RB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							RBDB_RB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
 							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
@@ -143,7 +143,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_parentEnvironment(	VALUE	rb_env
 VALUE rb_Rbdb_EnvironmentCacheSettingsController_parentSettingsController(	VALUE	rb_environment_cache_settings_controller )	{
 
 	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_environment_cache_settings_controller,
-																										Rbdb_RB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+																										RBDB_RB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_settings_controller;
 }
@@ -156,7 +156,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_parentSettingsController(	VALUE
 VALUE rb_Rbdb_EnvironmentCacheSettingsController_buffering( VALUE	rb_environment_cache_settings_controller )	{
 
 	Rbdb_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-	C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+	C_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 	return ( Rbdb_EnvironmentCacheSettingsController_buffering( c_environment_cache_settings_controller )	?	Qtrue
 																											:	Qfalse );
@@ -169,7 +169,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_buffering( VALUE	rb_environment
 	VALUE rb_Rbdb_EnvironmentCacheSettingsController_turnBufferingOn( VALUE	rb_environment_cache_settings_controller )	{
 
 		Rbdb_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-		C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+		C_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 	
 		Rbdb_EnvironmentCacheSettingsController_turnBufferingOn( c_environment_cache_settings_controller );
 	
@@ -183,7 +183,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_buffering( VALUE	rb_environment
 	VALUE rb_Rbdb_EnvironmentCacheSettingsController_turnBufferingOff( VALUE	rb_environment_cache_settings_controller )	{
 
 		Rbdb_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-		C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+		C_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 		Rbdb_EnvironmentCacheSettingsController_turnBufferingOff( c_environment_cache_settings_controller );
 
@@ -199,7 +199,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_buffering( VALUE	rb_environment
 VALUE rb_Rbdb_EnvironmentCacheSettingsController_maxSizeInBytes( VALUE	rb_environment_cache_settings_controller )	{
 
 	Rbdb_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-	C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+	C_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 	uint64_t	c_max_size_in_bytes		=	Rbdb_EnvironmentCacheSettingsController_maxSizeInBytes( c_environment_cache_settings_controller );
 	VALUE			rb_max_size_in_bytes	= ULL2NUM( c_max_size_in_bytes );
@@ -215,7 +215,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_maxSizeInBytes( VALUE	rb_enviro
 VALUE rb_Rbdb_EnvironmentCacheSettingsController_maxSizeInKBytes( VALUE	rb_environment_cache_settings_controller )	{
 
 	Rbdb_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-	C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+	C_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 	uint32_t	c_max_size_in_kbytes		=	Rbdb_EnvironmentCacheSettingsController_maxSizeInKBytes( c_environment_cache_settings_controller );
 	VALUE			rb_max_size_in_kbytes	= LONG2NUM( c_max_size_in_kbytes );
@@ -231,7 +231,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_maxSizeInKBytes( VALUE	rb_envir
 VALUE rb_Rbdb_EnvironmentCacheSettingsController_maxSizeInMBytes( VALUE	rb_environment_cache_settings_controller )	{
 
 	Rbdb_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-	C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+	C_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 	uint32_t	c_max_size_in_mbytes		=	Rbdb_EnvironmentCacheSettingsController_maxSizeInMBytes( c_environment_cache_settings_controller );
 	VALUE			rb_max_size_in_mbytes		= LONG2NUM( c_max_size_in_mbytes );
@@ -247,7 +247,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_maxSizeInMBytes( VALUE	rb_envir
 VALUE rb_Rbdb_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_environment_cache_settings_controller )	{
 
 	Rbdb_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-	C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+	C_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 	uint32_t	c_max_size_in_gbytes		=	Rbdb_EnvironmentCacheSettingsController_maxSizeInGBytes( c_environment_cache_settings_controller );
 	VALUE			rb_max_size_in_gbytes		= LONG2NUM( c_max_size_in_gbytes );
@@ -264,7 +264,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 																																			VALUE	rb_max_size_in_bytes )	{
 
 		Rbdb_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-		C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+		C_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 		Rbdb_EnvironmentCacheSettingsController_setMaxSizeInBytes(	c_environment_cache_settings_controller,
 																																NUM2LONG( rb_max_size_in_bytes ) );
@@ -281,7 +281,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 																			VALUE	rb_max_size_kbytes )	{
 
 		Rbdb_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-		C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+		C_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 		Rbdb_EnvironmentCacheSettingsController_setMaxSizeInKBytes(	c_environment_cache_settings_controller,
 																																NUM2LONG( rb_max_size_kbytes ) );
@@ -298,7 +298,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 																			VALUE	rb_max_size_mbytes )	{
 
 		Rbdb_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-		C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+		C_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 		Rbdb_EnvironmentCacheSettingsController_setMaxSizeInMBytes(	c_environment_cache_settings_controller,
 																																NUM2LONG( rb_max_size_mbytes ) );
@@ -315,7 +315,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 																																				VALUE	rb_max_size_gbytes )	{
 
 		Rbdb_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-		C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+		C_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 		Rbdb_EnvironmentCacheSettingsController_setMaxSizeInGBytes(	c_environment_cache_settings_controller,
 																																FIX2INT( rb_max_size_gbytes ) );
@@ -335,7 +335,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 																							VALUE	rb_additional_max_size_bytes )	{
 
 		Rbdb_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-		C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+		C_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 		uint32_t	c_max_size_in_gbytes	=	NUM2LONG( rb_max_size_gbytes );
 		uint32_t	c_max_size_in_mbytes	=	NUM2LONG( rb_additional_max_size_mbytes );
@@ -362,7 +362,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 																																									VALUE	rb_additional_max_size_bytes )	{
 
 		Rbdb_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-		C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+		C_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 		uint32_t	c_max_size_in_mbytes	=	NUM2ULONG( rb_max_size_mbytes );
 		uint32_t	c_max_size_in_kbytes	=	NUM2ULONG( rb_additional_max_size_kbytes );
@@ -386,7 +386,7 @@ VALUE rb_Rbdb_EnvironmentCacheSettingsController_maxSizeInGBytes( VALUE	rb_envir
 																		  		VALUE	rb_additional_max_size_bytes )	{
 
 		Rbdb_EnvironmentCacheSettingsController*	c_environment_cache_settings_controller;
-		C_Rbdb_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
+		C_RBDB_ENVIRONMENT_CACHE_SETTINGS_CONTROLLER( rb_environment_cache_settings_controller, c_environment_cache_settings_controller );
 
 		Rbdb_EnvironmentCacheSettingsController_setMaxSizeInKBytesBytes(	c_environment_cache_settings_controller,
 																																			FIX2INT( rb_max_size_kbytes ),

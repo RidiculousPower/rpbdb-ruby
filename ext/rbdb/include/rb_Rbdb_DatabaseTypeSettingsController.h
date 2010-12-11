@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER
-	#define RB_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER
+#ifndef RB_RBDB_DATABASE_TYPE_SETTINGS_CONTROLLER
+	#define RB_RBDB_DATABASE_TYPE_SETTINGS_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_DatabaseTypeSettingsController();
+void Init_rb_Rbdb_DatabaseTypeSettingsController();
 
 VALUE rb_Rbdb_DatabaseTypeSettingsController_new(	int			argc,
 																									VALUE*	args,

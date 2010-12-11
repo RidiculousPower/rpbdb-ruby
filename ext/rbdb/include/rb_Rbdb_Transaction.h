@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_TRANSACTION
-	#define RB_Rbdb_TRANSACTION
+#ifndef RB_RBDB_TRANSACTION
+	#define RB_RBDB_TRANSACTION
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_Transaction();
+void Init_rb_Rbdb_Transaction();
 VALUE rb_Rbdb_Transaction_new(	int			argc,
 																VALUE*	args,
 																VALUE		rb_klass_self );

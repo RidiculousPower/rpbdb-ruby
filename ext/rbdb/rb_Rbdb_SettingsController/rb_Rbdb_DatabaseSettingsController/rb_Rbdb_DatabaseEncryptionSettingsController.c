@@ -37,7 +37,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_DatabaseSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseEncryptionSettingsController;
 
-void Init_Rbdb_DatabaseEncryptionSettingsController()	{
+void Init_rb_Rbdb_DatabaseEncryptionSettingsController()	{
 
 	rb_Rbdb_DatabaseEncryptionSettingsController			=	rb_define_class_under(	rb_Rbdb_DatabaseSettingsController, 
 																																							"Encryption",	
@@ -116,13 +116,13 @@ VALUE rb_Rbdb_DatabaseEncryptionSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseSettingsController*	c_parent_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_parent_database_settings_controller );
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_parent_database_settings_controller );
 	
 	VALUE	rb_database_encryption_settings_controller	= RUBY_RBDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( Rbdb_DatabaseEncryptionSettingsController_new( c_parent_database_settings_controller ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_encryption_settings_controller,
-							Rbdb_RB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
@@ -187,7 +187,7 @@ VALUE rb_Rbdb_DatabaseEncryptionSettingsController_parentSettingsController(	VAL
 VALUE rb_Rbdb_DatabaseEncryptionSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_encryption_settings_controller )	{
 
 	VALUE	rb_parent_database_encryption_settings_controller	=	rb_iv_get(	rb_database_encryption_settings_controller,
-																																				Rbdb_RB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																																				RBDB_RB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_encryption_settings_controller;
 }
@@ -201,7 +201,7 @@ VALUE rb_Rbdb_DatabaseEncryptionSettingsController_parentDatabaseSettingsControl
 VALUE rb_Rbdb_DatabaseEncryptionSettingsController_encrypted( VALUE	rb_database_encryption_settings_controller )	{
 
 	Rbdb_DatabaseEncryptionSettingsController*	c_database_encryption_settings_controller;
-	C_Rbdb_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( rb_database_encryption_settings_controller, c_database_encryption_settings_controller );
+	C_RBDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( rb_database_encryption_settings_controller, c_database_encryption_settings_controller );
 												
 	BOOL	c_encrypted		=	Rbdb_DatabaseEncryptionSettingsController_encrypted( c_database_encryption_settings_controller );
 	
@@ -219,7 +219,7 @@ VALUE rb_Rbdb_DatabaseEncryptionSettingsController_encrypted( VALUE	rb_database_
 																																				VALUE	rb_encryption_password )	{
 
 		Rbdb_DatabaseEncryptionSettingsController*	c_database_encryption_settings_controller;
-		C_Rbdb_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( rb_database_encryption_settings_controller, c_database_encryption_settings_controller );
+		C_RBDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( rb_database_encryption_settings_controller, c_database_encryption_settings_controller );
 
 		char*	c_encryption_password	=	StringValuePtr( rb_encryption_password );
 
@@ -238,7 +238,7 @@ VALUE rb_Rbdb_DatabaseEncryptionSettingsController_encrypted( VALUE	rb_database_
 																																				VALUE	rb_encryption_password )	{
 
 		Rbdb_DatabaseEncryptionSettingsController*	c_database_encryption_settings_controller;
-		C_Rbdb_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( rb_database_encryption_settings_controller, c_database_encryption_settings_controller );
+		C_RBDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER( rb_database_encryption_settings_controller, c_database_encryption_settings_controller );
 
 		char*	c_encryption_password	=	StringValuePtr( rb_encryption_password );
 

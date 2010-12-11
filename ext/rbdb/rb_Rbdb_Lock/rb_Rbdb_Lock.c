@@ -30,7 +30,7 @@ extern	VALUE	rb_Rbdb_Lock;
 extern	VALUE	rb_Rbdb_LockController;
 extern	VALUE	rb_Rbdb_LockSettingsController;
 
-void Init_Rbdb_Lock()	{
+void Init_rb_Rbdb_Lock()	{
 
 	rb_Rbdb_LockController	=	rb_define_class_under(	rb_Rbdb_Environment, 
 																										"Lock",			
@@ -100,13 +100,13 @@ VALUE rb_Rbdb_Lock_new(	int			argc,
 	
 	
 	Rbdb_LockController*	c_parent_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_parent_lock_controller, c_parent_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_parent_lock_controller, c_parent_lock_controller );
 	
 	VALUE	rb_lock		=	RUBY_RBDB_LOCK( Rbdb_Lock_new( c_parent_lock_controller ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_lock,
-							Rbdb_RB_LOCK_VARIABLE_PARENT_LOCK_CONTROLLER,
+							RBDB_RB_LOCK_VARIABLE_PARENT_LOCK_CONTROLLER,
 							rb_parent_lock_controller );
 
 
@@ -138,17 +138,17 @@ VALUE rb_Rbdb_Lock_settingsController(	VALUE	rb_lock )	{
 	VALUE	rb_local_lock_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_lock_settings_controller = rb_iv_get(	rb_lock,
-																												Rbdb_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																												RBDB_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_Lock*		c_lock;
-		C_Rbdb_LOCK( rb_lock, c_lock );
+		C_RBDB_LOCK( rb_lock, c_lock );
 	
 		Rbdb_LockSettingsController*	c_local_lock_settings_controller	=	Rbdb_Lock_settingsController( c_lock );
 
 		rb_local_lock_settings_controller	=	RUBY_RBDB_LOCK_SETTINGS_CONTROLLER( c_local_lock_settings_controller );
 
 		rb_iv_set(	rb_lock,
-								Rbdb_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER,
 								rb_local_lock_settings_controller );
 	}
 
@@ -161,7 +161,7 @@ VALUE rb_Rbdb_Lock_settingsController(	VALUE	rb_lock )	{
 VALUE rb_Rbdb_Lock_parentEnvironment(	VALUE	rb_lock )	{
 
 	Rbdb_Lock*			c_lock;
-	C_Rbdb_LOCK( rb_lock, c_lock );
+	C_RBDB_LOCK( rb_lock, c_lock );
 
 	return RUBY_RBDB_ENVIRONMENT( Rbdb_Lock_parentEnvironment( c_lock ) );
 
@@ -176,10 +176,10 @@ VALUE rb_Rbdb_Lock_lock(	VALUE	rb_lock,
 													VALUE	rb_record )	{
 
 	Rbdb_Lock*			c_lock;
-	C_Rbdb_LOCK( rb_lock, c_lock );
+	C_RBDB_LOCK( rb_lock, c_lock );
 
 	Rbdb_Record*		c_record;
-	C_Rbdb_RECORD( rb_record, c_record );
+	C_RBDB_RECORD( rb_record, c_record );
 
 	Rbdb_Lock_lock(	c_lock,
 									c_record );
@@ -195,7 +195,7 @@ VALUE rb_Rbdb_Lock_lock(	VALUE	rb_lock,
 VALUE rb_Rbdb_Lock_unlock( VALUE	rb_lock )	{
 
 	Rbdb_Lock*			c_lock;
-	C_Rbdb_LOCK( rb_lock, c_lock );
+	C_RBDB_LOCK( rb_lock, c_lock );
 
 	Rbdb_Lock_unlock( c_lock );
 
@@ -209,7 +209,7 @@ VALUE rb_Rbdb_Lock_unlock( VALUE	rb_lock )	{
 VALUE rb_Rbdb_Lock_isReadLock( VALUE	rb_lock )	{
 	
 	Rbdb_Lock*			c_lock;
-	C_Rbdb_LOCK( rb_lock, c_lock );
+	C_RBDB_LOCK( rb_lock, c_lock );
 
 	return ( Rbdb_Lock_isReadLock( c_lock )	?	Qtrue
 												:	Qfalse );
@@ -222,7 +222,7 @@ VALUE rb_Rbdb_Lock_isReadLock( VALUE	rb_lock )	{
 	VALUE rb_Rbdb_Lock_setToReadLock( VALUE	rb_lock )	{
 	
 		Rbdb_Lock*			c_lock;
-		C_Rbdb_LOCK( rb_lock, c_lock );
+		C_RBDB_LOCK( rb_lock, c_lock );
 
 		Rbdb_Lock_setToReadLock( c_lock );
 
@@ -236,7 +236,7 @@ VALUE rb_Rbdb_Lock_isReadLock( VALUE	rb_lock )	{
 VALUE rb_Rbdb_Lock_isWriteLock( VALUE	rb_lock )	{
 	
 	Rbdb_Lock*			c_lock;
-	C_Rbdb_LOCK( rb_lock, c_lock );
+	C_RBDB_LOCK( rb_lock, c_lock );
 
 	return ( Rbdb_Lock_isWriteLock( c_lock )	?	Qtrue
 												:	Qfalse );
@@ -249,7 +249,7 @@ VALUE rb_Rbdb_Lock_isWriteLock( VALUE	rb_lock )	{
 	VALUE rb_Rbdb_Lock_setToWriteLock( VALUE	rb_lock )	{
 	
 		Rbdb_Lock*			c_lock;
-		C_Rbdb_LOCK( rb_lock, c_lock );
+		C_RBDB_LOCK( rb_lock, c_lock );
 							
 		Rbdb_Lock_setToWriteLock( c_lock );
 
@@ -263,7 +263,7 @@ VALUE rb_Rbdb_Lock_isWriteLock( VALUE	rb_lock )	{
 VALUE rb_Rbdb_Lock_isIntentToWriteLock( VALUE	rb_lock )	{
 	
 	Rbdb_Lock*			c_lock;
-	C_Rbdb_LOCK( rb_lock, c_lock );
+	C_RBDB_LOCK( rb_lock, c_lock );
 
 	return ( Rbdb_Lock_isIntentToWriteLock( c_lock )	?	Qtrue
 														:	Qfalse );
@@ -276,7 +276,7 @@ VALUE rb_Rbdb_Lock_isIntentToWriteLock( VALUE	rb_lock )	{
 	VALUE rb_Rbdb_Lock_setToIntentToWriteLock( VALUE	rb_lock )	{
 	
 		Rbdb_Lock*			c_lock;
-		C_Rbdb_LOCK( rb_lock, c_lock );
+		C_RBDB_LOCK( rb_lock, c_lock );
 							
 		Rbdb_Lock_setToIntentToWriteLock( c_lock );
 
@@ -290,7 +290,7 @@ VALUE rb_Rbdb_Lock_isIntentToWriteLock( VALUE	rb_lock )	{
 VALUE rb_Rbdb_Lock_isIntentToReadLock( VALUE	rb_lock )	{
 	
 	Rbdb_Lock*			c_lock;
-	C_Rbdb_LOCK( rb_lock, c_lock );
+	C_RBDB_LOCK( rb_lock, c_lock );
 						
 	return ( Rbdb_Lock_isIntentToReadLock( c_lock )	?	Qtrue
 														:	Qfalse );
@@ -303,7 +303,7 @@ VALUE rb_Rbdb_Lock_isIntentToReadLock( VALUE	rb_lock )	{
 	VALUE rb_Rbdb_Lock_setToIntentToReadLock( VALUE	rb_lock )	{
 	
 		Rbdb_Lock*			c_lock;
-		C_Rbdb_LOCK( rb_lock, c_lock );
+		C_RBDB_LOCK( rb_lock, c_lock );
 							
 		Rbdb_Lock_setToIntentToReadLock( c_lock );
 
@@ -317,7 +317,7 @@ VALUE rb_Rbdb_Lock_isIntentToReadLock( VALUE	rb_lock )	{
 VALUE rb_Rbdb_Lock_isIntentToReadAndWriteLock( VALUE	rb_lock )	{
 	
 	Rbdb_Lock*			c_lock;
-	C_Rbdb_LOCK( rb_lock, c_lock );
+	C_RBDB_LOCK( rb_lock, c_lock );
 
 	return ( Rbdb_Lock_isIntentToReadAndWriteLock( c_lock )	?	Qtrue
 																:	Qfalse );
@@ -330,7 +330,7 @@ VALUE rb_Rbdb_Lock_isIntentToReadAndWriteLock( VALUE	rb_lock )	{
 	VALUE rb_Rbdb_Lock_setToIntentToReadAndWriteLock( VALUE	rb_lock )	{
 	
 		Rbdb_Lock*			c_lock;
-		C_Rbdb_LOCK( rb_lock, c_lock );
+		C_RBDB_LOCK( rb_lock, c_lock );
 							
 		Rbdb_Lock_setToIntentToReadAndWriteLock( c_lock );
 

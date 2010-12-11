@@ -1,12 +1,13 @@
 require_relative '../../../../../lib/rbdb/rbdb'
 
-describe Rbdb::Database::SequenceController do
+describe Rbdb::Database::Sequence::Controller do
 
   $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
   $database_new_name          = :spec_database_renamed
   $database_extension         = '.db'
+  $sequence_name              = :spec_sequence
   
   before( :each ) do
     @environment = Rbdb::Environment.new( $environment_path )
@@ -25,19 +26,29 @@ describe Rbdb::Database::SequenceController do
   #  initialize  #
   ################
 
-  # Rbdb::Database::SequenceController.new( database )
+  # Rbdb::Database::Sequence::Controller.new( database )
   it "can be created with a parent database" do
-    Rbdb::Database::SequenceController.new( @database ).should_not == nil
+    Rbdb::Database::Sequence::Controller.new( @database ).should_not == nil
   end
 
-  # Rbdb::Database::SequenceController.new( environment, database_name ) 
+  # Rbdb::Database::Sequence::Controller.new( database )
+  it "can be created with a database name" do
+    Rbdb::Database::Sequence::Controller.new( @database.name ).should_not == nil
+  end
+
+  # Rbdb::Database::Sequence::Controller.new( environment, database_name ) 
+  it "can be created with a parent database controller and a database name" do
+    Rbdb::Database::Sequence::Controller.new( @environment, @database.name ).should_not == nil  
+  end
+
+  # Rbdb::Database::Sequence::Controller.new( environment, database_name ) 
   it "can be created with a parent environment and a database name" do
-    Rbdb::Database::SequenceController.new( @environment, @database.name ).should_not == nil  
+    Rbdb::Database::Sequence::Controller.new( @environment, @database.name ).should_not == nil  
   end
 
-  # Rbdb::Database::SequenceController.new( environment_directory, database_name ) 
+  # Rbdb::Database::Sequence::Controller.new( environment_directory, database_name ) 
   it "can be created with a parent environment home directory and a database name" do
-    Rbdb::Database::SequenceController.new( $environment_path, @database.name ).should_not == nil  
+    Rbdb::Database::Sequence::Controller.new( $environment_path, @database.name ).should_not == nil  
   end
 
   #########################
@@ -63,6 +74,14 @@ describe Rbdb::Database::SequenceController do
 
   it "can refer to its parent database" do
     @database.sequences.parent_database.should == @database
+  end
+  
+  ##############
+  #  sequence  #
+  ##############
+
+  it "can return a sequence" do
+    @database.sequence( $sequence_name ).is_a?( Rbdb::Database::Sequence ).should == true
   end
   
 end

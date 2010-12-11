@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_DATABASE
-	#define RB_Rbdb_DATABASE
+#ifndef RB_RBDB_DATABASE
+	#define RB_RBDB_DATABASE
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_Database();
+void Init_rb_Rbdb_Database();
 
 VALUE rb_Rbdb_Database_new(	int			argc,
 														VALUE*	args,
@@ -53,7 +53,9 @@ VALUE rb_Rbdb_Database_secondaryDatabaseHash( VALUE rb_primary_database );
 	VALUE rb_Rbdb_Database_cursorController( VALUE	rb_database );
 	VALUE rb_Rbdb_Database_joinController( VALUE	rb_database );
 	VALUE rb_Rbdb_Database_verificationController( VALUE	rb_database );
-VALUE rb_Rbdb_Database_sequenceController( VALUE	rb_database );
+VALUE rb_Rbdb_Database_sequenceController( int			argc,
+																						VALUE*	args,
+																						VALUE		rb_database );
 VALUE rb_Rbdb_Database_write(	int			argc, 
 															VALUE*	args, 
 															VALUE		rb_database );

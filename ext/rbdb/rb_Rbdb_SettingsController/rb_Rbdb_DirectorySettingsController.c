@@ -31,7 +31,7 @@ extern	VALUE	rb_Rbdb_Environment;
 extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_DirectorySettingsController;
 
-void Init_Rbdb_DirectorySettingsController()	{
+void Init_rb_Rbdb_DirectorySettingsController()	{
 
 	rb_Rbdb_DirectorySettingsController		=	rb_define_class_under(	rb_Rbdb_SettingsController, 
 																																		"Directory",	
@@ -88,12 +88,12 @@ VALUE rb_Rbdb_DirectorySettingsController_new(	int				argc,
 	}
 
 	Rbdb_SettingsController*	c_parent_settings_controller;
-	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
+	C_RBDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
 	VALUE	rb_directory_settings_controller	= RUBY_RBDB_DIRECTORY_SETTINGS_CONTROLLER( Rbdb_SettingsController_directorySettingsController( c_parent_settings_controller ) );
 
 	rb_iv_set(	rb_directory_settings_controller,
-							Rbdb_RB_DIRECTORY_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							RBDB_RB_DIRECTORY_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
 							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
@@ -132,7 +132,7 @@ VALUE rb_Rbdb_DirectorySettingsController_parentEnvironment(	VALUE	rb_directory_
 VALUE rb_Rbdb_DirectorySettingsController_parentSettingsController(	VALUE	rb_directory_settings_controller )	{
 	
 	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_directory_settings_controller,
-																										Rbdb_RB_DIRECTORY_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+																										RBDB_RB_DIRECTORY_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_settings_controller;
 }
@@ -146,7 +146,7 @@ VALUE rb_Rbdb_DirectorySettingsController_parentSettingsController(	VALUE	rb_dir
 VALUE rb_Rbdb_DirectorySettingsController_homeDirectory( VALUE	rb_directory_settings_controller )	{
 
 	Rbdb_DirectorySettingsController*	c_directory_settings_controller;
-	C_Rbdb_DIRECTORY_SETTINGS_CONTROLLER( rb_directory_settings_controller, c_directory_settings_controller );
+	C_RBDB_DIRECTORY_SETTINGS_CONTROLLER( rb_directory_settings_controller, c_directory_settings_controller );
 
 	return rb_str_new2( Rbdb_DirectorySettingsController_homeDirectory( c_directory_settings_controller ) );
 }
@@ -171,7 +171,7 @@ VALUE rb_Rbdb_DirectorySettingsController_homeDirectory( VALUE	rb_directory_sett
 VALUE rb_Rbdb_DirectorySettingsController_dataDirectories( VALUE	rb_directory_settings_controller )	{
 
 	Rbdb_DirectorySettingsController*	c_directory_settings_controller;
-	C_Rbdb_DIRECTORY_SETTINGS_CONTROLLER( rb_directory_settings_controller, c_directory_settings_controller );
+	C_RBDB_DIRECTORY_SETTINGS_CONTROLLER( rb_directory_settings_controller, c_directory_settings_controller );
 
 									//	FIX - return in array
 	Rbdb_DirectorySettingsController_dataDirectories( c_directory_settings_controller );
@@ -188,7 +188,7 @@ VALUE rb_Rbdb_DirectorySettingsController_addDataDirectory(	VALUE	rb_directory_s
 																VALUE	rb_directory  )	{
 
 	Rbdb_DirectorySettingsController*	c_directory_settings_controller;
-	C_Rbdb_DIRECTORY_SETTINGS_CONTROLLER( rb_directory_settings_controller, c_directory_settings_controller );
+	C_RBDB_DIRECTORY_SETTINGS_CONTROLLER( rb_directory_settings_controller, c_directory_settings_controller );
 
 									//	FIX - use ruby dir
 	Rbdb_DirectorySettingsController_addDataDirectory(	c_directory_settings_controller,

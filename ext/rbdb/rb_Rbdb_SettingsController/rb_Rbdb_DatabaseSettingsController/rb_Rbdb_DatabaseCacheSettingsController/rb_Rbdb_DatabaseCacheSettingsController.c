@@ -44,7 +44,7 @@ extern	VALUE	rb_Rbdb_DatabaseSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseCacheSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseCachePrioritySettingsController;
 
-void Init_Rbdb_DatabaseCacheSettingsController()	{
+void Init_rb_Rbdb_DatabaseCacheSettingsController()	{
 
 	rb_Rbdb_DatabaseCacheSettingsController			=		rb_define_class_under(	rb_Rbdb_DatabaseSettingsController, 			
 																																					"Cache",							
@@ -144,14 +144,14 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
 
 	Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller	=	Rbdb_DatabaseSettingsController_cacheSettingsController( c_database_settings_controller );
 
 	VALUE	rb_database_cache_settings_controller	= RUBY_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( c_database_cache_settings_controller );
 
 	rb_iv_set(	rb_database_cache_settings_controller,
-							Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER,
+							RBDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller);
 
 	//	if we have an environment, unset methods corresponding to cache size
@@ -235,7 +235,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_parentSettingsController(	VALUE	rb
 VALUE rb_Rbdb_DatabaseCacheSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_cache_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_cache_settings_controller,
-																															Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER );
+																															RBDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_settings_controller;
 }
@@ -250,7 +250,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_parentDatabaseSettingsController(	
 VALUE rb_Rbdb_DatabaseCacheSettingsController_maxSizeInBytes( VALUE	rb_database_cache_settings_controller )	{
 
 	Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-	C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
+	C_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 
 	return INT2NUM( Rbdb_DatabaseCacheSettingsController_maxSizeInBytes( c_database_cache_settings_controller ) );
 }
@@ -263,7 +263,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_maxSizeInBytes( VALUE	rb_database_
 	VALUE rb_Rbdb_DatabaseCacheSettingsController_maxSizeInKBytes( VALUE	rb_database_cache_settings_controller )	{
 		
 		Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-		C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
+		C_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 
 		return INT2NUM( Rbdb_DatabaseCacheSettingsController_maxSizeInKBytes( c_database_cache_settings_controller ) );
 	}
@@ -276,7 +276,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_maxSizeInBytes( VALUE	rb_database_
 	VALUE rb_Rbdb_DatabaseCacheSettingsController_maxSizeInMBytes( VALUE	rb_database_cache_settings_controller )	{
 	
 		Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-		C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
+		C_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 
 		return INT2NUM( Rbdb_DatabaseCacheSettingsController_maxSizeInMBytes( c_database_cache_settings_controller ) );
 	}
@@ -289,7 +289,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_maxSizeInBytes( VALUE	rb_database_
 	VALUE rb_Rbdb_DatabaseCacheSettingsController_maxSizeInGBytes( VALUE	rb_database_cache_settings_controller )	{
 		
 		Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-		C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
+		C_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 
 		return INT2FIX( Rbdb_DatabaseCacheSettingsController_maxSizeInGBytes( c_database_cache_settings_controller ) );
 	}
@@ -305,7 +305,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 																	VALUE	rb_max_size_in_bytes )	{
 	
 	Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-	C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
+	C_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 
 	Rbdb_DatabaseCacheSettingsController_setMaxSizeInBytes(	c_database_cache_settings_controller,
 	 															FIX2INT( rb_max_size_in_bytes ) );
@@ -322,7 +322,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 																		VALUE	rb_max_size_kbytes )	{
 
 		Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-		C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
+		C_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 
 		Rbdb_DatabaseCacheSettingsController_setMaxSizeInKBytes(	c_database_cache_settings_controller,
 		 															FIX2INT( rb_max_size_kbytes ) );
@@ -339,7 +339,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 																		VALUE	rb_max_size_mbytes )	{
 
 		Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-		C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
+		C_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 
 		Rbdb_DatabaseCacheSettingsController_setMaxSizeInMBytes(	c_database_cache_settings_controller,
 		 															FIX2INT( rb_max_size_mbytes ) );
@@ -356,7 +356,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 																		VALUE	rb_max_size_gbytes )	{
 
 		Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-		C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
+		C_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 
 		Rbdb_DatabaseCacheSettingsController_setMaxSizeInGBytes(	c_database_cache_settings_controller,
 		 															FIX2INT( rb_max_size_gbytes ) );
@@ -376,7 +376,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 																						VALUE	rb_additional_max_size_in_bytes )	{
 
 		Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-		C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
+		C_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 		
 		Rbdb_DatabaseCacheSettingsController_setMaxSizeInGBytesMBytesKBytesBytes(	c_database_cache_settings_controller,
 		 																			FIX2INT( rb_max_size_gbytes ),
@@ -398,7 +398,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 																					VALUE	rb_additional_max_size_bytes )	{
 
 		Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-		C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
+		C_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 		
 		Rbdb_DatabaseCacheSettingsController_setMaxSizeInMBytesKBytesBytes(	c_database_cache_settings_controller,
 																				FIX2INT( rb_max_size_mbytes ),
@@ -418,7 +418,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 																																					VALUE	rb_additional_max_size_bytes )	{
 
 		Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-		C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
+		C_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 
 		Rbdb_DatabaseCacheSettingsController_setMaxSizeInKBytesBytes(	c_database_cache_settings_controller,
 																																	FIX2INT( rb_max_size_kbytes ),
@@ -434,7 +434,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_setMaxSizeInBytes(	VALUE	rb_databa
 VALUE rb_Rbdb_DatabaseCacheSettingsController_numberCacheRegions( VALUE	rb_database_cache_settings_controller )	{
 
 	Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-	C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
+	C_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseCacheSettingsController_numberCacheRegions( c_database_cache_settings_controller ) );
 }
@@ -447,7 +447,7 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_setNumberCacheRegions(	VALUE	rb_da
 																																			VALUE	rb_number_cache_regions )	{
 
 	Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-	C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
+	C_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_database_cache_settings_controller, c_database_cache_settings_controller );
 
 	Rbdb_DatabaseCacheSettingsController_setNumberCacheRegions(	c_database_cache_settings_controller,
 																															FIX2INT( rb_number_cache_regions ) );
@@ -499,13 +499,13 @@ VALUE rb_Rbdb_DatabaseCacheSettingsController_prioritySettingsController( VALUE	
 	VALUE	rb_priority_settings_controller	=	Qnil;
 	
 	if ( ( rb_priority_settings_controller = rb_iv_get(	rb_database_cache_settings_controller,
-																											Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																											RBDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER ) ) == Qnil )	{
 	
 		rb_priority_settings_controller	=	rb_Rbdb_DatabaseCachePrioritySettingsController_new(	1,
 																																														& rb_database_cache_settings_controller,
 																																														rb_Rbdb_DatabaseCachePrioritySettingsController );
 		rb_iv_set(	rb_database_cache_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER,
 								rb_priority_settings_controller );
 	}
 	

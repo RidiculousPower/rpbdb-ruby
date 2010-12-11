@@ -38,7 +38,7 @@ VALUE	extern	rb_Rbdb_MemoryPoolSettingsController;
 VALUE	extern	rb_Rbdb_MemoryPoolFileSettingsController;
 VALUE	extern	rb_Rbdb_MemoryPoolFilePageSettingsController;
 
-void Init_Rbdb_MemoryPoolFilePageSettingsController()	{
+void Init_rb_Rbdb_MemoryPoolFilePageSettingsController()	{
 
 	rb_Rbdb_MemoryPoolFilePageSettingsController		=	rb_define_class_under(	rb_Rbdb_MemoryPoolFileSettingsController, 
 																																						"Page",	
@@ -120,14 +120,14 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_new(	int			argc,
 	}
 
 	Rbdb_MemoryPoolFileSettingsController*	c_parent_memory_pool_file_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_parent_memory_pool_file_settings_controller, c_parent_memory_pool_file_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( rb_parent_memory_pool_file_settings_controller, c_parent_memory_pool_file_settings_controller );
 
 	Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller	=	Rbdb_MemoryPoolFileSettingsController_pageSettingsController( c_parent_memory_pool_file_settings_controller );
 
 	VALUE	rb_memory_pool_file_page_settings_controller	= RUBY_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( c_memory_pool_file_page_settings_controller );
 
 	rb_iv_set(	rb_memory_pool_file_page_settings_controller,
-							Rbdb_RB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,
+							RBDB_RB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,
 							rb_parent_memory_pool_file_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_memory_pool_file_settings_controller };
@@ -192,7 +192,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_parentMemoryPoolSettingsContr
 VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_parentMemoryPoolFileSettingsController(	VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 	VALUE	rb_parent_memory_pool_file_settings_controller	=	rb_iv_get(	rb_memory_pool_file_page_settings_controller,
-																																			Rbdb_RB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_FILE_SETTINGS_CONTROLLER );
+																																			RBDB_RB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_MEMORY_POOL_FILE_SETTINGS_CONTROLLER );
 
 	return rb_parent_memory_pool_file_settings_controller;
 }
@@ -206,7 +206,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_parentMemoryPoolFileSettingsC
 VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageCreatesPageIfDoesNotExist( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 	Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 	return ( Rbdb_MemoryPoolFilePageSettingsController_getPageCreatesPageIfDoesNotExist( c_memory_pool_file_page_settings_controller )	?	Qtrue
 																																		:	Qfalse );
@@ -219,7 +219,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageCreatesPageIfDoesNotEx
 	VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_turnGetPageCreatesPageIfDoesNotExistOn( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 		Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 		Rbdb_MemoryPoolFilePageSettingsController_turnGetPageCreatesPageIfDoesNotExistOn( c_memory_pool_file_page_settings_controller );
 	
@@ -233,7 +233,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageCreatesPageIfDoesNotEx
 	VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_turnGetPageCreatesPageIfDoesNotExistOff( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 		Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 		Rbdb_MemoryPoolFilePageSettingsController_turnGetPageCreatesPageIfDoesNotExistOff( c_memory_pool_file_page_settings_controller );
 	
@@ -250,7 +250,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageCreatesPageIfDoesNotEx
 VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageWritesCopyBeforeEviction( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 	Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 	return ( Rbdb_MemoryPoolFilePageSettingsController_getPageWritesCopyBeforeEviction( c_memory_pool_file_page_settings_controller )	?	Qtrue
 																																		:	Qfalse );
@@ -263,7 +263,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageWritesCopyBeforeEvicti
 	VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_turnGetPageWritesCopyBeforeEvictionOn( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 		Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 		Rbdb_MemoryPoolFilePageSettingsController_turnGetPageWritesCopyBeforeEvictionOn( c_memory_pool_file_page_settings_controller );
 
@@ -277,7 +277,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageWritesCopyBeforeEvicti
 	VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_turnGetPageWritesCopyBeforeEvictionOff( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 		Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 		Rbdb_MemoryPoolFilePageSettingsController_turnGetPageWritesCopyBeforeEvictionOff( c_memory_pool_file_page_settings_controller );
 
@@ -295,7 +295,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageWritesCopyBeforeEvicti
 VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageWritesBeforeEvictionWithoutCopy( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 	Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 	return ( Rbdb_MemoryPoolFilePageSettingsController_getPageWritesBeforeEvictionWithoutCopy( c_memory_pool_file_page_settings_controller )	?	Qtrue
 																																				:	Qfalse );
@@ -308,7 +308,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageWritesBeforeEvictionWi
 	VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_turnWriteBeforeEvictionButProhibitMultiversionCopyOn( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 		Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 		Rbdb_MemoryPoolFilePageSettingsController_turnWriteBeforeEvictionButProhibitMultiversionCopyOn( c_memory_pool_file_page_settings_controller );
 
@@ -322,7 +322,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageWritesBeforeEvictionWi
 	VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_turnWriteBeforeEvictionButProhibitMultiversionCopyOff( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 		Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 		Rbdb_MemoryPoolFilePageSettingsController_turnWriteBeforeEvictionButProhibitMultiversionCopyOff( c_memory_pool_file_page_settings_controller );
 
@@ -339,7 +339,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageWritesBeforeEvictionWi
 VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageReturnsLastPage( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 	Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 	return ( Rbdb_MemoryPoolFilePageSettingsController_getPageReturnsLastPage( c_memory_pool_file_page_settings_controller )	?	Qtrue
 																																:	Qfalse );
@@ -352,7 +352,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageReturnsLastPage( VALUE
 	VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_turnGetPageReturnsLastPageOn( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 		Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 		Rbdb_MemoryPoolFilePageSettingsController_turnGetPageReturnsLastPageOn( c_memory_pool_file_page_settings_controller );
 
@@ -366,7 +366,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageReturnsLastPage( VALUE
 	VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_turnGetPageReturnsLastPageOff( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 		Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 		Rbdb_MemoryPoolFilePageSettingsController_turnGetPageReturnsLastPageOff( c_memory_pool_file_page_settings_controller );
 
@@ -384,7 +384,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageReturnsLastPage( VALUE
 VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageCreatesNewPage( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 	Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-	C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+	C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 	return ( Rbdb_MemoryPoolFilePageSettingsController_getPageCreatesNewPage( c_memory_pool_file_page_settings_controller )	?	Qtrue
 																																																													:	Qfalse );
@@ -397,7 +397,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageCreatesNewPage( VALUE	
 	VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_turnGetPageCreatesNewPageOn( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 		Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 		Rbdb_MemoryPoolFilePageSettingsController_turnGetPageCreatesNewPageOn( c_memory_pool_file_page_settings_controller );
 
@@ -411,7 +411,7 @@ VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_getPageCreatesNewPage( VALUE	
 	VALUE rb_Rbdb_MemoryPoolFilePageSettingsController_turnGetPageCreatesNewPageOff( VALUE	rb_memory_pool_file_page_settings_controller )	{
 
 		Rbdb_MemoryPoolFilePageSettingsController*	c_memory_pool_file_page_settings_controller;
-		C_Rbdb_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
+		C_RBDB_MEMORY_POOL_FILE_PAGE_SETTINGS_CONTROLLER( rb_memory_pool_file_page_settings_controller, c_memory_pool_file_page_settings_controller );
 
 		Rbdb_MemoryPoolFilePageSettingsController_turnGetPageCreatesNewPageOff( c_memory_pool_file_page_settings_controller );
 

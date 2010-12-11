@@ -1,44 +1,44 @@
-require_relative 'lib/rbdb.rb'
+require_relative '/Users/asher/Projects/rp/rbdb/ruby/lib/rbdb/rbdb'
 
-describe Rbdb::Database::Controller do
+describe Rbdb::Database::Sequence do
 
   $environment_path           = '/tmp/rbdb_spec_environment_home/'
 
   $database_name              = :spec_database
-  $secondary_database_name    = $database_name.to_s + '_secondary'
   $database_new_name          = :spec_database_renamed
   $database_extension         = '.db'
-  $duplicates_database_name   = :duplicates_db
-
-  $unsorted_duplicates_database_name   = :unsorted_duplicates_db
-  $sorted_duplicates_database_name   = :sorted_duplicates_db
-  
+  $sequence_name              = :spec_sequence
+  $other_sequence_name        = :other_spec_sequence_name
   
   before( :each ) do
-    @environment = Rbdb::Environment.new( $environment_path ).open
+    @environment = Rbdb::Environment.new( $environment_path )
+    @environment.open
     @database_controller = @environment.database_controller
-
+    @database = @database_controller.database( $database_name ).open
   end
 
   after( :each ) do
+    @database.close
     @environment.close
   end
 
+  ##################
+  #  step          #
+  #  step( # )     #
+  #  step_by( # )  #
+  ##################
 
-
-
-  it "can delete records specified by multiple secondary keys in an array" do
-    database = @environment.database.new( $database_name )
-
-    database.create_secondary_index( :value ) do |key, value|
-      return value
-    end
-    database.write( "key" => 'some data',
-                    "another key" => 'other data' )
-    database.delete( :value, [ 'some data', 'other data' ] )
-    database.retrieve( "key" ).should == nil    
+  it "can rename itself" do
+    sequence = @database.sequence( $sequence_name )
+    sequence.step_by( 10 ).should == 0
+    renamed_sequence = sequence.rename!( $other_sequence_name )
+    sequence_new = @database.sequence( $sequence_name )
+    sequence_new.step.should == 0
+    renamed_sequence.step.should == 9
+    sequence_new.delete!
+    renamed_sequence.delete!
   end
-  
 
 
 end
+

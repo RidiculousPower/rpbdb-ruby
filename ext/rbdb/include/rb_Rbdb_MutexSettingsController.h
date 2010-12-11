@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_MUTEX_SETTINGS_CONTROLLER
-	#define RB_Rbdb_MUTEX_SETTINGS_CONTROLLER
+#ifndef RB_RBDB_MUTEX_SETTINGS_CONTROLLER
+	#define RB_RBDB_MUTEX_SETTINGS_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_MutexSettingsController();
+void Init_rb_Rbdb_MutexSettingsController();
 
 VALUE rb_Rbdb_MutexSettingsController_new(	int			argc,
 																						VALUE*	args,

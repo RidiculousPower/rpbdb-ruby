@@ -46,7 +46,7 @@ extern	VALUE	rb_Rbdb_Data;
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-void Init_Rbdb_Record()	{
+void Init_rb_Rbdb_Record()	{
 
 	rb_Rbdb_Record		=	rb_define_class_under(	rb_Rbdb_Database, 
 																							"Record", 		
@@ -74,13 +74,13 @@ VALUE rb_Rbdb_Record_new(	int			argc,
 	);
 
 	Rbdb_Database*			c_parent_database;
-	C_Rbdb_DATABASE( rb_parent_database, c_parent_database );
+	C_RBDB_DATABASE( rb_parent_database, c_parent_database );
 	
 	VALUE	rb_record	=	RUBY_RBDB_RECORD( Rbdb_Record_new( c_parent_database ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_record,
-							Rbdb_RB_RECORD_VARIABLE_PARENT_DATABASE,
+							RBDB_RB_RECORD_VARIABLE_PARENT_DATABASE,
 							rb_parent_database );
 
 	VALUE	argv[]	=	{ rb_parent_database };
@@ -111,17 +111,17 @@ VALUE rb_Rbdb_Record_settingsController(	VALUE	rb_record )	{
 	VALUE	rb_local_record_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_record_settings_controller = rb_iv_get(	rb_record,
-																													Rbdb_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																													RBDB_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_Record*		c_record;
-		C_Rbdb_RECORD( rb_record, c_record );
+		C_RBDB_RECORD( rb_record, c_record );
 	
 		Rbdb_DatabaseRecordSettingsController*	c_local_record_settings_controller	=	Rbdb_Record_settingsController( c_record );
 
 		rb_local_record_settings_controller	=	RUBY_RBDB_DATABASE_RECORD_SETTINGS_CONTROLLER( c_local_record_settings_controller );
 
 		rb_iv_set(	rb_record,
-								Rbdb_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER,
 								rb_local_record_settings_controller );
 	}
 
@@ -159,7 +159,7 @@ VALUE rb_Rbdb_Record_parentDatabaseController(	VALUE	rb_record )	{
 VALUE rb_Rbdb_Record_parentDatabase(	VALUE	rb_record )	{
 
 	VALUE	rb_parent_database	=	rb_iv_get(	rb_record,
-																					Rbdb_RB_RECORD_VARIABLE_PARENT_DATABASE );
+																					RBDB_RB_RECORD_VARIABLE_PARENT_DATABASE );
 	
 	return rb_parent_database;
 }
@@ -177,7 +177,7 @@ VALUE rb_Rbdb_Record_parentDatabase(	VALUE	rb_record )	{
 VALUE rb_Rbdb_Record_primaryKey( VALUE	rb_record )	{
 
 	Rbdb_Record*		c_record;
-	C_Rbdb_RECORD( rb_record, c_record );
+	C_RBDB_RECORD( rb_record, c_record );
 
 	return RUBY_RBDB_KEY( Rbdb_Record_primaryKey( c_record ) );
 }
@@ -189,7 +189,7 @@ VALUE rb_Rbdb_Record_primaryKey( VALUE	rb_record )	{
 VALUE rb_Rbdb_Record_retrievalKey( VALUE	rb_record )	{
 
 	Rbdb_Record*		c_record;
-	C_Rbdb_RECORD( rb_record, c_record );
+	C_RBDB_RECORD( rb_record, c_record );
 
 	return RUBY_RBDB_KEY( Rbdb_Record_retrievalKey( c_record ) );		
 }
@@ -206,7 +206,7 @@ VALUE rb_Rbdb_Record_setExistsInDatabase(	VALUE	rb_record,
 											VALUE	rb_data_status	)	{
 
 	Rbdb_Record*		c_record;
-	C_Rbdb_RECORD( rb_record, c_record );
+	C_RBDB_RECORD( rb_record, c_record );
 
 	Rbdb_Record_setExistsInDatabase(	c_record,
 										( rb_data_status == Qtrue	?	TRUE 
@@ -222,7 +222,7 @@ VALUE rb_Rbdb_Record_setExistsInDatabase(	VALUE	rb_record,
 VALUE rb_Rbdb_Record_existsInDatabase( VALUE	rb_record )	{
 
 	Rbdb_Record*		c_record;
-	C_Rbdb_RECORD( rb_record, c_record );
+	C_RBDB_RECORD( rb_record, c_record );
 
 	return ( Rbdb_Record_existsInDatabase( c_record )	?	Qtrue
 														:	Qfalse );
@@ -236,7 +236,7 @@ VALUE rb_Rbdb_Record_setRequiresUpdateToDatabase(	VALUE	rb_record,
 													VALUE	rb_data_status	)	{
 
 	Rbdb_Record*		c_record;
-	C_Rbdb_RECORD( rb_record, c_record );
+	C_RBDB_RECORD( rb_record, c_record );
 
 	Rbdb_Record_setRequiresUpdateToDatabase(	c_record,
 												( rb_data_status == Qtrue	?	TRUE 
@@ -252,7 +252,7 @@ VALUE rb_Rbdb_Record_setRequiresUpdateToDatabase(	VALUE	rb_record,
 VALUE rb_Rbdb_Record_requiresUpdateToDatabase( VALUE	rb_record )	{
 
 	Rbdb_Record*		c_record;
-	C_Rbdb_RECORD( rb_record, c_record );
+	C_RBDB_RECORD( rb_record, c_record );
 
 	return ( Rbdb_Record_requiresUpdateToDatabase( c_record )	?	Qtrue
 																:	Qfalse );

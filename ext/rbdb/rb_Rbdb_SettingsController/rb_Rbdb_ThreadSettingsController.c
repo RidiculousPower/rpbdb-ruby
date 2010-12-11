@@ -32,7 +32,7 @@ extern	VALUE	rb_Rbdb_Environment;
 extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_ThreadSettingsController;
 	
-void Init_Rbdb_ThreadSettingsController()	{
+void Init_rb_Rbdb_ThreadSettingsController()	{
 
 	rb_Rbdb_ThreadSettingsController		=	rb_define_class_under(	rb_Rbdb_SettingsController, 
 																																"Thread",	
@@ -90,12 +90,12 @@ VALUE rb_Rbdb_ThreadSettingsController_new(	int			argc,
 	}
 
 	Rbdb_SettingsController*	c_parent_settings_controller;
-	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
+	C_RBDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 	
 	VALUE	rb_thread_settings_controller	= RUBY_RBDB_THREAD_SETTINGS_CONTROLLER( Rbdb_ThreadSettingsController_new( c_parent_settings_controller ) );
 	
 	rb_iv_set(	rb_thread_settings_controller,
-							Rbdb_RB_THREAD_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							RBDB_RB_THREAD_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
 							rb_parent_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
@@ -136,7 +136,7 @@ VALUE rb_Rbdb_ThreadSettingsController_parentEnvironment(	VALUE	rb_thread_settin
 VALUE rb_Rbdb_ThreadSettingsController_parentSettingsController(	VALUE	rb_thread_settings_controller )	{
 
 	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_thread_settings_controller,
-																										Rbdb_RB_THREAD_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+																										RBDB_RB_THREAD_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_settings_controller;
 }
@@ -149,7 +149,7 @@ VALUE rb_Rbdb_ThreadSettingsController_parentSettingsController(	VALUE	rb_thread
 VALUE rb_Rbdb_ThreadSettingsController_on( VALUE	rb_thread_settings_controller )	{
 
 	Rbdb_ThreadSettingsController*	c_thread_settings_controller;
-	C_Rbdb_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
+	C_RBDB_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
 
 	return ( Rbdb_ThreadSettingsController_on( c_thread_settings_controller )	?	Qtrue
 																				:	Qfalse );
@@ -162,7 +162,7 @@ VALUE rb_Rbdb_ThreadSettingsController_on( VALUE	rb_thread_settings_controller )
 VALUE rb_Rbdb_ThreadSettingsController_off( VALUE	rb_thread_settings_controller )	{
 
 	Rbdb_ThreadSettingsController*	c_thread_settings_controller;
-	C_Rbdb_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
+	C_RBDB_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
 
 	return ( Rbdb_ThreadSettingsController_off( c_thread_settings_controller )	?	Qtrue
 																				:	Qfalse );
@@ -181,7 +181,7 @@ VALUE rb_Rbdb_ThreadSettingsController_turnOn( VALUE	rb_thread_settings_controll
 	}
 
 	Rbdb_ThreadSettingsController*	c_thread_settings_controller;
-	C_Rbdb_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
+	C_RBDB_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
 
 	Rbdb_ThreadSettingsController_turnOn( c_thread_settings_controller );
 
@@ -195,7 +195,7 @@ VALUE rb_Rbdb_ThreadSettingsController_turnOn( VALUE	rb_thread_settings_controll
 VALUE rb_Rbdb_ThreadSettingsController_turnOff( VALUE	rb_thread_settings_controller )	{
 
 	Rbdb_ThreadSettingsController*	c_thread_settings_controller;
-	C_Rbdb_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
+	C_RBDB_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
 
 	Rbdb_ThreadSettingsController_turnOff( c_thread_settings_controller );
 
@@ -210,7 +210,7 @@ VALUE rb_Rbdb_ThreadSettingsController_turnOff( VALUE	rb_thread_settings_control
 VALUE rb_Rbdb_ThreadSettingsController_threadCount( VALUE	rb_thread_settings_controller )	{
 
 	Rbdb_ThreadSettingsController*	c_thread_settings_controller;
-	C_Rbdb_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
+	C_RBDB_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
 
 	int		c_thread_count	=	Rbdb_ThreadSettingsController_threadCount( c_thread_settings_controller );
 	VALUE	rb_thread_count	=	INT2FIX( c_thread_count );
@@ -232,7 +232,7 @@ VALUE rb_Rbdb_ThreadSettingsController_setThreadCount(	VALUE	rb_thread_settings_
 	}
 
 	Rbdb_ThreadSettingsController*	c_thread_settings_controller;
-	C_Rbdb_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
+	C_RBDB_THREAD_SETTINGS_CONTROLLER( rb_thread_settings_controller, c_thread_settings_controller );
 
 	Rbdb_ThreadSettingsController_setThreadCount(	c_thread_settings_controller,
 																								FIX2INT( rb_thread_count ) );

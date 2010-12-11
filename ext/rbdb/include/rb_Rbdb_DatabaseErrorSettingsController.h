@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_DATABASE_ERROR_SETTINGS_CONTROLLER
-	#define RB_Rbdb_DATABASE_ERROR_SETTINGS_CONTROLLER
+#ifndef RB_RBDB_DATABASE_ERROR_SETTINGS_CONTROLLER
+	#define RB_RBDB_DATABASE_ERROR_SETTINGS_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_DatabaseErrorSettingsController();
+void Init_rb_Rbdb_DatabaseErrorSettingsController();
 
 VALUE rb_Rbdb_DatabaseErrorSettingsController_new(	int			argc,
 																										VALUE*	args,

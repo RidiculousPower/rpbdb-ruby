@@ -26,7 +26,7 @@ extern	VALUE	rb_Rbdb_DatabaseController;
 extern	VALUE	rb_Rbdb_DatabaseObjectCursor;
 extern	VALUE	rb_Rbdb_DatabaseObjectDatabase;
 
-void Init_Rbdb_DatabaseObjectDatabase()	{
+void Init_rb_Rbdb_DatabaseObjectDatabase()	{
 	
 	rb_Rbdb_DatabaseObjectDatabase		=	rb_define_class_under(	rb_Rbdb_DatabaseController, 
 																															"ObjectDatabase",
@@ -49,7 +49,7 @@ void Init_Rbdb_DatabaseObjectDatabase()	{
 VALUE rb_Rbdb_DatabaseObjectDatabase_cursor( VALUE	rb_database )	{
 
 	Rbdb_Database*	c_database	=	NULL;
-	C_Rbdb_DATABASE_OBJECT_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE_OBJECT_DATABASE( rb_database, c_database );
 	
 	Rbdb_DatabaseCursor*	c_cursor	=	Rbdb_Database_cursor( c_database );
 	

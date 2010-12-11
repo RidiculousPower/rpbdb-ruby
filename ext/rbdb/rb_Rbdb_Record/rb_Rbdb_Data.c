@@ -1,5 +1,5 @@
 /*
- *		Rbdb::Rbdb_DatabaseController::Rbdb_Database::(Rbdb_DatabaseCursorController::Rbdb_DatabaseCursor::)Rbdb_Record::Rbdb_DBT => Rbdb_Data
+ *		Rbdb::Rbdb_DatabaseController::Rbdb_Database::(Rbdb_DatabaseCursorController::Rbdb_DatabaseCursor::)Rbdb_Record::RBDB_DBT => Rbdb_Data
  *
  *
  */
@@ -41,7 +41,7 @@ extern	VALUE	rb_Rbdb_DatabaseRecordSettingsController;
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-void Init_Rbdb_Data()	{
+void Init_rb_Rbdb_Data()	{
 
 	rb_Rbdb_Data		=	rb_define_class_under(	rb_Rbdb_Record, 
 																						"Data", 		
@@ -73,13 +73,13 @@ VALUE rb_Rbdb_Data_new(	int			argc,
 	);
 
 	Rbdb_Record*		c_parent_record;
-	C_Rbdb_RECORD( rb_parent_record, c_parent_record );
+	C_RBDB_RECORD( rb_parent_record, c_parent_record );
 	
 	VALUE	rb_data	=	RUBY_RBDB_DATA( Rbdb_Data_new( c_parent_record ) );
 	
 	//	store reference to parent
 	rb_iv_set(	rb_data,
-							Rbdb_RB_DATA_VARIABLE_PARENT_RECORD,
+							RBDB_RB_DATA_VARIABLE_PARENT_RECORD,
 							rb_parent_record );
 
 	VALUE	argv[]	=	{ rb_parent_record };
@@ -110,17 +110,17 @@ VALUE rb_Rbdb_Data_settingsController(	VALUE	rb_data )	{
 	VALUE	rb_local_record_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_record_settings_controller = rb_iv_get(	rb_data,
-																													Rbdb_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																													RBDB_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_Data*		c_data;
-		C_Rbdb_DATA( rb_data, c_data );
+		C_RBDB_DATA( rb_data, c_data );
 	
 		Rbdb_DatabaseRecordSettingsController*	c_local_record_settings_controller	=	Rbdb_Data_settingsController( c_data );
 
 		rb_local_record_settings_controller	=	RUBY_RBDB_DATABASE_RECORD_SETTINGS_CONTROLLER( c_local_record_settings_controller );
 
 		rb_iv_set(	rb_data,
-								Rbdb_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_RECORD_SETTINGS_CONTROLLER,
 								rb_local_record_settings_controller );
 	}
 
@@ -170,7 +170,7 @@ VALUE rb_Rbdb_Data_parentDatabase(	VALUE	rb_data )	{
 VALUE rb_Rbdb_Data_parentRecord(	VALUE	rb_data )	{
 	
 	VALUE	rb_parent_record	=	rb_iv_get(	rb_data,
-																				Rbdb_RB_DATA_VARIABLE_PARENT_RECORD );
+																				RBDB_RB_DATA_VARIABLE_PARENT_RECORD );
 	return rb_parent_record;
 }
 

@@ -38,7 +38,7 @@ extern	VALUE	rb_Rbdb_LockSettingsController;
 extern	VALUE	rb_Rbdb_LockDeadlockDetectorSettingsController;
 extern	VALUE	rb_Rbdb_LockDeadlockDetectorVerbositySettingsController;
 
-void Init_Rbdb_LockDeadlockDetectorVerbositySettingsController()	{
+void Init_rb_Rbdb_LockDeadlockDetectorVerbositySettingsController()	{
 
 	rb_Rbdb_LockDeadlockDetectorVerbositySettingsController		=	rb_define_class_under(	rb_Rbdb_LockDeadlockDetectorSettingsController, 
 																																											"Verbosity",	
@@ -114,14 +114,14 @@ VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_new(	int			argc,
 	}
 
 	Rbdb_LockDeadlockDetectorSettingsController*	c_parent_lock_deadlock_detector_settings_controller;
-	C_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_parent_lock_deadlock_detector_settings_controller, c_parent_lock_deadlock_detector_settings_controller );
+	C_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER( rb_parent_lock_deadlock_detector_settings_controller, c_parent_lock_deadlock_detector_settings_controller );
 	
 	Rbdb_LockDeadlockDetectorVerbositySettingsController*	c_lock_deadlock_verbosity_settings_controller	=	Rbdb_LockDeadlockDetectorSettingsController_verbositySettingsController( c_parent_lock_deadlock_detector_settings_controller );
 
 	VALUE	rb_lock_deadlock_detector_verbosity_settings_controller	= RUBY_RBDB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( c_lock_deadlock_verbosity_settings_controller );
 
 	rb_iv_set(	rb_lock_deadlock_detector_verbosity_settings_controller,
-							Rbdb_RB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER,
+							RBDB_RB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER,
 							rb_parent_lock_deadlock_detector_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_lock_deadlock_detector_settings_controller };
@@ -186,7 +186,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_parentLockSettings
 VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_parentLockDeadlockDetectorSettingsController(	VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
 
 	VALUE	rb_parent_lock_deadlock_detector_settings_controller	=	rb_iv_get(	rb_lock_deadlock_detector_verbosity_settings_controller,
-																																						Rbdb_RB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER );
+																																						RBDB_RB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER );
 
 	return rb_parent_lock_deadlock_detector_settings_controller;
 }
@@ -199,7 +199,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_parentLockDeadlock
 VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_displayAdditionalInformationDuringDeadlockDetection( VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
 
 	Rbdb_LockDeadlockDetectorVerbositySettingsController*	c_lock_deadlock_detector_verbosity_settings_controller;
-	C_Rbdb_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller );
+	C_RBDB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller );
 
 	return ( Rbdb_LockDeadlockDetectorVerbositySettingsController_displayAdditionalInformationDuringDeadlockDetection( c_lock_deadlock_detector_verbosity_settings_controller )	?	Qtrue
 																																													:	Qfalse );
@@ -212,7 +212,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_displayAdditionalI
 	VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_turnDisplayAdditionalInformationDuringDeadlockDetectionOn( VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
 
 		Rbdb_LockDeadlockDetectorVerbositySettingsController*	c_lock_deadlock_detector_verbosity_settings_controller;
-		C_Rbdb_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller );
+		C_RBDB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller );
 
 		Rbdb_LockDeadlockDetectorVerbositySettingsController_turnDisplayAdditionalInformationDuringDeadlockDetectionOn( c_lock_deadlock_detector_verbosity_settings_controller );
 
@@ -226,7 +226,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_displayAdditionalI
 	VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_turnDisplayAdditionalInformationDuringDeadlockDetectionOff( VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
 
 		Rbdb_LockDeadlockDetectorVerbositySettingsController*	c_lock_deadlock_detector_verbosity_settings_controller;
-		C_Rbdb_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller );
+		C_RBDB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller );
 
 		Rbdb_LockDeadlockDetectorVerbositySettingsController_turnDisplayAdditionalInformationDuringDeadlockDetectionOff( c_lock_deadlock_detector_verbosity_settings_controller );
 
@@ -241,7 +241,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_displayAdditionalI
 VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_displayWaitTableDuringDeadlockDetection( VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
 
 	Rbdb_LockDeadlockDetectorVerbositySettingsController*	c_lock_deadlock_detector_verbosity_settings_controller;
-	C_Rbdb_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller );
+	C_RBDB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller );
 
 	return ( Rbdb_LockDeadlockDetectorVerbositySettingsController_displayWaitTableDuringDeadlockDetection( c_lock_deadlock_detector_verbosity_settings_controller )	?	Qtrue
 																																										:	Qfalse );
@@ -254,7 +254,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_displayWaitTableDu
 	VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_turnDisplayWaitTableDuringDeadlockDetectionOn( VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
 
 		Rbdb_LockDeadlockDetectorVerbositySettingsController*	c_lock_deadlock_detector_verbosity_settings_controller;
-		C_Rbdb_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller );
+		C_RBDB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller );
 
 		Rbdb_LockDeadlockDetectorVerbositySettingsController_turnDisplayWaitTableDuringDeadlockDetectionOn( c_lock_deadlock_detector_verbosity_settings_controller );
 
@@ -268,7 +268,7 @@ VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_displayWaitTableDu
 	VALUE rb_Rbdb_LockDeadlockDetectorVerbositySettingsController_turnDisplayWaitTableDuringDeadlockDetectionOff( VALUE	rb_lock_deadlock_detector_verbosity_settings_controller )	{
 	
 		Rbdb_LockDeadlockDetectorVerbositySettingsController*	c_lock_deadlock_detector_verbosity_settings_controller;
-		C_Rbdb_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller );
+		C_RBDB_LOCK_DEADLOCK_DETECTOR_VERBOSITY_SETTINGS_CONTROLLER( rb_lock_deadlock_detector_verbosity_settings_controller, c_lock_deadlock_detector_verbosity_settings_controller );
 	
 		Rbdb_LockDeadlockDetectorVerbositySettingsController_turnDisplayWaitTableDuringDeadlockDetectionOff( c_lock_deadlock_detector_verbosity_settings_controller );
 

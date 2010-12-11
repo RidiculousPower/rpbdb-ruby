@@ -44,7 +44,7 @@ extern	VALUE	rb_Rbdb_DatabaseRecordReadWriteSettingsController;
 extern	VALUE	rb_Rbdb_Record;
 extern	VALUE	rb_Rbdb_DatabaseRecordSettingsController;
 
-void Init_Rbdb_DatabaseRecordReadWriteSettingsController()	{
+void Init_rb_Rbdb_DatabaseRecordReadWriteSettingsController()	{
 
 	rb_Rbdb_DatabaseRecordReadWriteSettingsController		=	rb_define_class_under(	rb_Rbdb_DatabaseRecordSettingsController, 
 																																								"ReadWrite",	
@@ -232,7 +232,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseRecordSettingsController*	c_database_record_settings_controller;
-	C_Rbdb_DATABASE_RECORD_SETTINGS_CONTROLLER( rb_parent_database_record_settings_controller, c_database_record_settings_controller );		
+	C_RBDB_DATABASE_RECORD_SETTINGS_CONTROLLER( rb_parent_database_record_settings_controller, c_database_record_settings_controller );		
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller	=	Rbdb_DatabaseRecordSettingsController_readWriteSettingsController( c_database_record_settings_controller );
 
@@ -240,7 +240,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_new(	int			argc,
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_record_read_write_settings_controller,
-							Rbdb_RB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER,
 							rb_parent_database_record_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_record_settings_controller };
@@ -317,7 +317,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsCo
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_parentDatabaseRecordSettingsController(	VALUE	rb_database_record_read_write_settings_controller )	{
 
 	VALUE	rb_parent_database_record_settings_controller	=	rb_iv_get(	rb_database_record_read_write_settings_controller,
-																																		Rbdb_RB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER );
+																																		RBDB_RB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_RECORD_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_record_settings_controller;
 }
@@ -334,7 +334,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_parentDatabaseRecordSett
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_prohibitSyncOnClose( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 	return ( Rbdb_DatabaseRecordReadWriteSettingsController_prohibitSyncOnClose( c_database_record_read_write_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -349,7 +349,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_prohibitSyncOnClose( VAL
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnProhibitSyncOnCloseOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnProhibitSyncOnCloseOn( c_database_record_read_write_settings_controller );
 
@@ -364,7 +364,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_prohibitSyncOnClose( VAL
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnProhibitSyncOnCloseOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnProhibitSyncOnCloseOff( c_database_record_read_write_settings_controller );
 
@@ -379,7 +379,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_prohibitSyncOnClose( VAL
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_ignoreLease( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 	return ( Rbdb_DatabaseRecordReadWriteSettingsController_ignoreLease( c_database_record_read_write_settings_controller )	?	Qtrue
 																												:	Qfalse );
@@ -394,7 +394,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_ignoreLease( VALUE	rb_da
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnIgnoreLeaseOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnIgnoreLeaseOn( c_database_record_read_write_settings_controller );
 
@@ -409,7 +409,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_ignoreLease( VALUE	rb_da
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnIgnoreLeaseOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnIgnoreLeaseOff( c_database_record_read_write_settings_controller );
 
@@ -424,7 +424,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_ignoreLease( VALUE	rb_da
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_returnMultiple( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 	return ( Rbdb_DatabaseRecordReadWriteSettingsController_returnMultiple( c_database_record_read_write_settings_controller )	?	Qtrue
 																													:	Qfalse );
@@ -439,7 +439,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_returnMultiple( VALUE	rb
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnReturnMultipleOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnReturnMultipleOn( c_database_record_read_write_settings_controller );
 
@@ -454,7 +454,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_returnMultiple( VALUE	rb
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnReturnMultipleOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnReturnMultipleOff( c_database_record_read_write_settings_controller );
 
@@ -470,7 +470,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_returnMultiple( VALUE	rb
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_writeDataOnlyIfNonDuplicate( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 	return ( Rbdb_DatabaseRecordReadWriteSettingsController_writeDataOnlyIfNonDuplicate( c_database_record_read_write_settings_controller )	?	Qtrue
 																															:	Qfalse );
@@ -485,7 +485,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_writeDataOnlyIfNonDuplic
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnWriteDataOnlyIfNonDuplicateOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnWriteDataOnlyIfNonDuplicateOn( c_database_record_read_write_settings_controller );
 
@@ -501,7 +501,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_writeDataOnlyIfNonDuplic
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnWriteDataOnlyIfNonDuplicateOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnWriteDataOnlyIfNonDuplicateOff( c_database_record_read_write_settings_controller );
 
@@ -516,7 +516,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_writeDataOnlyIfNonDuplic
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_prohibitOverwrite( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 	return ( Rbdb_DatabaseRecordReadWriteSettingsController_prohibitOverwrite( c_database_record_read_write_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -531,7 +531,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_prohibitOverwrite( VALUE
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnProhibitOverwriteOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnProhibitOverwriteOn( c_database_record_read_write_settings_controller );
 
@@ -546,7 +546,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_prohibitOverwrite( VALUE
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnProhibitOverwriteOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnProhibitOverwriteOff( c_database_record_read_write_settings_controller );
 
@@ -562,7 +562,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_prohibitOverwrite( VALUE
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_prohibitPageCompaction( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 	return( Rbdb_DatabaseRecordReadWriteSettingsController_prohibitPageCompaction( c_database_record_read_write_settings_controller )	?	Qtrue
 																															:	Qfalse );
@@ -578,7 +578,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_prohibitPageCompaction( 
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnProhibitPageCompactionOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnProhibitPageCompactionOn( c_database_record_read_write_settings_controller );
 
@@ -594,7 +594,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_prohibitPageCompaction( 
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnProhibitPageCompactionOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnProhibitPageCompactionOff( c_database_record_read_write_settings_controller );
 
@@ -609,7 +609,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_prohibitPageCompaction( 
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_returnPagesToFilesystem( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 	return ( Rbdb_DatabaseRecordReadWriteSettingsController_returnPagesToFilesystem( c_database_record_read_write_settings_controller )	?	Qtrue
 																															:	Qfalse );
@@ -624,7 +624,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_returnPagesToFilesystem(
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnReturnPagesToFilesystemOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnReturnPagesToFilesystemOn( c_database_record_read_write_settings_controller );
 
@@ -639,7 +639,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_returnPagesToFilesystem(
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnReturnPagesToFilesystemOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnReturnPagesToFilesystemOff( c_database_record_read_write_settings_controller );
 		
 		return rb_database_record_read_write_settings_controller;
@@ -653,7 +653,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_returnPagesToFilesystem(
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_truncateFileOnOpen( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 	return ( Rbdb_DatabaseRecordReadWriteSettingsController_truncateFileOnOpen( c_database_record_read_write_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -667,7 +667,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_truncateFileOnOpen( VALU
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnTruncateFileOnOpenOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnTruncateFileOnOpenOn( c_database_record_read_write_settings_controller );
 
@@ -681,7 +681,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_truncateFileOnOpen( VALU
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnTruncateFileOnOpenOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnTruncateFileOnOpenOff( c_database_record_read_write_settings_controller );
 
@@ -696,7 +696,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_truncateFileOnOpen( VALU
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_writeLocksInsteadOfReadLocks( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 	return ( Rbdb_DatabaseRecordReadWriteSettingsController_writeLocksInsteadOfReadLocks( c_database_record_read_write_settings_controller )	?	Qtrue
 																																	:	Qfalse );
@@ -710,7 +710,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_writeLocksInsteadOfReadL
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOn( c_database_record_read_write_settings_controller );
 
@@ -724,7 +724,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_writeLocksInsteadOfReadL
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnWriteLocksInsteadOfReadLocksOff( c_database_record_read_write_settings_controller );
 
@@ -740,7 +740,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_writeLocksInsteadOfReadL
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_partialAccess( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 	BOOL	c_partial_access	=	Rbdb_DatabaseRecordReadWriteSettingsController_partialAccess( c_database_record_read_write_settings_controller );
 	VALUE	rb_partial_access	=	( c_partial_access ? Qtrue : Qfalse );
@@ -756,7 +756,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_partialAccess( VALUE	rb_
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnPartialAccessOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnPartialAccessOn( c_database_record_read_write_settings_controller );
 
@@ -771,7 +771,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_partialAccess( VALUE	rb_
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnPartialAccessOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnPartialAccessOff( c_database_record_read_write_settings_controller );
 
@@ -785,7 +785,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_partialAccess( VALUE	rb_
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryUsingMalloc( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 	return ( Rbdb_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryUsingMalloc( c_database_record_settings_controller )	?	Qtrue
 																																:	Qfalse );
@@ -799,7 +799,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryU
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOn( c_database_record_settings_controller );
 	
@@ -813,7 +813,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryU
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOff( c_database_record_settings_controller );	
 
@@ -827,7 +827,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryU
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryUsingRealloc( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 	BOOL	c_database_allocates_memory_using_realloc		=	Rbdb_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryUsingRealloc( c_database_record_settings_controller );
 	VALUE	rb_database_allocates_memory_using_realloc	=	( c_database_allocates_memory_using_realloc ? Qtrue : Qfalse );
@@ -842,7 +842,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryU
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOn( c_database_record_settings_controller );	
 
@@ -856,7 +856,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryU
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingReallocOff( c_database_record_settings_controller );
 	
@@ -870,7 +870,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryU
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_applicationAllocatesMemory( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 	return ( Rbdb_DatabaseRecordReadWriteSettingsController_applicationAllocatesMemory( c_database_record_settings_controller )	?	Qtrue
 																														:	Qfalse );
@@ -884,7 +884,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_applicationAllocatesMemo
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnApplicationAllocatesMemoryOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnApplicationAllocatesMemoryOn( c_database_record_settings_controller );
 	
@@ -898,7 +898,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_applicationAllocatesMemo
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnApplicationAllocatesMemoryOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnApplicationAllocatesMemoryOff( c_database_record_settings_controller );
 	
@@ -912,7 +912,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_applicationAllocatesMemo
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_databaseFreesMemory( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 	return ( Rbdb_DatabaseRecordReadWriteSettingsController_databaseFreesMemory( c_database_record_settings_controller )	?	Qtrue
 																													:	Qfalse );
@@ -926,7 +926,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_databaseFreesMemory( VAL
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnDatabaseFreesMemoryOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnDatabaseFreesMemoryOn( c_database_record_settings_controller );
 	
@@ -940,7 +940,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_databaseFreesMemory( VAL
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnDatabaseFreesMemoryOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnDatabaseFreesMemoryOff( c_database_record_settings_controller );
 	
@@ -955,7 +955,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_databaseFreesMemory( VAL
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_syncPriorToWriteReturn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 	return ( Rbdb_DatabaseRecordReadWriteSettingsController_syncPriorToWriteReturn( c_database_record_settings_controller )	?	Qtrue
 																													:	Qfalse );
@@ -969,7 +969,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_syncPriorToWriteReturn( 
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnSyncPriorToWriteReturnOn( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnSyncPriorToWriteReturnOn( c_database_record_settings_controller );
 
@@ -983,7 +983,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_syncPriorToWriteReturn( 
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnSyncPriorToWriteReturnOff( VALUE	rb_database_record_read_write_settings_controller )	{
 
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnSyncPriorToWriteReturnOff( c_database_record_settings_controller );
 
@@ -998,7 +998,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_syncPriorToWriteReturn( 
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_unsortedDuplicates( VALUE	rb_database_record_read_write_settings_controller )	{
 	
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 	
 	return ( Rbdb_DatabaseRecordReadWriteSettingsController_unsortedDuplicates( c_database_record_read_write_settings_controller )	?	Qtrue
 																												:	Qfalse );
@@ -1011,7 +1011,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_unsortedDuplicates( VALU
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnUnsortedDuplicatesOn( VALUE	rb_database_record_read_write_settings_controller )	{
 		
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 		
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnUnsortedDuplicatesOn( c_database_record_read_write_settings_controller );
 		
@@ -1025,7 +1025,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_unsortedDuplicates( VALU
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnUnsortedDuplicatesOff( VALUE	rb_database_record_read_write_settings_controller )	{
 		
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 		
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnUnsortedDuplicatesOff( c_database_record_read_write_settings_controller );
 		
@@ -1040,7 +1040,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_unsortedDuplicates( VALU
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_sortedDuplicates( VALUE	rb_database_record_read_write_settings_controller )	{
 	
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 	
 	return ( Rbdb_DatabaseRecordReadWriteSettingsController_sortedDuplicates( c_database_record_read_write_settings_controller )	?	Qtrue
 																																																																:	Qfalse );
@@ -1053,7 +1053,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_sortedDuplicates( VALUE	
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnSortedDuplicatesOn( VALUE	rb_database_record_read_write_settings_controller )	{
 		
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 		
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnSortedDuplicatesOn( c_database_record_read_write_settings_controller );
 		
@@ -1067,7 +1067,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_sortedDuplicates( VALUE	
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnSortedDuplicatesOff( VALUE	rb_database_record_read_write_settings_controller )	{
 		
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 		
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnSortedDuplicatesOff( c_database_record_read_write_settings_controller );
 		
@@ -1081,10 +1081,10 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_sortedDuplicates( VALUE	
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_database_record_read_write_settings_controller )	{
 	
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 	
 	VALUE	rb_should_serialize	=	rb_iv_get(	rb_database_record_read_write_settings_controller,
-																					Rbdb_RB_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA );
+																					RBDB_RB_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA );
 	
 	if ( rb_should_serialize == Qnil )	{
 		rb_should_serialize = Qfalse;
@@ -1099,10 +1099,10 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnSerializeDataOn( VALUE	rb_database_record_read_write_settings_controller )	{
 		
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 		
 		rb_iv_set(	rb_database_record_read_write_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA,
 								Qtrue );
 		
 		return rb_database_record_read_write_settings_controller;
@@ -1115,10 +1115,10 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnSerializeDataOff( VALUE	rb_database_record_read_write_settings_controller )	{
 		
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-		C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 		
 		rb_iv_set(	rb_database_record_read_write_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_READ_WRITE_SETTINGS_CONTROLLER_SERIALIZE_DATA,
 								Qfalse );
 		
 		return rb_database_record_read_write_settings_controller;
@@ -1135,7 +1135,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_dataBufferSize( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseRecordReadWriteSettingsController_dataBufferSize( c_database_record_settings_controller ) );
 }	
@@ -1148,7 +1148,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_setDataBufferSize(	VALUE
 																	VALUE	rb_buffer_size )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 	Rbdb_DatabaseRecordReadWriteSettingsController_setDataBufferSize(	c_database_record_settings_controller,
 																FIX2INT( rb_buffer_size ) );
@@ -1166,7 +1166,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_setDataBufferSize(	VALUE
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_partialReadWriteSize( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseRecordReadWriteSettingsController_partialReadWriteSize( c_database_record_settings_controller ) );
 }	
@@ -1179,7 +1179,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_setPartialReadWriteSize(
 																			VALUE	rb_partial_read_write_size )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 	Rbdb_DatabaseRecordReadWriteSettingsController_setPartialReadWriteSize(	c_database_record_settings_controller,
 																	FIX2INT( rb_partial_read_write_size ) );
@@ -1194,7 +1194,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_setPartialReadWriteSize(
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_partialReadWriteOffset( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseRecordReadWriteSettingsController_partialReadWriteOffset( c_database_record_settings_controller ) );
 }	
@@ -1207,7 +1207,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_setPartialReadWriteOffse
 																			VALUE	rb_partial_read_write_offset )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_settings_controller );
 
 	Rbdb_DatabaseRecordReadWriteSettingsController_setPartialReadWriteOffset(	c_database_record_settings_controller,
 	 																	FIX2INT( rb_partial_read_write_offset ) );
@@ -1224,7 +1224,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_setPartialReadWriteOffse
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_filename( VALUE	rb_database_record_read_write_settings_controller )	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 	return rb_str_new2( Rbdb_DatabaseRecordReadWriteSettingsController_filename( c_database_record_read_write_settings_controller ) );
 }
@@ -1237,7 +1237,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_setFilename(	VALUE	rb_da
 																VALUE	rb_filename	)	{
 
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
-	C_Rbdb_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 
 	Rbdb_DatabaseRecordReadWriteSettingsController_setFilename(	c_database_record_read_write_settings_controller,
 															StringValuePtr( rb_filename ) );
@@ -1253,7 +1253,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_setFilename(	VALUE	rb_da
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_storageType( VALUE rb_database_record_read_write_settings_controller )	{
 	
 	VALUE		rb_class_to_specify_type	=	rb_iv_get(	rb_database_record_read_write_settings_controller,
-																									Rbdb_RB_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE );
+																									RBDB_RB_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE );
 	
 	return rb_class_to_specify_type;
 }
@@ -1266,7 +1266,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_setStorageType(	VALUE rb
 																																	VALUE	rb_class_to_specify_type )	{
 	
 	rb_iv_set(	rb_database_record_read_write_settings_controller,
-							Rbdb_RB_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE,
+							RBDB_RB_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE,
 							rb_class_to_specify_type );
 	
 	return rb_database_record_read_write_settings_controller;

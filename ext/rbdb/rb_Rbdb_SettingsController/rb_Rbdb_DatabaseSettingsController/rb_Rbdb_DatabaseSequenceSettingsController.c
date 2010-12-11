@@ -37,7 +37,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_DatabaseSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseSequenceSettingsController;
 
-void Init_Rbdb_DatabaseSequenceSettingsController()	{
+void Init_rb_Rbdb_DatabaseSequenceSettingsController()	{
 
 	rb_Rbdb_DatabaseSequenceSettingsController		=	rb_define_class_under(	rb_Rbdb_DatabaseSettingsController, 
 																																					"Sequence",	
@@ -144,7 +144,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller	=	Rbdb_DatabaseSettingsController_sequenceSettingsController( c_database_settings_controller );
 
@@ -152,7 +152,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_new(	int			argc,
 	
 	//	store reference to parent
 	rb_iv_set(	rb_database_sequence_settings_controller,
-							Rbdb_RB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };	
@@ -217,7 +217,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_parentSettingsController(	VALUE
 VALUE rb_Rbdb_DatabaseSequenceSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_sequence_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_sequence_settings_controller,
-																															Rbdb_RB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																															RBDB_RB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_settings_controller;
 }
@@ -230,7 +230,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_parentDatabaseSettingsControlle
 VALUE rb_Rbdb_DatabaseSequenceSettingsController_increasing( VALUE	rb_database_sequence_settings_controller )	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	return ( Rbdb_DatabaseSequenceSettingsController_increasing( c_database_sequence_settings_controller )	?	Qtrue
 																											:	Qfalse );
@@ -244,7 +244,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_increasing( VALUE	rb_database_s
 VALUE rb_Rbdb_DatabaseSequenceSettingsController_setAsIncreasing( VALUE	rb_database_sequence_settings_controller )	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	Rbdb_DatabaseSequenceSettingsController_setAsIncreasing( c_database_sequence_settings_controller );
 
@@ -259,7 +259,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_setAsIncreasing( VALUE	rb_datab
 VALUE rb_Rbdb_DatabaseSequenceSettingsController_decreasing( VALUE	rb_database_sequence_settings_controller )	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	return ( Rbdb_DatabaseSequenceSettingsController_decreasing( c_database_sequence_settings_controller )	?	Qtrue
 																											:	Qfalse );
@@ -273,7 +273,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_decreasing( VALUE	rb_database_s
 VALUE rb_Rbdb_DatabaseSequenceSettingsController_setAsDecreasing( VALUE	rb_database_sequence_settings_controller )	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	Rbdb_DatabaseSequenceSettingsController_setAsDecreasing( c_database_sequence_settings_controller );
 	
@@ -288,7 +288,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_setAsDecreasing( VALUE	rb_datab
 VALUE rb_Rbdb_DatabaseSequenceSettingsController_wrap( VALUE	rb_database_sequence_settings_controller )	{
 	
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 	
 	return( Rbdb_DatabaseSequenceSettingsController_wrap( c_database_sequence_settings_controller )	?	Qtrue
 																										:	Qfalse );	
@@ -301,7 +301,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_wrap( VALUE	rb_database_sequenc
 VALUE rb_Rbdb_DatabaseSequenceSettingsController_setToWrap( VALUE	rb_database_sequence_settings_controller )	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	Rbdb_DatabaseSequenceSettingsController_setToWrap( c_database_sequence_settings_controller );
 	
@@ -316,7 +316,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_setToWrap( VALUE	rb_database_se
 VALUE rb_Rbdb_DatabaseSequenceSettingsController_rangeMinimum( VALUE	rb_database_sequence_settings_controller )	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseSequenceSettingsController_rangeMinimum( c_database_sequence_settings_controller ) );	
 }
@@ -329,7 +329,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_setRangeMinimum(	VALUE	rb_datab
 																	VALUE	rb_range_minimum )	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	Rbdb_DatabaseSequenceSettingsController_setRangeMinimum(	c_database_sequence_settings_controller,
 	 															FIX2INT( rb_range_minimum ) );
@@ -344,7 +344,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_setRangeMinimum(	VALUE	rb_datab
 VALUE rb_Rbdb_DatabaseSequenceSettingsController_rangeMaximum( VALUE	rb_database_sequence_settings_controller )	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseSequenceSettingsController_rangeMaximum( c_database_sequence_settings_controller ) );
 }
@@ -357,7 +357,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_setRangeMaximum(	VALUE	rb_datab
 																	VALUE	rb_range_maximum )	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	Rbdb_DatabaseSequenceSettingsController_setRangeMaximum(	c_database_sequence_settings_controller,
 	 															FIX2INT( rb_range_maximum ) );
@@ -373,7 +373,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_setRangeMaximum(	VALUE	rb_datab
 VALUE rb_Rbdb_DatabaseSequenceSettingsController_cacheSize( VALUE	rb_database_sequence_settings_controller )	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseSequenceSettingsController_cacheSize( c_database_sequence_settings_controller ) );
 }
@@ -387,7 +387,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_setCacheSize(	VALUE	rb_database
  																VALUE	rb_number_of_cached_elements	)	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	Rbdb_DatabaseSequenceSettingsController_setCacheSize(	c_database_sequence_settings_controller,
 	 														FIX2INT( rb_number_of_cached_elements ) );
@@ -402,7 +402,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_setCacheSize(	VALUE	rb_database
 VALUE rb_Rbdb_DatabaseSequenceSettingsController_initialValue( VALUE	rb_database_sequence_settings_controller )	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseSequenceSettingsController_initialValue( c_database_sequence_settings_controller ) );
 }
@@ -417,7 +417,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_setInitialValue(	VALUE	rb_datab
  																	VALUE	rb_initial_value )	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	Rbdb_DatabaseSequenceSettingsController_setInitialValue(	c_database_sequence_settings_controller,
 	 															FIX2INT( rb_initial_value ) );
@@ -432,7 +432,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_setInitialValue(	VALUE	rb_datab
 VALUE rb_Rbdb_DatabaseSequenceSettingsController_defaultStepValue( VALUE	rb_database_sequence_settings_controller )	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseSequenceSettingsController_defaultStepValue( c_database_sequence_settings_controller ) );
 }
@@ -445,7 +445,7 @@ VALUE rb_Rbdb_DatabaseSequenceSettingsController_setDefaultStepValue(	VALUE	rb_d
  																		VALUE	rb_default_step_value	)	{
 
 	Rbdb_DatabaseSequenceSettingsController*	c_database_sequence_settings_controller;
-	C_Rbdb_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
+	C_RBDB_DATABASE_SEQUENCE_SETTINGS_CONTROLLER( rb_database_sequence_settings_controller, c_database_sequence_settings_controller );
 
 	Rbdb_DatabaseSequenceSettingsController_setDefaultStepValue(	c_database_sequence_settings_controller,
 	 																FIX2INT( rb_default_step_value ) );

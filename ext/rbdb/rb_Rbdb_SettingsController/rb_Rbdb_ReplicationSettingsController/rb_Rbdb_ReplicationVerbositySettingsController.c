@@ -37,7 +37,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_ReplicationSettingsController;
 extern	VALUE	rb_Rbdb_ReplicationVerbositySettingsController;
 
-void Init_Rbdb_ReplicationVerbositySettingsController()	{
+void Init_rb_Rbdb_ReplicationVerbositySettingsController()	{
 
 	rb_Rbdb_ReplicationVerbositySettingsController		=	rb_define_class_under(	rb_Rbdb_ReplicationSettingsController, 
 																																							"Verbosity",	
@@ -121,14 +121,14 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_new(	int			argc,
 	}
 
 	Rbdb_ReplicationSettingsController*	c_parent_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_parent_replication_settings_controller, c_parent_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_parent_replication_settings_controller, c_parent_replication_settings_controller );
 
 	Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller	=	Rbdb_ReplicationSettingsController_verbositySettingsController( c_parent_replication_settings_controller );
 
 	VALUE	rb_replication_verbosity_settings_controller	= RUBY_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( c_replication_verbosity_settings_controller );
 
 	rb_iv_set(	rb_replication_verbosity_settings_controller,
-							Rbdb_RB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER,
+							RBDB_RB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER,
 							rb_parent_replication_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_replication_settings_controller };
@@ -181,7 +181,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_parentSettingsController(	V
 VALUE rb_Rbdb_ReplicationVerbositySettingsController_parentReplicationSettingsController(	VALUE	rb_replication_verbosity_settings_controller )	{
 
 	VALUE	rb_parent_replication_settings_controller	=	rb_iv_get(	rb_replication_verbosity_settings_controller,
-																																Rbdb_RB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER );
+																																RBDB_RB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER );
 
 	return rb_parent_replication_settings_controller;
 }
@@ -194,7 +194,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_parentReplicationSettingsCo
 VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayAllReplicationInformation( VALUE	rb_replication_verbosity_settings_controller )	{
 
 	Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-	C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+	C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 													
 	return ( Rbdb_ReplicationVerbositySettingsController_displayAllReplicationInformation( c_replication_verbosity_settings_controller )	?	Qtrue
 																																			:	Qfalse );
@@ -207,7 +207,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayAllReplicationInform
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayAllReplicationInformationOn( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 														
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayAllReplicationInformationOn( c_replication_verbosity_settings_controller );
 		
@@ -221,7 +221,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayAllReplicationInform
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayAllReplicationInformationOff( VALUE	rb_replication_verbosity_settings_controller )	{
 		
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 														
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayAllReplicationInformationOff( c_replication_verbosity_settings_controller );
 
@@ -236,7 +236,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayAllReplicationInform
 VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayElectionInformation( VALUE	rb_replication_verbosity_settings_controller )	{
 
 	Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-	C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+	C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 													
 	return ( Rbdb_ReplicationVerbositySettingsController_displayElectionInformation( c_replication_verbosity_settings_controller )	?	Qtrue
 																																	:	Qfalse );
@@ -249,7 +249,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayElectionInformation(
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayElectionInformationOn( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 														
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayElectionInformationOn( c_replication_verbosity_settings_controller );
 
@@ -263,7 +263,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayElectionInformation(
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayElectionInformationOff( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 														
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayElectionInformationOff( c_replication_verbosity_settings_controller );
 
@@ -278,7 +278,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayElectionInformation(
 VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayReplicationMasterLeaseInformation( VALUE	rb_replication_verbosity_settings_controller )	{
 
 	Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-	C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+	C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 													
 	return ( Rbdb_ReplicationVerbositySettingsController_displayReplicationMasterLeaseInformation( c_replication_verbosity_settings_controller )	?	Qtrue
 																																					:	Qfalse );
@@ -291,7 +291,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayReplicationMasterLea
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayReplicationMasterLeaseInformationOn( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 														
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayReplicationMasterLeaseInformationOn( c_replication_verbosity_settings_controller );
 
@@ -305,7 +305,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayReplicationMasterLea
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayReplicationMasterLeaseInformationOff( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 														
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayReplicationMasterLeaseInformationOff( c_replication_verbosity_settings_controller );
 
@@ -320,7 +320,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayReplicationMasterLea
 VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayMiscProcessingInformation( VALUE	rb_replication_verbosity_settings_controller )	{
 
 	Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-	C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+	C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 													
 	return ( Rbdb_ReplicationVerbositySettingsController_displayMiscProcessingInformation( c_replication_verbosity_settings_controller )	?	Qtrue
 																																			:	Qfalse );
@@ -333,7 +333,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayMiscProcessingInform
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayMiscProcessingInformationOn( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 														
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayMiscProcessingInformationOn( c_replication_verbosity_settings_controller );
 
@@ -347,7 +347,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayMiscProcessingInform
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayMiscProcessingInformationOff( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 														
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayMiscProcessingInformationOff( c_replication_verbosity_settings_controller );
 
@@ -362,7 +362,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayMiscProcessingInform
 VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayMessageProcessingInformation( VALUE	rb_replication_verbosity_settings_controller )	{
 
 	Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-	C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+	C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 													
 	return ( Rbdb_ReplicationVerbositySettingsController_displayMessageProcessingInformation( c_replication_verbosity_settings_controller )	?	Qtrue
 																																				:	Qfalse );
@@ -375,7 +375,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayMessageProcessingInf
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayMessageProcessingInformationOn( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 														
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayMessageProcessingInformationOn( c_replication_verbosity_settings_controller );
 
@@ -389,7 +389,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayMessageProcessingInf
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayMessageProcessingInformationOff( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 														
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayMessageProcessingInformationOff( c_replication_verbosity_settings_controller );
 
@@ -404,7 +404,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayMessageProcessingInf
 VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayClientSynchronizationInformation( VALUE	rb_replication_verbosity_settings_controller )	{
 
 	Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-	C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+	C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 													
 	return ( Rbdb_ReplicationVerbositySettingsController_displayClientSynchronizationInformation( c_replication_verbosity_settings_controller )	?	Qtrue
 																																					:	Qfalse );
@@ -417,7 +417,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayClientSynchronizatio
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayClientSynchronizationInformationOn( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 														
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayClientSynchronizationInformationOn( c_replication_verbosity_settings_controller );
 
@@ -431,7 +431,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayClientSynchronizatio
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayClientSynchronizationInformationOff( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 														
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayClientSynchronizationInformationOff( c_replication_verbosity_settings_controller );
 
@@ -446,7 +446,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayClientSynchronizatio
 VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayManagerConnectionFailureInformation( VALUE	rb_replication_verbosity_settings_controller )	{
 
 	Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-	C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+	C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 													
 	return ( Rbdb_ReplicationVerbositySettingsController_displayManagerConnectionFailureInformation( c_replication_verbosity_settings_controller )	?	Qtrue
 																																					:	Qfalse );
@@ -459,7 +459,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayManagerConnectionFai
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayManagerConnectionFailureInformationOn( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 													
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayManagerConnectionFailureInformationOn( c_replication_verbosity_settings_controller );
 
@@ -473,7 +473,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayManagerConnectionFai
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayManagerConnectionFailureInformationOff( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayManagerConnectionFailureInformationOff( c_replication_verbosity_settings_controller );
 
@@ -488,7 +488,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayManagerConnectionFai
 VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayManagerMiscProcessing( VALUE	rb_replication_verbosity_settings_controller )	{
 
 	Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-	C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+	C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 
 	return ( Rbdb_ReplicationVerbositySettingsController_displayManagerMiscProcessing( c_replication_verbosity_settings_controller )	?	Qtrue
 																																																																		:	Qfalse );
@@ -501,7 +501,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayManagerMiscProcessin
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayManagerMiscProcessingOn( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayManagerMiscProcessingOn( c_replication_verbosity_settings_controller );
 
@@ -515,7 +515,7 @@ VALUE rb_Rbdb_ReplicationVerbositySettingsController_displayManagerMiscProcessin
 	VALUE rb_Rbdb_ReplicationVerbositySettingsController_turnDisplayManagerMiscProcessingOff( VALUE	rb_replication_verbosity_settings_controller )	{
 
 		Rbdb_ReplicationVerbositySettingsController*	c_replication_verbosity_settings_controller;
-		C_Rbdb_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
+		C_RBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER( rb_replication_verbosity_settings_controller, c_replication_verbosity_settings_controller );
 
 		Rbdb_ReplicationVerbositySettingsController_turnDisplayManagerMiscProcessingOff( c_replication_verbosity_settings_controller );
 

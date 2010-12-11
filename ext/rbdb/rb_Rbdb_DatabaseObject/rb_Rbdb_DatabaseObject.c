@@ -69,43 +69,43 @@ extern	VALUE	rb_Rbdb_DatabaseController;
 extern	VALUE	rb_Rbdb_DatabaseObjectCursor;
 extern	VALUE	rb_Rbdb_DatabaseCursor;
 
-#define Rbdb_RUBY_ENVIRONMENT_CLASS																	"Rbdb::Environment"
-#define Rbdb_RUBY_DATABASE_CLASS																		"Rbdb::Environment::DatabaseController::Database"
+#define RBDB_RUBY_ENVIRONMENT_CLASS																	"Rbdb::Environment"
+#define RBDB_RUBY_DATABASE_CLASS																		"Rbdb::Environment::DatabaseController::Database"
 
-#define Rbdb_RB_VARIABLE_ENVIRONMENT_STORAGE								"@rbdb__environment"
-#define Rbdb_RB_VARIABLE_DATABASE_STORAGE										"@rbdb__database_storage"
-#define Rbdb_RB_VARIABLE_PRIMARY_KEY_METHOD									"@rbdb__primary_key_method"	
-#define Rbdb_RB_VARIABLE_UNIQUE_SECONDARY_KEY_METHODS				"@rbdb__unique_secondary_key_methods"	
-#define Rbdb_RB_VARIABLE_NONUNIQUE_SECONDARY_KEY_METHODS		"@rbdb__nonunique_secondary_key_methods"	
-#define Rbdb_RB_VARIABLE_STORED_INITIALIZE_ARGUMENTS				"@rbdb__stored_initialize_arguments"	
-#define Rbdb_RB_VARIABLE_IDENTIFY_AS_WAITLIST								"@rbdb__identify_for_rbdb_as_wait_list"
-#define Rbdb_RB_VARIABLE_IDENTIFY_AS												"@rbdb__identify_for_rbdb_as"
-#define Rbdb_RB_VARIABLE_INITIALIZED												"@rbdb__initialized"
-#define Rbdb_RB_VARIABLE_CONFIGURED													"@rbdb__configured"
-#define Rbdb_RB_VARIABLE_CURSOR_CONTEXT_STORAGE							"@rbdb__cursor_context_storage"
-#define Rbdb_RB_VARIABLE_UNIQUE_JOIN_DECLARATION_HASH					"@rbdb__unique_join_declaration_hash"
+#define RBDB_RB_VARIABLE_ENVIRONMENT_STORAGE								"@rbdb__environment"
+#define RBDB_RB_VARIABLE_DATABASE_STORAGE										"@rbdb__database_storage"
+#define RBDB_RB_VARIABLE_PRIMARY_KEY_METHOD									"@rbdb__primary_key_method"	
+#define RBDB_RB_VARIABLE_UNIQUE_SECONDARY_KEY_METHODS				"@rbdb__unique_secondary_key_methods"	
+#define RBDB_RB_VARIABLE_NONUNIQUE_SECONDARY_KEY_METHODS		"@rbdb__nonunique_secondary_key_methods"	
+#define RBDB_RB_VARIABLE_STORED_INITIALIZE_ARGUMENTS				"@rbdb__stored_initialize_arguments"	
+#define RBDB_RB_VARIABLE_IDENTIFY_AS_WAITLIST								"@rbdb__identify_for_rbdb_as_wait_list"
+#define RBDB_RB_VARIABLE_IDENTIFY_AS												"@rbdb__identify_for_rbdb_as"
+#define RBDB_RB_VARIABLE_INITIALIZED												"@rbdb__initialized"
+#define RBDB_RB_VARIABLE_CONFIGURED													"@rbdb__configured"
+#define RBDB_RB_VARIABLE_CURSOR_CONTEXT_STORAGE							"@rbdb__cursor_context_storage"
+#define RBDB_RB_VARIABLE_UNIQUE_JOIN_DECLARATION_HASH					"@rbdb__unique_join_declaration_hash"
 
-#define Rbdb_RUBY_ERROR_PRIMARY_KEY_MISSING																				"Primary key method has not been specified."
-#define Rbdb_RUBY_ERROR_MISSING_DATABASE																					"Rbdb object missing database."
-#define Rbdb_RUBY_ERROR_DEFAULT_ENVIRONMENT_NULL																	"Environment was missing."
-#define Rbdb_RUBY_ERROR_ENVIRONMENT_NULL																					"Default environment was missing."
-#define Rbdb_RUBY_ERROR_MISSING_UNIQUE_KEY_METHOD																	"Rbdb object lacks method to retrieve sufficient information for unique key."
-#define Rbdb_RUBY_ERROR_MISSING_UNIQUE_KEY																				"Rbdb object lacks sufficient information for unique key."
-#define Rbdb_RUBY_ERROR_DATABASE_ARGUMENT_UNKNOWN_TYPE														"Database parameter was of unknown type."
-#define Rbdb_RUBY_ERROR_ENVIRONMENT_UNKNOWN_TYPE																	"Environment parameter was of unknown type."
-#define Rbdb_RUBY_ERROR_MULTIPLE_WRITE_REQUIRES_CALL_TO_CLASS_OBJECT							"Multiple record write requires call to class object."
-#define Rbdb_RUBY_ERROR_MULTIPLE_RETRIEVE_REQUIRES_CALL_TO_CLASS_OBJECT						"Multiple record retrieve requires call to class object."
-#define Rbdb_RUBY_ERROR_MULTIPLE_DELETE_REQUIRES_CALL_TO_CLASS_OBJECT							"Multiple record delete requires call to class object."
-#define Rbdb_RUBY_ERROR_INSTANCE_RETRIEVE_REQUIRES_OBJECT_TO_HOLD_RETRIEVE_DATA		"Retrieval by instance requires object instance to hold retrieval data."
-#define Rbdb_RUBY_ERROR_RETRIEVAL_KEY_WAS_NOT_UNIQUE															"Retrieval key was not unique."
-#define Rbdb_RUBY_ERROR_TOO_MANY_ARGUMENTS_PROVIDED_FOR_DB_OBJECT_INITIALIZE			"Rbdb object has too many methods specified for arguments to initialize (%ld); expected %i."
-#define Rbdb_RUBY_ERROR_TOO_FEW_ARGUMENTS_PROVIDED_FOR_DB_OBJECT_INITIALIZE				"Rbdb object has too few methods specified for arguments to initialize (%ld); expected %i."
-#define Rbdb_RUBY_ERROR_INITIALIZE_ARGUMENT_METHOD_DOES_NOT_EXIST									"Method provided for Rbdb object initialize (%s) does not exist."
-#define Rbdb_RUBY_ERROR_CURSOR_FOR_JOIN_REPORTED_NO_RECORD												"Cursor requested for join reported no record exists for key."
-#define Rbdb_RUBY_ERROR_IDENTIFY_AS_CALLED_ON_INSTANCE														":identify_for_rbdb_as should only called on a class, not an instance."
-#define Rbdb_RUBY_ERROR_UNABLE_TO_FIND_ENUMERATION_FRAME													"Unable to find previous enumeration frame for corresponding iteration cursor."
-#define Rbdb_RUBY_ERROR_NO_DATABASE_FOR_INDEX																			"No database existed for requested index."
-#define Rbdb_RUBY_ERROR_CURSOR_SET_KEY_DID_NOT_EXIST                              "Key specified to locate cursor did not exist."
+#define RBDB_RUBY_ERROR_PRIMARY_KEY_MISSING																				"Primary key method has not been specified."
+#define RBDB_RUBY_ERROR_MISSING_DATABASE																					"Rbdb object missing database."
+#define RBDB_RUBY_ERROR_DEFAULT_ENVIRONMENT_NULL																	"Environment was missing."
+#define RBDB_RUBY_ERROR_ENVIRONMENT_NULL																					"Default environment was missing."
+#define RBDB_RUBY_ERROR_MISSING_UNIQUE_KEY_METHOD																	"Rbdb object lacks method to retrieve sufficient information for unique key."
+#define RBDB_RUBY_ERROR_MISSING_UNIQUE_KEY																				"Rbdb object lacks sufficient information for unique key."
+#define RBDB_RUBY_ERROR_DATABASE_ARGUMENT_UNKNOWN_TYPE														"Database parameter was of unknown type."
+#define RBDB_RUBY_ERROR_ENVIRONMENT_UNKNOWN_TYPE																	"Environment parameter was of unknown type."
+#define RBDB_RUBY_ERROR_MULTIPLE_WRITE_REQUIRES_CALL_TO_CLASS_OBJECT							"Multiple record write requires call to class object."
+#define RBDB_RUBY_ERROR_MULTIPLE_RETRIEVE_REQUIRES_CALL_TO_CLASS_OBJECT						"Multiple record retrieve requires call to class object."
+#define RBDB_RUBY_ERROR_MULTIPLE_DELETE_REQUIRES_CALL_TO_CLASS_OBJECT							"Multiple record delete requires call to class object."
+#define RBDB_RUBY_ERROR_INSTANCE_RETRIEVE_REQUIRES_OBJECT_TO_HOLD_RETRIEVE_DATA		"Retrieval by instance requires object instance to hold retrieval data."
+#define RBDB_RUBY_ERROR_RETRIEVAL_KEY_WAS_NOT_UNIQUE															"Retrieval key was not unique."
+#define RBDB_RUBY_ERROR_TOO_MANY_ARGUMENTS_PROVIDED_FOR_DB_OBJECT_INITIALIZE			"Rbdb object has too many methods specified for arguments to initialize (%ld); expected %i."
+#define RBDB_RUBY_ERROR_TOO_FEW_ARGUMENTS_PROVIDED_FOR_DB_OBJECT_INITIALIZE				"Rbdb object has too few methods specified for arguments to initialize (%ld); expected %i."
+#define RBDB_RUBY_ERROR_INITIALIZE_ARGUMENT_METHOD_DOES_NOT_EXIST									"Method provided for Rbdb object initialize (%s) does not exist."
+#define RBDB_RUBY_ERROR_CURSOR_FOR_JOIN_REPORTED_NO_RECORD												"Cursor requested for join reported no record exists for key."
+#define RBDB_RUBY_ERROR_IDENTIFY_AS_CALLED_ON_INSTANCE														":identify_for_rbdb_as should only called on a class, not an instance."
+#define RBDB_RUBY_ERROR_UNABLE_TO_FIND_ENUMERATION_FRAME													"Unable to find previous enumeration frame for corresponding iteration cursor."
+#define RBDB_RUBY_ERROR_NO_DATABASE_FOR_INDEX																			"No database existed for requested index."
+#define RBDB_RUBY_ERROR_CURSOR_SET_KEY_DID_NOT_EXIST                              "Key specified to locate cursor did not exist."
 
 
 /*******************************************************************************************************************************************************************************************
@@ -114,7 +114,7 @@ extern	VALUE	rb_Rbdb_DatabaseCursor;
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-void Init_Rbdb_Module()	{
+void Init_rb_Rbdb_Module()	{
 	
 	rb_define_method(						rb_mRbdb,	"configure_rbdb",												rb_Rbdb_DatabaseObject_configureRbdb,									0 );
                                                                                                                               
@@ -233,13 +233,13 @@ VALUE rb_Rbdb_DatabaseObject_initRbdb( VALUE	rb_klass_self )	{
 	//	
 	
 	if ( rb_obj_respond_to(	rb_superclass_self,
-							rb_intern( Rbdb_FUNCTION_INIT ),
+							rb_intern( RBDB_FUNCTION_INIT ),
 							0 ) )	{
 		
 		//	since we might have a module rather than a superclass we need to manually call up the function chain
 		//	theoretically this should be no different than calling super; we shall see if that is the case
 		rb_funcall(	rb_superclass_self,
-					rb_intern( Rbdb_FUNCTION_INIT ),
+					rb_intern( RBDB_FUNCTION_INIT ),
 					0 );
 	}
 	
@@ -264,7 +264,7 @@ VALUE rb_Rbdb_DatabaseObject_configureRbdb( VALUE	rb_klass_self )	{
 VALUE rb_Rbdb_DatabaseObject_hasConfigured( VALUE rb_self )	{
 	
 	VALUE	rb_has_configured	=	rb_iv_get(	rb_self,
-												Rbdb_RB_VARIABLE_CONFIGURED );
+												RBDB_RB_VARIABLE_CONFIGURED );
 	
 	return ( rb_has_configured == Qtrue ? Qtrue : Qfalse );
 }
@@ -278,7 +278,7 @@ VALUE rb_Rbdb_DatabaseObject_hasInitialized( VALUE rb_self )	{
 	VALUE	rb_klass		=	( ( TYPE( rb_self ) == T_CLASS ) ? rb_self : rb_funcall( rb_self, rb_intern( "class" ), 0 ) );
     
 	VALUE	rb_has_initialized	=	rb_iv_get(	rb_klass,
-												Rbdb_RB_VARIABLE_INITIALIZED );
+												RBDB_RB_VARIABLE_INITIALIZED );
 
 	return ( rb_has_initialized == Qtrue ? Qtrue : Qfalse );
 }
@@ -324,7 +324,7 @@ VALUE rb_Rbdb_DatabaseObject_setEnvironment(	VALUE	rb_self,
 	VALUE	rb_klass	=	( ( TYPE( rb_self ) == T_CLASS ) ? rb_self : rb_funcall( rb_self, rb_intern( "class" ), 0 ) );
 
 	rb_iv_set(	rb_klass,
-							Rbdb_RB_VARIABLE_ENVIRONMENT_STORAGE,
+							RBDB_RB_VARIABLE_ENVIRONMENT_STORAGE,
 							rb_environment );
 	
 	return rb_self;
@@ -388,12 +388,12 @@ VALUE rb_Rbdb_DatabaseObject_databases( VALUE rb_self )	{
 	VALUE	rb_klass		=	( ( TYPE( rb_self ) == T_CLASS ) ? rb_self : rb_funcall( rb_self, rb_intern( "class" ), 0 ) );
 
 	VALUE	rb_databases	=	rb_iv_get(	rb_klass,
-											Rbdb_RB_VARIABLE_DATABASE_STORAGE );
+											RBDB_RB_VARIABLE_DATABASE_STORAGE );
 											
 	if ( rb_databases == Qnil )	{
 		rb_databases = rb_hash_new();
 		rb_iv_set(	rb_klass,
-					Rbdb_RB_VARIABLE_DATABASE_STORAGE,
+					RBDB_RB_VARIABLE_DATABASE_STORAGE,
 					rb_databases );
 	}
 	return rb_databases;
@@ -449,7 +449,7 @@ VALUE rb_Rbdb_DatabaseObject_setDatabase(	VALUE	rb_self,
 		
 		//	Get our c_database_controller so we can wrap the new database ourselves for DB Object
 		Rbdb_Environment*	c_environment	=	NULL;
-		C_Rbdb_ENVIRONMENT( rb_Rbdb_DatabaseObject_environment( rb_self ), c_environment );
+		C_RBDB_ENVIRONMENT( rb_Rbdb_DatabaseObject_environment( rb_self ), c_environment );
 		char*	c_database_name	=	StringValuePtr( rb_database_name_string );
 		Rbdb_Database*	c_database	=	Rbdb_DatabaseController_newDatabase(	Rbdb_Environment_databaseController( c_environment ),
 																																				c_database_name );
@@ -496,7 +496,7 @@ VALUE rb_Rbdb_DatabaseObject_primaryKeyMethod(	VALUE	rb_self )	{
 	VALUE	rb_klass	=	( ( TYPE( rb_self ) == T_CLASS ) ? rb_self : rb_funcall( rb_self, rb_intern( "class" ), 0 ) );
 
 	return rb_iv_get(	rb_klass,
-						Rbdb_RB_VARIABLE_PRIMARY_KEY_METHOD );
+						RBDB_RB_VARIABLE_PRIMARY_KEY_METHOD );
 }
 
 /************************
@@ -512,7 +512,7 @@ VALUE rb_Rbdb_DatabaseObject_setPrimaryKeyMethod(	VALUE	rb_self,
 	VALUE	rb_klass	=	( ( TYPE( rb_self ) == T_CLASS ) ? rb_self : rb_funcall( rb_self, rb_intern( "class" ), 0 ) );
 
 	rb_iv_set(	rb_klass,
-				Rbdb_RB_VARIABLE_PRIMARY_KEY_METHOD,
+				RBDB_RB_VARIABLE_PRIMARY_KEY_METHOD,
 				rb_primary_key_method );
 
 	//	check if we have a database set for nil - if so it was set before the primary key was specified and we need to move it over
@@ -573,7 +573,7 @@ VALUE rb_Rbdb_DatabaseObject_addSecondaryKeyMethod(	int	argc,
 
 	//	Args: :secondary_key_method, ...
 	rb_Rbdb_DatabaseObject_internal_addSecondaryKeyMethods(	rb_self,
-																Rbdb_RB_VARIABLE_NONUNIQUE_SECONDARY_KEY_METHODS,
+																RBDB_RB_VARIABLE_NONUNIQUE_SECONDARY_KEY_METHODS,
 																argc,
 																args	);
 
@@ -590,7 +590,7 @@ VALUE rb_Rbdb_DatabaseObject_addUniqueSecondaryKeyMethod(	int	argc,
 
 	//	Args: :unique_secondary_key_method, ...
 	rb_Rbdb_DatabaseObject_internal_addSecondaryKeyMethods(	rb_self,
-																Rbdb_RB_VARIABLE_UNIQUE_SECONDARY_KEY_METHODS,
+																RBDB_RB_VARIABLE_UNIQUE_SECONDARY_KEY_METHODS,
 																argc,
 																args	);
 	
@@ -604,7 +604,7 @@ VALUE rb_Rbdb_DatabaseObject_addUniqueSecondaryKeyMethod(	int	argc,
 VALUE rb_Rbdb_DatabaseObject_uniqueSecondaryKeyMethods(	VALUE	rb_self )	{
 	
 	return rb_Rbdb_DatabaseObject_internal_getClassInstanceArray(	rb_self,
-																	Rbdb_RB_VARIABLE_UNIQUE_SECONDARY_KEY_METHODS	);
+																	RBDB_RB_VARIABLE_UNIQUE_SECONDARY_KEY_METHODS	);
 }
 
 
@@ -615,7 +615,7 @@ VALUE rb_Rbdb_DatabaseObject_uniqueSecondaryKeyMethods(	VALUE	rb_self )	{
 VALUE rb_Rbdb_DatabaseObject_nonUniqueSecondaryKeyMethods(	VALUE	rb_self )	{
 	
 	return rb_Rbdb_DatabaseObject_internal_getClassInstanceArray(	rb_self,
-																	Rbdb_RB_VARIABLE_NONUNIQUE_SECONDARY_KEY_METHODS	);
+																	RBDB_RB_VARIABLE_NONUNIQUE_SECONDARY_KEY_METHODS	);
 }
 
 /************************
@@ -812,7 +812,7 @@ VALUE rb_Rbdb_DatabaseObject_uniqueKey( VALUE	rb_self )	{
 	
 	if ( rb_primary_key_method == Qnil )	{
 		
-		rb_raise( rb_eRuntimeError, Rbdb_RUBY_ERROR_PRIMARY_KEY_MISSING );
+		rb_raise( rb_eRuntimeError, RBDB_RUBY_ERROR_PRIMARY_KEY_MISSING );
 	}
 
 	//	First, check primary key
@@ -1077,7 +1077,7 @@ VALUE rb_Rbdb_DatabaseObject_requireEnvironment( VALUE rb_self )	{
 	VALUE	rb_environment	=	rb_Rbdb_DatabaseObject_environment( rb_self );
 	
 	if ( rb_environment == Qnil )	{
-		rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_DEFAULT_ENVIRONMENT_NULL );
+		rb_raise( rb_eArgError, RBDB_RUBY_ERROR_DEFAULT_ENVIRONMENT_NULL );
 	}
 	return rb_environment;
 }
@@ -1091,7 +1091,7 @@ VALUE rb_Rbdb_DatabaseObject_requireDefaultEnvironment( VALUE rb_self __attribut
 	//	Ask runtime storage if a default environment exists
 	Rbdb_Environment*	c_current_working_environment	=	Rbdb_RuntimeStorageController_currentWorkingEnvironment( Rbdb_RuntimeStorageController_sharedInstance() );
 	if ( c_current_working_environment == NULL )	{
-		rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_ENVIRONMENT_NULL );
+		rb_raise( rb_eArgError, RBDB_RUBY_ERROR_ENVIRONMENT_NULL );
 	}
 	return RUBY_RBDB_ENVIRONMENT( c_current_working_environment );
 }
@@ -1107,7 +1107,7 @@ VALUE rb_Rbdb_DatabaseObject_requireDatabaseWithIndex(	VALUE	rb_self,
 																		rb_index );
 	
 	if ( rb_database == Qnil )	{
-		rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_MISSING_DATABASE );
+		rb_raise( rb_eArgError, RBDB_RUBY_ERROR_MISSING_DATABASE );
 	}
 	return rb_database;
 }
@@ -1122,7 +1122,7 @@ VALUE rb_Rbdb_DatabaseObject_requireUniqueKeyMethod( VALUE rb_self )	{
 	//	Make sure we have a key sufficient for retrieving
 	if ( ( rb_unique_key_method = rb_Rbdb_DatabaseObject_uniqueKeyMethod( rb_self ) ) == Qnil )	{		
 		//	Throw an error - missing key
-		rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_MISSING_UNIQUE_KEY_METHOD );
+		rb_raise( rb_eArgError, RBDB_RUBY_ERROR_MISSING_UNIQUE_KEY_METHOD );
 	}	
 
 	return rb_unique_key_method;
@@ -1143,7 +1143,7 @@ VALUE rb_Rbdb_DatabaseObject_requireUniqueKey( VALUE rb_self )	{
 										SYM2ID( rb_unique_key_method ),
 										0 ) ) == Qnil )	{		
 		//	Throw an error - missing key
-		rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_MISSING_UNIQUE_KEY );
+		rb_raise( rb_eArgError, RBDB_RUBY_ERROR_MISSING_UNIQUE_KEY );
 	}
 
 	return rb_unique_key;
@@ -1184,7 +1184,7 @@ VALUE rb_Rbdb_DatabaseObject_write(	int	argc,
 		//	Make sure we have a database set or fail
 		if ( NIL_P( rb_Rbdb_DatabaseObject_database( rb_self ) ) )	{
 			//	Throw an error - missing database
-			rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_MISSING_DATABASE );
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_MISSING_DATABASE );
 		}
 		
 		rb_Rbdb_DatabaseObject_internal_ensureInitialized( rb_self );
@@ -1231,7 +1231,7 @@ VALUE rb_Rbdb_DatabaseObject_exists(	int	argc,
 			//	Make sure we have a database set or fail
 			if ( NIL_P( rb_Rbdb_DatabaseObject_database( rb_self ) ) )	{
 				//	Throw an error - missing database
-				rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_MISSING_DATABASE );
+				rb_raise( rb_eArgError, RBDB_RUBY_ERROR_MISSING_DATABASE );
 			}
 			
 			rb_Rbdb_DatabaseObject_internal_ensureInitialized( rb_self );
@@ -1239,7 +1239,7 @@ VALUE rb_Rbdb_DatabaseObject_exists(	int	argc,
 			//	we have an argument (string, object, etc) that needs to be deleted from the database as the key
 			
 			Rbdb_Database*		c_database;
-			C_Rbdb_DATABASE_OBJECT_DATABASE( rb_Rbdb_DatabaseObject_database( rb_self ), c_database );
+			C_RBDB_DATABASE_OBJECT_DATABASE( rb_Rbdb_DatabaseObject_database( rb_self ), c_database );
 			
 			Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database );
 			
@@ -1264,7 +1264,7 @@ VALUE rb_Rbdb_DatabaseObject_exists(	int	argc,
 		//	Make sure we have a database set or fail
 		if ( NIL_P( rb_Rbdb_DatabaseObject_database( rb_self ) ) )	{
 			//	Throw an error - missing database
-			rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_MISSING_DATABASE );
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_MISSING_DATABASE );
 		}
 		
 		rb_Rbdb_DatabaseObject_internal_ensureInitialized( rb_self );
@@ -1273,13 +1273,13 @@ VALUE rb_Rbdb_DatabaseObject_exists(	int	argc,
 		//	Make sure we have a key sufficient for retrieving
 		if ( ( rb_key = rb_Rbdb_DatabaseObject_uniqueKey( rb_self ) ) == Qnil )	{		
 			//	Throw an error - missing key
-			rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_MISSING_UNIQUE_KEY );
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_MISSING_UNIQUE_KEY );
 		}
 		
 		VALUE	rb_database	=	rb_Rbdb_DatabaseObject_database( rb_self );
 		
 		Rbdb_Database*	c_database	=	NULL;
-		C_Rbdb_DATABASE_OBJECT_DATABASE( rb_database, c_database );
+		C_RBDB_DATABASE_OBJECT_DATABASE( rb_database, c_database );
 		
 		//	We need to load our rb_key into a raw c key (void*) with defined byte length
 		Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database );
@@ -1374,13 +1374,13 @@ VALUE rb_Rbdb_DatabaseObject_delete(	int	argc,
 			//	Make sure we have a database set or fail
 			if ( NIL_P( rb_Rbdb_DatabaseObject_database( rb_self ) ) )	{
 				//	Throw an error - missing database
-				rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_MISSING_DATABASE );
+				rb_raise( rb_eArgError, RBDB_RUBY_ERROR_MISSING_DATABASE );
 			}
 			
 			//	we have an argument (string, object, etc) that needs to be deleted from the database as the key
 			
 			Rbdb_Database*		c_database;
-			C_Rbdb_DATABASE_OBJECT_DATABASE( rb_Rbdb_DatabaseObject_database( rb_self ), c_database );
+			C_RBDB_DATABASE_OBJECT_DATABASE( rb_Rbdb_DatabaseObject_database( rb_self ), c_database );
 			
 			Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database );
 			
@@ -1400,20 +1400,20 @@ VALUE rb_Rbdb_DatabaseObject_delete(	int	argc,
 		//	Make sure we have a database set or fail
 		if ( NIL_P( rb_Rbdb_DatabaseObject_database( rb_self ) ) )	{
 			//	Throw an error - missing database
-			rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_MISSING_DATABASE );
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_MISSING_DATABASE );
 		}
 		
 		VALUE	rb_key	=	Qnil;
 		//	Make sure we have a key sufficient for retrieving
 		if ( ( rb_key = rb_Rbdb_DatabaseObject_uniqueKey( rb_self ) ) == Qnil )	{		
 			//	Throw an error - missing key
-			rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_MISSING_UNIQUE_KEY );
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_MISSING_UNIQUE_KEY );
 		}
 
 		VALUE	rb_database	=	rb_Rbdb_DatabaseObject_database( rb_self );
 		
 		Rbdb_Database*	c_database	=	NULL;
-		C_Rbdb_DATABASE_OBJECT_DATABASE( rb_database, c_database );
+		C_RBDB_DATABASE_OBJECT_DATABASE( rb_database, c_database );
 				
 		//	We need to load our rb_key into a raw c key (void*) with defined byte length
 		Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database );
@@ -1608,11 +1608,11 @@ VALUE rb_Rbdb_DatabaseObject_iterateDuplicates(	int	argc,
 	else if ( ( rb_cursor = rb_Rbdb_DatabaseObject_internal_cursorForCallingContext( rb_self ) ) == Qnil )	{
 
 		//	if we can't find the last corresponding enumeration frame, throw an error
-		rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_UNABLE_TO_FIND_ENUMERATION_FRAME );
+		rb_raise( rb_eArgError, RBDB_RUBY_ERROR_UNABLE_TO_FIND_ENUMERATION_FRAME );
 	}
 	
 	Rbdb_DatabaseCursor*	c_database_cursor	=	NULL;
-	C_Rbdb_DATABASE_OBJECT_CURSOR( rb_cursor, c_database_cursor );
+	C_RBDB_DATABASE_OBJECT_CURSOR( rb_cursor, c_database_cursor );
 	
 	//	Call iterate on the cursor
 	return rb_Rbdb_DatabaseObjectCursor_iterateDuplicates(	argc,
@@ -1852,10 +1852,10 @@ VALUE rb_Rbdb_DatabaseObject_internal_cursorContextStorageHash( VALUE rb_self )	
 	//	Create our hash if it doesn't exist yet
 	VALUE	rb_cursor_context_storage_hash	=	Qnil;
 	if ( ( rb_cursor_context_storage_hash	=	rb_iv_get(	rb_klass,
-															Rbdb_RB_VARIABLE_CURSOR_CONTEXT_STORAGE ) ) == Qnil )	{
+															RBDB_RB_VARIABLE_CURSOR_CONTEXT_STORAGE ) ) == Qnil )	{
 		rb_cursor_context_storage_hash	=	rb_hash_new();
 		rb_iv_set(	rb_klass,
-					Rbdb_RB_VARIABLE_CURSOR_CONTEXT_STORAGE,
+					RBDB_RB_VARIABLE_CURSOR_CONTEXT_STORAGE,
 					rb_cursor_context_storage_hash );
 	}
 	
@@ -1895,7 +1895,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_getEnvironment(	VALUE	rb_self )	{
 	VALUE	rb_klass	=	( ( TYPE( rb_self ) == T_CLASS ) ? rb_self : rb_funcall( rb_self, rb_intern( "class" ), 0 ) );
 
 	return rb_iv_get(	rb_klass,
-						Rbdb_RB_VARIABLE_ENVIRONMENT_STORAGE );
+						RBDB_RB_VARIABLE_ENVIRONMENT_STORAGE );
 }
 
 /****************
@@ -1906,7 +1906,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_getDatabase( VALUE	rb_self,
 													VALUE	rb_index_method )	{
 
 	return rb_Rbdb_DatabaseObject_internal_getObjectFromClassInstanceHash(	rb_self,
-																			Rbdb_RB_VARIABLE_DATABASE_STORAGE,
+																			RBDB_RB_VARIABLE_DATABASE_STORAGE,
 																			rb_index_method );
 }
 
@@ -2107,7 +2107,7 @@ Rbdb_Record* rb_Rbdb_DatabaseObject_internal_compactRetrievalObject( VALUE	rb_se
 
 	VALUE	rb_database	=	rb_Rbdb_DatabaseObject_database( rb_self );
 	Rbdb_Database*	c_database	=	NULL;
-	C_Rbdb_DATABASE_OBJECT_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE_OBJECT_DATABASE( rb_database, c_database );
 	
 	//	We need to load our rb_key into a raw c key (void*) with defined byte length
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database );
@@ -2119,7 +2119,7 @@ Rbdb_Record* rb_Rbdb_DatabaseObject_internal_compactRetrievalObject( VALUE	rb_se
 	//	get primary key if available
 	if ( ( rb_key = rb_Rbdb_DatabaseObject_uniqueKey( rb_self ) ) == Qnil )	{
 		//	Throw an error - missing key
-		rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_MISSING_UNIQUE_KEY );
+		rb_raise( rb_eArgError, RBDB_RUBY_ERROR_MISSING_UNIQUE_KEY );
 	}
 
 	rb_Rbdb_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	rb_key,
@@ -2313,7 +2313,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataPrimaryKey(
 	//	so we can ask the object's class for the corresponding database
 	VALUE	rb_database	=	rb_Rbdb_DatabaseObject_database(	rb_klass_self );	
 	Rbdb_Database*	c_database	=	NULL;
-	C_Rbdb_DATABASE_OBJECT_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE_OBJECT_DATABASE( rb_database, c_database );
 		
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database );
 	
@@ -2372,7 +2372,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_retrieveSelfAsPrimaryPackedDataMethodValue
 		VALUE	rb_database	=	rb_Rbdb_DatabaseObject_databaseWithIndex(	rb_klass_self,
 																																	rb_key_method_symbol );
 		Rbdb_Database*	c_database	=	NULL;
-		C_Rbdb_DATABASE_OBJECT_DATABASE( rb_database, c_database );
+		C_RBDB_DATABASE_OBJECT_DATABASE( rb_database, c_database );
 
 		Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database );
 
@@ -2419,7 +2419,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_retrieveSelfAsPrimaryPackedData(	VALUE	rb_
 	VALUE	rb_database	=	rb_Rbdb_DatabaseObject_requireDatabaseWithIndex(	rb_self,
 																				rb_unique_key_method );
 	Rbdb_Database*	c_database	=	NULL;
-	C_Rbdb_DATABASE_OBJECT_DATABASE( rb_database, c_database );
+	C_RBDB_DATABASE_OBJECT_DATABASE( rb_database, c_database );
 	
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database );
 
@@ -2495,7 +2495,7 @@ void rb_Rbdb_DatabaseObject_internal_requireObjectVerifyAsEnvironment( VALUE rb_
 void rb_Rbdb_DatabaseObject_internal_requireObjectVerifyAsDatabase( VALUE rb_object )	{
 	
 	if ( rb_Rbdb_DatabaseObject_internal_verifyObjectAsDatabase( rb_object ) == Qfalse )	{
-		rb_raise( rb_eArgError, Rbdb_RUBY_ERROR_DATABASE_ARGUMENT_UNKNOWN_TYPE );
+		rb_raise( rb_eArgError, RBDB_RUBY_ERROR_DATABASE_ARGUMENT_UNKNOWN_TYPE );
 	}
 }
 
@@ -2561,7 +2561,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_createAndAssociateSecondaryDatabase(	VALUE
 	VALUE	rb_primary_database	=	rb_Rbdb_DatabaseObject_database( rb_self );
 	
 	Rbdb_Database*	c_primary_database	=	NULL;
-	C_Rbdb_DATABASE_OBJECT_DATABASE( rb_primary_database, c_primary_database );
+	C_RBDB_DATABASE_OBJECT_DATABASE( rb_primary_database, c_primary_database );
 	
 	VALUE	rb_index_method_string	=	rb_sym_to_s( rb_index_method_symbol );
 	char*	c_index_method_string	=	StringValuePtr( rb_index_method_string );
@@ -2574,7 +2574,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_createAndAssociateSecondaryDatabase(	VALUE
 																											rb_primary_database );
 
 	Rbdb_Database*	c_secondary_database	=	NULL;
-	C_Rbdb_DATABASE_OBJECT_DATABASE( rb_secondary_database, c_secondary_database );
+	C_RBDB_DATABASE_OBJECT_DATABASE( rb_secondary_database, c_secondary_database );
 
 	if ( c_secondary_database == NULL )	{
 		
@@ -2598,7 +2598,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_createAndAssociateSecondaryDatabase(	VALUE
 ****************************************/
 
 //	This is the actual C method that gets called when a callback is set
-Rbdb_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_DatabaseObject_internal_secondaryKeyCreationCallbackMethod(	Rbdb_Database*				c_secondary_database, 
+RBDB_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_DatabaseObject_internal_secondaryKeyCreationCallbackMethod(	Rbdb_Database*				c_secondary_database, 
 																																																				Rbdb_Record*					c_record, 
 																																																				Rbdb_SecondaryKeys*		c_secondary_keys )	{
 	
@@ -2848,7 +2848,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_configureWithEnvironment(	VALUE	rb_klass_s
 	
 	//	and call configureRbdb
 	rb_funcall(	rb_klass_self,
-							rb_intern( Rbdb_FUNCTION_CONFIGURE ),
+							rb_intern( RBDB_FUNCTION_CONFIGURE ),
 							0 );
 
 	//	mark for init (happens after all waiting classes have configured)
@@ -2889,7 +2889,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_setHasConfigured(	VALUE	rb_klass_self,
 																												VALUE	rb_true_or_false )	{
 
 	rb_iv_set(	rb_klass_self,
-							Rbdb_RB_VARIABLE_CONFIGURED,
+							RBDB_RB_VARIABLE_CONFIGURED,
 							rb_true_or_false );
 	//	We have Qtrue, Qfalse or Qnil and want to return Qtrue or Qfalse
 	return ( rb_klass_self == Qtrue ? Qtrue : Qfalse );
@@ -2902,7 +2902,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_setHasConfigured(	VALUE	rb_klass_self,
 VALUE rb_Rbdb_DatabaseObject_internal_setHasInitialized(	VALUE	rb_klass_self,
 																													VALUE	rb_true_or_false  )	{
 	rb_iv_set(	rb_klass_self,
-							Rbdb_RB_VARIABLE_INITIALIZED,
+							RBDB_RB_VARIABLE_INITIALIZED,
 							rb_true_or_false );	
 	//	We have Qtrue, Qfalse or Qnil and want to return Qtrue or Qfalse
 	return ( rb_klass_self == Qtrue ? Qtrue : Qfalse );
@@ -2962,7 +2962,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_markForInitialization( VALUE rb_klass_self
 VALUE rb_Rbdb_DatabaseObject_internal_identifiers( VALUE rb_self )	{
 
 	VALUE	rb_identifiers	=	rb_funcall(	rb_self,
-																			rb_intern( Rbdb_FUNCTION_IDENTIFY_AS ),
+																			rb_intern( RBDB_FUNCTION_IDENTIFY_AS ),
 																			0 );
 	return rb_identifiers;
 }
@@ -2980,7 +2980,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_callInitRbdb( VALUE rb_self )	{
 														Qtrue );
 	
 	rb_funcall(	rb_self,
-							rb_intern( Rbdb_FUNCTION_INIT ),
+							rb_intern( RBDB_FUNCTION_INIT ),
 							0 );
 
 	return rb_self;
@@ -2994,12 +2994,12 @@ VALUE rb_Rbdb_DatabaseObject_internal_callInitRbdb( VALUE rb_self )	{
 VALUE rb_Rbdb_DatabaseObject_internal_uniqueJoinDeclarationHash( VALUE rb_self )	{
 	
 	VALUE	rb_unique_join_declaration_hash	=	rb_iv_get(	rb_self,
-														  Rbdb_RB_VARIABLE_UNIQUE_JOIN_DECLARATION_HASH );
+														  RBDB_RB_VARIABLE_UNIQUE_JOIN_DECLARATION_HASH );
 	
 	if ( rb_unique_join_declaration_hash == Qnil )	{
 		rb_unique_join_declaration_hash = rb_hash_new();
 		rb_iv_set(	rb_self,
-								Rbdb_RB_VARIABLE_UNIQUE_JOIN_DECLARATION_HASH,
+								RBDB_RB_VARIABLE_UNIQUE_JOIN_DECLARATION_HASH,
 								rb_unique_join_declaration_hash );
 	}
 	

@@ -1,5 +1,5 @@
-#ifndef RB_Rbdb_INTERNAL
-#define RB_Rbdb_INTERNAL
+#ifndef RB_RBDB_INTERNAL
+#define RB_RBDB_INTERNAL
 
 void rb_Rbdb_internal_initRuntimeStorages( VALUE rb_module_self );
 VALUE rb_Rbdb_internal_rubyRuntimeDatabase(	VALUE rb_module_self );

@@ -36,7 +36,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_ReplicationSettingsController;
 extern	VALUE	rb_Rbdb_ReplicationTimeoutSettingsController;
 
-void Init_Rbdb_ReplicationTimeoutSettingsController()	{
+void Init_rb_Rbdb_ReplicationTimeoutSettingsController()	{
 
 	rb_Rbdb_ReplicationTimeoutSettingsController		=	rb_define_class_under(	rb_Rbdb_ReplicationSettingsController, 
 																																						"Timeout",	
@@ -115,14 +115,14 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_new(	int			argc,
 	}
 
 	Rbdb_ReplicationSettingsController*	c_parent_replication_settings_controller;
-	C_Rbdb_REPLICATION_SETTINGS_CONTROLLER( rb_parent_replication_settings_controller, c_parent_replication_settings_controller );
+	C_RBDB_REPLICATION_SETTINGS_CONTROLLER( rb_parent_replication_settings_controller, c_parent_replication_settings_controller );
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller	=	Rbdb_ReplicationSettingsController_timeoutSettingsController( c_parent_replication_settings_controller );
 
 	VALUE	rb_replication_timeout_settings_controller	= RUBY_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( c_replication_timeout_settings_controller );
 
 	rb_iv_set(	rb_replication_timeout_settings_controller,
-							Rbdb_RB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER,
+							RBDB_RB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER,
 							rb_parent_replication_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_replication_settings_controller };
@@ -175,7 +175,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_parentSettingsController(	VAL
 VALUE rb_Rbdb_ReplicationTimeoutSettingsController_parentReplicationSettingsController(	VALUE	rb_replication_timeout_settings_controller )	{
 
 	VALUE	rb_parent_replication_settings_controller	=	rb_iv_get(	rb_replication_timeout_settings_controller,
-																																Rbdb_RB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER );
+																																RBDB_RB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER_VARIABLE_PARENT_REPLICATION_SETTINGS_CONTROLLER );
 
 	return rb_parent_replication_settings_controller;
 }
@@ -189,7 +189,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_parentReplicationSettingsCont
 VALUE rb_Rbdb_ReplicationTimeoutSettingsController_timeout( VALUE	rb_replication_timeout_settings_controller )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationTimeoutSettingsController_timeout( c_replication_timeout_settings_controller ) );
 }
@@ -202,7 +202,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setTimeout(		VALUE	rb_replica
 																	VALUE	rb_timeout )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	Rbdb_ReplicationTimeoutSettingsController_setTimeout(	c_replication_timeout_settings_controller,
 															FIX2INT( rb_timeout ) );
@@ -219,7 +219,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setTimeout(		VALUE	rb_replica
 VALUE rb_Rbdb_ReplicationTimeoutSettingsController_waitTimeBeforeCheckpointWrite( VALUE	rb_replication_timeout_settings_controller )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationTimeoutSettingsController_waitTimeBeforeCheckpointWrite( c_replication_timeout_settings_controller ) );
 }
@@ -232,7 +232,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setWaitTimeBeforeCheckpointWr
 																						VALUE	rb_wait_time_before_checkpoint_write )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	Rbdb_ReplicationTimeoutSettingsController_setWaitTimeBeforeCheckpointWrite(	c_replication_timeout_settings_controller,
 																					FIX2INT( rb_wait_time_before_checkpoint_write ) );
@@ -249,7 +249,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setWaitTimeBeforeCheckpointWr
 VALUE rb_Rbdb_ReplicationTimeoutSettingsController_waitTimeBeforeRetryConnection( VALUE	rb_replication_timeout_settings_controller )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationTimeoutSettingsController_waitTimeBeforeRetryConnection( c_replication_timeout_settings_controller ) );
 }
@@ -262,7 +262,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryConnect
 																						VALUE	rb_wait_time_before_retry_connection )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	Rbdb_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryConnection(	c_replication_timeout_settings_controller,
 																					FIX2INT( rb_wait_time_before_retry_connection ) );
@@ -279,7 +279,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryConnect
 VALUE rb_Rbdb_ReplicationTimeoutSettingsController_electionTimeout( VALUE	rb_replication_timeout_settings_controller )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationTimeoutSettingsController_electionTimeout( c_replication_timeout_settings_controller ) );
 }
@@ -292,7 +292,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setElectionTimeout(	VALUE	rb_
 																		VALUE	rb_election_timeout )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	Rbdb_ReplicationTimeoutSettingsController_setElectionTimeout(	c_replication_timeout_settings_controller,
 																	FIX2INT( rb_election_timeout ) );
@@ -309,7 +309,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setElectionTimeout(	VALUE	rb_
 VALUE rb_Rbdb_ReplicationTimeoutSettingsController_waitTimeBeforeRetryElection( VALUE	rb_replication_timeout_settings_controller )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationTimeoutSettingsController_waitTimeBeforeRetryElection( c_replication_timeout_settings_controller ) );
 }
@@ -322,7 +322,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryElectio
 																					VALUE	rb_wait_time_before_retry_election )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	Rbdb_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryElection(	c_replication_timeout_settings_controller,
 																				FIX2INT( rb_wait_time_before_retry_election ) );
@@ -339,7 +339,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setWaitTimeBeforeRetryElectio
 VALUE rb_Rbdb_ReplicationTimeoutSettingsController_fullElectionParticipationTimeout( VALUE	rb_replication_timeout_settings_controller )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationTimeoutSettingsController_fullElectionParticipationTimeout( c_replication_timeout_settings_controller ) );
 }
@@ -352,7 +352,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setFullElectionParticipationT
 																							VALUE	rb_full_election_participation_timeout )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	Rbdb_ReplicationTimeoutSettingsController_setFullElectionParticipationTimeout(	c_replication_timeout_settings_controller,
 																					FIX2INT( rb_full_election_participation_timeout ) );
@@ -369,7 +369,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setFullElectionParticipationT
 VALUE rb_Rbdb_ReplicationTimeoutSettingsController_heartbeatMonitorPulse( VALUE	rb_replication_timeout_settings_controller )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationTimeoutSettingsController_heartbeatMonitorPulse( c_replication_timeout_settings_controller ) );
 }
@@ -382,7 +382,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setHeartbeatMonitorPulse(	VAL
 																				VALUE	rb_heartbeat_monitor_pulse )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	Rbdb_ReplicationTimeoutSettingsController_setHeartbeatMonitorPulse(	c_replication_timeout_settings_controller,
 																			FIX2INT( rb_heartbeat_monitor_pulse ) );
@@ -399,7 +399,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setHeartbeatMonitorPulse(	VAL
 VALUE rb_Rbdb_ReplicationTimeoutSettingsController_heartbeatBroadcastPulse( VALUE	rb_replication_timeout_settings_controller )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationTimeoutSettingsController_heartbeatBroadcastPulse( c_replication_timeout_settings_controller ) );
 }
@@ -412,7 +412,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setHeartbeatBroadcastPulse(	V
 																				VALUE	rb_heartbeat_broadcast_pulse )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 	Rbdb_ReplicationTimeoutSettingsController_setHeartbeatBroadcastPulse(	c_replication_timeout_settings_controller,
 																			FIX2INT( rb_heartbeat_broadcast_pulse ) );
 	
@@ -428,7 +428,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setHeartbeatBroadcastPulse(	V
 VALUE rb_Rbdb_ReplicationTimeoutSettingsController_leaseTimeout( VALUE	rb_replication_timeout_settings_controller )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	return INT2FIX( Rbdb_ReplicationTimeoutSettingsController_leaseTimeout( c_replication_timeout_settings_controller ) );
 }
@@ -441,7 +441,7 @@ VALUE rb_Rbdb_ReplicationTimeoutSettingsController_setLeaseTimeout(	VALUE	rb_rep
 																		VALUE	rb_lease_timeout )	{
 
 	Rbdb_ReplicationTimeoutSettingsController*	c_replication_timeout_settings_controller;
-	C_Rbdb_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
+	C_RBDB_REPLICATION_TIMEOUT_SETTINGS_CONTROLLER( rb_replication_timeout_settings_controller, c_replication_timeout_settings_controller );
 
 	Rbdb_ReplicationTimeoutSettingsController_setLeaseTimeout(	c_replication_timeout_settings_controller,
 																FIX2INT( rb_lease_timeout ) );

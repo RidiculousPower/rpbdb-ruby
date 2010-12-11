@@ -1,5 +1,5 @@
-#ifndef RB_Rbdb_DATABASE_OBJECT_INTERNAL
-	#define RB_Rbdb_DATABASE_OBJECT_INTERNAL
+#ifndef RB_RBDB_DATABASE_OBJECT_INTERNAL
+	#define RB_RBDB_DATABASE_OBJECT_INTERNAL
 
 	VALUE rb_Rbdb_DatabaseObject_internal_cursorForCallingContext( VALUE rb_self );
 VALUE rb_Rbdb_DatabaseObject_internal_each_backtrace_frame_exception_wrapper( VALUE rb_args );
@@ -80,7 +80,7 @@ VALUE rb_Rbdb_DatabaseObject_internal_extractRetrievalKey( Rbdb_Record* c_retrie
 																  VALUE*	args	);
 	VALUE rb_Rbdb_DatabaseObject_internal_createAndAssociateSecondaryDatabase(	VALUE	rb_self,
 																				VALUE	rb_index_method_symbol );
-	Rbdb_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_DatabaseObject_internal_secondaryKeyCreationCallbackMethod(	Rbdb_Database*			c_secondary_database, 
+	RBDB_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_DatabaseObject_internal_secondaryKeyCreationCallbackMethod(	Rbdb_Database*			c_secondary_database, 
 																												Rbdb_Record*			c_record, 
 																												Rbdb_SecondaryKeys*	c_secondary_keys );
 	VALUE rb_Rbdb_DatabaseObject_internal_identifiesWithCurrentlyOpenOrDefaultEnvironment(	VALUE	rb_klass_self,

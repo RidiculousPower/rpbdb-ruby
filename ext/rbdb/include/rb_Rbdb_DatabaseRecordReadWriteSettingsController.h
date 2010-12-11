@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_DATABASE_READ_WRITE_SETTINGS_CONTROLLER
-	#define RB_Rbdb_DATABASE_READ_WRITE_SETTINGS_CONTROLLER
+#ifndef RB_RBDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER
+	#define RB_RBDB_DATABASE_READ_WRITE_SETTINGS_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_DatabaseRecordReadWriteSettingsController();
+void Init_rb_Rbdb_DatabaseRecordReadWriteSettingsController();
 
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_new(	int			argc,
 																															VALUE*	args,

@@ -33,7 +33,7 @@ extern	VALUE	rb_Rbdb_Environment;
 extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_MessageSettingsController;
 
-void Init_Rbdb_MessageSettingsController()	{
+void Init_rb_Rbdb_MessageSettingsController()	{
 
 	rb_Rbdb_MessageSettingsController		=	rb_define_class_under(	rb_Rbdb_SettingsController, 
 																																		"Message",	
@@ -87,12 +87,12 @@ VALUE rb_Rbdb_MessageSettingsController_new(	int			argc,
 	}
 
 	Rbdb_SettingsController*	c_parent_settings_controller;
-	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
+	C_RBDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 
 	VALUE	rb_message_settings_controller	= RUBY_RBDB_MESSAGE_SETTINGS_CONTROLLER( Rbdb_SettingsController_messageSettingsController( c_parent_settings_controller ) );
 
 	rb_iv_set(	rb_message_settings_controller,
-							Rbdb_RB_MESSAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							RBDB_RB_MESSAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
 							rb_parent_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
@@ -133,7 +133,7 @@ VALUE rb_Rbdb_MessageSettingsController_parentEnvironment(	VALUE	rb_message_sett
 VALUE rb_Rbdb_MessageSettingsController_parentSettingsController(	VALUE	rb_message_settings_controller )	{
 
 	VALUE	rb_parent_settings_controller	=	rb_iv_get(	rb_message_settings_controller,
-																										Rbdb_RB_MESSAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+																										RBDB_RB_MESSAGE_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_settings_controller;
 }
@@ -146,7 +146,7 @@ VALUE rb_Rbdb_MessageSettingsController_parentSettingsController(	VALUE	rb_messa
 VALUE rb_Rbdb_MessageSettingsController_file( VALUE	rb_message_settings_controller )	{
 
 	Rbdb_MessageSettingsController*	c_message_settings_controller;
-	C_Rbdb_MESSAGE_SETTINGS_CONTROLLER( rb_message_settings_controller, c_message_settings_controller );
+	C_RBDB_MESSAGE_SETTINGS_CONTROLLER( rb_message_settings_controller, c_message_settings_controller );
 
 	//	FIX - FILE
 	Rbdb_MessageSettingsController_file( c_message_settings_controller );
@@ -164,7 +164,7 @@ VALUE rb_Rbdb_MessageSettingsController_setFile(	VALUE	rb_message_settings_contr
 																									VALUE	rb_message_file __attribute__ ((unused )) )	{
 
 	Rbdb_MessageSettingsController*	c_message_settings_controller;
-	C_Rbdb_MESSAGE_SETTINGS_CONTROLLER( rb_message_settings_controller, c_message_settings_controller );
+	C_RBDB_MESSAGE_SETTINGS_CONTROLLER( rb_message_settings_controller, c_message_settings_controller );
 
 	FILE*	c_message_file;
 

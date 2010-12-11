@@ -37,7 +37,7 @@ extern	VALUE	rb_Rbdb_LogSettingsController;
 extern	VALUE	rb_Rbdb_LogSequenceNumber;
 extern	VALUE	rb_Rbdb_Record;
 
-void Init_Rbdb_LogCursor()	{
+void Init_rb_Rbdb_LogCursor()	{
 
 	rb_Rbdb_LogCursor	=	rb_define_class_under(	rb_Rbdb_Environment, 
 																										"LogCursor",			
@@ -102,13 +102,13 @@ VALUE rb_Rbdb_LogCursor_new(	int			argc,
 	);
 	
 	Rbdb_LogCursorController*	c_parent_log_cursor_controller;
-	C_Rbdb_LOG_CURSOR_CONTROLLER( rb_parent_log_cursor_controller, c_parent_log_cursor_controller );
+	C_RBDB_LOG_CURSOR_CONTROLLER( rb_parent_log_cursor_controller, c_parent_log_cursor_controller );
 	
 	VALUE	rb_log_cursor	=	RUBY_RBDB_LOG_CURSOR( Rbdb_LogCursor_new( c_parent_log_cursor_controller ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_log_cursor,
-							Rbdb_RB_LOG_CURSOR_VARIABLE_PARENT_LOG_CONTROLLER,
+							RBDB_RB_LOG_CURSOR_VARIABLE_PARENT_LOG_CONTROLLER,
 							rb_parent_log_controller );
 
 	VALUE	argv[]	=	{ rb_parent_log_cursor_controller };
@@ -139,17 +139,17 @@ VALUE rb_Rbdb_LogCursor_settingsController(	VALUE	rb_log_cursor )	{
 	VALUE	rb_local_log_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_log_settings_controller = rb_iv_get(	rb_log_cursor,
-																												Rbdb_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																												RBDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_LogCursor*		c_log_cursor;
-		C_Rbdb_LOG_CURSOR( rb_log_cursor, c_log_cursor );
+		C_RBDB_LOG_CURSOR( rb_log_cursor, c_log_cursor );
 	
 		Rbdb_LogSettingsController*	c_local_log_settings_controller	=	Rbdb_LogCursor_settingsController( c_log_cursor );
 
 		rb_local_log_settings_controller	=	RUBY_RBDB_LOG_SETTINGS_CONTROLLER( c_local_log_settings_controller );
 
 		rb_iv_set(	rb_log_cursor,
-								Rbdb_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,
 								rb_local_log_settings_controller );
 	}
 
@@ -184,7 +184,7 @@ VALUE rb_Rbdb_LogCursor_parentLogController(	VALUE	rb_log_cursor )	{
 VALUE rb_Rbdb_LogCursor_parentLogCursorController(	VALUE	rb_log_cursor )	{
 	
 	VALUE	rb_parent_log_cursor_controller	=	rb_iv_get(	rb_log_cursor,
-																											Rbdb_RB_LOG_CURSOR_VARIABLE_PARENT_LOG_CONTROLLER );
+																											RBDB_RB_LOG_CURSOR_VARIABLE_PARENT_LOG_CONTROLLER );
 	return rb_parent_log_cursor_controller;
 }
 
@@ -196,7 +196,7 @@ VALUE rb_Rbdb_LogCursor_parentLogCursorController(	VALUE	rb_log_cursor )	{
 VALUE rb_Rbdb_LogCursor_open( VALUE	rb_log_cursor )	{
 	
 	Rbdb_LogCursor*	c_log_cursor;
-	C_Rbdb_LOG_CURSOR( rb_log_cursor, c_log_cursor );
+	C_RBDB_LOG_CURSOR( rb_log_cursor, c_log_cursor );
 	
 	Rbdb_LogCursor_open( c_log_cursor );
 	
@@ -211,7 +211,7 @@ VALUE rb_Rbdb_LogCursor_open( VALUE	rb_log_cursor )	{
 VALUE rb_Rbdb_LogCursor_close( VALUE	rb_log_cursor )	{
 
 	Rbdb_LogCursor*	c_log_cursor;
-	C_Rbdb_LOG_CURSOR( rb_log_cursor, c_log_cursor );
+	C_RBDB_LOG_CURSOR( rb_log_cursor, c_log_cursor );
 	
 	Rbdb_LogCursor_close( c_log_cursor );
 
@@ -225,7 +225,7 @@ VALUE rb_Rbdb_LogCursor_close( VALUE	rb_log_cursor )	{
 VALUE rb_Rbdb_LogCursor_retrieveCurrentLogRecord( VALUE	rb_log_cursor )	{
 
 	Rbdb_LogCursor*	c_log_cursor;
-	C_Rbdb_LOG_CURSOR( rb_log_cursor, c_log_cursor );
+	C_RBDB_LOG_CURSOR( rb_log_cursor, c_log_cursor );
 
 	return RUBY_RBDB_RECORD( Rbdb_LogCursor_retrieveCurrentLogRecord( c_log_cursor ) );
 }
@@ -237,7 +237,7 @@ VALUE rb_Rbdb_LogCursor_retrieveCurrentLogRecord( VALUE	rb_log_cursor )	{
 VALUE rb_Rbdb_LogCursor_retrieveFirstLogRecord( VALUE	rb_log_cursor )	{
 
 	Rbdb_LogCursor*	c_log_cursor;
-	C_Rbdb_LOG_CURSOR( rb_log_cursor, c_log_cursor );
+	C_RBDB_LOG_CURSOR( rb_log_cursor, c_log_cursor );
 
 	return RUBY_RBDB_RECORD( Rbdb_LogCursor_retrieveFirstLogRecord( c_log_cursor ) );
 }
@@ -249,7 +249,7 @@ VALUE rb_Rbdb_LogCursor_retrieveFirstLogRecord( VALUE	rb_log_cursor )	{
 VALUE rb_Rbdb_LogCursor_retrieveLastLogRecord( VALUE	rb_log_cursor )	{
 
 	Rbdb_LogCursor*	c_log_cursor;
-	C_Rbdb_LOG_CURSOR( rb_log_cursor, c_log_cursor );
+	C_RBDB_LOG_CURSOR( rb_log_cursor, c_log_cursor );
 
 	return RUBY_RBDB_RECORD( Rbdb_LogCursor_retrieveLastLogRecord( c_log_cursor ) );
 }
@@ -261,7 +261,7 @@ VALUE rb_Rbdb_LogCursor_retrieveLastLogRecord( VALUE	rb_log_cursor )	{
 VALUE rb_Rbdb_LogCursor_retrieveNextLogRecord( VALUE	rb_log_cursor )	{
 
 	Rbdb_LogCursor*	c_log_cursor;
-	C_Rbdb_LOG_CURSOR( rb_log_cursor, c_log_cursor );
+	C_RBDB_LOG_CURSOR( rb_log_cursor, c_log_cursor );
 
 	return RUBY_RBDB_RECORD( Rbdb_LogCursor_retrieveNextLogRecord( c_log_cursor ) );
 }
@@ -273,7 +273,7 @@ VALUE rb_Rbdb_LogCursor_retrieveNextLogRecord( VALUE	rb_log_cursor )	{
 VALUE rb_Rbdb_LogCursor_retrievePreviousLogRecord( VALUE	rb_log_cursor )	{
 
 	Rbdb_LogCursor*	c_log_cursor;
-	C_Rbdb_LOG_CURSOR( rb_log_cursor, c_log_cursor );
+	C_RBDB_LOG_CURSOR( rb_log_cursor, c_log_cursor );
 
 	return RUBY_RBDB_RECORD( Rbdb_LogCursor_retrievePreviousLogRecord( c_log_cursor ) );
 }
@@ -286,10 +286,10 @@ VALUE rb_Rbdb_LogCursor_retrieveLogRecord(	VALUE	rb_log_cursor,
 											VALUE	rb_log_sequence_number )	{
 
 	Rbdb_LogCursor*	c_log_cursor;
-	C_Rbdb_LOG_CURSOR( rb_log_cursor, c_log_cursor );
+	C_RBDB_LOG_CURSOR( rb_log_cursor, c_log_cursor );
 
 	Rbdb_LogSequenceNumber*	c_log_sequence_number;
-	C_Rbdb_LOG_SEQUENCE_NUMBER( rb_log_sequence_number, c_log_sequence_number );
+	C_RBDB_LOG_SEQUENCE_NUMBER( rb_log_sequence_number, c_log_sequence_number );
 
 	return RUBY_RBDB_RECORD( Rbdb_LogCursor_retrieveLogRecord(	c_log_cursor,
 								 									c_log_sequence_number	) );

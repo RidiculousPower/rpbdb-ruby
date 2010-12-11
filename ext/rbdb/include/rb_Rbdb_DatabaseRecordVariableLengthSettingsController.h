@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_DATABASE_VARIABLE_RECORD_SETTINGS_CONTROLLER
-	#define RB_Rbdb_DATABASE_VARIABLE_RECORD_SETTINGS_CONTROLLER
+#ifndef RB_RBDB_DATABASE_VARIABLE_RECORD_SETTINGS_CONTROLLER
+	#define RB_RBDB_DATABASE_VARIABLE_RECORD_SETTINGS_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_DatabaseRecordVariableLengthSettingsController();
+void Init_rb_Rbdb_DatabaseRecordVariableLengthSettingsController();
 
 VALUE rb_Rbdb_DatabaseRecordVariableLengthSettingsController_new(	int			argc,
 																																	VALUE*	args,

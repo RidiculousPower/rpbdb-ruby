@@ -48,7 +48,7 @@ extern	VALUE	rb_Rbdb_DatabaseTypeQueueSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseRecordSettingsController;
 extern	VALUE	rb_Rbdb_Record;
 
-void Init_Rbdb_DatabaseTypeQueueSettingsController()	{
+void Init_rb_Rbdb_DatabaseTypeQueueSettingsController()	{
 
 	rb_Rbdb_DatabaseTypeQueueSettingsController		=	rb_define_class_under(	rb_Rbdb_DatabaseTypeSettingsController, 
 																																					"Queue",	
@@ -146,7 +146,7 @@ VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_new(	int			argc,
 		if ( ( rb_parent_database = rb_Rbdb_DatabaseSettingsController_parentDatabase( rb_parent_database_settings_controller ) ) != Qnil )	{
 			
 			Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-			C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );			
+			C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );			
 			
 			Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller	=	Rbdb_DatabaseSettingsController_typeSettingsController( c_database_settings_controller );
 
@@ -160,7 +160,7 @@ VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller;
-	C_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_parent_database_type_settings_controller, c_database_type_settings_controller );		
+	C_RBDB_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_parent_database_type_settings_controller, c_database_type_settings_controller );		
 
 	Rbdb_DatabaseTypeQueueSettingsController*	c_database_type_queue_settings_controller	=	Rbdb_DatabaseTypeSettingsController_queueController( c_database_type_settings_controller );
 
@@ -174,14 +174,14 @@ VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_new(	int			argc,
 
 		//	store reference to parent database settings controller
 		rb_iv_set(	rb_database_type_queue_settings_controller,
-								Rbdb_RB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+								RBDB_RB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
 								rb_parent_database_settings_controller );
 
 	}
 
 	//	store reference to parent type settings controller
 	rb_iv_set(	rb_database_type_queue_settings_controller,
-							Rbdb_RB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER,
 							rb_parent_database_type_settings_controller );
 
 	//	if we have a parent database in addition to our parent environmental settings controller, set it as parent as well
@@ -193,7 +193,7 @@ VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_new(	int			argc,
 	}
 	if ( rb_parent_database != Qnil )	{
 		rb_iv_set(	rb_database_type_queue_settings_controller,
-								Rbdb_RB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE,
+								RBDB_RB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE,
 								rb_parent_database );	
 	}
 
@@ -259,7 +259,7 @@ VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_parentSettingsController(	VALU
 VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_type_queue_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_type_queue_settings_controller,
-																															Rbdb_RB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																															RBDB_RB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	if ( rb_parent_database_settings_controller == Qnil )	{
 	
@@ -279,7 +279,7 @@ VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_parentDatabaseSettingsControll
 VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_parentDatabaseTypeSettingsController(	VALUE	rb_database_type_queue_settings_controller )	{
 
 	VALUE	rb_parent_database_type_settings_controller	=	rb_iv_get(	rb_database_type_queue_settings_controller,
-																																	Rbdb_RB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER );
+																																	RBDB_RB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_TYPE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_type_settings_controller;
 }
@@ -296,7 +296,7 @@ VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_parentDatabaseTypeSettingsCont
 VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_returnKeyDataPairsInOrder( VALUE	rb_database_type_queue_settings_controller )	{
 
 	Rbdb_DatabaseTypeQueueSettingsController*	c_database_type_queue_settings_controller;
-	C_Rbdb_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( rb_database_type_queue_settings_controller, c_database_type_queue_settings_controller );
+	C_RBDB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( rb_database_type_queue_settings_controller, c_database_type_queue_settings_controller );
 
 	return ( Rbdb_DatabaseTypeQueueSettingsController_returnKeyDataPairsInOrder( c_database_type_queue_settings_controller )	?	Qtrue
 																																:	Qfalse );
@@ -309,7 +309,7 @@ VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_returnKeyDataPairsInOrder( VAL
 	VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_turnReturnKeyDataPairsInOrderOn( VALUE	rb_database_type_queue_settings_controller )	{
 
 		Rbdb_DatabaseTypeQueueSettingsController*	c_database_type_queue_settings_controller;
-		C_Rbdb_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( rb_database_type_queue_settings_controller, c_database_type_queue_settings_controller );
+		C_RBDB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( rb_database_type_queue_settings_controller, c_database_type_queue_settings_controller );
 
 		Rbdb_DatabaseTypeQueueSettingsController_turnReturnKeyDataPairsInOrderOn( c_database_type_queue_settings_controller );
 
@@ -323,7 +323,7 @@ VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_returnKeyDataPairsInOrder( VAL
 	VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_turnReturnKeyDataPairsInOrderOff( VALUE	rb_database_type_queue_settings_controller )	{
 
 		Rbdb_DatabaseTypeQueueSettingsController*	c_database_type_queue_settings_controller;
-		C_Rbdb_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( rb_database_type_queue_settings_controller, c_database_type_queue_settings_controller );
+		C_RBDB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( rb_database_type_queue_settings_controller, c_database_type_queue_settings_controller );
 
 		Rbdb_DatabaseTypeQueueSettingsController_turnReturnKeyDataPairsInOrderOff( c_database_type_queue_settings_controller );
 
@@ -342,7 +342,7 @@ VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_returnKeyDataPairsInOrder( VAL
 VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_numberOfPagesForUnderlyingData( VALUE	rb_database_type_queue_settings_controller )	{
 
 	Rbdb_DatabaseTypeQueueSettingsController*	c_database_type_queue_settings_controller;
-	C_Rbdb_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( rb_database_type_queue_settings_controller, c_database_type_queue_settings_controller );
+	C_RBDB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( rb_database_type_queue_settings_controller, c_database_type_queue_settings_controller );
 
 	int		c_number_of_pages_for_underlying_data		=	Rbdb_DatabaseTypeQueueSettingsController_numberOfPagesForUnderlyingData( c_database_type_queue_settings_controller );
 	VALUE	rb_number_of_pages_for_underlying_data	=	INT2FIX( c_number_of_pages_for_underlying_data );
@@ -358,7 +358,7 @@ VALUE rb_Rbdb_DatabaseTypeQueueSettingsController_setNumberOfPagesForUnderlyingD
 																																											VALUE	rb_number_of_pages_for_underlying_data )	{
 
 	Rbdb_DatabaseTypeQueueSettingsController*	c_database_type_queue_settings_controller;
-	C_Rbdb_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( rb_database_type_queue_settings_controller, c_database_type_queue_settings_controller );
+	C_RBDB_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER( rb_database_type_queue_settings_controller, c_database_type_queue_settings_controller );
 
 	Rbdb_DatabaseTypeQueueSettingsController_setNumberOfPagesForUnderlyingData(	c_database_type_queue_settings_controller,
 																																							FIX2INT( rb_number_of_pages_for_underlying_data ) );

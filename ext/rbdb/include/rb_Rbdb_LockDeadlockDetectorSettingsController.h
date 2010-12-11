@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER
-	#define RB_Rbdb_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER
+#ifndef RB_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER
+	#define RB_RBDB_LOCK_DEADLOCK_DETECTOR_SETTINGS_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_LockDeadlockDetectorSettingsController();
+void Init_rb_Rbdb_LockDeadlockDetectorSettingsController();
 
 VALUE rb_Rbdb_LockDeadlockDetectorSettingsController_new(	int			argc,
 																													VALUE*	args,

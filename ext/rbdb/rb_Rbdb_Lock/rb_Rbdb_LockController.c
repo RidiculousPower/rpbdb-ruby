@@ -32,7 +32,7 @@ extern	VALUE	rb_Rbdb_Lock;
 extern	VALUE	rb_Rbdb_LockController;
 extern	VALUE	rb_Rbdb_LockSettingsController;
 
-void Init_Rbdb_LockController()	{
+void Init_rb_Rbdb_LockController()	{
 
 	rb_Rbdb_LockController	=	rb_define_class_under(	rb_Rbdb_Environment, 
 																										"LockController",			
@@ -127,13 +127,13 @@ VALUE rb_Rbdb_LockController_new(	int			argc,
 	);
 	
 	Rbdb_Environment*		c_parent_environment;
-	C_Rbdb_ENVIRONMENT( rb_parent_environment, c_parent_environment );
+	C_RBDB_ENVIRONMENT( rb_parent_environment, c_parent_environment );
 	
 	VALUE	rb_lock_controller	=	RUBY_RBDB_LOCK_CONTROLLER( Rbdb_LockController_new( c_parent_environment ) );
 	
 	//	store reference to parent
 	rb_iv_set(	rb_lock_controller,
-							Rbdb_RB_LOCK_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
+							RBDB_RB_LOCK_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
 							rb_parent_environment );
 	
 	VALUE	argv[]	=	{ rb_parent_environment };
@@ -163,17 +163,17 @@ VALUE rb_Rbdb_LockController_settingsController(	VALUE	rb_lock_controller )	{
 	VALUE	rb_local_lock_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_lock_settings_controller = rb_iv_get(	rb_lock_controller,
-																												Rbdb_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																												RBDB_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_LockController*		c_lock_controller;
-		C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+		C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 	
 		Rbdb_LockSettingsController*	c_local_lock_settings_controller	=	Rbdb_LockController_settingsController( c_lock_controller );
 
 		rb_local_lock_settings_controller	=	RUBY_RBDB_LOCK_SETTINGS_CONTROLLER( c_local_lock_settings_controller );
 
 		rb_iv_set(	rb_lock_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_LOCK_SETTINGS_CONTROLLER,
 								rb_local_lock_settings_controller );
 	}
 
@@ -186,7 +186,7 @@ VALUE rb_Rbdb_LockController_settingsController(	VALUE	rb_lock_controller )	{
 VALUE rb_Rbdb_LockController_parentEnvironment(	VALUE	rb_lock_controller )	{
 
 	VALUE	rb_parent_environment			=	rb_iv_get(	rb_lock_controller,
-																								Rbdb_RB_LOCK_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
+																								RBDB_RB_LOCK_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT );
 	return rb_parent_environment;
 }
 
@@ -199,7 +199,7 @@ VALUE rb_Rbdb_LockController_parentEnvironment(	VALUE	rb_lock_controller )	{
 VALUE rb_Rbdb_LockController_lockerID( VALUE	rb_lock_controller )	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	return INT2FIX( Rbdb_LockController_lockerID( c_lock_controller ) );
 }
@@ -211,7 +211,7 @@ VALUE rb_Rbdb_LockController_lockerID( VALUE	rb_lock_controller )	{
 VALUE rb_Rbdb_LockController_createLock( VALUE	rb_lock_controller )	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_LockController_createLock( c_lock_controller );
 	
@@ -226,10 +226,10 @@ VALUE rb_Rbdb_LockController_queueLock(	VALUE	rb_lock_controller,
 											VALUE	rb_lock_for_queue )	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_Lock*				c_lock_for_queue;
-	C_Rbdb_LOCK( rb_lock_for_queue, c_lock_for_queue );
+	C_RBDB_LOCK( rb_lock_for_queue, c_lock_for_queue );
 	
 	Rbdb_LockController_queueLock(	c_lock_controller,
 									c_lock_for_queue );
@@ -245,10 +245,10 @@ VALUE rb_Rbdb_LockController_removeLockFromQueue(	VALUE	rb_lock_controller,
 													VALUE	rb_queued_lock )	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_Lock*				c_queued_lock;
-	C_Rbdb_LOCK( rb_queued_lock, c_queued_lock );
+	C_RBDB_LOCK( rb_queued_lock, c_queued_lock );
 	
 	Rbdb_LockController_removeLockFromQueue(	c_lock_controller,
 												c_queued_lock	);
@@ -263,7 +263,7 @@ VALUE rb_Rbdb_LockController_removeLockFromQueue(	VALUE	rb_lock_controller,
 VALUE rb_Rbdb_LockController_obtainQueuedLocks(	VALUE	rb_lock_controller	)	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_LockController_obtainQueuedLocks( c_lock_controller );
 
@@ -277,7 +277,7 @@ VALUE rb_Rbdb_LockController_obtainQueuedLocks(	VALUE	rb_lock_controller	)	{
 VALUE rb_Rbdb_LockController_releaseQueuedLocks(	VALUE	rb_lock_controller	)	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_LockController_releaseQueuedLocks( c_lock_controller );
 
@@ -292,7 +292,7 @@ VALUE rb_Rbdb_LockController_obtainLocks(	VALUE	rb_lock_controller,
 																					VALUE	rb_locks_to_obtain	)	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 	//	FIX - ruby array into C array of locks
 	
 	Rbdb_Lock**	c_locks_to_obtain	=	NULL;
@@ -317,7 +317,7 @@ VALUE rb_Rbdb_LockController_obtainLocksAndOverrideTimeout(	VALUE	rb_lock_contro
 	//	FIX - array
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_Lock**	c_locks_to_obtain	=	NULL;
 	uint32_t	c_timeout			=	0;
@@ -342,7 +342,7 @@ VALUE rb_Rbdb_LockController_releaseLocks(	VALUE	rb_lock_controller,
 	//	FIX - array
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_Lock**	c_locks_to_release	=	NULL;
 
@@ -362,7 +362,7 @@ VALUE rb_Rbdb_LockController_releaseLocks(	VALUE	rb_lock_controller,
 VALUE rb_Rbdb_LockController_releaseAllLocks(	VALUE	rb_lock_controller	)	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_LockController_releaseAllLocks( c_lock_controller );
 
@@ -377,10 +377,10 @@ VALUE rb_Rbdb_LockController_releaseAllLocksOnObject(	VALUE	rb_lock_controller,
 														VALUE	rb_record	)	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_Record*			c_record;
-	C_Rbdb_RECORD( rb_record, c_record );
+	C_RBDB_RECORD( rb_record, c_record );
 
 	Rbdb_LockController_releaseAllLocksOnObject(	c_lock_controller,
 													c_record	);
@@ -396,7 +396,7 @@ VALUE rb_Rbdb_LockController_releaseAllLocksOnObject(	VALUE	rb_lock_controller,
 VALUE rb_Rbdb_LockController_clearDefaultLocks( VALUE	rb_lock_controller )	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_LockController_clearDefaultLocks( c_lock_controller );
 
@@ -410,7 +410,7 @@ VALUE rb_Rbdb_LockController_clearDefaultLocks( VALUE	rb_lock_controller )	{
 VALUE rb_Rbdb_LockController_clearExpiredLocks( VALUE	rb_lock_controller )	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 							
 	Rbdb_LockController_clearExpiredLocks( c_lock_controller );
 
@@ -424,7 +424,7 @@ VALUE rb_Rbdb_LockController_clearExpiredLocks( VALUE	rb_lock_controller )	{
 VALUE rb_Rbdb_LockController_clearLockRequestForLockerWithMostLocks( VALUE	rb_lock_controller )	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_LockController_clearLockRequestForLockerWithMostLocks( c_lock_controller );
 
@@ -438,7 +438,7 @@ VALUE rb_Rbdb_LockController_clearLockRequestForLockerWithMostLocks( VALUE	rb_lo
 VALUE rb_Rbdb_LockController_clearLockRequestForLockerWithMostWriteLocks( VALUE	rb_lock_controller )	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_LockController_clearLockRequestForLockerWithMostWriteLocks( c_lock_controller );
 
@@ -452,7 +452,7 @@ VALUE rb_Rbdb_LockController_clearLockRequestForLockerWithMostWriteLocks( VALUE	
 VALUE rb_Rbdb_LockController_clearLockRequestForLockerWithLeastLocks( VALUE	rb_lock_controller )	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_LockController_clearLockRequestForLockerWithLeastLocks( c_lock_controller );
 
@@ -466,7 +466,7 @@ VALUE rb_Rbdb_LockController_clearLockRequestForLockerWithLeastLocks( VALUE	rb_l
 VALUE rb_Rbdb_LockController_clearLockRequestForLockerWithLeastWriteLocks( VALUE	rb_lock_controller )	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_LockController_clearLockRequestForLockerWithLeastWriteLocks( c_lock_controller );
 
@@ -480,7 +480,7 @@ VALUE rb_Rbdb_LockController_clearLockRequestForLockerWithLeastWriteLocks( VALUE
 VALUE rb_Rbdb_LockController_clearLockRequestForLockerWithOldestLock( VALUE	rb_lock_controller )	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 							
 	Rbdb_LockController_clearLockRequestForLockerWithOldestLock( c_lock_controller );
 
@@ -494,7 +494,7 @@ VALUE rb_Rbdb_LockController_clearLockRequestForLockerWithOldestLock( VALUE	rb_l
 VALUE rb_Rbdb_LockController_clearLockRequestForLockerWithYoungestLock( VALUE	rb_lock_controller )	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 							
 	Rbdb_LockController_clearLockRequestForLockerWithYoungestLock( c_lock_controller );
 	
@@ -508,7 +508,7 @@ VALUE rb_Rbdb_LockController_clearLockRequestForLockerWithYoungestLock( VALUE	rb
 VALUE rb_Rbdb_LockController_clearLockRequestForRandomLocker( VALUE	rb_lock_controller )	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 							
 	Rbdb_LockController_clearLockRequestForRandomLocker( c_lock_controller );
 	
@@ -522,7 +522,7 @@ VALUE rb_Rbdb_LockController_clearLockRequestForRandomLocker( VALUE	rb_lock_cont
 VALUE rb_Rbdb_LockController_closeAllLocks( VALUE	rb_lock_controller )	{
 
 	Rbdb_LockController*	c_lock_controller;
-	C_Rbdb_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
+	C_RBDB_LOCK_CONTROLLER( rb_lock_controller, c_lock_controller );
 
 	Rbdb_LockController_closeAllLocks( c_lock_controller );
 

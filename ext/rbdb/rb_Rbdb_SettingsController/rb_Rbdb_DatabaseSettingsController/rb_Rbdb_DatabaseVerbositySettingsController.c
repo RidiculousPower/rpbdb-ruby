@@ -41,7 +41,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_DatabaseSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseVerbositySettingsController;
 
-void Init_Rbdb_DatabaseVerbositySettingsController()	{
+void Init_rb_Rbdb_DatabaseVerbositySettingsController()	{
 
 	rb_Rbdb_DatabaseVerbositySettingsController	=	rb_define_class_under(	rb_Rbdb_DatabaseSettingsController, 
 																																							"Verbosity",	
@@ -125,7 +125,7 @@ VALUE rb_Rbdb_DatabaseVerbositySettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseSettingsController*	c_parent_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_parent_database_settings_controller );
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_parent_database_settings_controller );
 
 	Rbdb_DatabaseVerbositySettingsController*	c_database_verbosity_settings_controller	=	Rbdb_DatabaseSettingsController_verbositySettingsController( c_parent_database_settings_controller );
 
@@ -133,7 +133,7 @@ VALUE rb_Rbdb_DatabaseVerbositySettingsController_new(	int			argc,
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_verbosity_settings_controller,
-							Rbdb_RB_DATABASE_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
@@ -198,7 +198,7 @@ VALUE rb_Rbdb_DatabaseVerbositySettingsController_parentSettingsController(	VALU
 VALUE rb_Rbdb_DatabaseVerbositySettingsController_parentDatabaseSettingsController(	VALUE	rb_database_verbosity_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_verbosity_settings_controller,
-																															Rbdb_RB_DATABASE_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																															RBDB_RB_DATABASE_VERBOSITY_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_settings_controller;
 }
@@ -211,7 +211,7 @@ VALUE rb_Rbdb_DatabaseVerbositySettingsController_parentDatabaseSettingsControll
 VALUE rb_Rbdb_DatabaseVerbositySettingsController_displayAdditionalInformationForDBRegisterFlag( VALUE	rb_database_verbosity_settings_controller )	{
 
 	Rbdb_DatabaseVerbositySettingsController*	c_database_verbosity_settings_controller;
-	C_Rbdb_DATABASE_VERBOSITY_SETTINGS_CONTROLLER( rb_database_verbosity_settings_controller, c_database_verbosity_settings_controller );
+	C_RBDB_DATABASE_VERBOSITY_SETTINGS_CONTROLLER( rb_database_verbosity_settings_controller, c_database_verbosity_settings_controller );
 
 	return ( Rbdb_DatabaseVerbositySettingsController_displayAdditionalInformationForDBRegisterFlag( c_database_verbosity_settings_controller )	?	Qtrue
 																																					:	Qfalse );
@@ -224,7 +224,7 @@ VALUE rb_Rbdb_DatabaseVerbositySettingsController_displayAdditionalInformationFo
 	VALUE rb_Rbdb_DatabaseVerbositySettingsController_turnDisplayAdditionalInformationForDBRegisterFlagOn( VALUE	rb_database_verbosity_settings_controller )	{
 
 		Rbdb_DatabaseVerbositySettingsController*	c_database_verbosity_settings_controller;
-		C_Rbdb_DATABASE_VERBOSITY_SETTINGS_CONTROLLER( rb_database_verbosity_settings_controller, c_database_verbosity_settings_controller );
+		C_RBDB_DATABASE_VERBOSITY_SETTINGS_CONTROLLER( rb_database_verbosity_settings_controller, c_database_verbosity_settings_controller );
 
 		Rbdb_DatabaseVerbositySettingsController_turnDisplayAdditionalInformationForDBRegisterFlagOn( c_database_verbosity_settings_controller );
 
@@ -238,7 +238,7 @@ VALUE rb_Rbdb_DatabaseVerbositySettingsController_displayAdditionalInformationFo
 	VALUE rb_Rbdb_DatabaseVerbositySettingsController_turnDisplayAdditionalInformationForDBRegisterFlagOff( VALUE	rb_database_verbosity_settings_controller )	{
 
 		Rbdb_DatabaseVerbositySettingsController*	c_database_verbosity_settings_controller;
-		C_Rbdb_DATABASE_VERBOSITY_SETTINGS_CONTROLLER( rb_database_verbosity_settings_controller, c_database_verbosity_settings_controller );
+		C_RBDB_DATABASE_VERBOSITY_SETTINGS_CONTROLLER( rb_database_verbosity_settings_controller, c_database_verbosity_settings_controller );
 
 		Rbdb_DatabaseVerbositySettingsController_turnDisplayAdditionalInformationForDBRegisterFlagOff( c_database_verbosity_settings_controller );
 

@@ -32,7 +32,7 @@ extern	VALUE	rb_Rbdb_MemoryPoolFileSettingsController;
 extern	VALUE	rb_Rbdb_MemoryPoolController;
 extern	VALUE	rb_Rbdb_MemoryPoolFileController;
 
-void Init_Rbdb_MemoryPoolFile()	{
+void Init_rb_Rbdb_MemoryPoolFile()	{
 
 	rb_Rbdb_MemoryPoolFile	=	rb_define_class_under(	rb_Rbdb_Environment, 
 																															"File",			
@@ -84,13 +84,13 @@ VALUE rb_Rbdb_MemoryPoolFile_new(	int			argc,
 	);
 	
 	Rbdb_MemoryPoolFileController*	c_parent_memory_pool_file_controller;
-	C_Rbdb_MEMORY_POOL_FILE_CONTROLLER( rb_parent_memory_pool_file_controller, c_parent_memory_pool_file_controller );
+	C_RBDB_MEMORY_POOL_FILE_CONTROLLER( rb_parent_memory_pool_file_controller, c_parent_memory_pool_file_controller );
 	
 	VALUE	rb_memory_pool_file		=	RUBY_RBDB_MEMORY_POOL_FILE( Rbdb_MemoryPoolFile_new( c_parent_memory_pool_file_controller ) );	
 
 	//	store reference to parent
 	rb_iv_set(	rb_memory_pool_file,
-							Rbdb_RB_MEMORY_POOL_FILE_VARIABLE_PARENT_MEMORY_POOL_FILE_CONTROLLER,
+							RBDB_RB_MEMORY_POOL_FILE_VARIABLE_PARENT_MEMORY_POOL_FILE_CONTROLLER,
 							rb_parent_memory_pool_file_controller );
 
 	VALUE	argv[]	=	{ rb_parent_memory_pool_file_controller };
@@ -121,17 +121,17 @@ VALUE rb_Rbdb_MemoryPoolFile_settingsController(	VALUE	rb_memory_pool_file )	{
 	VALUE	rb_local_memory_pool_file_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_memory_pool_file_settings_controller = rb_iv_get(	rb_memory_pool_file,
-																																Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_MemoryPoolFile*		c_memory_pool_file;
-		C_Rbdb_MEMORY_POOL_FILE( rb_memory_pool_file, c_memory_pool_file );
+		C_RBDB_MEMORY_POOL_FILE( rb_memory_pool_file, c_memory_pool_file );
 	
 		Rbdb_MemoryPoolFileSettingsController*	c_local_memory_pool_file_settings_controller	=	Rbdb_MemoryPoolFile_settingsController( c_memory_pool_file );
 
 		rb_local_memory_pool_file_settings_controller	=	RUBY_RBDB_MEMORY_POOL_FILE_SETTINGS_CONTROLLER( c_local_memory_pool_file_settings_controller );
 
 		rb_iv_set(	rb_memory_pool_file,
-								Rbdb_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_MEMORY_POOL_FILE_SETTINGS_CONTROLLER,
 								rb_local_memory_pool_file_settings_controller );
 	}
 
@@ -166,7 +166,7 @@ VALUE rb_Rbdb_MemoryPoolFile_parentMemoryPoolController(	VALUE	rb_memory_pool_fi
 VALUE rb_Rbdb_MemoryPoolFile_parentMemoryPoolFileController(	VALUE	rb_memory_pool_file )	{
 
 	VALUE	rb_parent_memory_pool_file_controller	=	rb_iv_get(	rb_memory_pool_file,
-																														Rbdb_RB_MEMORY_POOL_FILE_VARIABLE_PARENT_MEMORY_POOL_FILE_CONTROLLER );
+																														RBDB_RB_MEMORY_POOL_FILE_VARIABLE_PARENT_MEMORY_POOL_FILE_CONTROLLER );
 	return rb_parent_memory_pool_file_controller;
 }
 
@@ -178,7 +178,7 @@ VALUE rb_Rbdb_MemoryPoolFile_parentMemoryPoolFileController(	VALUE	rb_memory_poo
 VALUE rb_Rbdb_MemoryPoolFile_sync( VALUE	rb_memory_pool_file )	{
 
 	Rbdb_MemoryPoolFile*	c_memory_pool_file;
-	C_Rbdb_MEMORY_POOL_FILE( rb_memory_pool_file, c_memory_pool_file );
+	C_RBDB_MEMORY_POOL_FILE( rb_memory_pool_file, c_memory_pool_file );
 
 	Rbdb_MemoryPoolFile_sync( c_memory_pool_file );
 	
@@ -193,7 +193,7 @@ VALUE rb_Rbdb_MemoryPoolFile_sync( VALUE	rb_memory_pool_file )	{
 VALUE rb_Rbdb_MemoryPoolFile_close( VALUE	rb_memory_pool_file )	{
 
 	Rbdb_MemoryPoolFile*	c_memory_pool_file;
-	C_Rbdb_MEMORY_POOL_FILE( rb_memory_pool_file, c_memory_pool_file );
+	C_RBDB_MEMORY_POOL_FILE( rb_memory_pool_file, c_memory_pool_file );
 
 	Rbdb_MemoryPoolFile_close( c_memory_pool_file );
 	

@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_ENVIRONMENT
-	#define RB_Rbdb_ENVIRONMENT
+#ifndef RB_RBDB_ENVIRONMENT
+	#define RB_RBDB_ENVIRONMENT
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_Environment();
+void Init_rb_Rbdb_Environment();
 
 	VALUE rb_Rbdb_Environment_new(	int		argc,
 									VALUE*	args,

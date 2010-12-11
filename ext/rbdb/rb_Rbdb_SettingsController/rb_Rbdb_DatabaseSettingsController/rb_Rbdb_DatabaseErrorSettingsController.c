@@ -46,7 +46,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_DatabaseSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseErrorSettingsController;
 
-void Init_Rbdb_DatabaseErrorSettingsController()	{
+void Init_rb_Rbdb_DatabaseErrorSettingsController()	{
 
 	rb_Rbdb_DatabaseErrorSettingsController			=	rb_define_class_under(	rb_Rbdb_DatabaseSettingsController, 
 																																				"Error",	
@@ -131,14 +131,14 @@ VALUE rb_Rbdb_DatabaseErrorSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
 	Rbdb_DatabaseErrorSettingsController*	c_database_error_settings_controller	=	Rbdb_DatabaseSettingsController_errorSettingsController( c_database_settings_controller );
 
 	VALUE	rb_database_error_settings_controller	= RUBY_RBDB_DATABASE_ERROR_SETTINGS_CONTROLLER( c_database_error_settings_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_error_settings_controller,
-							Rbdb_RB_DATABASE_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[] =	{ rb_parent_database_settings_controller };
@@ -203,7 +203,7 @@ VALUE rb_Rbdb_DatabaseErrorSettingsController_parentSettingsController(	VALUE	rb
 VALUE rb_Rbdb_DatabaseErrorSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_error_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_error_settings_controller,
-																															Rbdb_RB_DATABASE_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																															RBDB_RB_DATABASE_ERROR_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_settings_controller;
 }
@@ -216,7 +216,7 @@ VALUE rb_Rbdb_DatabaseErrorSettingsController_parentDatabaseSettingsController(	
 VALUE rb_Rbdb_DatabaseErrorSettingsController_file( VALUE	rb_database_error_settings_controller )	{
 	
 	Rbdb_DatabaseErrorSettingsController*	c_database_error_settings_controller;
-	C_Rbdb_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
+	C_RBDB_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
 
 	Rbdb_DatabaseErrorSettingsController_file( c_database_error_settings_controller );
 
@@ -237,7 +237,7 @@ VALUE rb_Rbdb_DatabaseErrorSettingsController_setFile(	VALUE	rb_database_error_s
 														VALUE	rb_error_file )	{
 
 	Rbdb_DatabaseErrorSettingsController*	c_database_error_settings_controller;
-	C_Rbdb_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
+	C_RBDB_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
 
 	FILE*	c_error_file	=	(FILE*) rb_funcall(	rb_error_file,
 													rb_intern( "fileno" ),
@@ -257,7 +257,7 @@ VALUE rb_Rbdb_DatabaseErrorSettingsController_setFile(	VALUE	rb_database_error_s
 VALUE rb_Rbdb_DatabaseErrorSettingsController_prefix( VALUE	rb_database_error_settings_controller )	{
 
 	Rbdb_DatabaseErrorSettingsController*	c_database_error_settings_controller;
-	C_Rbdb_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
+	C_RBDB_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
 
 	char*	c_error_prefix	=	Rbdb_DatabaseErrorSettingsController_prefix( c_database_error_settings_controller );
 
@@ -278,7 +278,7 @@ VALUE rb_Rbdb_DatabaseErrorSettingsController_setPrefix(	VALUE			rb_database_err
 																													VALUE		rb_error_prefix )	{
 
 	Rbdb_DatabaseErrorSettingsController*	c_database_error_settings_controller;
-	C_Rbdb_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
+	C_RBDB_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
 
 	char*	c_error_prefix	=	StringValuePtr( rb_error_prefix );
 
@@ -299,7 +299,7 @@ VALUE rb_Rbdb_DatabaseErrorSettingsController_setErrorCallbackMethod(	VALUE	rb_d
 																												   							const VALUE		error_message	)	)	{
 
 	Rbdb_DatabaseErrorSettingsController*	c_database_error_settings_controller;
-	C_Rbdb_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
+	C_RBDB_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
 }
 */
 /**************************
@@ -311,6 +311,6 @@ void (*error_callback_method)(	RBDB*			environment,
 								const VALUE		error_message	) Rbdb_DatabaseErrorSettingsController_errorCallbackMethod( VALUE	rb_database_error_settings_controller )	{
 	
 	Rbdb_DatabaseErrorSettingsController*	c_database_error_settings_controller;
-	C_Rbdb_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
+	C_RBDB_DATABASE_ERROR_SETTINGS_CONTROLLER( rb_database_error_settings_controller, c_database_error_settings_controller );
 }
 */

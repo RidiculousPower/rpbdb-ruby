@@ -37,7 +37,7 @@ VALUE	extern	rb_Rbdb_SettingsController;
 VALUE	extern	rb_Rbdb_DebugSettingsController;
 VALUE	extern	rb_Rbdb_DebugVerbositySettingsController;
 
-void Init_Rbdb_DebugSettingsController()	{
+void Init_rb_Rbdb_DebugSettingsController()	{
 
 	rb_Rbdb_DebugSettingsController		=	rb_define_class_under(	rb_Rbdb_SettingsController, 
 																															"Debug",	
@@ -121,7 +121,7 @@ VALUE rb_Rbdb_DebugSettingsController_new(	int			argc,
 	}
 
 	Rbdb_SettingsController*	c_parent_settings_controller;
-	C_Rbdb_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
+	C_RBDB_SETTINGS_CONTROLLER( rb_parent_settings_controller, c_parent_settings_controller );
 	
 	Rbdb_DebugSettingsController*	c_debug_settings_controller	=	Rbdb_SettingsController_debugSettingsController( c_parent_settings_controller );
 	
@@ -129,7 +129,7 @@ VALUE rb_Rbdb_DebugSettingsController_new(	int			argc,
 
 	//	store reference to parent
 	rb_iv_set(	rb_debug_settings_controller,
-							Rbdb_RB_DEBUG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
+							RBDB_RB_DEBUG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER,
 							rb_parent_settings_controller );
 	
 	VALUE	argv[]	=	{ rb_parent_settings_controller };
@@ -170,7 +170,7 @@ VALUE rb_Rbdb_DebugSettingsController_parentEnvironment(	VALUE	rb_debug_settings
 VALUE rb_Rbdb_DebugSettingsController_parentSettingsController(	VALUE	rb_debug_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_debug_settings_controller,
-																															Rbdb_RB_DEBUG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
+																															RBDB_RB_DEBUG_SETTINGS_CONTROLLER_VARIABLE_PARENT_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_settings_controller;
 }
@@ -186,7 +186,7 @@ VALUE rb_Rbdb_DebugSettingsController_parentSettingsController(	VALUE	rb_debug_s
 VALUE rb_Rbdb_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment( VALUE	rb_debug_settings_controller )	{
 
 	Rbdb_DebugSettingsController*	c_debug_settings_controller;
-	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+	C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 	return ( Rbdb_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment( c_debug_settings_controller )	?	Qtrue
 																																																									:	Qfalse );
@@ -199,7 +199,7 @@ VALUE rb_Rbdb_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment(
 	VALUE rb_Rbdb_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOn( VALUE	rb_debug_settings_controller )	{
 
 		Rbdb_DebugSettingsController*	c_debug_settings_controller;
-		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 		Rbdb_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOn( c_debug_settings_controller );
 
@@ -213,7 +213,7 @@ VALUE rb_Rbdb_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment(
 	VALUE rb_Rbdb_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOff( VALUE	rb_debug_settings_controller )	{
 
 		Rbdb_DebugSettingsController*	c_debug_settings_controller;
-		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 		Rbdb_DebugSettingsController_turnRunNormalRecoveryBeforeOpeningEnvironmentOff( c_debug_settings_controller );
 
@@ -231,7 +231,7 @@ VALUE rb_Rbdb_DebugSettingsController_runNormalRecoveryBeforeOpeningEnvironment(
 VALUE rb_Rbdb_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnvironment( VALUE	rb_debug_settings_controller )	{
 
 	Rbdb_DebugSettingsController*	c_debug_settings_controller;
-	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+	C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 	return ( Rbdb_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnvironment( c_debug_settings_controller )	?	Qtrue
 																															:	Qfalse );
@@ -245,7 +245,7 @@ VALUE rb_Rbdb_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnviro
 	VALUE rb_Rbdb_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOn( VALUE	rb_debug_settings_controller )	{
 
 		Rbdb_DebugSettingsController*	c_debug_settings_controller;
-		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 	
 		Rbdb_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOn( c_debug_settings_controller );
 
@@ -260,7 +260,7 @@ VALUE rb_Rbdb_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnviro
 	VALUE rb_Rbdb_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOff( VALUE	rb_debug_settings_controller )	{
 
 		Rbdb_DebugSettingsController*	c_debug_settings_controller;
-		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 		Rbdb_DebugSettingsController_turnRunCatastrophicRecoveryBeforeOpeningEnvironmentOff( c_debug_settings_controller );
 
@@ -276,7 +276,7 @@ VALUE rb_Rbdb_DebugSettingsController_runCatastrophicRecoveryBeforeOpeningEnviro
 VALUE rb_Rbdb_DebugSettingsController_openInLockdown( VALUE	rb_debug_settings_controller )	{
 
 	Rbdb_DebugSettingsController*	c_debug_settings_controller;
-	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+	C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 	return ( Rbdb_DebugSettingsController_openInLockdown( c_debug_settings_controller )	?	Qtrue
 																							:	Qfalse );
@@ -291,7 +291,7 @@ VALUE rb_Rbdb_DebugSettingsController_openInLockdown( VALUE	rb_debug_settings_co
 	VALUE rb_Rbdb_DebugSettingsController_turnOpenInLockdownOn( VALUE	rb_debug_settings_controller )	{
 
 		Rbdb_DebugSettingsController*	c_debug_settings_controller;
-		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 		Rbdb_DebugSettingsController_turnOpenInLockdownOn( c_debug_settings_controller );
 
@@ -307,7 +307,7 @@ VALUE rb_Rbdb_DebugSettingsController_openInLockdown( VALUE	rb_debug_settings_co
 	VALUE rb_Rbdb_DebugSettingsController_turnOpenInLockdownOff( VALUE	rb_debug_settings_controller )	{
 
 		Rbdb_DebugSettingsController*	c_debug_settings_controller;
-		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 		Rbdb_DebugSettingsController_turnOpenInLockdownOff( c_debug_settings_controller );
 
@@ -328,7 +328,7 @@ VALUE rb_Rbdb_DebugSettingsController_openInLockdown( VALUE	rb_debug_settings_co
 VALUE rb_Rbdb_DebugSettingsController_registerForRecovery( VALUE	rb_debug_settings_controller )	{
 
 	Rbdb_DebugSettingsController*	c_debug_settings_controller;
-	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+	C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 	return ( Rbdb_DebugSettingsController_registerForRecovery( c_debug_settings_controller )	?	Qtrue
 																													:	Qfalse );
@@ -341,7 +341,7 @@ VALUE rb_Rbdb_DebugSettingsController_registerForRecovery( VALUE	rb_debug_settin
 	VALUE rb_Rbdb_DebugSettingsController_turnRegisterForRecoveryOn( VALUE	rb_debug_settings_controller )	{
 
 		Rbdb_DebugSettingsController*	c_debug_settings_controller;
-		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 		Rbdb_DebugSettingsController_turnRegisterForRecoveryOn( c_debug_settings_controller );
 
@@ -355,7 +355,7 @@ VALUE rb_Rbdb_DebugSettingsController_registerForRecovery( VALUE	rb_debug_settin
 	VALUE rb_Rbdb_DebugSettingsController_turnRegisterForRecoveryOff( VALUE	rb_debug_settings_controller )	{
 
 		Rbdb_DebugSettingsController*	c_debug_settings_controller;
-		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 		Rbdb_DebugSettingsController_turnRegisterForRecoveryOff( c_debug_settings_controller );
 
@@ -380,7 +380,7 @@ VALUE rb_Rbdb_DebugSettingsController_registerForRecovery( VALUE	rb_debug_settin
 VALUE rb_Rbdb_DebugSettingsController_prohibitPanic( VALUE	rb_debug_settings_controller )	{
 
 	Rbdb_DebugSettingsController*	c_debug_settings_controller;
-	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+	C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 	return ( Rbdb_DebugSettingsController_prohibitPanic( c_debug_settings_controller )	?	Qtrue
 																						:	Qfalse );
@@ -393,7 +393,7 @@ VALUE rb_Rbdb_DebugSettingsController_prohibitPanic( VALUE	rb_debug_settings_con
 	VALUE rb_Rbdb_DebugSettingsController_turnProhibitPanicOn( VALUE	rb_debug_settings_controller )	{
 
 		Rbdb_DebugSettingsController*	c_debug_settings_controller;
-		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 		Rbdb_DebugSettingsController_turnProhibitPanicOn( c_debug_settings_controller );
 
@@ -407,7 +407,7 @@ VALUE rb_Rbdb_DebugSettingsController_prohibitPanic( VALUE	rb_debug_settings_con
 	VALUE rb_Rbdb_DebugSettingsController_turnProhibitPanicOff( VALUE	rb_debug_settings_controller )	{
 
 		Rbdb_DebugSettingsController*	c_debug_settings_controller;
-		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 		Rbdb_DebugSettingsController_turnProhibitPanicOff( c_debug_settings_controller );
 
@@ -432,7 +432,7 @@ VALUE rb_Rbdb_DebugSettingsController_prohibitPanic( VALUE	rb_debug_settings_con
 VALUE rb_Rbdb_DebugSettingsController_panic( VALUE	rb_debug_settings_controller )	{
 
 	Rbdb_DebugSettingsController*	c_debug_settings_controller;
-	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+	C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 	return ( Rbdb_DebugSettingsController_panic( c_debug_settings_controller )	?	Qtrue
 																				:	Qfalse );
@@ -446,7 +446,7 @@ VALUE rb_Rbdb_DebugSettingsController_panic( VALUE	rb_debug_settings_controller 
 	VALUE rb_Rbdb_DebugSettingsController_turnPanicOn( VALUE	rb_debug_settings_controller )	{
 
 		Rbdb_DebugSettingsController*	c_debug_settings_controller;
-		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 		Rbdb_DebugSettingsController_turnPanicOn( c_debug_settings_controller );
 
@@ -461,7 +461,7 @@ VALUE rb_Rbdb_DebugSettingsController_panic( VALUE	rb_debug_settings_controller 
 	VALUE rb_Rbdb_DebugSettingsController_turnPanicOff( VALUE	rb_debug_settings_controller )	{
 
 		Rbdb_DebugSettingsController*	c_debug_settings_controller;
-		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 		Rbdb_DebugSettingsController_turnPanicOff( c_debug_settings_controller );
 
@@ -488,7 +488,7 @@ VALUE rb_Rbdb_DebugSettingsController_panic( VALUE	rb_debug_settings_controller 
 VALUE rb_Rbdb_DebugSettingsController_yieldCPUForStressTest( VALUE	rb_debug_settings_controller )	{
 
 	Rbdb_DebugSettingsController*	c_debug_settings_controller;
-	C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+	C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 	return ( Rbdb_DebugSettingsController_yieldCPUForStressTest( c_debug_settings_controller )	?	Qtrue
 																								:	Qfalse );
@@ -501,7 +501,7 @@ VALUE rb_Rbdb_DebugSettingsController_yieldCPUForStressTest( VALUE	rb_debug_sett
 	VALUE rb_Rbdb_DebugSettingsController_turnYieldCPUForStressTestOn( VALUE	rb_debug_settings_controller )	{
 
 		Rbdb_DebugSettingsController*	c_debug_settings_controller;
-		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 		Rbdb_DebugSettingsController_turnYieldCPUForStressTestOn( c_debug_settings_controller );
 
@@ -515,7 +515,7 @@ VALUE rb_Rbdb_DebugSettingsController_yieldCPUForStressTest( VALUE	rb_debug_sett
 	VALUE rb_Rbdb_DebugSettingsController_turnYieldCPUForStressTestOff( VALUE	rb_debug_settings_controller )	{
 
 		Rbdb_DebugSettingsController*	c_debug_settings_controller;
-		C_Rbdb_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
+		C_RBDB_DEBUG_SETTINGS_CONTROLLER( rb_debug_settings_controller, c_debug_settings_controller );
 
 		Rbdb_DebugSettingsController_turnYieldCPUForStressTestOff( c_debug_settings_controller );
 
@@ -531,13 +531,13 @@ VALUE rb_Rbdb_DebugSettingsController_verbositySettingsController( VALUE	rb_debu
 	VALUE	rb_debug_verbosity_settings_controller	=	Qnil;
 	
 	if ( ( rb_debug_verbosity_settings_controller = rb_iv_get(	rb_debug_settings_controller,
-																															Rbdb_RB_SETTINGS_VARIABLE_DEBUG_VERBOSITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																															RBDB_RB_SETTINGS_VARIABLE_DEBUG_VERBOSITY_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_debug_verbosity_settings_controller	=	rb_Rbdb_DebugVerbositySettingsController_new(	1,
 																																														& rb_debug_settings_controller,
 																																														rb_Rbdb_DebugVerbositySettingsController );
 		rb_iv_set(	rb_debug_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DEBUG_VERBOSITY_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DEBUG_VERBOSITY_SETTINGS_CONTROLLER,
 								rb_debug_verbosity_settings_controller );
 	}
 	

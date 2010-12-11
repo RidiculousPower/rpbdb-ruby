@@ -39,7 +39,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_DatabaseSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseAssociationSettingsController;
 
-void Init_Rbdb_DatabaseAssociationSettingsController()	{
+void Init_rb_Rbdb_DatabaseAssociationSettingsController()	{
 
 	rb_Rbdb_DatabaseAssociationSettingsController		=	rb_define_class_under(	rb_Rbdb_DatabaseSettingsController, 
 																																						"Association",	
@@ -124,13 +124,13 @@ VALUE rb_Rbdb_DatabaseAssociationSettingsController_new(	int			argc,
 	}
 	
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
 	Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller	=	Rbdb_DatabaseSettingsController_associationSettingsController( c_database_settings_controller );
 
 	VALUE	rb_database_association_settings_controller	=	RUBY_RBDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( c_database_association_settings_controller );
 
 	rb_iv_set(	rb_database_association_settings_controller,
-							Rbdb_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER,
+							RBDB_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
@@ -195,7 +195,7 @@ VALUE rb_Rbdb_DatabaseAssociationSettingsController_parentSettingsController(	VA
 VALUE rb_Rbdb_DatabaseAssociationSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_association_settings_controller )	{
 	
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_association_settings_controller,
-																															Rbdb_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER );
+																															RBDB_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER );
 	
 	return rb_parent_database_settings_controller;
 }
@@ -213,7 +213,7 @@ VALUE rb_Rbdb_DatabaseAssociationSettingsController_parentDatabaseSettingsContro
 VALUE rb_Rbdb_DatabaseAssociationSettingsController_secondaryAssociationCreatesIndex( VALUE	rb_database_association_settings_controller )	{
 
 	Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
-	C_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
+	C_RBDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
 
 	BOOL	c_secondary_creates_index		= Rbdb_DatabaseAssociationSettingsController_secondaryAssociationCreatesIndex( c_database_association_settings_controller );
 	
@@ -229,7 +229,7 @@ VALUE rb_Rbdb_DatabaseAssociationSettingsController_secondaryAssociationCreatesI
 	VALUE rb_Rbdb_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOn( VALUE	rb_database_association_settings_controller )	{
 
 		Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
-		C_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
+		C_RBDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
 
 		Rbdb_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOn( c_database_association_settings_controller );
 
@@ -243,7 +243,7 @@ VALUE rb_Rbdb_DatabaseAssociationSettingsController_secondaryAssociationCreatesI
 	VALUE rb_Rbdb_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOff( VALUE	rb_database_association_settings_controller )	{
 
 		Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
-		C_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
+		C_RBDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
 
 		Rbdb_DatabaseAssociationSettingsController_turnSecondaryAssociationCreatesIndexOff( c_database_association_settings_controller );
 
@@ -263,7 +263,7 @@ VALUE rb_Rbdb_DatabaseAssociationSettingsController_secondaryAssociationCreatesI
 VALUE rb_Rbdb_DatabaseAssociationSettingsController_immutableSecondaryKey( VALUE	rb_database_association_settings_controller )	{
 
 	Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
-	C_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
+	C_RBDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
 
 	BOOL	c_immutable_secondary_key		=	Rbdb_DatabaseAssociationSettingsController_immutableSecondaryKey( c_database_association_settings_controller );
 
@@ -279,7 +279,7 @@ VALUE rb_Rbdb_DatabaseAssociationSettingsController_immutableSecondaryKey( VALUE
 	VALUE rb_Rbdb_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOn( VALUE	rb_database_association_settings_controller )	{
 
 		Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
-		C_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
+		C_RBDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
 
 		Rbdb_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOn( c_database_association_settings_controller );
 
@@ -293,7 +293,7 @@ VALUE rb_Rbdb_DatabaseAssociationSettingsController_immutableSecondaryKey( VALUE
 	VALUE rb_Rbdb_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOff( VALUE	rb_database_association_settings_controller )	{
 
 		Rbdb_DatabaseAssociationSettingsController*	c_database_association_settings_controller;
-		C_Rbdb_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
+		C_RBDB_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER( rb_database_association_settings_controller, c_database_association_settings_controller );
 
 		Rbdb_DatabaseAssociationSettingsController_turnImmutableSecondaryKeyOff( c_database_association_settings_controller );
 

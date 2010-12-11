@@ -43,7 +43,7 @@ extern	VALUE	rb_Rbdb_SettingsController;
 extern	VALUE	rb_Rbdb_DatabaseSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseCompactSettingsController;
 
-void Init_Rbdb_DatabaseCompactSettingsController()	{
+void Init_rb_Rbdb_DatabaseCompactSettingsController()	{
 
 	rb_Rbdb_DatabaseCompactSettingsController				=	rb_define_class_under(	rb_Rbdb_DatabaseSettingsController, 
 																																						"Compact",	
@@ -131,14 +131,14 @@ VALUE rb_Rbdb_DatabaseCompactSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
 	Rbdb_DatabaseCompactSettingsController*	c_database_compact_settings_controller	=	Rbdb_DatabaseSettingsController_compactSettingsController( c_database_settings_controller );
 
 	VALUE	rb_database_compact_settings_controller	= RUBY_RBDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( c_database_compact_settings_controller );
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_compact_settings_controller,
-							Rbdb_RB_DATABASE_COMPACT_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_COMPACT_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_settings_controller };
@@ -203,7 +203,7 @@ VALUE rb_Rbdb_DatabaseCompactSettingsController_parentSettingsController(	VALUE	
 VALUE rb_Rbdb_DatabaseCompactSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_compact_settings_controller )	{
 
 	VALUE	rb_parent_database_compact_settings_controller	=	rb_iv_get(	rb_database_compact_settings_controller,
-																																			Rbdb_RB_DATABASE_COMPACT_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																																			RBDB_RB_DATABASE_COMPACT_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_compact_settings_controller;
 }
@@ -219,7 +219,7 @@ VALUE rb_Rbdb_DatabaseCompactSettingsController_parentDatabaseSettingsController
 VALUE rb_Rbdb_DatabaseCompactSettingsController_fillPercent( VALUE	rb_database_compact_settings_controller )	{
 
 	Rbdb_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
-	C_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
+	C_RBDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseCompactSettingsController_fillPercent( c_database_compact_settings_controller ) );
 }
@@ -236,7 +236,7 @@ VALUE rb_Rbdb_DatabaseCompactSettingsController_setFillPercent(	VALUE	rb_databas
 																	VALUE	rb_fill_percent )	{
 
 	Rbdb_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
-	C_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
+	C_RBDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
 
 	Rbdb_DatabaseCompactSettingsController_setFillPercent(	c_database_compact_settings_controller,
 	 														FIX2INT( rb_fill_percent ) );
@@ -253,7 +253,7 @@ VALUE rb_Rbdb_DatabaseCompactSettingsController_setFillPercent(	VALUE	rb_databas
 VALUE rb_Rbdb_DatabaseCompactSettingsController_maxPagesToCompact( VALUE	rb_database_compact_settings_controller )	{
 
 	Rbdb_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
-	C_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
+	C_RBDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseCompactSettingsController_maxPagesToCompact( c_database_compact_settings_controller ) );
 }
@@ -268,7 +268,7 @@ VALUE rb_Rbdb_DatabaseCompactSettingsController_setMaxPagesToCompact(	VALUE	rb_d
 																		VALUE	rb_max_pages_to_compact )	{
 
 	Rbdb_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
-	C_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
+	C_RBDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
 
 	Rbdb_DatabaseCompactSettingsController_setMaxPagesToCompact(	c_database_compact_settings_controller,
 	 																FIX2INT( rb_max_pages_to_compact ) );
@@ -285,7 +285,7 @@ VALUE rb_Rbdb_DatabaseCompactSettingsController_setMaxPagesToCompact(	VALUE	rb_d
 VALUE rb_Rbdb_DatabaseCompactSettingsController_timeout( VALUE	rb_database_compact_settings_controller )	{
 
 	Rbdb_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
-	C_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
+	C_RBDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseCompactSettingsController_timeout( c_database_compact_settings_controller ) );
 
@@ -301,7 +301,7 @@ VALUE rb_Rbdb_DatabaseCompactSettingsController_setTimeout(	VALUE	rb_database_co
 																VALUE	rb_timeout )	{
 
 	Rbdb_DatabaseCompactSettingsController*	c_database_compact_settings_controller;
-	C_Rbdb_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
+	C_RBDB_DATABASE_COMPACT_SETTINGS_CONTROLLER( rb_database_compact_settings_controller, c_database_compact_settings_controller );
 
 	Rbdb_DatabaseCompactSettingsController_setTimeout(	c_database_compact_settings_controller,
 	 													FIX2INT( rb_timeout ) );

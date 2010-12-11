@@ -59,7 +59,7 @@ extern VALUE rb_Rbdb_DatabaseHashType_const;
 extern VALUE rb_Rbdb_DatabaseQueueType_const;
 extern VALUE rb_Rbdb_DatabaseRecnoType_const;
 
-void Init_Rbdb_DatabaseTypeSettingsController()	{
+void Init_rb_Rbdb_DatabaseTypeSettingsController()	{
 
 	//	FIX - get rid of type controller and have only individual type controllers
 	//	put type controller functions in database settings
@@ -166,7 +166,7 @@ VALUE rb_Rbdb_DatabaseTypeSettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseSettingsController*	c_database_settings_controller;
-	C_Rbdb_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
+	C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_parent_database_settings_controller, c_database_settings_controller );		
 
 	Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller	=	Rbdb_DatabaseSettingsController_typeSettingsController( c_database_settings_controller );
 
@@ -244,7 +244,7 @@ VALUE rb_Rbdb_DatabaseTypeSettingsController_new(	int			argc,
 
 	//	store reference to parent
 	rb_iv_set(	rb_database_type_settings_controller,
-							Rbdb_RB_DATABASE_TYPE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
+							RBDB_RB_DATABASE_TYPE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER,
 							rb_parent_database_settings_controller );
 
 
@@ -301,7 +301,7 @@ VALUE rb_Rbdb_DatabaseTypeSettingsController_parentSettingsController(	VALUE	rb_
 VALUE rb_Rbdb_DatabaseTypeSettingsController_parentDatabaseSettingsController(	VALUE	rb_database_type_settings_controller )	{
 
 	VALUE	rb_parent_database_settings_controller	=	rb_iv_get(	rb_database_type_settings_controller,
-																															Rbdb_RB_DATABASE_TYPE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
+																															RBDB_RB_DATABASE_TYPE_SETTINGS_CONTROLLER_VARIABLE_PARENT_DATABASE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_settings_controller;
 }
@@ -325,7 +325,7 @@ VALUE rb_Rbdb_DatabaseTypeSettingsController_databaseType( VALUE	rb_database_typ
 	if ( rb_ary_includes( rb_ancestors, rb_Rbdb_DatabaseTypeSettingsController ) == Qtrue )	{
 
 		Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller;
-		C_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller );
+		C_RBDB_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller );
 
 		DBTYPE	c_database_type	=	Rbdb_DatabaseTypeSettingsController_databaseType( c_database_type_settings_controller );
 			
@@ -396,7 +396,7 @@ VALUE rb_Rbdb_DatabaseTypeSettingsController_isBTree( VALUE		rb_database_type_se
 VALUE rb_Rbdb_DatabaseTypeSettingsController_setTypeToBTree( VALUE	rb_database_type_settings_controller )	{
 	
 	Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller;
-	C_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller );
+	C_RBDB_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller );
 
 	Rbdb_DatabaseTypeSettingsController_setTypeToBTree( c_database_type_settings_controller );
 	
@@ -423,7 +423,7 @@ VALUE rb_Rbdb_DatabaseTypeSettingsController_isHash(	VALUE		rb_database_type_set
 VALUE rb_Rbdb_DatabaseTypeSettingsController_setTypeToHash( VALUE	rb_database_type_settings_controller )	{
 	
 	Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller;
-	C_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller );
+	C_RBDB_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller );
 	
 	Rbdb_DatabaseTypeSettingsController_setTypeToHash( c_database_type_settings_controller );
 	
@@ -450,7 +450,7 @@ VALUE rb_Rbdb_DatabaseTypeSettingsController_isRecno(	VALUE		rb_database_type_se
 VALUE rb_Rbdb_DatabaseTypeSettingsController_setTypeToRecno( VALUE	rb_database_type_settings_controller )	{
 	
 	Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller;
-	C_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller );
+	C_RBDB_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller );
 	
 	Rbdb_DatabaseTypeSettingsController_setTypeToRecno( c_database_type_settings_controller );
 	
@@ -477,7 +477,7 @@ VALUE rb_Rbdb_DatabaseTypeSettingsController_isQueue( VALUE		rb_database_type_se
 VALUE rb_Rbdb_DatabaseTypeSettingsController_setTypeToQueue( VALUE	rb_database_type_settings_controller )	{
 	
 	Rbdb_DatabaseTypeSettingsController*	c_database_type_settings_controller;
-	C_Rbdb_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller );
+	C_RBDB_DATABASE_TYPE_SETTINGS_CONTROLLER( rb_database_type_settings_controller, c_database_type_settings_controller );
 	
 	Rbdb_DatabaseTypeSettingsController_setTypeToQueue( c_database_type_settings_controller );
 	
@@ -493,13 +493,13 @@ VALUE rb_Rbdb_DatabaseTypeSettingsController_btreeController( VALUE	rb_database_
 	VALUE	rb_database_type_btree_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_type_btree_settings_controller = rb_iv_get(	rb_database_type_settings_controller,
-																																	Rbdb_RB_SETTINGS_VARIABLE_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																	RBDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_database_type_btree_settings_controller	=	rb_Rbdb_DatabaseTypeBtreeSettingsController_new(	1,
 																																																		& rb_database_type_settings_controller,
 																																																		rb_Rbdb_DatabaseTypeBtreeSettingsController );
 		rb_iv_set(	rb_database_type_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_BTREE_SETTINGS_CONTROLLER,
 								rb_database_type_btree_settings_controller );
 	}
 	
@@ -515,14 +515,14 @@ VALUE rb_Rbdb_DatabaseTypeSettingsController_hashController( VALUE	rb_database_t
 	VALUE	rb_database_type_hash_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_type_hash_settings_controller = rb_iv_get(	rb_database_type_settings_controller,
-																																Rbdb_RB_SETTINGS_VARIABLE_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																RBDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_database_type_hash_settings_controller	=	rb_Rbdb_DatabaseTypeHashSettingsController_new(	1,
 																																																& rb_database_type_settings_controller,
 																																																rb_Rbdb_DatabaseTypeHashSettingsController );
 
 		rb_iv_set(	rb_database_type_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_HASH_SETTINGS_CONTROLLER,
 								rb_database_type_hash_settings_controller );
 	}
 	
@@ -538,13 +538,13 @@ VALUE rb_Rbdb_DatabaseTypeSettingsController_queueController( VALUE	rb_database_
 	VALUE	rb_database_type_queue_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_type_queue_settings_controller = rb_iv_get(	rb_database_type_settings_controller,
-																																	Rbdb_RB_SETTINGS_VARIABLE_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																	RBDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_database_type_queue_settings_controller	=	rb_Rbdb_DatabaseTypeQueueSettingsController_new(	1,
 																																																		& rb_database_type_settings_controller,
 																																																		rb_Rbdb_DatabaseTypeQueueSettingsController );
 		rb_iv_set(	rb_database_type_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_QUEUE_SETTINGS_CONTROLLER,
 								rb_database_type_queue_settings_controller );
 	}
 	
@@ -560,13 +560,13 @@ VALUE rb_Rbdb_DatabaseTypeSettingsController_recnoController( VALUE	rb_database_
 	VALUE	rb_database_type_recno_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_type_recno_settings_controller = rb_iv_get(	rb_database_type_settings_controller,
-																																	Rbdb_RB_SETTINGS_VARIABLE_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER ) == Qnil ) )	{
+																																	RBDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER ) == Qnil ) )	{
 	
 		rb_database_type_recno_settings_controller	=	rb_Rbdb_DatabaseTypeRecnoSettingsController_new(	1,
 																																																		& rb_database_type_settings_controller,
 																																																		rb_Rbdb_DatabaseTypeRecnoSettingsController );
 		rb_iv_set(	rb_database_type_settings_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_TYPE_RECNO_SETTINGS_CONTROLLER,
 								rb_database_type_recno_settings_controller );
 	}
 	

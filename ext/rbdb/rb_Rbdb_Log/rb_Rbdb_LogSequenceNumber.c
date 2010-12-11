@@ -34,7 +34,7 @@ extern	VALUE	rb_Rbdb_LogSequenceNumber;
 extern	VALUE	rb_Rbdb_LogSettingsController;
 extern	VALUE	rb_Rbdb_LogController;
 
-void Init_Rbdb_LogSequenceNumber()	{
+void Init_rb_Rbdb_LogSequenceNumber()	{
 
 	rb_Rbdb_LogSequenceNumber	=	rb_define_class_under(	rb_Rbdb_Environment, 
 																											"SequenceNumber",			
@@ -88,13 +88,13 @@ VALUE rb_Rbdb_LogSequenceNumber_new(	int			argc,
 	);
 
 	Rbdb_Log*			c_parent_log;
-	C_Rbdb_LOG( rb_parent_log, c_parent_log );
+	C_RBDB_LOG( rb_parent_log, c_parent_log );
 	
 	VALUE	rb_log_sequence_number	=	RUBY_RBDB_LOG_SEQUENCE_NUMBER( Rbdb_LogSequenceNumber_new( c_parent_log ) );
 	
 	//	store reference to parent
 	rb_iv_set(	rb_log_sequence_number,
-							Rbdb_RB_LOG_SEQUENCE_NUMBER_VARIABLE_PARENT_LOG,
+							RBDB_RB_LOG_SEQUENCE_NUMBER_VARIABLE_PARENT_LOG,
 							rb_parent_log );
 
 	VALUE	argv[]	=	{ rb_parent_log };
@@ -125,17 +125,17 @@ VALUE rb_Rbdb_LogSequenceNumber_settingsController(	VALUE	rb_log_sequence_number
 	VALUE	rb_local_log_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_log_settings_controller = rb_iv_get(	rb_log_sequence_number,
-																												Rbdb_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																												RBDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_LogSequenceNumber*		c_log_sequence_number;
-		C_Rbdb_LOG_SEQUENCE_NUMBER( rb_log_sequence_number, c_log_sequence_number );
+		C_RBDB_LOG_SEQUENCE_NUMBER( rb_log_sequence_number, c_log_sequence_number );
 	
 		Rbdb_LogSettingsController*	c_local_log_settings_controller	=	Rbdb_LogSequenceNumber_settingsController( c_log_sequence_number );
 
 		rb_local_log_settings_controller	=	RUBY_RBDB_LOG_SETTINGS_CONTROLLER( c_local_log_settings_controller );
 
 		rb_iv_set(	rb_log_sequence_number,
-								Rbdb_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_LOG_SETTINGS_CONTROLLER,
 								rb_local_log_settings_controller );
 	}
 
@@ -197,7 +197,7 @@ VALUE rb_Rbdb_LogSequenceNumber_parentLogCursor(	VALUE	rb_log_sequence_number )	
 VALUE rb_Rbdb_LogSequenceNumber_parentLog(	VALUE	rb_log_sequence_number )	{
 
 	VALUE	rb_parent_log	=	rb_iv_get(	rb_log_sequence_number,
-																		Rbdb_RB_LOG_SEQUENCE_NUMBER_VARIABLE_PARENT_LOG );
+																		RBDB_RB_LOG_SEQUENCE_NUMBER_VARIABLE_PARENT_LOG );
 	
 	return rb_parent_log;
 }
@@ -211,10 +211,10 @@ VALUE rb_Rbdb_LogSequenceNumber_compare(	VALUE	rb_log_sequence_number,
  																VALUE	rb_log_sequence_number_two)	{
 	
 	Rbdb_LogSequenceNumber*	c_log_sequence_number;
-	C_Rbdb_LOG_SEQUENCE_NUMBER( rb_log_sequence_number, c_log_sequence_number );
+	C_RBDB_LOG_SEQUENCE_NUMBER( rb_log_sequence_number, c_log_sequence_number );
 
 	Rbdb_LogSequenceNumber*	c_log_sequence_number_two;
-	C_Rbdb_LOG_SEQUENCE_NUMBER( rb_log_sequence_number_two, c_log_sequence_number_two );
+	C_RBDB_LOG_SEQUENCE_NUMBER( rb_log_sequence_number_two, c_log_sequence_number_two );
 
 	return INT2FIX( Rbdb_LogSequenceNumber_compare(	c_log_sequence_number,
 														c_log_sequence_number_two	) );

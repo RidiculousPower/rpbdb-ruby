@@ -27,7 +27,7 @@ extern	VALUE	rb_Rbdb_TransactionSettingsController;
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
 
-void Init_Rbdb_TransactionController()	{
+void Init_rb_Rbdb_TransactionController()	{
 	
 	rb_Rbdb_TransactionController	=	rb_define_class_under(	rb_Rbdb_Environment, 
 																													"TransactionController",	
@@ -91,12 +91,12 @@ VALUE rb_Rbdb_TransactionController_new(	int			argc,
 	);
 
 	Rbdb_Environment*	c_parent_environment;
-	C_Rbdb_ENVIRONMENT( rb_parent_environment, c_parent_environment );
+	C_RBDB_ENVIRONMENT( rb_parent_environment, c_parent_environment );
 
 	VALUE	rb_transaction_controller	=	RUBY_RBDB_TRANSACTION_CONTROLLER( Rbdb_TransactionController_new( c_parent_environment ) );
 
 	rb_iv_set(	rb_transaction_controller,
-							Rbdb_RB_TRANSACTION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
+							RBDB_RB_TRANSACTION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT,
 							rb_parent_environment );
 
 	VALUE	argv[]	=	{ rb_parent_environment };
@@ -124,7 +124,7 @@ VALUE rb_Rbdb_TransactionController_initialize(	int				argc __attribute__ ((unus
 VALUE rb_Rbdb_TransactionController_settingsController(	VALUE	rb_transaction_controller )	{
 
 	Rbdb_TransactionController*	c_transaction_controller;
-	C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
+	C_RBDB_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
 
 	return RUBY_RBDB_TRANSACTION_SETTINGS_CONTROLLER( Rbdb_TransactionController_settingsController( c_transaction_controller ) );
 
@@ -136,7 +136,7 @@ VALUE rb_Rbdb_TransactionController_settingsController(	VALUE	rb_transaction_con
 VALUE rb_Rbdb_TransactionController_parentEnvironment(	VALUE	rb_transaction_controller )	{
 
 	VALUE	rb_parent_environment	=	rb_iv_get(	rb_transaction_controller,
-																						Rbdb_RB_TRANSACTION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT);
+																						RBDB_RB_TRANSACTION_CONTROLLER_VARIABLE_PARENT_ENVIRONMENT);
 	
 	return rb_parent_environment;
 }
@@ -153,7 +153,7 @@ VALUE rb_Rbdb_TransactionController_parentEnvironment(	VALUE	rb_transaction_cont
 VALUE rb_Rbdb_TransactionController_beginTransaction( VALUE	rb_transaction_controller )	{
 
 	Rbdb_TransactionController*	c_transaction_controller;
-	C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
+	C_RBDB_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
 
 	return RUBY_RBDB_TRANSACTION( Rbdb_TransactionController_beginTransaction( c_transaction_controller ) );
 }
@@ -166,7 +166,7 @@ VALUE rb_Rbdb_TransactionController_beginTransaction( VALUE	rb_transaction_contr
 VALUE rb_Rbdb_TransactionController_beginConcurrentDataStoreGroup( VALUE	rb_transaction_controller )	{
 
 	Rbdb_TransactionController*	c_transaction_controller;
-	C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
+	C_RBDB_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
 
 	Rbdb_TransactionController_beginConcurrentDataStoreGroup( c_transaction_controller );
 
@@ -181,7 +181,7 @@ VALUE rb_Rbdb_TransactionController_beginConcurrentDataStoreGroup( VALUE	rb_tran
 VALUE rb_Rbdb_TransactionController_currentTransaction( VALUE	rb_transaction_controller )	{
 
 	Rbdb_TransactionController*	c_transaction_controller;
-	C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
+	C_RBDB_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
 
 	return RUBY_RBDB_TRANSACTION( Rbdb_TransactionController_currentTransaction( c_transaction_controller ) );
 }
@@ -193,7 +193,7 @@ VALUE rb_Rbdb_TransactionController_currentTransaction( VALUE	rb_transaction_con
 VALUE rb_Rbdb_TransactionController_rollbackTransaction( VALUE	rb_transaction_controller )	{
 	
 	Rbdb_TransactionController*	c_transaction_controller;
-	C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
+	C_RBDB_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
 	
 	Rbdb_TransactionController_rollbackTransaction( c_transaction_controller );
 	return rb_transaction_controller;
@@ -206,7 +206,7 @@ VALUE rb_Rbdb_TransactionController_rollbackTransaction( VALUE	rb_transaction_co
 VALUE rb_Rbdb_TransactionController_commitTransaction( VALUE	rb_transaction_controller )	{
 	
 	Rbdb_TransactionController*	c_transaction_controller;
-	C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
+	C_RBDB_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
 	
 	Rbdb_TransactionController_commitTransaction( c_transaction_controller );
 	return rb_transaction_controller;
@@ -221,7 +221,7 @@ VALUE rb_Rbdb_TransactionController_commitTransaction( VALUE	rb_transaction_cont
 VALUE rb_Rbdb_TransactionController_recoverTransactions( VALUE	rb_transaction_controller )	{
 
 	Rbdb_TransactionController*	c_transaction_controller;
-	C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
+	C_RBDB_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
 
 								//	FIX - return array of transactions
 
@@ -238,7 +238,7 @@ VALUE rb_Rbdb_TransactionController_recoverTransactions( VALUE	rb_transaction_co
 VALUE rb_Rbdb_TransactionController_commitCheckpoint( VALUE	rb_transaction_controller )	{
 	
 	Rbdb_TransactionController*	c_transaction_controller;
-	C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
+	C_RBDB_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
 	
 	Rbdb_TransactionController_commitCheckpoint( c_transaction_controller );
 	
@@ -253,7 +253,7 @@ VALUE rb_Rbdb_TransactionController_commitCheckpointIfSufficientWrittenData(	VAL
 																				VALUE	rb_minimum_written_data_for_checkpoint_in_k )	{
 	
 	Rbdb_TransactionController*	c_transaction_controller;
-	C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
+	C_RBDB_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
 	
 	Rbdb_TransactionController_commitCheckpointIfSufficientWrittenData(	c_transaction_controller,
 																			NUM2INT( rb_minimum_written_data_for_checkpoint_in_k ) );
@@ -269,7 +269,7 @@ VALUE rb_Rbdb_TransactionController_commitCheckpointIfSufficientTimeElapsed(	VAL
 																				VALUE	rb_minimum_time_for_checkpoint_in_minutes )	{
 	
 	Rbdb_TransactionController*	c_transaction_controller;
-	C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
+	C_RBDB_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
 	
 	Rbdb_TransactionController_commitCheckpointIfSufficientTimeElapsed(	c_transaction_controller,
 																			FIX2INT( rb_minimum_time_for_checkpoint_in_minutes ) );
@@ -286,7 +286,7 @@ VALUE rb_Rbdb_TransactionController_commitCheckpointIfSufficientWrittenDataOrTim
 																							VALUE	rb_minimum_time_for_checkpoint_in_minutes )	{
 	
 	Rbdb_TransactionController*	c_transaction_controller;
-	C_Rbdb_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
+	C_RBDB_TRANSACTION_CONTROLLER( rb_transaction_controller, c_transaction_controller );
 	
 	Rbdb_TransactionController_commitCheckpointIfSufficientWrittenDataOrTimeElapsed(	c_transaction_controller,
 																						NUM2INT( rb_minimum_written_data_for_checkpoint_in_k ),

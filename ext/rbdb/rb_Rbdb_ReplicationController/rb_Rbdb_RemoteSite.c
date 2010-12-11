@@ -28,7 +28,7 @@ extern	VALUE	rb_Rbdb_RemoteSite;
 extern	VALUE	rb_Rbdb_ReplicationController;
 extern	VALUE	rb_Rbdb_ReplicationSettingsController;
 
-void Init_Rbdb_RemoteSite()	{
+void Init_rb_Rbdb_RemoteSite()	{
 
 	rb_Rbdb_RemoteSite		=	rb_define_class_under(	rb_Rbdb_ReplicationController, 
 																									"RemoteSite", 		
@@ -76,7 +76,7 @@ VALUE rb_Rbdb_RemoteSite_new(	int			argc,
 	);
 
 	Rbdb_ReplicationController*	c_parent_replication_controller;
-	C_Rbdb_REPLICATION_CONTROLLER( rb_parent_replication_controller, c_parent_replication_controller );
+	C_RBDB_REPLICATION_CONTROLLER( rb_parent_replication_controller, c_parent_replication_controller );
 	
 	Rbdb_RemoteSite*	c_remote_site	=	Rbdb_RemoteSite_new( c_parent_replication_controller );
 	
@@ -84,7 +84,7 @@ VALUE rb_Rbdb_RemoteSite_new(	int			argc,
 
 	//	store reference to parent
 	rb_iv_set(	rb_remote_site,
-							Rbdb_RB_REMOTE_SITE_VARIABLE_PARENT_REPLICATION_CONTROLLER,
+							RBDB_RB_REMOTE_SITE_VARIABLE_PARENT_REPLICATION_CONTROLLER,
 							rb_parent_replication_controller );
 
 	VALUE	argv[]	=	{ rb_parent_replication_controller };
@@ -114,17 +114,17 @@ VALUE rb_Rbdb_RemoteSite_settingsController(	VALUE	rb_remote_site )	{
 	VALUE	rb_local_replication_settings_controller	=	Qnil;
 	
 	if ( ( rb_local_replication_settings_controller = rb_iv_get(	rb_remote_site,
-																																Rbdb_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																																RBDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_RemoteSite*		c_remote_site;
-		C_Rbdb_REMOTE_SITE( rb_remote_site, c_remote_site );
+		C_RBDB_REMOTE_SITE( rb_remote_site, c_remote_site );
 	
 		Rbdb_ReplicationSettingsController*	c_local_replication_settings_controller	=	Rbdb_RemoteSite_settingsController( c_remote_site );
 
 		rb_local_replication_settings_controller	=	RUBY_RBDB_REPLICATION_SETTINGS_CONTROLLER( c_local_replication_settings_controller );
 
 		rb_iv_set(	rb_remote_site,
-								Rbdb_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_REPLICATION_SETTINGS_CONTROLLER,
 								rb_local_replication_settings_controller );
 	}
 
@@ -148,7 +148,7 @@ VALUE rb_Rbdb_RemoteSite_parentEnvironment(	VALUE	rb_remote_site )	{
 VALUE rb_Rbdb_RemoteSite_parentReplicationController(	VALUE	rb_remote_site )	{
 
 	VALUE	rb_replication_controller	=	rb_iv_get(	rb_remote_site,
-																								Rbdb_RB_REMOTE_SITE_VARIABLE_PARENT_REPLICATION_CONTROLLER );
+																								RBDB_RB_REMOTE_SITE_VARIABLE_PARENT_REPLICATION_CONTROLLER );
 
 	return rb_replication_controller;
 }

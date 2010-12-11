@@ -1,10 +1,10 @@
-#ifndef RB_Rbdb_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER
-	#define RB_Rbdb_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER
+#ifndef RB_RBDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER
+	#define RB_RBDB_DATABASE_ENCRYPTION_SETTINGS_CONTROLLER
 
 	#include "rb_Rbdb_BaseStandardIncludes.h"
 	#include <rbdb/Rbdb_Types.h>
 
-void Init_Rbdb_DatabaseEncryptionSettingsController();
+void Init_rb_Rbdb_DatabaseEncryptionSettingsController();
 
 VALUE rb_Rbdb_DatabaseEncryptionSettingsController_new(	int			argc,
 																												VALUE*	args,

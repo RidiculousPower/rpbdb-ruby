@@ -38,7 +38,7 @@ extern	VALUE	rb_Rbdb_DatabaseCursor;
 extern	VALUE	rb_Rbdb_Database;
 extern	VALUE	rb_Rbdb_DatabaseJoinContainer;
 
-void Init_Rbdb_DatabaseJoinController()	{
+void Init_rb_Rbdb_DatabaseJoinController()	{
 
 	rb_Rbdb_DatabaseJoinContainer	=	rb_define_module_under(	rb_Rbdb_Database, "Join" );
 
@@ -105,12 +105,12 @@ VALUE rb_Rbdb_DatabaseJoinController_new(	int			argc,
 	/*------------------------------------------------------*/
 	
 	Rbdb_Database*		c_parent_database;
-	C_Rbdb_DATABASE( rb_parent_database, c_parent_database );
+	C_RBDB_DATABASE( rb_parent_database, c_parent_database );
 	VALUE	rb_join_controller	=	RUBY_RBDB_DATABASE_JOIN_CONTROLLER( Rbdb_DatabaseJoinController_new( c_parent_database ) );
 
 	//	store reference to parent
 	rb_iv_set(	rb_join_controller,
-							Rbdb_RB_ALL_VARIABLE_PARENT_DATABASE,
+							RBDB_RB_ALL_VARIABLE_PARENT_DATABASE,
 							rb_parent_database );
 
 	rb_obj_call_init(	rb_join_controller,
@@ -139,17 +139,17 @@ VALUE rb_Rbdb_DatabaseJoinController_settingsController(	VALUE	rb_database_join_
 	VALUE	rb_database_join_settings_controller	=	Qnil;
 	
 	if ( ( rb_database_join_settings_controller = rb_iv_get(	rb_database_join_controller,
-																														Rbdb_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER ) ) == Qnil )	{
+																														RBDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER ) ) == Qnil )	{
 		
 		Rbdb_DatabaseJoinController*		c_database_join_controller;
-		C_Rbdb_DATABASE_JOIN_CONTROLLER( rb_database_join_controller, c_database_join_controller );
+		C_RBDB_DATABASE_JOIN_CONTROLLER( rb_database_join_controller, c_database_join_controller );
 	
 		Rbdb_DatabaseJoinSettingsController*	c_database_join_settings_controller	=	Rbdb_DatabaseJoinController_settingsController( c_database_join_controller );
 
 		rb_database_join_settings_controller	=	RUBY_RBDB_DATABASE_JOIN_SETTINGS_CONTROLLER( c_database_join_settings_controller );
 
 		rb_iv_set(	rb_database_join_controller,
-								Rbdb_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
+								RBDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
 								rb_database_join_settings_controller );
 	}
 
@@ -175,7 +175,7 @@ VALUE rb_Rbdb_DatabaseJoinController_parentEnvironment(	VALUE	rb_join_controller
 VALUE rb_Rbdb_DatabaseJoinController_parentDatabase(	VALUE	rb_join_controller )	{
 	
 	VALUE	rb_parent_database	=		rb_iv_get(	rb_join_controller,
-																						Rbdb_RB_ALL_VARIABLE_PARENT_DATABASE );
+																						RBDB_RB_ALL_VARIABLE_PARENT_DATABASE );
 	return rb_parent_database;
 }
 
@@ -351,7 +351,7 @@ VALUE rb_Rbdb_DatabaseJoinController_joinListOfCursors(	int			argc,
 	}
 
 	Rbdb_DatabaseJoinController*	c_join_controller;
-	C_Rbdb_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller );
+	C_RBDB_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller );
 	
 	VALUE	rb_this_cursor		=	Qnil;
 	Rbdb_DatabaseCursor**	c_cursor_list	=	calloc( RARRAY_LEN( rb_cursor_list ) + 1, sizeof( Rbdb_DatabaseCursor* ) );
@@ -361,7 +361,7 @@ VALUE rb_Rbdb_DatabaseJoinController_joinListOfCursors(	int			argc,
 		rb_this_cursor	=	RARRAY_PTR( rb_cursor_list )[ which_cursor_index ];
 		
 		//	Get c pointer to Rbdb_DatabaseCursor
-		C_Rbdb_DATABASE_CURSOR( rb_this_cursor, c_cursor_list[ which_cursor_index ] );
+		C_RBDB_DATABASE_CURSOR( rb_this_cursor, c_cursor_list[ which_cursor_index ] );
 	}
 	
 	//	cap off list with a NULL pointer
@@ -381,7 +381,7 @@ VALUE rb_Rbdb_DatabaseJoinController_joinListOfCursors(	int			argc,
 VALUE rb_Rbdb_DatabaseJoinController_closeAllCursors( VALUE	rb_join_controller )	{
 
 	Rbdb_DatabaseJoinController*	c_join_controller;
-	C_Rbdb_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller );
+	C_RBDB_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller );
 
 	Rbdb_DatabaseJoinController_closeAllCursors( c_join_controller );
 

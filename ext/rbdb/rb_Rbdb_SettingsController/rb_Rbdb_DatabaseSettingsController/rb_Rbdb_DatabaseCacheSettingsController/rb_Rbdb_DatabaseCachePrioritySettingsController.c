@@ -45,7 +45,7 @@ extern	VALUE	rb_Rbdb_DatabaseSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseCacheSettingsController;
 extern	VALUE	rb_Rbdb_DatabaseCachePrioritySettingsController;
 
-void Init_Rbdb_DatabaseCachePrioritySettingsController()	{
+void Init_rb_Rbdb_DatabaseCachePrioritySettingsController()	{
 
 	rb_Rbdb_DatabaseCachePrioritySettingsController	=	rb_define_class_under(	rb_Rbdb_DatabaseCacheSettingsController, 
 																																						"Priority",	
@@ -155,14 +155,14 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_new(	int			argc,
 	}
 
 	Rbdb_DatabaseCacheSettingsController*	c_database_cache_settings_controller;
-	C_Rbdb_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_parent_database_cache_settings_controller, c_database_cache_settings_controller );		
+	C_RBDB_DATABASE_CACHE_SETTINGS_CONTROLLER( rb_parent_database_cache_settings_controller, c_database_cache_settings_controller );		
 
 	Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller	=	Rbdb_DatabaseCacheSettingsController_priorityController( c_database_cache_settings_controller );
 
 	VALUE	rb_database_cache_priority_settings_controller	=	RUBY_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( c_database_cache_priority_settings_controller );
 
 	rb_iv_set(	rb_database_cache_priority_settings_controller,
-							Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER,
+							RBDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER,
 							rb_parent_database_cache_settings_controller );
 
 	VALUE	argv[]	=	{ rb_parent_database_cache_settings_controller };
@@ -239,7 +239,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_parentDatabaseSettingsCont
 VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_parentDatabaseCacheSettingsController(	VALUE	rb_database_cache_priority_settings_controller )	{
 
 	VALUE	rb_parent_database_cache_settings_controller	=	rb_iv_get(	rb_database_cache_priority_settings_controller,
-																																		Rbdb_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER );
+																																		RBDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER );
 
 	return rb_parent_database_cache_settings_controller;
 }
@@ -253,7 +253,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_parentDatabaseCacheSetting
 VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_priority( VALUE	rb_database_cache_priority_settings_controller )	{
 	
 	Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 	
 	return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_priority( c_database_cache_priority_settings_controller ) );
 }
@@ -266,7 +266,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_priority( VALUE	rb_databas
 VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_veryLow( VALUE	rb_database_cache_priority_settings_controller )	{
 	
 	Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 	
 	return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_veryLow( c_database_cache_priority_settings_controller ) );
 }
@@ -278,7 +278,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_veryLow( VALUE	rb_database
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_setVeryLow( VALUE	rb_database_cache_priority_settings_controller )	{
 		
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 
 		Rbdb_DatabaseCachePrioritySettingsController_setVeryLow( c_database_cache_priority_settings_controller );
 		
@@ -292,7 +292,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_veryLow( VALUE	rb_database
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_isAtLeastVeryLow( VALUE	rb_database_cache_priority_settings_controller )	{
 	
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 
 		return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_isAtLeastVeryLow( c_database_cache_priority_settings_controller ) );
 	}
@@ -304,7 +304,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_veryLow( VALUE	rb_database
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_isAtMostVeryLow( VALUE	rb_database_cache_priority_settings_controller )	{
 	
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 
 		return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_isAtMostVeryLow( c_database_cache_priority_settings_controller ) );
 	}
@@ -317,7 +317,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_veryLow( VALUE	rb_database
 VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_low( VALUE	rb_database_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_low( c_database_cache_priority_settings_controller ) );
 }
@@ -329,7 +329,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_low( VALUE	rb_database_cac
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_setLow( VALUE	rb_database_cache_priority_settings_controller )	{
 
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 
 		Rbdb_DatabaseCachePrioritySettingsController_setLow( c_database_cache_priority_settings_controller );
 		
@@ -343,7 +343,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_low( VALUE	rb_database_cac
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_isAtLeastLow( VALUE	rb_database_cache_priority_settings_controller )	{
 
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 		
 		return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_isAtLeastLow( c_database_cache_priority_settings_controller ) );
 	}
@@ -355,7 +355,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_low( VALUE	rb_database_cac
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_isAtMostLow( VALUE	rb_database_cache_priority_settings_controller )	{
 	
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 
 		return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_isAtMostLow( c_database_cache_priority_settings_controller ) );
 	}
@@ -368,7 +368,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_low( VALUE	rb_database_cac
 VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_default( VALUE	rb_database_cache_priority_settings_controller )	{
 
 	Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 
 	return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_default( c_database_cache_priority_settings_controller ) );
 }
@@ -380,7 +380,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_default( VALUE	rb_database
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_setDefault( VALUE	rb_database_cache_priority_settings_controller )	{
 
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 		
 		Rbdb_DatabaseCachePrioritySettingsController_setDefault( c_database_cache_priority_settings_controller );
 
@@ -394,7 +394,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_default( VALUE	rb_database
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_isAtLeastDefault( VALUE	rb_database_cache_priority_settings_controller )	{
 		
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 		
 		return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_isAtLeastDefault( c_database_cache_priority_settings_controller ) );
 	}
@@ -406,7 +406,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_default( VALUE	rb_database
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_isAtMostDefault( VALUE	rb_database_cache_priority_settings_controller )	{
 	
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 		
 		return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_isAtMostDefault( c_database_cache_priority_settings_controller ) );
 	}
@@ -419,7 +419,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_default( VALUE	rb_database
 VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_high( VALUE	rb_database_cache_priority_settings_controller )	{
 	
 	Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 	
 	return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_high( c_database_cache_priority_settings_controller ) );
 }
@@ -431,7 +431,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_high( VALUE	rb_database_ca
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_setHigh( VALUE	rb_database_cache_priority_settings_controller )	{
 		
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 		
 		Rbdb_DatabaseCachePrioritySettingsController_setHigh( c_database_cache_priority_settings_controller );
 
@@ -445,7 +445,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_high( VALUE	rb_database_ca
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_isAtLeastHigh( VALUE	rb_database_cache_priority_settings_controller )	{
 	
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 		
 		return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_isAtLeastHigh( c_database_cache_priority_settings_controller ) );
 	}
@@ -457,7 +457,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_high( VALUE	rb_database_ca
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_isAtMostHigh( VALUE	rb_database_cache_priority_settings_controller )	{
 	
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 		
 		return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_isAtMostHigh( c_database_cache_priority_settings_controller ) );
 	}
@@ -470,7 +470,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_high( VALUE	rb_database_ca
 VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_veryHigh( VALUE	rb_database_cache_priority_settings_controller )	{
 	
 	Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-	C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+	C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 	
 	return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_veryHigh( c_database_cache_priority_settings_controller ) );
 }
@@ -482,7 +482,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_veryHigh( VALUE	rb_databas
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_setVeryHigh( VALUE	rb_database_cache_priority_settings_controller )	{
 	
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 
 		Rbdb_DatabaseCachePrioritySettingsController_setVeryHigh( c_database_cache_priority_settings_controller );
 		
@@ -496,7 +496,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_veryHigh( VALUE	rb_databas
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_isAtLeastVeryHigh( VALUE	rb_database_cache_priority_settings_controller )	{
 	
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 		
 		return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_isAtLeastVeryHigh( c_database_cache_priority_settings_controller ) );
 	}
@@ -508,7 +508,7 @@ VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_veryHigh( VALUE	rb_databas
 	VALUE rb_Rbdb_DatabaseCachePrioritySettingsController_isAtMostVeryHigh( VALUE	rb_database_cache_priority_settings_controller )	{
 	
 		Rbdb_DatabaseCachePrioritySettingsController*	c_database_cache_priority_settings_controller;
-		C_Rbdb_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
+		C_RBDB_DATABASE_CACHE_PRIORITY_SETTINGS_CONTROLLER( rb_database_cache_priority_settings_controller, c_database_cache_priority_settings_controller );
 		
 		return INT2FIX( Rbdb_DatabaseCachePrioritySettingsController_isAtMostVeryHigh( c_database_cache_priority_settings_controller ) );
 	}
