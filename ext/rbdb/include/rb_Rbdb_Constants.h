@@ -1017,8 +1017,8 @@
 	#define PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_primary_database, c_database, rb_index )					\
 		VALUE	rb_which_database	=	Qnil;																																			\
 		if ( rb_index != Qnil )	{																																						\
-			rb_which_database	=	rb_Rbdb_Database_secondaryDatabaseWithIndex(	rb_primary_database,						\
-																																				rb_index );											\
+			rb_which_database	=	rb_Rbdb_Database_requireSecondaryDatabaseWithIndex(	rb_primary_database,			\
+																																							rb_index );								\
 		}																																																		\
 		else {																																															\
 			rb_which_database	=	rb_primary_database;																													\

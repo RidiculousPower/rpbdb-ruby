@@ -6,9 +6,9 @@
 
 	VALUE rb_Rbdb_Database_internal_iterationCursor( VALUE rb_database );
 
-	VALUE	rb_Rbdb_Database_internal_setSecondaryKeyCreationCallbackMethodInfoHash(	VALUE	rb_secondary_database_name,
-	 																					VALUE	rb_callback_object,
-																						VALUE	rb_callback_method );
+	VALUE	rb_Rbdb_Database_internal_setSecondaryKeyCreationCallbackMethodInfo(	VALUE	rb_primary_database_self,
+																																									VALUE	rb_index,
+																																									VALUE	rb_callback_object );
 																						
 	RBDB_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_secondaryKeyCreationCallbackMethod(	Rbdb_Database*			c_secondary_database, 
 																										Rbdb_Record*			c_record, 

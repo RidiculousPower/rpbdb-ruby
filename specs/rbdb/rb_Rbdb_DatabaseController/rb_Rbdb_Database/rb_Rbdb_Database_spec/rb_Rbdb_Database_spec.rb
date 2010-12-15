@@ -274,4 +274,14 @@ describe Rbdb::Database do
     end    
   end
 
+  ################
+  #  self.using  #
+  ################
+
+  it "can be used in a block form" do
+    Rbdb::Database.use( @environment, $database_name ) do
+
+    end
+  end
+
 end

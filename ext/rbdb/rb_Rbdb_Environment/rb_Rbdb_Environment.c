@@ -67,6 +67,7 @@ void Init_rb_Rbdb_Environment()	{
 																									rb_cObject );
 		
 	rb_define_singleton_method(	rb_Rbdb_Environment, 	"new",															rb_Rbdb_Environment_new,													-1 );
+	rb_define_singleton_method(	rb_Rbdb_Environment, 	"use",															rb_Rbdb_Environment_use,													-1 );
 	rb_define_method(						rb_Rbdb_Environment, 	"initialize",												rb_Rbdb_Environment_initialize,													-1 );
 	rb_define_method(						rb_Rbdb_Environment, 	"init_for_storage_in_memory",				rb_Rbdb_Environment_initForStorageInMemory,				0 );
 	rb_define_method(						rb_Rbdb_Environment, 	"identify_for_rbdb_as",							rb_Rbdb_Environment_setIdentifiesAs,							-1 );
@@ -155,6 +156,23 @@ VALUE rb_Rbdb_Environment_initialize(	int			argc __attribute__ ((unused)),
 																VALUE*	args __attribute__ ((unused)),
 																VALUE		rb_environment )	{
 
+	return rb_environment;
+}
+
+/********
+*  use  *
+********/
+
+VALUE rb_Rbdb_Environment_use(	int			argc,
+																VALUE*	args,
+																VALUE		rb_klass_self )	{
+
+	VALUE	rb_environment	=	rb_Rbdb_Environment_new(	argc,
+																										args,
+																										rb_klass_self );
+	
+	rb_environment = rb_Rbdb_Environment_open( rb_environment );
+	
 	return rb_environment;
 }
 
@@ -276,6 +294,12 @@ VALUE rb_Rbdb_Environment_open( VALUE	rb_environment )	{
 
 	rb_Rbdb_setCurrentWorkingEnvironment( rb_mRbdb,
 																				rb_environment );
+
+	if ( rb_block_given_p() )	{
+		VALUE	rb_return	=	rb_yield( rb_environment );
+		rb_Rbdb_Environment_close( rb_environment );
+		return rb_return;
+	}
 	
 	return rb_environment;
 }
@@ -324,8 +348,11 @@ VALUE rb_Rbdb_Environment_close( VALUE	rb_environment )	{
 	//	remove our environment from hash in module
 	
 	VALUE	rb_environment_to_identifiers_hash	=	rb_Rbdb_internal_environmentsToIdentifiersHash( rb_environment );
-	rb_hash_delete(	rb_environment_to_identifiers_hash,
-					rb_environment );
+
+	rb_funcall(	rb_environment_to_identifiers_hash,
+							rb_intern( "delete" ),
+							1,
+							rb_environment );
 	
 	Rbdb_Environment_close( c_environment );
 

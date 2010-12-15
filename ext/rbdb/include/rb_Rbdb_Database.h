@@ -12,6 +12,9 @@ VALUE rb_Rbdb_Database_new(	int			argc,
 VALUE rb_Rbdb_Database_initialize(	int			argc,
 															VALUE*	args,
 															VALUE		rb_klass_self );
+VALUE rb_Rbdb_Database_use(	int			argc,
+														VALUE*	args,
+														VALUE		rb_klass_self );
 	VALUE rb_Rbdb_Database_settingsController( VALUE	rb_database );
 	VALUE rb_Rbdb_Database_parentEnvironment(	VALUE	rb_database );
 	VALUE rb_Rbdb_Database_parentDatabaseController(	VALUE	rb_database );
@@ -29,10 +32,13 @@ VALUE rb_Rbdb_Database_initialize(	int			argc,
 	VALUE rb_Rbdb_Database_sync( VALUE	rb_database );
 	VALUE rb_Rbdb_Database_isSecondary(	VALUE	rb_database );
 	VALUE rb_Rbdb_Database_primaryDatabase(	VALUE	rb_secondary_database );
+	VALUE rb_Rbdb_Database_secondaryIndexName(	VALUE	rb_secondary_database );
 	VALUE rb_Rbdb_Database_setSecondaryKeyCreationCallbackMethod(	int	argc, 
 																	VALUE*	args,
 																	VALUE	rb_database	);
-	VALUE rb_Rbdb_Database_secondaryKeyCreationCallbackMethod(	VALUE	rb_secondary_database );
+	VALUE rb_Rbdb_Database_secondaryKeyCreationCallbackMethod(	int			argc,
+																															VALUE*	args,
+																															VALUE		rb_primary_or_secondary_database );
 VALUE rb_Rbdb_Database_createSecondaryIndex(	int			argc, 
 																							VALUE*	args,
 																							VALUE		rb_primary_database_self	);

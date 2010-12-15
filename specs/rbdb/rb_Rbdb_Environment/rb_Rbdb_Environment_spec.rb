@@ -168,4 +168,14 @@ describe Rbdb::Environment do
     environment.close
   end
 
+  ################
+  #  self.using  #
+  ################
+
+  it "can be used in a block form" do
+    Rbdb::Environment.use( $environment_path ) do
+
+    end
+  end
+
 end

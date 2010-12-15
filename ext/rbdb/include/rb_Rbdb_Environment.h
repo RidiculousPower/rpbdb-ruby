@@ -13,6 +13,9 @@ void Init_rb_Rbdb_Environment();
 VALUE rb_Rbdb_Environment_initialize(	int		argc,
 							   VALUE*	args,
 							   VALUE	rb_environment );
+VALUE rb_Rbdb_Environment_use(	int			argc,
+																VALUE*	args,
+																VALUE		rb_klass_self );
 	VALUE rb_Rbdb_Environment_initForStorageInMemory( VALUE	rb_environment );
 VALUE rb_Rbdb_Environment_identifiesAs(	int	argc,
 											VALUE*	args,
