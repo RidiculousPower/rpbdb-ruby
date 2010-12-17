@@ -1375,8 +1375,6 @@ Rbdb_Record* rb_Rbdb_DatabaseCursor_internal_retrieveRecord(	int			argc,
 	
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
-	VALUE	rb_return	=	Qnil;
-	
 	if (		rb_key == Qnil
 			&&	rb_data == Qnil )	{
 		
@@ -1397,7 +1395,8 @@ Rbdb_Record* rb_Rbdb_DatabaseCursor_internal_retrieveRecord(	int			argc,
 																																					FALSE );
 		}
 		
-		c_record = Rbdb_DatabaseCursor_retrieveRecord( c_record );
+		c_record = Rbdb_DatabaseCursor_retrieveRecord(	c_database_cursor,
+																										c_record );
 		
 	}
 
