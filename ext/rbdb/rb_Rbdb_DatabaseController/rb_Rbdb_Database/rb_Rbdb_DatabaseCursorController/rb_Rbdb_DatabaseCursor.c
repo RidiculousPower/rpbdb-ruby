@@ -1347,49 +1347,59 @@ VALUE rb_Rbdb_DatabaseCursor_delete(	int			argc,
 Rbdb_Record* rb_Rbdb_DatabaseCursor_internal_retrieveRecord(	int			argc,
 																															VALUE*	args,
 																															VALUE		rb_database_cursor )	{
+	
+	VALUE	rb_key	=	Qnil;
+	VALUE	rb_data	=	Qnil;	
+	R_DefineAndParse( argc, args, rb_database_cursor,
+		R_DescribeParameterSet(
+			R_ParameterSet(					R_Parameter(					R_MatchAny( rb_key ) ),
+															R_OptionalParameter(	R_MatchAny( rb_data ) )
+			),
+			1,
+			"<key>",
+			"<key>, <value>"
+		)
+	)
+	
+	if ( TYPE( rb_key ) == T_SYMBOL )	{
+		rb_key = rb_obj_as_string( rb_key );
+	}
+	if ( TYPE( rb_data ) == T_SYMBOL )	{
+		rb_key = rb_obj_as_string( rb_data );
+	}
+	
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
-	//	0 args - current record
-	if ( argc == 0 )	{
+	VALUE	rb_return	=	Qnil;
+	
+	if (		rb_key == Qnil
+			&&	rb_data == Qnil )	{
 		
 		c_record	=	Rbdb_DatabaseCursor_retrieveCurrent(	c_database_cursor );
 	}
 	else	{
-		
-		VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+	
 		rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																				args[ 0 ],
+																																				rb_key,
 																																				c_record->key->wrapped_bdb_dbt,
 																																				TRUE );
-		
-		//	1 arg - record, key, raw or record number (if recno)
-		if ( argc == 1 )	{
-			/*
-			 FIX - figure out retrieveRecordWithNumber and how it should be structured (Btree with Recno so...?)
-			 
-			 if ( Rbdb_DatabaseTypeSettingsController_isRecno( Rbdb_DatabaseSettingsController_typeSettingsController( Rbdb_Database_settingsController( c_database_cursor->parent_database ) ) ) )	{
-			 record	=	Rbdb_DatabaseCursor_retrieveRecordWithNumber(	c_database_cursor );
-			 }
-			 */
-		}
-		
-		//	2 args - key/data pair
-		else if ( argc == 2 )	{
+
+		if ( rb_data != Qnil )	{
 			
 			rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																								args[ 1 ],
-																																								c_record->data->wrapped_bdb_dbt,
-																																								FALSE );
-			
-			//	FIX - make sure that retrieveRecord supports exact key/data retrieval
+																																					rb_data,
+																																					c_record->data->wrapped_bdb_dbt,
+																																					FALSE );
 		}
 		
-		c_record	=	Rbdb_DatabaseCursor_retrieveRecord(	c_database_cursor,
-																										c_record );
+		c_record = Rbdb_DatabaseCursor_retrieveRecord( c_record );
 		
 	}
+
 	return c_record;	
 }
