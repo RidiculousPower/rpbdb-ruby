@@ -409,9 +409,13 @@ VALUE rb_DatabaseJoinController_internal_joinCursorForHashDescriptor( VALUE	rb_j
 	VALUE	rb_cursors_array	=	rb_DatabaseJoinController_internal_cursorsForHashDescriptor(	rb_primary_database,
 																																													rb_hash_descriptor );
 	
-	VALUE	rb_join_cursor	=	rb_Rbdb_DatabaseJoinController_joinListOfCursors(	RARRAY_LEN( rb_cursors_array ),
-																																						RARRAY_PTR( rb_cursors_array ),
-																																						rb_join_controller );
+	VALUE	rb_join_cursor	=	Qnil;
+	if ( rb_cursors_array != Qnil )	{
+		rb_join_cursor	=	rb_Rbdb_DatabaseJoinController_joinListOfCursors(	RARRAY_LEN( rb_cursors_array ),
+																																				RARRAY_PTR( rb_cursors_array ),
+																																				rb_join_controller );
+	}
+	
 	return rb_join_cursor;
 }
 
