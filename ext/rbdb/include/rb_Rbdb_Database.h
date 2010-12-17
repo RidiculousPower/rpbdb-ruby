@@ -74,6 +74,9 @@ VALUE rb_Rbdb_Database_keysExist(	int			argc,
 	VALUE rb_Rbdb_Database_retrieve(	int	argc, 
 										VALUE*	args,
 										VALUE	rb_database );
+VALUE rb_Rbdb_Database_retrievePrimaryKey(	int			argc, 
+																						VALUE*	args,
+																						VALUE		rb_database );
 VALUE rb_Rbdb_Database_retrievePair(	int			argc, 
 																			VALUE*	args,
 																			VALUE		rb_database );

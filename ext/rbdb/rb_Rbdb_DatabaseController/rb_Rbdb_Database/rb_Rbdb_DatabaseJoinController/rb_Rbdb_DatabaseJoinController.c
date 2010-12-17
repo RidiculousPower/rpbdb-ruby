@@ -215,7 +215,7 @@ VALUE rb_Rbdb_DatabaseJoinController_join(	int			argc,
 	int	c_which_arg	=	0;
 	for ( c_which_arg = 0 ; c_which_arg < argc ; c_which_arg++ )	{
 		VALUE	rb_this_arg	=	args[ c_which_arg ];
-		switch ( TYPE( args ) )	{
+		switch ( TYPE( rb_this_arg ) )	{
 			case T_ARRAY:
 				rb_ary_push(	rb_join_arrays,
 											rb_this_arg );
@@ -465,8 +465,8 @@ static int rb_Rbdb_DatabaseCursorController_internal_cursorsForEachHashDescripto
 	}
 	
 	VALUE	rb_cursor				=	rb_Rbdb_DatabaseJoinController_internal_cursorForIndexAtKeyValue(	rb_primary_database,
-																																										rb_key_method_symbol,
-																																										rb_key_value );
+																																														rb_key_method_symbol,
+																																														rb_key_value );
 	
 	//	If we get no record for setting our cursor we push false and fail
 	if ( rb_cursor == Qnil )	{

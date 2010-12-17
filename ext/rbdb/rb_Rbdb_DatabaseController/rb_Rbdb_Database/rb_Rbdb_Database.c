@@ -147,6 +147,7 @@ void Init_rb_Rbdb_Database()	{
 	rb_define_alias(						rb_Rbdb_Database, 	"keys_exist?",																	"all_keys_exist?" );                                    				
 	rb_define_method(						rb_Rbdb_Database, 	"write",																				rb_Rbdb_Database_write,																			-1 	);
 	rb_define_method(						rb_Rbdb_Database, 	"retrieve",																			rb_Rbdb_Database_retrieve,																	-1 	);
+	rb_define_method(						rb_Rbdb_Database, 	"retrieve_primary_key",													rb_Rbdb_Database_retrievePrimaryKey,												-1 	);
 	rb_define_method(						rb_Rbdb_Database, 	"delete",																				rb_Rbdb_Database_delete,																		-1 	);
                     					                                                                                                                        				
 	rb_define_method(						rb_Rbdb_Database, 	"is_secondary_database?",												rb_Rbdb_Database_isSecondary,																0 	);
@@ -1681,6 +1682,140 @@ VALUE rb_Rbdb_Database_retrieve(	int			argc,
 
 			rb_ary_push(	rb_return,
 										rb_data );
+
+			//	remaining args are keys
+		} while ( R_Arg( rb_key ) );
+		
+		rb_return =	R_SimplifyArray( rb_return );
+		
+	}
+	
+	return rb_return;
+}
+
+/*************************
+*  retrieve_primary_key  *
+**************************/
+
+//	database.retrieve_primary_key( :index, secondary_key )
+//	database.retrieve_primary_key( :index => secondary_key_in_index )
+//	database.retrieve_primary_key( :index => [ secondary_keys_in_index, ... ] )
+//	database.retrieve_primary_key( [ any args ] )
+VALUE rb_Rbdb_Database_retrievePrimaryKey(	int			argc, 
+																						VALUE*	args,
+																						VALUE		rb_database )	{
+
+	VALUE	rb_index																		=	Qnil;
+	VALUE	rb_key																			=	Qnil;
+	VALUE	rb_hash_descriptor_index_key_or_keys_array	=	Qnil;
+	VALUE	rb_args_array																= Qnil;
+
+	R_DefineAndParse( argc, args, rb_database,
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchHash(	rb_hash_descriptor_index_key_or_keys_array,
+																										R_HashKey(	R_Symbol() ),
+																										R_HashData(	R_Any() ) ) ) ),
+			R_ListOrder( 2 ),
+			"{ :index   =>  <key>, ... }, ...",
+			"{ :index   =>  [ <keys> ], ... }, ..."
+			 
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(	rb_index ) ),
+												R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
+			R_ListOrder( 1 ),
+			":index, [ <arg> ], ..."
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(	rb_index ) ),
+												R_Parameter(	R_MatchAny(			rb_key ) ) ),
+			R_ListOrder( 3 ),
+			":index, <key, ...>"
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
+			R_ListOrder( 4 ),
+			"[ <arg> ], ..."
+		)
+		
+		//----------------------------------------------//
+
+	)
+	
+	VALUE	rb_return	=	Qnil;
+	
+	if (		rb_hash_descriptor_index_key_or_keys_array != Qnil ) {
+
+		//	we want to perform a join here rather than multiple retrieves
+		VALUE	rb_database_join_controller	=	rb_Rbdb_Database_joinController( rb_database );
+		do	{
+		
+			rb_return	=	rb_Rbdb_DatabaseJoinController_join(	1,
+																												& rb_hash_descriptor_index_key_or_keys_array,
+																												rb_database_join_controller );
+
+		}	while ( R_Arg( rb_hash_descriptor_index_key_or_keys_array ) );
+		
+	}
+	//	index or key plus args array
+	else if ( rb_args_array != Qnil )	{
+
+		if ( rb_index != Qnil )	{
+
+			do {
+
+				rb_return	=	R_IterateArrayDescriptor(	rb_args_array,
+																							rb_Rbdb_Database_retrievePrimaryKey,
+																							rb_index );
+
+			}	while ( R_Arg( rb_args_array ) );
+
+			rb_return =	R_SimplifyArray( rb_return );
+
+		}
+		else {
+			
+			rb_return = R_SplatArrayDescriptor(	rb_args_array,
+																					rb_Rbdb_Database_retrievePrimaryKey	);
+
+		}
+		
+	}
+	//	rb_index, rb_key and rb_key
+	else if (				rb_key != Qnil )	{
+			
+		Rbdb_Database*	c_database	=	NULL;
+		Rbdb_Record*		c_record		=	NULL;
+
+		PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );
+
+		rb_return		=	rb_ary_new();
+
+		VALUE	rb_key			=	Qnil;
+
+		do {
+			
+			PREPARE_RECORD_FROM_KEY_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, rb_index, rb_key );
+
+			c_record	=	Rbdb_Database_retrieveRecord(	c_database,
+																								c_record );
+			
+			rb_key = RUBY_STRING_FOR_PRIMARY_KEY_IN_RBDB_RECORD( c_record );			
+
+			rb_ary_push(	rb_return,
+										rb_key );
 
 			//	remaining args are keys
 		} while ( R_Arg( rb_key ) );

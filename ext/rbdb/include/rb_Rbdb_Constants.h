@@ -692,6 +692,11 @@
 																										Rbdb_Record_keySize( c_record ) )															\
 																									: Qnil )
 
+	#define RUBY_STRING_FOR_PRIMARY_KEY_IN_RBDB_RECORD( c_record )																						\
+		( ( Rbdb_Record_rawPrimaryKey( c_record ) != NULL ) ? rb_str_new(	(char*) Rbdb_Record_rawPrimaryKey( c_record ),						\
+																													Rbdb_Record_primaryKeySize( c_record ) )															\
+																												: Qnil )
+
 	#define RUBY_STRING_FOR_DATA_IN_RBDB_RECORD( c_record )																													\
 		( ( Rbdb_Record_rawData( c_record ) != NULL ) ? rb_str_new(	(char*) Rbdb_Record_rawData( c_record ),					\
 																										Rbdb_Record_dataSize( c_record ) )														\
@@ -986,6 +991,8 @@
 		}
 
 	#define PREPARE_RECORD_FROM_KEY_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, rb_index, rb_key )						\
+		rb_index	=	rb_obj_as_string( rb_index );																														\
+		rb_key		=	rb_obj_as_string( rb_key );																															\
 		PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );												\
 		c_record	=	Rbdb_Record_new( c_database );																													\
 		rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_which_database,							\
