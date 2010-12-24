@@ -44,5 +44,6 @@ static int rb_Rbdb_Database_internal_writeDataForEachKey(	VALUE	rb_key,
 static int rb_Rbdb_Database_internal_keyExistsForEachIndex(	VALUE	rb_index,
 																														VALUE	rb_key_or_keys,
 																														VALUE	rb_passed_args );
+VALUE rb_Rbdb_Database_internal_uniqueIndexesHash( VALUE	rb_database );
 
 #endif

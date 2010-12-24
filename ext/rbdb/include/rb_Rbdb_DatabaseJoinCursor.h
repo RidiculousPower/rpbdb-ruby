@@ -21,5 +21,7 @@ VALUE rb_Rbdb_DatabaseJoinCursor_parentDatabaseJoinController(	VALUE	rb_join_cur
 VALUE rb_Rbdb_DatabaseJoinCursor_iterate(	int	argc,
 											  VALUE*	args,
 											  VALUE	rb_join_cursor );
+VALUE rb_Rbdb_DatabaseJoinCursor_first(	VALUE	rb_join_cursor );
+VALUE rb_Rbdb_DatabaseJoinCursor_firstKey(	VALUE	rb_join_cursor );
 	
 #endif

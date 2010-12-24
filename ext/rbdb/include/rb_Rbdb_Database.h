@@ -42,7 +42,7 @@ VALUE rb_Rbdb_Database_use(	int			argc,
 VALUE rb_Rbdb_Database_createSecondaryIndex(	int			argc, 
 																							VALUE*	args,
 																							VALUE		rb_primary_database_self	);
-VALUE rb_Rbdb_Database_createSecondaryIndexWithDuplicates(	int			argc, 
+VALUE rb_Rbdb_Database_createSecondaryIndexWithUnsortedDuplicates(	int			argc, 
 																														VALUE*	args,
 																														VALUE		rb_primary_database_self	);
 VALUE rb_Rbdb_Database_createSecondaryIndexWithSortedDuplicates(	int			argc, 
@@ -53,6 +53,13 @@ VALUE rb_Rbdb_Database_secondaryDatabaseWithIndex(	VALUE	rb_primary_database,
 VALUE rb_Rbdb_Database_requireSecondaryDatabaseWithIndex(	VALUE	rb_primary_database,
 																													VALUE	rb_index_name );
 VALUE rb_Rbdb_Database_secondaryDatabaseHash( VALUE rb_primary_database );
+VALUE rb_Rbdb_Database_uniqueForIndex(	int			argc,
+																				VALUE*	args,
+																				VALUE		rb_database );
+VALUE rb_Rbdb_Database_setUniqueForIndex(	int			argc,
+																					VALUE*	args,
+																					VALUE		rb_database	);
+
 
 	VALUE rb_Rbdb_Database_cursor( VALUE	rb_database );
 	VALUE rb_Rbdb_Database_objectCursor( VALUE	rb_database );

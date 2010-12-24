@@ -867,9 +867,9 @@ VALUE rb_Rbdb_DatabaseObjectCursor_iterateKeysInSegments( VALUE rb_database_curs
 ****************************/
 
 //	iterates all keys without iterating duplicate records
-VALUE rb_Rbdb_DatabaseObjectCursor_iterateKeys( int	argc,
-												VALUE*	args,
-												VALUE	rb_database_cursor )	{
+VALUE rb_Rbdb_DatabaseObjectCursor_iterateKeys( int				argc,
+																								VALUE*		args,
+																								VALUE			rb_database_cursor )	{
 	
 	//	2 possible args:
 	//	* index

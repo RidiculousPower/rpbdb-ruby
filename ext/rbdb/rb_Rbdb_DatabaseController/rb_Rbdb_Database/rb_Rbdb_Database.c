@@ -42,6 +42,8 @@
 
 #include <rbdb/Rbdb_SettingsController.h>
 #include <rbdb/Rbdb_DatabaseSettingsController.h>
+#include <rbdb/Rbdb_DatabaseRecordSettingsController.h>
+#include <rbdb/Rbdb_DatabaseRecordReadWriteSettingsController.h>
 #include <rbdb/Rbdb_DatabaseTypeSettingsController.h>
 
 #include <rargs.h>
@@ -172,6 +174,10 @@ void Init_rb_Rbdb_Database()	{
 	rb_define_alias(						rb_Rbdb_Database, 	"use_as_secondary",															"create_secondary_index"	);
 	rb_define_alias(						rb_Rbdb_Database, 	"create_secondary_index_with_database",					"create_secondary_index"	);
 	rb_define_alias(						rb_Rbdb_Database, 	"create_secondary_with_database",								"create_secondary_index"	);
+	rb_define_method(						rb_Rbdb_Database, 	"create_secondary_index_with_unsorted_duplicates",	rb_Rbdb_Database_createSecondaryIndexWithUnsortedDuplicates,											-1 	);
+	rb_define_method(						rb_Rbdb_Database, 	"create_secondary_index_with_sorted_duplicates",	rb_Rbdb_Database_createSecondaryIndexWithSortedDuplicates,											-1 	);
+	rb_define_method(						rb_Rbdb_Database, 	"set_unique_for_index",													rb_Rbdb_Database_setUniqueForIndex,											-1 	);
+	rb_define_method(						rb_Rbdb_Database, 	"unique_for_index",															rb_Rbdb_Database_uniqueForIndex,												-1 	);
 
 
 	rb_define_method(						rb_Rbdb_Database, 	"secondary_database_with_index",								rb_Rbdb_Database_secondaryDatabaseWithIndex,								1 	);
@@ -837,7 +843,7 @@ VALUE rb_Rbdb_Database_createSecondaryIndex(	int			argc,
 //	index name, secondary_database, callback method in primary database
 //	index name, secondary_database, callback object, callback method
 //	index name, secondary_database, callback lambda
-VALUE rb_Rbdb_Database_createSecondaryIndexWithDuplicates(	int			argc, 
+VALUE rb_Rbdb_Database_createSecondaryIndexWithUnsortedDuplicates(	int			argc, 
 																														VALUE*	args,
 																														VALUE		rb_primary_database_self	)	{
 
@@ -975,6 +981,196 @@ VALUE rb_Rbdb_Database_prepareDatabaseForFileTransfer( VALUE	rb_database )	{
 	
 }
 */
+
+/**********************
+*  unique_for_index?  *
+**********************/
+
+VALUE rb_Rbdb_Database_uniqueForIndex(	int			argc,
+																				VALUE*	args,
+																				VALUE		rb_database )	{
+
+	VALUE	rb_index	=	Qnil;
+	R_DefineAndParse( argc, args, rb_database,
+		R_DescribeParameterSet(		
+			R_ParameterSet(				R_Parameter(		R_MatchStringSymbol( rb_index ) ) ),
+			1,
+			":index",
+			"'index'" 
+		)
+	)
+
+	VALUE	rb_index_is_unique	=	Qfalse;
+
+	//	* create ruby array from args minus rb_index
+	
+	//	first, check to see if any provided index does not have duplicates; if so, it can be considered unique
+	int		c_which_index;
+	for ( c_which_index = 0 ; c_which_index < argc ; c_which_index++ )	{
+		
+		VALUE	rb_this_index	=	args[ c_which_index ];
+		
+		//	if database returns only one entry for this request
+		VALUE																							rb_database_for_index												=	rb_Rbdb_Database_secondaryDatabaseWithIndex(	rb_database,
+																																																																									rb_this_index );
+		Rbdb_Database*																		c_database_for_index;
+		C_RBDB_DATABASE( rb_database_for_index, c_database_for_index );
+		
+		Rbdb_DatabaseSettingsController*									c_database_settings_controller							=	Rbdb_Database_settingsController( c_database_for_index );
+		Rbdb_DatabaseRecordSettingsController*						c_database_record_settings_controller				=	Rbdb_DatabaseSettingsController_recordSettingsController( c_database_settings_controller );
+		Rbdb_DatabaseRecordReadWriteSettingsController*		c_database_read_write_settings_controller		=	Rbdb_DatabaseRecordSettingsController_readWriteSettingsController( c_database_record_settings_controller );
+		BOOL	c_database_has_duplicates	=	Rbdb_DatabaseRecordReadWriteSettingsController_duplicates( c_database_read_write_settings_controller );
+		if ( ! c_database_has_duplicates )	{
+			rb_index_is_unique = Qtrue;
+			break;
+		}
+	
+	}	
+
+	//	if we don't already have a unique index then we need to check for index combinations declared unique
+	if ( rb_index_is_unique != Qtrue ) {
+		
+		VALUE	rb_unique_indexes_for_database	=	rb_Rbdb_Database_internal_uniqueIndexesHash( rb_database );	
+
+		//	* first arg is used as index for lookup (already in rb_index)		
+		//	* lookup unique index combinations for index
+		VALUE	rb_unique_index_combinations	=	rb_hash_aref(	rb_unique_indexes_for_database,
+																												rb_index );
+		
+		VALUE	rb_indexes	=	rb_ary_new4(	R_ArgsRemaining(),
+																			R_RemainingArgs() );		
+
+		//	* sort ruby args array
+		rb_ary_sort( rb_indexes );
+		
+		//	we operate on duplicates so we can match [A, B, C] as unique if [A, B] is unique
+		VALUE	rb_indexes_duplicate					=	Qnil;
+		BOOL	c_indexes_duplicate_modified	=	TRUE;
+		
+		//	if we have unique index combinations
+		if ( rb_unique_index_combinations != Qnil )	{
+
+			//	* iterate unique index combinations (already sorted) and compare each to sorted ruby args array
+			for ( c_which_index = 0 ; c_which_index < RARRAY_LEN( rb_unique_index_combinations ) ; c_which_index++ )	{
+				
+				//	re-duplicate if we don't have a fresh copy
+				if (	c_indexes_duplicate_modified )	{
+					rb_indexes_duplicate					=	rb_ary_dup( rb_indexes );
+					c_indexes_duplicate_modified	=	FALSE;
+				}
+				
+				VALUE	rb_this_unique_index_combination	=	RARRAY_PTR( rb_unique_index_combinations )[ c_which_index ];
+				
+				//	if this unique index combination has more members than provided args, it cannot match
+				if ( RARRAY_LEN( rb_this_unique_index_combination ) > R_ArgsRemaining() )	{
+					continue;
+				}
+				//	otherwise if it has less members, we can duplicate args and remove all members that unique index combination does not have
+				else if ( RARRAY_LEN( rb_this_unique_index_combination ) < R_ArgsRemaining() ) {
+					
+					//	for each arg in rb_indexes_duplicate
+					int	c_which_duplicate_index;
+					for( c_which_duplicate_index = 0 ; c_which_duplicate_index < RARRAY_LEN( rb_indexes_duplicate ) ; c_which_duplicate_index++ )	{
+											
+						VALUE	rb_this_duplicate_index	=	RARRAY_PTR( rb_indexes_duplicate )[ c_which_duplicate_index ];
+						
+						//	check if unique index combination has arg
+						if ( rb_ary_includes(	rb_this_unique_index_combination,
+																	rb_this_duplicate_index ) == Qfalse )	{
+						
+							VALUE	rb_which_duplicate_index	=	INT2FIX( c_which_duplicate_index );
+						
+							//	if not, remove from rb_indexes_duplicate
+							rb_funcall(	rb_indexes_duplicate,
+													rb_intern( "delete_at" ),
+													1,
+													rb_which_duplicate_index );
+							
+						}
+					}
+						
+					//	note that we modified rb_indexes_duplicate
+					c_indexes_duplicate_modified	=	TRUE;
+
+				}
+
+				//	and then we compare arrays for equality:
+				//	if our sorted args matches a unique index combination we can break (rb_index_is_unique is true)
+				if ( rb_ary_cmp( rb_indexes_duplicate, rb_this_unique_index_combination ) == INT2FIX( 0 ) )	{
+					rb_index_is_unique = Qtrue;
+					break;
+				}
+			}
+		}
+
+	}
+	
+	return rb_index_is_unique;
+}
+
+/*************************
+*  set_unique_for_index  *
+*************************/
+
+VALUE rb_Rbdb_Database_setUniqueForIndex(	int			argc,
+																					VALUE*	args,
+																					VALUE		rb_database	)	{
+
+	VALUE	rb_index	=	Qnil;
+	R_DefineAndParse( argc, args, rb_database,
+		R_DescribeParameterSet(		
+			R_ParameterSet(				R_Parameter(		R_MatchStringSymbol( rb_index ) ) ),
+			1,
+			":index",
+			"'index'" 
+		)
+	)
+	
+	VALUE	rb_unique_indexes_for_database	=	rb_Rbdb_Database_internal_uniqueIndexesHash( rb_database );	
+
+	//	for each index
+	int	c_which_arg = 0;
+	do	{
+		
+		//	get any existing unique index combinations for this index
+		VALUE	rb_unique_index_combinations_for_index	=	rb_hash_aref(	rb_unique_indexes_for_database,
+																																	rb_index );
+		//	if there are none, instantiate array
+		if ( rb_unique_index_combinations_for_index == Qnil )	{
+			rb_unique_index_combinations_for_index = rb_ary_new();
+			rb_hash_aset(	rb_unique_indexes_for_database,
+										rb_index,
+										rb_unique_index_combinations_for_index );
+		}
+	
+		//	* create unique indexes array
+		VALUE	rb_this_unique_index_combination	=	rb_ary_new4(	argc,
+																														args );
+		
+		//	* remove current index from unique indexes array
+		VALUE	rb_which_arg	=	INT2FIX( c_which_arg );
+		rb_funcall(	rb_this_unique_index_combination,
+								rb_intern( "delete_at" ),
+								1,
+								rb_which_arg );
+
+		//	* sort unique indexes array
+		rb_ary_sort( rb_this_unique_index_combination );
+
+		//	* push unique indexes array onto hash index in database's unique index storage unless it's already there
+		if ( rb_ary_includes(	rb_unique_index_combinations_for_index,
+													rb_this_unique_index_combination ) == Qfalse )	{
+			
+			rb_ary_push(	rb_unique_index_combinations_for_index,
+										rb_this_unique_index_combination );
+		}
+		
+		c_which_arg++;
+		
+	}	while ( R_Arg( rb_index ) );
+	
+	return rb_database;
+}
 
 /***********
 *  cursor  *
@@ -1629,10 +1825,32 @@ VALUE rb_Rbdb_Database_retrieve(	int			argc,
 	
 	if (		rb_hash_descriptor_index_key_or_keys_array != Qnil ) {
 
-		rb_return	=	R_IterateHashDescriptor(	rb_hash_descriptor_index_key_or_keys_array, 
-																					rb_Rbdb_Database_retrieve );
+		//	we want to perform a join here rather than multiple retrieves
+		VALUE	rb_database_join_controller	=	rb_Rbdb_Database_joinController( rb_database );
+		do	{
 
-		rb_return =	R_SimplifyHash( rb_return );
+			rb_return	=	rb_Rbdb_DatabaseJoinController_join(	1,
+																												& rb_hash_descriptor_index_key_or_keys_array,
+																												rb_database_join_controller );
+			
+			//	if we have a unique index, return the data
+			VALUE	rb_indexes	=	rb_funcall(	rb_hash_descriptor_index_key_or_keys_array,
+																			rb_intern( "keys" ),
+																			0 );
+			if ( rb_Rbdb_Database_uniqueForIndex( RARRAY_LEN( rb_indexes ),
+																						RARRAY_PTR( rb_indexes ),
+																						rb_database ) == Qtrue )	{
+				//	get first (only) data from join
+				VALUE	rb_return_enumerator	=	rb_Rbdb_DatabaseCursor_iterate( rb_return );
+				//	get key/data
+				VALUE	rb_return_key_data_pair_array	=	rb_return	=	rb_funcall(	rb_return_enumerator,
+																																			rb_intern( "next" ),
+																																			0 );
+				//	we want the data
+				rb_return = RARRAY_PTR( rb_return_key_data_pair_array )[1];
+			}
+			
+		}	while ( R_Arg( rb_hash_descriptor_index_key_or_keys_array ) );
 
 	}
 	//	index or key plus args array
@@ -1762,9 +1980,34 @@ VALUE rb_Rbdb_Database_retrievePrimaryKey(	int			argc,
 		VALUE	rb_database_join_controller	=	rb_Rbdb_Database_joinController( rb_database );
 		do	{
 		
-			rb_return	=	rb_Rbdb_DatabaseJoinController_join(	1,
-																												& rb_hash_descriptor_index_key_or_keys_array,
-																												rb_database_join_controller );
+			VALUE	rb_join_cursor	=	rb_Rbdb_DatabaseJoinController_join(	1,
+																																		& rb_hash_descriptor_index_key_or_keys_array,
+																																		rb_database_join_controller );
+			
+			//	make sure we can actually get a primary key from our join - this is true if
+			//	* any one secondary database does not have duplicates
+			//	* we have declared that the set of columns being joined produces a unique result					
+			VALUE	rb_indexes	=	rb_funcall(	rb_hash_descriptor_index_key_or_keys_array,
+																			rb_intern( "keys" ),
+																			0 );																			
+			if ( rb_Rbdb_Database_uniqueForIndex( RARRAY_LEN( rb_indexes ),
+																						RARRAY_PTR( rb_indexes ),
+																						rb_database ) == Qtrue )	{
+				//	get primary key
+				rb_return	=	rb_funcall(	rb_join_cursor,
+																rb_intern( "first_key" ),
+																0 );
+			}
+			//	FIX - if we have 1 element in our join cursor, use its key
+			/*
+			else if (  )	{
+			
+			}
+			*/
+			else {
+				rb_raise( rb_eArgError, "Cannot return primary key unless unique index is provided." );
+			}
+
 
 		}	while ( R_Arg( rb_hash_descriptor_index_key_or_keys_array ) );
 		
@@ -1842,11 +2085,65 @@ VALUE rb_Rbdb_Database_retrievePair(	int			argc,
 																			VALUE*	args,
 																			VALUE		rb_database )	{
 
-//	FIX - RARGS
-	
-	VALUE	rb_key	=	Qnil;
-	VALUE	rb_data	=	Qnil;
-	PARSE_RUBY_ARGS_FOR_KEY_DATA_HASH_OR_ARRAY( argc, args, rb_database, rb_Rbdb_Database_retrievePair, TRUE, rb_key, rb_data );
+	VALUE	rb_index																		=	Qnil;
+	VALUE	rb_key																			=	Qnil;
+	VALUE	rb_data																			=	Qnil;
+	VALUE	rb_hash_descriptor_index_key_or_keys_array	=	Qnil;
+	VALUE	rb_args_array																= Qnil;
+
+	R_DefineAndParse( argc, args, rb_database,
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchHash(	rb_hash_descriptor_index_key_or_keys_array,
+																										R_HashKey(	R_Symbol() ),
+																										R_HashData(	R_Any() ) ) ) ),
+			R_ListOrder( 3 ),
+			"{ :index   =>  <key>, ... }, ...",
+			"{ :index   =>  [ <keys> ], ... }, ..."
+			 
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(	rb_index ) ),
+												R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
+			R_ListOrder( 2 ),
+			":index, [ <arg> ], ..."
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(	rb_index ) ),
+												R_Parameter(	R_MatchAny(			rb_key ),
+																			R_MatchAny(			rb_data ) ) ),
+			R_ListOrder( 3 ),
+			":index, <key, ...>"
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
+			R_ListOrder( 5 ),
+			"[ <arg> ], ..."
+		),
+		
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchAny(			rb_key ),
+																			R_MatchAny(			rb_data ) ) ),
+			R_ListOrder( 1 ),
+			"<key>, ..."
+		)
+
+		//----------------------------------------------//
+
+	)
 
 	Rbdb_Database*	c_database	=	NULL;
 	Rbdb_Record*		c_record		=	NULL;	
@@ -1916,6 +2213,8 @@ VALUE rb_Rbdb_Database_retrieveMultipleObjectCursorForPartialKey(	VALUE	rb_datab
 	
 }
 */
+
+
 /*******************************************************************************************************************************************************************************************
 																		Btree Specific
 *******************************************************************************************************************************************************************************************/
@@ -2806,4 +3105,22 @@ VALUE rb_Rbdb_Database_internal_createSecondaryIndex(	int			argc,
 
 	//	Returns primary database so associations can be chained
 	return rb_secondary_database;	
+}
+
+/**********************
+*  uniqueIndexesHash  *
+**********************/
+
+VALUE rb_Rbdb_Database_internal_uniqueIndexesHash( VALUE	rb_database )	{
+
+	VALUE	rb_unique_indexes_for_database	=	rb_iv_get(	rb_database,
+																											RBDB_RB_DATABASE_VARIABLE_UNIQUE_INDEXES );
+	if ( rb_unique_indexes_for_database == Qnil )	{		
+		rb_unique_indexes_for_database = rb_hash_new();
+		rb_iv_set(	rb_database,
+								RBDB_RB_DATABASE_VARIABLE_UNIQUE_INDEXES,
+								rb_unique_indexes_for_database );
+	}
+	
+	return rb_unique_indexes_for_database;
 }

@@ -124,6 +124,8 @@ void Init_rb_Rbdb_DatabaseRecordReadWriteSettingsController()	{
 	rb_define_alias(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"sorted_duplicates_off",												"turn_sorted_duplicates_off" 	);                                                          				
 	rb_define_alias(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"without_sorted_duplicates",												"turn_sorted_duplicates_off" 	);                                                          				
 
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"duplicates?",																	rb_Rbdb_DatabaseRecordReadWriteSettingsController_duplicates,														0 	);
+
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"database_allocates_memory_using_malloc?",						rb_Rbdb_DatabaseRecordReadWriteSettingsController_databaseAllocatesMemoryUsingMalloc,						0 	);
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_database_allocates_memory_using_malloc_on",			rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOn,			0 	);
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_database_allocates_memory_using_malloc_off",		rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnDatabaseAllocatesMemoryUsingMallocOff,			0 	);
@@ -1073,6 +1075,24 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_sortedDuplicates( VALUE	
 		
 		return rb_database_record_read_write_settings_controller;
 	}
+
+/****************
+*  duplicates?  *
+****************/
+
+VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_duplicates( VALUE	rb_database_record_read_write_settings_controller )	{
+	
+	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	
+	VALUE	rb_has_duplicates	=	Qfalse;
+	
+	if ( Rbdb_DatabaseRecordReadWriteSettingsController_duplicates( c_database_record_read_write_settings_controller ) ) {
+		rb_has_duplicates = Qtrue;
+	}
+	
+	return rb_has_duplicates;
+}
 
 /********************
 *  serialize_data?  *

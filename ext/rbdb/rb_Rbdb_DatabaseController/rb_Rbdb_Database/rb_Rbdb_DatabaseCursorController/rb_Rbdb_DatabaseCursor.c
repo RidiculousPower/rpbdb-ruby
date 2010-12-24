@@ -616,9 +616,65 @@ VALUE rb_Rbdb_DatabaseCursor_writeOnlyIfNotInDatabase(	int			argc,
 																												VALUE*	args,
 																												VALUE		rb_database_cursor )	{
 
-	VALUE	rb_key	=	Qnil;
-	VALUE	rb_data	=	Qnil;
-	PARSE_RUBY_ARGS_FOR_KEY_DATA_HASH_OR_ARRAY( argc, args, rb_database_cursor, rb_Rbdb_DatabaseCursor_writeOnlyIfNotInDatabase, FALSE, rb_key, rb_data );
+	VALUE	rb_index																		=	Qnil;
+	VALUE	rb_key																			=	Qnil;
+	VALUE	rb_data																			=	Qnil;
+	VALUE	rb_hash_descriptor_index_key_or_keys_array	=	Qnil;
+	VALUE	rb_args_array																= Qnil;
+
+	R_DefineAndParse( argc, args, rb_database_cursor,
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchHash(	rb_hash_descriptor_index_key_or_keys_array,
+																										R_HashKey(	R_Symbol() ),
+																										R_HashData(	R_Any() ) ) ) ),
+			R_ListOrder( 3 ),
+			"{ :index   =>  <key>, ... }, ...",
+			"{ :index   =>  [ <keys> ], ... }, ..."
+			 
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(	rb_index ) ),
+												R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
+			R_ListOrder( 2 ),
+			":index, [ <arg> ], ..."
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(	rb_index ) ),
+												R_Parameter(	R_MatchAny(			rb_key ),
+																			R_MatchAny(			rb_data ) ) ),
+			R_ListOrder( 3 ),
+			":index, <key, ...>"
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
+			R_ListOrder( 5 ),
+			"[ <arg> ], ..."
+		),
+		
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchAny(			rb_key ),
+																			R_MatchAny(			rb_data ) ) ),
+			R_ListOrder( 1 ),
+			"<key>, ..."
+		)
+
+		//----------------------------------------------//
+
+	)
 
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
@@ -743,9 +799,65 @@ VALUE rb_Rbdb_DatabaseCursor_retrieveDuplicateMatchingPartialData(	int			argc,
 																																		VALUE*	args,
 																																		VALUE		rb_database_cursor )	{
 
-	VALUE	rb_key	=	Qnil;
-	VALUE	rb_data	=	Qnil;
-	PARSE_RUBY_ARGS_FOR_KEY_DATA_HASH_OR_ARRAY( argc, args, rb_database_cursor, rb_Rbdb_DatabaseCursor_retrieveDuplicateMatchingPartialData, TRUE, rb_key, rb_data );
+	VALUE	rb_index																		=	Qnil;
+	VALUE	rb_key																			=	Qnil;
+	VALUE	rb_data																			=	Qnil;
+	VALUE	rb_hash_descriptor_index_key_or_keys_array	=	Qnil;
+	VALUE	rb_args_array																= Qnil;
+
+	R_DefineAndParse( argc, args, rb_database_cursor,
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchHash(	rb_hash_descriptor_index_key_or_keys_array,
+																										R_HashKey(	R_Symbol() ),
+																										R_HashData(	R_Any() ) ) ) ),
+			R_ListOrder( 3 ),
+			"{ :index   =>  <key>, ... }, ...",
+			"{ :index   =>  [ <keys> ], ... }, ..."
+			 
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(	rb_index ) ),
+												R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
+			R_ListOrder( 2 ),
+			":index, [ <arg> ], ..."
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchSymbol(	rb_index ) ),
+												R_Parameter(	R_MatchAny(			rb_key ),
+																			R_MatchAny(			rb_data ) ) ),
+			R_ListOrder( 3 ),
+			":index, <key, ...>"
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchArray(		rb_args_array ) ) ),
+			R_ListOrder( 5 ),
+			"[ <arg> ], ..."
+		),
+		
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchAny(			rb_key ),
+																			R_MatchAny(			rb_data ) ) ),
+			R_ListOrder( 1 ),
+			"<key>, ..."
+		)
+
+		//----------------------------------------------//
+
+	)
 
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );

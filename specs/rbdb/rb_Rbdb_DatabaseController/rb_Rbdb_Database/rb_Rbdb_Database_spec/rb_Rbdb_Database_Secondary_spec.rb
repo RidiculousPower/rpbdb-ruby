@@ -260,4 +260,27 @@ describe Rbdb::Database do
     database_two.primary_database.should == database
   end
 
+  ##########################
+  #  set_unique_for_index  #
+  #  unique_for_index      #
+  ##########################
+
+  it "can declare key combinations unique for a set of indexes" do
+    database      = @database_controller.new( $database_name )
+  
+    callback_three  = key_from_key__lambda
+    index_three     = database.create_secondary_index( :key, & callback_three )
+
+    database.unique_for_index( :key ).should == true
+
+    callback_two    = key_from_data__lambda
+    callback_one    = key_from_database__lambda
+    index_one       = database.create_secondary_index_with_unsorted_duplicates( :database, & callback_one )
+    index_two       = database.create_secondary_index_with_unsorted_duplicates( :data, & callback_two )
+
+    database.unique_for_index( :database, :data ).should == false
+    database.set_unique_for_index( :database, :data )
+    database.unique_for_index( :database, :data ).should == true
+  end
+
 end

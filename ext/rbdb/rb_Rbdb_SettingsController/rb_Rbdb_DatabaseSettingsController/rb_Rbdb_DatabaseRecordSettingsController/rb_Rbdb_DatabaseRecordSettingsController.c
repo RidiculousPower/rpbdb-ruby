@@ -64,6 +64,8 @@ void Init_rb_Rbdb_DatabaseRecordSettingsController()	{
 	rb_define_method(						rb_Rbdb_DatabaseRecordSettingsController, 	"fixed_length_settings_controller",										rb_Rbdb_DatabaseRecordSettingsController_fixedLengthSettingsController,																0 	);
 	rb_define_method(						rb_Rbdb_DatabaseRecordSettingsController, 	"variable_length_settings_controller",										rb_Rbdb_DatabaseRecordSettingsController_variableLengthSettingsController,																0 	);
 	rb_define_method(						rb_Rbdb_DatabaseRecordSettingsController, 	"read_write_settings_controller",										rb_Rbdb_DatabaseRecordSettingsController_readWriteSettingsController,																0 	);
+	rb_define_alias(						rb_Rbdb_DatabaseRecordSettingsController, 	"read_write_settings",																"read_write_settings_controller"	);                    					
+	rb_define_alias(						rb_Rbdb_DatabaseRecordSettingsController, 	"read_write",																					"read_write_settings_controller"	);                    					
 
 }
 	

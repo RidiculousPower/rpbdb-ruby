@@ -232,8 +232,8 @@ VALUE rb_Rbdb_DatabaseJoinCursor_retrieveKey(	VALUE	rb_join_cursor,
 ******************************/
 
 VALUE rb_Rbdb_DatabaseJoinCursor_iterate(	int	argc,
-											VALUE*	args,
-											VALUE	rb_join_cursor )	{
+																					VALUE*	args,
+																					VALUE	rb_join_cursor )	{
 
 	VALUE	rb_record_data	=	Qnil;
 	
@@ -248,8 +248,8 @@ VALUE rb_Rbdb_DatabaseJoinCursor_iterate(	int	argc,
 	Rbdb_Record*	c_record	=	NULL;
 
 	while (		rb_record_data != Qnil
-		   ||	(	( c_record = Rbdb_DatabaseJoinCursor_iterate( c_join_cursor ) ) != NULL ) 
-				&&	( rb_record_data = rb_Rbdb_DatabaseObject_internal_extractRetrievalData( c_record ) ) )	{
+				||	(		( c_record = Rbdb_DatabaseJoinCursor_iterate( c_join_cursor ) ) != NULL ) 
+						&&	( ( ( rb_record_data = RUBY_STRING_FOR_DATA_IN_RBDB_RECORD( c_record ) ) != Qnil ) ) )	{
 		
 		//	If we don't have a block, we return an enumerator
 		R_ReturnEnumeratorIfNoBlock(	1,
@@ -261,9 +261,53 @@ VALUE rb_Rbdb_DatabaseJoinCursor_iterate(	int	argc,
 		
 		//	reset record_data so we don't create an infinite loop
 		rb_record_data = Qnil;
-	}	
+	}
+	
+	if ( c_record )	{
+		Rbdb_Record_free( & c_record );
+	}
 	
 	return rb_join_cursor;
+}
+
+/**********
+*  first  *
+**********/
+
+VALUE rb_Rbdb_DatabaseJoinCursor_first(	VALUE	rb_join_cursor )	{
+
+	Rbdb_DatabaseJoinCursor*	c_join_cursor;
+	C_RBDB_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
+
+	Rbdb_Record*	c_record				=	Rbdb_DatabaseJoinCursor_iterate( c_join_cursor );
+
+	VALUE					rb_record_data	=	RUBY_STRING_FOR_DATA_IN_RBDB_RECORD( c_record );
+	
+	if ( c_record )	{
+		Rbdb_Record_free( & c_record );
+	}
+	
+	return rb_record_data;
+}
+
+/**************
+*  first_key  *
+**************/
+
+VALUE rb_Rbdb_DatabaseJoinCursor_firstKey(	VALUE	rb_join_cursor )	{
+
+	Rbdb_DatabaseJoinCursor*	c_join_cursor;
+	C_RBDB_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
+
+	Rbdb_Record*	c_record				=	Rbdb_DatabaseJoinCursor_iterate( c_join_cursor );
+
+	VALUE					rb_record_key	=	RUBY_STRING_FOR_PRIMARY_KEY_IN_RBDB_RECORD( c_record );
+	
+	if ( c_record )	{
+		Rbdb_Record_free( & c_record );
+	}
+	
+	return rb_record_key;
 }
 
 /******************************
