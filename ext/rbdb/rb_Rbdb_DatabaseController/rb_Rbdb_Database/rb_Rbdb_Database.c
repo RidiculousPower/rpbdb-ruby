@@ -1582,6 +1582,7 @@ VALUE rb_Rbdb_Database_keyExists(	int			argc,
 		rb_return	=	R_IterateArrayDescriptor(	rb_args_array,
 																					rb_Rbdb_Database_keyExists  );
 
+		rb_return = R_SimplifyArray( rb_return );
 	}
 	//	rb_index, rb_key and rb_key
 	else if (		rb_key != Qnil )	{
@@ -1614,7 +1615,7 @@ VALUE rb_Rbdb_Database_keyExists(	int			argc,
 		rb_return = R_SimplifyArray( rb_return_array );
 	}
 	
-	return R_SimplifyArray( rb_return );
+	return rb_return;
 }
 
 /***************
@@ -1825,32 +1826,51 @@ VALUE rb_Rbdb_Database_retrieve(	int			argc,
 	
 	if (		rb_hash_descriptor_index_key_or_keys_array != Qnil ) {
 
-		//	we want to perform a join here rather than multiple retrieves
-		VALUE	rb_database_join_controller	=	rb_Rbdb_Database_joinController( rb_database );
+		VALUE	rb_return_array	=	rb_ary_new();
+
 		do	{
 
-			rb_return	=	rb_Rbdb_DatabaseJoinController_join(	1,
-																												& rb_hash_descriptor_index_key_or_keys_array,
-																												rb_database_join_controller );
+			if ( RHASH_SIZE( rb_hash_descriptor_index_key_or_keys_array ) == 1 )	{
 			
-			//	if we have a unique index, return the data
-			VALUE	rb_indexes	=	rb_funcall(	rb_hash_descriptor_index_key_or_keys_array,
-																			rb_intern( "keys" ),
-																			0 );
-			if ( rb_Rbdb_Database_uniqueForIndex( RARRAY_LEN( rb_indexes ),
-																						RARRAY_PTR( rb_indexes ),
-																						rb_database ) == Qtrue )	{
-				//	get first (only) data from join
-				VALUE	rb_return_enumerator	=	rb_Rbdb_DatabaseCursor_iterate( rb_return );
-				//	get key/data
-				VALUE	rb_return_key_data_pair_array	=	rb_return	=	rb_funcall(	rb_return_enumerator,
-																																			rb_intern( "next" ),
-																																			0 );
-				//	we want the data
-				rb_return = RARRAY_PTR( rb_return_key_data_pair_array )[1];
+				VALUE	rb_return_hash	=	R_IterateHashDescriptor(	rb_hash_descriptor_index_key_or_keys_array, 
+																													rb_Rbdb_Database_retrieve );
+				
+				rb_return	=	R_SimplifyHash( rb_return_hash );
 			}
-			
+			else {
+					
+				//	we want to perform a join here rather than multiple retrieves
+				VALUE	rb_database_join_controller	=	rb_Rbdb_Database_joinController( rb_database );
+
+				rb_return	=	rb_Rbdb_DatabaseJoinController_join(	1,
+																													& rb_hash_descriptor_index_key_or_keys_array,
+																													rb_database_join_controller );
+				
+				//	if we have a unique index, return the data
+				VALUE	rb_indexes	=	rb_funcall(	rb_hash_descriptor_index_key_or_keys_array,
+																				rb_intern( "keys" ),
+																				0 );
+				if ( rb_Rbdb_Database_uniqueForIndex( RARRAY_LEN( rb_indexes ),
+																							RARRAY_PTR( rb_indexes ),
+																							rb_database ) == Qtrue )	{
+					//	get first (only) data from join
+					VALUE	rb_return_enumerator	=	rb_Rbdb_DatabaseCursor_iterate( rb_return );
+					//	get key/data
+					VALUE	rb_return_key_data_pair_array	=	rb_return	=	rb_funcall(	rb_return_enumerator,
+																																				rb_intern( "next" ),
+																																				0 );
+					//	we want the data
+					rb_return = RARRAY_PTR( rb_return_key_data_pair_array )[1];
+				}
+					
+			}
+
+			rb_ary_push(	rb_return_array,
+										rb_return );
+
 		}	while ( R_Arg( rb_hash_descriptor_index_key_or_keys_array ) );
+
+		rb_return	=	R_SimplifyArray( rb_return_array );
 
 	}
 	//	index or key plus args array
@@ -1978,38 +1998,51 @@ VALUE rb_Rbdb_Database_retrievePrimaryKey(	int			argc,
 
 		//	we want to perform a join here rather than multiple retrieves
 		VALUE	rb_database_join_controller	=	rb_Rbdb_Database_joinController( rb_database );
+		rb_return	=	rb_ary_new();
 		do	{
 		
 			VALUE	rb_join_cursor	=	rb_Rbdb_DatabaseJoinController_join(	1,
 																																		& rb_hash_descriptor_index_key_or_keys_array,
 																																		rb_database_join_controller );
 			
-			//	make sure we can actually get a primary key from our join - this is true if
-			//	* any one secondary database does not have duplicates
-			//	* we have declared that the set of columns being joined produces a unique result					
-			VALUE	rb_indexes	=	rb_funcall(	rb_hash_descriptor_index_key_or_keys_array,
-																			rb_intern( "keys" ),
-																			0 );																			
-			if ( rb_Rbdb_Database_uniqueForIndex( RARRAY_LEN( rb_indexes ),
-																						RARRAY_PTR( rb_indexes ),
-																						rb_database ) == Qtrue )	{
-				//	get primary key
-				rb_return	=	rb_funcall(	rb_join_cursor,
-																rb_intern( "first_key" ),
-																0 );
+			if ( rb_join_cursor != Qnil )	{
+				
+				//	make sure we can actually get a primary key from our join - this is true if
+				//	* any one secondary database does not have duplicates
+				//	* we have declared that the set of columns being joined produces a unique result					
+				VALUE	rb_indexes	=	rb_funcall(	rb_hash_descriptor_index_key_or_keys_array,
+																				rb_intern( "keys" ),
+																				0 );																			
+				if ( rb_Rbdb_Database_uniqueForIndex( RARRAY_LEN( rb_indexes ),
+																							RARRAY_PTR( rb_indexes ),
+																							rb_database ) == Qtrue )	{
+					//	get primary key
+					VALUE	rb_return_key	=	rb_funcall(	rb_join_cursor,
+																						rb_intern( "first_key" ),
+																						0 );
+					rb_ary_push(	rb_return,
+												rb_return_key );
+				}
+				//	FIX - if we have 1 element in our join cursor, use its key
+				/*
+				else if (  )	{
+				
+				}
+				*/
+				else {
+					rb_raise( rb_eArgError, "Cannot return primary key unless unique index is provided." );
+				}
 			}
-			//	FIX - if we have 1 element in our join cursor, use its key
-			/*
-			else if (  )	{
-			
-			}
-			*/
 			else {
-				rb_raise( rb_eArgError, "Cannot return primary key unless unique index is provided." );
+
+				rb_ary_push(	rb_return,
+											Qnil );
 			}
 
 
 		}	while ( R_Arg( rb_hash_descriptor_index_key_or_keys_array ) );
+
+		rb_return =	R_SimplifyArray( rb_return );
 		
 	}
 	//	index or key plus args array
@@ -3023,6 +3056,7 @@ VALUE rb_Rbdb_Database_internal_createSecondaryIndex(	int			argc,
 	VALUE	rb_callback_ancestors	=	rb_mod_ancestors( rb_callback_class );
 	VALUE	rb_database	=	Qnil;
 	Rbdb_Database*	c_primary_database		=	NULL;
+	Rbdb_Database*	c_secondary_database		=	NULL;
 	C_RBDB_DATABASE( rb_primary_database_self, c_primary_database );	
 	char*						c_index_name					=	NULL;
 	if ( rb_ary_includes(	rb_callback_ancestors,
@@ -3045,7 +3079,6 @@ VALUE rb_Rbdb_Database_internal_createSecondaryIndex(	int			argc,
 		rb_secondary_database									=	rb_Rbdb_DatabaseController_newDatabase(	rb_primary_database_controller,
 																																										rb_secondary_database_name );
 
-		Rbdb_Database*	c_secondary_database		=	NULL;
 		C_RBDB_DATABASE( rb_secondary_database, c_secondary_database );
 
 		//	create secondary database
@@ -3054,6 +3087,10 @@ VALUE rb_Rbdb_Database_internal_createSecondaryIndex(	int			argc,
 																																												c_index_name,
 																																												c_with_duplicates,
 																																												c_with_sorted_duplicates );
+	}
+
+	if ( c_secondary_database == NULL )	{
+		C_RBDB_DATABASE( rb_secondary_database, c_secondary_database );
 	}
 
 	VALUE	rb_arity	=	rb_funcall(	rb_callback_object,
@@ -3073,9 +3110,6 @@ VALUE rb_Rbdb_Database_internal_createSecondaryIndex(	int			argc,
 			break;
 	}
 	
-	Rbdb_Database*		c_secondary_database;
-	C_RBDB_DATABASE( rb_secondary_database, c_secondary_database );
-
 	//	When an insert is made we need our Rbdb callback to call the Ruby Rbdb callback
 	//	our Ruby Rbdb callback calls the ruby method that has been specified and returns it to Rbdb
 	Rbdb_Database_setSecondaryKeyCreationCallbackMethod(	c_secondary_database,

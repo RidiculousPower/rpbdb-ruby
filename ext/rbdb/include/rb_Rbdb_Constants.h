@@ -824,7 +824,9 @@
 		}
 
 	#define PREPARE_RECORD_FROM_KEY_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, rb_index, rb_key )						\
-		rb_index	=	rb_obj_as_string( rb_index );																														\
+		if ( rb_index != Qnil )	{																																						\
+			rb_index	=	rb_obj_as_string( rb_index );																													\
+		}																																																		\
 		rb_key		=	rb_obj_as_string( rb_key );																															\
 		PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );												\
 		c_record	=	Rbdb_Record_new( c_database );																													\

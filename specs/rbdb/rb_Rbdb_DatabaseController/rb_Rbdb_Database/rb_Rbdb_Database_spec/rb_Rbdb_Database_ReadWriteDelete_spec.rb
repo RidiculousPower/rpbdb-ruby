@@ -302,7 +302,7 @@ describe Rbdb::Database do
   end
 
   # retrieve( [ any_arg_form ], ... )
-  it "can use arrays to group sets these argument forms" do
+  it "can use arrays to group sets of these argument forms" do
     database = @environment.database.new( $database_name )
 
     database.empty!
