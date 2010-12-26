@@ -159,9 +159,25 @@ void Init_rb_Rbdb_DatabaseRecordReadWriteSettingsController()	{
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"partial_read_write_offset",													rb_Rbdb_DatabaseRecordReadWriteSettingsController_partialReadWriteOffset,												0 	);
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"set_partial_read_write_offset",											rb_Rbdb_DatabaseRecordReadWriteSettingsController_setPartialReadWriteOffset,											1 	);
 
-	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"serialize_data?",																		rb_Rbdb_DatabaseRecordReadWriteSettingsController_serializeData,											0 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"serialize_data?",																		rb_Rbdb_DatabaseRecordReadWriteSettingsController_serializeData,														0 	);
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_serialize_data_on",															rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnSerializeDataOn,											0 	);
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_serialize_data_off",														rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnSerializeDataOff,											0 	);
+
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"store_typing?",																			rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeTyping,															0 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_store_typing_on",																rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreTypingOn,												0 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_store_typing_off",															rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreTypingOff,												0 	);
+
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"record_typing?",																			rb_Rbdb_DatabaseRecordReadWriteSettingsController_recordTyping,															0 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_record_typing_on",															rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnRecordTypingOn,												0 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_record_typing_off",															rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnRecordTypingOff,											0 	);
+
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"creation_stamp?",																		rb_Rbdb_DatabaseRecordReadWriteSettingsController_creationStamp,														0 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_creation_stamp_on",															rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnCreationStampOn,											0 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_creation_stamp_off",														rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnCreationStampOff,											0 	);
+
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"modification_stamp?",																rb_Rbdb_DatabaseRecordReadWriteSettingsController_modificationStamp,														0 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_modification_stamp_on",													rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnModificationStampOn,											0 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_modification_stamp_off",												rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnModificationStampOff,											0 	);
 	
 }
 
@@ -1144,6 +1160,172 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_
 		return rb_database_record_read_write_settings_controller;
 	}
 
+/********************
+*  store_typing?  *
+********************/
+
+VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeTyping( VALUE	rb_database_record_read_write_settings_controller )	{
+	
+	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	
+	return ( Rbdb_DatabaseRecordReadWriteSettingsController_storeTyping( c_database_record_read_write_settings_controller )	?	Qtrue
+																																																													:	Qfalse );
+}
+
+	/****************************
+	 *  turn_store_typing_on  *
+	 ***************************/
+
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreTypingOn( VALUE	rb_database_record_read_write_settings_controller )	{
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreTypingOn( c_database_record_read_write_settings_controller );
+		
+		return rb_database_record_read_write_settings_controller;
+	}
+
+	/*****************************
+	 *  turn_store_typing_off  *
+	 ****************************/
+
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreTypingOff( VALUE	rb_database_record_read_write_settings_controller )	{
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreTypingOff( c_database_record_read_write_settings_controller );
+		
+		return rb_database_record_read_write_settings_controller;
+	}
+
+/********************
+*  record_typing?  *
+********************/
+
+VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_recordTyping( VALUE	rb_database_record_read_write_settings_controller )	{
+	
+	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	
+	return ( Rbdb_DatabaseRecordReadWriteSettingsController_recordTyping( c_database_record_read_write_settings_controller )	?	Qtrue
+																																																														:	Qfalse );
+}
+
+	/****************************
+	 *  turn_record_typing_on  *
+	 ***************************/
+
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnRecordTypingOn( VALUE	rb_database_record_read_write_settings_controller )	{
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController_turnRecordTypingOn( c_database_record_read_write_settings_controller );
+		
+		return rb_database_record_read_write_settings_controller;
+	}
+
+	/*****************************
+	 *  turn_record_typing_off  *
+	 ****************************/
+
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnRecordTypingOff( VALUE	rb_database_record_read_write_settings_controller )	{
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController_turnRecordTypingOff( c_database_record_read_write_settings_controller );
+		
+		return rb_database_record_read_write_settings_controller;
+	}
+
+/************************
+*  creation_timestamp?  *
+************************/
+
+VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_creationStamp( VALUE	rb_database_record_read_write_settings_controller )	{
+	
+	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	
+	return ( Rbdb_DatabaseRecordReadWriteSettingsController_creationStamp( c_database_record_read_write_settings_controller )	?	Qtrue
+																																																																:	Qfalse );
+}
+
+	/********************************
+	 *  turn_creation_timestamp_on  *
+	 *******************************/
+
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnCreationStampOn( VALUE	rb_database_record_read_write_settings_controller )	{
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController_turnCreationStampOn( c_database_record_read_write_settings_controller );
+		
+		return rb_database_record_read_write_settings_controller;
+	}
+
+	/*********************************
+	 *  turn_creation_timestamp_off  *
+	 ********************************/
+
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnCreationStampOff( VALUE	rb_database_record_read_write_settings_controller )	{
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController_turnCreationStampOff( c_database_record_read_write_settings_controller );
+		
+		return rb_database_record_read_write_settings_controller;
+	}
+
+/****************************
+*  modification_timestamp?  *
+****************************/
+
+VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_modificationStamp( VALUE	rb_database_record_read_write_settings_controller )	{
+	
+	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	
+	return ( Rbdb_DatabaseRecordReadWriteSettingsController_modificationStamp( c_database_record_read_write_settings_controller )	?	Qtrue
+																																																																		:	Qfalse );
+}
+
+	/************************************
+	 *  turn_modification_timestamp_on  *
+	 ***********************************/
+
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnModificationStampOn( VALUE	rb_database_record_read_write_settings_controller )	{
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController_turnModificationStampOn( c_database_record_read_write_settings_controller );
+		
+		return rb_database_record_read_write_settings_controller;
+	}
+
+	/*************************************
+	 *  turn_modification_timestamp_off  *
+	 ************************************/
+
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnModificationStampOff( VALUE	rb_database_record_read_write_settings_controller )	{
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController_turnModificationStampOff( c_database_record_read_write_settings_controller );
+		
+		return rb_database_record_read_write_settings_controller;
+	}
+
+	
+	
 /*******************************************************************************************************************************************************************************************
 														Switch Settings
 *******************************************************************************************************************************************************************************************/
