@@ -407,10 +407,10 @@ VALUE rb_Rbdb_DatabaseCursor_overwriteCurrent(	VALUE	rb_database_cursor,
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_parent_database );
 	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 
-	rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																			rb_data,
-																																			c_record->data->wrapped_bdb_dbt,
-																																			FALSE );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
 
 	Rbdb_DatabaseCursor_overwriteCurrentDataWithRecord(	c_database_cursor,
 																											c_record	);
@@ -432,10 +432,10 @@ VALUE rb_Rbdb_DatabaseCursor_writeAsDuplicateAfterCurrent(	VALUE	rb_database_cur
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 
-	rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																			rb_data,
-																																			c_record->data->wrapped_bdb_dbt,
-																																			FALSE );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
 	
 	Rbdb_DatabaseCursor_writeRecordAsDuplicateDataAfterCurrent(	c_database_cursor,
 																															c_record	);
@@ -458,10 +458,10 @@ VALUE rb_Rbdb_DatabaseCursor_writeAsDuplicateBeforeCurrent(	VALUE	rb_database_cu
 	
 	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 
-	rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																			rb_data,
-																																			c_record->data->wrapped_bdb_dbt,
-																																			FALSE );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
 	
 	Rbdb_DatabaseCursor_writeRecordAsDuplicateBeforeCurrent(	c_database_cursor,
 																														c_record	);
@@ -522,15 +522,15 @@ VALUE rb_Rbdb_DatabaseCursor_writeBeforeAnyDuplicates(	int			argc,
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 
 	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
-	rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																			rb_key,
-																																			c_record->key->wrapped_bdb_dbt,
-																																			TRUE );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_key,
+																										(Rbdb_DBT*) c_record->key,
+																										TRUE );
 	
-	rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																			rb_data,
-																																			c_record->data->wrapped_bdb_dbt,
-																																			FALSE );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
 	
 	Rbdb_DatabaseCursor_writeRecordBeforeAnyDuplicates(	c_database_cursor,
 																											c_record	);
@@ -591,15 +591,15 @@ VALUE rb_Rbdb_DatabaseCursor_writeAfterAnyDuplicates(	int			argc,
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
 	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
-	rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																			rb_key,
-																																			c_record->key->wrapped_bdb_dbt,
-																																			TRUE );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_key,
+																										(Rbdb_DBT*) c_record->key,
+																										TRUE );
 	
-	rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																			rb_data,
-																																			c_record->data->wrapped_bdb_dbt,
-																																			FALSE );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
 	
 	Rbdb_DatabaseCursor_writeRecordAfterAnyDuplicates(		c_database_cursor,
 																												c_record	);
@@ -682,15 +682,15 @@ VALUE rb_Rbdb_DatabaseCursor_writeOnlyIfNotInDatabase(	int			argc,
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
 	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
-	rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																			rb_key,
-																																			c_record->key->wrapped_bdb_dbt,
-																																			TRUE );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_key,
+																										(Rbdb_DBT*) c_record->key,
+																										TRUE );
 	
-	rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																			rb_data,
-																																			c_record->data->wrapped_bdb_dbt,
-																																			FALSE );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
 	
 	if ( Rbdb_DatabaseCursor_writeRecordOnlyIfNotInDatabase(	c_database_cursor,
 																														c_record	) == FALSE )	{
@@ -717,10 +717,10 @@ VALUE rb_Rbdb_DatabaseCursor_keyExists(	VALUE	rb_database_cursor,
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
 	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
-	rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																			rb_key,
-																																			c_record->key->wrapped_bdb_dbt,
-																																			TRUE );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_key,
+																										(Rbdb_DBT*) c_record->key,
+																										TRUE );
 		
 	return ( Rbdb_DatabaseCursor_keyExists(	c_database_cursor,
 																					c_record->key	)	?	Qtrue
@@ -776,10 +776,10 @@ VALUE rb_Rbdb_DatabaseCursor_retrievePartialKey(	VALUE	rb_database_cursor,
 
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_parent_database );
 
-	rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																			rb_key,
-																																			c_record->key->wrapped_bdb_dbt,
-																																			TRUE );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_key,
+																										(Rbdb_DBT*) c_record->key,
+																										TRUE );
 
 	Rbdb_DatabaseCursor_retrievePartialKeyInRecord(	c_database_cursor,
 																									c_record );
@@ -869,15 +869,15 @@ VALUE rb_Rbdb_DatabaseCursor_retrieveDuplicateMatchingPartialData(	int			argc,
 
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_parent_database );
 
-	rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																			rb_key,
-																																			c_record->key->wrapped_bdb_dbt,
-																																			TRUE );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_key,
+																										(Rbdb_DBT*) c_record->key,
+																										TRUE );
 
-	rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																			rb_data,
-																																			c_record->data->wrapped_bdb_dbt,
-																																			FALSE );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
 
 	c_record	=	Rbdb_DatabaseCursor_retrieveDuplicateMatchingPartialDataInRecord( c_database_cursor,
 																																								c_record );
@@ -1416,10 +1416,10 @@ VALUE rb_Rbdb_DatabaseCursor_delete(	int			argc,
 	else	{
 	
 		VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
-		rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																				args[ 0 ],
-																																				c_record->key->wrapped_bdb_dbt,
-																																				TRUE );
+		rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																											args[ 0 ],
+																											(Rbdb_DBT*) c_record->key,
+																											TRUE );
 		
 		//	1 arg - key, record, raw, or record number (if recno)
 		if ( argc == 1 )	{
@@ -1432,10 +1432,10 @@ VALUE rb_Rbdb_DatabaseCursor_delete(	int			argc,
 		//	2 args - match entire set
 		if ( argc == 2 )	{
 			
-			rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																					args[ 1 ],
-																																					c_record->data->wrapped_bdb_dbt,
-																																					FALSE );
+			rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																												args[ 1 ],
+																												(Rbdb_DBT*) c_record->data,
+																												FALSE );
 			
 			//	FIX - make sure deleteRecord supports exact pair deletion
 			Rbdb_DatabaseCursor_deleteRecord(	c_database_cursor,
@@ -1494,17 +1494,17 @@ Rbdb_Record* rb_Rbdb_DatabaseCursor_internal_retrieveRecord(	int			argc,
 	}
 	else	{
 	
-		rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																				rb_key,
-																																				c_record->key->wrapped_bdb_dbt,
-																																				TRUE );
+		rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																											rb_key,
+																											(Rbdb_DBT*) c_record->key,
+																											TRUE );
 
 		if ( rb_data != Qnil )	{
 			
-			rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_parent_database,
-																																					rb_data,
-																																					c_record->data->wrapped_bdb_dbt,
-																																					FALSE );
+			rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																												rb_data,
+																												(Rbdb_DBT*) c_record->data,
+																												FALSE );
 		}
 		
 		c_record = Rbdb_DatabaseCursor_retrieveRecord(	c_database_cursor,

@@ -645,27 +645,54 @@ describe Rbdb::Settings::Database::Record::ReadWrite do
     
   end
 
-  ######################
-  #  set_storage_type  #
-  #  storage_type      #
-  ######################
+  ################################
+  #  store_key_typing?           #
+  #  turn_store_key_typing_on    #
+  #  turn_store_key_typing_off   #
+  #  store_data_typing?          #
+  #  turn_store_data_typing_on   #
+  #  turn_store_data_typing_off  #
+  ################################
 
-  it "can set the type stored in database" do
+  it "can set the key and data type stored in database" do
     # with settings controller
     read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
-    test_storage_type( read_write_settings )
+		test_store_typing( read_write_settings )
     # with database
     read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
-    test_storage_type( read_write_settings )
+		test_store_typing( read_write_settings )
+  end
+
+	def test_store_typing( read_write_settings )
+		# :key => 42.0
+		read_write_settings.turn_store_key_typing_on( Symbol )
+		read_write_settings.turn_store_data_typing_on( Float )
+		# we should now be able to write and retrieve key_symbol => float_value
+		database = Rbdb::Database.new( $database_name )
+		database.write( :key => 42.0 )
+		database.retrieve( :key ).should == 42.0
+		# we should not be able to write and retrieve anything else
+		database.write( "key" => 42.0 ).should raise_exception
+		database.write( :key => 42 ).should raise_exception
+	end
+
+  ############################
+  #  record_typing?          #
+  #  turn_record_typing_on   #
+  #  turn_record_typing_off  #
+  ############################
+
+  it "can set the key and data type stored in database" do
+
+    # with settings controller
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new
+		read_write_settings.turn_record_typing_on
+
+    # with database
+    read_write_settings = Rbdb::Settings::Database::Record::ReadWrite.new( Rbdb::Database.new( $database_name ) )
+
   end
   
-  def test_storage_type( read_write_settings )
-    
-    read_write_settings.set_storage_type( 42 )
-    read_write_settings.storage_type.should == 42
-
-  end
-
   ######################################
   #  set_write_failed_callback_method  #
   #  write_failed_callback_method      #

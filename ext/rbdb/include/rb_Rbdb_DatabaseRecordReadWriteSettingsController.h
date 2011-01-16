@@ -94,9 +94,14 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_duplicates( VALUE	rb_dat
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_setPartialReadWriteOffset(	VALUE	rb_database_record_read_write_settings_controller, 
 																				VALUE	rb_partial_read_write_offset );
 
-VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeTyping( VALUE	rb_database_record_read_write_settings_controller );
-	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreTypingOn( VALUE	rb_database_record_read_write_settings_controller );
-	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreTypingOff( VALUE	rb_database_record_read_write_settings_controller );
+VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeKeyTyping( VALUE	rb_database_record_read_write_settings_controller );
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreKeyTypingOn(	VALUE	rb_database_record_read_write_settings_controller,
+																																							VALUE	rb_record_storage_type );
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreKeyTypingOff( VALUE	rb_database_record_read_write_settings_controller );
+VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeDataTyping( VALUE	rb_database_record_read_write_settings_controller );
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreDataTypingOn(	VALUE	rb_database_record_read_write_settings_controller,
+																																									VALUE	rb_record_storage_type );
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreDataTypingOff( VALUE	rb_database_record_read_write_settings_controller );
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_recordTyping( VALUE	rb_database_record_read_write_settings_controller );
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnRecordTypingOn( VALUE	rb_database_record_read_write_settings_controller );
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnRecordTypingOff( VALUE	rb_database_record_read_write_settings_controller );
@@ -106,5 +111,8 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_creationStamp( VALUE	rb_
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_modificationStamp( VALUE	rb_database_record_read_write_settings_controller );
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnModificationStampOn( VALUE	rb_database_record_read_write_settings_controller );
 	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnModificationStampOff( VALUE	rb_database_record_read_write_settings_controller );
+VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeFileNotPath( VALUE	rb_database_record_read_write_settings_controller );
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreFileNotPathOn( VALUE	rb_database_record_read_write_settings_controller );
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreFileNotPathOff( VALUE	rb_database_record_read_write_settings_controller );
 
 #endif

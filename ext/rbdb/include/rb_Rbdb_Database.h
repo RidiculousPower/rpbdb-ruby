@@ -48,6 +48,8 @@ VALUE rb_Rbdb_Database_createSecondaryIndexWithUnsortedDuplicates(	int			argc,
 VALUE rb_Rbdb_Database_createSecondaryIndexWithSortedDuplicates(	int			argc, 
 																																	VALUE*	args,
 																																	VALUE		rb_primary_database_self	);
+VALUE rb_Rbdb_Database_databaseWithIndex(	VALUE	rb_primary_database,
+																					VALUE	rb_index_name );
 VALUE rb_Rbdb_Database_secondaryDatabaseWithIndex(	VALUE	rb_primary_database,
 																									VALUE	rb_index_name );
 VALUE rb_Rbdb_Database_requireSecondaryDatabaseWithIndex(	VALUE	rb_primary_database,

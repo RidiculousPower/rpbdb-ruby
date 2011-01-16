@@ -16,6 +16,7 @@
 #include "rb_Rbdb_SettingsController.h"
 #include "rb_Rbdb_DatabaseController.h"
 #include "rb_Rbdb_Database.h"
+#include "rb_Rbdb_Database_internal.h"
 #include "rb_Rbdb.h"
 
 #include <rbdb/Rbdb_Environment.h>
@@ -60,10 +61,6 @@ void Init_rb_Rbdb_DatabaseRecordReadWriteSettingsController()	{
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"parent_settings_controller",			rb_Rbdb_DatabaseRecordReadWriteSettingsController_parentSettingsController,				0 	);
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"parent_database_settings_controller",			rb_Rbdb_DatabaseRecordReadWriteSettingsController_parentDatabaseSettingsController,				0 	);
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"parent_database_record_settings_controller",			rb_Rbdb_DatabaseRecordReadWriteSettingsController_parentDatabaseRecordSettingsController,				0 	);
-
-	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"storage_type",												rb_Rbdb_DatabaseRecordReadWriteSettingsController_storageType,															0 	);
-	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"storage_type=",											rb_Rbdb_DatabaseRecordReadWriteSettingsController_setStorageType,														1 	);
-	rb_define_alias(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"set_storage_type",										"storage_type=" 	);                                                          				
 
 	//	FIX - this should take a file or a file name
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"filename",																			rb_Rbdb_DatabaseRecordReadWriteSettingsController_filename,															0 	);
@@ -163,9 +160,13 @@ void Init_rb_Rbdb_DatabaseRecordReadWriteSettingsController()	{
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_serialize_data_on",															rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnSerializeDataOn,											0 	);
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_serialize_data_off",														rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnSerializeDataOff,											0 	);
 
-	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"store_typing?",																			rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeTyping,															0 	);
-	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_store_typing_on",																rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreTypingOn,												0 	);
-	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_store_typing_off",															rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreTypingOff,												0 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"store_key_typing?",																	rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeKeyTyping,															0 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_store_key_typing_on",														rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreKeyTypingOn,												1 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_store_key_typing_off",													rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreKeyTypingOff,												0 	);
+
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"store_data_typing?",																	rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeDataTyping,															0 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_store_data_typing_on",													rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreDataTypingOn,												1 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_store_data)typing_off",													rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreDataTypingOff,												0 	);
 
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"record_typing?",																			rb_Rbdb_DatabaseRecordReadWriteSettingsController_recordTyping,															0 	);
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_record_typing_on",															rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnRecordTypingOn,												0 	);
@@ -193,7 +194,7 @@ void Init_rb_Rbdb_DatabaseRecordReadWriteSettingsController()	{
 
 VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_new(	int			argc,
 																															VALUE*	args,
-																															VALUE		rb_klass_self __attribute__ ((unused)) )	{
+																															VALUE		rb_klass_self )	{
 
 	VALUE	rb_parent_environment																	=	Qnil;
 	VALUE	rb_parent_database_controller													=	Qnil;
@@ -204,13 +205,13 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_new(	int			argc,
 	VALUE	rb_parent_settings_controller													=	Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
-			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment, rb_Rbdb_Environment ),
-																						R_MatchAncestorInstance( rb_parent_database_controller, rb_Rbdb_DatabaseController ),
-																						R_MatchAncestorInstance( rb_parent_database, rb_Rbdb_Database ),
-																						R_MatchAncestorInstance( rb_parent_record, rb_Rbdb_Record ),
-																						R_MatchAncestorInstance( rb_parent_database_settings_controller, rb_Rbdb_DatabaseSettingsController ),
-																						R_MatchAncestorInstance( rb_parent_settings_controller, rb_Rbdb_SettingsController ),
-																						R_MatchAncestorInstance( rb_parent_database_record_settings_controller, rb_Rbdb_DatabaseRecordSettingsController ) ) ),
+			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_environment,														rb_Rbdb_Environment ),
+																						R_MatchAncestorInstance( rb_parent_database_controller,										rb_Rbdb_DatabaseController ),
+																						R_MatchAncestorInstance( rb_parent_database,															rb_Rbdb_Database ),
+																						R_MatchAncestorInstance( rb_parent_record,																rb_Rbdb_Record ),
+																						R_MatchAncestorInstance( rb_parent_database_settings_controller,					rb_Rbdb_DatabaseSettingsController ),
+																						R_MatchAncestorInstance( rb_parent_settings_controller,										rb_Rbdb_SettingsController ),
+																						R_MatchAncestorInstance( rb_parent_database_record_settings_controller,		rb_Rbdb_DatabaseRecordSettingsController ) ) ),
 			R_ListOrder( 1 ),
 			"[ <parent environment> ]",
 			"[ <parent database controller> ]",
@@ -1160,43 +1161,92 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_serializeData( VALUE	rb_
 		return rb_database_record_read_write_settings_controller;
 	}
 
-/********************
-*  store_typing?  *
-********************/
+/**********************
+*  store_key_typing?  *
+**********************/
 
-VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeTyping( VALUE	rb_database_record_read_write_settings_controller )	{
+VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeKeyTyping( VALUE	rb_database_record_read_write_settings_controller )	{
 	
 	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
 	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 	
-	return ( Rbdb_DatabaseRecordReadWriteSettingsController_storeTyping( c_database_record_read_write_settings_controller )	?	Qtrue
+	return ( Rbdb_DatabaseRecordReadWriteSettingsController_storeKeyTyping( c_database_record_read_write_settings_controller )	?	Qtrue
 																																																													:	Qfalse );
 }
 
-	/****************************
-	 *  turn_store_typing_on  *
-	 ***************************/
+	/******************************
+	 *  turn_store_key_typing_on  *
+	 *****************************/
 
-	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreTypingOn( VALUE	rb_database_record_read_write_settings_controller )	{
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreKeyTypingOn(	VALUE	rb_database_record_read_write_settings_controller,
+																																								VALUE	rb_record_storage_class )	{
 		
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
 		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 		
-		Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreTypingOn( c_database_record_read_write_settings_controller );
+		Rbdb_DatabaseRecordStorageType	c_record_storage_type	=	rb_Rbdb_Database_internal_storageTypeForRubyClass( rb_record_storage_class );
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreKeyTypingOn(	c_database_record_read_write_settings_controller,
+																																					c_record_storage_type );
 		
 		return rb_database_record_read_write_settings_controller;
 	}
 
-	/*****************************
-	 *  turn_store_typing_off  *
-	 ****************************/
+	/*******************************
+	 *  turn_store_key_typing_off  *
+	 ******************************/
 
-	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreTypingOff( VALUE	rb_database_record_read_write_settings_controller )	{
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreKeyTypingOff( VALUE	rb_database_record_read_write_settings_controller )	{
 		
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
 		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 		
-		Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreTypingOff( c_database_record_read_write_settings_controller );
+		Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreKeyTypingOff( c_database_record_read_write_settings_controller );
+		
+		return rb_database_record_read_write_settings_controller;
+	}
+
+/***********************
+*  store_data_typing?  *
+***********************/
+
+VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeDataTyping( VALUE	rb_database_record_read_write_settings_controller )	{
+	
+	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	
+	return ( Rbdb_DatabaseRecordReadWriteSettingsController_storeDataTyping( c_database_record_read_write_settings_controller )	?	Qtrue
+																																																															:	Qfalse );
+}
+
+	/*******************************
+	 *  turn_store_data_typing_on  *
+	 ******************************/
+
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreDataTypingOn(	VALUE	rb_database_record_read_write_settings_controller,
+																																									VALUE	rb_record_storage_class )	{
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		
+		Rbdb_DatabaseRecordStorageType	c_record_storage_type	=	rb_Rbdb_Database_internal_storageTypeForRubyClass( rb_record_storage_class );
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreDataTypingOn( c_database_record_read_write_settings_controller,
+																																					c_record_storage_type );
+		
+		return rb_database_record_read_write_settings_controller;
+	}
+
+	/********************************
+	 *  turn_store_data_typing_off  *
+	 *******************************/
+
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreDataTypingOff( VALUE	rb_database_record_read_write_settings_controller )	{
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreDataTypingOff( c_database_record_read_write_settings_controller );
 		
 		return rb_database_record_read_write_settings_controller;
 	}
@@ -1324,7 +1374,48 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_modificationStamp( VALUE
 		return rb_database_record_read_write_settings_controller;
 	}
 
+/*************************
+*  store_file_not_path?  *
+*************************/
+
+VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeFileNotPath( VALUE	rb_database_record_read_write_settings_controller )	{
 	
+	Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+	C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+	
+	return ( Rbdb_DatabaseRecordReadWriteSettingsController_storeFileNotPath( c_database_record_read_write_settings_controller )	?	Qtrue
+																																																																:	Qfalse );
+}
+
+	/*********************************
+	 *  turn_store_file_not_path_on  *
+	 ********************************/
+
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreFileNotPathOn( VALUE	rb_database_record_read_write_settings_controller )	{
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreFileNotPathOn( c_database_record_read_write_settings_controller );
+		
+		return rb_database_record_read_write_settings_controller;
+	}
+
+	/**********************************
+	 *  turn_store_file_not_path_off  *
+	 *********************************/
+
+	VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreFileNotPathOff( VALUE	rb_database_record_read_write_settings_controller )	{
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
+		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
+		
+		Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreFileNotPathOff( c_database_record_read_write_settings_controller );
+		
+		return rb_database_record_read_write_settings_controller;
+	}
+
+		
 	
 /*******************************************************************************************************************************************************************************************
 														Switch Settings
@@ -1447,32 +1538,6 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_setFilename(	VALUE	rb_da
 	return rb_database_record_read_write_settings_controller;
 }
 
-
-/*****************
-*  storage_type  *
-*****************/
-
-VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_storageType( VALUE rb_database_record_read_write_settings_controller )	{
-	
-	VALUE		rb_class_to_specify_type	=	rb_iv_get(	rb_database_record_read_write_settings_controller,
-																									RBDB_RB_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE );
-	
-	return rb_class_to_specify_type;
-}
-
-/*********************
-*  set_storage_type  *
-*********************/
-
-VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_setStorageType(	VALUE rb_database_record_read_write_settings_controller,
-																																	VALUE	rb_class_to_specify_type )	{
-	
-	rb_iv_set(	rb_database_record_read_write_settings_controller,
-							RBDB_RB_DATABASE_SETTINGS_READ_WRITE_VARIABLE_STORAGE_TYPE,
-							rb_class_to_specify_type );
-	
-	return rb_database_record_read_write_settings_controller;
-}
 
 
 /*************************************

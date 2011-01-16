@@ -822,50 +822,5 @@
 													INT2FIX( c_index ) );																			\
 				break;																																			\
 		}
-
-	#define PREPARE_RECORD_FROM_KEY_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, rb_index, rb_key )						\
-		if ( rb_index != Qnil )	{																																						\
-			rb_index	=	rb_obj_as_string( rb_index );																													\
-		}																																																		\
-		rb_key		=	rb_obj_as_string( rb_key );																															\
-		PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );												\
-		c_record	=	Rbdb_Record_new( c_database );																													\
-		rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_which_database,							\
-																																				rb_key,													\
-																																				c_record->key->wrapped_bdb_dbt,	\
-																																				TRUE );
-	
-	#define PREPARE_RECORD_FROM_KEY_DATA_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, rb_index, rb_key, rb_data )		\
-		PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );																										\
-		c_record	=	Rbdb_Record_new( c_database );																													\
-		PACK_KEY_DATA_FOR_STORAGE( rb_database, rb_key, rb_data, c_record );
-
-	#define PACK_KEY_DATA_FOR_STORAGE( rb_database, rb_key, rb_data, c_record )					\
-		PACK_KEY_FOR_STORAGE( rb_database, rb_key, c_record );										\
-		PACK_DATA_FOR_STORAGE( rb_database, rb_data, c_record );
-
-	#define PACK_KEY_FOR_STORAGE( rb_database, rb_key, c_record )																					\
-		rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_database,										\
-																																				rb_key,													\
-																																				c_record->key->wrapped_bdb_dbt,	\
-																																				TRUE );
-
-	#define PACK_DATA_FOR_STORAGE( rb_which_database, rb_data, c_record )																		\
-		rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_which_database,								\
-																																				rb_data,													\
-																																				c_record->data->wrapped_bdb_dbt,	\
-																																				TRUE );
 		
-	#define PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_primary_database, c_database, rb_index )					\
-		VALUE	rb_which_database	=	Qnil;																																			\
-		if ( rb_index != Qnil )	{																																						\
-			rb_which_database	=	rb_Rbdb_Database_requireSecondaryDatabaseWithIndex(	rb_primary_database,			\
-																																							rb_index );								\
-		}																																																		\
-		else {																																															\
-			rb_which_database	=	rb_primary_database;																													\
-		}																																																		\
-		C_RBDB_DATABASE( rb_which_database, c_database );
-
-
 #endif

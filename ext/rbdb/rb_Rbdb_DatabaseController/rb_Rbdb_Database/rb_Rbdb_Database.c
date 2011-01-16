@@ -38,6 +38,8 @@
 #include <rbdb/Rbdb_Record.h>
 #include <rbdb/Rbdb_Key.h>
 #include <rbdb/Rbdb_Data.h>
+#include <rbdb/Rbdb_DBT.h>
+#include <rbdb/Rbdb_DBT_internal.h>
 #include <rbdb/Rbdb_SecondaryKeys.h>
 
 #include <rbdb/Rbdb_SettingsController.h>
@@ -877,6 +879,25 @@ VALUE rb_Rbdb_Database_createSecondaryIndexWithSortedDuplicates(	int			argc,
 
 }
 
+/**********************
+*  databaseWithIndex  *
+**********************/
+
+VALUE rb_Rbdb_Database_databaseWithIndex(	VALUE	rb_primary_database,
+																					VALUE	rb_index_name )	{
+	
+	VALUE	rb_which_database	=	Qnil;																																			
+	if ( rb_index_name != Qnil )	{																																						
+		rb_which_database	=	rb_Rbdb_Database_requireSecondaryDatabaseWithIndex(	rb_primary_database,			
+																																						rb_index_name );								
+	}																																																		
+	else {																																															
+		rb_which_database	=	rb_primary_database;																													
+	}																																																		
+
+	return rb_which_database;
+}
+
 /******************************
 *  secondaryDatabaseWithIndex  *
 ******************************/
@@ -1393,14 +1414,14 @@ VALUE rb_Rbdb_Database_sequenceController(	int			argc,
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_put.html
 VALUE rb_Rbdb_Database_write(	int			argc, 
 															VALUE*	args, 
-															VALUE		rb_database )	{
+															VALUE		rb_primary_database )	{
 
 	VALUE	rb_key																			=	Qnil;
 	VALUE	rb_data																			=	Qnil;
 	VALUE	rb_hash_descriptor_key_data_or_datas_array	=	Qnil;
 	VALUE	rb_args_array																= Qnil;
 
-	R_DefineAndParse( argc, args, rb_database,
+	R_DefineAndParse( argc, args, rb_primary_database,
 
 		//----------------------------------------------//
 
@@ -1442,7 +1463,7 @@ VALUE rb_Rbdb_Database_write(	int			argc,
 
 	)
 	
-	VALUE	rb_return	=	rb_database;
+	VALUE	rb_return	=	rb_primary_database;
 	
 	if (				rb_hash_descriptor_key_data_or_datas_array != Qnil ) {
 
@@ -1471,7 +1492,11 @@ VALUE rb_Rbdb_Database_write(	int			argc,
 
 		do {
 			
-			PREPARE_RECORD_FROM_KEY_DATA_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, Qnil, rb_key, rb_data );
+			C_RBDB_DATABASE( rb_primary_database, c_database );
+			
+			c_record	=	rb_Rbdb_Database_internal_recordForRubyKeyData(	rb_primary_database,
+																																	rb_key,
+																																	rb_data );
 			
 			Rbdb_Database_write(	c_database,
 														c_record	);
@@ -1588,7 +1613,9 @@ VALUE rb_Rbdb_Database_keyExists(	int			argc,
 	else if (		rb_key != Qnil )	{
 			
 		Rbdb_Database*		c_database;
-		PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );
+		VALUE	rb_database	=	rb_Rbdb_Database_databaseWithIndex( rb_database,
+																														rb_index );
+		C_RBDB_DATABASE( rb_database, c_database );
 
 		Rbdb_Key*	c_key	=	Rbdb_Key_new( NULL );
 
@@ -1597,10 +1624,10 @@ VALUE rb_Rbdb_Database_keyExists(	int			argc,
 
 		do {
 			
-			rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_database,
-																																					rb_key,
-																																					c_key->wrapped_bdb_dbt,
-																																					TRUE );
+			rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_database,
+																												rb_key,
+																												c_key,
+																												TRUE );
 
 			rb_result	=	( Rbdb_Database_keyExists(	c_database,
 																							c_key )	?	Qtrue
@@ -1903,7 +1930,9 @@ VALUE rb_Rbdb_Database_retrieve(	int			argc,
 		Rbdb_Database*	c_database	=	NULL;
 		Rbdb_Record*		c_record		=	NULL;
 
-		PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );
+		VALUE	rb_database	=	rb_Rbdb_Database_databaseWithIndex( rb_database,
+																														rb_index );
+		C_RBDB_DATABASE( rb_database, c_database );
 
 		rb_return		=	rb_ary_new();
 
@@ -1911,13 +1940,17 @@ VALUE rb_Rbdb_Database_retrieve(	int			argc,
 
 		do {
 			
-			PREPARE_RECORD_FROM_KEY_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, rb_index, rb_key );
+			c_record	=	rb_Rbdb_Database_internal_recordForRubyKeyData(	rb_database,
+																																	rb_key,
+																																	rb_data );
 
 			c_record	=	Rbdb_Database_retrieveRecord(	c_database,
 																								c_record );
 			
-			rb_data = RUBY_STRING_FOR_DATA_IN_RBDB_RECORD( c_record );			
-
+			rb_data	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+																																		c_record->data,
+																																		FALSE );
+			
 			rb_ary_push(	rb_return,
 										rb_data );
 
@@ -2075,7 +2108,9 @@ VALUE rb_Rbdb_Database_retrievePrimaryKey(	int			argc,
 		Rbdb_Database*	c_database	=	NULL;
 		Rbdb_Record*		c_record		=	NULL;
 
-		PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );
+			VALUE	rb_database	=	rb_Rbdb_Database_databaseWithIndex( rb_database,
+																															rb_index );
+			C_RBDB_DATABASE( rb_database, c_database );
 
 		rb_return		=	rb_ary_new();
 
@@ -2083,12 +2118,15 @@ VALUE rb_Rbdb_Database_retrievePrimaryKey(	int			argc,
 
 		do {
 			
-			PREPARE_RECORD_FROM_KEY_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, rb_index, rb_key );
+			c_record	=	rb_Rbdb_Database_internal_recordForRubyKey(	rb_database,
+																															rb_key );
 
 			c_record	=	Rbdb_Database_retrieveRecord(	c_database,
 																								c_record );
 			
-			rb_key = RUBY_STRING_FOR_PRIMARY_KEY_IN_RBDB_RECORD( c_record );			
+			rb_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+																																		c_record->key,
+																																		TRUE );
 
 			rb_ary_push(	rb_return,
 										rb_key );
@@ -2179,8 +2217,16 @@ VALUE rb_Rbdb_Database_retrievePair(	int			argc,
 	)
 
 	Rbdb_Database*	c_database	=	NULL;
-	Rbdb_Record*		c_record		=	NULL;	
-	PREPARE_RECORD_FROM_KEY_DATA_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, Qnil, rb_key, rb_data );
+	Rbdb_Record*		c_record		=	rb_Rbdb_Database_internal_recordForRubyKeyData(	rb_database,
+																																								rb_key,
+																																								rb_data );
+
+	c_record	=	Rbdb_Database_retrieveRecord(	c_database,
+																						c_record );
+	
+	rb_data	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+																																c_record->data,
+																																FALSE );
 
 	c_record	=	Rbdb_Database_retrieveMatchingRecord(	c_database,
 																										c_record );
@@ -2419,13 +2465,16 @@ VALUE rb_Rbdb_Database_delete(	int			argc,
 	else if (				rb_key != Qnil )	{
 			
 		Rbdb_Database*	c_database	=	NULL;
-		PRIMARY_OR_SECONDARY_DATABASE_FOR_INDEX( rb_database, c_database, rb_index );
+		VALUE	rb_database	=	rb_Rbdb_Database_databaseWithIndex( rb_database,
+																														rb_index );
+		C_RBDB_DATABASE( rb_database, c_database );
+
+		Rbdb_Record*		c_record	=	NULL;
 
 		do {
 			
-			Rbdb_Database*	c_database	=	NULL;
-			Rbdb_Record*		c_record		=	NULL;
-			PREPARE_RECORD_FROM_KEY_FOR_WRITE_RETRIEVE_DELETE( rb_database, c_database, c_record, rb_index, rb_key );
+			c_record	=	rb_Rbdb_Database_internal_recordForRubyKey(	rb_database,
+																															rb_key );
 
 			Rbdb_Database_deleteRecord(	c_database,
 																	c_record );
@@ -2691,10 +2740,15 @@ RBDB_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_processSecondaryKey
 			rb_this_key = RARRAY_PTR( rb_secondary_keys )[ which_key_index ];
 			
 			//	pack the key into the DBT at which_key_index
-			rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_secondary_database,
-																																					rb_this_key,
-																																					& c_keys[ which_key_index ],
-																																					TRUE );	
+			Rbdb_Key*	c_key	=	Rbdb_DBT_internal_newFromBDBDBT(	NULL,
+																													& c_keys[ which_key_index ] );
+			rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_secondary_database,
+																												rb_this_key,
+																												c_key,
+																												TRUE );
+			//	NULLify pointer to BDB key so that freeing Rbdb_Key won't free the BDB key
+			c_key->wrapped_bdb_dbt	=	NULL;
+			Rbdb_Key_free( & c_key );
 		}
 		
 		if ( number_of_keys > 1 )	{
@@ -2718,10 +2772,10 @@ RBDB_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_processSecondaryKey
 	else	{
 		
 		//	prepare our data into record
-		rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	rb_secondary_database,
-																																				rb_secondary_keys, 
-																																				c_secondary_keys->wrapped_bdb_dbt,
-																																				TRUE );
+		rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_secondary_database,
+																											rb_secondary_keys, 
+																											(Rbdb_DBT*) c_secondary_keys,
+																											TRUE );
 	}
 
 	return FALSE;
@@ -2770,200 +2824,6 @@ VALUE rb_Rbdb_Database_internal_removeCallbackInfoFromHash(	VALUE		rb_secondary_
 							1,
 							rb_index );
 	return rb_secondary_database;
-}
-
-/****************
-*  storageType  *
-****************/
-
-enum ruby_value_type rb_Rbdb_Database_internal_storageType( VALUE rb_database )	{
-	
-	VALUE	rb_database_settings_controller							=	rb_Rbdb_Database_settingsController( rb_database );
-	VALUE	rb_database_record_read_write_settings_controller	=	rb_Rbdb_DatabaseRecordSettingsController_readWriteSettingsController( rb_database_settings_controller );	
-	VALUE	rb_class_to_specify_type										=	rb_Rbdb_DatabaseRecordReadWriteSettingsController_storageType( rb_database_record_read_write_settings_controller );
-
-	if ( rb_class_to_specify_type == rb_cArray ) {
-		return T_ARRAY;
-	}
-	if ( rb_class_to_specify_type == rb_cHash ) {
-		return T_HASH;
-	}
-	if ( rb_class_to_specify_type == rb_cStruct ) {
-		return T_STRUCT;
-	}
-	if ( rb_class_to_specify_type == rb_cString ) {
-		return T_STRING;
-	}
-	if ( rb_class_to_specify_type == rb_cRegexp ) {
-		return T_REGEXP;
-	}
-	if ( rb_class_to_specify_type == rb_cClass ) {
-		return T_CLASS;
-	}
-	if ( rb_class_to_specify_type == rb_cSymbol ) {
-		return T_SYMBOL;
-	}
-	if ( rb_class_to_specify_type == rb_cBignum ) {
-		return T_BIGNUM;
-	}
-	if ( rb_class_to_specify_type == rb_cFixnum ) {
-		return T_FIXNUM;
-	}
-	if ( rb_class_to_specify_type == rb_cFloat ) {
-		return T_FLOAT;
-	}
-	if ( rb_class_to_specify_type == rb_cTrueClass ) {
-		return T_TRUE;
-	}
-	if ( rb_class_to_specify_type == rb_cFalseClass ) {
-		return T_FALSE;
-	}
-	else {
-		return T_STRING;
-	}
-}
-
-/********************************************
-*  packRubyObjectOrValueForDatabaseStorage  *
-********************************************/
-
-void rb_Rbdb_Database_internal_packRubyObjectOrValueForDatabaseStorage(	VALUE		rb_database,
-																																				VALUE		rb_key_or_data,
-																																				DBT*		c_key_dbt,
-																																				BOOL		c_convert_string_encoding )	{
-	
-	VALUE	rb_database_settings_controller							=	rb_Rbdb_Database_settingsController( rb_database );
-	VALUE	rb_database_record_read_write_settings_controller	=	rb_Rbdb_DatabaseRecordSettingsController_readWriteSettingsController( rb_database_settings_controller );	
-	VALUE	rb_should_serialize_data										=	rb_Rbdb_DatabaseRecordReadWriteSettingsController_serializeData( rb_database_record_read_write_settings_controller );
-	
-	//	if serialization is on, unserialize the key and object
-	if ( rb_should_serialize_data == Qtrue )	{
-		rb_Rbdb_DatabaseObject_internal_packRubyObjectForDatabaseStorage(	rb_key_or_data,
-																																			c_key_dbt,
-																																			c_convert_string_encoding );
-	}
-	else {
-		rb_Rbdb_Database_internal_packRubyValueForDatabaseStorage(	rb_database,
-																																rb_key_or_data,
-																																c_key_dbt );
-	}
-}
-
-/************************************
-*  packRubyValueForDatabaseStorage  *
-************************************/
-
-void rb_Rbdb_Database_internal_packRubyValueForDatabaseStorage(	VALUE		rb_database,
-																																VALUE		rb_key_or_data,
-																																DBT*		c_key_or_data_dbt )	{
-	long*			long_key;
-	double*		double_key;
-	int*			int_key;
-	BOOL*			bool_key;
-		
-	enum ruby_value_type		c_database_storage_types	=	rb_Rbdb_Database_internal_storageType( rb_database );
-	
-	switch ( c_database_storage_types )	{
-						
-		case T_ARRAY:
-			//	array is treated as multiple individual records for the same key
-			
-			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
-			break;
-
-		case T_HASH:
-			//	hash is treated as multiple individual records with different keys
-
-			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
-			break;
-
-		case T_STRUCT:
-			//	each value from struct is stored
-			
-			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
-			break;
-
-		case T_FILE:
-			//	file contents are stored as byte string
-			
-			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
-			break;
-
-		case T_STRING:
-			//	simple string
-			//	FIX - here and elsewhere, are strdup necessary?
-			c_key_or_data_dbt->data		=	strdup( StringValuePtr(	rb_key_or_data ) );
-			c_key_or_data_dbt->size		=	RSTRING_LEN( rb_key_or_data ) * sizeof( char );
-			c_key_or_data_dbt->flags	|=	DB_DBT_APPMALLOC;
-			break;
-			
-		case T_REGEXP:
-		case T_CLASS:
-			//	store string value
-			rb_key_or_data				=	rb_obj_as_string(	rb_key_or_data );
-			c_key_or_data_dbt->data		=	strdup( StringValuePtr(	rb_key_or_data ) );
-			c_key_or_data_dbt->size		=	RSTRING_LEN( rb_key_or_data ) * sizeof( char );
-			c_key_or_data_dbt->flags	|=	DB_DBT_APPMALLOC;
-			break;
-			
-		case T_SYMBOL:
-			//	store symbol ID
-			
-			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
-			break;
-			
-		case T_BIGNUM:
-			//	to long
-			long_key				=	calloc( 1, sizeof( long ) );
-			*long_key				=	NUM2LONG( rb_key_or_data );
-			c_key_or_data_dbt->data		=	long_key;
-			c_key_or_data_dbt->size		=	sizeof( long );			
-			c_key_or_data_dbt->flags	|=	DB_DBT_APPMALLOC;
-			break;
-			
-		case T_FIXNUM:
-			//	to int
-			int_key					=	calloc( 1, sizeof( int ) );
-			*int_key				=	FIX2INT( rb_key_or_data );
-			c_key_or_data_dbt->data		=	int_key;
-			c_key_or_data_dbt->size		=	sizeof( int );			
-			c_key_or_data_dbt->flags	|=	DB_DBT_APPMALLOC;
-			break;
-			
-		case T_FLOAT:
-			//	to float
-			double_key				=	calloc( 1, sizeof( double ) );
-			*double_key				=	NUM2DBL( rb_key_or_data );
-			c_key_or_data_dbt->data		=	double_key;
-			c_key_or_data_dbt->size		=	sizeof( float );			
-			c_key_or_data_dbt->flags	|=	DB_DBT_APPMALLOC;
-			break;
-			
-		case T_TRUE:
-			//	to BOOL
-			bool_key				=	calloc( 1, sizeof( BOOL ) );
-			*bool_key				=	TRUE;
-			c_key_or_data_dbt->data		=	bool_key;
-			c_key_or_data_dbt->size		=	sizeof( BOOL );			
-			c_key_or_data_dbt->flags	|=	DB_DBT_APPMALLOC;
-			break;
-			
-		case T_FALSE:
-			bool_key				=	calloc( 1, sizeof( BOOL ) );
-			*bool_key				=	FALSE;
-			c_key_or_data_dbt->data		=	bool_key;
-			c_key_or_data_dbt->size		=	sizeof( BOOL );			
-			c_key_or_data_dbt->flags	|=	DB_DBT_APPMALLOC;
-			break;
-
-		case T_OBJECT:
-		case T_MODULE:
-		case T_DATA:
-		default:			
-			//	serialization is turned off, so we don't know how to handle these types			
-			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
-			break;
-	}
 }
 
 /*************************
@@ -3157,4 +3017,948 @@ VALUE rb_Rbdb_Database_internal_uniqueIndexesHash( VALUE	rb_database )	{
 	}
 	
 	return rb_unique_indexes_for_database;
+}
+
+
+/*******************************************************************************************************************************************************************************************
+																		Type Storage Methods
+*******************************************************************************************************************************************************************************************/
+
+/*************************
+*  recordForRubyKeyData  *
+*************************/
+
+Rbdb_Record* rb_Rbdb_Database_internal_recordForRubyKeyData(	VALUE	rb_database,
+																															VALUE	rb_key,
+																															VALUE	rb_data )	{
+		
+	Rbdb_Database*	c_database;
+	C_RBDB_DATABASE( rb_database, c_database );
+	
+	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database );
+	
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_database,
+																										rb_key,
+																										c_record->key,
+																										TRUE );
+
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_database,
+																										rb_data,
+																										c_record->data,
+																										FALSE );
+	
+	return c_record;
+}
+
+/*********************
+*  recordForRubyKey  *
+*********************/
+
+Rbdb_Record* rb_Rbdb_Database_internal_recordForRubyKey(	VALUE	rb_database,
+																													VALUE	rb_key )	{
+
+	Rbdb_Database*	c_database;
+	C_RBDB_DATABASE( rb_database, c_database );
+	
+	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database );
+	
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_database,
+																										rb_key,
+																										c_record->key,
+																										TRUE );
+
+	return c_record;
+}
+
+/***************************
+*  packDBTForRubyInstance  *
+***************************/
+
+void rb_Rbdb_Database_internal_packDBTForRubyInstance(	VALUE				rb_database,
+																												VALUE				rb_object,
+																												Rbdb_DBT*		c_dbt,
+																												BOOL				key_not_data )	{
+
+	enum ruby_value_type		c_type	=	TYPE( rb_object );
+
+	switch ( c_type )	{
+
+		case T_FILE:
+			rb_Rbdb_Database_internal_DBTForRubyFile(	rb_database,
+																								rb_object,
+																								c_dbt,
+																								key_not_data );
+			break;
+
+		case T_SYMBOL:
+			rb_Rbdb_Database_internal_DBTForRubySymbol(	rb_database,
+																									rb_object,
+																									c_dbt,
+																									key_not_data );
+			break;
+
+		case T_REGEXP:
+			rb_Rbdb_Database_internal_DBTForRubyRegexp(	rb_database,
+																									rb_object,
+																									c_dbt,
+																									key_not_data );
+			break;
+
+		case T_CLASS:
+			rb_Rbdb_Database_internal_DBTForRubyClassName(	rb_database,
+																											rb_object,
+																											c_dbt,
+																											key_not_data );
+			break;
+
+		case T_STRING:
+			rb_Rbdb_Database_internal_DBTForRubyString(	rb_database,
+																									rb_object,
+																									c_dbt,
+																									key_not_data );
+			break;
+
+		case T_COMPLEX:
+			rb_Rbdb_Database_internal_DBTForRubyComplex(	rb_database,
+																										rb_object,
+																										c_dbt,
+																										key_not_data );
+			break;
+
+		case T_RATIONAL:
+			rb_Rbdb_Database_internal_DBTForRubyRational(	rb_database,
+																										rb_object,
+																										c_dbt,
+																										key_not_data );
+			break;
+			
+		case T_BIGNUM:
+		case T_FIXNUM:
+			rb_Rbdb_Database_internal_DBTForRubyInteger(	rb_database,
+																										rb_object,
+																										c_dbt,
+																										key_not_data );
+			break;
+			
+		case T_FLOAT:
+			rb_Rbdb_Database_internal_DBTForRubyFloat(	rb_database,
+																									rb_object,
+																									c_dbt,
+																									key_not_data );
+			break;
+			
+		case T_TRUE:
+		case T_FALSE:
+			rb_Rbdb_Database_internal_DBTForRubyTrueFalse(	rb_database,
+																											rb_object,
+																											c_dbt,
+																											key_not_data );
+			break;
+			
+		case T_ARRAY:
+		case T_HASH:
+		case T_STRUCT:
+		case T_OBJECT:
+		case T_MODULE:
+		case T_DATA:
+		default:			
+			//	serialization is turned off, so we don't know how to handle these types			
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
+			break;
+	}
+
+}
+
+/*******************
+*  DBTForRubyFile  *
+*******************/
+
+void rb_Rbdb_Database_internal_DBTForRubyFile(	VALUE				rb_database,
+																								VALUE				rb_file,
+																								Rbdb_DBT*		c_dbt,
+																								BOOL				key_not_data )	{
+
+	VALUE	database_settings_controller										=	rb_Rbdb_Database_settingsController( rb_database );
+	VALUE	database_record_settings_controller							=	rb_Rbdb_DatabaseSettingsController_recordSettingsController( database_settings_controller );
+	VALUE	database_record_read_write_settings_controller	=	rb_Rbdb_DatabaseRecordSettingsController_readWriteSettingsController( database_record_settings_controller );
+
+	//	if we store the whole file
+	if ( rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeFileNotPath( database_record_read_write_settings_controller ) == Qtrue )	{
+
+		//	get file size
+		VALUE	rb_file_size	=	rb_funcall(	rb_file,
+																			rb_intern( "size" ),
+																			0 );
+		uint32_t	c_file_size	=	NUM2LONG( rb_file_size );
+		
+		//	read lines into array
+		VALUE	rb_file_lines	=	rb_funcall(	rb_file,
+																			rb_intern( "readlines" ),
+																			0 );
+		
+		//	set data to beginning of array
+		if ( key_not_data )	{
+			
+			Rbdb_Key_setRawData(	(Rbdb_Key*) c_dbt,
+														RARRAY_PTR( rb_file_lines ),
+														c_file_size );		
+		
+			Rbdb_Key_setType(	(Rbdb_Key*) c_dbt,
+												RbdbType_File );
+		}
+		else {
+		
+			Rbdb_Data_setRawData(	(Rbdb_Data*) c_dbt,
+														RARRAY_PTR( rb_file_lines ),
+														c_file_size );
+		
+			Rbdb_Data_setType(	(Rbdb_Data*) c_dbt,
+													RbdbType_File );
+		}
+
+	}
+	//	if we store file path
+	else {
+		
+		//	get file path
+		VALUE	rb_file_path	=	rb_funcall(	rb_file,
+																			rb_intern( "path" ),
+																			0 );
+		
+		//	store as string
+		rb_Rbdb_Database_internal_DBTForRubyString(	rb_database,
+																								rb_file_path,
+																								c_dbt,
+																								key_not_data );
+
+
+		if ( key_not_data )	{
+		
+			Rbdb_Key_setType(	(Rbdb_Key*) c_dbt,
+												RbdbType_FilePath );
+
+		}
+		else {
+		
+			Rbdb_Data_setType(	(Rbdb_Data*) c_dbt,
+													RbdbType_FilePath );
+
+		}
+		
+	}
+	
+}
+
+/*********************
+*  DBTForRubySymbol  *
+*********************/
+
+void rb_Rbdb_Database_internal_DBTForRubySymbol(	VALUE				rb_database,
+																									VALUE				rb_symbol,
+																									Rbdb_DBT*		c_dbt,
+																									BOOL				key_not_data )	{
+
+	rb_symbol	=	rb_obj_as_string(	rb_symbol );
+
+	rb_Rbdb_Database_internal_DBTForRubyString(	rb_database,
+																							rb_symbol,
+																							c_dbt,
+																							key_not_data );
+
+	if ( key_not_data )	{
+	
+		Rbdb_Key_setType(	(Rbdb_Key*) c_dbt,
+											RbdbType_Symbol );
+
+	}
+	else {
+	
+		Rbdb_Data_setType(	(Rbdb_Data*) c_dbt,
+												RbdbType_Symbol );
+
+	}
+	
+}
+
+/*********************
+*  DBTForRubyRegexp  *
+*********************/
+
+void rb_Rbdb_Database_internal_DBTForRubyRegexp(	VALUE				rb_database,
+																									VALUE				rb_regexp,
+																									Rbdb_DBT*		c_dbt,
+																									BOOL				key_not_data )	{
+
+	rb_regexp				=	rb_obj_as_string(	rb_regexp );
+
+	rb_Rbdb_Database_internal_DBTForRubyString(	rb_database,
+																							rb_regexp,
+																							c_dbt,
+																							key_not_data );
+
+	if ( key_not_data )	{
+	
+		Rbdb_Key_setType(	(Rbdb_Key*) c_dbt,
+											RbdbType_Regexp );
+
+	}
+	else {
+	
+		Rbdb_Data_setType(	(Rbdb_Data*) c_dbt,
+												RbdbType_Regexp );
+
+	}
+
+}
+
+/************************
+*  DBTForRubyClassName  *
+************************/
+
+void rb_Rbdb_Database_internal_DBTForRubyClassName(	VALUE				rb_database,
+																										VALUE				rb_class,
+																										Rbdb_DBT*		c_dbt,
+																										BOOL				key_not_data )	{
+
+	rb_class				=	rb_obj_as_string(	rb_class );
+
+	rb_Rbdb_Database_internal_DBTForRubyString(	rb_database,
+																							rb_class,
+																							c_dbt,
+																							key_not_data );
+
+	if ( key_not_data )	{
+	
+		Rbdb_Key_setType(	(Rbdb_Key*) c_dbt,
+											RbdbType_ClassName );
+
+	}
+	else {
+	
+		Rbdb_Data_setType(	(Rbdb_Data*) c_dbt,
+												RbdbType_ClassName );
+
+	}
+	
+}
+
+/*********************
+*  DBTForRubyString  *
+*********************/
+
+void rb_Rbdb_Database_internal_DBTForRubyString(	VALUE				rb_database __attribute__ ((unused)),
+																									VALUE				rb_string,
+																									Rbdb_DBT*		c_dbt,
+																									BOOL				key_not_data )	{
+
+	c_dbt->wrapped_bdb_dbt->data		=		strdup( StringValuePtr(	rb_string ) );
+	c_dbt->wrapped_bdb_dbt->size		=		RSTRING_LEN( rb_string ) * sizeof( char );
+	c_dbt->wrapped_bdb_dbt->flags		|=	DB_DBT_APPMALLOC;
+
+	if ( key_not_data )	{
+	
+		Rbdb_Key_setType(	(Rbdb_Key*) c_dbt,
+											RbdbType_String );
+
+	}
+	else {
+	
+		Rbdb_Data_setType(	(Rbdb_Data*) c_dbt,
+												RbdbType_String );
+
+	}
+}
+
+/**********************
+*  DBTForRubyComplex  *
+**********************/
+
+void rb_Rbdb_Database_internal_DBTForRubyComplex(	VALUE				rb_database __attribute__ ((unused)),
+																									VALUE				rb_complex_number,
+																									Rbdb_DBT*		c_dbt,
+																									BOOL				key_not_data )	{
+
+	//	store real - double
+	VALUE	rb_real_part				=		rb_funcall(	rb_complex_number,
+																						rb_intern( "real" ),
+																						0 );
+	double*	c_real_part				=		calloc( 1, sizeof( double ) );
+	*c_real_part							=		NUM2DBL( rb_real_part );
+	c_dbt->wrapped_bdb_dbt->data		=		c_real_part;
+	c_dbt->wrapped_bdb_dbt->size		=		sizeof( double );			
+	c_dbt->wrapped_bdb_dbt->flags	|=	DB_DBT_APPMALLOC;
+
+	//	store imaginary - double
+	VALUE	rb_imaginary_part		=		rb_funcall(	rb_complex_number,
+																						rb_intern( "imaginary" ),
+																						0 );
+	double*	c_imaginary_part	=		calloc( 1, sizeof( double ) );
+	*c_imaginary_part					=		NUM2DBL( rb_imaginary_part );
+	c_dbt->wrapped_bdb_dbt->data		=		c_imaginary_part;
+	c_dbt->wrapped_bdb_dbt->size		=		sizeof( double );			
+	c_dbt->wrapped_bdb_dbt->flags	|=	DB_DBT_APPMALLOC;
+
+	if ( key_not_data )	{
+	
+		Rbdb_Key_setType(	(Rbdb_Key*) c_dbt,
+											RbdbType_Complex );
+
+	}
+	else {
+	
+		Rbdb_Data_setType(	(Rbdb_Data*) c_dbt,
+												RbdbType_Complex );
+
+	}
+}
+
+/***********************
+*  DBTForRubyRational  *
+***********************/
+
+void rb_Rbdb_Database_internal_DBTForRubyRational(	VALUE				rb_database __attribute__ ((unused)),
+																										VALUE				rb_rational_number,
+																										Rbdb_DBT*		c_dbt,
+																										BOOL				key_not_data )	{
+
+	//	store numerator - double
+	VALUE	rb_numerator				=		rb_funcall(	rb_rational_number,
+																						rb_intern( "numerator" ),
+																						0 );
+	double*	c_numerator				=		calloc( 1, sizeof( double ) );
+	*c_numerator							=		NUM2DBL( rb_numerator );
+	c_dbt->wrapped_bdb_dbt->data		=		c_numerator;
+	c_dbt->wrapped_bdb_dbt->size		=		sizeof( double );			
+	c_dbt->wrapped_bdb_dbt->flags	|=	DB_DBT_APPMALLOC;
+
+	//	store denomenator - double
+	VALUE	rb_denomenator			=		rb_funcall(	rb_rational_number,
+																						rb_intern( "denomenator" ),
+																						0 );
+	double*	c_denomenator			=		calloc( 1, sizeof( double ) );
+	*c_denomenator						=		NUM2DBL( rb_denomenator );
+	c_dbt->wrapped_bdb_dbt->data		=		c_denomenator;
+	c_dbt->wrapped_bdb_dbt->size		=		sizeof( double );			
+	c_dbt->wrapped_bdb_dbt->flags	|=	DB_DBT_APPMALLOC;
+
+	if ( key_not_data )	{
+	
+		Rbdb_Key_setType(	(Rbdb_Key*) c_dbt,
+											RbdbType_Rational );
+
+	}
+	else {
+	
+		Rbdb_Data_setType(	(Rbdb_Data*) c_dbt,
+												RbdbType_Rational );
+
+	}
+}
+
+/**********************
+*  DBTForRubyInteger  *
+**********************/
+
+void rb_Rbdb_Database_internal_DBTForRubyInteger(	VALUE				rb_database __attribute__ ((unused)),
+																									VALUE				rb_integer,
+																									Rbdb_DBT*		c_dbt,
+																									BOOL				key_not_data )	{
+
+	long*	c_long							=		calloc( 1, sizeof( long ) );
+	*c_long										=		NUM2LONG( rb_integer );
+	c_dbt->wrapped_bdb_dbt->data		=		c_long;
+	c_dbt->wrapped_bdb_dbt->size		=		sizeof( long );			
+	c_dbt->wrapped_bdb_dbt->flags	|=	DB_DBT_APPMALLOC;
+
+	if ( key_not_data )	{
+	
+		Rbdb_Key_setType(	(Rbdb_Key*) c_dbt,
+											RbdbType_Integer );
+
+	}
+	else {
+	
+		Rbdb_Data_setType(	(Rbdb_Data*) c_dbt,
+												RbdbType_Integer );
+
+	}
+}
+
+/********************
+*  DBTForRubyFloat  *
+********************/
+
+void rb_Rbdb_Database_internal_DBTForRubyFloat(	VALUE				rb_database __attribute__ ((unused)),
+																								VALUE				rb_float,
+																								Rbdb_DBT*		c_dbt,
+																								BOOL				key_not_data )	{
+
+	double*	c_double					=		calloc( 1, sizeof( double ) );
+	*c_double									=		NUM2DBL( rb_float );
+	c_dbt->wrapped_bdb_dbt->data		=		c_double;
+	c_dbt->wrapped_bdb_dbt->size		=		sizeof( double );			
+	c_dbt->wrapped_bdb_dbt->flags	|=	DB_DBT_APPMALLOC;
+
+	if ( key_not_data )	{
+	
+		Rbdb_Key_setType(	(Rbdb_Key*) c_dbt,
+											RbdbType_Float );
+
+	}
+	else {
+	
+		Rbdb_Data_setType(	(Rbdb_Data*) c_dbt,
+												RbdbType_Float );
+
+	}
+}
+
+/************************
+*  DBTForRubyTrueFalse  *
+************************/
+
+void rb_Rbdb_Database_internal_DBTForRubyTrueFalse(	VALUE				rb_database __attribute__ ((unused)),
+																										VALUE				rb_true_false,
+																										Rbdb_DBT*		c_dbt,
+																										BOOL				key_not_data )	{
+
+	BOOL*	bool_key						=		calloc( 1, sizeof( BOOL ) );
+	*bool_key									=		( rb_true_false == Qtrue	?	Qtrue
+																													:	Qfalse );
+	c_dbt->wrapped_bdb_dbt->data		=		bool_key;
+	c_dbt->wrapped_bdb_dbt->size		=		sizeof( BOOL );
+	c_dbt->wrapped_bdb_dbt->flags	|=	DB_DBT_APPMALLOC;
+
+	if ( key_not_data )	{
+	
+		Rbdb_Key_setType(	(Rbdb_Key*) c_dbt,
+											RbdbType_TrueFalse );
+
+	}
+	else {
+	
+		Rbdb_Data_setType(	(Rbdb_Data*) c_dbt,
+												RbdbType_TrueFalse );
+
+	}
+}
+
+
+/*******************************************************************************************************************************************************************************************
+																		Type Retrieval Methods
+*******************************************************************************************************************************************************************************************/
+
+/*****************************
+*  unpackDBTForRubyInstance  *
+*****************************/
+
+VALUE rb_Rbdb_Database_internal_unpackDBTForRubyInstance(	VALUE				rb_database,
+																													Rbdb_DBT*		c_dbt,
+																													BOOL				key_not_data )	{
+
+	Rbdb_DatabaseRecordStorageType		c_database_storage_type	=	( key_not_data	?	Rbdb_Key_type( c_dbt ) 
+																																							:	Rbdb_Data_type( c_dbt ) );
+
+	VALUE	rb_return	=	Qnil;
+
+	switch ( c_database_storage_type )	{
+
+		case RbdbType_File:
+		case RbdbType_FilePath:
+			rb_return	=	rb_Rbdb_Database_internal_RubyObjectForRbdbFile(	rb_database,
+																																		c_dbt,
+																																		key_not_data );
+			break;
+
+		case RbdbType_Symbol:
+			rb_return	=	rb_Rbdb_Database_internal_RubyObjectForRbdbSymbol(	rb_database,
+																																			c_dbt,
+																																			key_not_data );
+			break;
+
+		case RbdbType_Regexp:
+			rb_return	=	rb_Rbdb_Database_internal_RubyObjectForRbdbRegexp(	rb_database,
+																																			c_dbt,
+																																			key_not_data );
+			break;
+
+		case RbdbType_ClassName:
+			rb_return	=	rb_Rbdb_Database_internal_RubyObjectForRbdbClassName(	rb_database,
+																																				c_dbt,
+																																				key_not_data );
+			break;
+
+		case RbdbType_String:
+			rb_return	=	rb_Rbdb_Database_internal_RubyObjectForRbdbString(	rb_database,
+																																			c_dbt,
+																																			key_not_data );
+			break;
+
+		case RbdbType_Complex:
+			rb_return	=	rb_Rbdb_Database_internal_RubyObjectForRbdbComplex(	rb_database,
+																																			c_dbt,
+																																			key_not_data );
+			break;
+
+		case RbdbType_Rational:
+			rb_return	=	rb_Rbdb_Database_internal_RubyObjectForRbdbRational(	rb_database,
+																																				c_dbt,
+																																				key_not_data );
+			break;
+			
+		case RbdbType_Integer:
+			rb_return	=	rb_Rbdb_Database_internal_RubyObjectForRbdbInteger(	rb_database,
+																																			c_dbt,
+																																			key_not_data );
+			break;
+			
+		case RbdbType_Float:
+			rb_return	=	rb_Rbdb_Database_internal_RubyObjectForRbdbFloat(	rb_database,
+																																		c_dbt,
+																																		key_not_data );
+			break;
+			
+		case RbdbType_TrueFalse:
+			rb_return	=	rb_Rbdb_Database_internal_RubyObjectForRbdbTrueFalse(	rb_database,
+																																				c_dbt,
+																																				key_not_data );
+			break;
+			
+		default:			
+			//	unexpected data
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
+			break;
+	}
+
+	return rb_return;
+}
+			
+/**************************
+*  RubyObjectForRbdbFile  *
+**************************/
+
+VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbFile(	VALUE				rb_database,
+																												Rbdb_DBT*		c_dbt,
+																												BOOL				key_not_data )	{
+
+	VALUE	rb_file	=	Qnil;
+
+	VALUE	database_settings_controller										=	rb_Rbdb_Database_settingsController( rb_database );
+	VALUE	database_record_settings_controller							=	rb_Rbdb_DatabaseSettingsController_recordSettingsController( database_settings_controller );
+	VALUE	database_record_read_write_settings_controller	=	rb_Rbdb_DatabaseRecordSettingsController_readWriteSettingsController( database_record_settings_controller );
+
+	//	if we store the whole file
+	if ( rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeFileNotPath( database_record_read_write_settings_controller ) == Qtrue )	{
+
+		//	create ruby string from file data
+		rb_file	=	rb_Rbdb_Database_internal_RubyObjectForRbdbString(	rb_database,
+																																	c_dbt,
+																																	key_not_data );
+
+	}
+	//	if we store file path
+	else {
+		
+		//	get file path
+		VALUE	rb_file_path	=	rb_Rbdb_Database_internal_RubyObjectForRbdbString(	rb_database,
+																																							c_dbt,
+																																							key_not_data );
+		
+		//	create file with path
+		rb_file		=	rb_funcall(	rb_cFile,
+														rb_intern( "new" ),
+														1,
+														rb_file_path );
+	}
+	
+	return rb_file;
+}
+
+/****************************
+*  RubyObjectForRbdbSymbol  *
+****************************/
+
+VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbSymbol(	VALUE				rb_database,
+																													Rbdb_DBT*		c_dbt,
+																													BOOL				key_not_data )	{
+
+	VALUE	rb_symbol	=	Qnil;
+	VALUE	rb_symbol_as_string	=	rb_Rbdb_Database_internal_RubyObjectForRbdbString(	rb_database,
+																																									c_dbt,
+																																									key_not_data );
+	
+	if ( rb_symbol_as_string != Qnil )	{
+		rb_symbol	=	ID2SYM( rb_to_id( rb_symbol_as_string ) );
+	}
+	
+	return rb_symbol;
+}
+
+/****************************
+*  RubyObjectForRbdbRegexp  *
+****************************/
+
+VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbRegexp(	VALUE				rb_database,
+																													Rbdb_DBT*		c_dbt,
+																													BOOL				key_not_data )	{
+
+	VALUE	rb_regexp	=	Qnil;
+	VALUE	rb_regexp_as_string	=	rb_Rbdb_Database_internal_RubyObjectForRbdbString(	rb_database,
+																																									c_dbt,
+																																									key_not_data );
+	
+	if ( rb_regexp_as_string != Qnil )	{
+		rb_regexp	=	rb_funcall(	rb_cRegexp,
+														rb_intern( "new" ),
+														1,
+														rb_regexp_as_string );
+	}
+	
+	return rb_regexp;
+}
+
+/*******************************
+*  RubyObjectForRbdbClassName  *
+*******************************/
+
+VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbClassName(	VALUE				rb_database,
+																														Rbdb_DBT*		c_dbt,
+																														BOOL				key_not_data )	{
+
+	VALUE	rb_class	=	Qnil;
+	VALUE	rb_class_name	=	rb_Rbdb_Database_internal_RubyObjectForRbdbString(	rb_database,
+																																						c_dbt,
+																																						key_not_data );
+	
+	if ( rb_class_name != Qnil )	{
+		rb_class	=	rb_const_get(	rb_cObject,
+															rb_to_id( rb_class_name ) );
+	}
+	
+	return rb_class;
+}
+
+/****************************
+*  RubyObjectForRbdbString  *
+****************************/
+
+VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbString(	VALUE				rb_database __attribute__ ((unused)),
+																													Rbdb_DBT*		c_dbt,
+																													BOOL				key_not_data )	{
+
+	VALUE			rb_string	=	Qnil;
+
+	RbdbStorage_String*	c_string	=	(RbdbStorage_String*) Rbdb_DBT_data( c_dbt );
+
+	uint32_t	c_size	=	( key_not_data	?	Rbdb_Key_size( c_dbt )
+																			:	Rbdb_Data_size( c_dbt ) );
+
+	rb_string	=	rb_str_new(	c_string->string,
+													c_size );
+
+	return rb_string;
+}
+
+/*****************************
+*  RubyObjectForRbdbComplex  *
+*****************************/
+
+VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbComplex(	VALUE				rb_database __attribute__ ((unused)),
+																													Rbdb_DBT*		c_dbt,
+																													BOOL				key_not_data __attribute__ ((unused)) )	{
+
+	RbdbStorage_Complex*	c_complex_number	=	(RbdbStorage_Complex*) Rbdb_DBT_data( c_dbt );
+
+	VALUE	rb_complex_number	=	rb_funcall(	rb_cComplex,
+																				rb_intern( "new" ),
+																				2,
+																				DBL2NUM( c_complex_number->real ),
+																				DBL2NUM( c_complex_number->imaginary ) );
+
+	return rb_complex_number;
+}
+
+/******************************
+*  RubyObjectForRbdbRational  *
+******************************/
+
+VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbRational(	VALUE				rb_database __attribute__ ((unused)),
+																														Rbdb_DBT*		c_dbt,
+																														BOOL				key_not_data __attribute__ ((unused)) )	{
+
+	RbdbStorage_Rational*	c_rational_number	=	(RbdbStorage_Rational*) Rbdb_DBT_data( c_dbt );
+
+	VALUE	rb_rational_number	=	rb_funcall(	rb_cRational,
+																					rb_intern( "new" ),
+																					2,
+																					DBL2NUM( c_rational_number->numerator ),
+																					DBL2NUM( c_rational_number->denomenator ) );
+
+	return rb_rational_number;
+}
+
+/*****************************
+*  RubyObjectForRbdbInteger  *
+*****************************/
+
+VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbInteger(	VALUE				rb_database __attribute__ ((unused)),
+																													Rbdb_DBT*		c_dbt,
+																													BOOL				key_not_data __attribute__ ((unused)) )	{
+
+	RbdbStorage_Integer*	c_integer	=	(RbdbStorage_Integer*) Rbdb_DBT_data( c_dbt );
+
+	VALUE	rb_integer	=	LONG2NUM( c_integer->integer_value );
+
+	return rb_integer;
+}
+
+/***************************
+*  RubyObjectForRbdbFloat  *
+***************************/
+
+VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbFloat(	VALUE				rb_database __attribute__ ((unused)),
+																												Rbdb_DBT*		c_dbt,
+																												BOOL				key_not_data __attribute__ ((unused)) )	{
+
+	RbdbStorage_Float*	c_float	=	(RbdbStorage_Float*) Rbdb_DBT_data( c_dbt );
+
+	VALUE	rb_float	=	LONG2NUM( c_float->float_value );
+
+	return rb_float;
+}
+
+/*******************************
+*  RubyObjectForRbdbTrueFalse  *
+*******************************/
+
+VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbTrueFalse(	VALUE				rb_database __attribute__ ((unused)),
+																														Rbdb_DBT*		c_dbt,
+																														BOOL				key_not_data __attribute__ ((unused)) )	{
+
+	RbdbStorage_TrueFalse*	c_true_false	=	(RbdbStorage_TrueFalse*) Rbdb_DBT_data( c_dbt );
+
+	VALUE	rb_true_false	=	( c_true_false->truefalse	?	Qtrue 
+																									:	Qfalse );
+
+	return rb_true_false;
+}
+
+/*******************************************************************************************************************************************************************************************
+																		Type Methods
+*******************************************************************************************************************************************************************************************/
+
+/*******************************
+*  storageTypeForRubyInstance  *
+*******************************/
+
+Rbdb_DatabaseRecordStorageType rb_Rbdb_Database_internal_storageTypeForRubyInstance(	VALUE		rb_object )	{
+	
+	enum ruby_value_type		c_ruby_type	=	TYPE( rb_object );
+	
+	Rbdb_DatabaseRecordStorageType	c_type	=	RbdbType_Raw;
+	
+	switch ( c_ruby_type )	{
+
+		case T_FILE:
+			c_type	=	RbdbType_File;
+			break;
+
+		case T_SYMBOL:
+			c_type	=	RbdbType_Symbol;
+			break;
+
+		case T_REGEXP:
+			c_type	=	RbdbType_Regexp;
+			break;
+
+		case T_CLASS:
+			c_type	=	RbdbType_ClassName;
+			break;
+
+		case T_STRING:
+			c_type	=	RbdbType_String;
+			break;
+
+		case T_COMPLEX:
+			c_type	=	RbdbType_Complex;
+			break;
+
+		case T_RATIONAL:
+			c_type	=	RbdbType_Rational;
+			break;
+			
+		case T_BIGNUM:
+		case T_FIXNUM:
+			c_type	=	RbdbType_Integer;
+			break;
+			
+		case T_FLOAT:
+			c_type	=	RbdbType_Float;
+			break;
+			
+		case T_TRUE:
+		case T_FALSE:
+			c_type	=	RbdbType_TrueFalse;
+			break;
+			
+		case T_ARRAY:
+		case T_HASH:
+		case T_STRUCT:
+		case T_OBJECT:
+		case T_MODULE:
+		case T_DATA:
+		default:			
+			//	serialization is turned off, so we don't know how to handle these types			
+			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
+			break;
+	}
+	
+	return c_type;
+}
+
+/****************************
+*  storageTypeForRubyClass  *
+****************************/
+
+Rbdb_DatabaseRecordStorageType rb_Rbdb_Database_internal_storageTypeForRubyClass( VALUE rb_class )	{
+
+	Rbdb_DatabaseRecordStorageType	c_type	=	RbdbType_Raw;
+	
+	if (			rb_class == rb_cFile )	{
+		c_type	=	RbdbType_File;	
+	}
+	else if ( rb_class == rb_cSymbol )	{
+		c_type	=	RbdbType_Symbol;
+	}
+	else if ( rb_class == rb_cRegexp )	{
+		c_type	=	RbdbType_Regexp;
+	}
+	else if ( rb_class == rb_cClass )	{
+		c_type	=	RbdbType_ClassName;
+	}
+	else if ( rb_class == rb_cString )	{
+		c_type	=	RbdbType_String;
+	}
+	else if ( rb_class == rb_cInteger )	{
+		c_type	=	RbdbType_Integer;
+	}
+	else if ( rb_class == rb_cFloat )	{
+		c_type	=	RbdbType_Float;
+	}
+	else if ( rb_class == rb_cComplex )	{
+		c_type	=	RbdbType_Complex;
+	}
+	else if ( rb_class == rb_cRational )	{
+		c_type	=	RbdbType_Rational;
+	}
+	else if (	rb_class == rb_cTrueClass
+				||	rb_class == rb_cFalseClass )	{
+		c_type	=	RbdbType_TrueFalse;
+	}
+	else {
+		//	we don't know how to handle these types
+		rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );		
+	}
+
+	return c_type;
 }
