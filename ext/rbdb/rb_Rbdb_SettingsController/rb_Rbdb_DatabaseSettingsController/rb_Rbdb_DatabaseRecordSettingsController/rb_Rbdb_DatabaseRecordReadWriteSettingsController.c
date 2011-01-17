@@ -172,6 +172,10 @@ void Init_rb_Rbdb_DatabaseRecordReadWriteSettingsController()	{
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_record_typing_on",															rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnRecordTypingOn,												0 	);
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_record_typing_off",															rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnRecordTypingOff,											0 	);
 
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"store_file_not_path?",																rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeFileNotPath,															0 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_store_file_not_path_on",												rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreFileNotPathOn,												0 	);
+	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_store_file_not_path_off",												rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreFileNotPathOff,											0 	);
+
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"creation_stamp?",																		rb_Rbdb_DatabaseRecordReadWriteSettingsController_creationStamp,														0 	);
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_creation_stamp_on",															rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnCreationStampOn,											0 	);
 	rb_define_method(						rb_Rbdb_DatabaseRecordReadWriteSettingsController, 	"turn_creation_stamp_off",														rb_Rbdb_DatabaseRecordReadWriteSettingsController_turnCreationStampOff,											0 	);

@@ -31,6 +31,7 @@
 #include <rbdb/Rbdb_Database.h>
 #include <rbdb/Rbdb_DatabaseCursor.h>
 #include <rbdb/Rbdb_Database_internal.h>
+#include <rbdb/Rbdb_Data_internal.h>
 #include <rbdb/Rbdb_DatabaseController.h>
 #include <rbdb/Rbdb_DatabaseCursorController.h>
 #include <rbdb/Rbdb_DatabaseJoinController.h>
@@ -1930,8 +1931,8 @@ VALUE rb_Rbdb_Database_retrieve(	int			argc,
 		Rbdb_Database*	c_database	=	NULL;
 		Rbdb_Record*		c_record		=	NULL;
 
-		VALUE	rb_database	=	rb_Rbdb_Database_databaseWithIndex( rb_database,
-																														rb_index );
+		rb_database	=	rb_Rbdb_Database_databaseWithIndex( rb_database,
+																											rb_index );
 		C_RBDB_DATABASE( rb_database, c_database );
 
 		rb_return		=	rb_ary_new();
@@ -1940,9 +1941,8 @@ VALUE rb_Rbdb_Database_retrieve(	int			argc,
 
 		do {
 			
-			c_record	=	rb_Rbdb_Database_internal_recordForRubyKeyData(	rb_database,
-																																	rb_key,
-																																	rb_data );
+			c_record	=	rb_Rbdb_Database_internal_recordForRubyKey(	rb_database,
+																															rb_key );
 
 			c_record	=	Rbdb_Database_retrieveRecord(	c_database,
 																								c_record );
@@ -3081,6 +3081,11 @@ void rb_Rbdb_Database_internal_packDBTForRubyInstance(	VALUE				rb_database,
 
 	enum ruby_value_type		c_type	=	TYPE( rb_object );
 
+	//	if we have data, create a footer
+	if ( ! key_not_data )	{
+		Rbdb_Data_internal_createFooter( (Rbdb_Data*) c_dbt );
+	}
+
 	switch ( c_type )	{
 
 		case T_FILE:
@@ -3162,7 +3167,6 @@ void rb_Rbdb_Database_internal_packDBTForRubyInstance(	VALUE				rb_database,
 		case T_MODULE:
 		case T_DATA:
 		default:			
-			//	serialization is turned off, so we don't know how to handle these types			
 			rb_raise( rb_eArgError, RBDB_RUBY_ERROR_INVALID_DATABASE_DATA );
 			break;
 	}
@@ -3195,12 +3199,17 @@ void rb_Rbdb_Database_internal_DBTForRubyFile(	VALUE				rb_database,
 		VALUE	rb_file_lines	=	rb_funcall(	rb_file,
 																			rb_intern( "readlines" ),
 																			0 );
+
+		VALUE	rb_file_contents	=	rb_funcall(	rb_file_lines,
+																					rb_intern( "join" ),
+																					1,
+																					rb_str_new( "\n", 1 ) );
 		
 		//	set data to beginning of array
 		if ( key_not_data )	{
 			
 			Rbdb_Key_setRawData(	(Rbdb_Key*) c_dbt,
-														RARRAY_PTR( rb_file_lines ),
+														RARRAY_PTR( rb_file_contents ),
 														c_file_size );		
 		
 			Rbdb_Key_setType(	(Rbdb_Key*) c_dbt,
@@ -3209,7 +3218,7 @@ void rb_Rbdb_Database_internal_DBTForRubyFile(	VALUE				rb_database,
 		else {
 		
 			Rbdb_Data_setRawData(	(Rbdb_Data*) c_dbt,
-														RARRAY_PTR( rb_file_lines ),
+														RARRAY_PTR( rb_file_contents ),
 														c_file_size );
 		
 			Rbdb_Data_setType(	(Rbdb_Data*) c_dbt,
@@ -3289,7 +3298,9 @@ void rb_Rbdb_Database_internal_DBTForRubyRegexp(	VALUE				rb_database,
 																									Rbdb_DBT*		c_dbt,
 																									BOOL				key_not_data )	{
 
-	rb_regexp				=	rb_obj_as_string(	rb_regexp );
+	rb_regexp				=	rb_funcall(	rb_regexp,
+																rb_intern( "source" ),
+																0 );
 
 	rb_Rbdb_Database_internal_DBTForRubyString(	rb_database,
 																							rb_regexp,
@@ -3351,8 +3362,16 @@ void rb_Rbdb_Database_internal_DBTForRubyString(	VALUE				rb_database __attribut
 																									Rbdb_DBT*		c_dbt,
 																									BOOL				key_not_data )	{
 
-	c_dbt->wrapped_bdb_dbt->data		=		strdup( StringValuePtr(	rb_string ) );
-	c_dbt->wrapped_bdb_dbt->size		=		RSTRING_LEN( rb_string ) * sizeof( char );
+	if ( key_not_data )	{
+		Rbdb_Key_setRawData(	(Rbdb_Data*) c_dbt,
+													strdup( StringValuePtr(	rb_string ) ),
+													RSTRING_LEN( rb_string ) * sizeof( char ) );	
+	}
+	else {
+		Rbdb_Data_setRawData(	(Rbdb_Data*) c_dbt,
+													strdup( StringValuePtr(	rb_string ) ),
+													RSTRING_LEN( rb_string ) * sizeof( char ) );
+	}
 	c_dbt->wrapped_bdb_dbt->flags		|=	DB_DBT_APPMALLOC;
 
 	if ( key_not_data )	{
@@ -3382,20 +3401,27 @@ void rb_Rbdb_Database_internal_DBTForRubyComplex(	VALUE				rb_database __attribu
 	VALUE	rb_real_part				=		rb_funcall(	rb_complex_number,
 																						rb_intern( "real" ),
 																						0 );
-	double*	c_real_part				=		calloc( 1, sizeof( double ) );
-	*c_real_part							=		NUM2DBL( rb_real_part );
-	c_dbt->wrapped_bdb_dbt->data		=		c_real_part;
-	c_dbt->wrapped_bdb_dbt->size		=		sizeof( double );			
-	c_dbt->wrapped_bdb_dbt->flags	|=	DB_DBT_APPMALLOC;
-
-	//	store imaginary - double
 	VALUE	rb_imaginary_part		=		rb_funcall(	rb_complex_number,
 																						rb_intern( "imaginary" ),
 																						0 );
-	double*	c_imaginary_part	=		calloc( 1, sizeof( double ) );
-	*c_imaginary_part					=		NUM2DBL( rb_imaginary_part );
-	c_dbt->wrapped_bdb_dbt->data		=		c_imaginary_part;
-	c_dbt->wrapped_bdb_dbt->size		=		sizeof( double );			
+	
+	RbdbStorage_Complex*	c_complex_number	=	calloc( 1, sizeof( RbdbStorage_Complex ) );
+	c_complex_number->real				=	NUM2DBL( rb_real_part );
+	c_complex_number->imaginary		=	NUM2DBL( rb_imaginary_part );
+
+	if ( key_not_data )	{
+
+		Rbdb_Key_setRawData(	(Rbdb_Key*) c_dbt,
+													c_complex_number,
+													sizeof( RbdbStorage_Complex ) );
+	}
+	else {
+		
+		Rbdb_Data_setRawData(	(Rbdb_Data*) c_dbt,
+													c_complex_number,
+													sizeof( RbdbStorage_Complex ) );
+	}
+	
 	c_dbt->wrapped_bdb_dbt->flags	|=	DB_DBT_APPMALLOC;
 
 	if ( key_not_data )	{
@@ -3425,20 +3451,17 @@ void rb_Rbdb_Database_internal_DBTForRubyRational(	VALUE				rb_database __attrib
 	VALUE	rb_numerator				=		rb_funcall(	rb_rational_number,
 																						rb_intern( "numerator" ),
 																						0 );
-	double*	c_numerator				=		calloc( 1, sizeof( double ) );
-	*c_numerator							=		NUM2DBL( rb_numerator );
-	c_dbt->wrapped_bdb_dbt->data		=		c_numerator;
-	c_dbt->wrapped_bdb_dbt->size		=		sizeof( double );			
-	c_dbt->wrapped_bdb_dbt->flags	|=	DB_DBT_APPMALLOC;
-
-	//	store denomenator - double
-	VALUE	rb_denomenator			=		rb_funcall(	rb_rational_number,
-																						rb_intern( "denomenator" ),
+	VALUE	rb_denominator			=		rb_funcall(	rb_rational_number,
+																						rb_intern( "denominator" ),
 																						0 );
-	double*	c_denomenator			=		calloc( 1, sizeof( double ) );
-	*c_denomenator						=		NUM2DBL( rb_denomenator );
-	c_dbt->wrapped_bdb_dbt->data		=		c_denomenator;
-	c_dbt->wrapped_bdb_dbt->size		=		sizeof( double );			
+
+	RbdbStorage_Rational*	c_rational_number	=	calloc( 1, sizeof( RbdbStorage_Rational ) );
+	c_rational_number->numerator			=	NUM2DBL( rb_numerator );
+	c_rational_number->denominator		=	NUM2DBL( rb_denominator );
+
+	Rbdb_Data_setRawData(	(Rbdb_Data*) c_dbt,
+												c_rational_number,
+												sizeof( RbdbStorage_Rational ) );
 	c_dbt->wrapped_bdb_dbt->flags	|=	DB_DBT_APPMALLOC;
 
 	if ( key_not_data )	{
@@ -3466,8 +3489,20 @@ void rb_Rbdb_Database_internal_DBTForRubyInteger(	VALUE				rb_database __attribu
 
 	long*	c_long							=		calloc( 1, sizeof( long ) );
 	*c_long										=		NUM2LONG( rb_integer );
-	c_dbt->wrapped_bdb_dbt->data		=		c_long;
-	c_dbt->wrapped_bdb_dbt->size		=		sizeof( long );			
+
+	if ( key_not_data )	{
+	
+		Rbdb_Key_setRawData(	(Rbdb_Data*) c_dbt,
+													c_long,
+													sizeof( long ) );
+	}
+	else {
+		
+		Rbdb_Data_setRawData(	(Rbdb_Data*) c_dbt,
+													c_long,
+													sizeof( long ) );
+	}
+
 	c_dbt->wrapped_bdb_dbt->flags	|=	DB_DBT_APPMALLOC;
 
 	if ( key_not_data )	{
@@ -3495,8 +3530,20 @@ void rb_Rbdb_Database_internal_DBTForRubyFloat(	VALUE				rb_database __attribute
 
 	double*	c_double					=		calloc( 1, sizeof( double ) );
 	*c_double									=		NUM2DBL( rb_float );
-	c_dbt->wrapped_bdb_dbt->data		=		c_double;
-	c_dbt->wrapped_bdb_dbt->size		=		sizeof( double );			
+
+	if ( key_not_data )	{
+	
+		Rbdb_Key_setRawData(	(Rbdb_Key*) c_dbt,
+													c_double,
+													sizeof( double ) );
+	}
+	else {
+		
+		Rbdb_Data_setRawData(	(Rbdb_Data*) c_dbt,
+													c_double,
+													sizeof( double ) );
+	}
+
 	c_dbt->wrapped_bdb_dbt->flags	|=	DB_DBT_APPMALLOC;
 
 	if ( key_not_data )	{
@@ -3525,8 +3572,20 @@ void rb_Rbdb_Database_internal_DBTForRubyTrueFalse(	VALUE				rb_database __attri
 	BOOL*	bool_key						=		calloc( 1, sizeof( BOOL ) );
 	*bool_key									=		( rb_true_false == Qtrue	?	Qtrue
 																													:	Qfalse );
-	c_dbt->wrapped_bdb_dbt->data		=		bool_key;
-	c_dbt->wrapped_bdb_dbt->size		=		sizeof( BOOL );
+	
+	if ( key_not_data )	{
+
+		Rbdb_Key_setRawData(	(Rbdb_Key*) c_dbt,
+													bool_key,
+													sizeof( BOOL ) );
+	}
+	else {
+		
+		Rbdb_Data_setRawData(	(Rbdb_Data*) c_dbt,
+													bool_key,
+													sizeof( BOOL ) );
+	}
+
 	c_dbt->wrapped_bdb_dbt->flags	|=	DB_DBT_APPMALLOC;
 
 	if ( key_not_data )	{
@@ -3731,8 +3790,7 @@ VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbClassName(	VALUE				rb_database
 																																						key_not_data );
 	
 	if ( rb_class_name != Qnil )	{
-		rb_class	=	rb_const_get(	rb_cObject,
-															rb_to_id( rb_class_name ) );
+		rb_class	=	rb_path_to_class( rb_class_name );
 	}
 	
 	return rb_class;
@@ -3748,12 +3806,12 @@ VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbString(	VALUE				rb_database __
 
 	VALUE			rb_string	=	Qnil;
 
-	RbdbStorage_String*	c_string	=	(RbdbStorage_String*) Rbdb_DBT_data( c_dbt );
+	char*	c_string	=	(char*) Rbdb_DBT_data( c_dbt );
 
 	uint32_t	c_size	=	( key_not_data	?	Rbdb_Key_size( c_dbt )
 																			:	Rbdb_Data_size( c_dbt ) );
 
-	rb_string	=	rb_str_new(	c_string->string,
+	rb_string	=	rb_str_new(	c_string,
 													c_size );
 
 	return rb_string;
@@ -3769,11 +3827,8 @@ VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbComplex(	VALUE				rb_database _
 
 	RbdbStorage_Complex*	c_complex_number	=	(RbdbStorage_Complex*) Rbdb_DBT_data( c_dbt );
 
-	VALUE	rb_complex_number	=	rb_funcall(	rb_cComplex,
-																				rb_intern( "new" ),
-																				2,
-																				DBL2NUM( c_complex_number->real ),
-																				DBL2NUM( c_complex_number->imaginary ) );
+	VALUE	rb_complex_number	=	rb_Complex(	DBL2NUM( c_complex_number->real ),
+																				DBL2NUM( c_complex_number->imaginary )	);
 
 	return rb_complex_number;
 }
@@ -3788,11 +3843,8 @@ VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbRational(	VALUE				rb_database 
 
 	RbdbStorage_Rational*	c_rational_number	=	(RbdbStorage_Rational*) Rbdb_DBT_data( c_dbt );
 
-	VALUE	rb_rational_number	=	rb_funcall(	rb_cRational,
-																					rb_intern( "new" ),
-																					2,
-																					DBL2NUM( c_rational_number->numerator ),
-																					DBL2NUM( c_rational_number->denomenator ) );
+	VALUE	rb_rational_number	=	rb_Rational(	DBL2NUM( c_rational_number->numerator ),
+																						DBL2NUM( c_rational_number->denominator )	);
 
 	return rb_rational_number;
 }
