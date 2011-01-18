@@ -3182,18 +3182,12 @@ void rb_Rbdb_Database_internal_DBTForRubyFile(	VALUE				rb_database,
 																								Rbdb_DBT*		c_dbt,
 																								BOOL				key_not_data )	{
 
-	VALUE	database_settings_controller										=	rb_Rbdb_Database_settingsController( rb_database );
-	VALUE	database_record_settings_controller							=	rb_Rbdb_DatabaseSettingsController_recordSettingsController( database_settings_controller );
-	VALUE	database_record_read_write_settings_controller	=	rb_Rbdb_DatabaseRecordSettingsController_readWriteSettingsController( database_record_settings_controller );
+	VALUE	rb_database_settings_controller										=	rb_Rbdb_Database_settingsController( rb_database );
+	VALUE	rb_database_record_settings_controller						=	rb_Rbdb_DatabaseSettingsController_recordSettingsController( rb_database_settings_controller );
+	VALUE	rb_database_record_read_write_settings_controller	=	rb_Rbdb_DatabaseRecordSettingsController_readWriteSettingsController( rb_database_record_settings_controller );
 
 	//	if we store the whole file
-	if ( rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeFileNotPath( database_record_read_write_settings_controller ) == Qtrue )	{
-
-		//	get file size
-		VALUE	rb_file_size	=	rb_funcall(	rb_file,
-																			rb_intern( "size" ),
-																			0 );
-		uint32_t	c_file_size	=	NUM2LONG( rb_file_size );
+	if ( rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeFileNotPath( rb_database_record_read_write_settings_controller ) == Qtrue )	{
 		
 		//	read lines into array
 		VALUE	rb_file_lines	=	rb_funcall(	rb_file,
@@ -3205,21 +3199,19 @@ void rb_Rbdb_Database_internal_DBTForRubyFile(	VALUE				rb_database,
 																					1,
 																					rb_str_new( "\n", 1 ) );
 		
+		//	store as string
+		rb_Rbdb_Database_internal_DBTForRubyString(	rb_database,
+																								rb_file_contents,
+																								c_dbt,
+																								key_not_data );
+		
 		//	set data to beginning of array
 		if ( key_not_data )	{
 			
-			Rbdb_Key_setRawData(	(Rbdb_Key*) c_dbt,
-														RARRAY_PTR( rb_file_contents ),
-														c_file_size );		
-		
 			Rbdb_Key_setType(	(Rbdb_Key*) c_dbt,
 												RbdbType_File );
 		}
 		else {
-		
-			Rbdb_Data_setRawData(	(Rbdb_Data*) c_dbt,
-														RARRAY_PTR( rb_file_contents ),
-														c_file_size );
 		
 			Rbdb_Data_setType(	(Rbdb_Data*) c_dbt,
 													RbdbType_File );
@@ -3702,12 +3694,12 @@ VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbFile(	VALUE				rb_database,
 
 	VALUE	rb_file	=	Qnil;
 
-	VALUE	database_settings_controller										=	rb_Rbdb_Database_settingsController( rb_database );
-	VALUE	database_record_settings_controller							=	rb_Rbdb_DatabaseSettingsController_recordSettingsController( database_settings_controller );
-	VALUE	database_record_read_write_settings_controller	=	rb_Rbdb_DatabaseRecordSettingsController_readWriteSettingsController( database_record_settings_controller );
+	VALUE	rb_database_settings_controller										=	rb_Rbdb_Database_settingsController( rb_database );
+	VALUE	rb_database_record_settings_controller						=	rb_Rbdb_DatabaseSettingsController_recordSettingsController( rb_database_settings_controller );
+	VALUE	rb_database_record_read_write_settings_controller	=	rb_Rbdb_DatabaseRecordSettingsController_readWriteSettingsController( rb_database_record_settings_controller );
 
 	//	if we store the whole file
-	if ( rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeFileNotPath( database_record_read_write_settings_controller ) == Qtrue )	{
+	if ( rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeFileNotPath( rb_database_record_read_write_settings_controller ) == Qtrue )	{
 
 		//	create ruby string from file data
 		rb_file	=	rb_Rbdb_Database_internal_RubyObjectForRbdbString(	rb_database,

@@ -234,7 +234,8 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_new(	int			argc,
 			&&	rb_parent_environment == Qnil
 			&&	rb_parent_database_controller == Qnil
 			&&	rb_parent_settings_controller == Qnil
-			&&	rb_parent_database_settings_controller == Qnil )	{
+			&&	rb_parent_database_settings_controller == Qnil
+			&&	rb_parent_database_record_settings_controller == Qnil )	{
 		rb_parent_environment	=	rb_Rbdb_currentWorkingEnvironment( rb_mRbdb );
 	}
 

@@ -587,7 +587,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_associationSettingsController( VALUE	rb
 
 		rb_database_association_settings_controller	=	rb_Rbdb_DatabaseAssociationSettingsController_new(	1,
 																																																			& rb_database_settings_controller,
-																																																			rb_Rbdb_DatabaseErrorSettingsController );		
+																																																			rb_Rbdb_DatabaseAssociationSettingsController );		
 
 		rb_iv_set(	rb_database_settings_controller,
 								RBDB_RB_SETTINGS_VARIABLE_DATABASE_ASSOCIATION_SETTINGS_CONTROLLER,
@@ -609,7 +609,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_joinSettingsController( VALUE	rb_databa
 
 		rb_database_join_settings_controller	=	rb_Rbdb_DatabaseJoinSettingsController_new(	1,
 																																												& rb_database_settings_controller,
-																																												rb_Rbdb_DatabaseErrorSettingsController );		
+																																												rb_Rbdb_DatabaseJoinSettingsController );		
 
 		rb_iv_set(	rb_database_settings_controller,
 								RBDB_RB_SETTINGS_VARIABLE_DATABASE_JOIN_SETTINGS_CONTROLLER,
@@ -632,7 +632,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_cacheSettingsController( VALUE	rb_datab
 
 		rb_database_cache_settings_controller	=	rb_Rbdb_DatabaseCacheSettingsController_new(	1,
 																																													& rb_database_settings_controller,
-																																													rb_Rbdb_DatabaseErrorSettingsController );		
+																																													rb_Rbdb_DatabaseCacheSettingsController );		
 
 		rb_iv_set(	rb_database_settings_controller,
 								RBDB_RB_SETTINGS_VARIABLE_DATABASE_CACHE_SETTINGS_CONTROLLER,
@@ -676,7 +676,7 @@ VALUE rb_Rbdb_DatabaseSettingsController_sequenceSettingsController( VALUE	rb_da
 
 		rb_database_sequence_settings_controller	=	rb_Rbdb_DatabaseSequenceSettingsController_new(	1,
 																																																& rb_database_settings_controller,
-																																																rb_Rbdb_DatabaseErrorSettingsController );		
+																																																rb_Rbdb_DatabaseSequenceSettingsController );		
 
 		rb_iv_set(	rb_database_settings_controller,
 								RBDB_RB_SETTINGS_VARIABLE_DATABASE_SEQUENCE_SETTINGS_CONTROLLER,
@@ -718,9 +718,15 @@ VALUE rb_Rbdb_DatabaseSettingsController_recordSettingsController( VALUE	rb_data
 	if ( ( rb_database_record_settings_controller = rb_iv_get(	rb_database_settings_controller,
 																															RBDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_SETTINGS_CONTROLLER ) ) == Qnil )	{
 
+		Rbdb_DatabaseSettingsController*						c_database_settings_controller;
+		C_RBDB_DATABASE_SETTINGS_CONTROLLER( rb_database_settings_controller, c_database_settings_controller );
+
 		rb_database_record_settings_controller	=	rb_Rbdb_DatabaseRecordSettingsController_new(	1,
 																																														& rb_database_settings_controller,
-																																														rb_Rbdb_DatabaseErrorSettingsController );		
+																																														rb_Rbdb_DatabaseRecordSettingsController );		
+
+		Rbdb_DatabaseRecordSettingsController*						c_database_record_settings_controller;
+		C_RBDB_DATABASE_RECORD_SETTINGS_CONTROLLER( rb_database_record_settings_controller, c_database_record_settings_controller );
 
 		rb_iv_set(	rb_database_settings_controller,
 								RBDB_RB_SETTINGS_VARIABLE_DATABASE_RECORD_SETTINGS_CONTROLLER,
