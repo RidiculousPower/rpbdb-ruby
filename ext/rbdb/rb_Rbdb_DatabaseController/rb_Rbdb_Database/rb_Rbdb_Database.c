@@ -1947,9 +1947,13 @@ VALUE rb_Rbdb_Database_retrieve(	int			argc,
 			c_record	=	Rbdb_Database_retrieveRecord(	c_database,
 																								c_record );
 			
-			rb_data	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-																																		c_record->data,
-																																		FALSE );
+			if ( c_record->result )	{
+				rb_data	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+																																			c_record->data,
+																																			FALSE );
+			}
+			
+			Rbdb_Record_free( & c_record );
 			
 			rb_ary_push(	rb_return,
 										rb_data );
