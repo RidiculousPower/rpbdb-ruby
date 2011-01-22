@@ -1198,6 +1198,7 @@ VALUE rb_Rbdb_DatabaseCursor_iterate( VALUE		rb_database_cursor	)	{
 
 		c_index++;
 	}
+	
 	//	If we got here we return nothing
 	return Qnil;
 }

@@ -511,23 +511,27 @@ VALUE rb_Rbdb_DatabaseJoinController_internal_cursorForIndexAtKeyValue(	VALUE	rb
 																																										rb_index_name );
 	
 	//	we call via rb_funcall so that the class determines whether or not to use Rbdb_DatabaseCursor or Rbdb_DatabaseObjectCursor
-	VALUE	rb_cursor	=	rb_funcall(	rb_secondary_database,
-																rb_intern( "cursor" ),
-																0 );
+	VALUE	rb_database_cursor	=	rb_funcall(	rb_secondary_database,
+																					rb_intern( "cursor" ),
+																					0 );
 
 	//	FIX - we probably want to add a method (perhaps a block) that gets called here that can be overridden for settings, etc.
 	
 	//	set cursor to requested first record
 	//	again, we call via rb_funcall so that the class determines whether or not to use Rbdb_DatabaseCursor or Rbdb_DatabaseObjectCursor
-	VALUE	rb_current	=	rb_funcall(	rb_cursor,
+	VALUE	rb_current	=	rb_funcall(	rb_database_cursor,
 																	rb_intern( "retrieve" ),
 																	1,
 																	rb_key_value );
 
-	if ( rb_current == Qnil )   {
-		rb_cursor	=	Qnil;
+	//	if we get a nil result it means we have no such key in the db
+	if ( rb_current == Qnil )   {		
+		Rbdb_DatabaseCursor*	c_database_cursor;
+		C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+		Rbdb_DatabaseCursor_free( & c_database_cursor );
+		rb_database_cursor	=	Qnil;
 	}
 	
-	return rb_cursor;
+	return rb_database_cursor;
 }
 

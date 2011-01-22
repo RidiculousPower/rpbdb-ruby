@@ -102,34 +102,34 @@ void rb_Rbdb_Database_internal_DBTForRubyTrueFalse(	VALUE				rb_database,
 VALUE rb_Rbdb_Database_internal_unpackDBTForRubyInstance(	VALUE				rb_database,
 																													Rbdb_DBT*		c_dbt,
 																													BOOL				key_not_data );
-VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbFile(	VALUE				rb_database,
+VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbFile(	VALUE				rb_database,
 																												Rbdb_DBT*		c_dbt,
 																												BOOL				key_not_data );
-VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbSymbol(	VALUE				rb_database,
+VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbSymbol(	VALUE				rb_database,
 																													Rbdb_DBT*		c_dbt,
 																													BOOL				key_not_data );
-VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbRegexp(	VALUE				rb_database,
+VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbRegexp(	VALUE				rb_database,
 																													Rbdb_DBT*		c_dbt,
 																													BOOL				key_not_data );
-VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbClassName(	VALUE				rb_database,
+VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbClassName(	VALUE				rb_database,
 																														Rbdb_DBT*		c_dbt,
 																														BOOL				key_not_data );
-VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbString(	VALUE				rb_database,
+VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbString(	VALUE				rb_database,
 																													Rbdb_DBT*		c_dbt,
 																													BOOL				key_not_data );
-VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbComplex(	VALUE				rb_database,
+VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbComplex(	VALUE				rb_database,
 																													Rbdb_DBT*		c_dbt,
 																													BOOL				key_not_data );
-VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbRational(	VALUE				rb_database,
+VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbRational(	VALUE				rb_database,
 																														Rbdb_DBT*		c_dbt,
 																														BOOL				key_not_data );
-VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbInteger(	VALUE				rb_database,
+VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbInteger(	VALUE				rb_database,
 																													Rbdb_DBT*		c_dbt,
 																													BOOL				key_not_data );
-VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbFloat(	VALUE				rb_database,
+VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbFloat(	VALUE				rb_database,
 																												Rbdb_DBT*		c_dbt,
 																												BOOL				key_not_data );
-VALUE rb_Rbdb_Database_internal_RubyObjectForRbdbTrueFalse(	VALUE				rb_database,
+VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbTrueFalse(	VALUE				rb_database,
 																														Rbdb_DBT*		c_dbt,
 																														BOOL				key_not_data );
 
