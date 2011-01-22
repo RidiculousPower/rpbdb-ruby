@@ -153,7 +153,7 @@ VALUE rb_Rbdb_SecondaryKeys_parentRecord(	VALUE	rb_secondary_keys )	{
 *****************/
 
 VALUE rb_Rbdb_SecondaryKeys_addSecondaryKey(	VALUE	rb_secondary_keys,
- 												VALUE	rb_key )	{
+																							VALUE	rb_key )	{
 
 	Rbdb_SecondaryKeys*	c_secondary_keys;
 	C_RBDB_SECONDARY_KEYS( rb_secondary_keys, c_secondary_keys );
@@ -161,8 +161,8 @@ VALUE rb_Rbdb_SecondaryKeys_addSecondaryKey(	VALUE	rb_secondary_keys,
 	Rbdb_Key*				c_key;
 	C_RBDB_KEY( rb_key, c_key );
 
-	Rbdb_SecondaryKeys_addSecondaryKey(	c_secondary_keys,
-											c_key );
+	Rbdb_SecondaryKeys_addSecondaryKey(	(Rbdb_SecondaryKeysUnused*) c_secondary_keys,
+																			c_key );
 
 	return rb_secondary_keys;
 }
@@ -177,9 +177,9 @@ VALUE rb_Rbdb_SecondaryKeys_secondaryKeyForIndex(	VALUE	rb_secondary_keys,
 	Rbdb_SecondaryKeys*	c_secondary_keys;
 	C_RBDB_SECONDARY_KEYS( rb_secondary_keys, c_secondary_keys );
 
-	Rbdb_SecondaryKeys_secondaryKeyForIndex(	c_secondary_keys,
-												FIX2INT( rb_index ) );
+	Rbdb_SecondaryKeys_secondaryKeyForIndex(	(Rbdb_SecondaryKeysUnused*) c_secondary_keys,
+																						FIX2INT( rb_index ) );
 
-	return RUBY_RBDB_KEY( Rbdb_SecondaryKeys_secondaryKeyForIndex(	c_secondary_keys,
-																		FIX2INT( rb_index ) ) );
+	return RUBY_RBDB_KEY( Rbdb_SecondaryKeys_secondaryKeyForIndex(	(Rbdb_SecondaryKeysUnused*) c_secondary_keys,
+																																	FIX2INT( rb_index ) ) );
 }

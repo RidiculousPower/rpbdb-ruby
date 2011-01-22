@@ -1874,7 +1874,9 @@ VALUE rb_Rbdb_Database_retrieve(	int			argc,
 																																			& rb_hash_descriptor_index_key_or_keys_array,
 																																			rb_database_join_controller );
 				
-				rb_return	=	rb_Rbdb_DatabaseJoinCursor_first( rb_join_cursor );
+				if ( rb_join_cursor != Qnil )	{
+					rb_return	=	rb_Rbdb_DatabaseJoinCursor_first( rb_join_cursor );
+				}
 					
 			}
 
@@ -2038,7 +2040,9 @@ VALUE rb_Rbdb_Database_retrievePrimaryKey(	int			argc,
 																																			& rb_hash_descriptor_index_key_or_keys_array,
 																																			rb_database_join_controller );
 				
-				rb_return	=	rb_Rbdb_DatabaseJoinCursor_firstKey( rb_join_cursor );
+				if ( rb_join_cursor != Qnil )	{
+					rb_return	=	rb_Rbdb_DatabaseJoinCursor_firstKey( rb_join_cursor );
+				}
 			}
 
 			rb_ary_push(	rb_return_array,
@@ -3677,12 +3681,6 @@ VALUE rb_Rbdb_Database_internal_unpackDBTForRubyInstance(	VALUE				rb_database,
 	//	if no typing, type remains RbdbType_Raw
 
 	//	unpack dbt for RbdbType (Raw stores as string)
-
-	//	if we have data, create a footer
-	//	if we have a key there is no footer, only a type, so no need to create it separately from setting the type
-	if ( ! key_not_data )	{
-		Rbdb_Data_internal_createFooter( (Rbdb_Data*) c_dbt );
-	}
 
 	VALUE	rb_return	=	Qnil;
 
