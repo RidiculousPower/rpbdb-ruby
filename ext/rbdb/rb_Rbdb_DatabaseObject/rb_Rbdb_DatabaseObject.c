@@ -2641,18 +2641,18 @@ VALUE rb_Rbdb_DatabaseObject_internal_identifiesWithCurrentlyOpenEnvironment(	VA
 	
 	//	push the class
 	rb_ary_push(	rb_passed_args,
-					rb_klass_self );
+								rb_klass_self );
 	
 	int	which_identifier;
 	for ( which_identifier = 0 ; which_identifier < RARRAY_LEN( rb_identifiers ) ; which_identifier++ )	{
 		//	push identifiers onto passed args
 		rb_ary_push(	rb_passed_args,
-						RARRAY_PTR( rb_identifiers )[ which_identifier ] );
+									RARRAY_PTR( rb_identifiers )[ which_identifier ] );
 	}
 	
 	//	iterate Rbdb.environments as environment => identify_for_rbdb_as
 	rb_hash_foreach(	rb_environments_hash, 
-										& rb_Rbdb_DatabaseObject_internal_iterateEnvironments,
+										rb_Rbdb_DatabaseObject_internal_iterateEnvironments,
 										rb_passed_args );
 			
 	//	check whether we succeeded - rb_passed_args should == Qnil if we're done

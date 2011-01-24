@@ -26,6 +26,8 @@
 
 #include "rb_Rbdb_DatabaseRecordReadWriteSettingsController.h"
 
+#include "rb_Rbdb_Types.h"
+
 #include <rbdb/Rbdb_Environment.h>
 
 #include <rbdb/Rbdb_Database.h>
@@ -99,6 +101,13 @@ extern VALUE rb_Rbdb_DatabaseRecnoType_const;
 																		Public Methods
 ********************************************************************************************************************************************************************************************
 *******************************************************************************************************************************************************************************************/
+
+static int rb_Rbdb_Database_internal_iterateRubyKeyRecordLocationHashForRecord(	VALUE												rb_key,
+																																								VALUE												rb_record_location_hash,
+																																								rb_Rbdb_RbdbDataFromHash*		c_passed_info );
+static int rb_Rbdb_Database_internal_iterateRubyRecordLocationHashForRbdbData(	VALUE													rb_index,
+																																								VALUE													rb_key_in_index,
+																																								rb_Rbdb_RbdbDataFromHash*			c_passed_info );
 
 void Init_rb_Rbdb_Database()	{
 
@@ -577,11 +586,23 @@ VALUE rb_Rbdb_Database_open( VALUE	rb_database )	{
 	Rbdb_Database*		c_database;
 	C_RBDB_DATABASE( rb_database, c_database );
 
-	Rbdb_Database_open( c_database );
+	BOOL	c_should_close_database	=	TRUE;
+
+	if ( Rbdb_Database_isOpen( c_database ) )	{
+		c_should_close_database	=	FALSE;
+	}
+	else {
+		Rbdb_Database_open( c_database );
+	}
 
 	if ( rb_block_given_p() )	{
+
 		VALUE	rb_return	=	rb_yield( rb_database );
-		rb_Rbdb_Database_close( rb_database );
+
+		if ( c_should_close_database )	{
+			rb_Rbdb_Database_close( rb_database );
+		}
+
 		return rb_return;
 	}
 
@@ -1417,21 +1438,33 @@ VALUE rb_Rbdb_Database_write(	int			argc,
 															VALUE*	args, 
 															VALUE		rb_primary_database )	{
 
-	VALUE	rb_key																			=	Qnil;
-	VALUE	rb_data																			=	Qnil;
-	VALUE	rb_hash_descriptor_key_data_or_datas_array	=	Qnil;
-	VALUE	rb_args_array																= Qnil;
+	VALUE	rb_key																				=	Qnil;
+	VALUE	rb_data																				=	Qnil;
+	VALUE	rb_hash_descriptor_key_data_or_datas_array		=	Qnil;
+	VALUE	rb_args_array																	= Qnil;
+	VALUE	rb_hash_descriptor_key_record_location						=	Qnil;
 
 	R_DefineAndParse( argc, args, rb_primary_database,
 
 		//----------------------------------------------//
 
 		R_DescribeParameterSet(	
+			R_ParameterSet(		R_Parameter(	R_MatchHash(	rb_hash_descriptor_key_record_location,
+																										R_HashKey(	R_Any() ),
+																										R_HashData(	R_Hash(	R_HashKey( R_Any() ),
+																																				R_HashData( R_Any() ) ) ) ) ) ),
+			R_ListOrder( 5 ),
+			"{ <key> => { :index => <key> } }"
+		),
+
+		//----------------------------------------------//
+
+		R_DescribeParameterSet(	
 			R_ParameterSet(		R_Parameter(	R_MatchHash(	rb_hash_descriptor_key_data_or_datas_array,
-																										R_HashKey(	R_Type(	R_ANY ) ),
-																										R_HashData(	R_Type( R_ANY ) ) ) ) ),
+																										R_HashKey(	R_Any() ),
+																										R_HashData(	R_Any() ) ) ) ),
 			R_ListOrder( 2 ),
-			"{ <key>   =>  <data>, ... }, ..."
+			"{ <key> =>  <data>, ... }, ..."
 		),
 
 		//----------------------------------------------//
@@ -1472,6 +1505,36 @@ VALUE rb_Rbdb_Database_write(	int			argc,
 															rb_Rbdb_Database_write );
 
 	}
+	//	sometimes we use a static id to point to a dynamic id so that we can reference the static id
+	//	and then get the current dynamic id
+	//	static_id_key => {	:bucket => dynamic_id_key }
+	//	static_id_key => {	:bucket1 => bucket1_dynamic_id_key,
+	//											:bucket2 => bucket2_dynamic_id_key }
+	else if ( rb_hash_descriptor_key_record_location != Qnil )	{
+
+		Rbdb_Database*	c_database	=	NULL;
+		Rbdb_Record*		c_record		=	NULL;
+		C_RBDB_DATABASE( rb_primary_database, c_database );
+
+		rb_Rbdb_RbdbDataFromHash	c_passed_info;
+
+		c_passed_info.c_record		=	& c_record;
+		c_passed_info.rb_database	=	rb_primary_database;
+
+		do	{
+
+			//	for each key => value in hash
+			rb_hash_foreach(	rb_hash_descriptor_key_record_location,
+												rb_Rbdb_Database_internal_iterateRubyKeyRecordLocationHashForRecord,
+												(VALUE) & c_passed_info );
+						
+			//	and write it to the db
+			Rbdb_Database_write(	c_database,
+														c_record	);			
+			
+		}	while ( R_Arg( rb_hash_descriptor_key_record_location ) );
+		
+	}
 	else if (		rb_key != Qnil
 					&&	rb_args_array != Qnil )	{
 		
@@ -1490,10 +1553,9 @@ VALUE rb_Rbdb_Database_write(	int			argc,
 			
 		Rbdb_Database*	c_database	=	NULL;
 		Rbdb_Record*		c_record		=	NULL;
+		C_RBDB_DATABASE( rb_primary_database, c_database );
 
 		do {
-			
-			C_RBDB_DATABASE( rb_primary_database, c_database );
 			
 			c_record	=	rb_Rbdb_Database_internal_recordForRubyKeyData(	rb_primary_database,
 																																	rb_key,
@@ -1549,8 +1611,8 @@ VALUE rb_Rbdb_Database_keyExists(	int			argc,
 
 		R_DescribeParameterSet(	
 			R_ParameterSet(		R_Parameter(	R_MatchHash(	rb_hash_descriptor_index_key_or_keys_array,
-																										R_HashKey(	R_Type(	R_SYMBOL ) ),
-																										R_HashData(	R_Type( R_ANY ) ) ) ) ),
+																										R_HashKey(	R_Symbol() ),
+																										R_HashData(	R_Any() ) ) ) ),
 			R_ListOrder( 3 ),
 			"{ :index   =>  <key>, ... }, ...",
 			"{ :index   =>  [ <keys> ], ... }, ..."
@@ -1667,8 +1729,8 @@ VALUE rb_Rbdb_Database_keysExist(	int			argc,
 
 		R_DescribeParameterSet(	
 			R_ParameterSet(		R_Parameter(	R_MatchHash(	rb_hash_descriptor_index_key_or_keys_array,
-																										R_HashKey(	R_Type(	R_SYMBOL ) ),
-																										R_HashData(	R_Type( R_ANY ) ) ) ) ),
+																										R_HashKey(	R_Symbol() ),
+																										R_HashData(	R_Any() ) ) ) ),
 			R_ListOrder( 3 ),
 			"{ :index   =>  <key>, ... }, ...",
 			"{ :index   =>  [ <keys> ], ... }, ..."
@@ -2697,6 +2759,13 @@ RBDB_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_processSecondaryKey
 		
 		DBT*		c_keys	=	calloc( number_of_keys, sizeof( DBT ) );
 		
+		Rbdb_Database*	c_secondary_database;
+		C_RBDB_DATABASE( rb_secondary_database, c_secondary_database );
+		
+		Rbdb_Record*	c_record	=	Rbdb_Record_new( c_secondary_database );
+		Rbdb_Key_free( & c_record->key );
+		Rbdb_Data_free( & c_record->data );
+		
 		//	iterate ruby keys in array and store in location in c array
 		VALUE		rb_this_key		=	Qnil;
 		int	which_key_index		= 0;
@@ -2706,16 +2775,18 @@ RBDB_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_processSecondaryKey
 			rb_this_key = RARRAY_PTR( rb_secondary_keys )[ which_key_index ];
 			
 			//	pack the key into the DBT at which_key_index
-			Rbdb_Key*	c_key	=	Rbdb_DBT_internal_newFromBDBDBT(	NULL,
-																													& c_keys[ which_key_index ] );
+			c_record->key	=	Rbdb_DBT_internal_newFromBDBDBT(	c_record,
+																												& c_keys[ which_key_index ] );
 			rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_secondary_database,
 																												rb_this_key,
-																												c_key,
+																												c_record->key,
 																												TRUE );
 			//	NULLify pointer to BDB key so that freeing Rbdb_Key won't free the BDB key
-			c_key->wrapped_bdb_dbt	=	NULL;
-			Rbdb_Key_free( & c_key );
+			c_record->key->wrapped_bdb_dbt	=	NULL;
+			Rbdb_Key_free( & c_record->key );
 		}
+		
+		Rbdb_Record_free( & c_record );
 		
 		if ( number_of_keys > 1 )	{
 		
@@ -3638,7 +3709,158 @@ void rb_Rbdb_Database_internal_DBTForRubyTrueFalse(	VALUE				rb_database __attri
 	}
 }
 
+/*********************************
+*  DBTForRubyRecordLocationHash  *
+*********************************/
 
+void rb_Rbdb_Database_internal_DBTForRubyRecordLocationHash(	VALUE				rb_database __attribute__ ((unused)),
+																															VALUE				rb_record_location_hash,
+																															Rbdb_DBT*		c_dbt,
+																															BOOL				key_not_data )	{
+
+	//	record location hash has :bucket => key_in_bucket
+	//	it is possible to have more than one such pair, in which case it is describing a join
+	
+	//	for each pair in hash, get DBT
+	//	this means: raw data size, raw data pointer
+	rb_Rbdb_RbdbDataFromHash	c_passed_info;
+	c_passed_info.c_dbt_pointers	=	calloc( RHASH_SIZE( rb_record_location_hash ), sizeof( Rbdb_DBT* ) );
+	c_passed_info.c_record				=	& c_dbt->parent_record;
+	c_passed_info.count						=	0;
+	c_passed_info.total_size			=	0;
+	rb_hash_foreach(	rb_record_location_hash,
+										rb_Rbdb_Database_internal_iterateRubyRecordLocationHashForRbdbData,
+										(VALUE) & c_passed_info );
+	
+	//	combine all DBTs into a single DBT
+	//	"index"<key_data_size><key_data>"index2"<key_data2_size><key_data2>...
+	void*	c_combined_raw_data	=	calloc( 1, c_passed_info.total_size );
+	void*	c_copy_pointer			=	c_combined_raw_data;
+
+	int	c_which_dbt = 0;
+	for ( c_which_dbt = 0 ; c_which_dbt < c_passed_info.count ; c_which_dbt++ )	{
+		
+		//	concat data with combined data (footer included if present)
+		memcpy(	c_copy_pointer,
+						c_passed_info.c_dbt_pointers[ c_which_dbt ]->wrapped_bdb_dbt->data,
+						c_passed_info.c_dbt_pointers[ c_which_dbt ]->wrapped_bdb_dbt->size );
+		
+		//	move copy pointer forward
+		c_copy_pointer	+=	c_passed_info.c_dbt_pointers[ c_which_dbt ]->wrapped_bdb_dbt->size;
+		
+		//	free now-unused Rbdb_DBT
+		Rbdb_DBT_free( (Rbdb_DBT**) & c_passed_info.c_dbt_pointers[ c_which_dbt ] );		
+				
+	}
+
+	//	free Rbdb_Data pointers
+	free( c_passed_info.c_dbt_pointers );
+
+	//	set final size and data
+	
+	//	create footer first if necessary
+	if ( ! key_not_data )	{
+		Rbdb_Data_internal_createFooter( (Rbdb_Data*) c_dbt );
+	}
+
+	if ( key_not_data )	{
+
+		Rbdb_Key_setRawData(	(Rbdb_Key*) c_dbt,
+													c_combined_raw_data,
+													c_passed_info.total_size );
+	
+		Rbdb_Key_setType(	(Rbdb_Key*) c_dbt,
+											RbdbType_RecordLocation );
+	}
+	else {
+		
+		Rbdb_Data_setRawData(	(Rbdb_Data*) c_dbt,
+													c_combined_raw_data,
+													c_passed_info.total_size );
+		
+		Rbdb_Data_setType(	(Rbdb_Data*) c_dbt,
+												RbdbType_RecordLocation );
+
+	}
+
+	//	set app-malloc so DB frees combined data
+	c_dbt->wrapped_bdb_dbt->flags |= DB_DBT_APPMALLOC;
+
+}
+
+	/*******************************************
+	*  iterateRubyKeyRecordLocationHashForDBT  *
+	*******************************************/
+
+	static int rb_Rbdb_Database_internal_iterateRubyKeyRecordLocationHashForRecord(	VALUE												rb_key,
+																																									VALUE												rb_record_location_hash,
+																																									rb_Rbdb_RbdbDataFromHash*		c_passed_info )	{
+
+		VALUE					rb_primary_database	=	c_passed_info->rb_database;
+
+		*c_passed_info->c_record	=	rb_Rbdb_Database_internal_recordForRubyKey( rb_primary_database,
+																																						rb_key );
+		
+		//	we need to create a data byte string from the info provided in our hash
+		rb_Rbdb_Database_internal_DBTForRubyRecordLocationHash( rb_primary_database,
+																														rb_record_location_hash,
+																														( *c_passed_info->c_record )->data,
+																														FALSE );
+		
+		return ST_CONTINUE;
+	}
+
+	/********************************************
+	*  iterateRubyKeyRecordLocationHashForDBTs  *
+	********************************************/
+
+	static int rb_Rbdb_Database_internal_iterateRubyRecordLocationHashForRbdbData(	VALUE													rb_index,
+																																									VALUE													rb_key_in_index,
+																																									rb_Rbdb_RbdbDataFromHash*			c_passed_info )	{
+		
+		VALUE	rb_database	=	c_passed_info->rb_database;
+				
+		rb_index = rb_obj_as_string( rb_index );
+		char*	c_index	=	StringValuePtr( rb_index );
+		
+		c_passed_info->c_dbt_pointers[ c_passed_info->count ]	=	Rbdb_Data_new( *c_passed_info->c_record );
+		
+		//	packing the DBT will give us the second half of the data byte string
+		rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_database,
+																											rb_key_in_index,
+																											c_passed_info->c_dbt_pointers[ c_passed_info->count ],
+																											FALSE );		
+																											
+		//	then we need to re-alloc and copy to prepend the index name
+		//	result: <"index_name_string">\0<bucket_key_size><bucket_key_data>
+		uint32_t	c_index_key_descriptor_size	=	c_passed_info->c_dbt_pointers[ c_passed_info->count ]->wrapped_bdb_dbt->size + sizeof( uint32_t ) + strlen( c_index ) + 1;
+		void*			new_data	=	calloc( 1, c_index_key_descriptor_size );
+		
+		//	copy the string first (including null char)
+		memcpy(	new_data,
+						c_index,
+						strlen( c_index ) + 1 );
+		
+		//	copy bucket key size
+		memcpy(	new_data + strlen( c_index ) + 1,
+						& c_passed_info->c_dbt_pointers[ c_passed_info->count ]->wrapped_bdb_dbt->size,
+						sizeof( uint32_t ) );
+		
+		//	copy bucket key data
+		memcpy(	new_data + strlen( c_index ) + 1 + sizeof( uint32_t ),
+						c_passed_info->c_dbt_pointers[ c_passed_info->count ]->wrapped_bdb_dbt->data,
+						c_passed_info->c_dbt_pointers[ c_passed_info->count ]->wrapped_bdb_dbt->size );
+		
+		c_passed_info->total_size	+=	c_index_key_descriptor_size;
+		
+		c_passed_info->c_dbt_pointers[ c_passed_info->count ]->wrapped_bdb_dbt->data	=	new_data;
+		c_passed_info->c_dbt_pointers[ c_passed_info->count ]->wrapped_bdb_dbt->size	=	c_index_key_descriptor_size;
+		
+		c_passed_info->count++;
+
+		return ST_CONTINUE;
+	}
+	
 /*******************************************************************************************************************************************************************************************
 																		Type Retrieval Methods
 *******************************************************************************************************************************************************************************************/
@@ -3747,6 +3969,12 @@ VALUE rb_Rbdb_Database_internal_unpackDBTForRubyInstance(	VALUE				rb_database,
 																																				c_dbt,
 																																				key_not_data );
 			break;
+
+		case RbdbType_RecordLocation:
+			rb_return	=	rb_Rbdb_Database_internal_rubyObjectForRbdbRecordLocation(	rb_database,
+																																							c_dbt,
+																																							key_not_data );
+			break;
 			
 		default:			
 			//	unexpected data
@@ -3758,7 +3986,7 @@ VALUE rb_Rbdb_Database_internal_unpackDBTForRubyInstance(	VALUE				rb_database,
 }
 			
 /**************************
-*  RubyObjectForRbdbFile  *
+*  rubyObjectForRbdbFile  *
 **************************/
 
 VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbFile(	VALUE				rb_database,
@@ -3799,7 +4027,7 @@ VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbFile(	VALUE				rb_database,
 }
 
 /****************************
-*  RubyObjectForRbdbSymbol  *
+*  rubyObjectForRbdbSymbol  *
 ****************************/
 
 VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbSymbol(	VALUE				rb_database,
@@ -3819,7 +4047,7 @@ VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbSymbol(	VALUE				rb_database,
 }
 
 /****************************
-*  RubyObjectForRbdbRegexp  *
+*  rubyObjectForRbdbRegexp  *
 ****************************/
 
 VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbRegexp(	VALUE				rb_database,
@@ -3842,7 +4070,7 @@ VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbRegexp(	VALUE				rb_database,
 }
 
 /*******************************
-*  RubyObjectForRbdbClassName  *
+*  rubyObjectForRbdbClassName  *
 *******************************/
 
 VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbClassName(	VALUE				rb_database,
@@ -3862,7 +4090,7 @@ VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbClassName(	VALUE				rb_database
 }
 
 /****************************
-*  RubyObjectForRbdbString  *
+*  rubyObjectForRbdbString  *
 ****************************/
 
 VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbString(	VALUE				rb_database __attribute__ ((unused)),
@@ -3881,7 +4109,7 @@ VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbString(	VALUE				rb_database __
 }
 
 /*****************************
-*  RubyObjectForRbdbComplex  *
+*  rubyObjectForRbdbComplex  *
 *****************************/
 
 VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbComplex(	VALUE				rb_database __attribute__ ((unused)),
@@ -3897,7 +4125,7 @@ VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbComplex(	VALUE				rb_database _
 }
 
 /******************************
-*  RubyObjectForRbdbRational  *
+*  rubyObjectForRbdbRational  *
 ******************************/
 
 VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbRational(	VALUE				rb_database __attribute__ ((unused)),
@@ -3913,7 +4141,7 @@ VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbRational(	VALUE				rb_database 
 }
 
 /*****************************
-*  RubyObjectForRbdbInteger  *
+*  rubyObjectForRbdbInteger  *
 *****************************/
 
 VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbInteger(	VALUE				rb_database __attribute__ ((unused)),
@@ -3928,7 +4156,7 @@ VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbInteger(	VALUE				rb_database _
 }
 
 /***************************
-*  RubyObjectForRbdbFloat  *
+*  rubyObjectForRbdbFloat  *
 ***************************/
 
 VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbFloat(	VALUE				rb_database __attribute__ ((unused)),
@@ -3943,7 +4171,7 @@ VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbFloat(	VALUE				rb_database __a
 }
 
 /*******************************
-*  RubyObjectForRbdbTrueFalse  *
+*  rubyObjectForRbdbTrueFalse  *
 *******************************/
 
 VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbTrueFalse(	VALUE				rb_database __attribute__ ((unused)),
@@ -3956,6 +4184,72 @@ VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbTrueFalse(	VALUE				rb_database
 																									:	Qfalse );
 
 	return rb_true_false;
+}
+
+/************************************
+*  rubyObjectForRbdbRecordLocation  *
+************************************/
+
+VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbRecordLocation(	VALUE				rb_database,
+																																	Rbdb_DBT*		c_dbt,
+																																	BOOL				key_not_data )	{
+
+	Rbdb_Database*		c_database;
+	C_RBDB_DATABASE( rb_database, c_database );
+	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database );
+	
+	VALUE	rb_hash	=	rb_hash_new();
+	
+	//	data iterator pointer
+	void*			c_raw_data	=	Rbdb_DBT_data( c_dbt );
+	
+	//	we have a byte string of raw data
+	//	we need to walk the byte string, chopping off the front end each time
+	//	we stop when c_raw_data points to the location at the end of raw_data + data_size
+	while ( ( c_raw_data + sizeof( Rbdb_DataFooterTypeForVersion( Rbdb_DataFooterCurrentVersion ) ) ) != ( Rbdb_DBT_data( c_dbt ) + Rbdb_DBT_size( c_dbt ) ) )	{
+		
+		//	get the index name - it's a c string, so we can simply declare it and the null char will delimit
+		char*			c_index_name	=		c_raw_data;
+		c_raw_data							+=	strlen( c_index_name ) + 1;
+		
+		//	get the data size - it's a uint32
+		uint32_t*	c_data_size		=		c_raw_data;
+		c_raw_data							+=	sizeof( uint32_t );
+		
+		//	get the data - it's the length defined by data size
+		void*			c_data				=		c_raw_data;
+		c_raw_data							+=	*c_data_size;
+		
+		VALUE	rb_data	=	Qnil;
+		
+		if ( key_not_data )	{
+			
+			c_record->key->wrapped_bdb_dbt->data	=	c_data;
+			c_record->key->wrapped_bdb_dbt->size	=	*c_data_size;
+
+			rb_data	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance(	rb_database,
+																																		c_record->key,
+																																		key_not_data );
+		}
+		else {
+
+			c_record->data->wrapped_bdb_dbt->data	=	c_data;
+			c_record->data->wrapped_bdb_dbt->size	=	*c_data_size;
+			
+			rb_data	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance(	rb_database,
+																																		c_record->data,
+																																		key_not_data );
+		}
+				
+		VALUE	rb_index	=	ID2SYM( rb_intern( c_index_name ) );
+		
+		//	hash gets :index => packed_data
+		rb_hash_aset(	rb_hash,
+									rb_index,
+									rb_data );
+	}
+	
+	return rb_hash;
 }
 
 /*******************************************************************************************************************************************************************************************

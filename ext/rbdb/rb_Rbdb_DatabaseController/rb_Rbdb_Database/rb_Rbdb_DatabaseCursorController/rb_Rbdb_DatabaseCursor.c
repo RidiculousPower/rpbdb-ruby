@@ -1474,13 +1474,6 @@ Rbdb_Record* rb_Rbdb_DatabaseCursor_internal_retrieveRecord(	int			argc,
 		)
 	)
 	
-	if ( TYPE( rb_key ) == T_SYMBOL )	{
-		rb_key = rb_obj_as_string( rb_key );
-	}
-	if ( TYPE( rb_data ) == T_SYMBOL )	{
-		rb_key = rb_obj_as_string( rb_data );
-	}
-	
 	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 
 	Rbdb_DatabaseCursor*	c_database_cursor;

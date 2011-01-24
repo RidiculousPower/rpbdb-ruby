@@ -99,6 +99,11 @@ void rb_Rbdb_Database_internal_DBTForRubyTrueFalse(	VALUE				rb_database,
 																										VALUE				rb_object,
 																										Rbdb_DBT*		c_dbt,
 																										BOOL				key_not_data );
+void rb_Rbdb_Database_internal_DBTForRubyRecordLocationHash(	VALUE				rb_database __attribute__ ((unused)),
+																															VALUE				rb_record_location_hash,
+																															Rbdb_DBT*		c_dbt,
+																															BOOL				key_not_data );
+
 VALUE rb_Rbdb_Database_internal_unpackDBTForRubyInstance(	VALUE				rb_database,
 																													Rbdb_DBT*		c_dbt,
 																													BOOL				key_not_data );
@@ -132,6 +137,9 @@ VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbFloat(	VALUE				rb_database,
 VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbTrueFalse(	VALUE				rb_database,
 																														Rbdb_DBT*		c_dbt,
 																														BOOL				key_not_data );
+VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbRecordLocation(	VALUE				rb_database,
+																																	Rbdb_DBT*		c_dbt,
+																																	BOOL				key_not_data );
 
 Rbdb_DatabaseRecordStorageType rb_Rbdb_Database_internal_storageTypeForRubyInstance( VALUE rb_object );
 Rbdb_DatabaseRecordStorageType rb_Rbdb_Database_internal_storageTypeForRubyClass( VALUE rb_object );

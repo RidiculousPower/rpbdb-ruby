@@ -285,7 +285,13 @@ VALUE rb_Rbdb_Environment_open( VALUE	rb_environment )	{
 	Rbdb_Environment*	c_environment	=	NULL;
 	C_RBDB_ENVIRONMENT( rb_environment, c_environment );
 	
-	if ( ! Rbdb_Environment_isOpen( c_environment ) )	{
+	BOOL	c_should_close_environment	=	TRUE;
+	
+	if ( Rbdb_Environment_isOpen( c_environment ) )	{
+		
+		c_should_close_environment	=	FALSE;
+		
+	}	else {
 		
 		Rbdb_Environment_open( c_environment );
 
@@ -297,7 +303,9 @@ VALUE rb_Rbdb_Environment_open( VALUE	rb_environment )	{
 
 	if ( rb_block_given_p() )	{
 		VALUE	rb_return	=	rb_yield( rb_environment );
-		rb_Rbdb_Environment_close( rb_environment );
+		if ( c_should_close_environment )	{
+			rb_Rbdb_Environment_close( rb_environment );
+		}
 		return rb_return;
 	}
 	
