@@ -38,15 +38,6 @@ VALUE rb_Rbdb_Database_internal_createSecondaryIndex(	int			argc,
 																											VALUE		rb_primary_database_self,
 																											BOOL		c_with_duplicates,
 																											BOOL		c_with_sorted_duplicates );
-static int rb_Rbdb_Database_internal_retrieveKeysForEachIndex(	VALUE	rb_index,
-																																VALUE	rb_key_or_keys,
-																																VALUE	rb_passed_args );
-static int rb_Rbdb_Database_internal_writeDataForEachKey(	VALUE	rb_key,
-																													VALUE	rb_data_or_datas,
-																													VALUE	rb_passed_args );
-static int rb_Rbdb_Database_internal_keyExistsForEachIndex(	VALUE	rb_index,
-																														VALUE	rb_key_or_keys,
-																														VALUE	rb_passed_args );
 VALUE rb_Rbdb_Database_internal_uniqueIndexesHash( VALUE	rb_database );
 
 
@@ -141,7 +132,7 @@ VALUE rb_Rbdb_Database_internal_rubyObjectForRbdbRecordLocation(	VALUE				rb_dat
 																																	Rbdb_DBT*		c_dbt,
 																																	BOOL				key_not_data );
 
-Rbdb_DatabaseRecordStorageType rb_Rbdb_Database_internal_storageTypeForRubyInstance( VALUE rb_object );
-Rbdb_DatabaseRecordStorageType rb_Rbdb_Database_internal_storageTypeForRubyClass( VALUE rb_object );
+CerializeType rb_Rbdb_Database_internal_storageTypeForRubyInstance( VALUE rb_object );
+CerializeType rb_Rbdb_Database_internal_storageTypeForRubyClass( VALUE rb_object );
 
 #endif
