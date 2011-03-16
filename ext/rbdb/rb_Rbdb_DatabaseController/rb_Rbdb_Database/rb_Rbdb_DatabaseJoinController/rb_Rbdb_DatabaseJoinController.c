@@ -13,6 +13,8 @@
 #include "rb_Rbdb_DatabaseJoinController.h"
 #include "rb_Rbdb_DatabaseJoinController_internal.h"
 
+#include "rb_Rbdb_DatabaseJoinCursor.h"
+
 #include "rb_Rbdb_Database.h"
 
 #include <rbdb/Rbdb_Environment.h>
@@ -197,171 +199,21 @@ VALUE rb_Rbdb_DatabaseJoinController_join(	int			argc,
 																						VALUE*	args,
 																						VALUE		rb_join_controller )	{
 
-	if ( argc == 0 )	{
-		rb_scan_args(	argc,
-									args,
-									"10" );
-	}
+  int     c_passed_argc               = argc + 1;
+  VALUE   c_passed_args[ argc + 1 ];
 
-	VALUE	rb_cursors										=	rb_ary_new();
-	VALUE	rb_descriptor_hashes					=	rb_ary_new();
-	VALUE	rb_join_arrays								=	rb_ary_new();
-	
-	VALUE	rb_join_cursors_return_array	=	rb_ary_new();
-	
-	VALUE	rb_primary_database						=	rb_Rbdb_DatabaseJoinController_parentDatabase( rb_join_controller );
+  c_passed_args[ 0 ]  = rb_join_controller;
 
-	//	sort each arg
-	int	c_which_arg	=	0;
-	for ( c_which_arg = 0 ; c_which_arg < argc ; c_which_arg++ )	{
-		VALUE	rb_this_arg	=	args[ c_which_arg ];
-		switch ( TYPE( rb_this_arg ) )	{
-			case T_ARRAY:
-				rb_ary_push(	rb_join_arrays,
-											rb_this_arg );
-				break;
-			case T_HASH:
-				rb_ary_push(	rb_descriptor_hashes,
-											rb_this_arg );
-				break;
-			case T_DATA:
-			case T_OBJECT:
-			{
-				VALUE	rb_klass	=	rb_obj_class( rb_this_arg );
-				VALUE	rb_ancestors	=	rb_mod_ancestors( rb_klass );
-				if ( rb_ary_includes(	rb_ancestors,
-															rb_Rbdb_DatabaseCursor ) == Qtrue )	{
-					rb_ary_push(	rb_cursors,
-												rb_this_arg );
-				}
-			}
-				break;
-			default:
-				rb_raise( rb_eArgError, "Unknown argument type for join. Expected hash, array, or cursor." );
-				break;
-		}
-	}
-	
-	//	if we have multiple hashes and any cursors, throw error
-	if (		RARRAY_LEN( rb_descriptor_hashes ) > 1
-			&&	RARRAY_LEN( rb_cursors ) )	{
-		
-		rb_raise( rb_eArgError, "Multiple hash descriptors given alongside cursors. Use arrays to describe appropriate grouping (unable to determine automatically)." );
-	}
+  int     c_which_arg  =  0;
+  for ( c_which_arg = 0 ; c_which_arg < argc ; c_which_arg++ )  {
+    c_passed_args[ c_which_arg + 1 ] = args[ c_which_arg ];
+  }
 
-	//	if we have any arrays, process recursively and concat results to rb_join_cursors_return_array
-	if ( RARRAY_LEN( rb_join_arrays ) )	{
-		int	c_which_join_array	=	0;
-		for ( c_which_join_array = 0 ; c_which_join_array < RARRAY_LEN( rb_join_arrays ) ; c_which_join_array++ )	{
-			VALUE		rb_this_join_array	=	RARRAY_PTR( rb_join_arrays )[ c_which_join_array ];
-			//	call recursively
-			VALUE	rb_join_cursor_or_array	=	rb_Rbdb_DatabaseJoinController_join(	RARRAY_LEN( rb_this_join_array ),
-																																						RARRAY_PTR( rb_this_join_array ),
-																																						rb_join_controller );
-			//	we don't know what's in the array, so we can get 1 or more cursors back
-			if ( TYPE( rb_join_cursor_or_array ) == T_ARRAY )	{
-				rb_ary_concat(	rb_join_cursors_return_array,
-												rb_join_cursor_or_array );			
-			}
-			else {
-				rb_ary_push(	rb_join_cursors_return_array,
-											rb_join_cursor_or_array );
-			}
-		}
-	}
-	//	otherwise, if we have cursors and a hash we have to get each cursor for the hash before we can combine all cursors
-	else if (		RARRAY_LEN( rb_cursors )
-					&&	RARRAY_LEN( rb_descriptor_hashes ) )	{
+  VALUE	rb_join_cursor	=	rb_Rbdb_DatabaseJoinCursor_new(	c_passed_argc,
+                                                          c_passed_args,
+                                                          rb_join_controller );
 
-		VALUE	rb_descriptor_hash	=	rb_ary_entry( rb_descriptor_hashes, 0 );
-		VALUE	rb_cursors_array		=	rb_DatabaseJoinController_internal_cursorsForHashDescriptor(	rb_primary_database,
-																																															rb_descriptor_hash );
-		//	concat cursors with any others we might have
-		rb_ary_concat(	rb_cursors,
-										rb_cursors_array );
-	}
-	
-	//	now, if we have cursors, combine all cursors
-	if ( RARRAY_LEN( rb_cursors ) )	{
-		
-		VALUE	rb_join_cursor	=	rb_Rbdb_DatabaseJoinController_joinListOfCursors(	RARRAY_LEN( rb_cursors ),
-																																							RARRAY_PTR( rb_cursors ),
-																																							rb_join_controller );
-		rb_ary_push(	rb_join_cursors_return_array,
-									rb_join_cursor );
-	}
-	//	otherwise, if we still have hashes, get a join cursor for each hash descriptor
-	else if ( RARRAY_LEN( rb_descriptor_hashes ) ) {
-
-		int	c_which_hash	=	0;
-		for ( c_which_hash = 0 ; c_which_hash < RARRAY_LEN( rb_descriptor_hashes ) ; c_which_hash++ )	{
-			VALUE	rb_this_hash_descriptor	=	RARRAY_PTR( rb_descriptor_hashes )[ c_which_hash ];
-			VALUE	rb_join_cursor					=	rb_DatabaseJoinController_internal_joinCursorForHashDescriptor(	rb_join_controller,
-																																																			rb_primary_database,
-																																																			rb_this_hash_descriptor );
-			//	concat cursors with any others we might have
-			rb_ary_push(	rb_join_cursors_return_array,
-										rb_join_cursor );			
-		}
-	}
-
-	return R_SimplifyArray( rb_join_cursors_return_array );
-}
-
-
-
-
-/*********************
-*  join_cursor_list  *
-*  join_cursors      *
-*********************/
-
-//	The curslist parameter contains a NULL terminated array of cursors. Each database_cursor must have been initialized to refer to the key 
-//	on which the underlying database should be joined. Typically, this initialization is done by a DBcursor->get call with the 
-//	DB_SET flag specified. Once the cursors have been passed as part of a curslist, they should not be accessed or modified until 
-//	the newly created join database_cursor has been closed, or else inconsistent results may be returned.
-//
-//	the best join performance normally results from sorting the cursors from the one that refers to the least number of data items 
-//	to the one that refers to the most. By default, DB->join does this sort on behalf of its caller.
-//
-//	For the returned join database_cursor to be used in a transaction-protected manner, the cursors listed in curslist must have been created within the context of the same transaction.
-//
-//	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_join.html
-//	Assumes that all cursors in list have the same primary database (the first will be used)
-//
-//	Join cursors have the same name as the Database database_cursor that was used to initalize them
-VALUE rb_Rbdb_DatabaseJoinController_joinListOfCursors(	int			argc,
-																												VALUE*	args,
-																												VALUE		rb_join_controller )	{
-	
-	if ( argc == 0 )	{
-		rb_scan_args(	argc,
-									args,
-									"10" );
-	}
-
-	Rbdb_DatabaseJoinController*	c_join_controller;
-	C_RBDB_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller );
-	
-	Rbdb_DatabaseCursor**	c_cursor_list	=	calloc( argc + 1, sizeof( Rbdb_DatabaseCursor* ) );
-
-	int	c_which_arg	=	0;
-	for ( c_which_arg = 0 ; c_which_arg < argc ; c_which_arg++ )	{
-
-		VALUE rb_this_cursor	=	args[ c_which_arg ];
-		
-		//	Get c pointer to Rbdb_DatabaseCursor
-		C_RBDB_DATABASE_CURSOR( rb_this_cursor, c_cursor_list[ c_which_arg ] );
-	}
-	
-	//	cap off list with a NULL pointer
-	c_cursor_list[ c_which_arg ]	=	NULL;
-		
-	Rbdb_DatabaseJoinCursor*	c_join_cursor	=	Rbdb_DatabaseJoinController_join(	c_join_controller,
-																																							c_cursor_list );
-							
-	return RUBY_RBDB_DATABASE_JOIN_CURSOR( c_join_cursor );
-	
+	return rb_join_cursor;
 }
 
 /*************************
@@ -389,32 +241,13 @@ static int rb_Rbdb_DatabaseCursorController_internal_cursorsForEachHashDescripto
 																																										VALUE	rb_passed_args );
 
 /******************************************
-*  joinCursorForHashDescriptor  *
-******************************************/
-
-VALUE rb_DatabaseJoinController_internal_joinCursorForHashDescriptor( VALUE	rb_join_controller,
-																																			VALUE	rb_primary_database,
-																																			VALUE	rb_hash_descriptor )	{
-	
-	VALUE	rb_cursors_array	=	rb_DatabaseJoinController_internal_cursorsForHashDescriptor(	rb_primary_database,
-																																													rb_hash_descriptor );
-	
-	VALUE	rb_join_cursor	=	Qnil;
-	if ( rb_cursors_array != Qnil )	{
-		rb_join_cursor	=	rb_Rbdb_DatabaseJoinController_joinListOfCursors(	RARRAY_LEN( rb_cursors_array ),
-																																				RARRAY_PTR( rb_cursors_array ),
-																																				rb_join_controller );
-	}
-	
-	return rb_join_cursor;
-}
-
-/******************************************
 *  cursorsForHashDescriptor  *
 ******************************************/
 
-VALUE rb_DatabaseJoinController_internal_cursorsForHashDescriptor(	VALUE	rb_primary_database,
+VALUE rb_DatabaseJoinController_internal_cursorsForHashDescriptor(	VALUE	rb_database_join_controller,
 																																		VALUE	rb_hash_descriptor )	{
+
+  VALUE rb_primary_database = rb_Rbdb_DatabaseJoinController_parentDatabase( rb_database_join_controller );
 
 	//	args to pass to foreach
 	VALUE	rb_passed_args	=	rb_ary_new();
@@ -544,3 +377,65 @@ VALUE rb_Rbdb_DatabaseJoinController_internal_cursorForIndexAtKeyValue(	VALUE	rb
 	return rb_database_cursor;
 }
 
+/*********************
+*  getListOfCursors  *
+*********************/
+
+VALUE rb_Rbdb_DatabaseJoinController_internal_getListOfCursors( int      argc,
+                                                                VALUE*   args,
+                                                                VALUE    rb_join_controller __attribute__ ((unused)) ) {
+
+  VALUE rb_first_cursor       = Qnil;
+  VALUE rb_descriptor_hash    = Qnil;
+	R_DefineAndParse( argc, args, rb_join_controller,
+		R_DescribeParameterSet(
+			R_ParameterSet(	R_Parameter(          R_MatchAncestorInstance(  rb_first_cursor,                    rb_Rbdb_DatabaseCursor ),
+                                            R_MatchHash(              rb_descriptor_hash,
+                                                                      R_HashKey( R_Any() ),
+                                                                      R_HashData( R_Any() ) ) ) ),
+			R_ListOrder( 1 ),
+			":index => key, ...",
+			"<database cursor>, ...",
+			"<database cursor>, ..., :index => key, ..."
+		)
+	);
+
+  VALUE rb_cursors_for_join   = rb_ary_new();
+
+  if ( rb_first_cursor != Qnil )  {
+    rb_ary_push(  rb_cursors_for_join,
+                  rb_first_cursor );
+  }
+  
+  //  if we don't have a hash yet then we have cursors (we may still have a hash)
+  if ( rb_descriptor_hash == Qnil ) {
+
+    VALUE rb_next_cursor_or_hash  = Qnil;
+    while ( R_Arg( rb_next_cursor_or_hash ) ) {
+
+      if ( TYPE( rb_next_cursor_or_hash ) == T_HASH ) {
+        rb_descriptor_hash  = rb_next_cursor_or_hash;
+        break;
+      }
+      else  {
+        rb_ary_push(  rb_cursors_for_join,
+                      rb_next_cursor_or_hash );
+      }
+
+    }
+    
+  }
+
+  if ( rb_descriptor_hash != Qnil ) {
+    VALUE rb_cursors_from_hash_descriptor = rb_DatabaseJoinController_internal_cursorsForHashDescriptor(	rb_join_controller,
+                                                                                                          rb_descriptor_hash );
+    if ( rb_cursors_from_hash_descriptor != Qnil )  {
+    
+      //  if we have hash descriptor, get corresponding cursors
+      rb_cursors_for_join = rb_ary_concat(  rb_cursors_for_join,
+                                            rb_cursors_from_hash_descriptor );
+    }
+  }  
+
+  return rb_cursors_for_join;
+}

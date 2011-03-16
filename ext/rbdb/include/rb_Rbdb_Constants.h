@@ -683,45 +683,6 @@
 
 	#define STRING2SYM( rb_string )				\
 		ID2SYM( rb_to_id( rb_string ) );
-
-	/**************
-	*  Returning  *
-	**************/
-
-	#define RUBY_STRING_FOR_KEY_IN_RBDB_RECORD( c_record )																						\
-		( ( Rbdb_Record_rawKey( c_record ) != NULL ) ? rb_str_new(	(char*) Rbdb_Record_rawKey( c_record ),						\
-																										Rbdb_Record_keySize( c_record ) )															\
-																									: Qnil )
-
-	#define RUBY_STRING_FOR_PRIMARY_KEY_IN_RBDB_RECORD( c_record )																						\
-		( ( Rbdb_Record_rawPrimaryKey( c_record ) != NULL ) ? rb_str_new(	(char*) Rbdb_Record_rawPrimaryKey( c_record ),						\
-																													Rbdb_Record_primaryKeySize( c_record ) )															\
-																												: Qnil )
-
-	#define RUBY_STRING_FOR_DATA_IN_RBDB_RECORD( c_record )																													\
-		( ( Rbdb_Record_rawData( c_record ) != NULL ) ? rb_str_new(	(char*) Rbdb_Record_rawData( c_record ),					\
-																										Rbdb_Record_dataSize( c_record ) )														\
-																									: Qnil )
-
-	#define RUBY_STRING_FOR_RBDB_DATA( c_data )																													\
-		( ( Rbdb_Data_rawData( c_data ) != NULL ) ? rb_str_new(	(char*) Rbdb_Data_rawData( c_data ),					\
-																										Rbdb_Data_size( c_data ) )														\
-																									: Qnil )
-
-	#define RUBY_STRINGS_FOR_KEY_AND_DATA_IN_RBDB_RECORD( rb_key, rb_data, c_record )																\
-		rb_key	= RUBY_STRING_FOR_KEY_IN_RBDB_RECORD( c_record );																											\
-		rb_data	= RUBY_STRING_FOR_DATA_IN_RBDB_RECORD( c_record );		
-
-	#define RETURN_RUBY_STRING_FOR_KEY_IN_RBDB_RECORD( c_record )																										\
-		VALUE	rb_return_value	=	RUBY_STRING_FOR_KEY_IN_RBDB_RECORD( c_record );																				\
-		Rbdb_Record_free( & c_record );																																								\
-		return rb_return_value;
-
-	#define RETURN_RUBY_STRING_FOR_DATA_IN_RBDB_RECORD( c_record )																									\
-		VALUE	rb_return_value	=	RUBY_STRING_FOR_DATA_IN_RBDB_RECORD( c_record );																			\
-		Rbdb_Record_free( & c_record );																																								\
-		return rb_return_value;
-
 	
 	/*******************
 	*  Error Checking  *

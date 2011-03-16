@@ -289,6 +289,7 @@ rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.o: ../rbdb/include/rb_Rbdb_Database.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.o: ../rbdb/include/rb_Rbdb_DatabaseJoinController.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.o: ../rbdb/include/rb_Rbdb_DatabaseJoinController_internal.h
+rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.o: ../rbdb/include/rb_Rbdb_DatabaseJoinCursor.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.o: ../rbdb/include/rb_Rbdb_Environment.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.o: ../rbdb/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c.o: /usr/local/include/cerialize.h
@@ -331,9 +332,11 @@ rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: ../rbdb/include/rb_Rbdb_Database.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: ../rbdb/include/rb_Rbdb_DatabaseController.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: ../rbdb/include/rb_Rbdb_DatabaseJoinController.h
+rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: ../rbdb/include/rb_Rbdb_DatabaseJoinController_internal.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: ../rbdb/include/rb_Rbdb_DatabaseJoinCursor.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: ../rbdb/include/rb_Rbdb_DatabaseObject.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: ../rbdb/include/rb_Rbdb_DatabaseObject_internal.h
+rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: ../rbdb/include/rb_Rbdb_Database_internal.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: ../rbdb/include/rb_Rbdb_Environment.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: ../rbdb/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: /usr/local/include/cerialize.h
@@ -353,6 +356,7 @@ rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: /usr/local/include/rbdb/Rbdb_BaseStandardInclude.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: /usr/local/include/rbdb/Rbdb_Constants.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: /usr/local/include/rbdb/Rbdb_Database.h
+rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: /usr/local/include/rbdb/Rbdb_DatabaseJoinController.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: /usr/local/include/rbdb/Rbdb_DatabaseJoinCursor.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: /usr/local/include/rbdb/Rbdb_DatabaseJoinSettingsController.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c.o: /usr/local/include/rbdb/Rbdb_Environment.h
@@ -3195,6 +3199,7 @@ rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSetting
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.o: ../rbdb/include/rb_Rbdb.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.o: ../rbdb/include/rb_Rbdb_BaseStandardIncludes.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.o: ../rbdb/include/rb_Rbdb_Constants.h
+rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.o: ../rbdb/include/rb_Rbdb_Database_internal.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.o: ../rbdb/include/rb_Rbdb_Environment.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.o: ../rbdb/include/rb_Rbdb_MemoryPoolFileCacheSettingsController.h
 rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSettingsController/rb_Rbdb_MemoryPoolFileSettingsController.c.o: ../rbdb/include/rb_Rbdb_MemoryPoolFilePageSettingsController.h

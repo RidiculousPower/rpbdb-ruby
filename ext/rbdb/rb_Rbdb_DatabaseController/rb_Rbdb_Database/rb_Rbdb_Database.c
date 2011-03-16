@@ -2119,7 +2119,9 @@ VALUE rb_Rbdb_Database_retrieveExactPair(	int			argc,
 	c_record	=	Rbdb_Database_retrieveMatchingRecord(	c_database,
 																										c_record );
 
-	rb_data	=	RUBY_STRING_FOR_DATA_IN_RBDB_RECORD( c_record );
+  rb_data	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                c_record->data,
+                                                                FALSE );
 
 	return rb_data;
 }

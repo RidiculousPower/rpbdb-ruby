@@ -290,6 +290,7 @@ rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_
  ../rbdb/include/rb_Rbdb_Database.h
  ../rbdb/include/rb_Rbdb_DatabaseJoinController.h
  ../rbdb/include/rb_Rbdb_DatabaseJoinController_internal.h
+ ../rbdb/include/rb_Rbdb_DatabaseJoinCursor.h
  ../rbdb/include/rb_Rbdb_Environment.h
  /Users/asher/Projects/rp/rbdb/ruby/ext/rbdb/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinController.c
  /usr/local/include/cerialize.h
@@ -332,9 +333,11 @@ rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_
  ../rbdb/include/rb_Rbdb_Database.h
  ../rbdb/include/rb_Rbdb_DatabaseController.h
  ../rbdb/include/rb_Rbdb_DatabaseJoinController.h
+ ../rbdb/include/rb_Rbdb_DatabaseJoinController_internal.h
  ../rbdb/include/rb_Rbdb_DatabaseJoinCursor.h
  ../rbdb/include/rb_Rbdb_DatabaseObject.h
  ../rbdb/include/rb_Rbdb_DatabaseObject_internal.h
+ ../rbdb/include/rb_Rbdb_Database_internal.h
  ../rbdb/include/rb_Rbdb_Environment.h
  /Users/asher/Projects/rp/rbdb/ruby/ext/rbdb/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_DatabaseJoinController/rb_Rbdb_DatabaseJoinCursor.c
  /usr/local/include/cerialize.h
@@ -354,6 +357,7 @@ rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_DatabaseController/rb_Rbdb_Database/rb_Rbdb_
  /usr/local/include/rbdb/Rbdb_BaseStandardInclude.h
  /usr/local/include/rbdb/Rbdb_Constants.h
  /usr/local/include/rbdb/Rbdb_Database.h
+ /usr/local/include/rbdb/Rbdb_DatabaseJoinController.h
  /usr/local/include/rbdb/Rbdb_DatabaseJoinCursor.h
  /usr/local/include/rbdb/Rbdb_DatabaseJoinSettingsController.h
  /usr/local/include/rbdb/Rbdb_Environment.h
@@ -3196,6 +3200,7 @@ rbdb/CMakeFiles/rb_rbdb.dir/rb_Rbdb_SettingsController/rb_Rbdb_MemoryPoolSetting
  ../rbdb/include/rb_Rbdb.h
  ../rbdb/include/rb_Rbdb_BaseStandardIncludes.h
  ../rbdb/include/rb_Rbdb_Constants.h
+ ../rbdb/include/rb_Rbdb_Database_internal.h
  ../rbdb/include/rb_Rbdb_Environment.h
  ../rbdb/include/rb_Rbdb_MemoryPoolFileCacheSettingsController.h
  ../rbdb/include/rb_Rbdb_MemoryPoolFilePageSettingsController.h

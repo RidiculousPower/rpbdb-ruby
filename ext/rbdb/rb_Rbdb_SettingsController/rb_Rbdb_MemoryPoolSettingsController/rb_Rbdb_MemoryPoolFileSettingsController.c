@@ -16,6 +16,8 @@
 #include "rb_Rbdb_MemoryPoolSettingsController.h"
 #include "rb_Rbdb_SettingsController.h"
 
+#include "rb_Rbdb_Database_internal.h"
+
 #include "rb_Rbdb_Environment.h"
 #include "rb_Rbdb.h"
 
@@ -497,8 +499,11 @@ VALUE rb_Rbdb_MemoryPoolFileSettingsController_cookie( VALUE	rb_memory_pool_file
 
 	VALUE	rb_cookie	=	Qnil;
 
+  //  FIX - this is broken - needs database given function, but i don't think we have one here
 	if ( c_cookie != NULL )	{
-		rb_cookie = RUBY_STRING_FOR_RBDB_DATA( c_cookie );
+    rb_cookie	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( Qnil,
+                                                                    c_cookie,
+                                                                    FALSE );
 	}
 
 	return rb_cookie;

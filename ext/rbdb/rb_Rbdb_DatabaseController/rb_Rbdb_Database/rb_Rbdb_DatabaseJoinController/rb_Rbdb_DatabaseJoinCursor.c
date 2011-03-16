@@ -12,9 +12,11 @@
 
 #include "rb_Rbdb_DatabaseJoinCursor.h"
 #include "rb_Rbdb_DatabaseJoinController.h"
+#include "rb_Rbdb_DatabaseJoinController_internal.h"
 #include "rb_Rbdb_DatabaseController.h"
 
 #include "rb_Rbdb_Database.h"
+#include "rb_Rbdb_Database_internal.h"
 
 #include "rb_Rbdb_DatabaseObject.h"
 #include "rb_Rbdb_DatabaseObject_internal.h"
@@ -24,6 +26,7 @@
 
 #include <rbdb/Rbdb_Record.h>
 
+#include <rbdb/Rbdb_DatabaseJoinController.h>
 #include <rbdb/Rbdb_DatabaseJoinCursor.h>
 #include <rbdb/Rbdb_DatabaseJoinSettingsController.h>
 
@@ -40,6 +43,7 @@ extern	VALUE	rb_Rbdb_Record;
 extern	VALUE	rb_Rbdb_Key;
 extern	VALUE	rb_Rbdb_DatabaseJoinController;
 extern	VALUE	rb_Rbdb_Database;
+extern  VALUE rb_Rbdb_DatabaseCursor;
 extern	VALUE	rb_Rbdb_DatabaseController;
 extern	VALUE	rb_Rbdb_DatabaseJoinContainer;
 
@@ -83,32 +87,75 @@ VALUE rb_Rbdb_DatabaseJoinCursor_new(	int			argc,
 																			VALUE*	args,
 																			VALUE		rb_klass_self __attribute__ ((unused)) )	{
 	
-	VALUE	rb_parent_database						=	Qnil;
+	VALUE	rb_parent_database                  =	Qnil;
 	VALUE	rb_parent_database_join_controller	=	Qnil;
+  VALUE rb_first_cursor                     = Qnil;
+  VALUE rb_hash_descriptor_for_join         = Qnil;
 	R_DefineAndParse( argc, args, rb_klass_self,
 		R_DescribeParameterSet(
-			R_ParameterSet(	R_OptionalParameter(	R_MatchAncestorInstance( rb_parent_database, rb_Rbdb_Database ),
-																						R_MatchAncestorInstance( rb_parent_database_join_controller, rb_Rbdb_DatabaseJoinController ) ) ),
+			R_ParameterSet(	R_Parameter(          R_MatchAncestorInstance(  rb_parent_database,                   rb_Rbdb_Database ),
+                                            R_MatchAncestorInstance(  rb_parent_database_join_controller,   rb_Rbdb_DatabaseJoinController ) ),
+                      R_Parameter(          R_MatchHash(              rb_hash_descriptor_for_join,
+                                                                      R_HashKey( R_Symbol() ),
+                                                                      NULL ),
+                                            R_MatchAncestorInstance(  rb_first_cursor,                      rb_Rbdb_DatabaseCursor ) ) ),
 			R_ListOrder( 1 ),
-			"[ <parent database > ]",
-			"[ <parent database join controller> ]"
+			":index => key, ...",
+			"<database cursor>, ...",
+			"[ <parent database > ], :index => key, ...",
+			"[ <parent database > ], <database cursor>, ...",
+			"[ <parent database > ], <database cursor>, :index => key, ...",
+			"[ <parent database join controller> ], :index => key, ..."
+			"[ <parent database join controller> ], <database cursor>, ..."
+			"[ <parent database join controller> ], <database cursor>, :index => key, ..."
 		)
 	);
+
+  if ( rb_parent_database != Qnil ) {
+    rb_parent_database_join_controller  = rb_Rbdb_Database_joinController( rb_parent_database );
+  }
+
+  int     argc_without_parent = argc - 1;
+  VALUE*  args_without_parent = args + 1;
+
+  VALUE rb_cursors_for_join = rb_Rbdb_DatabaseJoinController_internal_getListOfCursors( argc_without_parent,
+                                                                                        args_without_parent,
+                                                                                        rb_parent_database_join_controller );
+  if ( ! RARRAY_LEN( rb_cursors_for_join ) )  {
+    //  no join cursor existed for parameters
+    return Qnil;
+  }
+    
+	Rbdb_DatabaseCursor**	c_cursor_list	=	calloc( RARRAY_LEN( rb_cursors_for_join ) + 1, sizeof( Rbdb_DatabaseCursor* ) );
+
+	int	c_which_arg	=	0;
+	for ( c_which_arg = 0 ; c_which_arg < argc ; c_which_arg++ )	{
+
+		VALUE rb_this_cursor	=	RARRAY_PTR( rb_cursors_for_join )[ c_which_arg ];
+		
+		//	Get c pointer to Rbdb_DatabaseCursor
+		C_RBDB_DATABASE_CURSOR( rb_this_cursor, c_cursor_list[ c_which_arg ] );
+	}
 	
-	Rbdb_DatabaseJoinController*	c_parent_join_controller;
-	C_RBDB_DATABASE_JOIN_CONTROLLER( rb_parent_database_join_controller, c_parent_join_controller );
-	
-	VALUE	rb_join_cursor	=	RUBY_RBDB_DATABASE_JOIN_CURSOR( Rbdb_DatabaseJoinCursor_new( c_parent_join_controller ) );
+	//	cap off list with a NULL pointer
+	c_cursor_list[ c_which_arg ]	=	NULL;
+		
+	Rbdb_DatabaseJoinController*	c_join_controller;
+	C_RBDB_DATABASE_JOIN_CONTROLLER( rb_parent_database_join_controller, c_join_controller );
+
+	Rbdb_DatabaseJoinCursor*	c_join_cursor	=	Rbdb_DatabaseJoinController_join(	c_join_controller,
+																																							c_cursor_list );
+							
+	VALUE  rb_join_cursor   = RUBY_RBDB_DATABASE_JOIN_CURSOR( c_join_cursor );
 
 	//	store reference to parent
 	rb_iv_set(	rb_join_cursor,
 							RBDB_RB_JOIN_CURSOR_VARIABLE_PARENT_JOIN_CONTROLLER,
 							rb_parent_database_join_controller );
 
-	VALUE	argv[]	=	{ rb_parent_database_join_controller };
 	rb_obj_call_init(	rb_join_cursor,
-										1, 
-										argv );
+										argc, 
+										args );
 	
 	return rb_join_cursor;	
 }
@@ -118,8 +165,8 @@ VALUE rb_Rbdb_DatabaseJoinCursor_new(	int			argc,
 *************/
 
 VALUE rb_Rbdb_DatabaseJoinCursor_initialize(	int				argc __attribute__ ((unused)),
-																				VALUE*		args __attribute__ ((unused)),
-																				VALUE			rb_self )	{
+                                              VALUE*		args __attribute__ ((unused)),
+                                              VALUE			rb_self )	{
 
 	return rb_self;
 }
@@ -215,7 +262,7 @@ VALUE rb_Rbdb_DatabaseJoinCursor_close( VALUE	rb_join_cursor )	{
 ******************/
 
 VALUE rb_Rbdb_DatabaseJoinCursor_retrieveKey(	VALUE	rb_join_cursor,
-												VALUE	rb_key	)	{
+                                              VALUE	rb_key	)	{
 
 	Rbdb_DatabaseJoinCursor*	c_join_cursor;
 	C_RBDB_DATABASE_JOIN_CURSOR( rb_join_cursor, c_join_cursor );
@@ -224,7 +271,7 @@ VALUE rb_Rbdb_DatabaseJoinCursor_retrieveKey(	VALUE	rb_join_cursor,
 	C_RBDB_KEY( rb_key, c_key );
 
 	return RUBY_RBDB_RECORD( Rbdb_DatabaseJoinCursor_retrieveKey(	c_join_cursor,
-																	c_key ) );
+                                                                c_key ) );
 }
 
 /******************************
@@ -247,9 +294,13 @@ VALUE rb_Rbdb_DatabaseJoinCursor_iterate(	int	argc,
 
 	Rbdb_Record*	c_record	=	NULL;
 
+  VALUE rb_database = rb_Rbdb_DatabaseJoinCursor_parentDatabase( rb_join_cursor );
+
 	while (		rb_record_data != Qnil
 				||	(		( c_record = Rbdb_DatabaseJoinCursor_iterate( c_join_cursor ) ) != NULL ) 
-						&&	( ( ( rb_record_data = RUBY_STRING_FOR_DATA_IN_RBDB_RECORD( c_record ) ) != Qnil ) ) )	{
+						&&	( ( ( rb_record_data = rb_Rbdb_Database_internal_unpackDBTForRubyInstance(  rb_database,
+                                                                                            c_record->data,
+                                                                                            FALSE ) ) != Qnil ) ) )	{
 		
 		//	If we don't have a block, we return an enumerator
 		R_ReturnEnumeratorIfNoBlock(	1,
@@ -281,13 +332,21 @@ VALUE rb_Rbdb_DatabaseJoinCursor_first(	VALUE	rb_join_cursor )	{
 
 	Rbdb_Record*	c_record				=	Rbdb_DatabaseJoinCursor_iterate( c_join_cursor );
 
-	VALUE					rb_record_data	=	RUBY_STRING_FOR_DATA_IN_RBDB_RECORD( c_record );
-	
+  VALUE rb_data	=	Qnil;
+  if ( c_record->result )	{
+
+    VALUE rb_database = rb_Rbdb_DatabaseJoinCursor_parentDatabase( rb_join_cursor );
+
+    rb_data = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                  c_record->data,
+                                                                  FALSE );
+  }
+
 	if ( c_record )	{
 		Rbdb_Record_free( & c_record );
 	}
 	
-	return rb_record_data;
+	return rb_data;
 }
 
 /**************
@@ -301,13 +360,21 @@ VALUE rb_Rbdb_DatabaseJoinCursor_firstKey(	VALUE	rb_join_cursor )	{
 
 	Rbdb_Record*	c_record				=	Rbdb_DatabaseJoinCursor_iterate( c_join_cursor );
 
-	VALUE					rb_record_key	=	RUBY_STRING_FOR_PRIMARY_KEY_IN_RBDB_RECORD( c_record );
+  VALUE rb_key	=	Qnil;
+  if ( c_record->result )	{
+
+    VALUE rb_database = rb_Rbdb_DatabaseJoinCursor_parentDatabase( rb_join_cursor );
+
+    rb_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                  c_record->key,
+                                                                  TRUE );
+  }
 	
 	if ( c_record )	{
 		Rbdb_Record_free( & c_record );
 	}
 	
-	return rb_record_key;
+	return rb_key;
 }
 
 /******************************
