@@ -180,68 +180,25 @@ VALUE rb_Rbdb_DatabaseCursor_new( int			argc,
 																	VALUE*	args,
 																	VALUE		rb_database_cursor_class __attribute__ ((unused)) )	{
 	
-	VALUE	rb_parent_cursor_controller	=	Qnil;
-	
-	/*------------------------------------------------------*/
+	VALUE	rb_parent_database            =	Qnil;
+	VALUE	rb_parent_cursor_controller   =	Qnil;
 
-	VALUE	rb_database_cursor_controller_or_database_or_database_controller_or_environment	=	Qnil;
-	VALUE	rb_database_name	=	Qnil;
-	rb_scan_args(	argc,
-								args,
-								"11",
-								& rb_database_cursor_controller_or_database_or_database_controller_or_environment,
-								& rb_database_name );
+	R_DefineAndParse( argc, args, rb_database_cursor_class,
+		R_DescribeParameterSet(
+			R_ParameterSet(
+				R_Parameter(	R_MatchAncestorInstance(					rb_parent_database,                 rb_Rbdb_Database ),
+                      R_MatchAncestorInstance(					rb_parent_cursor_controller,        rb_Rbdb_DatabaseCursorController )
+				)
+			),
+			1,
+			"<database>",
+			"<database cursor controller>"
+		)
+	);
 	
-	VALUE	rb_parent_environment						=	Qnil;
-	VALUE	rb_parent_database							=	Qnil;
-	VALUE	rb_parent_database_controller		=	Qnil;
-
-	//	figure out what our first arg is
-	VALUE	rb_first_arg_klass	=	rb_obj_class( rb_database_cursor_controller_or_database_or_database_controller_or_environment );
-	VALUE	rb_ancestors	=	rb_mod_ancestors( rb_first_arg_klass );
-	if ( rb_ary_includes(	rb_ancestors,
-												rb_Rbdb_DatabaseCursorController ) == Qtrue )	{
-		
-		rb_parent_cursor_controller	=	rb_database_cursor_controller_or_database_or_database_controller_or_environment;
+	if ( rb_parent_database != Qnil )	{
+		rb_parent_cursor_controller	=	rb_Rbdb_Database_cursorController(	rb_parent_database );
 	}
-	else if ( rb_ary_includes(	rb_ancestors,
-															rb_Rbdb_Database ) == Qtrue )	{
-		
-		rb_parent_database					=	rb_database_cursor_controller_or_database_or_database_controller_or_environment;
-		rb_parent_cursor_controller	=	rb_Rbdb_Database_cursorController( rb_parent_database );
-	}
-	else if ( rb_ary_includes(	rb_ancestors,
-															rb_Rbdb_DatabaseController ) == Qtrue )	{
-		
-		rb_parent_database_controller	=	rb_database_cursor_controller_or_database_or_database_controller_or_environment;
-		rb_parent_database						=	rb_Rbdb_DatabaseController_newDatabase(	rb_parent_database_controller,
-																																						rb_database_name );
-		rb_parent_cursor_controller		=	rb_Rbdb_Database_cursorController( rb_parent_database );
-	}
-	else if ( rb_ary_includes(	rb_ancestors,
-															rb_Rbdb_Environment ) == Qtrue )	{
-		
-		rb_parent_environment					=	rb_database_cursor_controller_or_database_or_database_controller_or_environment;
-		rb_parent_database_controller	=	rb_Rbdb_Environment_databaseController( rb_parent_environment );
-		rb_parent_database						=	rb_Rbdb_DatabaseController_newDatabase(	rb_parent_database_controller,
-																																						rb_database_name );
-		rb_parent_cursor_controller		=	rb_Rbdb_Database_cursorController( rb_parent_database );
-	}
-	else if ( TYPE( rb_database_cursor_controller_or_database_or_database_controller_or_environment ) == T_STRING )	{
-
-		VALUE	rb_parent_environment_directory	=	rb_database_cursor_controller_or_database_or_database_controller_or_environment;
-		
-		rb_parent_environment	=	rb_Rbdb_Environment_new(	1,
-																											& rb_parent_environment_directory,
-																											rb_Rbdb_Environment );
-		rb_parent_database_controller	=	rb_Rbdb_Environment_databaseController( rb_parent_environment );
-		rb_parent_database	=	rb_Rbdb_DatabaseController_newDatabase( rb_parent_environment,
-																																	rb_database_name );
-		rb_parent_cursor_controller	=	rb_Rbdb_Database_cursorController( rb_parent_database );
-	}
-	
-	/*------------------------------------------------------*/
-	
 	
 	Rbdb_DatabaseCursorController*		c_parent_cursor_controller;
 	C_RBDB_DATABASE_CURSOR_CONTROLLER( rb_parent_cursor_controller, c_parent_cursor_controller );

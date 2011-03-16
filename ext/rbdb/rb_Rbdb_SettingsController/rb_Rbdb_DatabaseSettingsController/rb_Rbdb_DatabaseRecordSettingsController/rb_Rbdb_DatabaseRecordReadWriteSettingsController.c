@@ -30,6 +30,8 @@
 #include <rbdb/Rbdb_Database.h>
 
 #include <rargs.h>
+#include <cerialize.h>
+#include <rcerialize.h>
 
 /*******************************************************************************************************************************************************************************************
 																		Ruby Definitions
@@ -1189,7 +1191,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeKeyTyping( VALUE	rb
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
 		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 		
-		Rbdb_DatabaseRecordStorageType	c_record_storage_type	=	rb_Rbdb_Database_internal_storageTypeForRubyClass( rb_record_storage_class );
+		CerializeType	c_record_storage_type	=	Rcerialize_storageTypeForRubyClass( rb_record_storage_class );
 		
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreKeyTypingOn(	c_database_record_read_write_settings_controller,
 																																					c_record_storage_type );
@@ -1234,7 +1236,7 @@ VALUE rb_Rbdb_DatabaseRecordReadWriteSettingsController_storeDataTyping( VALUE	r
 		Rbdb_DatabaseRecordReadWriteSettingsController*	c_database_record_read_write_settings_controller;
 		C_RBDB_DATABASE_RECORD_READ_WRITE_SETTINGS_CONTROLLER( rb_database_record_read_write_settings_controller, c_database_record_read_write_settings_controller );
 		
-		Rbdb_DatabaseRecordStorageType	c_record_storage_type	=	rb_Rbdb_Database_internal_storageTypeForRubyClass( rb_record_storage_class );
+		CerializeType	c_record_storage_type	=	Rcerialize_storageTypeForRubyClass( rb_record_storage_class );
 		
 		Rbdb_DatabaseRecordReadWriteSettingsController_turnStoreDataTypingOn( c_database_record_read_write_settings_controller,
 																																					c_record_storage_type );

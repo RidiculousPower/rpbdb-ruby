@@ -1,0 +1,30 @@
+require 'date'
+
+Gem::Specification.new do |spec|
+
+  spec.name                      =  'rbdb'
+  spec.rubyforge_project         =  'rbdb'
+  spec.version                   =  '0.1'
+
+  spec.summary                   =  "Object oriented wrapper for BDB."
+  spec.description               =  "Object oriented wrapper for BDB"
+  
+  spec.authors                   =  [ 'Asher' ]
+  spec.email                     =  'asher@ridiculouspower.com'
+  spec.homepage                  =  'http://www.ridiculouspower.com/rbdb'
+  
+  spec.date                      =  Date.today.to_s
+
+  Rake::ExtensionTask.new( gem_target, spec ) do |ext|
+    ext.lib_dir         = File.join('lib', gem_target)
+    ext.source_pattern  = "**/*.{c,cpp}"
+  end
+  
+  # ensure the gem is built out of versioned files
+  # also make sure we include the bundle since we exclude it from git storage
+  spec.files                     = Dir[ 'install.rb',
+                                        '{lib,spec}/**/*',
+                                        'README*', 
+                                        'LICENSE*' ] & `git ls-files -z`.split("\0")
+
+end

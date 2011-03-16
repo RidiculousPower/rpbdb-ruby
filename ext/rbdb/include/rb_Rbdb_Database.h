@@ -86,7 +86,7 @@ VALUE rb_Rbdb_Database_keysExist(	int			argc,
 VALUE rb_Rbdb_Database_retrievePrimaryKey(	int			argc, 
 																						VALUE*	args,
 																						VALUE		rb_database );
-VALUE rb_Rbdb_Database_retrievePair(	int			argc, 
+VALUE rb_Rbdb_Database_retrieveExactHashPair(	int			argc, 
 																			VALUE*	args,
 																			VALUE		rb_database );
 	VALUE rb_Rbdb_Database_delete(	int	argc, 

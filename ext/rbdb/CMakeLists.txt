@@ -5,14 +5,20 @@ set( _RUBY_DEBUG_OUTPUT ON)
 find_package( Rbdb REQUIRED )
 find_package( Ruby REQUIRED )
 find_package( Rargs REQUIRED )
+find_package( Cerialize REQUIRED )
+find_package( Rcerialize REQUIRED )
 
 message( STATUS "Using Rbdb Lib: ${RBDB_LIBRARY}" )
 message( STATUS "Using Ruby Lib: ${RUBY_LIBRARY}" )
 message( STATUS "Using Rargs Lib: ${RARGS_LIBRARY}" )
+message( STATUS "Using Cerialize Lib: ${CERIALIZE_LIBRARY}" )
+message( STATUS "Using Rcerialize Lib: ${RCERIALIZE_LIBRARY}" )
 
 message( STATUS "Using Rbdb Headers: ${RBDB_INCLUDE_DIR}" )
 message( STATUS "Using Ruby Headers: ${RUBY_INCLUDE_DIRS}" )
 message( STATUS "Using Rargs Headers: ${RARGS_INCLUDE_DIR}" )
+message( STATUS "Using Cerialize Headers: ${CERIALIZE_INCLUDE_DIR}" )
+message( STATUS "Using Rcerialize Headers: ${RCERIALIZE_INCLUDE_DIR}" )
 
 get_directory_property( CMAKE_CURRENT_INCLUDE_DIR INCLUDE_DIRECTORIES )
 
@@ -28,6 +34,8 @@ add_library( rb_rbdb MODULE ${rb_rbdb_src} )
 target_link_libraries( rb_rbdb ${RBDB_LIBRARY} )
 target_link_libraries( rb_rbdb ${RUBY_LIBRARY} )
 target_link_libraries( rb_rbdb ${RARGS_LIBRARY} )
+target_link_libraries( rb_rbdb ${CERIALIZE_LIBRARY} )
+target_link_libraries( rb_rbdb ${RCERIALIZE_LIBRARY} )
 
 # use, i.e. don't skip the full RPATH for the build tree
 set( CMAKE_SKIP_BUILD_RPATH  OFF )

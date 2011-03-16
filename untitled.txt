@@ -1,0 +1,26 @@
+retrieve for join cursor - open
+* 0x10135a9e0 *
+close
+* 0x10135a9e0 *
+
+2nd time
+
+retrieve for join cursor - open
+* 0x10135a9e0 ***
+* 0x1038af040
+
+close all sequences - open
+* 0x1038b3870 **
+close
+* 0x1038b3870 **
+
+close all cursors - open
+* 0x1038b0c40 ****
+close
+* 0x10135a9e0 ***
+* 0x1038b0c40 ****
+
+problem: 
+the second (last?) cursor opened for join cursor retrieval is not getting closed
+
+any time the join 

@@ -339,33 +339,23 @@ VALUE rb_Rbdb_DatabaseJoinController_joinListOfCursors(	int			argc,
 									args,
 									"10" );
 	}
-		
-	VALUE	rb_cursor_list	=	rb_ary_new();
-	
-	//	we accept cursors or arrays of cursors; collect them all into a single list
-	int	c_which_arg	=	0;
-	for ( c_which_arg = 0 ; c_which_arg < argc ; c_which_arg++ )	{
-		VALUE	rb_this_arg	=	args[ c_which_arg ];
-		rb_ary_push(	rb_cursor_list,
-									rb_this_arg );
-	}
 
 	Rbdb_DatabaseJoinController*	c_join_controller;
 	C_RBDB_DATABASE_JOIN_CONTROLLER( rb_join_controller, c_join_controller );
 	
-	VALUE	rb_this_cursor		=	Qnil;
-	Rbdb_DatabaseCursor**	c_cursor_list	=	calloc( RARRAY_LEN( rb_cursor_list ) + 1, sizeof( Rbdb_DatabaseCursor* ) );
-	int		which_cursor_index	=	0;
-	for( which_cursor_index = 0 ; which_cursor_index < RARRAY_LEN( rb_cursor_list ) ; which_cursor_index++ )	{
+	Rbdb_DatabaseCursor**	c_cursor_list	=	calloc( argc + 1, sizeof( Rbdb_DatabaseCursor* ) );
 
-		rb_this_cursor	=	RARRAY_PTR( rb_cursor_list )[ which_cursor_index ];
+	int	c_which_arg	=	0;
+	for ( c_which_arg = 0 ; c_which_arg < argc ; c_which_arg++ )	{
+
+		VALUE rb_this_cursor	=	args[ c_which_arg ];
 		
 		//	Get c pointer to Rbdb_DatabaseCursor
-		C_RBDB_DATABASE_CURSOR( rb_this_cursor, c_cursor_list[ which_cursor_index ] );
+		C_RBDB_DATABASE_CURSOR( rb_this_cursor, c_cursor_list[ c_which_arg ] );
 	}
 	
 	//	cap off list with a NULL pointer
-	c_cursor_list[ which_cursor_index++ ]	=	NULL;
+	c_cursor_list[ c_which_arg ]	=	NULL;
 		
 	Rbdb_DatabaseJoinCursor*	c_join_cursor	=	Rbdb_DatabaseJoinController_join(	c_join_controller,
 																																							c_cursor_list );
@@ -442,8 +432,19 @@ VALUE rb_DatabaseJoinController_internal_cursorsForHashDescriptor(	VALUE	rb_prim
 	rb_ary_shift( rb_cursor_array );
 
 	//	If the last element in our array is false, one of the cursors failed to retrieve (record didn't exist)
-	if ( RARRAY_PTR( rb_cursor_array )[ RARRAY_LEN( rb_cursor_array ) ] == Qfalse )	{
-		//	we return Qnil because this join wasn't possible
+	if ( RARRAY_PTR( rb_cursor_array )[ RARRAY_LEN( rb_cursor_array ) - 1 ] == Qfalse )	{
+    //  first, free any cursors we created
+    int c_which_cursor = 0;
+    for ( c_which_cursor = 0 ; c_which_cursor < RARRAY_LEN( rb_cursor_array ) - 1 ; c_which_cursor++ )  {
+      
+      VALUE rb_this_database_cursor = RARRAY_PTR( rb_cursor_array )[ c_which_cursor ];
+      
+      Rbdb_DatabaseCursor*	c_this_database_cursor;
+      C_RBDB_DATABASE_CURSOR( rb_this_database_cursor, c_this_database_cursor );
+      Rbdb_DatabaseCursor_free( & c_this_database_cursor );
+      
+    }
+		//	then we return Qnil because this join wasn't possible
 		//	we had a hash + cursors, so we have no other args for this iteration
 		//	if this iteration is one of multiple, this nil will get inserted into the return array of the calling iteration
 		return Qnil;
@@ -473,34 +474,35 @@ static int rb_Rbdb_DatabaseCursorController_internal_cursorsForEachHashDescripto
 																																														rb_key_value );
 	
 	//	If we get no record for setting our cursor we push false and fail
-	if ( rb_cursor == Qnil )	{
+	if ( rb_cursor == Qnil )	{    
 		rb_ary_push(	rb_passed_args,
 									Qfalse );
 		return ST_STOP;
 	}
 
-	//	we use ruby internals to handle subclasses (such as object cursors)
+	
+	//	push cursor for return - we always do this (if we have a cursor) so that cleanup can occur afterward if join was not possible
+	rb_ary_push(	rb_passed_args,
+								rb_cursor );
+
+  //  we call through ruby so subclass support is implicit
+  //  this is important, for instance, if we want :current to automatically unserialize
 	VALUE	rb_current_record		=	rb_funcall( rb_cursor,
 																					rb_intern( "current" ),
 																					0 );
 
 	//	If we get no record for setting our cursor we push false and fail
 	if ( rb_current_record == Qnil )	{
-		
 		rb_ary_push(	rb_passed_args,
 									Qfalse );
 		return ST_STOP;
 	}
 
-	//	push cursor for return
-	rb_ary_push(	rb_passed_args,
-								rb_cursor );
-	
 	return ST_CONTINUE;
 }
 
 /******************************************
-*  cursorForParameterDescription  *
+*  cursorForIndexAtKeyValue  *
 ******************************************/
 
 VALUE rb_Rbdb_DatabaseJoinController_internal_cursorForIndexAtKeyValue(	VALUE	rb_primary_database,
@@ -510,7 +512,13 @@ VALUE rb_Rbdb_DatabaseJoinController_internal_cursorForIndexAtKeyValue(	VALUE	rb
 	VALUE	rb_secondary_database	=	rb_Rbdb_Database_requireSecondaryDatabaseWithIndex(	rb_primary_database,
 																																										rb_index_name );
 	
-	//	we call via rb_funcall so that the class determines whether or not to use Rbdb_DatabaseCursor or Rbdb_DatabaseObjectCursor
+	Rbdb_Database*		c_primary_database;
+	C_RBDB_DATABASE( rb_primary_database, c_primary_database );
+	Rbdb_Database*		c_secondary_database;
+	C_RBDB_DATABASE( rb_secondary_database, c_secondary_database );
+
+  //  we call through ruby so subclass support is implicit
+  //  this is important, for instance, if we want :current to automatically unserialize
 	VALUE	rb_database_cursor	=	rb_funcall(	rb_secondary_database,
 																					rb_intern( "cursor" ),
 																					0 );
@@ -525,6 +533,7 @@ VALUE rb_Rbdb_DatabaseJoinController_internal_cursorForIndexAtKeyValue(	VALUE	rb
 																	rb_key_value );
 
 	//	if we get a nil result it means we have no such key in the db
+  //  since we may have opened cursors already we need to let our caller know that it should free them
 	if ( rb_current == Qnil )   {		
 		Rbdb_DatabaseCursor*	c_database_cursor;
 		C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
