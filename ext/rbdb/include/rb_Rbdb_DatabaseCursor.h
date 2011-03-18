@@ -45,6 +45,9 @@ VALUE rb_Rbdb_DatabaseCursor_current(	VALUE	rb_database_cursor );
 VALUE rb_Rbdb_DatabaseCursor_retrieveKey(	int	argc,
 										  VALUE*	args,
 										  VALUE	rb_database_cursor );
+VALUE rb_Rbdb_DatabaseCursor_retrievePrimaryKey(	int     argc,
+                                                  VALUE*	args,
+                                                  VALUE   rb_database_cursor );
 											
 VALUE rb_Rbdb_DatabaseCursor_retrievePartialKey(	VALUE	rb_database_cursor,
 																									VALUE	rb_key );
@@ -54,14 +57,19 @@ VALUE rb_Rbdb_DatabaseCursor_retrieveDuplicateMatchingPartialData(	int			argc,
 
 											
 	VALUE rb_Rbdb_DatabaseCursor_currentKey(	VALUE	rb_database_cursor );
+VALUE rb_Rbdb_DatabaseCursor_currentPrimaryKey(	VALUE	rb_database_cursor );
 VALUE rb_Rbdb_DatabaseCursor_retrieveFirst( VALUE	rb_database_cursor );
 VALUE rb_Rbdb_DatabaseCursor_retrieveFirstKey( VALUE	rb_database_cursor );
+VALUE rb_Rbdb_DatabaseCursor_retrieveFirstPrimaryKey( VALUE	rb_database_cursor );
 VALUE rb_Rbdb_DatabaseCursor_retrieveLast( VALUE	rb_database_cursor );
 VALUE rb_Rbdb_DatabaseCursor_retrieveLastKey( VALUE	rb_database_cursor );
+VALUE rb_Rbdb_DatabaseCursor_retrieveLastPrimaryKey( VALUE	rb_database_cursor );
 	VALUE rb_Rbdb_DatabaseCursor_retrieveNext( VALUE	rb_database_cursor );
 VALUE rb_Rbdb_DatabaseCursor_retrieveNextKey( VALUE	rb_database_cursor );
+VALUE rb_Rbdb_DatabaseCursor_retrieveNextPrimaryKey( VALUE	rb_database_cursor );
 VALUE rb_Rbdb_DatabaseCursor_retrievePrevious( VALUE	rb_database_cursor );
 VALUE rb_Rbdb_DatabaseCursor_retrievePreviousKey( VALUE	rb_database_cursor );
+VALUE rb_Rbdb_DatabaseCursor_retrievePreviousPrimaryKey( VALUE	rb_database_cursor );
 	VALUE rb_Rbdb_DatabaseCursor_countDuplicatesForCurrentKey( VALUE	rb_database_cursor );
 	VALUE rb_Rbdb_DatabaseCursor_retrieveNextDuplicate( VALUE	rb_database_cursor );
 	VALUE rb_Rbdb_DatabaseCursor_retrievePreviousDuplicate( VALUE	rb_database_cursor );
@@ -71,6 +79,7 @@ VALUE rb_Rbdb_DatabaseCursor_retrievePreviousKey( VALUE	rb_database_cursor );
 VALUE rb_Rbdb_DatabaseCursor_iterate( VALUE	rb_database_cursor	);
 VALUE rb_Rbdb_DatabaseCursor_iterateDuplicates( VALUE	rb_database_cursor );
 VALUE rb_Rbdb_DatabaseCursor_iterateKeys( VALUE	rb_database_cursor );
+VALUE rb_Rbdb_DatabaseCursor_iteratePrimaryKeys( VALUE		rb_database_cursor );
 VALUE rb_Rbdb_DatabaseCursor_slice( int			argc,
 																		VALUE*	args,
 																		VALUE		rb_database_cursor	);

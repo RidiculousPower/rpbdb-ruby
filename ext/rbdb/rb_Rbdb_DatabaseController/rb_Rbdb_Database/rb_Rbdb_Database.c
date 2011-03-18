@@ -1770,10 +1770,10 @@ VALUE rb_Rbdb_Database_retrieve(	int			argc,
 	)
 	
 	VALUE	rb_return	=	Qnil;
+
+  VALUE	rb_return_array	=	rb_ary_new();
 	
 	if (		rb_hash_descriptor_index_key != Qnil ) {
-
-		VALUE	rb_return_array	=	rb_ary_new();
 
 		do	{
 
@@ -1817,7 +1817,7 @@ VALUE rb_Rbdb_Database_retrieve(	int			argc,
 																											rb_index );
 		C_RBDB_DATABASE( rb_database, c_database );
 
-		rb_return		=	rb_ary_new();
+		rb_return_array		=	rb_ary_new();
 
 		VALUE	rb_data			=	Qnil;
 
@@ -1837,14 +1837,14 @@ VALUE rb_Rbdb_Database_retrieve(	int			argc,
 			
 			Rbdb_Record_free( & c_record );
 			
-			rb_ary_push(	rb_return,
+			rb_ary_push(	rb_return_array,
 										rb_data );
 
 			//	remaining args are keys
 		} while ( R_Arg( rb_key ) );
-		
-		rb_return =	R_SimplifyArray( rb_return );
-		
+
+		rb_return	=	R_SimplifyArray( rb_return_array );
+				
 	}
 	
 	return rb_return;

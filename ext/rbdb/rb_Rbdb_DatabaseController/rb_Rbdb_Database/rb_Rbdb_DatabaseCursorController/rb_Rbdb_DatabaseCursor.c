@@ -219,9 +219,9 @@ VALUE rb_Rbdb_DatabaseCursor_new( int			argc,
 	return rb_database_cursor;
 }
 
-/*********
+/***************
 *  initialize  *
-*********/
+***************/
 
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/db_cursor.html
 VALUE rb_Rbdb_DatabaseCursor_initialize(	int			argc __attribute__ ((unused)),
@@ -355,13 +355,18 @@ VALUE rb_Rbdb_DatabaseCursor_duplicateCursor( VALUE	rb_database_cursor )	{
 
 //	DB_CURRENT				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
 VALUE rb_Rbdb_DatabaseCursor_overwriteCurrent(	VALUE	rb_database_cursor, 
-																							VALUE	rb_data )	{
+                                                VALUE	rb_data )	{
+
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
 
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 
 	Rbdb_Database*	c_parent_database	=	c_database_cursor->parent_database_cursor_controller->parent_database;
-	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_parent_database );
+
+	Rbdb_Record*    c_record	=	Rbdb_Record_new( c_parent_database );
+
 	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 
 	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
@@ -382,6 +387,9 @@ VALUE rb_Rbdb_DatabaseCursor_overwriteCurrent(	VALUE	rb_database_cursor,
 //	DB_AFTER				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
 VALUE rb_Rbdb_DatabaseCursor_writeAsDuplicateAfterCurrent(	VALUE	rb_database_cursor, 
 																														VALUE	rb_data )	{
+
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
 
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
@@ -407,6 +415,9 @@ VALUE rb_Rbdb_DatabaseCursor_writeAsDuplicateAfterCurrent(	VALUE	rb_database_cur
 //	DB_BEFORE				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_put.html
 VALUE rb_Rbdb_DatabaseCursor_writeAsDuplicateBeforeCurrent(	VALUE	rb_database_cursor, 
 																														VALUE	rb_data )	{
+
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
 
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
@@ -437,6 +448,8 @@ VALUE rb_Rbdb_DatabaseCursor_writeAsDuplicateBeforeCurrent(	VALUE	rb_database_cu
 VALUE rb_Rbdb_DatabaseCursor_writeBeforeAnyDuplicates(	int			argc,
 																												VALUE*	args,
 																												VALUE		rb_database_cursor )	{
+
+  //  FIX - ensure open
 
 	VALUE	rb_key	=	Qnil;
 	VALUE	rb_data	=	Qnil;
@@ -507,6 +520,8 @@ VALUE rb_Rbdb_DatabaseCursor_writeAfterAnyDuplicates(	int			argc,
 																												VALUE*	args,
 																												VALUE		rb_database_cursor )	{
 
+  //  FIX - ensure open
+
 	VALUE	rb_key	=	Qnil;
 	VALUE	rb_data	=	Qnil;
 
@@ -572,6 +587,8 @@ VALUE rb_Rbdb_DatabaseCursor_writeAfterAnyDuplicates(	int			argc,
 VALUE rb_Rbdb_DatabaseCursor_writeOnlyIfNotInDatabase(	int			argc,
 																												VALUE*	args,
 																												VALUE		rb_database_cursor )	{
+
+  //  FIX - ensure open
 
 	VALUE	rb_index																		=	Qnil;
 	VALUE	rb_key																			=	Qnil;
@@ -668,6 +685,8 @@ VALUE rb_Rbdb_DatabaseCursor_writeOnlyIfNotInDatabase(	int			argc,
 VALUE rb_Rbdb_DatabaseCursor_keyExists(	VALUE	rb_database_cursor, 
 																				VALUE	rb_key )	{
 
+  //  FIX - ensure open
+
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 
@@ -692,6 +711,8 @@ VALUE rb_Rbdb_DatabaseCursor_retrieve(	int       argc,
 																				VALUE*    args,
 																				VALUE     rb_database_cursor )	{
 
+  //  internal retrieve record will ensure open
+
 	Rbdb_Record*	c_record	=	rb_Rbdb_DatabaseCursor_internal_retrieveRecord(	argc,
 																																						args,
 																																						rb_database_cursor );
@@ -713,30 +734,54 @@ VALUE rb_Rbdb_DatabaseCursor_retrieve(	int       argc,
 *  retrieve_key  *
 *****************/
 
-VALUE rb_Rbdb_DatabaseCursor_retrieveKey(	int	argc,
+VALUE rb_Rbdb_DatabaseCursor_retrieveKey(	int     argc,
 																					VALUE*	args,
-																					VALUE	rb_database_cursor )	{
-	
+																					VALUE   rb_database_cursor )	{
+
+  //  internal retrieve record will ensure open
+
 	Rbdb_Record*	c_record	=	rb_Rbdb_DatabaseCursor_internal_retrieveRecord(	argc,
 																																						args,
 																																						rb_database_cursor );
 
   VALUE rb_key	=	Qnil;
-  VALUE rb_data	=	Qnil;
-  if ( c_record->result )	{
+    if ( c_record->result )	{
 
     VALUE rb_database = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 
-    rb_data = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                  c_record->data,
-                                                                  FALSE );
     rb_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                   c_record->key,
                                                                   TRUE );
   }
-
 	
   return rb_key;
+}
+
+/*************************
+*  retrieve_primary_key  *
+*************************/
+
+VALUE rb_Rbdb_DatabaseCursor_retrievePrimaryKey(	int     argc,
+                                                  VALUE*	args,
+                                                  VALUE   rb_database_cursor )	{
+
+  //  internal retrieve record will ensure open
+
+	Rbdb_Record*	c_record	=	rb_Rbdb_DatabaseCursor_internal_retrieveRecord(	argc,
+																																						args,
+																																						rb_database_cursor );
+
+  VALUE rb_primary_key	=	Qnil;
+  if ( c_record->result )	{
+
+    VALUE rb_database = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+
+    rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                          c_record->primary_key,
+                                                                          TRUE );
+  }
+	
+  return rb_primary_key;
 }
 
 /*************************
@@ -747,6 +792,8 @@ VALUE rb_Rbdb_DatabaseCursor_retrieveKey(	int	argc,
 
 VALUE rb_Rbdb_DatabaseCursor_retrievePartialKey(	VALUE	rb_database_cursor,
 																									VALUE	rb_partial_key )	{
+
+  //  FIX - ensure open
 
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
@@ -790,6 +837,8 @@ VALUE rb_Rbdb_DatabaseCursor_retrievePartialKey(	VALUE	rb_database_cursor,
 VALUE rb_Rbdb_DatabaseCursor_retrieveDuplicateMatchingPartialData(	int			argc,
 																																		VALUE*	args,
 																																		VALUE		rb_database_cursor )	{
+
+  //  FIX - ensure open
 
 	VALUE	rb_index																		=	Qnil;
 	VALUE	rb_key																			=	Qnil;
@@ -896,6 +945,9 @@ VALUE rb_Rbdb_DatabaseCursor_retrieveDuplicateMatchingPartialData(	int			argc,
 *********************/
 
 VALUE rb_Rbdb_DatabaseCursor_current(	VALUE	rb_database_cursor )	{
+
+  //  retrieve ensures open
+
 	return rb_Rbdb_DatabaseCursor_retrieve(	0,
 																					NULL,
 																					rb_database_cursor );
@@ -907,9 +959,27 @@ VALUE rb_Rbdb_DatabaseCursor_current(	VALUE	rb_database_cursor )	{
 *************************/
 
 VALUE rb_Rbdb_DatabaseCursor_currentKey(	VALUE	rb_database_cursor )	{
+
+  //  retrieve key ensures open
+
 	return rb_Rbdb_DatabaseCursor_retrieveKey(	0,
 																							NULL,
 																							rb_database_cursor );
+}
+
+/*********************************
+*  retrieve_current_primary_key  *
+*  current_primary_key           *
+*********************************/
+
+VALUE rb_Rbdb_DatabaseCursor_currentPrimaryKey(	VALUE	rb_database_cursor )	{
+
+  //  retrieve primary key ensures open
+
+	return rb_Rbdb_DatabaseCursor_retrievePrimaryKey(	0,
+                                                    NULL,
+                                                    rb_database_cursor );
+
 }
 
 /************************
@@ -919,7 +989,11 @@ VALUE rb_Rbdb_DatabaseCursor_currentKey(	VALUE	rb_database_cursor )	{
 
 //	DB_FIRST				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_Rbdb_DatabaseCursor_startingWithFirst( VALUE	rb_database_cursor )	{
+
+  //  FIX - ensure open
+
 	rb_Rbdb_DatabaseCursor_retrieveFirst( rb_database_cursor );
+
 	return rb_database_cursor;
 }
 
@@ -931,17 +1005,24 @@ VALUE rb_Rbdb_DatabaseCursor_startingWithFirst( VALUE	rb_database_cursor )	{
 //	DB_FIRST				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_Rbdb_DatabaseCursor_retrieveFirst( VALUE	rb_database_cursor )	{
 
+  //  FIX - ensure open
+
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 
-	Rbdb_Record*	record	=	Rbdb_DatabaseCursor_retrieveFirst(	c_database_cursor );
+	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveFirst(	c_database_cursor );
+
+  VALUE rb_data             = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
 	
-	VALUE	rb_return_string	=	rb_str_new(	(char*) Rbdb_Record_rawData( record ),
-																				Rbdb_Record_dataSize( record ) );
+	Rbdb_Record_free( & c_record );
 	
-	Rbdb_Record_free( & record );
-	
-	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
+	return rb_data;
 }
 
 /***********************
@@ -951,16 +1032,53 @@ VALUE rb_Rbdb_DatabaseCursor_retrieveFirst( VALUE	rb_database_cursor )	{
 
 //	DB_FIRST				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_Rbdb_DatabaseCursor_retrieveFirstKey( VALUE	rb_database_cursor )	{
+
+  //  retrieve first ensures open
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 	
-	Rbdb_Record*	record	=	Rbdb_DatabaseCursor_retrieveFirst(	c_database_cursor );
+	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveFirst(	c_database_cursor );
 	
-	VALUE	rb_return_string	=	rb_str_new(	(char*) Rbdb_Record_rawKey( record ),
-																				Rbdb_Record_keySize( record ) );
+  VALUE rb_key              = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_key,
+																										(Rbdb_DBT*) c_record->key,
+																										FALSE );
 	
-	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
+	Rbdb_Record_free( & c_record );
+	
+	return rb_key;
+}
+
+/*******************************
+*  retrieve_first_primary_key  *
+*  first_key                   *
+*******************************/
+
+VALUE rb_Rbdb_DatabaseCursor_retrieveFirstPrimaryKey( VALUE	rb_database_cursor )	{
+
+  //  retrieve first ensures open
+	
+	Rbdb_DatabaseCursor*	c_database_cursor;
+	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+	
+	Rbdb_Record*	c_record    =	Rbdb_DatabaseCursor_retrieveFirst(	c_database_cursor );
+	
+  VALUE rb_primary_key      = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_primary_key,
+																										(Rbdb_DBT*) c_record->primary_key,
+																										FALSE );
+	
+	Rbdb_Record_free( & c_record );
+	
+	return rb_primary_key;
+
 }
 
 /******************
@@ -971,15 +1089,24 @@ VALUE rb_Rbdb_DatabaseCursor_retrieveFirstKey( VALUE	rb_database_cursor )	{
 //	DB_LAST				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_Rbdb_DatabaseCursor_retrieveLast( VALUE	rb_database_cursor )	{
 
+  //  FIX - ensure open
+
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+  
+	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveLast(	c_database_cursor );
 
-	Rbdb_Record*	record	=	Rbdb_DatabaseCursor_retrieveLast(	c_database_cursor );
+  VALUE rb_data             = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 	
-	VALUE	rb_return_string	=	rb_str_new(	(char*) Rbdb_Record_rawData( record ),
-												Rbdb_Record_dataSize( record ) );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
 	
-	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
+	Rbdb_Record_free( & c_record );
+	
+	return rb_data;
 }
 
 /**********************
@@ -990,15 +1117,53 @@ VALUE rb_Rbdb_DatabaseCursor_retrieveLast( VALUE	rb_database_cursor )	{
 //	DB_LAST				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_Rbdb_DatabaseCursor_retrieveLastKey( VALUE	rb_database_cursor )	{
 	
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 	
-	Rbdb_Record*	record	=	Rbdb_DatabaseCursor_retrieveLast(	c_database_cursor );
+	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveLast(	c_database_cursor );
 	
-	VALUE	rb_return_string	=	rb_str_new(	(char*) Rbdb_Record_rawKey( record ),
-											   Rbdb_Record_keySize( record ) );
+  VALUE rb_key              = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_key,
+																										(Rbdb_DBT*) c_record->key,
+																										FALSE );
 	
-	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
+	Rbdb_Record_free( & c_record );
+	
+	return rb_key;
+}
+
+/******************************
+*  retrieve_last_primary_key  *
+*  last_primary_key           *
+******************************/
+
+VALUE rb_Rbdb_DatabaseCursor_retrieveLastPrimaryKey( VALUE	rb_database_cursor )	{
+
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+
+	Rbdb_DatabaseCursor*	c_database_cursor;
+	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+	
+	Rbdb_Record*	c_record    =	Rbdb_DatabaseCursor_retrieveLast(	c_database_cursor );
+	
+  VALUE rb_primary_key      = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_primary_key,
+																										(Rbdb_DBT*) c_record->primary_key,
+																										FALSE );
+	
+	Rbdb_Record_free( & c_record );
+	
+	return rb_primary_key;
 }
 
 /******************
@@ -1009,17 +1174,25 @@ VALUE rb_Rbdb_DatabaseCursor_retrieveLastKey( VALUE	rb_database_cursor )	{
 //	DB_NEXT				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_Rbdb_DatabaseCursor_retrieveNext( VALUE	rb_database_cursor )	{
 
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveNext(	c_database_cursor );
 	
-	VALUE	rb_return_string	=	rb_str_new(	(char*) Rbdb_Record_rawData( c_record ),
-												Rbdb_Record_dataSize( c_record ) );
+  VALUE rb_data             = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 	
-	VALUE	return_value	=	( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
 	
-	return return_value;
+	Rbdb_Record_free( & c_record );
+	
+	return rb_data;
 }		
 
 /**********************
@@ -1029,19 +1202,53 @@ VALUE rb_Rbdb_DatabaseCursor_retrieveNext( VALUE	rb_database_cursor )	{
 
 //	DB_NEXT				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_Rbdb_DatabaseCursor_retrieveNextKey( VALUE	rb_database_cursor )	{
+
+  //  retrieve next ensures open
 	
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 	
 	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveNext(	c_database_cursor );
 	
-	VALUE	rb_return_string	=	rb_str_new(	(char*) Rbdb_Record_rawKey( c_record ),
-											   Rbdb_Record_keySize( c_record ) );
+  VALUE rb_key              = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_key,
+																										(Rbdb_DBT*) c_record->key,
+																										FALSE );
 	
-	VALUE	return_value	=	( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
+	Rbdb_Record_free( & c_record );
 	
-	return return_value;
+	return rb_key;
 }		
+
+/******************************
+*  retrieve_next_primary_key  *
+*  next_primary_key           *
+******************************/
+
+VALUE rb_Rbdb_DatabaseCursor_retrieveNextPrimaryKey( VALUE	rb_database_cursor )	{
+
+  //  retrieve next ensures open
+	
+	Rbdb_DatabaseCursor*	c_database_cursor;
+	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+	
+	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveNext(	c_database_cursor );
+	
+  VALUE rb_primary_key      = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_primary_key,
+																										(Rbdb_DBT*) c_record->primary_key,
+																										FALSE );
+	
+	Rbdb_Record_free( & c_record );
+	
+	return rb_primary_key;
+}
 
 /**********************
 *  retrieve_previous  *
@@ -1051,15 +1258,25 @@ VALUE rb_Rbdb_DatabaseCursor_retrieveNextKey( VALUE	rb_database_cursor )	{
 //	DB_PREV				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_Rbdb_DatabaseCursor_retrievePrevious( VALUE	rb_database_cursor )	{
 
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 
-	Rbdb_Record*	record	=	Rbdb_DatabaseCursor_retrievePrevious(	c_database_cursor );
+	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrievePrevious(	c_database_cursor );
 	
-	VALUE	rb_return_string	=	rb_str_new(	(char*) Rbdb_Record_rawData( record ),
-												Rbdb_Record_dataSize( record ) );
+  VALUE rb_data             = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 	
-	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
+	
+	Rbdb_Record_free( & c_record );
+	
+	return rb_data;
 }
 
 /**************************
@@ -1070,15 +1287,51 @@ VALUE rb_Rbdb_DatabaseCursor_retrievePrevious( VALUE	rb_database_cursor )	{
 //	DB_PREV				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_Rbdb_DatabaseCursor_retrievePreviousKey( VALUE	rb_database_cursor )	{
 	
+  //  retrieve previous ensures open
+  
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 	
-	Rbdb_Record*	record	=	Rbdb_DatabaseCursor_retrievePrevious(	c_database_cursor );
+	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrievePrevious(	c_database_cursor );
 	
-	VALUE	rb_return_string	=	rb_str_new(	(char*) Rbdb_Record_rawKey( record ),
-											   Rbdb_Record_keySize( record ) );
+  VALUE rb_key              = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_key,
+																										(Rbdb_DBT*) c_record->key,
+																										FALSE );
 	
-	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
+	Rbdb_Record_free( & c_record );
+	
+	return rb_key;
+}
+
+/**********************************
+*  retrieve_previous_primary_key  *
+*  previous_primary_key           *
+**********************************/
+
+VALUE rb_Rbdb_DatabaseCursor_retrievePreviousPrimaryKey( VALUE	rb_database_cursor )	{
+
+  //  retrieve previous ensures open
+  
+	Rbdb_DatabaseCursor*	c_database_cursor;
+	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+	
+	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrievePrevious(	c_database_cursor );
+	
+  VALUE rb_primary_key      = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_primary_key,
+																										(Rbdb_DBT*) c_record->primary_key,
+																										FALSE );
+	
+	Rbdb_Record_free( & c_record );
+	
+	return rb_primary_key;
 }
 
 /*************************************
@@ -1088,6 +1341,9 @@ VALUE rb_Rbdb_DatabaseCursor_retrievePreviousKey( VALUE	rb_database_cursor )	{
 //	Count data items for current key
 //	http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_count.html
 VALUE rb_Rbdb_DatabaseCursor_countDuplicatesForCurrentKey( VALUE	rb_database_cursor )	{
+
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
 
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
@@ -1103,15 +1359,25 @@ VALUE rb_Rbdb_DatabaseCursor_countDuplicatesForCurrentKey( VALUE	rb_database_cur
 //	DB_NEXT_DUP			http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_Rbdb_DatabaseCursor_retrieveNextDuplicate( VALUE	rb_database_cursor )	{
 
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 
-	Rbdb_Record*	record	=	Rbdb_DatabaseCursor_retrieveNextDuplicate(	c_database_cursor );
+	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveNextDuplicate(	c_database_cursor );
 	
-	VALUE	rb_return_string	=	rb_str_new(	(char*) Rbdb_Record_rawData( record ),
-												Rbdb_Record_dataSize( record ) );
+  VALUE rb_data             = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 	
-	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
+	
+	Rbdb_Record_free( & c_record );
+	
+	return rb_data;
 }
 
 /********************************
@@ -1122,15 +1388,25 @@ VALUE rb_Rbdb_DatabaseCursor_retrieveNextDuplicate( VALUE	rb_database_cursor )	{
 //	DB_PREV_DUP				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_Rbdb_DatabaseCursor_retrievePreviousDuplicate( VALUE	rb_database_cursor )	{
 
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 
-	Rbdb_Record*	record	=	Rbdb_DatabaseCursor_retrievePreviousDuplicate(	c_database_cursor );
+	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrievePreviousDuplicate(	c_database_cursor );
 	
-	VALUE	rb_return_string	=	rb_str_new(	(char*) Rbdb_Record_rawData( record ),
-												Rbdb_Record_dataSize( record ) );
+  VALUE rb_data             = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 	
-	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
+	
+	Rbdb_Record_free( & c_record );
+	
+	return rb_data;
 }
 
 /********************************
@@ -1141,15 +1417,25 @@ VALUE rb_Rbdb_DatabaseCursor_retrievePreviousDuplicate( VALUE	rb_database_cursor
 //	DB_NEXT_NODUP		http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_Rbdb_DatabaseCursor_retrieveNextNonDuplicate( VALUE	rb_database_cursor )	{
 
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 
-	Rbdb_Record*	record	=	Rbdb_DatabaseCursor_retrieveNextNonDuplicate(	c_database_cursor );
+	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrieveNextNonDuplicate(	c_database_cursor );
 	
-	VALUE	rb_return_string	=	rb_str_new(	(char*) Rbdb_Record_rawData( record ),
-												Rbdb_Record_dataSize( record ) );
+  VALUE rb_data             = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 	
-	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
+	
+	Rbdb_Record_free( & c_record );
+	
+	return rb_data;
 }
 
 /************************************
@@ -1160,22 +1446,91 @@ VALUE rb_Rbdb_DatabaseCursor_retrieveNextNonDuplicate( VALUE	rb_database_cursor 
 //	DB_PREV_NODUP				http://www.oracle.com/technology/documentation/berkeley-db/db/api_c/dbc_get.html
 VALUE rb_Rbdb_DatabaseCursor_retrievePreviousNonDuplicate( VALUE	rb_database_cursor )	{
 
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
 
-	Rbdb_Record*	record	=	Rbdb_DatabaseCursor_retrievePreviousNonDuplicate(	c_database_cursor );
+	Rbdb_Record*	c_record	=	Rbdb_DatabaseCursor_retrievePreviousNonDuplicate(	c_database_cursor );
 	
-	VALUE	rb_return_string	=	rb_str_new(	(char*) Rbdb_Record_rawData( record ),
-												Rbdb_Record_dataSize( record ) );
+  VALUE rb_data             = Qnil;
+	VALUE	rb_parent_database	=	rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 	
-	return ( FIX2INT( rb_str_length( rb_return_string ) ) ? rb_return_string : Qnil );
+	rb_Rbdb_Database_internal_packDBTForRubyInstance(	rb_parent_database,
+																										rb_data,
+																										(Rbdb_DBT*) c_record->data,
+																										FALSE );
+	
+	Rbdb_Record_free( & c_record );
+	
+	return rb_data;
 }
 
-/************
+/*******************************************************************************************************************************************************************************************
+                                                              Iteration
+*******************************************************************************************************************************************************************************************/
+
+
+/*********
 *  each  *
-************/
+*********/
 
 VALUE rb_Rbdb_DatabaseCursor_iterate( VALUE		rb_database_cursor	)	{
+
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+		
+	//	If we don't have a block, we return an enumerator
+	R_ReturnEnumeratorIfNoBlock(	0,
+																NULL,
+																rb_database_cursor );
+	
+	Rbdb_DatabaseCursor*	c_database_cursor;
+	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+		
+	int	c_index	=	0;
+	Rbdb_Record*	c_record	=	NULL;
+  VALUE rb_key            =  Qnil;
+  VALUE rb_primary_key    =  Qnil;
+  VALUE rb_data           =  Qnil;
+  VALUE rb_database       = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+	while ( ( c_record = Rbdb_DatabaseCursor_iterate( c_database_cursor, c_record ) ) != NULL )	{
+
+    if ( c_record->result )	{
+
+      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->data,
+                                                                            FALSE );
+      rb_key          =	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->key,
+                                                                            TRUE );
+      rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->primary_key,
+                                                                            TRUE );
+    }
+		
+    rb_Rbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
+                                                                      rb_data,
+                                                                      rb_database,
+                                                                      rb_primary_key,
+                                                                      NULL );
+
+		c_index++;
+	}
+	
+	//	If we got here we return nothing
+	return Qnil;
+}
+
+/********************
+*  each_with_index  *
+********************/
+
+VALUE rb_Rbdb_DatabaseCursor_iterateWithIndex( VALUE		rb_database_cursor	)	{
+
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
 		
 	//	If we don't have a block, we return an enumerator
 	R_ReturnEnumeratorIfNoBlock(	0,
@@ -1220,6 +1575,9 @@ VALUE rb_Rbdb_DatabaseCursor_iterate( VALUE		rb_database_cursor	)	{
 //	iterates all records with one or more duplicates
 VALUE rb_Rbdb_DatabaseCursor_iterateDuplicates(	VALUE		rb_database_cursor )	{
 	
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+  
 	R_ReturnEnumeratorIfNoBlock(	0,
 																NULL,
 																rb_database_cursor );
@@ -1255,12 +1613,111 @@ VALUE rb_Rbdb_DatabaseCursor_iterateDuplicates(	VALUE		rb_database_cursor )	{
 	return Qnil;
 }
 
-/****************
+/******************************
+*  each_duplicate_with_index  *
+******************************/
+
+//	iterates all records with one or more duplicates
+VALUE rb_Rbdb_DatabaseCursor_iterateDuplicatesWithIndex(	VALUE		rb_database_cursor )	{
+	
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+  
+	R_ReturnEnumeratorIfNoBlock(	0,
+																NULL,
+																rb_database_cursor );
+
+	Rbdb_DatabaseCursor*	c_database_cursor;
+	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+		
+	int	c_index	=	0;
+	Rbdb_Record*	c_record	=	NULL;
+  VALUE rb_key  = Qnil;
+  VALUE rb_data = Qnil;
+  VALUE rb_database     = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+	while ( ( c_record = Rbdb_DatabaseCursor_iterateDuplicates( c_database_cursor, c_record ) ) != NULL )	{
+      
+    if ( c_record->result )	{
+
+      rb_data = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                    c_record->data,
+                                                                    FALSE );
+      rb_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                    c_record->key,
+                                                                    TRUE );
+    }
+		
+		YIELD_BLOCK_FOR_DATA_INDEX( rb_key,
+																rb_data,
+																c_index );
+
+		c_index++;
+	}
+	
+	//	If we got here we return nothing
+	return Qnil;
+}
+
+/*************
 *  each_key  *
-****************/
+*************/
 
 //	iterates all keys without iterating duplicate records
 VALUE rb_Rbdb_DatabaseCursor_iterateKeys(	VALUE		rb_database_cursor )	{
+
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+
+	R_ReturnEnumeratorIfNoBlock(	0,
+																NULL,
+																rb_database_cursor );
+
+	Rbdb_DatabaseCursor*	c_database_cursor;
+	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+	
+	int	c_index	=	0;
+	Rbdb_Record*	c_record	=	NULL;
+  VALUE rb_key   =  Qnil;
+  VALUE rb_primary_key    =  Qnil;
+  VALUE rb_data  =  Qnil;
+  VALUE rb_database     = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+	while ( ( c_record = Rbdb_DatabaseCursor_iterateKeys( c_database_cursor, c_record ) ) != NULL )	{
+      
+    if ( c_record->result )	{
+
+      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->data,
+                                                                            FALSE );
+      rb_key          =	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->key,
+                                                                            TRUE );
+      rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->primary_key,
+                                                                            TRUE );
+    }
+		
+    rb_Rbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
+                                                                      rb_data,
+                                                                      rb_database,
+                                                                      rb_primary_key,
+                                                                      & c_index );
+
+		c_index++;
+	}
+	
+	//	If we got here we return nothing
+	return Qnil;
+}
+
+/************************
+*  each_key_with_index  *
+************************/
+
+//	iterates all keys without iterating duplicate records
+VALUE rb_Rbdb_DatabaseCursor_iterateKeysWithIndex(	VALUE		rb_database_cursor )	{
+
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
 
 	R_ReturnEnumeratorIfNoBlock(	0,
 																NULL,
@@ -1297,6 +1754,104 @@ VALUE rb_Rbdb_DatabaseCursor_iterateKeys(	VALUE		rb_database_cursor )	{
 	return Qnil;
 }
 
+/*********************
+*  each_primary_key  *
+*********************/
+
+VALUE rb_Rbdb_DatabaseCursor_iteratePrimaryKeys( VALUE		rb_database_cursor )	{
+
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+
+	R_ReturnEnumeratorIfNoBlock(	0,
+																NULL,
+																rb_database_cursor );
+
+	Rbdb_DatabaseCursor*	c_database_cursor;
+	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+	
+	int	c_index	=	0;
+	Rbdb_Record*	c_record	=	NULL;
+  VALUE rb_key            = Qnil;
+  VALUE rb_primary_key    = Qnil;
+  VALUE rb_data           = Qnil;
+  VALUE rb_database       = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+	while ( ( c_record = Rbdb_DatabaseCursor_iterateKeys( c_database_cursor, c_record ) ) != NULL )	{
+      
+    if ( c_record->result )	{
+
+      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->data,
+                                                                            FALSE );
+      rb_key          =	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->key,
+                                                                            TRUE );
+      rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->primary_key,
+                                                                            TRUE );
+    }
+		
+    rb_Rbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_primary_key,
+                                                                      rb_key,
+                                                                      rb_data,
+                                                                      rb_database,
+                                                                      NULL );
+
+		c_index++;
+	}
+	
+	//	If we got here we return nothing
+	return Qnil;
+}
+
+/********************************
+*  each_primary_key_with_index  *
+********************************/
+
+VALUE rb_Rbdb_DatabaseCursor_iteratePrimaryKeysWithIndex( VALUE		rb_database_cursor )	{
+
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+
+	R_ReturnEnumeratorIfNoBlock(	0,
+																NULL,
+																rb_database_cursor );
+
+	Rbdb_DatabaseCursor*	c_database_cursor;
+	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+	
+	int	c_index	=	0;
+	Rbdb_Record*	c_record	=	NULL;
+  VALUE rb_primary_key    = Qnil;
+  VALUE rb_data           = Qnil;
+  VALUE rb_database       = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+	while ( ( c_record = Rbdb_DatabaseCursor_iterateKeys( c_database_cursor, c_record ) ) != NULL )	{
+      
+    if ( c_record->result )	{
+
+      rb_data = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                    c_record->data,
+                                                                    FALSE );
+      rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->primary_key,
+                                                                            TRUE );
+    }
+		
+		YIELD_BLOCK_FOR_KEY_DATA_INDEX( rb_primary_key,
+																		rb_data,
+																		c_index );
+
+		c_index++;
+	}
+	
+	//	If we got here we return nothing
+	return Qnil;
+}
+
+/*******************************************************************************************************************************************************************************************
+                                                                    Slices
+*******************************************************************************************************************************************************************************************/
+
 /**********
 *  slice  *
 **********/
@@ -1304,6 +1859,9 @@ VALUE rb_Rbdb_DatabaseCursor_iterateKeys(	VALUE		rb_database_cursor )	{
 VALUE rb_Rbdb_DatabaseCursor_slice( int			argc,
 																		VALUE*	args,
 																		VALUE		rb_database_cursor	)	{
+
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
 		
 	//	If we don't have a block, we return an enumerator
 	R_ReturnEnumeratorIfNoBlock(	0,
@@ -1322,23 +1880,29 @@ VALUE rb_Rbdb_DatabaseCursor_slice( int			argc,
 	int	c_index	=	0;
 	Rbdb_Record*	c_record	=	NULL;
   VALUE rb_key   =  Qnil;
+  VALUE rb_primary_key    =  Qnil;
   VALUE rb_data  =  Qnil;
   VALUE rb_database     = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 	while ( ( c_record = Rbdb_DatabaseCursor_slice( c_database_cursor, FIX2INT( rb_slice_length ), c_record ) ) != NULL )	{
 		
     if ( c_record->result )	{
 
-      rb_data = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                    c_record->data,
-                                                                    FALSE );
-      rb_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                    c_record->key,
-                                                                    TRUE );
+      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->data,
+                                                                            FALSE );
+      rb_key          =	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->key,
+                                                                            TRUE );
+      rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->primary_key,
+                                                                            TRUE );
     }
 		
-		YIELD_BLOCK_FOR_KEY_DATA_INDEX( rb_key,
-																		rb_data,
-																		c_index );
+    rb_Rbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
+                                                                      rb_data,
+                                                                      rb_database,
+                                                                      rb_primary_key,
+                                                                      NULL );
 
 		c_index++;
 	}
@@ -1354,6 +1918,9 @@ VALUE rb_Rbdb_DatabaseCursor_slice( int			argc,
 VALUE rb_Rbdb_DatabaseCursor_sliceDuplicates(	int			argc,
 																							VALUE*	args,
 																							VALUE		rb_database_cursor )	{
+
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
 	
 	R_ReturnEnumeratorIfNoBlock(	0,
 																NULL,
@@ -1405,6 +1972,9 @@ VALUE rb_Rbdb_DatabaseCursor_sliceKeys(	int			argc,
 																				VALUE*	args,
 																				VALUE		rb_database_cursor )	{
 
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+
 	R_ReturnEnumeratorIfNoBlock(	0,
 																NULL,
 																rb_database_cursor );
@@ -1421,23 +1991,87 @@ VALUE rb_Rbdb_DatabaseCursor_sliceKeys(	int			argc,
 	int	c_index	=	0;
 	Rbdb_Record*	c_record	=	NULL;
   VALUE rb_key   =  Qnil;
+  VALUE rb_primary_key    =  Qnil;
   VALUE rb_data  =  Qnil;
   VALUE rb_database     = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 	while ( ( c_record = Rbdb_DatabaseCursor_sliceKeys( c_database_cursor, FIX2INT( rb_slice_length ), c_record ) ) != NULL )	{
 		
     if ( c_record->result )	{
 
-      rb_data = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                    c_record->data,
-                                                                    FALSE );
-      rb_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                    c_record->key,
-                                                                    TRUE );
+      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->data,
+                                                                            FALSE );
+      rb_key          =	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->key,
+                                                                            TRUE );
+      rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->primary_key,
+                                                                            TRUE );
     }
 		
-		YIELD_BLOCK_FOR_KEY_DATA_INDEX( rb_key,
-																		rb_data,
-																		c_index );
+    rb_Rbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
+                                                                      rb_data,
+                                                                      rb_database,
+                                                                      rb_primary_key,
+                                                                      NULL );
+
+		c_index++;
+	}
+	
+	//	If we got here we return nothing
+	return Qnil;
+}
+
+/***********************
+*  slice_primary_keys  *
+***********************/
+
+VALUE rb_Rbdb_DatabaseCursor_slicePrimaryKeys(	int			argc,
+                                                VALUE*	args,
+                                                VALUE		rb_database_cursor )	{
+
+  //  FIX - ensure open
+  //  FIX - ensure there is a current
+
+	R_ReturnEnumeratorIfNoBlock(	0,
+																NULL,
+																rb_database_cursor );
+
+	VALUE	rb_slice_length	=	Qnil;
+	rb_scan_args(	argc,
+								args,
+								"10",
+								& rb_slice_length );
+
+	Rbdb_DatabaseCursor*	c_database_cursor;
+	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
+	
+	int	c_index	=	0;
+	Rbdb_Record*	c_record	=	NULL;
+  VALUE rb_key            = Qnil;
+  VALUE rb_primary_key   =  Qnil;
+  VALUE rb_data  =  Qnil;
+  VALUE rb_database     = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
+	while ( ( c_record = Rbdb_DatabaseCursor_sliceKeys( c_database_cursor, FIX2INT( rb_slice_length ), c_record ) ) != NULL )	{
+		
+    if ( c_record->result )	{
+
+      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->data,
+                                                                            FALSE );
+      rb_key          =	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->key,
+                                                                            TRUE );
+      rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->primary_key,
+                                                                            TRUE );
+    }
+		
+    rb_Rbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_primary_key,
+                                                                      rb_key,
+                                                                      rb_data,
+                                                                      rb_database,
+                                                                      & c_index );
 
 		c_index++;
 	}
@@ -1459,6 +2093,8 @@ VALUE rb_Rbdb_DatabaseCursor_sliceKeys(	int			argc,
 VALUE rb_Rbdb_DatabaseCursor_delete(	int			argc,
 																			VALUE*	args,
 																			VALUE		rb_database_cursor )	{
+  
+  //  we don't need to ensure open here because it will happen in whichever function we call
 
 	Rbdb_DatabaseCursor*	c_database_cursor;
 	C_RBDB_DATABASE_CURSOR( rb_database_cursor, c_database_cursor );
@@ -1515,6 +2151,8 @@ VALUE rb_Rbdb_DatabaseCursor_delete(	int			argc,
 Rbdb_Record* rb_Rbdb_DatabaseCursor_internal_retrieveRecord(	int			argc,
 																															VALUE*	args,
 																															VALUE		rb_database_cursor )	{
+
+  //  FIX - ensure open
 	
 	VALUE	rb_key	=	Qnil;
 	VALUE	rb_data	=	Qnil;	
@@ -1562,4 +2200,138 @@ Rbdb_Record* rb_Rbdb_DatabaseCursor_internal_retrieveRecord(	int			argc,
 	}
 
 	return c_record;	
+}
+
+/*************************************
+*  yieldDataPrimaryKeyKeyAndOrIndex  *
+*************************************/
+
+VALUE rb_Rbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( VALUE   arg1,
+                                                                        VALUE   arg2,
+                                                                        VALUE   arg3,
+                                                                        VALUE   arg4,
+                                                                        int*    c_index ) {
+
+  //  get a reference to our provided block
+  VALUE rb_block  = rb_block_proc();
+    
+  //  get block arity
+	VALUE	rb_arity	=	rb_funcall(	rb_block,
+																rb_intern( "arity" ),
+																0 );
+
+	int	c_arity	=	FIX2INT( rb_arity );
+
+  //  if index:
+  //
+  //  1:  error - insufficient block arity
+  //  2:  arg1,  index
+  //  3:  arg1,  arg2,  index
+  //  4:  arg1,  arg2,  arg3,  index
+  //  -1: arg1,  arg2,  arg3,  index
+  //  -2: arg1,  arg2,  arg3,  index
+  //
+  
+  if ( c_index != NULL )  {
+    switch ( c_arity )	{
+      
+      //	* 5 args gets arg1,  arg2,  arg3,  index
+      //	-1 (*args) and -2 (arg, *args) are the same as 3
+      case 5:			
+      case -1:
+      case -2:
+        return rb_yield_values( 5,
+                                arg1,
+                                arg2,
+                                arg3,
+                                arg4,
+                                c_index );
+        break;
+
+      case 4:
+        return rb_yield_values( 4,
+                                arg1,
+                                arg2,
+                                arg3,
+                                c_index );
+        break;
+
+      //	* 3 args gets arg1,  arg2,  index
+      case 3:
+        return rb_yield_values( 3,
+                                arg1,
+                                arg2,
+                                c_index );
+        break;
+
+      //	* 2 args gets arg[0], index
+      case 2:
+        return rb_yield_values( 2,
+                                arg1,
+                                c_index );
+        break;
+
+      default:
+        rb_raise( rb_eArgError, RBDB_RUBY_ERROR_WRONG_ARITY_FOR_ITERATION );
+        break;
+    }
+
+  }
+  else  {
+
+    //  without index:
+    //
+    //  if we have an index it goes last
+    //  that means we have 1, 2, or 3 arguments then possibly an index
+    //
+    //  1:  arg1
+    //  2:  arg1,  arg2
+    //  3:  arg1,  arg2,  arg3
+    //  4:  arg1,  arg2,  arg3,  index
+    //  -1: arg1,  arg2,  arg3,  index
+    //  -2: arg1,  arg2,  arg3,  index
+    switch ( c_arity )	{
+      
+      //	* 4 args gets arg1,  arg2,  arg3,  index
+      //	-1 (*args) and -2 (arg, *args) are the same as 4
+      case 4:
+      case -1:
+      case -2:
+        return rb_yield_values( 4,
+                                arg1,
+                                arg2,
+                                arg3,
+                                arg4 );
+        break;
+
+      //	* 3 args gets arg1,  arg2,  arg3
+      case 3:
+        return rb_yield_values( 3,
+                                arg1,
+                                arg2,
+                                arg3 );
+        break;
+
+      //	* 2 args gets arg1,  arg2
+      case 2:
+        return rb_yield_values( 2,
+                                arg1,
+                                arg2 );
+        break;
+
+      //	* 1 arg gets arg1
+      case 1:
+        return rb_yield_values( 1,
+                                arg1 );
+        break;
+      
+      default:
+        rb_raise( rb_eArgError, RBDB_RUBY_ERROR_WRONG_ARITY_FOR_ITERATION );
+        break;
+    }
+  }
+
+  rb_raise( rb_eRuntimeError, "Should never have gotten here." );
+
+  return Qnil;
 }

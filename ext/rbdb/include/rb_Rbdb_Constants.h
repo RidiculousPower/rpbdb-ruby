@@ -382,6 +382,7 @@
 	#define RBDB_RUBY_ERROR_CANNOT_RETRIEVE_WITHOUT_DATA											"Cannot retrieve to database without data."
 
 	#define RBDB_RUBY_ERROR_WRONG_ARITY_FOR_SECONDARY_KEY_CALLBACK						"Secondary key creation callback method/proc has unexpected arity. Expected 1, 2, 3 or -1."
+	#define RBDB_RUBY_ERROR_WRONG_ARITY_FOR_ITERATION                         "Iteration block has unexpected arity. Expected 1, 2, 3 or -1."
 
 	/****************************
 	*	Get Ruby from C Macros	*
