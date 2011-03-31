@@ -4,14 +4,14 @@ http://www.ridiculouspower.com/db
 
 == DESCRIPTION:
 
-Rbdb is an object-oriented database environment built on top of Oracle's Berkeley Database. 
+RPbdb is an object-oriented database environment built on top of Oracle's Berkeley Database. 
 It provides both persistent database-transparent object storage, and also a fully-functional 
 database wrapper. The design is intended above all to simplify interfacing with the database 
 environment while also permitting any underlying settings to be adjusted as necessary. 
 
 == SUMMARY:
 	
-	Rbdb functions inside a database environment. The environment provides isolation for a 
+	RPbdb functions inside a database environment. The environment provides isolation for a 
 	set of databases.
 	
 	Databases are key/value stores in one of four types: Btree (default), Hash, Record Number, 
@@ -30,12 +30,12 @@ environment while also permitting any underlying settings to be adjusted as nece
 
 == INITIALIZING DATABASE ENVIRONMENT:
 
-	Any use of Rbdb requires opening an environment. Multiple environments are supported, but
+	Any use of RPbdb requires opening an environment. Multiple environments are supported, but
 	most use cases will only require one.
 
 	1. Declare an environment:
 	
-		environment = Rbdb::Environment.new(	'name_to_identify_environment', 
+		environment = RPbdb::Environment.new(	'name_to_identify_environment', 
 												'path/to/db/storage/directory' )
 	
 	1.1 (Optional), Assert environment's identity
@@ -52,7 +52,7 @@ environment while also permitting any underlying settings to be adjusted as nece
 
 == DECLARING A CLASS AS DATABASE OBJECT:
 
-	The best way to use Rbdb with Ruby is with Database-Enabled Objects, which we will refer to
+	The best way to use RPbdb with Ruby is with Database-Enabled Objects, which we will refer to
 	as "Database Objects".
 	
 	Database Objects permit essentially transparent storage of objects. The object's class becomes 
@@ -62,13 +62,13 @@ environment while also permitting any underlying settings to be adjusted as nece
 	1. Include module in class:
 	
 		class AnyClass
-			include Rbdb
+			include RPbdb
 		end
 		
 	2. Configure Class for Database Object
 	
 		class AnyClass
-			include Rbdb
+			include RPbdb
 			
 			#	Database Object configuration here:
 			def self.configure_rpbd

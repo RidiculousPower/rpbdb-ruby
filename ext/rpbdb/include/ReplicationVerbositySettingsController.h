@@ -1,0 +1,43 @@
+#ifndef RB_RPBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER
+	#define RB_RPBDB_REPLICATION_VERBOSITY_SETTINGS_CONTROLLER
+
+	#include "BaseStandardIncludes.h"
+	#include <rpbdb/Types.h>
+
+void Init_rb_RPbdb_ReplicationVerbositySettingsController();
+
+VALUE rb_RPbdb_ReplicationVerbositySettingsController_new(	int			argc,
+																													VALUE*	args,
+																													VALUE		rb_klass_self );
+VALUE rb_RPbdb_ReplicationVerbositySettingsController_initialize(	int				argc __attribute__ ((unused)),
+																														VALUE*		args __attribute__ ((unused)),
+																														VALUE			rb_self );
+VALUE rb_RPbdb_ReplicationVerbositySettingsController_parentEnvironment(	VALUE	rb_replication_verbosity_settings_controller );
+VALUE rb_RPbdb_ReplicationVerbositySettingsController_parentSettingsController(	VALUE	rb_replication_verbosity_settings_controller );
+VALUE rb_RPbdb_ReplicationVerbositySettingsController_parentReplicationSettingsController(	VALUE	rb_replication_verbosity_settings_controller );
+	VALUE rb_RPbdb_ReplicationVerbositySettingsController_displayAllReplicationInformation( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayAllReplicationInformationOn( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayAllReplicationInformationOff( VALUE	rb_replication_verbosity_settings_controller );
+	VALUE rb_RPbdb_ReplicationVerbositySettingsController_displayElectionInformation( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayElectionInformationOn( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayElectionInformationOff( VALUE	rb_replication_verbosity_settings_controller );
+	VALUE rb_RPbdb_ReplicationVerbositySettingsController_displayReplicationMasterLeaseInformation( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayReplicationMasterLeaseInformationOn( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayReplicationMasterLeaseInformationOff( VALUE	rb_replication_verbosity_settings_controller );
+	VALUE rb_RPbdb_ReplicationVerbositySettingsController_displayMiscProcessingInformation( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayMiscProcessingInformationOn( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayMiscProcessingInformationOff( VALUE	rb_replication_verbosity_settings_controller );
+	VALUE rb_RPbdb_ReplicationVerbositySettingsController_displayMessageProcessingInformation( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayMessageProcessingInformationOn( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayMessageProcessingInformationOff( VALUE	rb_replication_verbosity_settings_controller );
+	VALUE rb_RPbdb_ReplicationVerbositySettingsController_displayClientSynchronizationInformation( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayClientSynchronizationInformationOn( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayClientSynchronizationInformationOff( VALUE	rb_replication_verbosity_settings_controller );
+	VALUE rb_RPbdb_ReplicationVerbositySettingsController_displayManagerConnectionFailureInformation( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayManagerConnectionFailureInformationOn( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayManagerConnectionFailureInformationOff( VALUE	rb_replication_verbosity_settings_controller );
+	VALUE rb_RPbdb_ReplicationVerbositySettingsController_displayManagerMiscProcessing( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayManagerMiscProcessingOn( VALUE	rb_replication_verbosity_settings_controller );
+		VALUE rb_RPbdb_ReplicationVerbositySettingsController_turnDisplayManagerMiscProcessingOff( VALUE	rb_replication_verbosity_settings_controller );
+
+#endif
