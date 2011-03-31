@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.version                   =  '0.1'
 
   spec.summary                   =  "Object oriented wrapper for BDB."
-  spec.description               =  "Object oriented wrapper for BDB"
+  spec.description               =  "Object oriented wrapper for BDB."
   
   spec.authors                   =  [ 'Asher' ]
   spec.email                     =  'asher@ridiculouspower.com'
@@ -15,15 +15,10 @@ Gem::Specification.new do |spec|
   
   spec.date                      =  Date.today.to_s
 
-  Rake::ExtensionTask.new( gem_target, spec ) do |ext|
-    ext.lib_dir         = File.join('lib', gem_target)
-    ext.source_pattern  = "**/*.{c,cpp}"
-  end
-  
+  spec.extensions                << 'ext/rbdb/extconf.rb'
+
   # ensure the gem is built out of versioned files
-  # also make sure we include the bundle since we exclude it from git storage
-  spec.files                     = Dir[ 'install.rb',
-                                        '{lib,spec}/**/*',
+  spec.files                     = Dir[ '{lib,spec,ext}/**/*',
                                         'README*', 
                                         'LICENSE*' ] & `git ls-files -z`.split("\0")
 

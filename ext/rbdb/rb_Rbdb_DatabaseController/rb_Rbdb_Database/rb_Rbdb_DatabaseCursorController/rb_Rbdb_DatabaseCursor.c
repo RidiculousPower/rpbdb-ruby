@@ -94,8 +94,9 @@ void Init_rb_Rbdb_DatabaseCursor()	{
 	//	FIX - shouldn't there be a corresponding function for the database?
 	rb_define_method(						rb_Rbdb_DatabaseCursor, 	"write_only_if_not_in_database",				rb_Rbdb_DatabaseCursor_writeOnlyIfNotInDatabase,						-1 	);
                     					                                                              		
-	rb_define_method(						rb_Rbdb_DatabaseCursor, 	"key_exists?",													rb_Rbdb_DatabaseCursor_keyExists,														1 	);
-	rb_define_alias(						rb_Rbdb_DatabaseCursor, 	"exists?",															"key_exists?"	);
+	rb_define_method(						rb_Rbdb_DatabaseCursor, 	"has_key?",                             rb_Rbdb_DatabaseCursor_keyExists,														1 	);
+	rb_define_alias(						rb_Rbdb_DatabaseCursor, 	"key_exists?",													"has_key?"	);
+	rb_define_alias(						rb_Rbdb_DatabaseCursor, 	"exists?",															"has_key?"	);
 
 	rb_define_method(						rb_Rbdb_DatabaseCursor, 	"retrieve",															rb_Rbdb_DatabaseCursor_retrieve,														-1 	);
 	rb_define_alias(						rb_Rbdb_DatabaseCursor, 	"move_cursor_to",												"retrieve"	);
@@ -697,10 +698,11 @@ VALUE rb_Rbdb_DatabaseCursor_keyExists(	VALUE	rb_database_cursor,
 																										rb_key,
 																										(Rbdb_DBT*) c_record->key,
 																										TRUE );
-		
-	return ( Rbdb_DatabaseCursor_keyExists(	c_database_cursor,
-																					c_record->key	)	?	Qtrue
-																												:	Qfalse );
+  VALUE rb_has_key  = ( Rbdb_DatabaseCursor_keyExists(	c_database_cursor,
+                                                        c_record->key	)	?	Qtrue
+                                                                        :	Qfalse );
+    
+	return rb_has_key;
 }
 
 /*************
@@ -1499,12 +1501,12 @@ VALUE rb_Rbdb_DatabaseCursor_iterate( VALUE		rb_database_cursor	)	{
 
     if ( c_record->result )	{
 
-      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                            c_record->data,
-                                                                            FALSE );
       rb_key          =	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->key,
                                                                             TRUE );
+      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->data,
+                                                                            FALSE );
       rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->primary_key,
                                                                             TRUE );
@@ -1543,23 +1545,29 @@ VALUE rb_Rbdb_DatabaseCursor_iterateWithIndex( VALUE		rb_database_cursor	)	{
 	int	c_index	=	0;
 	Rbdb_Record*	c_record	=	NULL;
   VALUE rb_key   =  Qnil;
+  VALUE rb_primary_key    =  Qnil;
   VALUE rb_data  =  Qnil;
   VALUE rb_database     = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 	while ( ( c_record = Rbdb_DatabaseCursor_iterate( c_database_cursor, c_record ) ) != NULL )	{
 
     if ( c_record->result )	{
 
-      rb_data = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                    c_record->data,
-                                                                    FALSE );
-      rb_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                    c_record->key,
-                                                                    TRUE );
+      rb_key          =	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->key,
+                                                                            TRUE );
+      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->data,
+                                                                            FALSE );
+      rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->primary_key,
+                                                                            TRUE );
     }
 		
-		YIELD_BLOCK_FOR_KEY_DATA_INDEX( rb_key,
-																		rb_data,
-																		c_index );
+    rb_Rbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
+                                                                      rb_data,
+                                                                      rb_database,
+                                                                      rb_primary_key,
+                                                                      NULL );
 
 		c_index++;
 	}
@@ -1588,23 +1596,29 @@ VALUE rb_Rbdb_DatabaseCursor_iterateDuplicates(	VALUE		rb_database_cursor )	{
 	int	c_index	=	0;
 	Rbdb_Record*	c_record	=	NULL;
   VALUE rb_key  = Qnil;
+  VALUE rb_primary_key    =  Qnil;
   VALUE rb_data = Qnil;
   VALUE rb_database     = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 	while ( ( c_record = Rbdb_DatabaseCursor_iterateDuplicates( c_database_cursor, c_record ) ) != NULL )	{
       
     if ( c_record->result )	{
 
-      rb_data = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                    c_record->data,
-                                                                    FALSE );
-      rb_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                    c_record->key,
-                                                                    TRUE );
+      rb_key          =	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->key,
+                                                                            TRUE );
+      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->data,
+                                                                            FALSE );
+      rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->primary_key,
+                                                                            TRUE );
     }
 		
-		YIELD_BLOCK_FOR_DATA_INDEX( rb_key,
-																rb_data,
-																c_index );
+    rb_Rbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
+                                                                      rb_data,
+                                                                      rb_database,
+                                                                      rb_primary_key,
+                                                                      NULL );
 
 		c_index++;
 	}
@@ -1633,23 +1647,29 @@ VALUE rb_Rbdb_DatabaseCursor_iterateDuplicatesWithIndex(	VALUE		rb_database_curs
 	int	c_index	=	0;
 	Rbdb_Record*	c_record	=	NULL;
   VALUE rb_key  = Qnil;
+  VALUE rb_primary_key    =  Qnil;
   VALUE rb_data = Qnil;
   VALUE rb_database     = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 	while ( ( c_record = Rbdb_DatabaseCursor_iterateDuplicates( c_database_cursor, c_record ) ) != NULL )	{
       
     if ( c_record->result )	{
 
-      rb_data = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                    c_record->data,
-                                                                    FALSE );
-      rb_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                    c_record->key,
-                                                                    TRUE );
+      rb_key          =	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->key,
+                                                                            TRUE );
+      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->data,
+                                                                            FALSE );
+      rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->primary_key,
+                                                                            TRUE );
     }
 		
-		YIELD_BLOCK_FOR_DATA_INDEX( rb_key,
-																rb_data,
-																c_index );
+    rb_Rbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
+                                                                      rb_data,
+                                                                      rb_database,
+                                                                      rb_primary_key,
+                                                                      NULL );
 
 		c_index++;
 	}
@@ -1685,12 +1705,12 @@ VALUE rb_Rbdb_DatabaseCursor_iterateKeys(	VALUE		rb_database_cursor )	{
       
     if ( c_record->result )	{
 
-      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                            c_record->data,
-                                                                            FALSE );
       rb_key          =	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->key,
                                                                             TRUE );
+      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->data,
+                                                                            FALSE );
       rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->primary_key,
                                                                             TRUE );
@@ -1729,23 +1749,29 @@ VALUE rb_Rbdb_DatabaseCursor_iterateKeysWithIndex(	VALUE		rb_database_cursor )	{
 	int	c_index	=	0;
 	Rbdb_Record*	c_record	=	NULL;
   VALUE rb_key   =  Qnil;
+  VALUE rb_primary_key    =  Qnil;
   VALUE rb_data  =  Qnil;
   VALUE rb_database     = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 	while ( ( c_record = Rbdb_DatabaseCursor_iterateKeys( c_database_cursor, c_record ) ) != NULL )	{
       
     if ( c_record->result )	{
 
-      rb_data = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                    c_record->data,
-                                                                    FALSE );
-      rb_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                    c_record->key,
-                                                                    TRUE );
+      rb_key          =	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->key,
+                                                                            TRUE );
+      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->data,
+                                                                            FALSE );
+      rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->primary_key,
+                                                                            TRUE );
     }
 		
-		YIELD_BLOCK_FOR_KEY_DATA_INDEX( rb_key,
-																		rb_data,
-																		c_index );
+    rb_Rbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
+                                                                      rb_data,
+                                                                      rb_database,
+                                                                      rb_primary_key,
+                                                                      NULL );
 
 		c_index++;
 	}
@@ -1780,12 +1806,12 @@ VALUE rb_Rbdb_DatabaseCursor_iteratePrimaryKeys( VALUE		rb_database_cursor )	{
       
     if ( c_record->result )	{
 
-      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                            c_record->data,
-                                                                            FALSE );
       rb_key          =	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->key,
                                                                             TRUE );
+      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->data,
+                                                                            FALSE );
       rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->primary_key,
                                                                             TRUE );
@@ -1823,23 +1849,29 @@ VALUE rb_Rbdb_DatabaseCursor_iteratePrimaryKeysWithIndex( VALUE		rb_database_cur
 	int	c_index	=	0;
 	Rbdb_Record*	c_record	=	NULL;
   VALUE rb_primary_key    = Qnil;
+  VALUE rb_key           = Qnil;
   VALUE rb_data           = Qnil;
   VALUE rb_database       = rb_Rbdb_DatabaseCursor_parentDatabase( rb_database_cursor );
 	while ( ( c_record = Rbdb_DatabaseCursor_iterateKeys( c_database_cursor, c_record ) ) != NULL )	{
       
     if ( c_record->result )	{
 
-      rb_data = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                    c_record->data,
-                                                                    FALSE );
+      rb_key          =	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->key,
+                                                                            TRUE );
+      rb_data         = rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
+                                                                            c_record->data,
+                                                                            FALSE );
       rb_primary_key	=	rb_Rbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->primary_key,
                                                                             TRUE );
     }
 		
-		YIELD_BLOCK_FOR_KEY_DATA_INDEX( rb_primary_key,
-																		rb_data,
-																		c_index );
+    rb_Rbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
+                                                                      rb_data,
+                                                                      rb_database,
+                                                                      rb_primary_key,
+                                                                      NULL );
 
 		c_index++;
 	}
@@ -2175,7 +2207,8 @@ Rbdb_Record* rb_Rbdb_DatabaseCursor_internal_retrieveRecord(	int			argc,
 	Rbdb_Record*	c_record	=	Rbdb_Record_new( c_database_cursor->parent_database_cursor_controller->parent_database );
 	
 	if (		rb_key == Qnil
-			&&	rb_data == Qnil )	{
+			&&	rb_data == Qnil
+      &&  ! argc )	{
 		
 		c_record	=	Rbdb_DatabaseCursor_retrieveCurrent(	c_database_cursor );
 	}

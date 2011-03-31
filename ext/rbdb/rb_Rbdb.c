@@ -248,6 +248,7 @@ VALUE	rb_Rbdb_ReplicationVerbositySettingsController;
 VALUE	rb_Rbdb_ThreadSettingsController;
 VALUE	rb_Rbdb_TransactionSettingsController;
 
+VALUE rb_cFileString;
 
 /*********
 *  initialize  *
@@ -259,6 +260,8 @@ void Init_rbdb()	{
 	//	Init singleton properties (including its status as a module)
 
 	rb_mRbdb 	=	rb_define_module( "Rbdb" );
+
+  rb_define_const( rb_mRbdb, "NoSecondaryKeys", ID2SYM( rb_intern( "rbdb_no_secondary_keys_key_return_value" ) ) );
 
 	//	override of extend so we can auto-extend both ways for Rbdb
 	rb_define_singleton_method(	rb_cObject,	"extend",															rb_Rbdb_extend,												1 );

@@ -291,20 +291,20 @@ VALUE rb_DatabaseJoinController_internal_cursorsForHashDescriptor(	VALUE	rb_data
 ***************************************************/
 
 //	rb_passed_args should end up with 1 element (rb_self) + 1 element (idx-idx string) + # of elements in hash
-static int rb_Rbdb_DatabaseCursorController_internal_cursorsForEachHashDescriptor(	VALUE	rb_key_method_symbol,
-																																										VALUE	rb_key_value,
+static int rb_Rbdb_DatabaseCursorController_internal_cursorsForEachHashDescriptor(	VALUE	rb_index,
+																																										VALUE	rb_key,
 																																										VALUE	rb_passed_args )	{
 	
 	VALUE	rb_primary_database	=	rb_ary_entry( rb_passed_args, 0 );
 
 	//	make sure we have symbols rather than strings for our key
-	if ( TYPE( rb_key_method_symbol ) == T_STRING )	{
-		rb_key_method_symbol	=	STRING2SYM( rb_key_method_symbol );
+	if ( TYPE( rb_index ) == T_STRING )	{
+		rb_index	=	STRING2SYM( rb_index );
 	}
 	
 	VALUE	rb_cursor				=	rb_Rbdb_DatabaseJoinController_internal_cursorForIndexAtKeyValue(	rb_primary_database,
-																																														rb_key_method_symbol,
-																																														rb_key_value );
+																																														rb_index,
+																																														rb_key );
 	
 	//	If we get no record for setting our cursor we push false and fail
 	if ( rb_cursor == Qnil )	{    

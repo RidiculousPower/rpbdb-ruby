@@ -91,6 +91,8 @@ extern VALUE rb_cFloat;
 extern VALUE rb_cTrueClass;
 extern VALUE rb_cFalseClass;
 
+extern VALUE rb_cFileString;
+
 extern VALUE rb_Rbdb_DatabaseType_const_module;
 extern VALUE rb_Rbdb_DatabaseBtreeType_const;
 extern VALUE rb_Rbdb_DatabaseHashType_const;
@@ -151,8 +153,9 @@ void Init_rb_Rbdb_Database()	{
 	rb_define_alias(						rb_Rbdb_Database, 	"delete!",																			"erase!"	);                            				
 	rb_define_method(						rb_Rbdb_Database, 	"sync!",																				rb_Rbdb_Database_sync,																			0 	);
 
-	rb_define_method(						rb_Rbdb_Database, 	"key_exists?",																	rb_Rbdb_Database_keyExists,																	-1 	);
-	rb_define_alias(						rb_Rbdb_Database, 	"exists?",																			"key_exists?" );                                    				
+	rb_define_method(						rb_Rbdb_Database, 	"has_key?",                                     rb_Rbdb_Database_keyExists,																	-1 	);
+	rb_define_alias(						rb_Rbdb_Database, 	"key_exists?",																	"has_key?" );                                    				
+	rb_define_alias(						rb_Rbdb_Database, 	"exists?",																			"has_key?" );                                    				
 	rb_define_method(						rb_Rbdb_Database, 	"all_keys_exist?",															rb_Rbdb_Database_keysExist,																	-1 	);
 	rb_define_alias(						rb_Rbdb_Database, 	"keys_exist?",																	"all_keys_exist?" );                                    				
 	rb_define_method(						rb_Rbdb_Database, 	"write",																				rb_Rbdb_Database_write,																			-1 	);
@@ -242,6 +245,12 @@ void Init_rb_Rbdb_Database()	{
 																											rb_Rbdb_Database );
 	rb_define_singleton_method(	rb_Rbdb_QueueDatabase, 	"new",																					rb_Rbdb_Database_new,																					-1 	);
 	rb_define_method(						rb_Rbdb_QueueDatabase, 	"initialize",																		rb_Rbdb_Database_initialize,																	-1 	);
+
+  //  Foreign support for Rcerialize (temporary)
+  //  Class permits recovery of files for secondary keys
+	rb_cFileString		=	rb_define_class_under(		rb_cFile, 
+                                                "String",
+                                                rb_cString );
 
 }
 
@@ -1927,13 +1936,13 @@ VALUE rb_Rbdb_Database_retrieveRaw(	int			argc,
 //	database.retrieve_primary_key( [ any args ] )
 VALUE rb_Rbdb_Database_retrievePrimaryKey(	int			argc, 
 																						VALUE*	args,
-																						VALUE		rb_database )	{
+																						VALUE		rb_primary_database )	{
 
 	VALUE	rb_index																		=	Qnil;
 	VALUE	rb_key																			=	Qnil;
 	VALUE	rb_hash_descriptor_index_key	=	Qnil;
 
-	R_DefineAndParse( argc, args, rb_database,
+	R_DefineAndParse( argc, args, rb_primary_database,
 
 		//----------------------------------------------//
 
@@ -1976,7 +1985,7 @@ VALUE rb_Rbdb_Database_retrievePrimaryKey(	int			argc,
 			else {
 					
 				//	we want to perform a join here rather than multiple retrieves
-				VALUE	rb_database_join_controller	=	rb_Rbdb_Database_joinController( rb_database );
+				VALUE	rb_database_join_controller	=	rb_Rbdb_Database_joinController( rb_primary_database );
 
 				VALUE	rb_join_cursor	=	rb_Rbdb_DatabaseJoinController_join(	1,
 																																			& rb_hash_descriptor_index_key,
@@ -2001,7 +2010,7 @@ VALUE rb_Rbdb_Database_retrievePrimaryKey(	int			argc,
 		Rbdb_Database*	c_database	=	NULL;
 		Rbdb_Record*		c_record		=	NULL;
 
-		VALUE	rb_database	=	rb_Rbdb_Database_databaseWithIndex( rb_database,
+		VALUE	rb_database	=	rb_Rbdb_Database_databaseWithIndex( rb_primary_database,
 																														rb_index );
 		C_RBDB_DATABASE( rb_database, c_database );
 
@@ -2711,7 +2720,7 @@ RBDB_SECONDARY_KEY_CREATION_RETURN rb_Rbdb_Database_internal_secondaryKeyCreatio
 																		RARRAY_PTR( rb_args ) );
 
 	//	if nil, don't index
-	if ( rb_secondary_keys == Qnil )	{
+	if ( rb_secondary_keys == rb_const_get( rb_mRbdb, rb_intern( "NoSecondaryKeys" ) ) )	{
 		return RBDB_SECONDARY_KEY_CREATION_FAILED_DO_NOT_INDEX;
 	}
 
