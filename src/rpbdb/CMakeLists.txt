@@ -64,4 +64,4 @@ set_target_properties( rb_rpbdb	PROPERTIES	LINKER_LANGUAGE C
 																						C_FLAGS "-ggdb -fsigned-char -Wall -W -Wshadow -Wstrict-prototypes -Wpointer-arith -Wcast-qual -Winline -Werror" )
 
 # Installation of the library
-#install( TARGETS rb_rpbdb DESTINATION lib PERMISSIONS OWNER_READ GROUP_READ WORLD_READ )
+#install( TARGETS rb_rpbdb DESTINATION ../../lib/rpbdb PERMISSIONS OWNER_READ GROUP_READ WORLD_READ )
