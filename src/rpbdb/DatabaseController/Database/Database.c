@@ -2307,19 +2307,19 @@ VALUE rb_RPbdb_Database_delete(	int			argc,
 	else if (				rb_key != Qnil )	{
 			
 		RPbdb_Database*	c_database	=	NULL;
-		VALUE	rb_database	=	rb_RPbdb_Database_databaseWithIndex( rb_database,
-																														rb_index );
-		C_RPBDB_DATABASE( rb_database, c_database );
+		VALUE	rb_database_for_index	=	rb_RPbdb_Database_databaseWithIndex(  rb_database,
+                                                                        rb_index );
+		C_RPBDB_DATABASE( rb_database_for_index, c_database );
 
 		RPbdb_Record*		c_record	=	NULL;
 
 		do {
 			
-			c_record	=	rb_RPbdb_Database_internal_recordForRubyKey(	rb_database,
-																															rb_key );
+			c_record	=	rb_RPbdb_Database_internal_recordForRubyKey(	rb_database_for_index,
+                                                                rb_key );
 
 			RPbdb_Database_deleteRecord(	c_database,
-																	c_record );
+                                    c_record );
 
 			//	remaining args are keys
 		} while ( R_Arg( rb_key ) );

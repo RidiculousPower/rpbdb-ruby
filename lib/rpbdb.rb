@@ -1,4 +1,4 @@
-require 'rpbdb/rpbdb'
+require_relative 'rpbdb/rpbdb'
 
 module RPbdb
   
