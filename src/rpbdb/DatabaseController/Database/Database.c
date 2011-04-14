@@ -246,12 +246,6 @@ void Init_rb_RPbdb_Database()	{
 	rb_define_singleton_method(	rb_RPbdb_QueueDatabase, 	"new",																					rb_RPbdb_Database_new,																					-1 	);
 	rb_define_method(						rb_RPbdb_QueueDatabase, 	"initialize",																		rb_RPbdb_Database_initialize,																	-1 	);
 
-  //  Foreign support for Rcerialize (temporary)
-  //  Class permits recovery of files for secondary keys
-	rb_cFileString		=	rb_define_class_under(		rb_cFile, 
-                                                "String",
-                                                rb_cString );
-
 }
 
 /*************
