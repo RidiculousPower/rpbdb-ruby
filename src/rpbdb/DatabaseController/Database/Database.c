@@ -223,8 +223,8 @@ void Init_rb_RPbdb_Database()	{
 	rb_define_alias(						rb_RPbdb_Database, 	"join",																					"join_controller"	);
 
 	rb_RPbdb_BtreeDatabase		=	rb_define_class_under(		rb_RPbdb_Database, 
-																											"Btree",
-																											rb_RPbdb_Database );
+                                                        "Btree",
+                                                        rb_RPbdb_Database );
 	rb_define_singleton_method(	rb_RPbdb_BtreeDatabase, 	"new",																					rb_RPbdb_Database_new,																					-1 	);
 	rb_define_method(						rb_RPbdb_BtreeDatabase, 	"initialize",																		rb_RPbdb_Database_initialize,																	-1 	);
 
@@ -235,14 +235,14 @@ void Init_rb_RPbdb_Database()	{
 	rb_define_method(						rb_RPbdb_HashDatabase, 	"initialize",																		rb_RPbdb_Database_initialize,																	-1 	);
 
 	rb_RPbdb_RecnoDatabase		=	rb_define_class_under(		rb_RPbdb_Database, 
-																											"Recno",
-																											rb_RPbdb_Database );
+                                                        "Recno",
+                                                        rb_RPbdb_Database );
 	rb_define_singleton_method(	rb_RPbdb_RecnoDatabase, 	"new",																					rb_RPbdb_Database_new,																					-1 	);
 	rb_define_method(						rb_RPbdb_RecnoDatabase, 	"initialize",																		rb_RPbdb_Database_initialize,																	-1 	);
 
 	rb_RPbdb_QueueDatabase		=	rb_define_class_under(		rb_RPbdb_Database, 
-																											"Queue",
-																											rb_RPbdb_Database );
+                                                        "Queue",
+                                                        rb_RPbdb_Database );
 	rb_define_singleton_method(	rb_RPbdb_QueueDatabase, 	"new",																					rb_RPbdb_Database_new,																					-1 	);
 	rb_define_method(						rb_RPbdb_QueueDatabase, 	"initialize",																		rb_RPbdb_Database_initialize,																	-1 	);
 
@@ -1725,14 +1725,14 @@ VALUE rb_RPbdb_Database_keysExistRaw(	int			argc,
 //	database.retrieve( [ any args ] )
 VALUE rb_RPbdb_Database_retrieve(	int			argc, 
 																	VALUE*	args,
-																	VALUE		rb_database )	{
+																	VALUE		rb_primary_database )	{
 
 
 	VALUE	rb_index											=	Qnil;
 	VALUE	rb_key												=	Qnil;
 	VALUE	rb_hash_descriptor_index_key	=	Qnil;
 
-	R_DefineAndParse( argc, args, rb_database,
+	R_DefineAndParse( argc, args, rb_primary_database,
 
 		//----------------------------------------------//
 
@@ -1790,7 +1790,7 @@ VALUE rb_RPbdb_Database_retrieve(	int			argc,
 			else {
 					
 				//	we want to perform a join here rather than multiple retrieves
-				VALUE	rb_database_join_controller	=	rb_RPbdb_Database_joinController( rb_database );
+				VALUE	rb_database_join_controller	=	rb_RPbdb_Database_joinController( rb_primary_database );
 
 				VALUE	rb_join_cursor	=	rb_RPbdb_DatabaseJoinController_join(	1,
 																																			& rb_hash_descriptor_index_key,
@@ -1816,8 +1816,8 @@ VALUE rb_RPbdb_Database_retrieve(	int			argc,
 		RPbdb_Database*	c_database	=	NULL;
 		RPbdb_Record*		c_record		=	NULL;
 
-		rb_database	=	rb_RPbdb_Database_databaseWithIndex( rb_database,
-																											rb_index );
+		VALUE rb_database	=	rb_RPbdb_Database_databaseWithIndex(  rb_primary_database,
+                                                              rb_index );
 		C_RPBDB_DATABASE( rb_database, c_database );
 
 		rb_return_array		=	rb_ary_new();
@@ -1827,15 +1827,15 @@ VALUE rb_RPbdb_Database_retrieve(	int			argc,
 		do {
 			
 			c_record	=	rb_RPbdb_Database_internal_recordForRubyKey(	rb_database,
-																															rb_key );
+                                                                rb_key );
 
 			c_record	=	RPbdb_Database_retrieveRecord(	c_database,
-																								c_record );
+                                                  c_record );
 			
 			if ( c_record->result )	{
-				rb_data	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-																																			c_record->data,
-																																			FALSE );
+				rb_data	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance(  rb_database,
+                                                                        c_record->data,
+                                                                        FALSE );
 			}
 			
 			RPbdb_Record_free( & c_record );
@@ -3238,5 +3238,11 @@ VALUE rb_RPbdb_Database_internal_unpackDBTForRubyInstance(	VALUE				rb_database,
 void bdbstat( RPbdb_Database* database );
 void bdbstat( RPbdb_Database* database )	{
 	database->wrapped_bdb_database->stat_print( database->wrapped_bdb_database, DB_STAT_ALL );
+}
+void rbbdbstat( VALUE rb_database );
+void rbbdbstat( VALUE rb_database )	{
+	RPbdb_Database*	c_database;
+	C_RPBDB_DATABASE( rb_database, c_database );
+  bdbstat( c_database );
 }
 

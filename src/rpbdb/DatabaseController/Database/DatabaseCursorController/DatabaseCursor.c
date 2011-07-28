@@ -1507,9 +1507,16 @@ VALUE rb_RPbdb_DatabaseCursor_iterate( VALUE		rb_database_cursor	)	{
       rb_data         = rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->data,
                                                                             FALSE );
-      rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                            c_record->primary_key,
-                                                                            TRUE );
+      //  if we are the primary database then primary key is the key
+      if ( rb_RPbdb_Database_isSecondary( rb_database ) == Qfalse ) {
+        rb_primary_key  = rb_key;
+      }
+      else  {
+
+        rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance(  rb_database,
+                                                                                c_record->primary_key,
+                                                                                TRUE );
+      }
     }
 		
     rb_RPbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
@@ -1558,9 +1565,16 @@ VALUE rb_RPbdb_DatabaseCursor_iterateWithIndex( VALUE		rb_database_cursor	)	{
       rb_data         = rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->data,
                                                                             FALSE );
-      rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                            c_record->primary_key,
-                                                                            TRUE );
+      //  if we are the primary database then primary key is the key
+      if ( rb_RPbdb_Database_isSecondary( rb_database ) == Qfalse ) {
+        rb_primary_key  = rb_key;
+      }
+      else  {
+
+        rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance(  rb_database,
+                                                                                c_record->primary_key,
+                                                                                TRUE );
+      }
     }
 		
     rb_RPbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
@@ -1609,9 +1623,16 @@ VALUE rb_RPbdb_DatabaseCursor_iterateDuplicates(	VALUE		rb_database_cursor )	{
       rb_data         = rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->data,
                                                                             FALSE );
-      rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                            c_record->primary_key,
-                                                                            TRUE );
+      //  if we are the primary database then primary key is the key
+      if ( rb_RPbdb_Database_isSecondary( rb_database ) == Qfalse ) {
+        rb_primary_key  = rb_key;
+      }
+      else  {
+
+        rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance(  rb_database,
+                                                                                c_record->primary_key,
+                                                                                TRUE );
+      }
     }
 		
     rb_RPbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
@@ -1660,9 +1681,16 @@ VALUE rb_RPbdb_DatabaseCursor_iterateDuplicatesWithIndex(	VALUE		rb_database_cur
       rb_data         = rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->data,
                                                                             FALSE );
-      rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                            c_record->primary_key,
-                                                                            TRUE );
+      //  if we are the primary database then primary key is the key
+      if ( rb_RPbdb_Database_isSecondary( rb_database ) == Qfalse ) {
+        rb_primary_key  = rb_key;
+      }
+      else  {
+
+        rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance(  rb_database,
+                                                                                c_record->primary_key,
+                                                                                TRUE );
+      }
     }
 		
     rb_RPbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
@@ -1711,9 +1739,16 @@ VALUE rb_RPbdb_DatabaseCursor_iterateKeys(	VALUE		rb_database_cursor )	{
       rb_data         = rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->data,
                                                                             FALSE );
-      rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                            c_record->primary_key,
-                                                                            TRUE );
+      //  if we are the primary database then primary key is the key
+      if ( rb_RPbdb_Database_isSecondary( rb_database ) == Qfalse ) {
+        rb_primary_key  = rb_key;
+      }
+      else  {
+
+        rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance(  rb_database,
+                                                                                c_record->primary_key,
+                                                                                TRUE );
+      }
     }
 		
     rb_RPbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
@@ -1762,9 +1797,16 @@ VALUE rb_RPbdb_DatabaseCursor_iterateKeysWithIndex(	VALUE		rb_database_cursor )	
       rb_data         = rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->data,
                                                                             FALSE );
-      rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                            c_record->primary_key,
-                                                                            TRUE );
+      //  if we are the primary database then primary key is the key
+      if ( rb_RPbdb_Database_isSecondary( rb_database ) == Qfalse ) {
+        rb_primary_key  = rb_key;
+      }
+      else  {
+
+        rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance(  rb_database,
+                                                                                c_record->primary_key,
+                                                                                TRUE );
+      }
     }
 		
     rb_RPbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
@@ -1812,9 +1854,16 @@ VALUE rb_RPbdb_DatabaseCursor_iteratePrimaryKeys( VALUE		rb_database_cursor )	{
       rb_data         = rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->data,
                                                                             FALSE );
-      rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                            c_record->primary_key,
-                                                                            TRUE );
+      //  if we are the primary database then primary key is the key
+      if ( rb_RPbdb_Database_isSecondary( rb_database ) == Qfalse ) {
+        rb_primary_key  = rb_key;
+      }
+      else  {
+
+        rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance(  rb_database,
+                                                                                c_record->primary_key,
+                                                                                TRUE );
+      }
     }
 		
     rb_RPbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_primary_key,
@@ -1862,9 +1911,16 @@ VALUE rb_RPbdb_DatabaseCursor_iteratePrimaryKeysWithIndex( VALUE		rb_database_cu
       rb_data         = rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->data,
                                                                             FALSE );
-      rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                            c_record->primary_key,
-                                                                            TRUE );
+      //  if we are the primary database then primary key is the key
+      if ( rb_RPbdb_Database_isSecondary( rb_database ) == Qfalse ) {
+        rb_primary_key  = rb_key;
+      }
+      else  {
+
+        rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance(  rb_database,
+                                                                                c_record->primary_key,
+                                                                                TRUE );
+      }
     }
 		
     rb_RPbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
@@ -1925,9 +1981,16 @@ VALUE rb_RPbdb_DatabaseCursor_slice( int			argc,
       rb_key          =	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->key,
                                                                             TRUE );
-      rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                            c_record->primary_key,
-                                                                            TRUE );
+      //  if we are the primary database then primary key is the key
+      if ( rb_RPbdb_Database_isSecondary( rb_database ) == Qfalse ) {
+        rb_primary_key  = rb_key;
+      }
+      else  {
+
+        rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance(  rb_database,
+                                                                                c_record->primary_key,
+                                                                                TRUE );
+      }
     }
 		
     rb_RPbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
@@ -2036,9 +2099,16 @@ VALUE rb_RPbdb_DatabaseCursor_sliceKeys(	int			argc,
       rb_key          =	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->key,
                                                                             TRUE );
-      rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                            c_record->primary_key,
-                                                                            TRUE );
+      //  if we are the primary database then primary key is the key
+      if ( rb_RPbdb_Database_isSecondary( rb_database ) == Qfalse ) {
+        rb_primary_key  = rb_key;
+      }
+      else  {
+
+        rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance(  rb_database,
+                                                                                c_record->primary_key,
+                                                                                TRUE );
+      }
     }
 		
     rb_RPbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_key,
@@ -2094,9 +2164,16 @@ VALUE rb_RPbdb_DatabaseCursor_slicePrimaryKeys(	int			argc,
       rb_key          =	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
                                                                             c_record->key,
                                                                             TRUE );
-      rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance( rb_database,
-                                                                            c_record->primary_key,
-                                                                            TRUE );
+      //  if we are the primary database then primary key is the key
+      if ( rb_RPbdb_Database_isSecondary( rb_database ) == Qfalse ) {
+        rb_primary_key  = rb_key;
+      }
+      else  {
+
+        rb_primary_key	=	rb_RPbdb_Database_internal_unpackDBTForRubyInstance(  rb_database,
+                                                                                c_record->primary_key,
+                                                                                TRUE );
+      }
     }
 		
     rb_RPbdb_DatabaseCursor_internal_yieldDataPrimaryKeyKeyAndOrIndex( rb_primary_key,

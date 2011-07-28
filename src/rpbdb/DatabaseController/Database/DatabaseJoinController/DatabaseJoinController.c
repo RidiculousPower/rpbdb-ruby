@@ -303,8 +303,8 @@ static int rb_RPbdb_DatabaseCursorController_internal_cursorsForEachHashDescript
 	}
 	
 	VALUE	rb_cursor				=	rb_RPbdb_DatabaseJoinController_internal_cursorForIndexAtKeyValue(	rb_primary_database,
-																																														rb_index,
-																																														rb_key );
+                                                                                              rb_index,
+                                                                                              rb_key );
 	
 	//	If we get no record for setting our cursor we push false and fail
 	if ( rb_cursor == Qnil )	{    
